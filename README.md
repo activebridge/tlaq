@@ -41,3 +41,11 @@ Images live in `assets/images/` as `.webp` at 480/960/1440px sizes.
 - `jekyll-seo-tag`, `jekyll-sitemap`
 - Vanilla JS (search, calendar, hours, contact form)
 - Custom CSS with CSS variables (no framework)
+
+## Deployment
+
+Hosted on GitHub Pages via the built-in Jekyll deployment.
+
+Push to `main` to trigger an automatic build and deploy.
+
+The site is live at: https://activebridge.github.io/tlaq/
