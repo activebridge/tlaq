@@ -854,6 +854,17 @@ hgroup {
       margin: 0;
     }
   }
+
+  &:not(:has(.card:not(.hidden)))::after {
+    content: "No result found";
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--muted, #888);
+    font-size: clamp(16px, 2vw, 25px);
+  }
+
 }
 
 /* ARTICLES */
@@ -1391,11 +1402,40 @@ form {
 }
 
 .hero {
-  height: calc(100vh - 210px);
+  height: calc(100dvh - 210px);
   background-attachment: fixed;
   background-size: cover;
 
   @media (max-width: 770px) {
-    height: calc(100vh - 139px);
+    height: calc(100dvh - 139px);
+  }
+}
+
+input[type="search"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--navy-40);
+  border-top: 1px solid var(--navy-40);
+  padding: 12px 40px 12px 0;
+  font-size: 1.667rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--navy);
+  outline: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23111c4e' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+  background-size: 20px;
+  line-height: 100%;
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  &::webkit-details-marker {
+    display: none;
   }
 }
