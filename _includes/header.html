@@ -3,21 +3,21 @@
   <label for="nav-toggle" aria-label="Toggle navigation menu"></label>
 
   <nav id="mobile">
-    <input id="visit-toggle" name="visit-toggle" type="checkbox">
-    <label class="mobile-submenu-label" for="visit-toggle" aria-label="Visit submenu">
+    <input id="visit-toggle" type="checkbox">
+    <label id="mobile-submenu-toggle" for="visit-toggle" aria-label="Visit submenu">
       {% include icons/windows/shop.svg %}
       Visit
       {% include icons/caret_down.svg %}
     </label>
-    <ul class="mobile-submenu">
-      <li><a href="{{ '/' | relative_url }}">{% include icons/windows/shop.svg %} Main</a></li>
-      <li><a href="{{ '/hours' | relative_url }}">{% include icons/windows/shop.svg %} Hours</a></li>
-      <li><a href="{{ '/locations' | relative_url }}">{% include icons/windows/shop.svg %} Locations</a></li>
-      <li><a href="{{ '/parking' | relative_url }}">{% include icons/windows/shop.svg %} Parking</a></li>
-      <li><a href="{{ '/village_map' | relative_url }}">{% include icons/windows/shop.svg %} Village Map</a></li>
-      <li><a href="{{ '/accessibility' | relative_url }}">{% include icons/windows/shop.svg %} Accessibility</a></li>
-      <li><a href="{{ '/family_and_pet' | relative_url }}">{% include icons/windows/shop.svg %} Family &amp; Pet</a></li>
-    </ul>
+    <nav id="mobile-submenu-content" aria-label="Visit pages">
+      <a href="{{ '/' | relative_url }}">{% include icons/windows/shop.svg %} Main</a>
+      <a href="{{ '/hours' | relative_url }}">{% include icons/windows/shop.svg %} Hours</a>
+      <a href="{{ '/locations' | relative_url }}">{% include icons/windows/shop.svg %} Locations</a>
+      <a href="{{ '/parking' | relative_url }}">{% include icons/windows/shop.svg %} Parking</a>
+      <a href="{{ '/village_map' | relative_url }}">{% include icons/windows/shop.svg %} Village Map</a>
+      <a href="{{ '/accessibility' | relative_url }}">{% include icons/windows/shop.svg %} Accessibility</a>
+      <a href="{{ '/family_and_pet' | relative_url }}">{% include icons/windows/shop.svg %} Family &amp; Pet</a>
+    </nav>
     <a href="/shops/">{% include icons/windows/shop.svg %} Shop</a>
     <a href="/galleries/">{% include icons/windows/gallery.svg %} Gallery</a>
     <a href="/foods/">{% include icons/windows/food.svg %} Food</a>

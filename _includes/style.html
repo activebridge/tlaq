@@ -72,18 +72,21 @@
   body {
     display: flex;
     flex-direction: column;
-    background: var(--cream);
+    background: var(--primary);
     min-height: 100%;
     height: auto;
 
     &:has(header input#nav-toggle:checked) {
       overflow-y: hidden;
+      position: fixed;
+      width: 100%;
     }
   }
 
   main {
     flex-grow: 1;
     overflow-x: hidden;
+    background: var(--cream);
   }
 
   h1, .h1 { font-size: 3.75rem; }
@@ -97,6 +100,10 @@
     display: inline-block;
     vertical-align: middle;
     width: auto;
+  }
+
+  button {
+    color: inherit;
   }
 
   a {
