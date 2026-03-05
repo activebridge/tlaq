@@ -2,7 +2,8 @@
 layout: default
 ---
 <div class="weddings">
-  <img src="{{ '/assets/images/weddings/banner.webp' | relative_url }}" alt="{{ site.data.weddings.title }}">
+  {% assign image_path = "/assets/images/weddings/banner.webp" | relative_url %}
+  <figure class="hero" style="background-image: url('{{ image_path }}');" ></figure>
   <div class="content-wrapper">
     <hgroup>
       <h5 class="icon-weddings">

@@ -1424,3 +1424,13 @@ form {
     &::placeholder { color: var(--navy); }
   }
 }
+
+.hero {
+  height: calc(100vh - 210px);
+  background-attachment: fixed;
+  background-size: cover;
+
+  @media (max-width: 770px) {
+    height: calc(100vh - 139px);
+  }
+}

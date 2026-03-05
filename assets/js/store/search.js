@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const input = window.storeSearchInput
+  const input = window.storeSearch;
   if (!input) return;
 
   const cards = [...window.storeItem];

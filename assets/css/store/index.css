@@ -27,32 +27,3 @@
     background-color: var(--orange);
   }
 }
-
-.store-search {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--navy);
-  padding-bottom: 0.667rem;
-  margin: 0.75rem 0;
-
-  input {
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: var(--navy);
-
-    &::placeholder {
-      color: var(--navy);
-      opacity: 0.5;
-    }
-  }
-
-  svg {
-    color: var(--navy);
-    flex-shrink: 0;
-  }
-}
