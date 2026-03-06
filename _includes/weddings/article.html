@@ -4,10 +4,7 @@
     <h5>{{ wedding_article.title }}</h5>
     {% if wedding_article.subtitle %}<h6>{{ wedding_article.subtitle }}</h6>{% endif %}
     {% if wedding_article.images %}
-      {% if wedding_article.images.size == 2 %}
-        {% assign class = "two-columns" %}
-      {% endif %}
-      <div class="image-split {{ class }}">
+      <div class="image-split">
         {% for image in wedding_article.images %}
           <img src="{{ image | relative_url }}" alt="{{ wedding_article.title }}">
         {% endfor %}
