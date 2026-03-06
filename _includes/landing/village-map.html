@@ -7,6 +7,6 @@
   <h2>{{ village_map.heading }}</h2>
   {% include map.html %}
   <section class="footer">
-    <p>{{ village_map.description }}</p>
+    <h6>{{ village_map.description | escape }}</h6>
   </section>
 </article>

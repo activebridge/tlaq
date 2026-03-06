@@ -11,7 +11,7 @@
     <img src="{{ weddings.images[2].image | relative_url }}" alt="{{ weddings.images[2].alt }}" loading="lazy" width="{{ weddings.images[2].width }}" height="{{ weddings.images[2].height }}">
   </section>
   <section class="footer">
-    <p>{{ weddings.description }}</p>
+    <h6>{{ weddings.description | escape }}</h6>
     <a href="{{ weddings.link.url }}" class="btn btn-primary">{{ weddings.link.text }}</a>
   </section>
 </article>

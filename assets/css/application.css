@@ -207,9 +207,9 @@ h5 {
 }
 
 h6 {
-  font-weight: 400;
-  font-size: clamp(16px, 2vw, 25px);
-  letter-spacing: 0.03em;
+  font-weight: 500;
+  line-height: clamp(20px, 2.5vw, 40px);
+  font-size: clamp(12px, 1.7vw, 20px);
 }
 
 p {
@@ -302,6 +302,7 @@ header {
     a,
     button#visit-popover-anchor {
       color: var(--cream);
+      font-size: clamp(12px, 1.7vw, 20px);
       background: transparent;
       display: inline-flex;
       gap: 0.35rem;
@@ -325,6 +326,10 @@ header {
     button#visit-popover-anchor {
       all: unset;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: clamp(12px, 1.7vw, 20px);
 
       svg:last-of-type {
         fill: var(--cream);
@@ -814,6 +819,10 @@ hgroup {
 
 /* PAGE JUMP NAV */
 .header-jump {
+  position: sticky;
+  top: 180px;
+  background: var(--bg);
+
   div {
     display: flex;
     align-items: center;
@@ -835,8 +844,8 @@ hgroup {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: all 0.3s ease allow-discrete; 
-    
+    transition: all 0.3s ease allow-discrete;
+
     img {
       margin: 1.5rem 0;
       object-fit: cover;
