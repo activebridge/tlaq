@@ -1,13 +1,17 @@
-<link href="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.css" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.js"></script>
-
 {% comment %}Build store data as JSON from all collections{% endcomment %}
 {% assign all_stores = site.shops | concat: site.galleries | concat: site.foods %}
 
 <div id="map" style="width: 100%; height: 500px;" data-stores='[{% for store in all_stores %}{% if store.coordinates %}{"title":"{{ store.title | escape }}","subtitle":"{{ store.subtitle | escape }}","coordinates":"{{ store.coordinates }}"}{% unless forloop.last %},{% endunless %}{% endif %}{% endfor %}]'></div>
 
 <script>
-  (function() {
+  var css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = 'https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.css';
+  document.head.appendChild(css);
+
+  var script = document.createElement('script');
+  script.src = 'https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.js';
+  script.onload = function() {
     var mapEl = document.getElementById('map');
     var stores = JSON.parse(mapEl.dataset.stores || '[]');
 
@@ -32,5 +36,6 @@
         )
         .addTo(map);
     });
-  })();
+  };
+  document.head.appendChild(script);
 </script>

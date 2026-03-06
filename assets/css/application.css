@@ -1,51 +1,7 @@
-/* CSS Reset */
+/* NOTE: CSS reset, typography (font-family, font-size, line-height), header layout,
+  and container are in _includes/style.html to prevent layout shifts. */
 
-/* 1. Use a more-intuitive box-sizing model */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-/* 2. Remove default margin */
-*:not(dialog) {
-  margin: 0;
-}
-/* 3. Enable keyword animations */
-@media (prefers-reduced-motion: no-preference) {
-  html { interpolate-size: allow-keywords; }
-}
-body {
-  /* 4. Add accessible line-height */
-  line-height: 1.5;
-  /* 5. Improve text rendering */
-  -webkit-font-smoothing: antialiased;
-}
-/* 6. Improve media defaults */
-img, picture, video, canvas {
-  display: block;
-  max-width: 100%;
-  width: 100%;
-}
-
-/* 7. Inherit fonts for form controls */
-input, button, textarea, select {
-  font: inherit;
-}
-
-/* 8. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-}
-
-/* 9. Improve line wrapping */
-h1, h2, h3, h4, h5, h6 {
-  text-wrap: balance;
-}
-
-/* 10. Create a root stacking contex */
-#root, #__next {
-  isolation: isolate;
-}
+/* CSS Reset – defined in _includes/style.html */
 
 /* Fonts */
 
@@ -81,12 +37,7 @@ h1, h2, h3, h4, h5, h6 {
   font-display: swap;
 }
 
-/* Container */
-
-.container {
-  padding: 0 20px;
-  display: grid;
-}
+/* Container – defined in _includes/style.html */
 
 /* Buttons */
 
@@ -156,15 +107,9 @@ hr {
   background: color-mix(in srgb, var(--purple) 20%, transparent);
 }
 
-h1, h2, h3, h4 {
-  font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.04em;
-}
+/* Typography (font-family, font-size, line-height) defined in _includes/style.html */
 
 h1 {
-  font-size: clamp(45px, 6vw, 90px);
   z-index: 1;
 }
 
@@ -172,27 +117,12 @@ h2, h3, h4 {
   margin: 0.75rem 0;
 }
 
-h2 {
-  font-size: clamp(28px, 4.5vw, 60px);
-}
-
-h3 {
-  font-size: clamp(24px, 3vw, 40px);
-}
-
-h4 {
-  font-size: clamp(18px, 3vw, 34px);
-}
-
 h5, h6 {
-  font-family: "Montserrat", sans-serif;
-  line-height: 1;
   margin: 0.75rem 0;
 }
 
 h5 {
   font-weight: 600;
-  font-size: clamp(20px, 2.5vw, 32px);
   letter-spacing: 0.05em;
   gap: 0.725rem;
   display: flex;
@@ -208,15 +138,12 @@ h5 {
 
 h6 {
   font-weight: 500;
-  line-height: clamp(20px, 2.5vw, 40px);
-  font-size: clamp(12px, 1.7vw, 20px);
 }
 
 p {
   margin: 0.75rem 0;
   text-wrap: pretty;
   font-weight: 400;
-  font-size: clamp(12px, 1.7vw, 20px);
 }
 
 /* HEADER */
@@ -640,41 +567,17 @@ header {
   }
 }
 
-/* LANDING BANNER */
+/* LANDING BANNER – sizing/layout in _includes/style.html */
 
 #landing-banner {
-  min-height: 427px;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 17px;
-  position: relative;
-
-  img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-  }
-
   h1 {
-    width: 100%;
-    text-align: center;
     color: var(--cream);
   }
 
   a.btn {
-    position: relative;
-    margin-top: 5rem;
     color: var(--cream);
     border: 1px solid var(--cream);
     text-transform: uppercase;
-    z-index: 1;
 
     &:hover {
       background: var(--cream);
@@ -821,7 +724,7 @@ hgroup {
 /* PAGE JUMP NAV */
 .header-jump {
   position: sticky;
-  top: 180px;
+  top: calc(var(--header-height) + var(--header-status-height));
   background: var(--bg);
 
   div {
@@ -1176,6 +1079,10 @@ article {
 }
 
 @media (max-width: 770px) {
+  .header-jump {
+    top: calc(var(--header-height) - var(--header-nav-height) + var(--header-status-height) - 3rem);
+  }
+
   article#calendar div[role="region"] {
     grid-template-columns: 1fr !important;
     grid-template-rows: auto auto !important;
