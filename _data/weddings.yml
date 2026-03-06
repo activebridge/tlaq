@@ -26,6 +26,7 @@ buttons:
   faq: FAQ
   download_brochure: DOWNLOAD WEDDING BROCHURE
   inquiry_submit: SUBMIT AN INQUIRY
+  download_site_plan: DOWNLOAD SITE PLAN
 
 # Jump to links
 jump_to_links:
@@ -38,3 +39,9 @@ jump_to_links:
   private_events:
     text: PRIVATE EVENTS
     id: "#events"
+
+# Site Plan
+site_plan:
+  title: SITE PLAN
+  image: "/assets/images/weddings/site-plan.webp"
+  plan_url: "https://irp.cdn-website.com/164890e9/files/uploaded/TLAQ%20wedding%20plans%20(2).pdf"
