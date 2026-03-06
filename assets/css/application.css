@@ -802,6 +802,7 @@ header {
 /* CONTENT WRAPPER & UTILITIES */
 
 .content-wrapper {
+  display: grid;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 4vw, 3rem);
@@ -1386,6 +1387,10 @@ footer {
       }
     }
   }
+
+  .site-plan {
+    img { mix-blend-mode: multiply; }
+  }
 }
 
 /* CONNECT WITH US */
@@ -1414,6 +1419,7 @@ form {
   height: calc(100dvh - 210px);
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
 
   @media (max-width: 770px) {
     height: calc(100dvh - 139px);
@@ -1446,5 +1452,16 @@ input[type="search"] {
 
   &::webkit-details-marker {
     display: none;
+  }
+}
+
+.image-split {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+
+  &:has(img:nth-child(2)):not(:has(img:nth-child(3))) {
+    width: 50%;
+    flex-direction: row;
   }
 }

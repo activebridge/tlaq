@@ -25,6 +25,8 @@ collections:
   weddings:
     output: true
     permalink: /weddings/:slug/
+  wedding-articles:
+    output: true
 
 defaults:
   - scope:
