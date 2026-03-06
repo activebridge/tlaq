@@ -9,7 +9,7 @@
     <img src="{{ magazine.image | relative_url }}" alt="{{ magazine.alt }}" loading="lazy" width="900" height="600">
   </figure>
   <section class="footer">
-    <p>{{ magazine.description }}</p>
+    <h6>{{ magazine.description | escape }}</h6>
     <div role="group" aria-label="Magazine actions">
       <a href="{{ magazine.links[0].url }}" class="btn btn-primary">{{ magazine.links[0].text }}</a>
       <a href="{{ magazine.links[1].url }}" class="btn btn-primary">{{ magazine.links[1].text }}</a>

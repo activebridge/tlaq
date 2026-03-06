@@ -58,7 +58,7 @@
   {% endif %}
 
   <section class="footer">
-    <p>{{ calendar.description | escape }}</p>
+    <h6>{{ calendar.description | escape }}</h6>
     {% if calendar.link %}
       <a href="{{ calendar.link.url }}" class="btn btn-primary">{{ calendar.link.text | escape }}</a>
     {% endif %}

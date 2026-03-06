@@ -3,7 +3,7 @@ order: 5
 section: articles
 heading: "Tlaquepaque, one of Sedona's premier event destinations."
 title: "Weddings & Private Events"
-icon: icons/windows/pink.svg
+icon: icons/windows/weddings.svg
 images:
   - image: /assets/images/landing/wedding-1.webp
     alt: Wedding at Tlaquepaque
