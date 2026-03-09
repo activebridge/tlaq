@@ -2,9 +2,9 @@ name: Deploy Jekyll site to Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["enhancement/assets_load"]
   pull_request:
-    branches: ["main"]
+    branches: ["enhancement/assets_load"]
 
 permissions:
   contents: read
