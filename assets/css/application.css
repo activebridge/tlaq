@@ -702,15 +702,6 @@ header {
   }
 }
 
-/* CONTENT WRAPPER & UTILITIES */
-
-.content-wrapper {
-  display: grid;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 4vw, 3rem);
-}
-
 #map {
   height: 50dvh;
 }
@@ -1184,6 +1175,12 @@ article {
   }
 }
 
+.magazine-placeholder {
+  width: 85px;
+  height: 112px;
+  background-color: var(--cream);
+}
+
 /* FOOTER */
 
 footer {
@@ -1372,3 +1369,242 @@ input[type="search"] {
     flex-direction: row;
   }
 }
+
+/* TODO: cleanup redurant styles */
+/* Events */
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Calendar Styles */
+.calendar {
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+.calendar-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.calendar-filter {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.calendar-select {
+  padding: 0.5rem 0;
+  font-size: 18px;
+  border: none;
+  background-color: transparent;
+  color: black;
+  font-weight: 500;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.calendar-filter::after {
+  content: "⌃";
+  font-size: 30px;
+  transform: rotate(180deg);
+  position: absolute;
+  top: -9px;
+  left: 175px;
+}
+
+.calendar-select:focus {
+  outline: none;
+  border-color: #666;
+}
+
+.calendar-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calendar-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.calendar-item-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+  text-align: center;
+}
+
+.calendar-item-date .day {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  letter-spacing: 0.05em;
+}
+
+.calendar-item-date .date {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.calendar-item-content {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
+.calendar-item-image {
+  width: 120px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.calendar-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.calendar-item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.calendar-item-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.calendar-item-subtitle {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0 0 0.25rem 0;
+}
+
+.calendar-item-time {
+  font-size: 0.875rem;
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  .calendar-item {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .calendar-item-date {
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    min-width: auto;
+  }
+
+  .calendar-item-date .date {
+    margin-top: 0;
+  }
+
+  .calendar-item-content {
+    flex-direction: column;
+  }
+
+  .calendar-item-image {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+.video {
+  width: 100%;
+  height: 195px;
+  background-color: var(--gray);
+}
+
+/* Store Index */
+
+.shop {
+  h5 {
+    color: var(--pink);
+  }
+
+  .btn-primary {
+    background-color: var(--pink);
+  }
+}
+
+.gallery {
+  h5 {
+    color: var(--blue);
+  }
+
+  .btn-primary {
+    background-color: var(--blue);
+  }
+}
+
+.food {
+  h5 {
+    color: var(--orange);
+  }
+
+  .btn-primary {
+    background-color: var(--orange);
+  }
+}
+
+/* Store Hours Display Component */
+.store-hours {
+  padding: 15px 0;
+}
+
+.store-hours-title {
+  color: var(--navy);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.store-hours-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.store-hours-day {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--navy);
+  color: var(--navy);
+  font-size: 14px;
+}
+
+.store-hours-day.today {
+  color: var(--pink);
+  font-weight: 600;
+}
+
+.store-hours-day .day-name {
+  text-transform: capitalize;
+}
+
+.store-hours-day .day-hours {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+/* TODO: cleanup redurant styles */
