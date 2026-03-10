@@ -112,7 +112,7 @@
 </style>
 
 <div id="map" style="width:100%;height:500px;position:relative"
-  data-stores='[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"title":"{{ store.title | escape }}","subtitle":"{{ store.subtitle | escape }}","coordinates":"{{ store.coordinates | escape }}","image":"{{ store.image | escape }}","url":"{{ store.url | escape }}","type":"{{ store.store_type | escape }}","hours":{{% if store.store_hours %}{% for h in store.store_hours %}"{{ h[0] | escape }}":"{{ h[1] | escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}} }{% assign has_prev = true %}{% endif %}{% endfor %}]'>
+  data-stores='[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"title":"{{ store.title | escape }}","subtitle":"{{ store.subtitle | escape }}","coordinates":"{{ store.coordinates | escape }}","image":"{{ store.image | escape }}","url":"{{ store.url | escape }}","type":"{{ store.store_type | escape }}","hours":{{ '{' }}{% if store.store_hours %}{% for h in store.store_hours %}"{{ h[0] | escape }}":"{{ h[1] | escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}} }{% assign has_prev = true %}{% endif %}{% endfor %}]'>
   <div id="map-placeholder" style="--map-bg:url('{{ '/assets/images/map-placeholder.webp' | relative_url }}')"></div>
   <div id="map-spinner">
     <span>{% include icons/loader.svg %}</span>
