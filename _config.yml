@@ -3,6 +3,7 @@ description: Arts & Shopping Village
 url: ""
 baseurl: ""
 email: "katatsu12@gmail.com"
+cdn_url: "https://tlaq.ab.team"
 
 collections:
   landing:

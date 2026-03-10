@@ -3,18 +3,18 @@
   <picture>
     <source
       media="(max-width: 480px)"
-      srcset="{{ site.data.weddings.brochure.image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,quality=90/' | prepend: site.url }}"
+      srcset="{{ site.data.weddings.brochure.image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,quality=90/' | prepend: site.cdn_url }}"
     >
     <source
       media="(max-width: 768px)"
-      srcset="{{ site.data.weddings.brochure.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,quality=90/' | prepend: site.url }}"
+      srcset="{{ site.data.weddings.brochure.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,quality=90/' | prepend: site.cdn_url }}"
     >
     <source
       media="(min-width: 768px)"
-      srcset="{{ site.data.weddings.brochure.image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,quality=90/' | prepend: site.url }}"
+      srcset="{{ site.data.weddings.brochure.image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,quality=90/' | prepend: site.cdn_url }}"
     >
     <img
-      src="{{ site.data.weddings.brochure.image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,quality=90/' | prepend: site.url }}"
+      src="{{ site.data.weddings.brochure.image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,quality=90/' | prepend: site.cdn_url }}"
       alt="{{ site.data.weddings.brochure.title }}"
     >
   </picture>
