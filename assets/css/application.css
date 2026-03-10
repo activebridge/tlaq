@@ -94,6 +94,7 @@
 }
 
 hr {
+  margin: 1rem 0;
   height: 1px;
   background-color: var(--navy);
   border: none;
@@ -1550,15 +1551,21 @@ input[type="search"] {
   background-color: var(--gray);
 }
 
-/* Store Index */
+/* Color Themes for pages */
 
-.shop {
+.shops {
   h5 {
     color: var(--pink);
   }
 
   .btn-primary {
     background-color: var(--pink);
+  }
+}
+
+.shop {
+  h2 {
+    color: var(--pink);
   }
 }
 
