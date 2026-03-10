@@ -2,8 +2,10 @@
 layout: default
 ---
 <div class="weddings">
-  {% assign image_path = "/assets/images/weddings/banner.webp" | relative_url %}
-  <figure class="hero" style="background-image: url('{{ image_path }}');" ></figure>
+  {% assign desktop_image_path = site.data.weddings.hero_banner | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,quality=85,gravity=center/' | prepend: site.url %}
+  {% assign mobile_image_path = site.data.weddings.hero_banner | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,quality=85,gravity=center/' | prepend: site.url %}
+
+  <figure class="hero" style="--desktop-image: url('{{ desktop_image_path }}'); --mobile-image: url('{{ mobile_image_path }}');" ></figure>
   <div class="content-wrapper">
     <hgroup>
       <h5>{{ site.data.weddings.weddings }}</h5>
