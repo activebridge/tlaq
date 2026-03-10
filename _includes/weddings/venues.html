@@ -8,7 +8,20 @@
         {% if wedding.subtitle %}<h6>{{ wedding.subtitle }}</h6>{% endif %}
         <div>
           {% if wedding.image %}
-          <img src="{{ wedding.image }}" alt="{{ wedding.title }}">
+            <picture>
+              <source
+                media="(max-width: 480px)"
+                srcset="{{ wedding.image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,quality=90/' | prepend: 'https://tlaq.ab.team' }}"
+              >
+              <source
+                media="(min-width: 768px)"
+                srcset="{{ wedding.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,quality=90/' | prepend: 'https://tlaq.ab.team' }}"
+              >
+              <img
+                src="{{ wedding.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,quality=90/' | prepend: 'https://tlaq.ab.team' }}"
+                alt="{{ site.data.weddings.venues }}"
+              >
+            </picture>
           {% else %}
             <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ wedding.title }}">
           {% endif %}

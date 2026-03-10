@@ -1,10 +1,23 @@
 <article id="events">
   <h5>{{ site.data.weddings.events.title }}</h5>
-  <div class="list-container">
-    <div class="card">
-      <img src="{{ site.data.weddings.events.image }}" alt="{{ site.data.weddings.events.title }}">
-      <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.weddings.buttons.inquiry_submit }}</a>
-      <a href="{{ site.data.weddings.events.brochure_url }}" target="_blank" class="btn btn-primary">{{ site.data.weddings.buttons.download_brochure }}</a>
-    </div>
-  </div>
+  <picture>
+    <source
+      media="(max-width: 480px)"
+      srcset="{{ site.data.weddings.events.image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,quality=90/' | prepend: 'https://tlaq.ab.team' }}"
+    >
+    <source
+      media="(max-width: 768px)"
+      srcset="{{ site.data.weddings.events.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,quality=90/' | prepend: 'https://tlaq.ab.team' }}"
+    >
+    <source
+      media="(min-width: 768px)"
+      srcset="{{ site.data.weddings.events.image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,quality=90/' | prepend: 'https://tlaq.ab.team' }}"
+    >
+    <img
+      src="{{ site.data.weddings.events.image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,quality=90/' | prepend: 'https://tlaq.ab.team' }}"
+      alt="{{ site.data.weddings.events.title }}"
+    >
+  </picture>
+  <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.weddings.buttons.inquiry_submit }}</a>
+  <a href="{{ site.data.weddings.events.brochure_url }}" target="_blank" class="btn btn-primary">{{ site.data.weddings.buttons.download_brochure }}</a>
 </article>

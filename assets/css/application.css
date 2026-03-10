@@ -1337,6 +1337,7 @@ form {
 }
 
 .hero {
+  background-image: var(--desktop-image);
   height: calc(100dvh - 210px);
   background-attachment: fixed;
   background-size: cover;
@@ -1344,6 +1345,7 @@ form {
 
   @media (max-width: 770px) {
     height: calc(100dvh - 139px);
+    background-image: var(--mobile-image);
   }
 }
 
