@@ -1,9 +1,5 @@
 <article id="gallery">
-  <h5 class="icon-weddings">
-    {% include icons/windows/weddings.svg %}
-    {{ site.data.weddings.gallery.title }}
-  </h5>
-
+  <h5>{{ site.data.weddings.gallery.title }}</h5>
   <div class="list-container">
     {% for item in site.data.weddings.gallery.items %}
       <div class="card">

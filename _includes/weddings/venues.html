@@ -1,9 +1,5 @@
 <article id="venues">
-  <h5 class="icon-weddings">
-    {% include icons/windows/weddings.svg %}
-    {{ site.data.weddings.venues }}
-  </h5>
-
+  <h5>{{ site.data.weddings.venues }}</h5>
   <div class="list-container">
     {% assign weddings = site.weddings | sort: "date" %}
     {% for wedding in weddings %}

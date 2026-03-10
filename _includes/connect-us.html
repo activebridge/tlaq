@@ -1,10 +1,6 @@
 <article class="connect-us">
-  <h5 class="icon-weddings">
-    {% include icons/windows/weddings.svg %}
-    {{ site.data.connect-us.title }}
-  </h5>
+  <h5>{{ site.data.connect-us.title }}</h5>
   <h6>{{ site.data.connect-us.description }}</h6>
-
   <form id="connectUsForm">
     <input type="hidden" id="contact-email" name="contactEmail" value="{{ site.email }}">
     <input type="name" name="first-name" id="first-name" placeholder="{{ site.data.connect-us.form_placeholders.first_name }}" required>

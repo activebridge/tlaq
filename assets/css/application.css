@@ -717,6 +717,7 @@ hgroup {
   position: sticky;
   top: calc(var(--header-height) + var(--header-status-height));
   background: var(--bg);
+  z-index: 1;
 
   div {
     display: flex;
@@ -1275,7 +1276,11 @@ footer {
 }
 
 .weddings {
-  h5 { color: var(--pink-40); }
+  h5 {
+    color: var(--pink-40);
+    background: url("/assets/images/icons/wedding.svg") no-repeat left / 1em;
+    padding-left: calc(0.725rem + 1em);
+  }
 
   .btn-primary {
     background-color: var(--pink-40);
@@ -1283,7 +1288,10 @@ footer {
   }
 
   #events {
-    h5 { color: var(--navy); }
+    h5 {
+      color: var(--navy);
+      background: url("/assets/images/icons/default.svg") no-repeat left / 1em;
+    }
     .btn-primary {
       background-color: var(--navy);
       &:hover {
@@ -1294,6 +1302,15 @@ footer {
 
   .site-plan {
     img { mix-blend-mode: multiply; }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 2rem;
+    list-style-image: url("/assets/images/icons/wedding.svg");
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
   }
 }
 
@@ -1363,9 +1380,9 @@ input[type="search"] {
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
+  img { width: 50%; }
 
   &:has(img:nth-child(2)):not(:has(img:nth-child(3))) {
-    width: 50%;
     flex-direction: row;
   }
 }
