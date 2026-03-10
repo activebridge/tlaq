@@ -30,49 +30,165 @@
       transform: rotate(360deg)
     }
   }
+
+  .map-marker {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    background: var(--navy);
+  }
+
+  .map-marker[data-type="shop"] { background: var(--pink) }
+  .map-marker[data-type="gallery"] { background: var(--blue) }
+  .map-marker[data-type="food"] { background: var(--orange) }
+
+  .mapboxgl-popup-content {
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: "Montserrat", sans-serif;
+    color: var(--navy);
+    min-width: 200px
+  }
+
+  .mapboxgl-popup-close-button {
+    color: var(--navy);
+    font-size: 18px;
+    padding: 4px 8px;
+    z-index: 1
+  }
+
+  .mapboxgl-popup-content figure {
+    margin: 0;
+    line-height: 0;
+  }
+
+  .mapboxgl-popup-content img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover
+  }
+
+  .mapboxgl-popup-content h3 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy)
+  }
+
+  .mapboxgl-popup-content .popup-subtitle {
+    margin: 4px 0 0;
+    font-size: 11px;
+    line-height: 1.3rem;
+    font-weight: 400;
+    color: var(--navy-60)
+  }
+
+  .mapboxgl-popup-content .popup-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 12px;
+    border-top: 1px solid var(--cream);
+    font-size: 11px
+  }
+
+  .mapboxgl-popup-content .today-hours {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--green);
+  }
+
+  .mapboxgl-popup-content a {
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    margin-left: auto
+  }
 </style>
 
 <div id="map" style="width:100%;height:500px;position:relative"
-  data-stores='[{% for store in all_stores %}{% if store.coordinates %}{"title":"{{ store.title | escape }}","subtitle":"{{ store.subtitle | escape }}","coordinates":"{{ store.coordinates }}"}{% unless forloop.last %},{% endunless %}{% endif %}{% endfor %}]'>
+  data-stores='[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"title":"{{ store.title | escape }}","subtitle":"{{ store.subtitle | escape }}","coordinates":"{{ store.coordinates | escape }}","image":"{{ store.image | escape }}","url":"{{ store.url | escape }}","type":"{{ store.store_type | escape }}","hours":{{% if store.store_hours %}{% for h in store.store_hours %}"{{ h[0] | escape }}":"{{ h[1] | escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}} }{% assign has_prev = true %}{% endif %}{% endfor %}]'>
   <div id="map-placeholder" style="--map-bg:url('{{ '/assets/images/map-placeholder.webp' | relative_url }}')"></div>
   <div id="map-spinner">
     <span>{% include icons/loader.svg %}</span>
   </div>
 </div>
 
+<template id="mapPopup">
+  <section>
+    <figure>
+      <img>
+    </figure>
+    <h3></h3>
+    <p class="popup-subtitle"></p>
+    <div class="popup-footer">
+      <p class="today-hours"></p>
+      <a href="">Details</a>
+    </div>
+  </section>
+</template>
+
 <script>
   function initMap() {
-    var mapEl = document.getElementById('map');
+    const mapEl = document.getElementById('map');
+    const style = "mapbox://styles/galulex/cmjjuexff009w01qz4awigw0q";
+    const startingCoords = [-111.7635298, 34.8623132];
     if (!mapEl) return;
 
     mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FsdWxleCIsImEiOiJjamx6ampoZjgyMnYxM3FvZ2ppNjV2M2x5In0.bPgk2WI9NT-DJwnE-OtiLA';
 
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/galulex/cmjjuexff009w01qz4awigw0q',
-      center: [-111.7635298, 34.8623132],
-      zoom: 18,
-      pitch: 45,
-      bearing: -17
-    });
+    const map = new mapboxgl.Map({ container: 'map', style: style, center: startingCoords, zoom: 18, pitch: 45, bearing: -17 });
 
-    map.on('load', function () {
-      var spinner = document.getElementById('map-spinner');
+    function removeOverlay() {
+      const spinner = document.getElementById('map-spinner');
       if (spinner) spinner.remove();
-      var placeholder = document.getElementById('map-placeholder');
+      const placeholder = document.getElementById('map-placeholder');
       if (placeholder) placeholder.remove();
-    });
+    }
 
-    var stores = JSON.parse(mapEl.dataset.stores || '[]');
+    map.loaded() ? removeOverlay() : map.on('load', removeOverlay);
+
+    const isSafeUrl = (url) => url && (url[0] === '/' || url.lastIndexOf('http', 0) === 0);
+
+    const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+    const today = days[new Date().getDay()];
+
+    function renderPopup(store) {
+      const clone = document.getElementById('mapPopup').content.cloneNode(true);
+      const img = clone.querySelector('img');
+      store.image ? (img.src = store.image, img.alt = store.title) : img.closest('figure').remove();
+      clone.querySelector('h3').textContent = store.title;
+      clone.querySelector('.popup-subtitle').textContent = store.subtitle;
+
+      const link = clone.querySelector('a');
+      isSafeUrl(store.url) ? link.href = store.url : link.remove();
+
+      const hoursEl = clone.querySelector('.today-hours');
+      const todayHours = store.hours && store.hours[today];
+      todayHours ? hoursEl.textContent = 'Today: ' + todayHours : hoursEl.remove();
+
+      const footer = clone.querySelector('.popup-footer');
+      if (footer && !footer.children.length) footer.remove();
+
+      return clone;
+    }
+
+    const createPopup = (store) => new mapboxgl.Popup({ offset: 10, focusAfterOpen: false }).setDOMContent(renderPopup(store));
+    const stores = JSON.parse(mapEl.dataset.stores || '[]');
     stores.forEach(function (store) {
-      var coords = store.coordinates.split(',').map(function (c) { return parseFloat(c.trim()); });
-      new mapboxgl.Marker({ color: 'red', scale: 2 })
-        .setLngLat(coords)
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 })
-            .setHTML('<h3>' + store.title + '</h3><p>' + store.subtitle + '</p>')
-        )
-        .addTo(map);
+      const coords = store.coordinates.split(',').map(function (c) { return parseFloat(c.trim()); });
+      const flyOptions = { center: coords, padding: { top: 150 }, zoom: 18, speed: 0.4 };
+      const el = document.createElement('div');
+      el.className = 'map-marker';
+      el.dataset.type = store.type;
+
+      const marker = new mapboxgl.Marker({ element: el }).setLngLat(coords).setPopup(createPopup(store)).addTo(map);
+      marker.getElement().addEventListener('click', function flyToStore() { map.flyTo(flyOptions); });
     });
   }
 </script>
