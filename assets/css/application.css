@@ -1302,6 +1302,15 @@ footer {
   .site-plan {
     img { mix-blend-mode: multiply; }
   }
+
+  ul {
+    list-style: none;
+    padding-left: 2rem;
+    list-style-image: url("/assets/images/icons/wedding.svg");
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
 }
 
 /* CONNECT WITH US */
