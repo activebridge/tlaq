@@ -2,48 +2,279 @@
 {% assign all_stores = site.shops | concat: site.galleries | concat: site.foods %}
 
 <style>
-  #map-placeholder {
+  .sr-only {
     position: absolute;
-    inset: 0;
-    background: var(--map-bg) center/cover no-repeat;
-    filter: blur(7px)
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
-  #map-spinner {
+  .map-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+  }
+
+  #mapSidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100%;
+    background: white;
+    border-right: 1px solid var(--cream-60);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+    clip-path: inset(0 -8px 0 0);
+    overflow-y: auto;
+    font-family: "Montserrat", sans-serif;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 4;
+    scrollbar-width: thin;
+    scrollbar-color: var(--cream-60) transparent;
+  }
+
+  #mapSidebar::-webkit-scrollbar { width: 4px; }
+  #mapSidebar::-webkit-scrollbar-thumb {
+    background: var(--cream-60);
+    border-radius: 2px;
+  }
+  #mapSidebar::-webkit-scrollbar-track { background: transparent; }
+
+  #mapSidebar.collapsed {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #mapSidebarToggle {
+    position: absolute;
+    top: 10px;
+    left: 270px;
+    z-index: 5;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: white;
+    border: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--navy);
+    transition: left 0.3s ease, transform 0.2s ease;
+  }
+
+  #mapSidebarToggle:hover { transform: scale(1.05); }
+  .map-container.sidebar-collapsed #mapSidebarToggle { left: 10px; }
+
+  #mapSidebarToggle svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .map-container.sidebar-collapsed #mapSidebarToggle svg { transform: rotate(180deg); }
+
+  .sidebar-search {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--cream-60);
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+  }
+
+  .sidebar-search input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--cream-60);
+    border-radius: 6px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--navy);
+    background: white;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .sidebar-search input:focus { border-color: var(--navy-60); }
+  .sidebar-search input::placeholder { color: var(--navy-60); }
+
+  .sidebar-category,
+  .sidebar-back,
+  .sidebar-show-all {
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+    font: inherit;
+    color: var(--navy);
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .sidebar-category:hover,
+  .sidebar-back:hover,
+  .sidebar-show-all:hover,
+  .sidebar-result:hover {
+    background: var(--cream-60);
+  }
+
+  .sidebar-back {
+    display: none;
+    gap: 6px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy-60);
+    border-bottom: 1px solid var(--cream-60);
+    position: sticky;
+    top: 52px;
+    background: white;
+    z-index: 1;
+  }
+
+  .sidebar-back.visible { display: flex; }
+  .sidebar-back svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .sidebar-results {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    display: none;
+  }
+
+  .sidebar-results.visible { display: block; }
+
+  .sidebar-result {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--navy);
+    border-left: 3px solid transparent;
+  }
+
+  .sidebar-result.active {
+    border-left-color: var(--cat-color);
+    background: var(--cream-60);
+  }
+
+  .sidebar-no-results {
+    padding: 16px;
+    font-size: 13px;
+    color: var(--navy-60);
+    text-align: center;
+    display: none;
+  }
+
+  .sidebar-categories {
+    padding: 8px 0;
+    margin: 0;
+    border: none;
+    min-inline-size: 0;
+  }
+
+  .sidebar-category,
+  .sidebar-show-all {
+    gap: 12px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .sidebar-result-icon,
+  .sidebar-category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .sidebar-result-icon svg,
+  .sidebar-category-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .sidebar-result-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .sidebar-category-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .sidebar-category-label { flex: 1; }
+  .sidebar-category-count {
+    font-size: 12px;
+    color: var(--navy-60);
+    font-weight: 400;
+  }
+
+  .sidebar-show-all { border-top: 1px solid var(--cream-60); }
+
+  #mapPlaceholder,
+  #mapSpinner {
     position: absolute;
     inset: 0;
+  }
+
+  #mapPlaceholder {
+    background: var(--map-bg) center/cover no-repeat;
+    filter: blur(7px);
+  }
+
+  #mapSpinner {
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1;
-    color: var(--navy-80)
+    color: var(--navy-80);
   }
 
-  #map-spinner span {
+  #mapSpinner span {
     width: 48px;
     height: 48px;
-    animation: spin 2s linear infinite
+    animation: spin 2s linear infinite;
   }
 
-  @keyframes spin {
-    to {
-      transform: rotate(360deg)
-    }
-  }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
   .map-marker {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: 1px solid white;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--cream);
+    box-shadow: 0 1px 4px rgba(0,0,0,.3);
     cursor: pointer;
     background: var(--navy);
   }
 
-  .map-marker[data-type="shop"] { background: var(--pink) }
-  .map-marker[data-type="gallery"] { background: var(--blue) }
-  .map-marker[data-type="food"] { background: var(--orange) }
+  .map-marker[data-type="shop"] { background: var(--pink); }
+  .map-marker[data-type="gallery"] { background: var(--blue); }
+  .map-marker[data-type="food"] { background: var(--orange); }
 
   .mapboxgl-popup-content {
     padding: 0;
@@ -51,7 +282,8 @@
     overflow: hidden;
     font-family: "Montserrat", sans-serif;
     color: var(--navy);
-    min-width: 200px;
+    width: 200px;
+    max-height: 300px;
   }
 
   .mapboxgl-popup-close-button {
@@ -59,7 +291,7 @@
     height: 14px;
     border-radius: 50%;
     background: var(--category-color, var(--navy));
-    color: white;
+    color: var(--cream);
     font-size: 18px;
     line-height: 1;
     display: flex;
@@ -70,7 +302,7 @@
     right: 5px;
     z-index: 1;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-    border: 1px solid white;
+    border: 1px solid var(--cream);
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
@@ -83,13 +315,17 @@
   .mapboxgl-popup-content figure {
     margin: 0;
     line-height: 0;
+    height: 120px;
+    background: color-mix(in srgb, var(--category-color, white) 80%, transparent);
   }
 
-  .mapboxgl-popup-content img {
+  .mapboxgl-popup-content figure img {
     width: 100%;
-    height: 120px;
+    height: 100%;
     object-fit: cover;
   }
+
+  .mapboxgl-popup-content figure img[src^="data:"] { display: none; }
 
   .mapboxgl-popup-content h3 {
     margin: 0;
@@ -103,14 +339,10 @@
   }
 
   .mapboxgl-popup-content .popup-icon {
-    display: none;
+    display: flex;
     flex-shrink: 0;
     width: 13px;
     height: 13px;
-  }
-
-  .mapboxgl-popup-content .popup-icon.active {
-    display: flex;
   }
 
   .mapboxgl-popup-content .popup-icon svg {
@@ -125,6 +357,8 @@
     line-height: 1.3rem;
     color: var(--navy-60);
     padding: 0 5px;
+    max-height: 5rem;
+    overflow: hidden;
   }
 
   .mapboxgl-popup-content .popup-footer {
@@ -149,97 +383,255 @@
     text-decoration: none;
     margin-left: auto;
   }
+
+  .mapboxgl-popup-content a[href="#"] { display: none; }
 </style>
 
-<div id="map" style="width:100%;height:500px;position:relative"
-  data-stores='[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"title":"{{ store.title | escape }}","subtitle":"{{ store.subtitle | escape }}","coordinates":"{{ store.coordinates | escape }}","image":"{{ store.image | escape }}","url":"{{ store.url | escape }}","type":"{{ store.store_type | escape }}","hours":{{ '{' }}{% if store.store_hours %}{% for h in store.store_hours %}"{{ h[0] | escape }}":"{{ h[1] | escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}} }{% assign has_prev = true %}{% endif %}{% endfor %}]'>
-  <div id="map-placeholder" style="--map-bg:url('{{ '/assets/images/map-placeholder.webp' | relative_url }}')"></div>
-  <div id="map-spinner">
-    <span>{% include icons/loader.svg %}</span>
+<div class="map-container" id="mapContainer">
+  <nav id="mapSidebar" aria-label="Store filter">
+    <search class="sidebar-search">
+      <label for="mapSearch" class="sr-only">Search stores</label>
+      <input type="search" id="mapSearch" placeholder="Search stores..." autocomplete="off">
+    </search>
+    <button class="sidebar-back" id="mapBack" aria-label="Back to all categories">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      <span>All Categories</span>
+    </button>
+    <ul class="sidebar-results" id="mapSearchResults" role="listbox" aria-label="Search results"></ul>
+    <p class="sidebar-no-results" id="mapNoResults" role="status" aria-live="polite">No results found</p>
+    <fieldset class="sidebar-categories" id="mapCategories">
+      <legend class="sr-only">Filter by category</legend>
+      <button class="sidebar-category" data-type="shop" style="--cat-color: var(--pink)" aria-pressed="false">
+        <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/shop.svg %}</span>
+        <span class="sidebar-category-label">Shops</span>
+        <span class="sidebar-category-count">{{ site.shops | where_exp: "s", "s.coordinates" | size }}</span>
+      </button>
+      <button class="sidebar-category" data-type="gallery" style="--cat-color: var(--blue)" aria-pressed="false">
+        <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/gallery.svg %}</span>
+        <span class="sidebar-category-label">Galleries</span>
+        <span class="sidebar-category-count">{{ site.galleries | where_exp: "s", "s.coordinates" | size }}</span>
+      </button>
+      <button class="sidebar-category" data-type="food" style="--cat-color: var(--orange)" aria-pressed="false">
+        <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/food.svg %}</span>
+        <span class="sidebar-category-label">Food & Beverage</span>
+        <span class="sidebar-category-count">{{ site.foods | where_exp: "s", "s.coordinates" | size }}</span>
+      </button>
+    </fieldset>
+    <button class="sidebar-show-all" id="mapShowAll">
+      <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/default.svg %}</span>
+      <span class="sidebar-category-label">Show All</span>
+    </button>
+  </nav>
+
+  <button id="mapSidebarToggle" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+
+  <div id="map" style="width:100%;height:100%;position:relative"
+    data-stores='[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"title":"{{ store.title | escape }}","subtitle":"{{ store.subtitle | escape }}","coordinates":"{{ store.coordinates | escape }}","image":"{{ store.image | escape }}","url":"{{ store.url | escape }}","type":"{{ store.store_type | escape }}","hours":{{ '{' }}{% if store.store_hours %}{% for h in store.store_hours %}"{{ h[0] | escape }}":"{{ h[1] | escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}} }{% assign has_prev = true %}{% endif %}{% endfor %}]'>
+    <div id="mapPlaceholder" style="--map-bg:url('{{ '/assets/images/map-placeholder.webp' | relative_url }}')"></div>
+    <div id="mapSpinner">
+      <span>{% include icons/loader.svg %}</span>
+    </div>
   </div>
 </div>
 
 <template id="mapPopup">
   <section>
     <figure>
-      <img>
+      <img src="$image" alt="$title">
     </figure>
-    <h3>
-      <span class="popup-icon" data-type="shop">{% include icons/windows/shop.svg %}</span>
-      <span class="popup-icon" data-type="gallery">{% include icons/windows/gallery.svg %}</span>
-      <span class="popup-icon" data-type="food">{% include icons/windows/food.svg %}</span>
-      <span class="popup-icon" data-type="default">{% include icons/windows/default.svg %}</span>
-    </h3>
-    <p class="popup-subtitle"></p>
+    <h3>$icon$title</h3>
+    <p class="popup-subtitle">$subtitle</p>
     <div class="popup-footer">
-      <p class="today-hours"></p>
-      <a href="">Details</a>
+      <p class="today-hours">$todayHours</p>
+      <a href="$url">Details</a>
     </div>
   </section>
 </template>
 
+<template id="storeIcons">
+  <span class="sidebar-result-icon" data-type="shop">{% include icons/windows/shop.svg %}</span>
+  <span class="sidebar-result-icon" data-type="gallery">{% include icons/windows/gallery.svg %}</span>
+  <span class="sidebar-result-icon" data-type="food">{% include icons/windows/food.svg %}</span>
+  <span class="sidebar-result-icon" data-type="default">{% include icons/windows/default.svg %}</span>
+</template>
+
 <script>
   function initMap() {
-    const style = "mapbox://styles/galulex/cmjjuexff009w01qz4awigw0q";
-    const startingCoords = [-111.7635298, 34.8623132];
     if (!window.map) return;
 
+    // Init map
     mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FsdWxleCIsImEiOiJjamx6ampoZjgyMnYxM3FvZ2ppNjV2M2x5In0.bPgk2WI9NT-DJwnE-OtiLA';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/galulex/cmjjuexff009w01qz4awigw0q',
+      center: [-111.7635298, 34.8623132],
+      zoom: 18, pitch: 45, bearing: -17
+    });
 
-    const map = new mapboxgl.Map({ container: 'map', style: style, center: startingCoords, zoom: 18, pitch: 45, bearing: -17 });
-
-    function removeOverlay() {
-      const spinner = document.getElementById('map-spinner');
-      if (spinner) spinner.remove();
-      const placeholder = document.getElementById('map-placeholder');
-      if (placeholder) placeholder.remove();
-    }
-
+    // Remove loading spinner and placeholder once tiles are ready
+    const removeOverlay = () => { window.mapSpinner?.remove(); window.mapPlaceholder?.remove(); };
     map.loaded() ? removeOverlay() : map.on('load', removeOverlay);
 
+    // Helpers
     const isSafeUrl = (url) => url && (url[0] === '/' || url.lastIndexOf('http', 0) === 0);
-
     const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     const today = days[new Date().getDay()];
 
-    function renderPopup(store) {
-      const clone = document.getElementById('mapPopup').content.cloneNode(true);
-      const img = clone.querySelector('img');
-      store.image ? (img.src = store.image, img.alt = store.title) : img.closest('figure').remove();
-      const icon = clone.querySelector('.popup-icon[data-type="' + (store.type || 'default') + '"]') || clone.querySelector('.popup-icon[data-type="default"]');
-      icon.classList.add('active');
-      clone.querySelector('h3').append(store.title);
-      clone.querySelector('.popup-subtitle').textContent = store.subtitle;
+    // Clone icon SVG from shared <template> by store type
+    const { content: storeIconsTpl } = window.storeIcons;
+    const getStoreIcon = (type) => (storeIconsTpl.querySelector(`[data-type="${type || 'default'}"]`) || storeIconsTpl.querySelector('[data-type="default"]')).cloneNode(true);
 
-      const link = clone.querySelector('a');
-      isSafeUrl(store.url) ? link.href = store.url : link.remove();
-
-      const hoursEl = clone.querySelector('.today-hours');
-      const todayHours = store.hours && store.hours[today];
-      todayHours ? hoursEl.textContent = 'Today: ' + todayHours : hoursEl.remove();
-
-      const footer = clone.querySelector('.popup-footer');
-      if (footer && !footer.children.length) footer.remove();
-
-      return clone;
-    }
-
+    // Build popup DOM from <template> and fill with store data
     const typeColors = { shop: 'var(--pink)', gallery: 'var(--blue)', food: 'var(--orange)' };
+    const renderPopup = (store) => {
+      const todayHours = store.hours?.[today];
+      const icon = getStoreIcon(store.type);
+      icon.className = 'popup-icon';
+      const data = {
+        image: store.image || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+        title: store.title,
+        subtitle: store.subtitle,
+        icon: icon.outerHTML,
+        url: isSafeUrl(store.url) ? store.url : '#',
+        todayHours: todayHours ? 'Today: ' + todayHours : ''
+      };
+      return window.mapPopup.innerHTML.replace(/\$(\w+)/g, (_, key) => data[key] ?? '');
+    };
+
+    // Create popup with single-open enforcement and category color
+    let openPopup = null;
     const createPopup = (store) => {
-      const popup = new mapboxgl.Popup({ offset: 10, focusAfterOpen: false }).setDOMContent(renderPopup(store));
-      if (typeColors[store.type]) popup.on('open', () => popup.getElement().querySelector('.mapboxgl-popup-content').style.setProperty('--category-color', typeColors[store.type]));
+      const popup = new mapboxgl.Popup({ offset: 10, maxWidth: '200px', focusAfterOpen: false }).setHTML(renderPopup(store));
+      popup.on('open', () => {
+        if (openPopup && openPopup !== popup) openPopup.remove();
+        openPopup = popup;
+        typeColors[store.type] && popup.getElement().style.setProperty('--category-color', typeColors[store.type]);
+      });
       return popup;
     };
-    const stores = JSON.parse(window.map.dataset.stores || '[]');
-    stores.forEach(function (store) {
-      const coords = store.coordinates.split(',').map(function (c) { return parseFloat(c.trim()); });
-      const flyOptions = { center: coords, padding: { top: 150 }, zoom: 18, speed: 0.4 };
-      const el = document.createElement('div');
-      el.className = 'map-marker';
-      el.dataset.type = store.type;
 
+    // Place markers from Jekyll-generated store data
+    const stores = JSON.parse(window.map.dataset.stores || '[]');
+    const markerData = [];
+
+    stores.forEach((store) => {
+      const coords = store.coordinates.split(',').map(c => parseFloat(c.trim()));
+      const el = Object.assign(document.createElement('div'), { className: 'map-marker' });
+      el.dataset.type = store.type;
       const marker = new mapboxgl.Marker({ element: el }).setLngLat(coords).setPopup(createPopup(store)).addTo(map);
-      marker.getElement().addEventListener('click', function flyToStore() { map.flyTo(flyOptions); });
+      marker.getElement().addEventListener('click', () => map.flyTo({ center: coords, padding: { top: 150 }, zoom: 18, speed: 0.4 }));
+      markerData.push({ marker, type: store.type });
+    });
+
+    // Sidebar state and DOM refs
+    let activeFilter = null;
+    const { mapSearch, mapSearchResults, mapNoResults, mapCategories, mapBack, mapSidebar, mapShowAll, mapContainer } = window;
+    const categories = mapCategories.querySelectorAll('.sidebar-category');
+
+    // Show/hide markers based on predicate; close popup before removing
+    const filterMarkers = (predicate) => markerData.forEach((item, i) => {
+      predicate(item, i) ? item.marker.addTo(map) : (item.marker.getPopup().isOpen() && item.marker.togglePopup(), item.marker.remove());
+    });
+
+    const applyFilter = (type) => filterMarkers((item) => !type || item.type === type);
+
+    // Build sidebar list item that flies to store on click
+    let activeResult = null;
+    const renderResultItem = (store, item) => {
+      const li = document.createElement('li');
+      li.className = 'sidebar-result';
+      li.setAttribute('role', 'option');
+      if (typeColors[store.type]) li.style.setProperty('--cat-color', typeColors[store.type]);
+      li.appendChild(getStoreIcon(store.type));
+      li.appendChild(Object.assign(document.createElement('span'), { textContent: store.title }));
+      li.addEventListener('click', () => {
+        activeResult?.classList.remove('active');
+        li.classList.add('active');
+        activeResult = li;
+        const coords = store.coordinates.split(',').map(c => parseFloat(c.trim()));
+        map.flyTo({ center: coords, zoom: 18, speed: 0.4 });
+        item.marker.addTo(map);
+        item.marker.togglePopup();
+        closeSidebarOnMobile();
+      });
+      return li;
+    };
+
+    // Switch sidebar to store list view (sorted A-Z)
+    const showStoreList = (matches) => {
+      mapCategories.style.display = 'none';
+      mapShowAll.style.display = 'none';
+      mapBack.classList.add('visible');
+      mapSearchResults.innerHTML = '';
+      activeResult = null;
+      if (matches.length) {
+        mapNoResults.style.display = 'none';
+        matches.sort((a, b) => a.store.title.localeCompare(b.store.title));
+        matches.forEach(m => mapSearchResults.appendChild(renderResultItem(m.store, m.item)));
+        mapSearchResults.classList.add('visible');
+      } else {
+        mapSearchResults.classList.remove('visible');
+        mapNoResults.style.display = 'block';
+      }
+    };
+
+    // Switch sidebar back to category view
+    const showCategories = () => {
+      mapSearchResults.classList.remove('visible');
+      mapSearchResults.innerHTML = '';
+      mapNoResults.style.display = 'none';
+      mapBack.classList.remove('visible');
+      mapCategories.style.display = '';
+      mapShowAll.style.display = '';
+    };
+
+    const resetFilter = () => {
+      mapSearch.value = '';
+      activeFilter = null;
+      categories.forEach(c => c.setAttribute('aria-pressed', 'false'));
+      applyFilter(null);
+      showCategories();
+    };
+
+    // Close sidebar on mobile
+    const mobileQuery = window.matchMedia('(max-width: 770px)');
+    const closeSidebarOnMobile = () => {
+      if (mobileQuery.matches && !mapSidebar.classList.contains('collapsed')) {
+        mapSidebar.classList.add('collapsed');
+        mapContainer.classList.add('sidebar-collapsed');
+      }
+    };
+
+    // Category click: toggle filter or drill into store list
+    categories.forEach(cat => cat.addEventListener('click', () => {
+      const type = cat.dataset.type;
+      mapSearch.value = '';
+      if (activeFilter === type) { resetFilter(); return; }
+      activeFilter = type;
+      categories.forEach(c => c.setAttribute('aria-pressed', String(c === cat)));
+      applyFilter(type);
+      showStoreList(markerData.reduce((acc, item, i) => (stores[i].type === type && acc.push({ store: stores[i], item }), acc), []));
+    }));
+
+    mapBack.addEventListener('click', resetFilter);
+    mapShowAll.addEventListener('click', resetFilter);
+
+    // Live search: filter markers and sidebar results by store name
+    mapSearch.addEventListener('input', () => {
+      const query = mapSearch.value.trim().toLowerCase();
+      activeFilter = null;
+      if (!query) { applyFilter(null); showCategories(); return; }
+      const matches = markerData.reduce((acc, item, i) => (stores[i].title.toLowerCase().includes(query) && acc.push({ store: stores[i], item }), acc), []);
+      showStoreList(matches);
+      filterMarkers((_, i) => stores[i].title.toLowerCase().includes(query));
+    });
+
+    // Collapse/expand sidebar
+    window.mapSidebarToggle.addEventListener('click', () => {
+      const collapsed = window.mapSidebar.classList.toggle('collapsed');
+      mapContainer.classList.toggle('sidebar-collapsed', collapsed);
     });
   }
 </script>
