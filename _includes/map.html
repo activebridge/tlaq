@@ -427,8 +427,9 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
   </button>
 
+  {% capture stores_json %}[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | jsonify }},"url":{{ store.url | jsonify }},"type":{{ store.store_type | jsonify }},"hours":{{ store.store_hours | jsonify }} }{% assign has_prev = true %}{% endif %}{% endfor %}]{% endcapture %}
   <div id="map" style="width:100%;height:100%;position:relative"
-    data-stores='[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"title":"{{ store.title | escape }}","subtitle":"{{ store.subtitle | escape }}","coordinates":"{{ store.coordinates | escape }}","image":"{{ store.image | escape }}","url":"{{ store.url | escape }}","type":"{{ store.store_type | escape }}","hours":{{ '{' }}{% if store.store_hours %}{% for h in store.store_hours %}"{{ h[0] | escape }}":"{{ h[1] | escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}{% endif %}} }{% assign has_prev = true %}{% endif %}{% endfor %}]'>
+    data-stores='{{ stores_json | escape }}'>
     <div id="mapPlaceholder" style="--map-bg:url('{{ '/assets/images/map-placeholder.webp' | relative_url }}')"></div>
     <div id="mapSpinner">
       <span>{% include icons/loader.svg %}</span>
