@@ -2,7 +2,7 @@
 slug: caravana-jewelry
 date: 2026-02-22
 title: Caravana Jewelry
-subtitle: Unique modern metalsmithing and jewelry design
+subtitle: Silver & gemstone jewelry by Arizona artists
 suite: B120
 phone: '9282823370'
 website: https://www.caravana-collection.com

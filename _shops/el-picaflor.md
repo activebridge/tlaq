@@ -2,7 +2,7 @@
 slug: el-picaflor
 date: 2026-02-22
 title: El Picaflor
-subtitle: Folk art from the Andes
+subtitle: Folk art & crafts
 suite: A206
 phone: '9282821173'
 website: https://www.elpicaflor.com

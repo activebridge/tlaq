@@ -2,7 +2,7 @@
 slug: cucina-sedona
 date: 2026-02-22
 title: Cucina Sedona
-subtitle: Southwest kitchen, table linens, pottery & gourmet items
+subtitle: Southwestern salsas, gadgets, linens, pottery & tableware
 suite: D101
 phone: '9282823905'
 coordinates: "-111.7633015, 34.8621634"

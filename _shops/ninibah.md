@@ -2,8 +2,8 @@
 slug: ninibah
 date: 2026-02-22
 title: Ninibah
-subtitle: Authentic Native American Arts
-suite: A106
+subtitle: Authentic indian jewelry, baskets & kachinas
+suite: A107
 phone: '9282824256'
 coordinates: "-111.7634635, 34.8622272"
 ---

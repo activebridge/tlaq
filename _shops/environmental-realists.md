@@ -2,8 +2,8 @@
 slug: environmental-realists
 date: 2026-02-22
 title: Environmental Realists
-subtitle: Handcrafted jewelry, wood and gift items
-suite: A107
+subtitle: Mixed metal jewelry, handcrafted knives & wood accessories
+suite: A106
 phone: '9282824945'
 website: https://www.environmentalrealists.com
 coordinates: "-111.7625685, 34.8621175"

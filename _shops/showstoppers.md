@@ -2,7 +2,7 @@
 slug: showstoppers
 date: 2026-02-22
 title: Showstoppers
-subtitle: Floral and event decorating company
+subtitle: Floral & event decorating, home decor, furnishings & gifts
 suite: C107
 phone: '9282039096'
 website: https://eventsbyshowstoppers.com

@@ -2,7 +2,7 @@
 slug: the-artists-kitchen-shop
 date: 2026-03-07
 title: The Artist's Kitchen Shop
-subtitle: Creative cookware, elegant entertaining, and gourmet gifts
+subtitle: Creative cookware, elegant entertaining, gourmet gifts
 suite: C11
 phone: '9288624140'
 website: https://www.theartistskitchenshop.com

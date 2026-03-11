@@ -1,10 +1,10 @@
 ---
 slug: vino-zona
 date: 2026-02-22
-title: Vino Zona
-subtitle: Arizona wine tasting room
+title: Vino Zona Sedona
+subtitle: A curated wine tasting of the best 100% Arizona grown and made wine!
 suite: A207
-phone: '9282822650'
+phone: '9282848053'
 website: https://www.vinozona.love
 coordinates: "-111.7635, 34.8622"
 store_hours:

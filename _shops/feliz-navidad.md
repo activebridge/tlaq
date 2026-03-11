@@ -2,7 +2,7 @@
 slug: feliz-navidad
 date: 2026-02-22
 title: Feliz Navidad
-subtitle: Handmade Christmas decorations from around the world
+subtitle: Christmas art & ornaments
 suite: A116
 phone: '9282822752'
 website: https://merrychristmassedona.com

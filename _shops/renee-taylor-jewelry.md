@@ -2,7 +2,7 @@
 slug: renee-taylor-jewelry
 date: 2026-02-22
 title: Renee Taylor Jewelry
-subtitle: Contemporary jewelry, engagement rings and wedding bands
+subtitle: Contemporary, fashion forward jewelry
 suite: B14
 phone: '9282821506'
 website: https://www.reneetaylorgallery.com

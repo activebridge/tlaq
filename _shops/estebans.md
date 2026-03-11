@@ -2,7 +2,7 @@
 slug: estebans
 date: 2026-02-22
 title: Esteban's
-subtitle: Handcrafted Southwestern pottery
+subtitle: Handcrafted functional & decorative pottery by Southwestern artists
 suite: B103
 phone: '9282824686'
 website: https://www.estebanssedona.com

@@ -2,7 +2,7 @@
 slug: spirits-spice
 date: 2026-02-22
 title: Spirits & Spice
-subtitle: Premium spirits, spices, oils, vinegar and wine
+subtitle: High-quality spirits, custom spice blends, oils, vinegar & wine
 suite: C102
 phone: '9282822595'
 website: https://www.spiritsandspice.com

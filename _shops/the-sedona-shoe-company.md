@@ -2,7 +2,7 @@
 slug: the-sedona-shoe-company
 date: 2026-02-22
 title: The Sedona Shoe Company
-subtitle: Stylish Women's Shoes
+subtitle: Stylish women's shoes "from cobblestones to cocktails"
 suite: B107
 phone: '9282822223'
 website: https://www.sedonashoeco.com

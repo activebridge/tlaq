@@ -2,7 +2,7 @@
 slug: natural-wonders
 date: 2026-02-22
 title: Natural Wonders
-subtitle: Fossils, gems, minerals and unique gifts
+subtitle: Gem, minerals & fossils from around the world
 suite: A210
 phone: '9282821334'
 coordinates: "-111.7633015, 34.8621634"
