@@ -9,14 +9,14 @@
           <picture>
             <source
               media="(max-width: 480px)"
-              srcset="{{ image | prepend: '/cdn-cgi/image/width=169,height=231,fit=cover,gravity=top/' | prepend: site.cdn_url }}"
+              srcset="{{ image | prepend: '/cdn-cgi/image/width=169,height=231,fit=cover,gravity=top,format=webp/' | prepend: site.cdn_url }}"
             >
             <source
               media="(min-width: 768px)"
-              srcset="{{ image | prepend: '/cdn-cgi/image/width=600,height=700,fit=cover,gravity=top/' | prepend: site.cdn_url }}"
+              srcset="{{ image | prepend: '/cdn-cgi/image/width=600,height=700,fit=cover,gravity=top,format=webp/' | prepend: site.cdn_url }}"
             >
             <img
-              src="{{ image | prepend: '/cdn-cgi/image/width=600,height=700,fit=cover,gravity=top/' | prepend: site.cdn_url }}"
+              src="{{ image | prepend: '/cdn-cgi/image/width=600,height=700,fit=cover,gravity=top,format=webp/' | prepend: site.cdn_url }}"
               alt="{{ wedding_article.title }}"
             >
           </picture>
