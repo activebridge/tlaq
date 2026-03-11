@@ -540,7 +540,7 @@
       if (idx !== -1) {
         const coords = stores[idx].coordinates.split(',').map(c => parseFloat(c.trim()));
         const flyAndOpen = () => {
-          map.flyTo({ center: coords, zoom: 17, speed: 0.6 });
+          map.flyTo({ center: coords, zoom: 18, speed: 0.6, padding: { top: 200 } });
           markerData[idx].marker.addTo(map);
           markerData[idx].marker.togglePopup();
         };

@@ -16,7 +16,7 @@
       <span class="separator">|</span>
     {% endif %}
     {% if include.store.phone %}
-      <span>({{ include.store.phone | slice: 0, 3 }}) {{ include.store.phone | slice: 3, 3 }}-{{ include.store.phone | slice: 6, 4 }}</span>
+      <span>{{ include.store.phone }}</span>
     {% endif %}
   </p>
   <a href="{{ include.store.url }}" class="btn btn-primary">DETAILS</a>
