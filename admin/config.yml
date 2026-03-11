@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: katatsu12/katatsu12.github.io
+  repo: activebridge/tlaq
   branch: main
 
 media_folder: "assets/images"
