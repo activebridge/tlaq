@@ -7,6 +7,7 @@ layout: default
 <div class="content-wrapper">
   <h2>{{ page.title }}</h2>
   {{ content }}
+  {% include map.html suite=page.suite %}
   <hr>
   <h6>LOCATION</h6>
   <h7>{{ page.full_location }}</h7>
@@ -28,9 +29,8 @@ layout: default
   <h7><a href="{{ page.website }}" target="_blank">{{ page.website | remove: 'https://' | split: '/' | first }}</a></h7>
   <hr>
   {% if page.facebook or page.instagram %}
-    <h6>SOCIAL MEDIA</h6>
-    <nav>
-      <a href="{{ page.facebook }}" target="_blank">
+    <nav style="margin: 1rem 0;">
+      <a class="social" href="{{ page.facebook }}" target="_blank">
         {% include icons/socials/facebook.svg %}
       </a>
       <a class="social" href="{{ page.instagram }}" target="_blank">

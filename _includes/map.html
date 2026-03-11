@@ -402,17 +402,17 @@
     <fieldset class="sidebar-categories" id="mapCategories">
       <legend class="sr-only">Filter by category</legend>
       <button class="sidebar-category" data-type="shop" style="--cat-color: var(--pink)" aria-pressed="false">
-        <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/shop.svg %}</span>
+        <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/shops.svg %}</span>
         <span class="sidebar-category-label">Shops</span>
         <span class="sidebar-category-count">{{ site.shops | where_exp: "s", "s.coordinates" | size }}</span>
       </button>
       <button class="sidebar-category" data-type="gallery" style="--cat-color: var(--blue)" aria-pressed="false">
-        <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/gallery.svg %}</span>
+        <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/galleries.svg %}</span>
         <span class="sidebar-category-label">Galleries</span>
         <span class="sidebar-category-count">{{ site.galleries | where_exp: "s", "s.coordinates" | size }}</span>
       </button>
       <button class="sidebar-category" data-type="food" style="--cat-color: var(--orange)" aria-pressed="false">
-        <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/food.svg %}</span>
+        <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/foods.svg %}</span>
         <span class="sidebar-category-label">Food & Beverage</span>
         <span class="sidebar-category-count">{{ site.foods | where_exp: "s", "s.coordinates" | size }}</span>
       </button>
@@ -427,9 +427,10 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
   </button>
 
-  {% capture stores_json %}[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | jsonify }},"url":{{ store.url | jsonify }},"type":{{ store.store_type | jsonify }},"hours":{{ store.store_hours | jsonify }} }{% assign has_prev = true %}{% endif %}{% endfor %}]{% endcapture %}
+  {% capture stores_json %}[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | jsonify }},"url":{{ store.url | jsonify }},"type":{{ store.store_type | jsonify }},"hours":{{ store.store_hours | jsonify }},"suite":{{ store.suite | jsonify }} }{% assign has_prev = true %}{% endif %}{% endfor %}]{% endcapture %}
   <div id="map" style="width:100%;height:100%;position:relative"
-    data-stores='{{ stores_json | escape }}'>
+    data-stores='{{ stores_json | escape }}'
+    data-focus-suite='{{ include.suite | escape }}'>
     <div id="mapPlaceholder" style="--map-bg:url('{{ '/assets/images/map-placeholder.webp' | relative_url }}')"></div>
     <div id="mapSpinner">
       <span>{% include icons/loader.svg %}</span>
@@ -452,9 +453,9 @@
 </template>
 
 <template id="storeIcons">
-  <span class="sidebar-result-icon" data-type="shop">{% include icons/windows/shop.svg %}</span>
-  <span class="sidebar-result-icon" data-type="gallery">{% include icons/windows/gallery.svg %}</span>
-  <span class="sidebar-result-icon" data-type="food">{% include icons/windows/food.svg %}</span>
+  <span class="sidebar-result-icon" data-type="shop">{% include icons/windows/shops.svg %}</span>
+  <span class="sidebar-result-icon" data-type="gallery">{% include icons/windows/galleries.svg %}</span>
+  <span class="sidebar-result-icon" data-type="food">{% include icons/windows/foods.svg %}</span>
   <span class="sidebar-result-icon" data-type="default">{% include icons/windows/default.svg %}</span>
 </template>
 
@@ -504,7 +505,7 @@
     // Create popup with single-open enforcement and category color
     let openPopup = null;
     const createPopup = (store) => {
-      const popup = new mapboxgl.Popup({ offset: 10, maxWidth: '200px', focusAfterOpen: false }).setHTML(renderPopup(store));
+      const popup = new mapboxgl.Popup({ offset: 10, maxWidth: '200px', focusAfterOpen: false, anchor: 'bottom' }).setHTML(renderPopup(store));
       popup.on('open', () => {
         if (openPopup && openPopup !== popup) openPopup.remove();
         openPopup = popup;
@@ -529,6 +530,24 @@
     // Sidebar state and DOM refs
     let activeFilter = null;
     const { mapSearch, mapSearchResults, mapNoResults, mapCategories, mapBack, mapSidebar, mapShowAll, mapContainer } = window;
+
+    // Focus on a specific store when loaded from a store show page
+    const focusSuite = window.map.dataset.focusSuite;
+    if (focusSuite) {
+      mapSidebar.classList.add('collapsed');
+      mapContainer.classList.add('sidebar-collapsed');
+      const idx = stores.findIndex(s => s.suite === focusSuite);
+      if (idx !== -1) {
+        const coords = stores[idx].coordinates.split(',').map(c => parseFloat(c.trim()));
+        const flyAndOpen = () => {
+          map.flyTo({ center: coords, zoom: 17, speed: 0.6 });
+          markerData[idx].marker.addTo(map);
+          markerData[idx].marker.togglePopup();
+        };
+        map.loaded() ? flyAndOpen() : map.on('load', flyAndOpen);
+      }
+    }
+
     const categories = mapCategories.querySelectorAll('.sidebar-category');
 
     // Show/hide markers based on predicate; close popup before removing

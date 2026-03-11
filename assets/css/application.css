@@ -1179,6 +1179,22 @@ article {
   background-color: var(--cream);
 }
 
+.social {
+  background: var(--navy);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  margin-right: 1.5rem;
+
+  svg {
+    fill: var(--cream);
+  }
+}
+
 /* FOOTER */
 
 footer {
@@ -1220,24 +1236,12 @@ footer {
       display: block;
 
       &.social {
-        background: var(--secondary);
-        width: 4rem;
-        height: 4rem;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-        margin-right: 1.5rem;
+        background-color: var(--secondary);
 
         svg {
           max-width: 100%;
           max-height: 100%;
           fill: var(--primary);
-        }
-
-        &.facebook svg {
-          transform: translateY(6px);
         }
       }
     }
