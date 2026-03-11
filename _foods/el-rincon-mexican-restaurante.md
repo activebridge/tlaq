@@ -2,16 +2,16 @@
 slug: el-rincon-mexican-restaurante
 date: 2026-02-22
 title: El Rincon Mexican Restaurante
-subtitle: Arizona Style Mexican Cuisine, World Famous Margaritas
+subtitle: Arizona-style Mexican cuisine, Sedona's margaritas
 suite: A112
 phone: '9282824648'
 website: https://www.elrinconrestaurant.com
 coordinates: "-111.762693, 34.861773"
 store_hours:
   monday: 11am - 8pm
-  tuesday: 11am - 8pm
-  wednesday: 11am - 8pm
-  thursday: 11am - 8pm
+  tuesday: 11am - 9pm
+  wednesday: 11am - 9pm
+  thursday: 11am - 9pm
   friday: 11am - 9pm
   saturday: 11am - 9pm
   sunday: 11am - 8pm
