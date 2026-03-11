@@ -431,4 +431,17 @@
       grid-template-columns: repeat(2, 1fr);
     }
   }
+
+  .hero {
+    background-image: var(--low-desk-image);
+    height: calc(100dvh - 210px);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+
+    @media (max-width: 770px) {
+      height: calc(100dvh - 139px);
+      background-image: var(--low-mob-image);
+    }
+  }
 </style>

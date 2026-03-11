@@ -1352,14 +1352,17 @@ form {
 
 .hero {
   background-image: var(--desktop-image);
-  height: calc(100dvh - 210px);
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
 
   @media (max-width: 770px) {
-    height: calc(100dvh - 139px);
     background-image: var(--mobile-image);
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 770px) {
+    .hero {
+      background-attachment: scroll;
+    }
   }
 }
 
