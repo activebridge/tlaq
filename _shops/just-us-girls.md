@@ -2,7 +2,7 @@
 slug: just-us-girls
 date: 2026-02-22
 title: Just Us Girls
-subtitle: Women's clothing and accessories boutique
+subtitle: Women's contemporary clothing & accessories
 suite: C105
 phone: '9282743664'
 website: https://www.justusgirlssedona.com

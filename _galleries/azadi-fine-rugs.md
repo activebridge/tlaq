@@ -2,7 +2,7 @@
 slug: azadi-fine-rugs
 date: 2026-02-22
 title: Azadi Fine Rugs
-subtitle: Exquisite antique, contemporary and custom rugs
+subtitle: Decorative rugs in semi-antique, antique & fine contemporary styles
 suite: B219
 phone: '9282030400'
 website: https://www.azadifinerugs.com

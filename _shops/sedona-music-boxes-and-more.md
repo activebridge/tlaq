@@ -1,8 +1,8 @@
 ---
 slug: sedona-music-boxes-and-more
 date: 2026-02-22
-title: Sedona Music Boxes and More
-subtitle: Italian Wood Inlay Music boxes and musical gifts
+title: Sedona Music Boxes & More
+subtitle: Music boxes & other musical gift & collectible items
 suite: A209
 phone: '9282034116'
 website: https://musicboxessedona.com

@@ -2,7 +2,7 @@
 slug: dulce-ice-cream-churros-candies
 date: 2026-02-22
 title: 'Dulce: Ice Cream, Churros, & Candies'
-subtitle: Snacks, refreshing drinks, treats and gifts
+subtitle: A joy-filled destination to savor a snack, sip a refreshing drink, or enjoy a new or old favorite treat
 suite: F104
 phone: '9283012666'
 coordinates: "-111.7632366, 34.8620623"

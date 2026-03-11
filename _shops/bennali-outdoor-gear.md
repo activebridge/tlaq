@@ -2,7 +2,7 @@
 slug: bennali-outdoor-gear
 date: 2026-02-22
 title: Bennali Outdoor Gear
-subtitle: Hats, handbags, leather goods and comfort footwear
+subtitle: Sedona's largest selection of hats, fashion to function footwear & outdoor accessories
 suite: B102
 phone: '9282821295'
 website: https://www.bennali.com

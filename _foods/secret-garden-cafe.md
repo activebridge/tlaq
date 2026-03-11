@@ -2,7 +2,7 @@
 slug: secret-garden-cafe
 date: 2026-02-22
 title: Secret Garden Cafe
-subtitle: Gourmet salads, sandwiches, pastries & premium wines
+subtitle: Garden setting, featuring organic produce & wines, all natural meats, gourmet salads & sandwiches
 suite: F101
 phone: '9282039564'
 website: https://www.sedonasecretgardencafe.com

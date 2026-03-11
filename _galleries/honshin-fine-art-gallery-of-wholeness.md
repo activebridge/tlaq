@@ -2,8 +2,8 @@
 slug: honshin-fine-art-gallery-of-wholeness
 date: 2026-02-22
 title: Honshin Fine Art Gallery of Wholeness
-subtitle: Spiritually inspired paintings, sculpture and jewelry
-suite: C205
+subtitle: Original meditational paintings, sculpture & jewelry by Nicholas Kirsten-Honshin
+suite: A117
 phone: '9284514739'
 website: https://honshin.com
 coordinates: "-111.76310, 34.86255"

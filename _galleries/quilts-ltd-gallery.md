@@ -2,7 +2,7 @@
 slug: quilts-ltd-gallery
 date: 2026-02-22
 title: Quilts Ltd. Gallery
-subtitle: Collectible wearable art and quilts by Arizona artists
+subtitle: Premier fiber gallery featuring collectible wearable art & quilts by Arizona artists
 suite: B105
 phone: '8002552306'
 website: https://sedonaquiltgallery.com

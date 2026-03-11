@@ -2,7 +2,7 @@
 slug: pink-jeep-tours
 date: 2026-02-22
 title: Pink Jeep Tours
-subtitle: Off-road adventures in the Southwest
+subtitle: Since 1960, our award-winning jeep excursions are known as the premier "must-do" tours in Sedona
 suite: F103
 phone: '9282825000'
 website: https://www.pinkadventuretours.com

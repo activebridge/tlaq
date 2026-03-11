@@ -2,7 +2,7 @@
 slug: rowe-gallery
 date: 2026-02-22
 title: Rowe Gallery
-subtitle: Traditional and contemporary southwestern art
+subtitle: Traditional & contemporary western & wildlife paintings & sculptures
 suite: A102-3
 phone: '9282828877'
 website: https://rowegallery.com

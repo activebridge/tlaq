@@ -2,7 +2,7 @@
 slug: azadi-navajo-rugs
 date: 2026-02-22
 title: Azadi Navajo Rugs
-subtitle: Traditional Navajo weavings
+subtitle: Exquisite array of handwoven Navajo textiles
 suite: B123
 phone: '9282030620'
 website: https://www.azadifinerugs.com

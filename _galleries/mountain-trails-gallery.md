@@ -2,7 +2,7 @@
 slug: mountain-trails-gallery
 date: 2026-02-24
 title: Mountain Trails Gallery
-subtitle: Fine American Western art
+subtitle: Wildlife & western bronzes, paintings & contemporary art
 suite: A201
 phone: '9282823225'
 website: https://mountaintrailssedona.com

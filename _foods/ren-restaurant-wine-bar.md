@@ -2,7 +2,7 @@
 slug: ren-restaurant-wine-bar
 date: 2026-02-22
 title: René Restaurant & Wine Bar
-subtitle: Classical French-Mediterranean cuisine, picturesque patio & intimate bar
+subtitle: Classical cuisine, picturesque patio & intimate bar
 suite: B118
 phone: '9282829225'
 website: https://renerestaurantsedona.com

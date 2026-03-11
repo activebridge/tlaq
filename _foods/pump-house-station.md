@@ -2,8 +2,8 @@
 slug: pump-house-station
 date: 2026-02-22
 title: Pump House Station
-subtitle: Urban Eatery and Market, farm-to-table dining
-suite: D10 North
+subtitle: Farm-to-table & artisanal foods including Organic coffee, artisan pastries, local crafted beers, signature cocktails
+suite: D10
 phone: '9288624141'
 website: https://www.pumphousestation.com
 coordinates: "-111.7628475, 34.8632335"

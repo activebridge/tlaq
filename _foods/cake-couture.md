@@ -1,10 +1,10 @@
 ---
 slug: cake-couture
 date: 2026-02-22
-title: Cake Couture
-subtitle: Fine desserts and Coffee
+title: Sedona Cake Couture
+subtitle: Fine dessert and coffee
 suite: A114
-phone: '9284269232'
+phone: '9282042887'
 website: https://www.sedonacakes.com
 coordinates: "-111.7627959, 34.8618808"
 store_hours:

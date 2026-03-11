@@ -2,7 +2,7 @@
 slug: eclectic-image-gallery
 date: 2026-02-22
 title: Eclectic Image Gallery
-subtitle: Fine art photography
+subtitle: Original impressionistic, fine art photography & mixed media artwork
 suite: A109
 phone: '9282034333'
 website: https://www.eclecticimage.com

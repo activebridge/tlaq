@@ -1,8 +1,8 @@
 ---
 slug: alt-book-and-records
 date: 2026-02-22
-title: Alt Book and Records
-subtitle: Used, Rare & Out of Print Books and Vintage Vinyl Records
+title: Alt Books and Records
+subtitle: Used, rare & out of print books and vintage vinyl records
 suite: C203
 phone: '9285547840'
 website: https://alt-books-and-records.business.site

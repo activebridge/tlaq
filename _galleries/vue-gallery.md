@@ -1,8 +1,8 @@
 ---
 slug: vue-gallery
 date: 2026-02-22
-title: Vue Gallery
-subtitle: Contemporary artwork and sculpture garden
+title: Vue
+subtitle: Local & international contemporary fine art & sculpture garden alongside Oak Creek
 suite: E101
 phone: '9282821575'
 website: https://www.reneetaylorgallery.com
