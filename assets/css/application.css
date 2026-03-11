@@ -94,6 +94,7 @@
 }
 
 hr {
+  margin: 1rem 0;
   height: 1px;
   background-color: var(--navy);
   border: none;
@@ -134,10 +135,6 @@ h5 {
     width: clamp(16px, 2.5vw, 30px);
     height: clamp(16px, 2.5vw, 30px);
   }
-}
-
-h6 {
-  font-weight: 500;
 }
 
 p {
@@ -1182,6 +1179,22 @@ article {
   background-color: var(--cream);
 }
 
+.social {
+  background: var(--navy);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  margin-right: 1.5rem;
+
+  svg {
+    fill: var(--cream);
+  }
+}
+
 /* FOOTER */
 
 footer {
@@ -1223,24 +1236,12 @@ footer {
       display: block;
 
       &.social {
-        background: var(--secondary);
-        width: 4rem;
-        height: 4rem;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-        margin-right: 1.5rem;
+        background-color: var(--secondary);
 
         svg {
           max-width: 100%;
           max-height: 100%;
           fill: var(--primary);
-        }
-
-        &.facebook svg {
-          transform: translateY(6px);
         }
       }
     }
@@ -1563,15 +1564,26 @@ input[type="search"] {
   background-color: var(--gray);
 }
 
-/* Store Index */
+/* Color Themes for pages */
 
-.shop {
+.shops {
   h5 {
     color: var(--pink);
   }
 
   .btn-primary {
     background-color: var(--pink);
+  }
+}
+
+.shop {
+  h2 {
+    color: var(--pink);
+  }
+
+  .today {
+    color: var(--pink);
+    font-weight: 700;
   }
 }
 
@@ -1596,47 +1608,19 @@ input[type="search"] {
 }
 
 /* Store Hours Display Component */
-.store-hours {
-  padding: 15px 0;
-}
-
-.store-hours-title {
-  color: var(--navy);
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 13px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.store-hours-list {
-  list-style: none;
+table {
+  width: 100%;
+  border-collapse: collapse;
   padding: 0;
   margin: 0;
-}
 
-.store-hours-day {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--navy);
-  color: var(--navy);
-  font-size: 14px;
+  td {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--navy);
+    font-size: 14px;
+  
+    &:last-child {
+      text-align: right;
+    }
+  }
 }
-
-.store-hours-day.today {
-  color: var(--pink);
-  font-weight: 600;
-}
-
-.store-hours-day .day-name {
-  text-transform: capitalize;
-}
-
-.store-hours-day .day-hours {
-  font-weight: 500;
-  text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 0.5px;
-}
-/* TODO: cleanup redurant styles */
