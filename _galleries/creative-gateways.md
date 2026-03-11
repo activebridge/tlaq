@@ -1,8 +1,8 @@
 ---
 slug: creative-gateways
 date: 2026-02-24
-title: Creative Gateways
-subtitle: Art glass, wall art, metal sculpture and fine jewelry
+title: Creative Gateways Gallery
+subtitle: Contemporary art glass, interior accessories & wearable art
 suite: B125
 phone: '9282821212'
 website: https://creativegateways.com

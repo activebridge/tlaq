@@ -2,7 +2,7 @@
 slug: navarro-gallery
 date: 2026-02-22
 title: Navarro Gallery
-subtitle: Western art, wildlife and landscapes
+subtitle: Western art, wildlife & landscape inspired fine art, & sculpture garden
 suite: D103
 phone: '9282041144'
 website: https://chrisnavarro.com

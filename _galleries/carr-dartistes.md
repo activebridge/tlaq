@@ -2,7 +2,7 @@
 slug: carr-dartistes
 date: 2026-02-22
 title: Carré d'Artistes
-subtitle: International contemporary art gallery
+subtitle: Original, contemporary small format artwork from around the world
 suite: B121
 phone: '9282828704'
 website: https://www.carredartistes.com

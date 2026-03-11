@@ -2,8 +2,8 @@
 slug: honshin-fine-art-gallery
 date: 2026-02-24
 title: Honshin Fine Art Gallery
-subtitle: Local artists gallery
-suite: A117
+subtitle: Local artists fine art gallery
+suite: C205
 phone: '9282820709'
 website: https://honshinfineart.com
 coordinates: "-111.7630959, 34.8615739"

@@ -2,7 +2,7 @@
 slug: andrea-smith-gallery
 date: 2026-02-24
 title: Andrea Smith Gallery
-subtitle: World peace artist gallery
+subtitle: Peace gallery with original art, sacred sculptures, unique jewelry & inspirational books
 suite: D102
 phone: '9282039002'
 website: https://www.andreasmithgallery.com
