@@ -7,7 +7,7 @@ subtitle: Offering the finest in fashion accessories, health & nutrition for the
 suite: A14
 phone: (928) 203-9002
 website: https://www.loc8nearme.com/arizona/sedona/bowwow-sedona/6653749/
-coordinates: "-111.7633758, 34.863266"
+coordinates: "-111.763149, 34.86308"
 image: "/assets/images/stores/bow-wow-sedona.webp"
 instagram: https://www.instagram.com/bowwowpetboutique/
 facebook: https://www.facebook.com/p/Bowwow-Pet-Boutique-100063606792214/

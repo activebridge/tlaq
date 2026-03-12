@@ -7,7 +7,7 @@ subtitle: Music boxes & other musical gift & collectible items
 suite: A209
 phone: (928) 203-4116
 website: https://musicboxessedona.com
-coordinates: "-111.762788, 34.862192"
+coordinates: "-111.7628308, 34.8621602"
 image: "/assets/images/stores/sedona-music-boxes-and-more.webp"
 instagram: https://www.instagram.com/sedonamusicboxes/
 facebook: https://www.facebook.com/sedonamusicboxes/

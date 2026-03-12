@@ -6,7 +6,7 @@ subtitle: Arizona-style Mexican cuisine, Sedona's margaritas
 suite: A112
 phone: '9282824648'
 website: https://www.elrinconrestaurant.com
-coordinates: "-111.762693, 34.861773"
+coordinates: "-111.7626513, 34.8617982"
 store_hours:
   monday: 11am - 8pm
   tuesday: 11am - 9pm

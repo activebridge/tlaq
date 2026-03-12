@@ -7,7 +7,7 @@ subtitle: Gem, minerals & fossils from around the world
 suite: A210
 phone: (928) 282-1334
 website: https://naturalwonders-sedona.com
-coordinates: "-111.7633015, 34.8621634"
+coordinates: "-111.7627983, 34.8621982"
 image: "/assets/images/stores/natural-wonders.webp"
 instagram:
 facebook:

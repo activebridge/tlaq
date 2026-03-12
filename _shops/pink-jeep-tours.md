@@ -7,7 +7,7 @@ subtitle: Since 1960, our award-winning jeep excursions are known as the premier
 suite: F103
 phone: (928) 282-5000
 website: https://www.pinkadventuretours.com
-coordinates: "-111.7610422, 34.8688357"
+coordinates: "-111.7636795, 34.8623367"
 image: "/assets/images/stores/pink-jeep-tours.webp"
 instagram: https://www.instagram.com/pinkjeeptours/
 facebook: https://www.facebook.com/pinkjeeptours/

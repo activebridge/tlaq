@@ -7,7 +7,7 @@ subtitle: Used, rare & out of print books and vintage vinyl records
 suite: C203
 phone: (928) 554-7840
 website: https://alt-books-and-records.business.site
-coordinates: "-111.7630224, 34.8615572"
+coordinates: "-111.7631377, 34.8616415"
 image: "/assets/images/stores/alt-book-and-records.webp"
 instagram:
 facebook: https://www.facebook.com/p/ALT-Books-Records-100054135466554/

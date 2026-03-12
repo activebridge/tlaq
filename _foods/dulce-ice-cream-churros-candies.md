@@ -5,6 +5,6 @@ title: 'Dulce: Ice Cream, Churros, & Candies'
 subtitle: A joy-filled destination to savor a snack, sip a refreshing drink, or enjoy a new or old favorite treat
 suite: F104
 phone: '9283012666'
-coordinates: "-111.7632366, 34.8620623"
+coordinates: "-111.7636761, 34.862418"
 ---
 A joy-filled destination where guests can savor a snack, sip a refreshing drink, find the perfect gift, discover a new favorite treat or rediscover those that they've always loved.

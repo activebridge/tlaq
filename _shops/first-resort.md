@@ -7,7 +7,7 @@ subtitle: Gifts and apparel for people on the go
 suite: A119
 phone: (928) 649-9511
 website:
-coordinates: "-111.76272, 34.86332"
+coordinates: "-111.7628127, 34.862249"
 image: "/assets/images/stores/first-resort.webp"
 instagram:
 facebook:

@@ -6,6 +6,6 @@ subtitle: Traditional chai and South Asian handcrafted home goods
 suite: B201
 phone: '9288520583'
 website: https://www.thechaispot.com
-coordinates: "-111.763031, 34.8618137"
+coordinates: "-111.7630495, 34.8617985"
 ---
 Experience the colors of South Asia. Shop from handcrafted home goods, enjoy a traditional cup of spicy chai, and relax on our terrace.

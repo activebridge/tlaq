@@ -7,7 +7,7 @@ subtitle: A custom hat experience with heirloom craftsmanship and handmade goods
 suite: A204-5
 phone: (928) 549-0513
 website: https://truewesthats.com/
-coordinates: "-111.7634635, 34.8622272"
+coordinates: "-111.762574, 34.862001"
 image: "/assets/images/stores/true-west-hats.webp"
 instagram: https://www.instagram.com/truewesthats/
 facebook: https://www.facebook.com/truewesthats

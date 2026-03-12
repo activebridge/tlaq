@@ -7,7 +7,7 @@ subtitle: Fine contemporary jewelry & southwestern art
 suite: A120
 phone: (928) 282-2030
 website: https://redcanyoncollections.com
-coordinates: "-111.76275, 34.862029"
+coordinates: "-111.762827, 34.8621095"
 image: "/assets/images/stores/red-canyon-collections.webp"
 instagram:
 facebook:

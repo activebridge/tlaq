@@ -6,7 +6,7 @@ subtitle: Farm-to-table & artisanal foods including Organic coffee, artisan past
 suite: D10
 phone: '9288624141'
 website: https://www.pumphousestation.com
-coordinates: "-111.7628475, 34.8632335"
+coordinates: "-111.762531, 34.8630007"
 store_hours:
   monday: 8am - 2:30pm
   tuesday: 8am - 2:30pm

@@ -427,10 +427,9 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
   </button>
 
-  {% capture stores_json %}[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | jsonify }},"url":{{ store.url | jsonify }},"type":{{ store.store_type | jsonify }},"hours":{{ store.store_hours | jsonify }},"suite":{{ store.suite | jsonify }} }{% assign has_prev = true %}{% endif %}{% endfor %}]{% endcapture %}
   <div id="map" style="width:100%;height:100%;position:relative"
-    data-stores='{{ stores_json | escape }}'
     data-focus-suite='{{ include.suite | escape }}'>
+  <script type="application/json" id="mapStoreData">[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"slug":{{ store.slug | jsonify }},"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"suite":{{ store.suite | default: "" | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | default: "" | jsonify }},"url":{{ store.url | jsonify }},"type":{{ store.store_type | jsonify }},"hours":{{ store.store_hours | default: "" | jsonify }}}{% assign has_prev = true %}{% endif %}{% endfor %}]</script>
     <div id="mapPlaceholder" style="--map-bg:url('{{ '/assets/images/map-placeholder.webp' | relative_url }}')"></div>
     <div id="mapSpinner">
       <span>{% include icons/loader.svg %}</span>
@@ -461,9 +460,6 @@
 
 <script>
   function initMap() {
-    if (!window.map) return;
-
-    // Init map
     mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FsdWxleCIsImEiOiJjamx6ampoZjgyMnYxM3FvZ2ppNjV2M2x5In0.bPgk2WI9NT-DJwnE-OtiLA';
     const map = new mapboxgl.Map({
       container: 'map',
@@ -475,6 +471,112 @@
     // Remove loading spinner and placeholder once tiles are ready
     const removeOverlay = () => { window.mapSpinner?.remove(); window.mapPlaceholder?.remove(); };
     map.loaded() ? removeOverlay() : map.on('load', removeOverlay);
+
+    // Load building outlines from GeoJSON
+    const geojsonUrl = '{{ "/assets/js/tlaq.geojson" | relative_url }}';
+    let activeBuildingIds = new Set();
+    let buildingSlugToIds = new Map();
+    let buildingIdSet = new Set();
+    let buildingsReady = false;
+    let pendingBuildingStore = null;
+
+    const isValidBuildingId = (id) => id && id !== 'null';
+
+    const buildingTypeColors = { shop: '#d41367', gallery: '#1b638a', food: '#f88d2b' };
+    const setActiveBuildings = (ids, type) => {
+      if (!buildingsReady || !ids?.length) return;
+      const validIds = ids.filter(isValidBuildingId);
+      if (!validIds.length) return;
+      activeBuildingIds.forEach(id => map.setFeatureState({ source: 'buildings', id }, { active: false, color: null }));
+      activeBuildingIds = new Set(validIds);
+      const color = buildingTypeColors[type] || '#d41367';
+      activeBuildingIds.forEach(id => map.setFeatureState({ source: 'buildings', id }, { active: true, color }));
+    };
+
+    const normalizeSuite = (suite) => suite.toLowerCase().replace(/\s+/g, '');
+
+    const getBuildingIdsForStore = (store) => {
+      if (!store) return [];
+      const slugIds = buildingSlugToIds.get(store.slug);
+      if (slugIds?.length) return slugIds;
+      if (!store.suite) return [];
+      const normalized = normalizeSuite(store.suite);
+      if (buildingIdSet.has(normalized)) return [normalized];
+      const dashIndex = normalized.indexOf('-');
+      if (dashIndex > 0) {
+        const base = normalized.slice(0, dashIndex);
+        if (buildingIdSet.has(base)) return [base];
+      }
+      return [];
+    };
+
+    const setActiveBuildingsForStore = (store) => {
+      if (!store) return;
+      if (!buildingsReady) { pendingBuildingStore = store; return; }
+      const ids = getBuildingIdsForStore(store);
+      if (ids.length) setActiveBuildings(ids, store.type);
+    };
+
+    map.on('load', () => {
+      fetch(geojsonUrl).then(r => r.json()).then(data => {
+        map.addSource('buildings', { type: 'geojson', data, promoteId: 'id' });
+        map.addLayer({
+          id: 'building-outlines',
+          type: 'fill-extrusion',
+          source: 'buildings',
+          paint: {
+            'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'active'], false], ['coalesce', ['feature-state', 'color'], '#d41367'], '#1a2744'],
+            'fill-extrusion-height': 8,
+            'fill-extrusion-base': 0,
+            'fill-extrusion-opacity': 1
+          }
+        });
+
+        data.features?.forEach((feature) => {
+          const id = feature?.properties?.id;
+          const slug = feature?.properties?.slug;
+          if (isValidBuildingId(id)) buildingIdSet.add(id);
+          if (slug && isValidBuildingId(id)) {
+            const list = buildingSlugToIds.get(slug) || [];
+            list.push(id);
+            buildingSlugToIds.set(slug, list);
+          }
+        });
+        buildingsReady = true;
+        if (pendingBuildingStore) {
+          const queuedStore = pendingBuildingStore;
+          pendingBuildingStore = null;
+          setActiveBuildingsForStore(queuedStore);
+        }
+
+        map.on('click', 'building-outlines', (e) => {
+          const feature = e.features?.[0];
+          const slug = feature?.properties?.slug;
+          const id = feature?.properties?.id;
+          if (!isValidBuildingId(id)) return;
+          const idx = slug ? storeIndexBySlug.get(slug) : storeIndexBySuite.get(id);
+          const ids = slug ? (buildingSlugToIds.get(slug) || [id]) : [id];
+          setActiveBuildings(ids, idx !== undefined ? stores[idx].type : undefined);
+          if (idx === undefined) return;
+          const item = markerData[idx];
+          const coords = stores[idx].coordinates.split(',').map(c => parseFloat(c.trim()));
+          map.flyTo({ center: coords, padding: { top: 150 }, zoom: 18, speed: 0.4 });
+          item.marker.addTo(map);
+          if (!item.marker.getPopup().isOpen()) item.marker.togglePopup();
+        });
+
+        map.on('click', (e) => {
+          const features = map.queryRenderedFeatures(e.point, { layers: ['building-outlines'] });
+          if (!features.length && activeBuildingIds.size) {
+            activeBuildingIds.forEach(id => map.setFeatureState({ source: 'buildings', id }, { active: false, color: null }));
+            activeBuildingIds = new Set();
+          }
+        });
+
+        map.on('mouseenter', 'building-outlines', () => { map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', 'building-outlines', () => { map.getCanvas().style.cursor = ''; });
+      });
+    });
 
     // Helpers
     const isSafeUrl = (url) => url && (url[0] === '/' || url.lastIndexOf('http', 0) === 0);
@@ -515,21 +617,38 @@
     };
 
     // Place markers from Jekyll-generated store data
-    const stores = JSON.parse(window.map.dataset.stores || '[]');
+    const stores = JSON.parse(window.mapStoreData.textContent);
     const markerData = [];
+    const storeIndexBySlug = new Map();
+    const storeIndexBySuite = new Map();
+
+    stores.forEach((store, i) => {
+      if (store.slug) storeIndexBySlug.set(store.slug, i);
+      if (store.suite) {
+        const normalized = normalizeSuite(store.suite);
+        storeIndexBySuite.set(normalized, i);
+        const dashIndex = normalized.indexOf('-');
+        if (dashIndex > 0) storeIndexBySuite.set(normalized.slice(0, dashIndex), i);
+      }
+    });
 
     stores.forEach((store) => {
       const coords = store.coordinates.split(',').map(c => parseFloat(c.trim()));
       const el = Object.assign(document.createElement('div'), { className: 'map-marker' });
       el.dataset.type = store.type;
       const marker = new mapboxgl.Marker({ element: el }).setLngLat(coords).setPopup(createPopup(store)).addTo(map);
-      marker.getElement().addEventListener('click', () => map.flyTo({ center: coords, padding: { top: 150 }, zoom: 18, speed: 0.4 }));
+      marker.getElement().addEventListener('click', (event) => {
+        event.stopPropagation();
+        setActiveBuildingsForStore(store);
+        map.flyTo({ center: coords, padding: { top: 150 }, zoom: 18, speed: 0.4 });
+        if (!marker.getPopup().isOpen()) marker.togglePopup();
+      });
       markerData.push({ marker, type: store.type });
     });
 
     // Sidebar state and DOM refs
     let activeFilter = null;
-    const { mapSearch, mapSearchResults, mapNoResults, mapCategories, mapBack, mapSidebar, mapShowAll, mapContainer } = window;
+    const { mapSearch, mapSearchResults, mapNoResults, mapCategories, mapBack, mapSidebar, mapShowAll, mapContainer, mapSidebarToggle } = window;
 
     // Focus on a specific store when loaded from a store show page
     const focusSuite = window.map.dataset.focusSuite;
@@ -571,6 +690,7 @@
         li.classList.add('active');
         activeResult = li;
         const coords = store.coordinates.split(',').map(c => parseFloat(c.trim()));
+        setActiveBuildingsForStore(store);
         map.flyTo({ center: coords, zoom: 18, speed: 0.4 });
         item.marker.addTo(map);
         item.marker.togglePopup();
@@ -649,8 +769,8 @@
     });
 
     // Collapse/expand sidebar
-    window.mapSidebarToggle.addEventListener('click', () => {
-      const collapsed = window.mapSidebar.classList.toggle('collapsed');
+    mapSidebarToggle.addEventListener('click', () => {
+      const collapsed = mapSidebar.classList.toggle('collapsed');
       mapContainer.classList.toggle('sidebar-collapsed', collapsed);
     });
   }

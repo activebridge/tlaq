@@ -7,7 +7,7 @@ subtitle: A curated wine tasting of the best 100% Arizona grown and made wine!
 suite: A207
 phone: (928) 282-2650
 website: https://vinozona.love/
-coordinates: "-111.7635, 34.8622"
+coordinates: "-111.7628138, 34.8619"
 image: "/assets/images/stores/vino-zona.webp"
 instagram: https://www.instagram.com/vinozona
 facebook: https://www.facebook.com/vinozonajerome/

@@ -7,7 +7,7 @@ subtitle: Specialty goods from around the world
 suite: B122
 phone: (928) 282-0255
 website: https://bellafinegoods.com
-coordinates: "-111.7633015, 34.8621634"
+coordinates: "-111.7632, 34.8620793"
 image: "/assets/images/stores/bella-fine-goods.webp"
 instagram: https://www.instagram.com/bellafinegoodssedona/
 facebook: https://www.facebook.com/bellafinegoods/

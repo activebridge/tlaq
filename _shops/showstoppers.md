@@ -7,7 +7,7 @@ subtitle: Floral & event decorating, home decor, furnishings & gifts
 suite: C107
 phone: (928) 203-9096
 website: https://eventsbyshowstoppers.com
-coordinates: "-111.76312, 34.86258"
+coordinates: "-111.7629335, 34.861406"
 image: "/assets/images/stores/showstoppers.webp"
 instagram: https://www.instagram.com/eventsbyshowstoppers/
 facebook: https://www.facebook.com/eventsbyshowstoppersAZ/

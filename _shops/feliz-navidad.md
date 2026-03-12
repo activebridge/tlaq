@@ -7,7 +7,7 @@ subtitle: Christmas art & ornaments
 suite: A116
 phone: (928) 282-2752
 website: https://merrychristmassedona.com
-coordinates: "-111.7627656, 34.8621216"
+coordinates: "-111.7628125, 34.861982"
 image: "/assets/images/stores/feliz-navidad.webp"
 instagram: https://www.instagram.com/feliznavidadsedona/
 facebook: https://www.facebook.com/FelizNavidadSedona/
