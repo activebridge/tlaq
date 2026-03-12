@@ -684,6 +684,11 @@ header {
     &.weddings {
       background: var(--pink-40);
       --category-overlay: var(--pink-40);
+
+      h5 {
+        background: none;
+        padding: 0;
+      }
     }
 
     &.village-map {
