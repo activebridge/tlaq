@@ -1,11 +1,25 @@
 ---
 slug: feliz-navidad
 date: 2026-02-22
+published: true
 title: Feliz Navidad
 subtitle: Christmas art & ornaments
 suite: A116
-phone: '9282822752'
+phone: (928) 282-2752
 website: https://merrychristmassedona.com
 coordinates: "-111.7627656, 34.8621216"
+image: "/assets/images/stores/feliz-navidad.webp"
+instagram: https://www.instagram.com/feliznavidadsedona/
+facebook: https://www.facebook.com/FelizNavidadSedona/
+full_location: 336 AZ-179 Suite A116, Sedona, AZ 86336
+store_hours:
+  monday: 10AM - 6PM
+  tuesday: 10AM - 6PM
+  wednesday: 10AM - 6PM
+  thursday: 10AM - 6PM
+  friday: 10AM - 6PM
+  saturday: 10AM - 6PM
+  sunday: 10AM - 6PM
+
 ---
-Feliz Navidad Sedona, located in Tlaquepaque arts and crafts village, specializes in handmade Christmas decorations from all over the world. Inspired by the beautiful desert surroundings here in Arizona we carry a large selection of ornaments made by our own southwest artisans. For collectors, we carry a variety of traditional German wood creations from the Erzgebirge region. We carry nativity sets from around the world, including hand carved Russian pieces, carved olive wood from the holy land, and Venezuelan, Bolivian, Chilean, and Peruvian ceramic sets.
+<h6>Christmas art & ornaments.</h6>

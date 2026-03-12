@@ -1,12 +1,25 @@
 ---
 slug: cocopah
 date: 2026-03-06
+published: true
 title: Cocopah
 subtitle: Arizona's oldest bead store
 suite: C101
-phone: '9282824928'
-website: https://www.beadofthemonthclub.com
+phone: (928) 282-4928
+website: https://www.scenicsedona.com/cocopah/
 coordinates: "-111.7658814, 34.8628327"
 image: "/assets/images/stores/cocopah.webp"
+full_location: 336 AZ-179 Suite C101, Sedona, AZ 86336
+instagram:
+facebook:
+store_hours:
+  monday: "10 am–6 pm"
+  tuesday: "10 am–6 pm"
+  wednesday: "10 am–6 pm"
+  thursday: "10 am–6 pm"
+  friday: "10 am–6 pm"
+  saturday: "10 am–6 pm"
+  sunday: "10 am–6 pm"
+
 ---
-Welcome to Cocopah, a unique shopping adventure in Sedona's red rock country. Arizona's oldest bead store was opened 40 years ago in Tlaquepaque Village.
+<h6>Arizona's oldest bead store.</h6>

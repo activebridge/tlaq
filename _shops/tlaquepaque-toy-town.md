@@ -1,11 +1,25 @@
 ---
 slug: tlaquepaque-toy-town
 date: 2026-02-22
+published: false
 title: Tlaquepaque Toy Town
 subtitle: Toys for kids of all ages
 suite: A205
-phone: '9282821087'
+phone: (928) 282-1087
 website: https://www.toytownhalfpint.com
 coordinates: "-111.762687, 34.8620502"
+image: "/assets/images/stores/tlaquepaque-toy-town.webp"
+instagram: https://www.instagram.com/tlaqtoytown/
+facebook: https://www.facebook.com/tlaqtoytown/
+full_location: 336 AZ-179 Suite A205, Sedona, AZ 86336
+store_hours:
+  monday: 10AM - 6PM
+  tuesday: 10AM - 6PM
+  wednesday: 10AM - 6PM
+  thursday: 10AM - 6PM
+  friday: 10AM - 6PM
+  saturday: 10AM - 6PM
+  sunday: 10AM - 6PM
+
 ---
-Tlaquepaque Toy Town offers a large variety of toys for kids of all ages. A wide range of eco-friendly, non-toxic toys, and organic cotton dolls are also on display following the latest trends in conscious purchasing to help the planet. To fend off the Arizona sun, see the great selection of water games, squirt guns, soakers, wriggling water snakes and curiosities to cool off with. There is truly 'something for everybody.'
+<h6>Toys for kids of all ages.</h6>
