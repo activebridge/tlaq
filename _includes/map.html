@@ -464,8 +464,11 @@
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/galulex/cmjjuexff009w01qz4awigw0q',
-      center: [-111.7635298, 34.8623132],
-      zoom: 18, pitch: 45, bearing: -17
+      center: [-111.763522, 34.862363],
+      zoom: 14, pitch: 45, bearing: -17,
+      minZoom: 14,
+      maxZoom: 20,
+      maxBounds: [[-111.7659, 34.8606], [-111.7611, 34.8642]]
     });
 
     // Remove loading spinner and placeholder once tiles are ready
@@ -482,14 +485,25 @@
 
     const isValidBuildingId = (id) => id && id !== 'null';
 
-    const buildingTypeColors = { shop: '#d41367', gallery: '#1b638a', food: '#f88d2b' };
+    const typeColors = {
+      shop: { hex: '#d41367', css: 'var(--pink)' },
+      gallery: { hex: '#1b638a', css: 'var(--blue)' },
+      food: { hex: '#f88d2b', css: 'var(--orange)' }
+    };
+    const defaultHex = typeColors.shop.hex;
+    const buildingBaseHex = '#1a2744';
+    const clearActiveBuildings = () => {
+      activeBuildingIds.forEach(id => map.setFeatureState({ source: 'buildings', id }, { active: false, color: null }));
+      activeBuildingIds = new Set();
+    };
+
     const setActiveBuildings = (ids, type) => {
       if (!buildingsReady || !ids?.length) return;
       const validIds = ids.filter(isValidBuildingId);
       if (!validIds.length) return;
-      activeBuildingIds.forEach(id => map.setFeatureState({ source: 'buildings', id }, { active: false, color: null }));
+      clearActiveBuildings();
       activeBuildingIds = new Set(validIds);
-      const color = buildingTypeColors[type] || '#d41367';
+      const color = typeColors[type]?.hex || defaultHex;
       activeBuildingIds.forEach(id => map.setFeatureState({ source: 'buildings', id }, { active: true, color }));
     };
 
@@ -525,7 +539,7 @@
           type: 'fill-extrusion',
           source: 'buildings',
           paint: {
-            'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'active'], false], ['coalesce', ['feature-state', 'color'], '#d41367'], '#1a2744'],
+            'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'active'], false], ['coalesce', ['feature-state', 'color'], defaultHex], buildingBaseHex],
             'fill-extrusion-height': 8,
             'fill-extrusion-base': 0,
             'fill-extrusion-opacity': 1
@@ -557,28 +571,21 @@
           const idx = slug ? storeIndexBySlug.get(slug) : storeIndexBySuite.get(id);
           const ids = slug ? (buildingSlugToIds.get(slug) || [id]) : [id];
           setActiveBuildings(ids, idx !== undefined ? stores[idx].type : undefined);
-          if (idx === undefined) return;
-          const item = markerData[idx];
-          const coords = stores[idx].coordinates.split(',').map(c => parseFloat(c.trim()));
-          map.flyTo({ center: coords, padding: { top: 150 }, zoom: 18, speed: 0.4 });
-          item.marker.addTo(map);
-          if (!item.marker.getPopup().isOpen()) item.marker.togglePopup();
+          if (idx !== undefined) focusStore(idx);
         });
 
         map.on('click', (e) => {
           const features = map.queryRenderedFeatures(e.point, { layers: ['building-outlines'] });
-          if (!features.length && activeBuildingIds.size) {
-            activeBuildingIds.forEach(id => map.setFeatureState({ source: 'buildings', id }, { active: false, color: null }));
-            activeBuildingIds = new Set();
-          }
+          if (!features.length && activeBuildingIds.size) clearActiveBuildings();
         });
 
         map.on('mouseenter', 'building-outlines', () => { map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', 'building-outlines', () => { map.getCanvas().style.cursor = ''; });
-      });
+      }).catch(() => {});
     });
 
     // Helpers
+    const parseCoords = (str) => str.split(',').map(c => parseFloat(c.trim()));
     const isSafeUrl = (url) => url && (url[0] === '/' || url.lastIndexOf('http', 0) === 0);
     const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     const today = days[new Date().getDay()];
@@ -588,7 +595,6 @@
     const getStoreIcon = (type) => (storeIconsTpl.querySelector(`[data-type="${type || 'default'}"]`) || storeIconsTpl.querySelector('[data-type="default"]')).cloneNode(true);
 
     // Build popup DOM from <template> and fill with store data
-    const typeColors = { shop: 'var(--pink)', gallery: 'var(--blue)', food: 'var(--orange)' };
     const renderPopup = (store) => {
       const todayHours = store.hours?.[today];
       const icon = getStoreIcon(store.type);
@@ -599,7 +605,7 @@
         subtitle: store.subtitle,
         icon: icon.outerHTML,
         url: isSafeUrl(store.url) ? store.url : '#',
-        todayHours: todayHours ? 'Today: ' + todayHours : ''
+        todayHours: todayHours ? todayHours : ''
       };
       return window.mapPopup.innerHTML.replace(/\$(\w+)/g, (_, key) => data[key] ?? '');
     };
@@ -611,7 +617,10 @@
       popup.on('open', () => {
         if (openPopup && openPopup !== popup) openPopup.remove();
         openPopup = popup;
-        typeColors[store.type] && popup.getElement().style.setProperty('--category-color', typeColors[store.type]);
+        typeColors[store.type]?.css && popup.getElement().style.setProperty('--category-color', typeColors[store.type].css);
+      });
+      popup.on('close', () => {
+        if (openPopup === popup) { openPopup = null; clearActiveBuildings(); }
       });
       return popup;
     };
@@ -632,19 +641,23 @@
       }
     });
 
-    stores.forEach((store) => {
-      const coords = store.coordinates.split(',').map(c => parseFloat(c.trim()));
+    stores.forEach((store, i) => {
+      const coords = parseCoords(store.coordinates);
       const el = Object.assign(document.createElement('div'), { className: 'map-marker' });
       el.dataset.type = store.type;
       const marker = new mapboxgl.Marker({ element: el }).setLngLat(coords).setPopup(createPopup(store)).addTo(map);
-      marker.getElement().addEventListener('click', (event) => {
-        event.stopPropagation();
-        setActiveBuildingsForStore(store);
-        map.flyTo({ center: coords, padding: { top: 150 }, zoom: 18, speed: 0.4 });
-        if (!marker.getPopup().isOpen()) marker.togglePopup();
-      });
+      marker.getElement().addEventListener('click', (event) => { event.stopPropagation(); focusStore(i); });
       markerData.push({ marker, type: store.type });
     });
+
+    // Fly to a store, highlight its building, and open its popup
+    const focusStore = (idx, flyOpts = {}) => {
+      const coords = parseCoords(stores[idx].coordinates);
+      setActiveBuildingsForStore(stores[idx]);
+      map.flyTo({ center: coords, zoom: 18, speed: 0.4, padding: { top: 150 }, ...flyOpts });
+      markerData[idx].marker.addTo(map);
+      if (!markerData[idx].marker.getPopup().isOpen()) markerData[idx].marker.togglePopup();
+    };
 
     // Sidebar state and DOM refs
     let activeFilter = null;
@@ -657,12 +670,7 @@
       mapContainer.classList.add('sidebar-collapsed');
       const idx = stores.findIndex(s => s.suite === focusSuite);
       if (idx !== -1) {
-        const coords = stores[idx].coordinates.split(',').map(c => parseFloat(c.trim()));
-        const flyAndOpen = () => {
-          map.flyTo({ center: coords, zoom: 18, speed: 0.6, padding: { top: 200 } });
-          markerData[idx].marker.addTo(map);
-          markerData[idx].marker.togglePopup();
-        };
+        const flyAndOpen = () => focusStore(idx, { speed: 0.6, padding: { top: 200 } });
         map.loaded() ? flyAndOpen() : map.on('load', flyAndOpen);
       }
     }
@@ -678,38 +686,35 @@
 
     // Build sidebar list item that flies to store on click
     let activeResult = null;
-    const renderResultItem = (store, item) => {
+    const renderResultItem = (storeIdx) => {
+      const store = stores[storeIdx];
       const li = document.createElement('li');
       li.className = 'sidebar-result';
       li.setAttribute('role', 'option');
-      if (typeColors[store.type]) li.style.setProperty('--cat-color', typeColors[store.type]);
+      if (typeColors[store.type]?.css) li.style.setProperty('--cat-color', typeColors[store.type].css);
       li.appendChild(getStoreIcon(store.type));
       li.appendChild(Object.assign(document.createElement('span'), { textContent: store.title }));
       li.addEventListener('click', () => {
         activeResult?.classList.remove('active');
         li.classList.add('active');
         activeResult = li;
-        const coords = store.coordinates.split(',').map(c => parseFloat(c.trim()));
-        setActiveBuildingsForStore(store);
-        map.flyTo({ center: coords, zoom: 18, speed: 0.4 });
-        item.marker.addTo(map);
-        item.marker.togglePopup();
+        focusStore(storeIdx);
         closeSidebarOnMobile();
       });
       return li;
     };
 
     // Switch sidebar to store list view (sorted A-Z)
-    const showStoreList = (matches) => {
+    const showStoreList = (indices) => {
       mapCategories.style.display = 'none';
       mapShowAll.style.display = 'none';
       mapBack.classList.add('visible');
       mapSearchResults.innerHTML = '';
       activeResult = null;
-      if (matches.length) {
+      if (indices.length) {
         mapNoResults.style.display = 'none';
-        matches.sort((a, b) => a.store.title.localeCompare(b.store.title));
-        matches.forEach(m => mapSearchResults.appendChild(renderResultItem(m.store, m.item)));
+        indices.sort((a, b) => stores[a].title.localeCompare(stores[b].title));
+        indices.forEach(i => mapSearchResults.appendChild(renderResultItem(i)));
         mapSearchResults.classList.add('visible');
       } else {
         mapSearchResults.classList.remove('visible');
@@ -752,7 +757,7 @@
       activeFilter = type;
       categories.forEach(c => c.setAttribute('aria-pressed', String(c === cat)));
       applyFilter(type);
-      showStoreList(markerData.reduce((acc, item, i) => (stores[i].type === type && acc.push({ store: stores[i], item }), acc), []));
+      showStoreList(stores.reduce((acc, s, i) => (s.type === type && acc.push(i), acc), []));
     }));
 
     mapBack.addEventListener('click', resetFilter);
@@ -763,9 +768,10 @@
       const query = mapSearch.value.trim().toLowerCase();
       activeFilter = null;
       if (!query) { applyFilter(null); showCategories(); return; }
-      const matches = markerData.reduce((acc, item, i) => (stores[i].title.toLowerCase().includes(query) && acc.push({ store: stores[i], item }), acc), []);
-      showStoreList(matches);
-      filterMarkers((_, i) => stores[i].title.toLowerCase().includes(query));
+      const matchSet = new Set();
+      const indices = stores.reduce((acc, s, i) => { if (s.title.toLowerCase().includes(query)) { matchSet.add(i); acc.push(i); } return acc; }, []);
+      showStoreList(indices);
+      filterMarkers((_, i) => matchSet.has(i));
     });
 
     // Collapse/expand sidebar
