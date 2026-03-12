@@ -13,19 +13,19 @@ layout: default
 </section>
 
 <nav id="landing-nav" aria-label="{{ page.nav.label }}">
-  <a href="{{ page.nav.shops.url }}" class="shops">
+  <a href="{{ page.nav.shops.url }}" class="shops" data-link="transition">
     <img src="{{ '/assets/images/' | append: page.nav.shops.image | relative_url }}" alt="" loading="lazy" fetchpriority="low" width="240"
       height="174">
     <h5>{{ page.nav.shops.title }}</h5>
     <p>{{ page.nav.shops.description }}</p>
   </a>
-  <a href="{{ page.nav.food.url }}" class="foods">
+  <a href="{{ page.nav.food.url }}" class="foods" data-link="transition">
     <img src="{{ '/assets/images/' | append: page.nav.food.image | relative_url }}" alt="" loading="lazy" fetchpriority="low" width="240"
       height="174">
     <h5>{{ page.nav.food.title }}</h5>
     <p>{{ page.nav.food.description }}</p>
   </a>
-  <a href="{{ page.nav.galleries.url }}" class="galleries">
+  <a href="{{ page.nav.galleries.url }}" class="galleries" data-link="transition">
     <img src="{{ '/assets/images/' | append: page.nav.galleries.image | relative_url }}" alt="" loading="lazy" fetchpriority="low"
       width="360" height="261">
     <h5>{{ page.nav.galleries.title }}</h5>
@@ -37,7 +37,7 @@ layout: default
     <h5>{{ page.nav.events.title }}</h5>
     <p>{{ page.nav.events.description }}</p>
   </a>
-  <a href="{{ page.nav.weddings.url }}" class="weddings">
+  <a href="{{ page.nav.weddings.url }}" class="weddings" data-link="transition">
     <img src="{{ '/assets/images/' | append: page.nav.weddings.image | relative_url }}" alt="" loading="lazy" fetchpriority="low"
       width="360" height="261">
     <h5>{{ page.nav.weddings.title }}</h5>
@@ -64,3 +64,5 @@ layout: default
 {% assign footer = site.landing | where: "section", "footer" | first %}
 {% assign template = "landing/" | append: footer.slug | append: ".html" %}
 {% include {{ template }} %}
+
+<script src="{{ '/assets/js/init-transition-view.js' | relative_url }}"></script>
