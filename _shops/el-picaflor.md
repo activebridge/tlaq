@@ -1,11 +1,25 @@
 ---
 slug: el-picaflor
 date: 2026-02-22
+published: true
 title: El Picaflor
 subtitle: Folk art & crafts
 suite: A206
-phone: '9282821173'
+phone: (928) 282-1173
 website: https://www.elpicaflor.com
 coordinates: "-111.7628408, 34.8620031"
+image: "/assets/images/stores/el-picaflor.webp"
+instagram: https://www.instagram.com/elpicaflorsanisidro/
+facebook:
+full_location: 336 AZ-179 Suite A206, Sedona, AZ 86336
+store_hours:
+  monday:
+  tuesday:
+  wednesday:
+  thursday:
+  friday:
+  saturday:
+  sunday:
+
 ---
-El Picaflor (Spanish for hummingbird) is full of colors and full of life. It welcomes you to see folk art from the Andes. The original pieces on display include brilliantly crafted ceramics, colorful and intricate patchwork art, alpaca garments, crafts, and objects used in the traditional folk medicine in the Andes. We carry the works of Peruvian weaver-painter Maximo Laura. His tapestries are made with alpaca wool and cotton. We also show Andean retablo-maker Nicario Jimenez.
+<h6>Folk art & crafts.</h6>

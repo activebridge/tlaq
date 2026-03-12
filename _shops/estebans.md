@@ -1,11 +1,25 @@
 ---
 slug: estebans
 date: 2026-02-22
+published: true
 title: Esteban's
 subtitle: Handcrafted functional & decorative pottery by Southwestern artists
 suite: B103
-phone: '9282824686'
+phone: (928) 282-4686
 website: https://www.estebanssedona.com
 coordinates: "-111.762687, 34.8620502"
+image: "/assets/images/stores/estebans.webp"
+instagram: https://www.instagram.com/estebans_pottery/
+facebook: https://www.facebook.com/estebanssedona/
+full_location: 336 AZ-179 Suite B103, Sedona, AZ 86336
+store_hours:
+  monday: 10AM - 5PM
+  tuesday: 10AM - 5PM
+  wednesday: 10AM - 5PM
+  thursday: 10AM - 5PM
+  friday: 10AM - 6PM
+  saturday: 10AM - 6PM
+  sunday: 10AM - 6PM
+
 ---
-Under the same ownership since 1974, Esteban's is a mainstay of Tlaquepaque, featuring handcrafted pottery by many Southwestern artists. Browse through Esteban's and enjoy a wide variety of functional and decorative pottery, as well as unique décor items for your home or office. Made in America, affordable art is the focus.
+<h6>Handcrafted functional & decorative pottery by Southwestern artists.</h6>

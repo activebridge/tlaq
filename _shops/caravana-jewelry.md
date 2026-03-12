@@ -1,11 +1,25 @@
 ---
 slug: caravana-jewelry
 date: 2026-02-22
+published: true
 title: Caravana Jewelry
 subtitle: Silver & gemstone jewelry by Arizona artists
 suite: B120
-phone: '9282823370'
+phone: (928) 282-3370
 website: https://www.caravana-collection.com
 coordinates: "-111.7631138, 34.8630693"
+image: "/assets/images/stores/caravana-jewelry.webp"
+instagram: https://www.instagram.com/caravanajewelry/
+facebook: https://www.facebook.com/caravanajewelry/
+full_location: 336 AZ-179 Suite B120, Sedona, AZ 86336
+store_hours:
+  monday: 10AM - 6PM
+  tuesday: 10AM - 6PM
+  wednesday: 10AM - 6PM
+  thursday: 10AM - 6PM
+  friday: 10AM - 6PM
+  saturday: 10AM - 6PM
+  sunday: 10AM - 6PM
+
 ---
-Offering unique modern metalsmithing and jewelry design at affordable prices. We feature our own Caravana Collection designed and produced here in Sedona. This collection consists of mostly sterling silver and copper works that are hand fabricated by artist Melissa Iaquilino. Our highly trained friendly staff is very knowledgeable about our artists, their techniques, and their medium. We believe in no pressure sales and have fun at what we do! Located next to Rene Restaurant in Patio Azul, Tlaquepaque.
+<h6>Silver & gemstone jewelry by Arizona artists.</h6>

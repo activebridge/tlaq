@@ -1,11 +1,25 @@
 ---
 slug: environmental-realists
 date: 2026-02-22
+published: true
 title: Environmental Realists
 subtitle: Mixed metal jewelry, handcrafted knives & wood accessories
 suite: A106
-phone: '9282824945'
+phone: (928) 282-4945
 website: https://www.environmentalrealists.com
 coordinates: "-111.7625685, 34.8621175"
+image: "/assets/images/stores/environmental-realists.webp"
+instagram: https://www.instagram.com/environmentalrealists/
+facebook: https://www.facebook.com/environmentalrealists/
+full_location: 336 AZ-179 Suite A106, Sedona, AZ 86336
+store_hours:
+  monday: 10AM - 5PM
+  tuesday: 10AM - 5PM
+  wednesday: 10AM - 5PM
+  thursday: 10AM - 5PM
+  friday: 10AM - 6PM
+  saturday: 10AM - 6PM
+  sunday: 10AM - 6PM
+
 ---
-Environmental Realists, also known as ERTCO, is one of the original shops opened in the first phase of Tlaquepaque's development in the early '70's. ERTCO is well known for its friendly and knowledgeable staff that values their customers and goes beyond the norm to assist each visitor. The work of over 120 craftspeople/artisans is represented in fun and unusual displays. Many of the antique display cases were brought in from the south; an assortment of antique tools adorns the walls. The focus of the store over the years has been to provide a relaxed, friendly environment offering affordable handcrafted jewelry, wood and other gift items to the discerning buyer.
+<h6>Mixed metal jewelry, handcrafted knives & wood accessories.</h6>

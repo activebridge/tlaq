@@ -15,6 +15,7 @@ collections:
     fields:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
       - { label: "Suite", name: "suite", widget: "string" }
