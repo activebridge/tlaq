@@ -1,4 +1,5 @@
 <style>
+  @view-transition { navigation: auto; }
   :root {
     /* Header */
     --header-height: 131px;
@@ -433,6 +434,7 @@
   }
 
   .hero {
+    view-transition-name: var(--transition-name);
     background-image: var(--low-desk-image);
     height: calc(100dvh - 210px);
     background-attachment: fixed;
