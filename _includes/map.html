@@ -479,8 +479,9 @@
     const SL = '0a44077372e92fc898f4', BLD = 'building-outlines';
     const map = new mapboxgl.Map({
       container: 'map', style: 'mapbox://styles/storchak/cmmew5gbs000l01sbb2mld1pq',
-      center: [-111.763522, 34.862363], zoom: 14, pitch: 45, bearing: -17,
-      minZoom: 14, maxZoom: 20, maxBounds: [[-111.7659, 34.8606], [-111.7611, 34.8642]]
+      center: [-111.763522, 34.862363], zoom: 14, pitch: 20,
+      minZoom: 14, maxZoom: 20, maxBounds: [[-111.7659, 34.8606], [-111.7611, 34.8642]],
+      cooperativeGestures: true
     });
 
     // Remove loading spinner and placeholder once map tiles are ready, then reveal sidebar

@@ -33,6 +33,7 @@ permalink: /admin/showcase
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    scroll-target-group: auto;
   }
 
   .showcase-nav a {
@@ -47,7 +48,7 @@ permalink: /admin/showcase
   }
 
   .showcase-nav a:hover,
-  .showcase-nav a.active {
+  .showcase-nav a:target-current {
     color: var(--navy);
     border-left-color: var(--red);
   }
@@ -81,7 +82,7 @@ permalink: /admin/showcase
     }
 
     .showcase-nav a:hover,
-    .showcase-nav a.active {
+    .showcase-nav a:target-current {
       border-left-color: transparent;
       border-bottom-color: var(--red);
     }
@@ -606,27 +607,3 @@ permalink: /admin/showcase
     <iframe src="{{ '/map_embed' | relative_url }}" loading="lazy" title="Village Map" style="width:100%;height:500px;border:none" allowfullscreen></iframe>
   </div>
 </div>
-
-<script>
-  (function() {
-    var links = document.querySelectorAll('.showcase-nav a');
-    var sections = document.querySelectorAll('.showcase-section[id]');
-
-    function updateActive() {
-      var headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 131;
-      var scrollY = window.scrollY + headerHeight + 20;
-      var current = '';
-      sections.forEach(function(section) {
-        if (section.offsetTop <= scrollY) {
-          current = section.id;
-        }
-      });
-      links.forEach(function(link) {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-      });
-    }
-
-    window.addEventListener('scroll', updateActive);
-    updateActive();
-  })();
-</script>
