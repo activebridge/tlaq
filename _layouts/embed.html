@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    :root {
+      --navy: #111c4e;
+      --navy-80: color-mix(in srgb, var(--navy) 80%, transparent);
+      --navy-60: color-mix(in srgb, var(--navy) 60%, transparent);
+      --cream: #f7ead7;
+      --cream-60: color-mix(in srgb, var(--cream) 60%, transparent);
+      --pink: #d41367;
+      --blue: #1b638a;
+      --orange: #f88d2b;
+      --green: #008066;
+    }
+    @font-face { font-family: "Montserrat"; font-weight: 400; src: url("/assets/fonts/Montserrat-Regular.woff2") format("woff2"); font-display: swap; }
+    @font-face { font-family: "Montserrat"; font-weight: 500; src: url("/assets/fonts/Montserrat-Medium.woff2") format("woff2"); font-display: swap; }
+    @font-face { font-family: "Montserrat"; font-weight: 600; src: url("/assets/fonts/Montserrat-SemiBold.woff2") format("woff2"); font-display: swap; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: "Montserrat", sans-serif; overflow: hidden; }
+  </style>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.css" crossorigin>
+</head>
+<body>
+  {{ content }}
+</body>
+</html>

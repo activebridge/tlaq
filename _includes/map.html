@@ -729,4 +729,4 @@
     mapSidebarToggle.addEventListener('click', () => { const c = mapSidebar.classList.toggle('collapsed'); mapContainer.classList.toggle('sidebar-collapsed', c); });
   }
 </script>
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.js" defer onload="initMap()"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.js" defer onload="setTimeout(initMap,1000)"></script>
