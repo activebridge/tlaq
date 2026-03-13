@@ -7,7 +7,7 @@ layout: null
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.3.0/workbox-sw.js');
 
 const { registerRoute, Route } = workbox.routing;
-const { StaleWhileRevalidate, CacheFirst } = workbox.strategies;
+const { StaleWhileRevalidate } = workbox.strategies;
 const { ExpirationPlugin } = workbox.expiration;
 const { CacheableResponsePlugin } = workbox.cacheableResponse;
 const { precacheAndRoute } = workbox.precaching;
@@ -48,10 +48,10 @@ registerRoute(
   })
 );
 
-// Cache images with cache-first (images change infrequently)
+// Cache images with stale-while-revalidate (no hashed filenames)
 registerRoute(
   ({ request }) => request.destination === 'image',
-  new CacheFirst({
+  new StaleWhileRevalidate({
     cacheName: 'images',
     plugins: [
       new CacheableResponsePlugin({ statuses: [200] }),
@@ -63,10 +63,10 @@ registerRoute(
   })
 );
 
-// Cache fonts with cache-first
+// Cache fonts with stale-while-revalidate (no hashed filenames)
 registerRoute(
   ({ request }) => request.destination === 'font',
-  new CacheFirst({
+  new StaleWhileRevalidate({
     cacheName: 'fonts',
     plugins: [
       new CacheableResponsePlugin({ statuses: [200] }),
