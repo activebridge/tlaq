@@ -460,325 +460,222 @@
 
 <script>
   function initMap() {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2FsdWxleCIsImEiOiJjamx6ampoZjgyMnYxM3FvZ2ppNjV2M2x5In0.bPgk2WI9NT-DJwnE-OtiLA';
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvcmNoYWsiLCJhIjoiY21tZDZsMGdmMDAydDJwczhqbGhhOTNtciJ9.gPoufGUfsywbXf1wN8D0yw';
+    // SL = vector tileset source-layer id, BLD = building outlines layer name
+    const SL = '0a44077372e92fc898f4', BLD = 'building-outlines';
     const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/galulex/cmjjuexff009w01qz4awigw0q',
-      center: [-111.763522, 34.862363],
-      zoom: 14, pitch: 45, bearing: -17,
-      minZoom: 14,
-      maxZoom: 20,
-      maxBounds: [[-111.7659, 34.8606], [-111.7611, 34.8642]]
+      container: 'map', style: 'mapbox://styles/storchak/cmmew5gbs000l01sbb2mld1pq',
+      center: [-111.763522, 34.862363], zoom: 14, pitch: 45, bearing: -17,
+      minZoom: 14, maxZoom: 20, maxBounds: [[-111.7659, 34.8606], [-111.7611, 34.8642]]
     });
 
-    // Remove loading spinner and placeholder once tiles are ready
+    // Remove loading spinner and placeholder once map tiles are ready
     const removeOverlay = () => { window.mapSpinner?.remove(); window.mapPlaceholder?.remove(); };
     map.loaded() ? removeOverlay() : map.on('load', removeOverlay);
 
-    // Load building outlines from GeoJSON
-    const geojsonUrl = '{{ "/assets/js/tlaq.geojson" | relative_url }}';
-    let activeBuildingIds = new Set();
-    let buildingSlugToIds = new Map();
-    let buildingIdSet = new Set();
-    let buildingsReady = false;
-    let pendingBuildingStore = null;
-
-    const isValidBuildingId = (id) => id && id !== 'null';
-
-    const typeColors = {
-      shop: { hex: '#d41367', css: 'var(--pink)' },
-      gallery: { hex: '#1b638a', css: 'var(--blue)' },
-      food: { hex: '#f88d2b', css: 'var(--orange)' }
-    };
-    const defaultHex = typeColors.shop.hex;
-    const buildingBaseHex = '#1a2744';
-    const clearActiveBuildings = () => {
-      activeBuildingIds.forEach(id => map.setFeatureState({ source: 'buildings', id }, { active: false, color: null }));
-      activeBuildingIds = new Set();
-    };
-
-    const setActiveBuildings = (ids, type) => {
-      if (!buildingsReady || !ids?.length) return;
-      const validIds = ids.filter(isValidBuildingId);
-      if (!validIds.length) return;
-      clearActiveBuildings();
-      activeBuildingIds = new Set(validIds);
-      const color = typeColors[type]?.hex || defaultHex;
-      activeBuildingIds.forEach(id => map.setFeatureState({ source: 'buildings', id }, { active: true, color }));
-    };
-
-    const normalizeSuite = (suite) => suite.toLowerCase().replace(/\s+/g, '');
-
-    const getBuildingIdsForStore = (store) => {
-      if (!store) return [];
-      const slugIds = buildingSlugToIds.get(store.slug);
-      if (slugIds?.length) return slugIds;
-      if (!store.suite) return [];
-      const normalized = normalizeSuite(store.suite);
-      if (buildingIdSet.has(normalized)) return [normalized];
-      const dashIndex = normalized.indexOf('-');
-      if (dashIndex > 0) {
-        const base = normalized.slice(0, dashIndex);
-        if (buildingIdSet.has(base)) return [base];
-      }
-      return [];
-    };
-
-    const setActiveBuildingsForStore = (store) => {
-      if (!store) return;
-      if (!buildingsReady) { pendingBuildingStore = store; return; }
-      const ids = getBuildingIdsForStore(store);
-      if (ids.length) setActiveBuildings(ids, store.type);
-    };
-
-    map.on('load', () => {
-      fetch(geojsonUrl).then(r => r.json()).then(data => {
-        map.addSource('buildings', { type: 'geojson', data, promoteId: 'id' });
-        map.addLayer({
-          id: 'building-outlines',
-          type: 'fill-extrusion',
-          source: 'buildings',
-          paint: {
-            'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'active'], false], ['coalesce', ['feature-state', 'color'], defaultHex], buildingBaseHex],
-            'fill-extrusion-height': 8,
-            'fill-extrusion-base': 0,
-            'fill-extrusion-opacity': 1
-          }
-        });
-
-        data.features?.forEach((feature) => {
-          const id = feature?.properties?.id;
-          const slug = feature?.properties?.slug;
-          if (isValidBuildingId(id)) buildingIdSet.add(id);
-          if (slug && isValidBuildingId(id)) {
-            const list = buildingSlugToIds.get(slug) || [];
-            list.push(id);
-            buildingSlugToIds.set(slug, list);
-          }
-        });
-        buildingsReady = true;
-        if (pendingBuildingStore) {
-          const queuedStore = pendingBuildingStore;
-          pendingBuildingStore = null;
-          setActiveBuildingsForStore(queuedStore);
-        }
-
-        map.on('click', 'building-outlines', (e) => {
-          const feature = e.features?.[0];
-          const slug = feature?.properties?.slug;
-          const id = feature?.properties?.id;
-          if (!isValidBuildingId(id)) return;
-          const idx = slug ? storeIndexBySlug.get(slug) : storeIndexBySuite.get(id);
-          const ids = slug ? (buildingSlugToIds.get(slug) || [id]) : [id];
-          setActiveBuildings(ids, idx !== undefined ? stores[idx].type : undefined);
-          if (idx !== undefined) focusStore(idx);
-        });
-
-        map.on('click', (e) => {
-          const features = map.queryRenderedFeatures(e.point, { layers: ['building-outlines'] });
-          if (!features.length && activeBuildingIds.size) clearActiveBuildings();
-        });
-
-        map.on('mouseenter', 'building-outlines', () => { map.getCanvas().style.cursor = 'pointer'; });
-        map.on('mouseleave', 'building-outlines', () => { map.getCanvas().style.cursor = ''; });
-      }).catch(() => {});
-    });
+    const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+    const typeColors = { shop: '--pink', gallery: '--blue', food: '--orange' };
+    for (const t in typeColors) typeColors[t] = { hex: css(typeColors[t]), css: `var(${typeColors[t]})` };
+    const defaultHex = typeColors.shop.hex, baseHex = css('--navy');
 
     // Helpers
-    const parseCoords = (str) => str.split(',').map(c => parseFloat(c.trim()));
-    const isSafeUrl = (url) => url && (url[0] === '/' || url.lastIndexOf('http', 0) === 0);
-    const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-    const today = days[new Date().getDay()];
+    const bldSrc = (id) => ({ source: 'buildings', sourceLayer: SL, id }); // feature-state target for a building
+    const isValidId = (id) => id && id !== 'null';
+    const normSuite = (s) => s.toLowerCase().replace(/\s+/g, ''); // normalize suite ids for matching
+    const parseCoords = (s) => s.split(',').map(Number); // parse "lng, lat" string to [lng, lat]
+    const isSafeUrl = (u) => u && (u[0] === '/' || u.lastIndexOf('http', 0) === 0);
+    const today = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][new Date().getDay()];
+    const { content: iconsTpl } = window.storeIcons; // shared SVG icon <template>
+    const getIcon = (t) => (iconsTpl.querySelector(`[data-type="${t||'default'}"]`) || iconsTpl.querySelector('[data-type="default"]')).cloneNode(true);
 
-    // Clone icon SVG from shared <template> by store type
-    const { content: storeIconsTpl } = window.storeIcons;
-    const getStoreIcon = (type) => (storeIconsTpl.querySelector(`[data-type="${type || 'default'}"]`) || storeIconsTpl.querySelector('[data-type="default"]')).cloneNode(true);
+    // Building highlight state: activeIds = currently highlighted building ids
+    // slugToIds/idSet = lookup tables built from tileset features after tiles load
+    let activeIds = new Set(), slugToIds = new Map(), idSet = new Set(), ready = false, pending = null;
 
-    // Build popup DOM from <template> and fill with store data
+    // Clear all highlighted buildings
+    const clearActive = () => { activeIds.forEach(id => map.setFeatureState(bldSrc(id), { active: false, color: null })); activeIds = new Set(); };
+
+    // Highlight buildings by ids with category color
+    const setActive = (ids, type) => {
+      if (!ready || !ids?.length) return;
+      const valid = ids.filter(isValidId);
+      if (!valid.length) return;
+      clearActive();
+      activeIds = new Set(valid);
+      const color = typeColors[type]?.hex || defaultHex;
+      activeIds.forEach(id => map.setFeatureState(bldSrc(id), { active: true, color }));
+    };
+
+    const getIds = (s) => {
+      if (!s) return [];
+      const si = slugToIds.get(s.slug);
+      if (si?.length) return si;
+      if (!s.suite) return [];
+      const n = normSuite(s.suite), d = n.indexOf('-'), p = d > 0 ? n.slice(0, d) : null;
+      return idSet.has(n) ? [n] : p && idSet.has(p) ? [p] : [];
+    };
+
+    // Highlight building for a store; queues if tileset not yet loaded
+    const activateStore = (store) => {
+      if (!store) return;
+      if (!ready) { pending = store; return; }
+      const ids = getIds(store);
+      if (ids.length) setActive(ids, store.type);
+    };
+
+    // --- Building tileset layer and interactions ---
+    map.on('load', () => {
+      // Add building outlines from Mapbox vector tileset
+      map.addSource('buildings', { type: 'vector', url: 'mapbox://storchak.mv1ujm9r4n7l', promoteId: 'id' });
+      map.addLayer({ id: BLD, type: 'fill-extrusion', source: 'buildings', 'source-layer': SL, paint: {
+        'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'active'], false], ['coalesce', ['feature-state', 'color'], defaultHex], baseHex],
+        'fill-extrusion-height': 4, 'fill-extrusion-base': 0, 'fill-extrusion-opacity': 1
+      }});
+
+      // Build slug/id lookup tables from loaded tileset features
+      map.once('idle', () => {
+        map.querySourceFeatures('buildings', { sourceLayer: SL }).forEach(f => {
+          const { id, slug } = f.properties || {};
+          if (isValidId(id)) idSet.add(id);
+          if (slug && isValidId(id)) { const l = slugToIds.get(slug) || []; l.push(id); slugToIds.set(slug, l); }
+        });
+        ready = true;
+        if (pending) { const q = pending; pending = null; activateStore(q); }
+      });
+
+      // Click building to highlight it and focus its store
+      map.on('click', BLD, (e) => {
+        const { slug, id } = e.features?.[0]?.properties || {};
+        if (!isValidId(id)) return;
+        const idx = slug ? bySlug.get(slug) : bySuite.get(id);
+        setActive(slug ? (slugToIds.get(slug) || [id]) : [id], idx !== undefined ? stores[idx].type : undefined);
+        if (idx !== undefined) focusStore(idx);
+      });
+
+      // Click empty space to clear building highlight
+      map.on('click', (e) => { if (!map.queryRenderedFeatures(e.point, { layers: [BLD] }).length && activeIds.size) clearActive(); });
+
+      // Pointer cursor on building hover
+      map.on('mouseenter', BLD, () => { map.getCanvas().style.cursor = 'pointer'; });
+      map.on('mouseleave', BLD, () => { map.getCanvas().style.cursor = ''; });
+    });
+
+    // --- Popups ---
+
+    // Build popup HTML from <template> with store data
     const renderPopup = (store) => {
-      const todayHours = store.hours?.[today];
-      const icon = getStoreIcon(store.type);
-      icon.className = 'popup-icon';
-      const data = {
-        image: store.image || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
-        title: store.title,
-        subtitle: store.subtitle,
-        icon: icon.outerHTML,
-        url: isSafeUrl(store.url) ? store.url : '#',
-        todayHours: todayHours ? todayHours : ''
-      };
-      return window.mapPopup.innerHTML.replace(/\$(\w+)/g, (_, key) => data[key] ?? '');
+      const icon = getIcon(store.type); icon.className = 'popup-icon';
+      const data = { image: store.image || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7',
+        title: store.title, subtitle: store.subtitle, icon: icon.outerHTML,
+        url: isSafeUrl(store.url) ? store.url : '#', todayHours: store.hours?.[today] || '' };
+      return window.mapPopup.innerHTML.replace(/\$(\w+)/g, (_, k) => data[k] ?? '');
     };
 
     // Create popup with single-open enforcement and category color
     let openPopup = null;
     const createPopup = (store) => {
-      const popup = new mapboxgl.Popup({ offset: 10, maxWidth: '200px', focusAfterOpen: false, anchor: 'bottom' }).setHTML(renderPopup(store));
-      popup.on('open', () => {
-        if (openPopup && openPopup !== popup) openPopup.remove();
-        openPopup = popup;
-        typeColors[store.type]?.css && popup.getElement().style.setProperty('--category-color', typeColors[store.type].css);
+      const p = new mapboxgl.Popup({ offset: 10, maxWidth: '200px', focusAfterOpen: false, anchor: 'bottom' }).setHTML(renderPopup(store));
+      p.on('open', () => {
+        // Close previous popup before opening new one (reassign first to prevent clearing buildings)
+        if (openPopup && openPopup !== p) { const prev = openPopup; openPopup = p; prev.remove(); } else openPopup = p;
+        typeColors[store.type]?.css && p.getElement().style.setProperty('--category-color', typeColors[store.type].css);
       });
-      popup.on('close', () => {
-        if (openPopup === popup) { openPopup = null; clearActiveBuildings(); }
-      });
-      return popup;
+      p.on('close', () => { if (openPopup === p) { openPopup = null; clearActive(); } });
+      return p;
     };
 
-    // Place markers from Jekyll-generated store data
+    // --- Markers: parse store data, build lookups, place markers ---
     const stores = JSON.parse(window.mapStoreData.textContent);
-    const markerData = [];
-    const storeIndexBySlug = new Map();
-    const storeIndexBySuite = new Map();
-
-    stores.forEach((store, i) => {
-      if (store.slug) storeIndexBySlug.set(store.slug, i);
-      if (store.suite) {
-        const normalized = normalizeSuite(store.suite);
-        storeIndexBySuite.set(normalized, i);
-        const dashIndex = normalized.indexOf('-');
-        if (dashIndex > 0) storeIndexBySuite.set(normalized.slice(0, dashIndex), i);
-      }
-    });
-
-    stores.forEach((store, i) => {
-      const coords = parseCoords(store.coordinates);
-      const el = Object.assign(document.createElement('div'), { className: 'map-marker' });
-      el.dataset.type = store.type;
-      const marker = new mapboxgl.Marker({ element: el }).setLngLat(coords).setPopup(createPopup(store)).addTo(map);
-      marker.getElement().addEventListener('click', (event) => { event.stopPropagation(); focusStore(i); });
-      markerData.push({ marker, type: store.type });
+    const markers = [], bySlug = new Map(), bySuite = new Map();
+    stores.forEach((s, i) => {
+      // Build slug/suite-to-index lookups for building click resolution
+      if (s.slug) bySlug.set(s.slug, i);
+      if (s.suite) { const n = normSuite(s.suite); bySuite.set(n, i); const d = n.indexOf('-'); if (d > 0) bySuite.set(n.slice(0, d), i); }
+      // Create marker element and add to map
+      const el = Object.assign(document.createElement('div'), { className: 'map-marker' }); el.dataset.type = s.type;
+      const m = new mapboxgl.Marker({ element: el }).setLngLat(parseCoords(s.coordinates)).setPopup(createPopup(s)).addTo(map);
+      m.getElement().addEventListener('click', (e) => { e.stopPropagation(); focusStore(i); });
+      markers.push({ marker: m, type: s.type });
     });
 
     // Fly to a store, highlight its building, and open its popup
-    const focusStore = (idx, flyOpts = {}) => {
-      const coords = parseCoords(stores[idx].coordinates);
-      setActiveBuildingsForStore(stores[idx]);
-      map.flyTo({ center: coords, zoom: 18, speed: 0.4, padding: { top: 150 }, ...flyOpts });
-      markerData[idx].marker.addTo(map);
-      if (!markerData[idx].marker.getPopup().isOpen()) markerData[idx].marker.togglePopup();
+    const focusStore = (i, opts = {}) => {
+      activateStore(stores[i]);
+      map.flyTo({ center: parseCoords(stores[i].coordinates), zoom: 18, speed: 0.4, padding: { top: 150 }, ...opts });
+      markers[i].marker.addTo(map); // ensure visible even if filtered out
+      if (!markers[i].marker.getPopup().isOpen()) markers[i].marker.togglePopup();
     };
 
-    // Sidebar state and DOM refs
-    let activeFilter = null;
+    // --- Sidebar: filtering, search, categories ---
+    let activeFilter = null, activeResult = null;
     const { mapSearch, mapSearchResults, mapNoResults, mapCategories, mapBack, mapSidebar, mapShowAll, mapContainer, mapSidebarToggle } = window;
-
-    // Focus on a specific store when loaded from a store show page
-    const focusSuite = window.map.dataset.focusSuite;
-    if (focusSuite) {
-      mapSidebar.classList.add('collapsed');
-      mapContainer.classList.add('sidebar-collapsed');
-      const idx = stores.findIndex(s => s.suite === focusSuite);
-      if (idx !== -1) {
-        const flyAndOpen = () => focusStore(idx, { speed: 0.6, padding: { top: 200 } });
-        map.loaded() ? flyAndOpen() : map.on('load', flyAndOpen);
-      }
-    }
-
     const categories = mapCategories.querySelectorAll('.sidebar-category');
+    const mobile = window.matchMedia('(max-width: 770px)');
 
-    // Show/hide markers based on predicate; close popup before removing
-    const filterMarkers = (predicate) => markerData.forEach((item, i) => {
-      predicate(item, i) ? item.marker.addTo(map) : (item.marker.getPopup().isOpen() && item.marker.togglePopup(), item.marker.remove());
-    });
+    // Show/hide markers by predicate; close popup before removing
+    const filterMarkers = (fn) => markers.forEach((m, i) => fn(m, i) ? m.marker.addTo(map) : (m.marker.getPopup().isOpen() && m.marker.togglePopup(), m.marker.remove()));
+    const applyFilter = (t) => filterMarkers((m) => !t || m.type === t);
 
-    const applyFilter = (type) => filterMarkers((item) => !type || item.type === type);
-
-    // Build sidebar list item that flies to store on click
-    let activeResult = null;
-    const renderResultItem = (storeIdx) => {
-      const store = stores[storeIdx];
-      const li = document.createElement('li');
-      li.className = 'sidebar-result';
-      li.setAttribute('role', 'option');
-      if (typeColors[store.type]?.css) li.style.setProperty('--cat-color', typeColors[store.type].css);
-      li.appendChild(getStoreIcon(store.type));
-      li.appendChild(Object.assign(document.createElement('span'), { textContent: store.title }));
+    // Build a sidebar list item that flies to store on click
+    const renderItem = (i) => {
+      const s = stores[i], li = document.createElement('li');
+      li.className = 'sidebar-result'; li.setAttribute('role', 'option');
+      if (typeColors[s.type]?.css) li.style.setProperty('--cat-color', typeColors[s.type].css);
+      li.appendChild(getIcon(s.type));
+      li.appendChild(Object.assign(document.createElement('span'), { textContent: s.title }));
       li.addEventListener('click', () => {
-        activeResult?.classList.remove('active');
-        li.classList.add('active');
-        activeResult = li;
-        focusStore(storeIdx);
-        closeSidebarOnMobile();
+        activeResult?.classList.remove('active'); li.classList.add('active'); activeResult = li;
+        focusStore(i);
+        // Auto-close sidebar on mobile after selecting a store
+        if (mobile.matches && !mapSidebar.classList.contains('collapsed')) { mapSidebar.classList.add('collapsed'); mapContainer.classList.add('sidebar-collapsed'); }
       });
       return li;
     };
 
-    // Switch sidebar to store list view (sorted A-Z)
-    const showStoreList = (indices) => {
-      mapCategories.style.display = 'none';
-      mapShowAll.style.display = 'none';
-      mapBack.classList.add('visible');
-      mapSearchResults.innerHTML = '';
-      activeResult = null;
-      if (indices.length) {
+    // Switch sidebar to sorted store list view
+    const showList = (idx) => {
+      mapCategories.style.display = 'none'; mapShowAll.style.display = 'none';
+      mapBack.classList.add('visible'); mapSearchResults.innerHTML = ''; activeResult = null;
+      if (idx.length) {
         mapNoResults.style.display = 'none';
-        indices.sort((a, b) => stores[a].title.localeCompare(stores[b].title));
-        indices.forEach(i => mapSearchResults.appendChild(renderResultItem(i)));
+        idx.sort((a, b) => stores[a].title.localeCompare(stores[b].title)).forEach(i => mapSearchResults.appendChild(renderItem(i)));
         mapSearchResults.classList.add('visible');
-      } else {
-        mapSearchResults.classList.remove('visible');
-        mapNoResults.style.display = 'block';
-      }
+      } else { mapSearchResults.classList.remove('visible'); mapNoResults.style.display = 'block'; }
     };
 
     // Switch sidebar back to category view
-    const showCategories = () => {
-      mapSearchResults.classList.remove('visible');
-      mapSearchResults.innerHTML = '';
-      mapNoResults.style.display = 'none';
-      mapBack.classList.remove('visible');
-      mapCategories.style.display = '';
-      mapShowAll.style.display = '';
-    };
+    const showCats = () => { mapSearchResults.classList.remove('visible'); mapSearchResults.innerHTML = ''; mapNoResults.style.display = 'none'; mapBack.classList.remove('visible'); mapCategories.style.display = ''; mapShowAll.style.display = ''; };
+    // Clear filter and return to categories
+    const reset = () => { mapSearch.value = ''; activeFilter = null; categories.forEach(c => c.setAttribute('aria-pressed', 'false')); applyFilter(null); showCats(); };
 
-    const resetFilter = () => {
-      mapSearch.value = '';
-      activeFilter = null;
-      categories.forEach(c => c.setAttribute('aria-pressed', 'false'));
-      applyFilter(null);
-      showCategories();
-    };
-
-    // Close sidebar on mobile
-    const mobileQuery = window.matchMedia('(max-width: 770px)');
-    const closeSidebarOnMobile = () => {
-      if (mobileQuery.matches && !mapSidebar.classList.contains('collapsed')) {
-        mapSidebar.classList.add('collapsed');
-        mapContainer.classList.add('sidebar-collapsed');
-      }
-    };
+    // Focus specific store when loaded from a store detail page
+    const focusSuite = window.map.dataset.focusSuite;
+    if (focusSuite) {
+      mapSidebar.classList.add('collapsed'); mapContainer.classList.add('sidebar-collapsed');
+      const idx = stores.findIndex(s => s.suite === focusSuite);
+      if (idx !== -1) { const go = () => focusStore(idx, { speed: 0.6, padding: { top: 200 } }); map.loaded() ? go() : map.on('load', go); }
+    }
 
     // Category click: toggle filter or drill into store list
     categories.forEach(cat => cat.addEventListener('click', () => {
-      const type = cat.dataset.type;
-      mapSearch.value = '';
-      if (activeFilter === type) { resetFilter(); return; }
-      activeFilter = type;
-      categories.forEach(c => c.setAttribute('aria-pressed', String(c === cat)));
-      applyFilter(type);
-      showStoreList(stores.reduce((acc, s, i) => (s.type === type && acc.push(i), acc), []));
+      const t = cat.dataset.type; mapSearch.value = '';
+      if (activeFilter === t) { reset(); return; }
+      activeFilter = t; categories.forEach(c => c.setAttribute('aria-pressed', String(c === cat)));
+      applyFilter(t); showList(stores.reduce((a, s, i) => (s.type === t && a.push(i), a), []));
     }));
+    mapBack.addEventListener('click', reset);
+    mapShowAll.addEventListener('click', reset);
 
-    mapBack.addEventListener('click', resetFilter);
-    mapShowAll.addEventListener('click', resetFilter);
-
-    // Live search: filter markers and sidebar results by store name
+    // Live search: filter markers and sidebar by store name
     mapSearch.addEventListener('input', () => {
-      const query = mapSearch.value.trim().toLowerCase();
-      activeFilter = null;
-      if (!query) { applyFilter(null); showCategories(); return; }
-      const matchSet = new Set();
-      const indices = stores.reduce((acc, s, i) => { if (s.title.toLowerCase().includes(query)) { matchSet.add(i); acc.push(i); } return acc; }, []);
-      showStoreList(indices);
-      filterMarkers((_, i) => matchSet.has(i));
+      const q = mapSearch.value.trim().toLowerCase(); activeFilter = null;
+      if (!q) { applyFilter(null); showCats(); return; }
+      const m = new Set(), idx = stores.reduce((a, s, i) => { if (s.title.toLowerCase().includes(q)) { m.add(i); a.push(i); } return a; }, []);
+      showList(idx); filterMarkers((_, i) => m.has(i));
     });
 
-    // Collapse/expand sidebar
-    mapSidebarToggle.addEventListener('click', () => {
-      const collapsed = mapSidebar.classList.toggle('collapsed');
-      mapContainer.classList.toggle('sidebar-collapsed', collapsed);
-    });
+    // Toggle sidebar collapse
+    mapSidebarToggle.addEventListener('click', () => { const c = mapSidebar.classList.toggle('collapsed'); mapContainer.classList.toggle('sidebar-collapsed', c); });
   }
 </script>
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.js" defer onload="initMap()"></script>
