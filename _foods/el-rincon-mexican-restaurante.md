@@ -1,12 +1,17 @@
 ---
 slug: el-rincon-mexican-restaurante
 date: 2026-02-22
+published: true
 title: El Rincon Mexican Restaurante
 subtitle: Arizona-style Mexican cuisine, Sedona's margaritas
 suite: A112
-phone: '9282824648'
+phone: (928) 282-4648
 website: https://www.elrinconrestaurant.com
-coordinates: "-111.7626513, 34.8617982"
+image: "/assets/images/stores/el-rincon-mexican-restaurante.webp"
+coordinates: "-111.762693, 34.861773"
+instagram: https://www.instagram.com/elrinconrestaurantemexicano/
+facebook: https://www.facebook.com/ElRinconSedona/
+full_location: 336 AZ-179 Suite A112, Sedona, AZ 86336
 store_hours:
   monday: 11am - 8pm
   tuesday: 11am - 9pm
