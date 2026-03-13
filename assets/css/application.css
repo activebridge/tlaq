@@ -902,13 +902,19 @@ article {
           background: transparent;
           transform: translateX(4px);
         }
+
+        hgroup.calendar {
+          p {
+            margin: 0;
+          }
+        }
       }
 
       time {
         display: flex;
         align-items: center;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
 
         span {
           margin: 0;

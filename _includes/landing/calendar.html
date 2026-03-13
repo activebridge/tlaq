@@ -43,7 +43,7 @@
                 <span>{{ event.starts_at | date: "%a" | upcase }}</span>
                 <span>{{ event.starts_at | date: "%-d" }}</span>
               </time>
-              <hgroup>
+              <hgroup class="calendar">
                 <p>{{ event.starts_at | date: "%B %-d, %Y" }}</p>
                 <h3>{{ event.title | escape }}</h3>
               </hgroup>
