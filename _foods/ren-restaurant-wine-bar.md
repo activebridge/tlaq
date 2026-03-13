@@ -1,12 +1,17 @@
 ---
 slug: ren-restaurant-wine-bar
 date: 2026-02-22
+published: true
 title: René Restaurant & Wine Bar
 subtitle: Classical cuisine, picturesque patio & intimate bar
 suite: B118
-phone: '9282829225'
+phone: (928) 282-9225
 website: https://renerestaurantsedona.com
 coordinates: "-111.7633734, 34.8620944"
+image: "/assets/images/stores/rene-restaurant-wine-bar.webp"
+instagram: https://www.instagram.com/renetlaquepaque/
+facebook: https://www.facebook.com/ReneAtTlaquepaque/
+full_location: 336 AZ-179 Suite B118, Sedona, AZ 86336
 store_hours:
   monday: 12pm - 8:30pm
   tuesday: 12pm - 8:30pm

@@ -1,12 +1,17 @@
 ---
 slug: pump-house-station
 date: 2026-02-22
+published: true
+image: "/assets/images/stores/pump-house-station.webp"
 title: Pump House Station
 subtitle: Farm-to-table & artisanal foods including Organic coffee, artisan pastries, local crafted beers, signature cocktails
 suite: D10
-phone: '9288624141'
+phone: (928) 862-4141
 website: https://www.pumphousestation.com
-coordinates: "-111.762531, 34.8630007"
+coordinates: "-111.7628475, 34.8632335"
+instagram: https://www.instagram.com/sedonapumphouse/
+facebook: https://www.facebook.com/pumphousestationsedona/
+full_location: 313 AZ-179 Suite D10, Sedona, AZ 86336
 store_hours:
   monday: 8am - 2:30pm
   tuesday: 8am - 2:30pm
