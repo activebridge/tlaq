@@ -2,7 +2,7 @@
 layout: default
 ---
 {% assign image_path = page.image | relative_url %}
-<figure class="hero" style="background-image: url('{{ image_path }}');" ></figure>
+<figure class="hero" style="background-image: url('{{ image_path }}'); --transition-name: {{ page.image | downcase | replace: '/', '-' | replace: '.', '-' }};"></figure>
 
 <div class="content-wrapper">
   <h2>{{ page.title }}</h2>

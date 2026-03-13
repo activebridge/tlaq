@@ -20,6 +20,7 @@
               <img
                 src="{{ wedding.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
                 alt="{{ site.data.weddings.venues }}"
+                style="--transition-name: {{ wedding.image | downcase | replace: '/', '-' | replace: '.', '-' }};"
               >
             </picture>
           {% else %}

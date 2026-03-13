@@ -6,7 +6,14 @@ layout: default
 {% assign low_mob_image_path = page.image | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,quality=4,gravity=center/' | prepend: site.cdn_url %}
 {% assign low_desk_image_path = page.image | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,quality=4,gravity=center/' | prepend: site.cdn_url %}
 
-<figure class="hero" style="--desktop-image: url('{{ desktop_image_path }}'); --mobile-image: url('{{ mobile_image_path }}'); --low-mob-image: url('{{ low_mob_image_path }}'); --low-desk-image: url('{{ low_desk_image_path }}');" ></figure>
+<figure class="hero"
+  style="
+    --desktop-image: url('{{ desktop_image_path }}');
+    --mobile-image: url('{{ mobile_image_path }}');
+    --low-mob-image: url('{{ low_mob_image_path }}');
+    --low-desk-image: url('{{ low_desk_image_path }}');
+    --transition-name: {{ page.image | downcase | replace: '/', '-' | replace: '.', '-' }};
+  "></figure>
 
 <div class="content-wrapper">
   <article>

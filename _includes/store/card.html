@@ -1,6 +1,6 @@
 <div class="card" id="storeItem">
   {% if include.store.image %}
-    <img src="{{ include.store.image }}" alt="{{ include.store.title }}" width="600" loading="lazy">
+    <img src="{{ include.store.image }}" alt="{{ include.store.title }}" width="600" loading="lazy" style="--transition-name: {{ include.store.image | downcase | replace: '/', '-' | replace: '.', '-' }};">
   {% else %}
     <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ include.store.title }}" width="600" loading="lazy">
   {% endif %}
