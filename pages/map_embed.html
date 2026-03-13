@@ -1,0 +1,12 @@
+---
+layout: embed
+title: Village Map
+permalink: /map_embed
+sitemap: false
+---
+{% include map.html %}
+<script>
+  // Pass ?suite= query param to the map's data-focus-suite attribute
+  const suite = new URLSearchParams(location.search).get('suite');
+  if (suite) document.getElementById('map').dataset.focusSuite = suite;
+</script>
