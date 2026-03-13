@@ -7,7 +7,7 @@ subtitle: High-quality spirits, custom spice blends, oils, vinegar & wine
 suite: C102
 phone: (928) 282-2595
 website: https://www.spiritsandspice.com
-coordinates: "-111.7631691, 34.8616707"
+coordinates: "-111.7631805, 34.8616835"
 image: "/assets/images/stores/spirits-spice.webp"
 instagram: https://www.instagram.com/spiritsandspice/
 facebook: https://www.facebook.com/spiritsandspicesedona/

@@ -7,7 +7,7 @@ subtitle: Handcrafted functional & decorative pottery by Southwestern artists
 suite: B103
 phone: (928) 282-4686
 website: https://www.estebanssedona.com
-coordinates: "-111.762687, 34.8620502"
+coordinates: "-111.7630503, 34.8619145"
 image: "/assets/images/stores/estebans.webp"
 instagram: https://www.instagram.com/estebans_pottery/
 facebook: https://www.facebook.com/estebanssedona/

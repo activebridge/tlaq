@@ -7,7 +7,7 @@ subtitle: Authentic indian jewelry, baskets & kachinas
 suite: A107
 phone: (928) 282-4256
 website: https://houseoftheshalako.com
-coordinates: "-111.7634635, 34.8622272"
+coordinates: "-111.7625608, 34.8621455"
 image: "/assets/images/stores/ninibah.webp"
 instagram:
 facebook:

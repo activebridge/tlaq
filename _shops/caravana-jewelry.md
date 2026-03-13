@@ -7,7 +7,7 @@ subtitle: Silver & gemstone jewelry by Arizona artists
 suite: B120
 phone: (928) 282-3370
 website: https://www.caravana-collection.com
-coordinates: "-111.7631138, 34.8630693"
+coordinates: "-111.7632938, 34.8620033"
 image: "/assets/images/stores/caravana-jewelry.webp"
 instagram: https://www.instagram.com/caravanajewelry/
 facebook: https://www.facebook.com/caravanajewelry/

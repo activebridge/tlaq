@@ -6,7 +6,7 @@ subtitle: Garden setting, featuring organic produce & wines, all natural meats, 
 suite: F101
 phone: '9282039564'
 website: https://www.sedonasecretgardencafe.com
-coordinates: "-111.7636632, 34.8627261"
+coordinates: "-111.7636712, 34.8627542"
 store_hours:
   monday: 8am - 8pm
   tuesday: 8am - 8pm

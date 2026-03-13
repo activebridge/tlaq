@@ -6,6 +6,6 @@ subtitle: Ice Cream, shakes, artisan waffle cones, sundaes and splits
 suite: A11
 phone: '9284269232'
 website: https://www.sedonacakes.com
-coordinates: "-111.7630265, 34.863065"
+coordinates: "-111.7630353, 34.8630298"
 ---
 Ice Cream, shakes, artisan waffle cones, sundaes and splits..even cake by the slice.

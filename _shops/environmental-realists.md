@@ -7,7 +7,7 @@ subtitle: Mixed metal jewelry, handcrafted knives & wood accessories
 suite: A106
 phone: (928) 282-4945
 website: https://www.environmentalrealists.com
-coordinates: "-111.7625685, 34.8621175"
+coordinates: "-111.7625598, 34.8622247"
 image: "/assets/images/stores/environmental-realists.webp"
 instagram: https://www.instagram.com/environmentalrealists/
 facebook: https://www.facebook.com/environmentalrealists/

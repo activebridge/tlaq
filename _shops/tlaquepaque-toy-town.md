@@ -7,7 +7,7 @@ subtitle: Toys for kids of all ages
 suite: A205
 phone: (928) 282-1087
 website: https://www.toytownhalfpint.com
-coordinates: "-111.762687, 34.8620502"
+coordinates: "-111.762578, 34.861897"
 image: "/assets/images/stores/tlaquepaque-toy-town.webp"
 instagram: https://www.instagram.com/tlaqtoytown/
 facebook: https://www.facebook.com/tlaqtoytown/

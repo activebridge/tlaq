@@ -7,7 +7,7 @@ subtitle: Unique & custom candles created with patented candle making process
 suite: C104
 phone: (928) 204-0688
 website: https://globalcandlegallery.com
-coordinates: "-111.7630317, 34.8617861"
+coordinates: "-111.7630895, 34.8616017"
 image: "/assets/images/stores/sedona-candle-gallery.webp"
 instagram:
 facebook: https://www.facebook.com/p/Sedona-Candle-Gallery-100063520300187/

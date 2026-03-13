@@ -7,7 +7,7 @@ subtitle: Artisan home decor, jewelry and wardrobe accents
 suite: A208
 phone: (928) 649-9511
 website: https://adorncollectionaz.com
-coordinates: "-111.7628525, 34.8620943"
+coordinates: "-111.7628035, 34.8620352"
 image: "/assets/images/stores/adorn-collection.webp"
 instagram: https://www.instagram.com/_adorncollection_/
 facebook: https://www.facebook.com/p/Adorn-Collection-Sedona-AZ-100077269873228/

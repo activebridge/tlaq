@@ -7,7 +7,7 @@ subtitle: Southwestern salsas, gadgets, linens, pottery & tableware
 suite: D101
 phone: (928) 282-3905
 website: https://cucinasedona.com
-coordinates: "-111.7633015, 34.8621634"
+coordinates: "-111.763737, 34.8624427"
 image: "/assets/images/stores/cucina-sedona.webp"
 instagram:
 facebook:

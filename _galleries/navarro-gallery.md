@@ -6,6 +6,6 @@ subtitle: Western art, wildlife & landscape inspired fine art, & sculpture garde
 suite: D103
 phone: '9282041144'
 website: https://chrisnavarro.com
-coordinates: "-111.76468, 34.862978"
+coordinates: "-111.7638018, 34.8625404"
 ---
 The Navarro Gallery is owned by renowned sculptor Chris Navarro whose career spans 20 years. Specializing in western art, wildlife and landscapes, Navarro Gallery represents an outstanding array of artists.

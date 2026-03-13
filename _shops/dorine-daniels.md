@@ -7,7 +7,7 @@ subtitle: Bed & bath products
 suite: B106
 phone: (928) 282-5838
 website:
-coordinates: "-111.7634635, 34.8622272"
+coordinates: "-111.7630565, 34.8620697"
 image: "/assets/images/stores/dorine-daniels.webp"
 instagram:
 facebook:
