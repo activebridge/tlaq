@@ -37,6 +37,8 @@
     z-index: 4;
     scrollbar-width: thin;
     scrollbar-color: var(--cream-60) transparent;
+    transform: translateX(0);
+    opacity: 1;
   }
 
   #mapSidebar::-webkit-scrollbar { width: 4px; }
@@ -50,6 +52,12 @@
     transform: translateX(-100%);
     opacity: 0;
     pointer-events: none;
+  }
+
+  #mapSidebar.hidden {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: none;
   }
 
   #mapSidebarToggle {
@@ -69,7 +77,13 @@
     justify-content: center;
     font-size: 16px;
     color: var(--navy);
-    transition: left 0.3s ease, transform 0.2s ease;
+    transition: left 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+    opacity: 1;
+  }
+
+  #mapSidebarToggle.hidden {
+    opacity: 0;
+    transition: none;
   }
 
   #mapSidebarToggle:hover { transform: scale(1.05); }
@@ -388,7 +402,7 @@
 </style>
 
 <div class="map-container" id="mapContainer">
-  <nav id="mapSidebar" aria-label="Store filter">
+  <nav id="mapSidebar" class="hidden" aria-label="Store filter">
     <search class="sidebar-search">
       <label for="mapSearch" class="sr-only">Search stores</label>
       <input type="search" id="mapSearch" placeholder="Search stores..." autocomplete="off">
@@ -423,7 +437,7 @@
     </button>
   </nav>
 
-  <button id="mapSidebarToggle" aria-label="Toggle sidebar">
+  <button id="mapSidebarToggle" class="hidden" aria-label="Toggle sidebar">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
   </button>
 
@@ -469,8 +483,12 @@
       minZoom: 14, maxZoom: 20, maxBounds: [[-111.7659, 34.8606], [-111.7611, 34.8642]]
     });
 
-    // Remove loading spinner and placeholder once map tiles are ready
-    const removeOverlay = () => { window.mapSpinner?.remove(); window.mapPlaceholder?.remove(); };
+    // Remove loading spinner and placeholder once map tiles are ready, then reveal sidebar
+    const removeOverlay = () => {
+      window.mapSpinner?.remove(); window.mapPlaceholder?.remove();
+      mapSidebar.classList.remove('hidden');
+      mapSidebarToggle.classList.remove('hidden');
+    };
     map.loaded() ? removeOverlay() : map.on('load', removeOverlay);
 
     const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
@@ -531,6 +549,39 @@
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'active'], false], ['coalesce', ['feature-state', 'color'], defaultHex], baseHex],
         'fill-extrusion-height': 4, 'fill-extrusion-base': 0, 'fill-extrusion-opacity': 1
       }});
+
+      // Add second dataset (zones / polygons) from tileset
+      map.addSource('zones', { type: 'vector', url: 'mapbox://storchak.cmmorg5yk0cp11pol3pe7mk1w-9vzgq' });
+
+      // Add parking zones layer
+      // const ZONES_SL = 'tlaq-parkings';
+      // map.addLayer({
+      //   id: 'zones-fill', type: 'fill', source: 'zones', 'source-layer': ZONES_SL,
+      //   paint: { 'fill-color': '#ff0000', 'fill-opacity': 0.3 }
+      // });
+      // map.addLayer({
+      //   id: 'zones-outline', type: 'line', source: 'zones', 'source-layer': ZONES_SL,
+      //   paint: { 'line-color': '#cc0000', 'line-width': 1.5 }
+      // });
+      // Add administrative borders from tileset
+      map.addSource('borders', { type: 'vector', url: 'mapbox://storchak.cmmovfbhc0d9g1nolyol61q4j-0rjk4' });
+      // Discover source-layer and add border layers
+      const addBordersLayer = () => {
+        const src = map.getSource('borders');
+        if (!src || !src.vectorLayerIds?.length) return;
+        const bordersSL = src.vectorLayerIds[0];
+        map.addLayer({
+          id: 'borders-line', type: 'line', source: 'borders', 'source-layer': bordersSL,
+          paint: { 'line-color': css('--navy'), 'line-width': 2, 'line-dasharray': [3, 2], 'line-opacity': 0.6 }
+        }, BLD); // below buildings
+        map.addLayer({
+          id: 'borders-fill', type: 'fill', source: 'borders', 'source-layer': bordersSL,
+          paint: { 'fill-color': css('--navy'), 'fill-opacity': 0.03 }
+        }, 'borders-line'); // below the border line
+        map.off('sourcedata', onBordersData);
+      };
+      const onBordersData = (e) => { if (e.sourceId === 'borders' && e.isSourceLoaded) addBordersLayer(); };
+      map.on('sourcedata', onBordersData);
 
       // Build slug/id lookup tables from loaded tileset features
       map.once('idle', () => {

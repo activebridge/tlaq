@@ -903,7 +903,7 @@ article {
           transform: translateX(4px);
         }
 
-        hgroup.calendar {
+        hgroup {
           p {
             margin: 0;
           }
@@ -920,13 +920,13 @@ article {
           margin: 0;
 
           &:first-child {
-            font-size: 0.65rem;
+            font-size: 1rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
           }
 
           &:last-child {
-            font-size: 1.7rem;
+            font-size: 2rem;
             font-weight: 600;
             color: var(--navy);
           }
