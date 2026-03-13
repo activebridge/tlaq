@@ -2,6 +2,8 @@
 layout: null
 ---
 
+// Build version: {{ site.time | date: '%Y%m%d%H%M%S' }}
+
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.3.0/workbox-sw.js');
 
 const { registerRoute, Route } = workbox.routing;
