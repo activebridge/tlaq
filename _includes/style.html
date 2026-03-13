@@ -1,5 +1,10 @@
 <style>
   @view-transition { navigation: auto; }
+
+  nav#landing-nav a img {
+    view-transition-name: var(--transition-name);
+  }
+
   :root {
     /* Header */
     --header-height: 131px;
@@ -208,7 +213,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    view-transition-name: header;
   }
+  ::view-transition-group(header) { z-index: 1; }
 
   header a {
     text-decoration: none;
