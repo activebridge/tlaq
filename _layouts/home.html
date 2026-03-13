@@ -14,10 +14,9 @@ layout: default
 
 <nav id="landing-nav" aria-label="{{ page.nav.label }}">
   {% for item in page.nav.items %}
-    {% assign image = '/assets/images/' | append: item.image | prepend: '/cdn-cgi/image/width=240,height=174,fit=cover,format=webp/' | prepend: site.cdn_url %}
-    <a href="{{ item.url }}" class="{{ item.type }}" data-link="transition">
-      <img src="{{ image }}" alt="" loading="lazy" fetchpriority="low" width="240"
-        height="174">
+    {% assign image = '/assets/images/' | append: item.image | prepend: '/cdn-cgi/image/width=320,height=160,fit=cover,format=webp,gravity=center/' | prepend: site.cdn_url %}
+    <a href="{{ item.url }}" class="{{ item.type }}">
+      <img src="{{ image }}" alt="" loading="lazy" fetchpriority="low" width="320" height="160" style="--transition-name: {{ item.type }};">
       <h5>{{ item.title }}</h5>
       <p>{{ item.description }}</p>
     </a>
@@ -37,5 +36,3 @@ layout: default
 {% assign footer = site.landing | where: "section", "footer" | first %}
 {% assign template = "landing/" | append: footer.slug | append: ".html" %}
 {% include {{ template }} %}
-
-<script src="{{ '/assets/js/init-transition-view.js' | relative_url }}"></script>
