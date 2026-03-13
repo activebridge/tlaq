@@ -1,0 +1,25 @@
+---
+layout: null
+---
+
+{
+  "name": "{{ site.data.site.app_name }}",
+  "short_name": "{{ site.data.site.app_name }}",
+  "description": "{{ site.description }}",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111c4e",
+  "theme_color": "#111c4e",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
