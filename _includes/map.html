@@ -489,6 +489,10 @@
       window.mapSpinner?.remove(); window.mapPlaceholder?.remove();
       mapSidebar.classList.remove('hidden');
       mapSidebarToggle.classList.remove('hidden');
+      if (window.matchMedia('(max-width: 770px)').matches) {
+        mapSidebar.classList.add('collapsed');
+        mapContainer.classList.add('sidebar-collapsed');
+      }
     };
     map.loaded() ? removeOverlay() : map.on('load', removeOverlay);
 
