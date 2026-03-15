@@ -8,6 +8,7 @@ suite: B124
 phone: (928) 282-7130
 website: https://reneetaylorgallery.com
 coordinates: "-111.763335, 34.86233"
+image: /assets/images/stores/renee-taylor-gallery.webp
 instagram: https://www.instagram.com/reneetaylorgallery/
 facebook: https://www.facebook.com/ReneeTaylorGallery/
 full_location: 336 AZ-179 Suite B124, Sedona, AZ 86336

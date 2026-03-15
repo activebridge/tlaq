@@ -10,6 +10,7 @@ website: https://www.azadifinerugs.com
 coordinates: "-111.7635189, 34.8622013"
 instagram: https://www.instagram.com/azadifinerugs/
 facebook: https://www.facebook.com/azadifinerugsaz/
+image: /assets/images/stores/azadi-fine-rugs.webp
 full_location: 336 AZ-179 Suite B219, Sedona, AZ 86336
 store_hours:
   monday: 10AM - 6PM

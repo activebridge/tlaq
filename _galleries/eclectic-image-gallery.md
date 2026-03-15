@@ -9,6 +9,7 @@ phone: (928) 203-4333
 website: https://www.eclecticimage.com
 coordinates: "-111.7625747, 34.86195"
 facebook: https://www.facebook.com/eclecticimage/
+image: /assets/images/stores/eclectic-image-gallery.webp
 full_location: 336 AZ-179 Suite A109, Sedona, AZ 86336
 store_hours:
   monday: 10AM - 5PM

@@ -8,6 +8,7 @@ suite: D103
 phone: (928) 204-1144
 website: https://chrisnavarro.com
 coordinates: "-111.7638018, 34.8625404"
+image: /assets/images/stores/navarro-gallery.webp
 facebook: https://www.facebook.com/navarrogallerysedona/
 full_location: 336 AZ-179 Suite D103, Sedona, AZ 86336
 store_hours:
