@@ -130,6 +130,9 @@ h5 {
   align-items: center;
   text-transform: uppercase;
   margin: 1.5rem 0;
+  color: var(--navy);
+  background: url("/assets/images/icons/default.svg") no-repeat left / 1em;
+  padding-left: calc(0.725rem + 1em);
 
   svg {
     width: clamp(16px, 2.5vw, 30px);
