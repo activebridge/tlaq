@@ -1,7 +1,7 @@
 ---
 title: '"Spirit Sculpture", Payat The Medicine Man'
 slug: spirit-sculpture-payat-the-medicine-man
-starts_at: '2025-12-29 10:00:00'
+starts_at: '2025-11-29 10:00:00'
 location: QUILTS, SUITE B105
 phone: "(800) 255-2306"
 email: quiltsltd@gmail.com
