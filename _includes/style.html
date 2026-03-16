@@ -367,35 +367,65 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 17px;
-    position: relative;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    isolation: isolate;
+    background-image: var(--desktop-image);
+    background-size: cover;
+    background-position: center;
+
+    @media (max-width: 770px) {
+      background-image: var(--mobile-image);
+    }
   }
 
-  #landing-banner img {
+  #landing-banner::after {
+    content: '';
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    z-index: 1;
+    pointer-events: none;
+    border-image: fill 1 linear-gradient(#00000029);
+  }
+
+  #landing-banner iframe.videobgframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(100%, calc(100vh * 16 / 9));
+    height: max(100%, calc(100vw * 9 / 16));
+    transform: translate(-50%, -50%);
     z-index: 0;
+    opacity: 0;
+    transition: opacity 1s;
+    border: 0;
+  }
+
+  #landing-banner iframe.videobgframe.loaded {
+    opacity: 1;
   }
 
   #landing-banner h1 {
     width: 100%;
     text-align: center;
+    position: relative;
+    z-index: 2;
   }
 
   #landing-banner a.btn {
     position: relative;
     margin-top: 5rem;
-    z-index: 1;
+    z-index: 2;
   }
 
   #landing-nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: clamp(144px, 25vw + 24px, 314px);
-    margin-bottom: clamp(2rem, 6vw, 5rem);
+    padding-bottom: clamp(2rem, 6vw, 5rem);
+    position: relative;
+    background: var(--cream);
   }
 
   #landing-nav a {
@@ -430,6 +460,9 @@
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 clamp(1.5rem, 4vw, 3rem);
+    position: relative;
+    z-index: 1;
+    background: var(--cream);
   }
 
   #mapContainer {
