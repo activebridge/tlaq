@@ -130,9 +130,6 @@ h5 {
   align-items: center;
   text-transform: uppercase;
   margin: 1.5rem 0;
-  color: var(--navy);
-  background: url("/assets/images/icons/default.svg") no-repeat left / 1em;
-  padding-left: calc(0.725rem + 1em);
 
   svg {
     width: clamp(16px, 2.5vw, 30px);
@@ -664,27 +661,27 @@ header {
       }
     }
 
-    &.shops {
+    &.shops-link {
       background: var(--pink);
       --category-overlay: var(--pink-40);
     }
 
-    &.galleries {
+    &.galleries-link {
       background: var(--blue);
       --category-overlay: var(--blue-40);
     }
 
-    &.foods {
+    &.foods-link {
       background: var(--orange);
       --category-overlay: var(--orange-40);
     }
 
-    &.events {
+    &.events-link {
       background: var(--purple);
       --category-overlay: var(--purple-40);
     }
 
-    &.weddings {
+    &.weddings-link {
       background: var(--pink-40);
       --category-overlay: var(--pink-40);
 
@@ -694,7 +691,7 @@ header {
       }
     }
 
-    &.village-map {
+    &.village-map-link {
       background: var(--navy);
       --category-overlay: var(--navy-80);
     }
@@ -1398,6 +1395,12 @@ input[type="search"] {
 }
 
 /* Color Themes for pages */
+
+h5[title] {
+  color: var(--navy);
+  background: url("/assets/images/icons/default.svg") no-repeat left / 1em;
+  padding-left: calc(0.725rem + 1em);
+}
 
 .galleries {
   h5 {

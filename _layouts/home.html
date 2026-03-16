@@ -21,7 +21,7 @@ layout: default
   {% for item in page.nav.items %}
   {% assign image = '/assets/images/' | append: item.image | prepend:
   '/cdn-cgi/image/width=320,height=160,fit=cover,format=webp,gravity=center/' | prepend: site.cdn_url %}
-  <a href="{{ item.url }}" class="{{ item.type }}">
+  <a href="{{ item.url }}" class="{{ item.type }}-link">
     <img src="{{ image }}" alt="" loading="lazy" fetchpriority="low" width="320" height="160"
       style="--transition-name: {{ item.type }};">
     <h5>{{ item.title }}</h5>
