@@ -129,7 +129,7 @@ h5 {
   display: flex;
   align-items: center;
   text-transform: uppercase;
-  margin: 1.5rem 0 0.75rem 0;
+  margin: 1.5rem 0;
 
   svg {
     width: clamp(16px, 2.5vw, 30px);
@@ -1292,7 +1292,7 @@ footer {
 .weddings {
   h5 {
     color: var(--pink-40);
-    background: url("/assets/images/icons/wedding.svg") no-repeat left / 1em;
+    background: url("/assets/images/icons/weddings.svg") no-repeat left / 1em;
     padding-left: calc(0.725rem + 1em);
   }
 
@@ -1576,13 +1576,39 @@ input[type="search"] {
 
 /* Color Themes for pages */
 
+.galleries {
+  h5 {
+    color: var(--blue);
+    background: url(/assets/images/icons/galleries.svg) no-repeat left / 1em;
+    padding-left: calc(0.725rem + 1em);
+  }
+
+  .btn-primary {
+    background-color: var(--blue);
+  }
+}
+
 .shops {
   h5 {
     color: var(--pink);
+    background: url(/assets/images/icons/shops.svg) no-repeat left / 1em;
+    padding-left: calc(0.725rem + 1em);
   }
 
   .btn-primary {
     background-color: var(--pink);
+  }
+}
+
+.foods {
+  h5 {
+    color: var(--orange);
+    background: url(/assets/images/icons/foods.svg) no-repeat left / 1em;
+    padding-left: calc(0.725rem + 1em);
+  }
+
+  .btn-primary {
+    background-color: var(--orange);
   }
 }
 
