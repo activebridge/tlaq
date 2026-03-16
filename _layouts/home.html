@@ -2,10 +2,13 @@
 layout: default
 ---
 {% assign banner = site.landing | where: "section", "banner" | first %}
-{% assign img = banner.image %}
+{% assign img_path = '/assets/images/' | append: banner.image | append: '.webp' %}
+{% assign desktop_image_path = img_path | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,quality=85,gravity=center/' | prepend: site.cdn_url %}
+{% assign mobile_image_path = img_path | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,quality=85,gravity=center/' | prepend: site.cdn_url %}
+
 <section id="landing-banner" style="
-  --desktop-image: url('{{ '/assets/images/' | append: img | append: '-1440.webp' | relative_url }}');
-  --mobile-image: url('{{ '/assets/images/' | append: img | append: '-480.webp' | relative_url }}');
+  --desktop-image: url('{{ desktop_image_path }}');
+  --mobile-image: url('{{ mobile_image_path }}');
 ">
   <iframe class="videobgframe" frameborder="0" seamless webkitallowfullscreen mozallowfullscreen allowfullscreen
     src="https://player.vimeo.com/video/219571013?background=1&amp;api=1&amp;autoplay=1&amp;loop=1&amp;title=0&amp;byline=0&amp;muted=1&amp;player_id=video-bg"
