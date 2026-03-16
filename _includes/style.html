@@ -361,12 +361,11 @@
 
   #landing-banner {
     min-height: 427px;
-    height: 60vh;
+    height: calc(100dvh - var(--header-height) - var(--header-status-height) - 3rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 17px;
     position: sticky;
     top: 0;
     overflow: hidden;
@@ -386,7 +385,7 @@
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    border-image: fill 1 linear-gradient(#00000029);
+    border-image: fill 1 linear-gradient(#0000005d);
   }
 
   #landing-banner iframe.videobgframe {
@@ -423,6 +422,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: clamp(144px, 25vw + 24px, 314px);
+    padding-top: 17px;
     padding-bottom: clamp(2rem, 6vw, 5rem);
     position: relative;
     background: var(--cream);
@@ -463,6 +463,8 @@
     position: relative;
     z-index: 1;
     background: var(--cream);
+    box-shadow: 0 0 0 100vmax var(--cream);
+    clip-path: inset(0 -100vmax);
   }
 
   #mapContainer {
