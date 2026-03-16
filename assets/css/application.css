@@ -1420,12 +1420,6 @@ input[type="search"] {
 }
 
 /* TODO: cleanup redurant styles */
-/* Events */
-
-.event-list {
-  display: flex;
-  flex-direction: column;
-}
 
 /* Calendar Styles */
 .calendar {
@@ -1620,6 +1614,22 @@ input[type="search"] {
 
   .btn-primary {
     background-color: var(--orange);
+  }
+}
+
+.events {
+  .header-jump div {
+    justify-content: start;
+    gap: 1rem;
+  }
+
+  h5 {
+    color: var(--purple);
+  }
+
+  .btn-primary {
+    background-color: var(--purple);
+    width: 100%;
   }
 }
 
