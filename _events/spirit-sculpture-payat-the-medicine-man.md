@@ -5,6 +5,7 @@ starts_at: '2025-12-29 10:00:00'
 location: QUILTS, SUITE B105
 phone: "(800) 255-2306"
 email: quiltsltd@gmail.com
+category: one-time
 website: sedonaquiltgallery.com
 facebook: facebook.com
 instagram: instagram.com

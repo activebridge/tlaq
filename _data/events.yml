@@ -1,0 +1,14 @@
+title: Experience Tlaquepaque's celebrations, from weekly events to annual festivals.
+description: Tlaquepaque’s events showcase live music, cultural celebrations, and seasonal gatherings that bring the village to life throughout the year.
+events: EVENTS
+hero_banner: "/assets/images/events.webp"
+
+# Jump to links
+jump_to_links:
+  calendar:
+    text: CALENDAR
+    id: "#calendar"
+
+# Buttons
+buttons:
+  details: DETAILS

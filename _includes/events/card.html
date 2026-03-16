@@ -1,0 +1,29 @@
+<div class="card">
+  {% if event.image %}
+    <picture>
+      <source
+        media="(max-width: 480px)"
+        srcset="{{ event.image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+      >
+      <source
+        media="(min-width: 768px)"
+        srcset="{{ event.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+      >
+      <img
+        src="{{ event.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+        alt="{{ event.title }}"
+        style="--transition-name: {{ event.image | downcase | replace: '/', '-' | replace: '.', '-' }};"
+      >
+    </picture>
+  {% else %}
+    <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ event.title }}">
+  {% endif %}
+  <h3>{{ event.title }}</h3>
+  {% if event.subtitle %}<p>{{ event.subtitle }}</p>{% endif %}
+  {% if event.starts_at and event.ends_at %}
+    <div class="card-datetime">
+      {{ event.starts_at | date: "%B %-d, %Y" }} | {{ event.starts_at | date: "%-I:%M %p" }} - {{ event.ends_at | date: "%-I:%M %p" }}
+    </div>
+  {% endif %}
+  <a href="{{ event.url }}" class="btn btn-primary">{{ site.data.events.buttons.details }}</a>
+</div>
