@@ -7,7 +7,7 @@ subtitle: Experience the extraordinary at Diva Hillside, Sedona's premier Lifest
 suite:  A204
 phone: (928) 204-1050
 website: https://www.yelp.com/biz/diva-sedona-sedona
-coordinates: "-111.7634647, 34.8622032"
+coordinates: "-111.7635747, 34.8622490"
 image: "/assets/images/stores/diva-sedona.webp"
 full_location: 336 AZ-179 Suite A204, Sedona, AZ 86336
 store_hours:

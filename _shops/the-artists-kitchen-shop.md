@@ -7,7 +7,7 @@ subtitle: Creative cookware, elegant entertaining, gourmet gifts
 suite: C11
 phone: (928) 862-4140
 website: https://theartistskitchenshop.myshoplocal.com/
-coordinates: "-111.762872, 34.8632849"
+coordinates: "-111.7628307, 34.8632704"
 image: "/assets/images/stores/the-artists-kitchen-shop.webp"
 instagram: https://www.instagram.com/theartistskitchenshop/
 facebook: https://www.facebook.com/theartistskitchenshop/

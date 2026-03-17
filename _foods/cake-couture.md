@@ -7,7 +7,7 @@ subtitle: Fine dessert and coffee
 suite: A114
 phone: (928) 204-2887
 website: https://www.sedonacakes.com
-coordinates: "-111.7627959, 34.8618808"
+coordinates: "-111.7628120, 34.8619472"
 instagram: https://www.instagram.com/sedonacakecouture/
 facebook: https://www.facebook.com/sedonacakecouture/
 full_location: 336 AZ-179 Suite A114, Sedona, AZ 86336

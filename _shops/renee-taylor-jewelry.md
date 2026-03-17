@@ -7,7 +7,7 @@ subtitle: Contemporary, fashion forward jewelry
 suite: B14
 phone: (928) 282-1506
 website: https://www.reneetaylorgallery.com
-coordinates: "-111.763356, 34.863193"
+coordinates: "-111.7633365, 34.8632160"
 image: "/assets/images/stores/renee-taylor-jewelry.webp"
 instagram: https://www.instagram.com/reneetaylorgallery/
 facebook: https://www.facebook.com/ReneeTaylorJewelry/

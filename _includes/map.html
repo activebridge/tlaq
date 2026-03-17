@@ -1,5 +1,5 @@
 {% comment %}Build store data as JSON from all collections{% endcomment %}
-{% assign all_stores = site.shops | concat: site.galleries | concat: site.foods %}
+{% assign all_stores = site.shops | concat: site.galleries | concat: site.foods | concat: site.weddings %}
 
 <style>
   .sr-only {
@@ -279,16 +279,21 @@
   .map-marker {
     width: 16px;
     height: 16px;
-    border-radius: 50%;
-    border: 1px solid var(--cream);
-    box-shadow: 0 1px 4px rgba(0,0,0,.3);
     cursor: pointer;
-    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0,0,0,.35);
   }
 
-  .map-marker[data-type="shop"] { background: var(--pink); }
-  .map-marker[data-type="gallery"] { background: var(--blue); }
-  .map-marker[data-type="food"] { background: var(--orange); }
+  .map-marker svg {
+    width: 100%;
+    height: 100%;
+  }
 
   .mapboxgl-popup-content {
     padding: 0;
@@ -469,14 +474,14 @@
   <span class="sidebar-result-icon" data-type="shop">{% include icons/windows/shops.svg %}</span>
   <span class="sidebar-result-icon" data-type="gallery">{% include icons/windows/galleries.svg %}</span>
   <span class="sidebar-result-icon" data-type="food">{% include icons/windows/foods.svg %}</span>
+  <span class="sidebar-result-icon" data-type="wedding">{% include icons/windows/wedding.svg %}</span>
   <span class="sidebar-result-icon" data-type="default">{% include icons/windows/default.svg %}</span>
 </template>
 
 <script>
   function initMap() {
     mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvcmNoYWsiLCJhIjoiY21tZDZsMGdmMDAydDJwczhqbGhhOTNtciJ9.gPoufGUfsywbXf1wN8D0yw';
-    // SL = vector tileset source-layer id, BLD = building outlines layer name
-    const SL = '0a44077372e92fc898f4', BLD = 'building-outlines';
+    const BLD = 'building-outlines';
     const map = new mapboxgl.Map({
       container: 'map', style: 'mapbox://styles/storchak/cmmew5gbs000l01sbb2mld1pq',
       center: [-111.763522, 34.862363], zoom: 14, pitch: 20,
@@ -497,13 +502,20 @@
     map.loaded() ? removeOverlay() : map.on('load', removeOverlay);
 
     const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-    const typeColors = { shop: '--pink', gallery: '--blue', food: '--orange' };
+    const typeColors = { shop: '--pink', gallery: '--blue', food: '--orange', wedding: '--pink-40' };
     for (const t in typeColors) typeColors[t] = { hex: css(typeColors[t]), css: `var(${typeColors[t]})` };
-    const defaultHex = typeColors.shop.hex, baseHex = css('--navy');
+    // --pink-40 uses color-mix() which Mapbox can't parse; compute 40% pink mixed with white
+    const pink = typeColors.shop.hex;
+    typeColors.wedding.hex = '#' + [1,3,5].map(i => Math.round(parseInt(pink.slice(i, i+2), 16) * 0.4 + 255 * 0.6).toString(16).padStart(2, '0')).join('');
+    const defaultHex = typeColors.shop.hex, baseHex = '#111c4e';
+    const parkingFill = '#e8e4df';
+    const parkingOutline = '#d9d9d9';
+    const fountainFill = '#f88d2b';
+    const fountainStroke = '#e64b38';
 
     // Helpers
-    const bldSrc = (id) => ({ source: 'buildings', sourceLayer: SL, id }); // feature-state target for a building
-    const isValidId = (id) => id && id !== 'null';
+    const bldSrc = (id) => ({ source: 'buildings', id }); // feature-state target for a building
+    const isValidId = (id) => (typeof id === 'string' || typeof id === 'number') && id !== 'null' && id !== '';
     const normSuite = (s) => s.toLowerCase().replace(/\s+/g, ''); // normalize suite ids for matching
     const parseCoords = (s) => s.split(',').map(Number); // parse "lng, lat" string to [lng, lat]
     const isSafeUrl = (u) => u && (u[0] === '/' || u.lastIndexOf('http', 0) === 0);
@@ -548,51 +560,89 @@
 
     // --- Building tileset layer and interactions ---
     map.on('load', () => {
-      // Add building outlines from Mapbox vector tileset
-      map.addSource('buildings', { type: 'vector', url: 'mapbox://storchak.mv1ujm9r4n7l', promoteId: 'id' });
-      map.addLayer({ id: BLD, type: 'fill-extrusion', source: 'buildings', 'source-layer': SL, paint: {
-        'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'active'], false], ['coalesce', ['feature-state', 'color'], defaultHex], baseHex],
-        'fill-extrusion-height': 4, 'fill-extrusion-base': 0, 'fill-extrusion-opacity': 1
-      }});
+      // Administrative border fill (subtle shaded area within borders)
+      map.addSource('borders', { type: 'geojson', data: '{{ "/assets/data/borders.geojson" | relative_url }}' });
+      map.addLayer({
+        id: 'borders-fill', type: 'fill', source: 'borders',
+        paint: { 'fill-color': css('--navy'), 'fill-opacity': 0.03 }
+      });
+      // Administrative border line (dashed outline of Tlaquepaque property)
+      map.addLayer({
+        id: 'borders-line', type: 'line', source: 'borders',
+        paint: { 'line-color': css('--navy'), 'line-width': 2, 'line-dasharray': [3, 2], 'line-opacity': 0.6 }
+      });
 
-      // Add second dataset (zones / polygons) from tileset
-      map.addSource('zones', { type: 'vector', url: 'mapbox://storchak.cmmorg5yk0cp11pol3pe7mk1w-9vzgq' });
-
-      // Add parking zones layer
-      // const ZONES_SL = 'tlaq-parkings';
+      // Add building outlines from local GeoJSON
+      map.addSource('buildings', { type: 'geojson', data: '{{ "/assets/data/buildings.geojson" | relative_url }}', promoteId: 'id' });
+      // const isParking = ['==', ['slice', ['downcase', ['coalesce', ['get', 'id'], '']], 0, 8], 'parking-'];
+      // const notParking = ['!=', ['slice', ['downcase', ['coalesce', ['get', 'id'], '']], 0, 8], 'parking-'];
+      // // Parking lot fill (flat light gray background)
       // map.addLayer({
-      //   id: 'zones-fill', type: 'fill', source: 'zones', 'source-layer': ZONES_SL,
-      //   paint: { 'fill-color': '#ff0000', 'fill-opacity': 0.3 }
+      //   id: 'parking-fill', type: 'fill', source: 'buildings',
+      //   filter: ['all', ['==', ['geometry-type'], 'Polygon'], isParking],
+      //   paint: { 'fill-color': parkingFill, 'fill-opacity': 0.4 }
+      // });
+      // // Parking lot outlines (dashed border around parking areas)
+      // map.addLayer({
+      //   id: 'parking-outline', type: 'line', source: 'buildings',
+      //   filter: ['all', ['==', ['geometry-type'], 'Polygon'], isParking],
+      //   paint: { 'line-color': parkingOutline, 'line-width': 1.5, 'line-opacity': 0.9 }
+      // });
+      // Area zones (soft green fill with dashed borders)
+      // const isArea = ['==', ['get', 'type'], 'area'];
+      // map.addLayer({
+      //   id: 'area-fill', type: 'fill', source: 'buildings',
+      //   filter: ['all', ['==', ['geometry-type'], 'Polygon'], isArea],
+      //   paint: { 'fill-color': css('--green'), 'fill-opacity': 0.08 }
       // });
       // map.addLayer({
-      //   id: 'zones-outline', type: 'line', source: 'zones', 'source-layer': ZONES_SL,
-      //   paint: { 'line-color': '#cc0000', 'line-width': 1.5 }
+      //   id: 'area-outline', type: 'line', source: 'buildings',
+      //   filter: ['all', ['==', ['geometry-type'], 'Polygon'], isArea],
+      //   paint: { 'line-color': css('--green'), 'line-width': 1.5, 'line-dasharray': [4, 3], 'line-opacity': 0.4 }
       // });
-      // Add administrative borders from tileset
-      map.addSource('borders', { type: 'vector', url: 'mapbox://storchak.cmmovfbhc0d9g1nolyol61q4j-0rjk4' });
-      // Discover source-layer and add border layers
-      const addBordersLayer = () => {
-        const src = map.getSource('borders');
-        if (!src || !src.vectorLayerIds?.length) return;
-        const bordersSL = src.vectorLayerIds[0];
-        map.addLayer({
-          id: 'borders-line', type: 'line', source: 'borders', 'source-layer': bordersSL,
-          paint: { 'line-color': css('--navy'), 'line-width': 2, 'line-dasharray': [3, 2], 'line-opacity': 0.6 }
-        }, BLD); // below buildings
-        map.addLayer({
-          id: 'borders-fill', type: 'fill', source: 'borders', 'source-layer': bordersSL,
-          paint: { 'fill-color': css('--navy'), 'fill-opacity': 0.03 }
-        }, 'borders-line'); // below the border line
-        map.off('sourcedata', onBordersData);
-      };
-      const onBordersData = (e) => { if (e.sourceId === 'borders' && e.isSourceLoaded) addBordersLayer(); };
-      map.on('sourcedata', onBordersData);
+      // 3D extruded buildings (only type: building)
+      map.addLayer({ id: BLD, type: 'fill-extrusion', source: 'buildings',
+        filter: ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'type'], 'building']],
+        paint: {
+          'fill-extrusion-color': ['case',
+            ['boolean', ['feature-state', 'active'], false], ['coalesce', ['feature-state', 'color'], defaultHex],
+            baseHex
+          ],
+          'fill-extrusion-height': 4,
+          'fill-extrusion-base': 0, 'fill-extrusion-opacity': 1
+        }
+      });
+      // 3D extruded walls (non-interactive)
+      map.addLayer({ id: 'wall-extrusions', type: 'fill-extrusion', source: 'buildings',
+        filter: ['all', ['==', ['geometry-type'], 'Polygon'], ['==', ['get', 'type'], 'wall']],
+        paint: {
+          'fill-extrusion-color': baseHex,
+          'fill-extrusion-height': 4,
+          'fill-extrusion-base': 0, 'fill-extrusion-opacity': 1
+        }
+      });
+      // // Fountain point markers (circular dots for fountain locations)
+      // map.addLayer({
+      //   id: 'fountain-point', type: 'circle', source: 'buildings',
+      //   filter: ['==', ['geometry-type'], 'Point'],
+      //   paint: {
+      //     'circle-color': fountainFill,
+      //     'circle-stroke-color': fountainStroke,
+      //     'circle-stroke-width': 2,
+      //     'circle-radius': 6,
+      //     'circle-opacity': ['case', ['boolean', ['feature-state', 'fountain'], false], 0.95, 0],
+      //     'circle-blur': 0.2
+      //   }
+      // });
 
-      // Build slug/id lookup tables from loaded tileset features
+      // Build slug/id lookup tables from loaded GeoJSON features
       map.once('idle', () => {
-        map.querySourceFeatures('buildings', { sourceLayer: SL }).forEach(f => {
+        map.querySourceFeatures('buildings').forEach(f => {
           const { id, slug } = f.properties || {};
-          if (isValidId(id)) idSet.add(id);
+          if (isValidId(id)) {
+            idSet.add(id);
+            // if (String(id).startsWith('fontain-')) map.setFeatureState(bldSrc(id), { fountain: true });
+          }
           if (slug && isValidId(id)) { const l = slugToIds.get(slug) || []; l.push(id); slugToIds.set(slug, l); }
         });
         ready = true;
@@ -649,6 +699,7 @@
       if (s.suite) { const n = normSuite(s.suite); bySuite.set(n, i); const d = n.indexOf('-'); if (d > 0) bySuite.set(n.slice(0, d), i); }
       // Create marker element and add to map
       const el = Object.assign(document.createElement('div'), { className: 'map-marker' }); el.dataset.type = s.type;
+      const mIcon = getIcon(s.type); const mSvg = mIcon.querySelector('svg'); if (mSvg) el.appendChild(mSvg); else el.appendChild(mIcon);
       const m = new mapboxgl.Marker({ element: el }).setLngLat(parseCoords(s.coordinates)).setPopup(createPopup(s)).addTo(map);
       m.getElement().addEventListener('click', (e) => { e.stopPropagation(); focusStore(i); });
       markers.push({ marker: m, type: s.type });
@@ -657,7 +708,7 @@
     // Fly to a store, highlight its building, and open its popup
     const focusStore = (i, opts = {}) => {
       activateStore(stores[i]);
-      map.flyTo({ center: parseCoords(stores[i].coordinates), zoom: 18, speed: 0.4, padding: { top: 150 }, ...opts });
+      map.easeTo({ center: parseCoords(stores[i].coordinates), padding: { top: 150 }, duration: 600, ...opts });
       markers[i].marker.addTo(map); // ensure visible even if filtered out
       if (!markers[i].marker.getPopup().isOpen()) markers[i].marker.togglePopup();
     };

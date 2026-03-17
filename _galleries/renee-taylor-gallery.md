@@ -7,7 +7,7 @@ subtitle: Original contemporary fine art & jewelry
 suite: B124
 phone: (928) 282-7130
 website: https://reneetaylorgallery.com
-coordinates: "-111.763335, 34.86233"
+coordinates: "-111.7633295, 34.8623398"
 image: /assets/images/stores/renee-taylor-gallery.webp
 instagram: https://www.instagram.com/reneetaylorgallery/
 facebook: https://www.facebook.com/ReneeTaylorGallery/
