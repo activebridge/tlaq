@@ -1,36 +1,34 @@
 ---
 layout: default
 ---
-<div class="weddings">
-  {% assign desktop_image_path = site.data.weddings.hero_banner | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,quality=85,gravity=top/' | prepend: site.cdn_url %}
-  {% assign mobile_image_path = site.data.weddings.hero_banner | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,quality=85,gravity=top/' | prepend: site.cdn_url %}
-  {% assign low_mob_image_path = site.data.weddings.hero_banner | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,quality=4,gravity=top/' | prepend: site.cdn_url %}
-  {% assign low_desk_image_path = site.data.weddings.hero_banner | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,quality=4,gravity=top/' | prepend: site.cdn_url %}
+{% assign desktop_image_path = site.data.weddings.hero_banner | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,quality=85,gravity=top/' | prepend: site.cdn_url %}
+{% assign mobile_image_path = site.data.weddings.hero_banner | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,quality=85,gravity=top/' | prepend: site.cdn_url %}
+{% assign low_mob_image_path = site.data.weddings.hero_banner | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,quality=4,gravity=top/' | prepend: site.cdn_url %}
+{% assign low_desk_image_path = site.data.weddings.hero_banner | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,quality=4,gravity=top/' | prepend: site.cdn_url %}
 
-  <figure class="hero"
-    style="
-      --desktop-image: url('{{ desktop_image_path }}');
-      --mobile-image: url('{{ mobile_image_path }}');
-      --low-mob-image: url('{{ low_mob_image_path }}');
-      --low-desk-image: url('{{ low_desk_image_path }}');
-      --transition-name: weddings;
-  "></figure>
+<figure class="hero"
+  style="
+    --desktop-image: url('{{ desktop_image_path }}');
+    --mobile-image: url('{{ mobile_image_path }}');
+    --low-mob-image: url('{{ low_mob_image_path }}');
+    --low-desk-image: url('{{ low_desk_image_path }}');
+    --transition-name: weddings;
+"></figure>
 
-  <div class="content-wrapper">
-    <hgroup>
-      <h5>{{ site.data.weddings.weddings }}</h5>
-      <h2>{{ site.data.weddings.title }}</h2>
-      <h6>{{ site.data.weddings.description }}</h6>
-    </hgroup>
+<div class="content-wrapper">
+  <hgroup>
+    <h5>{{ site.data.weddings.weddings }}</h5>
+    <h2>{{ site.data.weddings.title }}</h2>
+    <h6>{{ site.data.weddings.description }}</h6>
+  </hgroup>
 
-    {% assign jump_nav_links = "venues,gallery,private_events" | split: "," %}
-    {% assign jump_nav_slugs = "weddings" %}
-    {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
+  {% assign jump_nav_links = "venues,gallery,private_events" | split: "," %}
+  {% assign jump_nav_slugs = "weddings" %}
+  {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
 
-    {% include weddings/venues.html %}
-    {% include weddings/gallery.html %}
-    {% include connect-us.html %}
-    {% include weddings/brochure.html %}
-    {% include weddings/events.html %}
-  </div>
+  {% include weddings/venues.html %}
+  {% include weddings/gallery.html %}
+  {% include connect-us.html %}
+  {% include weddings/brochure.html %}
+  {% include weddings/events.html %}
 </div>
