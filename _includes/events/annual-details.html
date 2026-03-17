@@ -1,0 +1,29 @@
+{% comment %}
+  Annual event details. Expects page.schedule to be defined in event front matter.
+{% endcomment %}
+<div class="video">
+  {% if include.event.video.video_url %}
+    <video src="{{ include.event.video.video_url }}" controls></video>
+  {% endif %}
+</div>
+
+{% if include.event.schedule %}
+  <h3>Schedule</h3>
+  <hr>
+  {% for venue in include.event.schedule %}
+    <h6>{{ venue.location | upcase }}</h6>
+    {% for performance in venue.performances %}
+      <p class="schedule-item">
+        <span>{{ performance.name }}</span>
+        <span>{{ performance.time }}</span>
+      </p>
+    {% endfor %}
+    <hr>
+  {% endfor %}
+{% endif %}
+
+{% if include.event.map %}
+  <h3>{{ include.event.map.title }}</h3>
+  <h6>{{ include.event.map.description }}</h6>
+  <a href="{{ include.event.map.url }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">{{ include.event.map.button_label }}</a>
+{% endif %}

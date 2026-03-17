@@ -31,7 +31,7 @@ layout: default
 
   <article>
     <div class="list-container">
-      {% assign annual_events = site.events | where: "category", "anual" | sort: "starts_at" %}
+      {% assign annual_events = site.events | where: "category", "annual" | sort: "starts_at" %}
       {% for event in annual_events %}
         {% include events/card.html event=event %}
       {% endfor %}

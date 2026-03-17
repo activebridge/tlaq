@@ -1,0 +1,96 @@
+---
+layout: default
+---
+
+{% assign desktop_image_path = page.image | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
+{% assign mobile_image_path = page.image | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
+{% assign low_mob_image_path = page.image | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,quality=4,gravity=center/' | prepend: site.cdn_url %}
+{% assign low_desk_image_path = page.image | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,quality=4,gravity=center/' | prepend: site.cdn_url %}
+
+<figure class="hero"
+  style="
+    --desktop-image: url('{{ desktop_image_path }}');
+    --mobile-image: url('{{ mobile_image_path }}');
+    --low-mob-image: url('{{ low_mob_image_path }}');
+    --low-desk-image: url('{{ low_desk_image_path }}');
+    --transition-name: {{ page.image | downcase | replace: '/', '-' | replace: '.', '-' }};
+  "></figure>
+
+  <div class="top-section">
+    <div class="content-wrapper">
+      <h3>{{ page.title }}</h3>
+      {% if page.starts_at %}
+        <p>
+          {% include icons/calendar.svg %}
+          {{ page.starts_at | date: "%A, %B %-d, %Y" | upcase }}
+        </p>
+      {% endif %}
+
+      {% if page.starts_at %}
+        <p>
+          {% include icons/clock.svg %}
+          {% if page.ends_at %}
+            {{ page.starts_at | date: "%-I:%M %p" | upcase }} - {{ page.ends_at | date: "%-I:%M %p" | upcase }}
+          {% else %}
+            {{ page.starts_at | date: "%-I:%M %p" | upcase }}
+          {% endif %}
+        </p>
+      {% endif %}
+
+      {% if page.location %}
+        <p>
+          {% include icons/location.svg %}
+          {{ page.location | upcase }}
+        </p>
+      {% endif %}
+    </div>
+    
+  </div>
+  
+  <div class="content-wrapper">
+    {{ content }}
+  
+    {% if page.category == "annual" %}
+      {% include events/annual-details.html event=page %}
+    {% endif %}
+  
+    {% if page.phone %}
+      <hr>
+      <div>
+        <label>PHONE</label>
+        <p>{{ page.phone }}</p>
+      </div>
+    {% endif %}
+  
+    {% if page.website %}
+      <hr>
+      <div>
+        <label>WEBSITE</label>
+        <p><a href="{{ page.website }}" target="_blank" rel="noopener noreferrer">{{ page.website }}</a></p>
+      </div>
+    {% endif %}
+  
+    {% if page.email %}
+      <hr>
+      <div>
+        <label>EMAIL</label>
+        <p><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
+      </div>
+    {% endif %}
+  
+    {% if page.facebook or page.instagram %}
+      <hr>
+      <div>
+        {% if page.facebook %}
+          <a href="{{ page.facebook }}" target="_blank" rel="noopener noreferrer" class="social">
+            {% include icons/socials/facebook.svg %}
+          </a>
+        {% endif %}
+        {% if page.instagram %}
+          <a href="{{ page.instagram }}" target="_blank" rel="noopener noreferrer" class="social">
+            {% include icons/socials/instagram.svg %}
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
