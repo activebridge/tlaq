@@ -8,7 +8,7 @@ suite: F104
 phone: (928) 301-2666
 image: "/assets/images/stores/dulce-ice-cream-churros-candies.webp"
 website: https://dulce-icecream.com
-coordinates: "-111.7632366, 34.8620623"
+coordinates: "-111.7637071, 34.8624058"
 instagram: https://www.instagram.com/dulcesedona/
 full_location: 336 AZ-179 Suite F104, Sedona, AZ 86336
 ---

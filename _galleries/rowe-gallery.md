@@ -7,7 +7,7 @@ subtitle: Traditional & contemporary western & wildlife paintings & sculptures
 suite: A102-3
 phone: (928) 282-8877
 website: https://rowegallery.com
-coordinates: "-111.7627523, 34.8623343"
+coordinates: "-111.7626800, 34.8623355"
 image: /assets/images/stores/rowe-gallery.webp
 instagram: https://www.instagram.com/rowegallery4027/
 facebook: https://www.facebook.com/rowegallery/

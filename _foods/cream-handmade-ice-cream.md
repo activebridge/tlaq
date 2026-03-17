@@ -7,7 +7,7 @@ subtitle: Ice Cream, shakes, artisan waffle cones, sundaes and splits
 suite: A11
 phone: (928) 426-9232
 website: https://sedonacakes.com
-coordinates: "-111.7630265, 34.863065"
+coordinates: "-111.7630343, 34.8630292"
 image: "/assets/images/stores/cream-handmade-ice-cream.webp"
 instagram: https://www.instagram.com/creamandcakecouture/
 full_location: 313 AZ-179 Suite A11, Sedona, AZ 86336
