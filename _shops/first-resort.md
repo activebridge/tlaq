@@ -1,7 +1,7 @@
 ---
 slug: first-resort
 date: 2026-02-22
-published: true
+published: false
 title: First Resort
 subtitle: Gifts and apparel for people on the go
 suite: A119

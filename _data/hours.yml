@@ -1,0 +1,40 @@
+jump_to_links:
+  hours:
+    text: HOURS
+    id: "#hours"
+  locations:
+    text: LOCATIONS
+    id: "#locations"
+  village map:
+    text: VILLAGE MAP
+    id: "#village-map"
+
+village_hours:
+  monday: "10:00 A.M. - 5:00 P.M."
+  tuesday: "10:00 A.M. - 5:00 P.M."
+  wednesday: "10:00 A.M. - 5:00 P.M."
+  thursday: "10:00 A.M. - 5:00 P.M."
+  friday: "10:00 A.M. - 5:00 P.M."
+  saturday: "10:00 A.M. - 6:00 P.M."
+  sunday: "10:00 A.M. - 6:00 P.M."
+
+notes:
+  restaurants: "Onsite restaurants offer extended evening hours."
+  holidays: "Please note the village is closed for in observance of the holidays on Christmas and Thanksgiving Day."
+  village_map: "Our interactive village map provides easy navigation to all 50+ shops, galleries, and restaurants, helping you discover every corner of Tlaquepaque North and South during your visit."
+
+locations:
+  - name: Tlaquepaque South
+    address: "336 AZ-179 Sedona, AZ 86336"
+    maps_url: "https://www.google.com/maps/dir/?api=1&destination=336+AZ-179+Sedona+AZ+86336&travelmode=driving"
+    image: "/assets/images/locations/south.webp"
+  - name: Tlaquepaque North
+    address: "313 AZ-179 Sedona, AZ 86336"
+    maps_url: "https://www.google.com/maps/dir/?api=1&destination=313+AZ-179+Sedona+AZ+86336&travelmode=driving"
+    image: "/assets/images/locations/north.webp"
+
+accessibility:
+  image: "/assets/images/accessibility.webp"
+
+family_friendly:
+  image: "/assets/images/family-friendly.webp"

@@ -737,7 +737,6 @@ hgroup {
     flex: 1 1 500px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     max-width: 678px;
 
     img {
@@ -751,6 +750,10 @@ hgroup {
 
     &.hidden {
       display: none;
+    }
+
+    > *:last-child {
+      margin-top: auto;
     }
   }
 
@@ -1447,6 +1450,11 @@ h5[title] {
   .btn-primary {
     background-color: var(--blue);
   }
+
+  .today {
+    color: var(--blue);
+    font-weight: 700;
+  }
 }
 
 .food {
@@ -1456,6 +1464,11 @@ h5[title] {
 
   .btn-primary {
     background-color: var(--orange);
+  }
+
+  .today {
+    color: var(--orange);
+    font-weight: 700;
   }
 }
 
@@ -1478,6 +1491,12 @@ h5[title] {
 
 /* Store Hours Display Component */
 table {
+  caption {
+    background-color: var(--navy);
+    color: white;
+    padding: 10px 0;
+  }
+
   width: 100%;
   border-collapse: collapse;
   padding: 0;
@@ -1491,6 +1510,11 @@ table {
     &:last-child {
       text-align: right;
     }
+  }
+
+  .today {
+    color: var(--navy);
+    font-weight: 700;
   }
 }
 
