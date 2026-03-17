@@ -53,6 +53,7 @@ defaults:
       type: "events"
     values:
       layout: "event"
+      store_type: "event"
   - scope:
       path: ""
       type: "articles"
@@ -63,6 +64,7 @@ defaults:
       type: "weddings"
     values:
       layout: "weddings/show"
+      store_type: "wedding"
 
 plugins:
   - jekyll-seo-tag

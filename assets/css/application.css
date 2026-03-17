@@ -1142,7 +1142,7 @@ footer {
   }
 }
 
-.weddings {
+.weddings, .wedding {
   h5 {
     color: var(--pink-40);
     background: url("/assets/images/icons/weddings.svg") no-repeat left / 1em;
@@ -1153,7 +1153,9 @@ footer {
     background-color: var(--pink-40);
     width: 100%;
   }
+}
 
+.weddings {
   #events {
     h5 {
       color: var(--navy);
@@ -1170,7 +1172,9 @@ footer {
   .site-plan {
     img { mix-blend-mode: multiply; }
   }
+}
 
+.wedding {
   ul {
     list-style: none;
     padding-left: 0;
