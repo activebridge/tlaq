@@ -738,7 +738,7 @@ hgroup {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: all 0.3s ease allow-discrete;
+    max-width: 678px;
 
     img {
       margin: 1.5rem 0;
@@ -751,10 +751,6 @@ hgroup {
 
     &.hidden {
       display: none;
-      opacity: 0;
-      transform: scale(0.95);
-      height: 0;
-      margin: 0;
     }
   }
 
