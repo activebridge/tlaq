@@ -7,10 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
   input.addEventListener("input", () => {
     const query = input.value.toLowerCase().trim();
 
-    cards.forEach((card) => {
-      const text = card.querySelector("h3")?.textContent.toLowerCase();
+    const update = () => {
+      cards.forEach((card) => {
+        const text = card.querySelector("h3")?.textContent.toLowerCase();
 
-      card.classList.toggle("hidden", !text?.includes(query));
-    });
+        card.classList.toggle("hidden", !text?.includes(query));
+      });
+    };
+
+    document.startViewTransition(update);
   });
 });
