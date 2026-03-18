@@ -31,7 +31,7 @@
           <div class="calendar-item-content">
             <div class="calendar-item-image">
               {% if event.image %}
-                {% assign image_path = event.image | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,quality=85,gravity=top,format=webp/' | prepend: site.cdn_url %}
+                {% assign image_path = '/assets/images/' | append: event.image | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,quality=85,gravity=top,format=webp/' | prepend: site.cdn_url %}
 
                 <img src="{{ image_path }}" alt="{{ event.title }}">
               {% else %}

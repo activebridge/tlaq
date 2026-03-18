@@ -1,12 +1,14 @@
 <style>
   @view-transition { navigation: auto; }
+  ::view-transition-old(*) { opacity: 0.3; }
 
   nav#landing-nav a img {
     view-transition-name: var(--transition-name);
   }
 
-  .list-container .card img {
-    view-transition-name: var(--transition-name);
+  .list-container {
+    .card { flex: 1 1 500px; }
+    img {view-transition-name: var(--transition-name);}
   }
 
   :root {
@@ -47,6 +49,7 @@
     --pink-40: color-mix(in srgb, var(--pink) 40%, transparent);
     --pink-light: #f291a6;
     --purple: #9926b7;
+    --purple-light: #e4c3d2;
     --purple-80: color-mix(in srgb, var(--purple) 80%, transparent);
     --purple-60: color-mix(in srgb, var(--purple) 60%, transparent);
     --purple-40: color-mix(in srgb, var(--purple) 40%, transparent);
@@ -422,7 +425,6 @@
   #landing-nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: clamp(144px, 25vw + 24px, 314px);
     padding-top: 17px;
     padding-bottom: clamp(2rem, 6vw, 5rem);
     position: relative;
@@ -437,6 +439,8 @@
     position: relative;
     overflow: hidden;
     text-decoration: none;
+    aspect-ratio: 2 / 1;
+    height: auto;
   }
 
   #landing-nav a img {
@@ -461,11 +465,7 @@
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 clamp(1.5rem, 4vw, 3rem);
-  }
-
-  #landing-nav + .content-wrapper {
     position: relative;
-    z-index: 1;
     background: var(--cream);
     box-shadow: 0 0 0 100vmax var(--cream);
     clip-path: inset(0 -100vmax);
@@ -487,13 +487,34 @@
     view-transition-name: var(--transition-name);
     background-image: var(--low-desk-image);
     height: calc(100dvh - 210px);
-    background-attachment: fixed;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    position: sticky;
+    top: 0;
+    opacity: 1;
+  }
 
-    @media (max-width: 770px) {
-      height: calc(100dvh - 139px);
-      background-image: var(--low-mob-image);
+  @keyframes hero-fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .hero {
+      animation: hero-fade-out linear forwards;
+      animation-timeline: scroll(root);
+      animation-range: 0px 100vh;
+      will-change: opacity;
+    }
+  }
+
+  @supports not (animation-timeline: scroll()) {
+    .hero {
+      position: sticky;
+      top: 0;
+      opacity: 1;
     }
   }
 </style>

@@ -1,19 +1,10 @@
 ---
 layout: default
 ---
-{% assign desktop_image_path = "/assets/images/" | append: page.header_image | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,gravity=top,format=webp/' | prepend: site.cdn_url %}
-{% assign mobile_image_path = "/assets/images/" | append: page.header_image | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,gravity=top,format=webp/' | prepend: site.cdn_url %}
-{% assign low_mob_image_path = "/assets/images/" | append: page.header_image | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,quality=4,gravity=top/' | prepend: site.cdn_url %}
-{% assign low_desk_image_path = "/assets/images/" | append: page.header_image | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,quality=4,gravity=top/' | prepend: site.cdn_url %}
 
-<figure class="hero"
-  style="
-    --desktop-image: url('{{ desktop_image_path }}');
-    --mobile-image: url('{{ mobile_image_path }}');
-    --low-mob-image: url('{{ low_mob_image_path }}');
-    --low-desk-image: url('{{ low_desk_image_path }}');
-    --transition-name: {{ page.store_type }};
-  "></figure>
+{% assign image_path = page.header_image %}
+{% assign transition-name = page.store_type %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
   {% include store/header.html type=page.store_type title=page.store_title description=page.store_description %}
