@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Red Canyon Collections
 subtitle: Fine contemporary jewelry & southwestern art
-suite: A120
+suite: a120
 phone: (928) 282-2030
 website: https://redcanyoncollections.com
 coordinates: "-111.762827, 34.8621095"

@@ -5,7 +5,7 @@ published: true
 image: "/assets/images/stores/pump-house-station.webp"
 title: Pump House Station
 subtitle: Farm-to-table & artisanal foods including Organic coffee, artisan pastries, local crafted beers, signature cocktails
-suite: D10
+suite: d10
 phone: (928) 862-4141
 website: https://www.pumphousestation.com
 coordinates: "-111.7625313, 34.8630006"

@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Renee Taylor Gallery
 subtitle: Original contemporary fine art & jewelry
-suite: B124
+suite: b124
 phone: (928) 282-7130
 website: https://reneetaylorgallery.com
 coordinates: "-111.7633295, 34.8623398"

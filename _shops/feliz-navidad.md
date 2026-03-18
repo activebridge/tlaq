@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Feliz Navidad
 subtitle: Christmas art & ornaments
-suite: A116
+suite: a116
 phone: (928) 282-2752
 website: https://merrychristmassedona.com
 coordinates: "-111.7628125, 34.861982"

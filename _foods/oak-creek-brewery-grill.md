@@ -5,7 +5,7 @@ published: true
 title: Oak Creek Brewery & Grill
 subtitle: American grill, premium beers brewed on site
 image: "/assets/images/stores/oak-creek-brewery-grill.webp"
-suite: D201
+suite: d201
 phone: (928) 282-3300
 website: https://oakcreekbreweryandgrill.com
 coordinates: "-111.7638377, 34.8626048"

@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Ninibah
 subtitle: Authentic indian jewelry, baskets & kachinas
-suite: A107
+suite: a107
 phone: (928) 282-4256
 website: https://houseoftheshalako.com
 coordinates: "-111.7625608, 34.8621455"

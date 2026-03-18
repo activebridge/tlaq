@@ -4,7 +4,7 @@ date: 2026-02-24
 published: true
 title: Mountain Trails Gallery
 subtitle: Wildlife & western bronzes, paintings & contemporary art
-suite: A201
+suite: a201
 phone: (928) 282-3225
 website: https://mountaintrailssedona.com
 coordinates: "-111.7625608, 34.862085"

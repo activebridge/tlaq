@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Dorine Daniels
 subtitle: Bed & bath products
-suite: B106
+suite: b106
 phone: (928) 282-5838
 website:
 coordinates: "-111.7630565, 34.8620697"

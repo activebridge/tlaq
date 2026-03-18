@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Bennali Outdoor Gear
 subtitle: Sedona's largest selection of hats, fashion to function footwear & outdoor accessories
-suite: B102
+suite: b102
 phone: (928) 282-1295
 website: https://www.bennali.com
 coordinates: "-111.7630505, 34.8618565"

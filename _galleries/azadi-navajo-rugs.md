@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Azadi Navajo Rugs
 subtitle: Exquisite array of handwoven Navajo textiles
-suite: B123
+suite: b123
 phone: (928) 203-0620
 website: https://www.azadifinerugs.com
 coordinates: "-111.7632347, 34.8621347"

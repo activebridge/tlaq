@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Cucina Sedona
 subtitle: Southwestern salsas, gadgets, linens, pottery & tableware
-suite: D101
+suite: d101
 phone: (928) 282-3905
 website: https://cucinasedona.com
 coordinates: "-111.763737, 34.8624427"

@@ -4,7 +4,7 @@ date: 2026-03-05
 published: true
 title: True West Hats
 subtitle: A custom hat experience with heirloom craftsmanship and handmade goods
-suite: A204-5
+suite: a204-5
 phone: (928) 549-0513
 website: https://truewesthats.com/
 coordinates: "-111.762574, 34.862001"

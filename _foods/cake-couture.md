@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Sedona Cake Couture
 subtitle: Fine dessert and coffee
-suite: A114
+suite: a114
 phone: (928) 204-2887
 website: https://www.sedonacakes.com
 coordinates: "-111.7628120, 34.8619472"

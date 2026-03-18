@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: René Restaurant & Wine Bar
 subtitle: Classical cuisine, picturesque patio & intimate bar
-suite: B118
+suite: b118
 phone: (928) 282-9225
 website: https://renerestaurantsedona.com
 coordinates: "-111.7633734, 34.8620944"

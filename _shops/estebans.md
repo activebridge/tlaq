@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Esteban's
 subtitle: Handcrafted functional & decorative pottery by Southwestern artists
-suite: B103
+suite: b103
 phone: (928) 282-4686
 website: https://www.estebanssedona.com
 coordinates: "-111.7630503, 34.8619145"

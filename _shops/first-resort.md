@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: First Resort
 subtitle: Gifts and apparel for people on the go
-suite: A119
+suite: a119
 phone: (928) 649-9511
 website:
 coordinates: "-111.7628117, 34.8622485"

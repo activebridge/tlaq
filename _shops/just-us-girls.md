@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Just Us Girls
 subtitle: Women's contemporary clothing & accessories
-suite: C105
+suite: c105
 phone: (928) 274-3664
 website: https://www.justusgirlssedona.com
 coordinates: "-111.763047, 34.8615615"

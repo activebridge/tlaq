@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Vue
 subtitle: Local & international contemporary fine art & sculpture garden alongside Oak Creek
-suite: E101
+suite: e101
 phone: (928) 282-1575
 website: https://www.reneetaylorgallery.com
 coordinates: "-111.7625455, 34.8611165"

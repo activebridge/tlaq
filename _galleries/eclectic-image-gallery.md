@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Eclectic Image Gallery
 subtitle: Original impressionistic, fine art photography & mixed media artwork
-suite: A109
+suite: a109
 phone: (928) 203-4333
 website: https://www.eclecticimage.com
 coordinates: "-111.7625747, 34.86195"

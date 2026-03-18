@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Vino Zona Sedona
 subtitle: A curated wine tasting of the best 100% Arizona grown and made wine!
-suite: A207
+suite: a207
 phone: (928) 282-2650
 website: https://vinozona.love/
 coordinates: "-111.7628138, 34.8619"

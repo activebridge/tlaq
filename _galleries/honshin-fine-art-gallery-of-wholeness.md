@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Honshin Fine Art Gallery of Wholeness
 subtitle: Original meditational paintings, sculpture & jewelry by Nicholas Kirsten-Honshin
-suite: A117
+suite: a117
 phone: (928) 451-4739
 website: https://honshin.com
 image: /assets/images/stores/honshin-fine-art-gallery-of-wholeness.webp

@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Renee Taylor Jewelry
 subtitle: Contemporary, fashion forward jewelry
-suite: B14
+suite: b14
 phone: (928) 282-1506
 website: https://www.reneetaylorgallery.com
 coordinates: "-111.7633365, 34.8632160"

@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Pink Jeep Tours
 subtitle: Since 1960, our award-winning jeep excursions are known as the premier "must-do" tours in Sedona
-suite: F103
+suite: f103
 phone: (928) 282-5000
 website: https://www.pinkadventuretours.com
 coordinates: "-111.7636795, 34.8623367"

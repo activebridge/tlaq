@@ -4,7 +4,7 @@ date: 2026-03-05
 published: true
 title: Diva Sedona
 subtitle: Experience the extraordinary at Diva Hillside, Sedona's premier Lifestyle boutique.
-suite:  A204
+suite: a204
 phone: (928) 204-1050
 website: https://www.yelp.com/biz/diva-sedona-sedona
 coordinates: "-111.7635747, 34.8622490"

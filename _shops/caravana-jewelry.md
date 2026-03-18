@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Caravana Jewelry
 subtitle: Silver & gemstone jewelry by Arizona artists
-suite: B120
+suite: b120
 phone: (928) 282-3370
 website: https://www.caravana-collection.com
 coordinates: "-111.7632938, 34.8620033"
