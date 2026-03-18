@@ -608,8 +608,6 @@ header {
     text-align: center;
     letter-spacing: 0.08em;
     transform: translateZ(0);
-    height: auto;
-    aspect-ratio: 2 / 1;
 
     img {
       position: absolute;
