@@ -42,6 +42,36 @@ Images live in `assets/images/` as `.webp` at 480/960/1440px sizes.
 - Vanilla JS (search, calendar, hours, contact form)
 - Custom CSS with CSS variables (no framework)
 
+## Admin / CMS
+
+The site uses [Sveltia CMS](https://github.com/sveltia/sveltia-cms), a Git-based headless CMS.
+
+**Access:** `https://<your-domain>/admin/`
+
+Log in with GitHub credentials. Only users with write access to the `activebridge/tlaq` repository can make changes. All edits are committed directly to `main` and trigger an automatic build.
+
+### Managed Collections
+
+| Collection | Folder | Description |
+|------------|--------|-------------|
+| Shops | `_shops/` | Retail shop pages |
+| Food & Dining | `_foods/` | Dining pages |
+| Galleries | `_galleries/` | Art gallery pages |
+| Events | `_events/` | Event pages with scheduling |
+| Weddings | `_weddings/` | Wedding venue/service pages |
+| Landing Sections | `_landing/` | Homepage section content (banner, calendar, what's new, etc.) |
+| Pages | `pages/` | Static HTML pages (About, Hours, History, etc.) |
+
+### Settings
+
+- **Homepage** — Navigation structure and site settings (`index.md`)
+- **Site Configuration** — Global settings (`_data/site.yml`): app name, description, footer, directions/weather links
+- **Default Store Hours** — Weekly hour templates (`_data/store/hours_defaults.yml`)
+
+### Media
+
+Images are uploaded through the CMS to `assets/images/` and referenced automatically.
+
 ## Deployment
 
 Hosted on GitHub Pages via the built-in Jekyll deployment.
