@@ -53,7 +53,7 @@
   border-radius: 3px;
   cursor: pointer;
   border: none;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, outline-offset 0.1s ease, outline-color 0.1s ease;
   margin: 0.75rem 0;
 }
 
@@ -63,11 +63,12 @@
 
 .btn:active {
   opacity: 0.7;
-  transform: scale(0.98);
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--navy);
+  outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
@@ -83,14 +84,15 @@
 }
 
 .btn-primary {
-  background-color: var(--navy);
+  --btn-color: var(--navy);
+  background-color: var(--btn-color);
   color: var(--cream);
 }
 
 .btn-primary:hover {
   background-color: transparent;
-  color: var(--navy);
-  outline: 1px solid var(--navy);
+  color: var(--btn-color);
+  outline: 1px solid var(--btn-color);
 }
 
 hr {
@@ -576,6 +578,11 @@ header {
       background: var(--cream);
       color: var(--navy);
     }
+
+    &:active,
+    &:focus-visible {
+      outline-color: var(--cream);
+    }
   }
 }
 
@@ -781,7 +788,7 @@ article {
     background: var(--navy);
 
     &:hover {
-      background: var(--cream);
+      background: transparent;
       color: var(--navy);
       outline: 1px solid var(--navy);
     }
@@ -915,15 +922,9 @@ article {
     }
 
     .btn-primary {
+      --btn-color: var(--pink-80);
       flex: 1;
       flex-shrink: 0;
-      background-color: var(--pink-80);
-
-      &:hover {
-        background-color: var(--pink-60);
-        color: var(--cream);
-        outline: none;
-      }
     }
   }
 
@@ -1145,7 +1146,7 @@ footer {
   }
 
   .btn-primary {
-    background-color: var(--pink-40);
+    --btn-color: var(--pink-40);
     width: 100%;
   }
 }
@@ -1157,10 +1158,7 @@ footer {
       background: url("/assets/images/icons/default.svg") no-repeat left / 1em;
     }
     .btn-primary {
-      background-color: var(--navy);
-      &:hover {
-        color: var(--cream);
-      }
+      --btn-color: var(--navy);
     }
   }
 
@@ -1402,9 +1400,7 @@ h5[title] {
     padding-left: calc(0.725rem + 1em);
   }
 
-  .btn-primary {
-    background-color: var(--blue);
-  }
+  .btn-primary { --btn-color: var(--blue); }
 }
 
 .shops {
@@ -1414,9 +1410,7 @@ h5[title] {
     padding-left: calc(0.725rem + 1em);
   }
 
-  .btn-primary {
-    background-color: var(--pink);
-  }
+  .btn-primary { --btn-color: var(--pink); }
 }
 
 .foods {
@@ -1426,9 +1420,7 @@ h5[title] {
     padding-left: calc(0.725rem + 1em);
   }
 
-  .btn-primary {
-    background-color: var(--orange);
-  }
+  .btn-primary { --btn-color: var(--orange); }
 }
 
 .shop {
@@ -1447,9 +1439,7 @@ h5[title] {
     color: var(--blue);
   }
 
-  .btn-primary {
-    background-color: var(--blue);
-  }
+  .btn-primary { --btn-color: var(--blue); }
 
   .today {
     color: var(--blue);
@@ -1462,9 +1452,7 @@ h5[title] {
     color: var(--orange);
   }
 
-  .btn-primary {
-    background-color: var(--orange);
-  }
+  .btn-primary { --btn-color: var(--orange); }
 
   .today {
     color: var(--orange);
@@ -1484,7 +1472,7 @@ h5[title] {
   }
 
   .btn-primary {
-    background-color: var(--purple);
+    --btn-color: var(--purple);
     width: 100%;
   }
 }
