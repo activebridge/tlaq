@@ -4,7 +4,7 @@ date: 2026-03-07
 published: true
 title: The Artist's Kitchen Shop
 subtitle: Creative cookware, elegant entertaining, gourmet gifts
-suite: C11
+suite: c11
 phone: (928) 862-4140
 website: https://theartistskitchenshop.myshoplocal.com/
 coordinates: "-111.7628307, 34.8632704"

@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Rowe Gallery
 subtitle: Traditional & contemporary western & wildlife paintings & sculptures
-suite: A102-3
+suite: a102-3
 phone: (928) 282-8877
 website: https://rowegallery.com
 coordinates: "-111.7626800, 34.8623355"

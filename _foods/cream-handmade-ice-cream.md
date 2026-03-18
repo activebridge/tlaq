@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: CREAM Handmade Ice Cream
 subtitle: Ice Cream, shakes, artisan waffle cones, sundaes and splits
-suite: A11
+suite: a11
 phone: (928) 426-9232
 website: https://sedonacakes.com
 coordinates: "-111.7630343, 34.8630292"

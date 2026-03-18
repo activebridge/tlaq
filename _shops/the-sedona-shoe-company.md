@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: The Sedona Shoe Company
 subtitle: Stylish women's shoes "from cobblestones to cocktails"
-suite: B107
+suite: b107
 phone: (928) 282-2223
 website: https://www.sedonashoeco.com
 coordinates: "-111.763056, 34.8621263"

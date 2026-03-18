@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Azadi Fine Rugs
 subtitle: Decorative rugs in semi-antique, antique & fine contemporary styles
-suite: B219
+suite: b219
 phone: (928) 203-0400
 website: https://www.azadifinerugs.com
 coordinates: "-111.7635189, 34.8622013"

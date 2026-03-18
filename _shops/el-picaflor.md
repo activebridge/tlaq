@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: El Picaflor
 subtitle: Folk art & crafts
-suite: A206
+suite: a206
 phone: (928) 282-1173
 website: https://www.elpicaflor.com
 coordinates: "-111.7627996, 34.8618546"

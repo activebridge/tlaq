@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: 'Dulce: Ice Cream, Churros, & Candies'
 subtitle: A joy-filled destination to savor a snack, sip a refreshing drink, or enjoy a new or old favorite treat
-suite: F104
+suite: f104
 phone: (928) 301-2666
 image: "/assets/images/stores/dulce-ice-cream-churros-candies.webp"
 website: https://dulce-icecream.com

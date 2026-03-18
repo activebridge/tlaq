@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Sedona Candle Gallery
 subtitle: Unique & custom candles created with patented candle making process
-suite: C104
+suite: c104
 phone: (928) 204-0688
 website: https://globalcandlegallery.com
 coordinates: "-111.7630895, 34.8616017"

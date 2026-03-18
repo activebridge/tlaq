@@ -5,7 +5,7 @@ published: true
 title: The Chai Spot
 subtitle: Traditional chai and South Asian handcrafted home goods
 image: "/assets/images/stores/the-chai-spot.webp"
-suite: B201
+suite: b201
 phone: (928) 852-0583
 website: https://www.thechaispot.com
 coordinates: "-111.7630495, 34.8617985"

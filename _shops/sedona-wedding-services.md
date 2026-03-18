@@ -4,7 +4,7 @@ date: 2026-03-05
 published: true
 title: Sedona Wedding Services
 subtitle: Vendor Guide for Weddings in Sedona and Northern Arizona
-suite: B105
+suite: b105
 phone: (928) 203-9096
 website: https://sedonaweddingservices.com/
 coordinates: "-111.763458, 34.862149"

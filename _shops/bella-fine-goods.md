@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Bella Fine Goods
 subtitle: Specialty goods from around the world
-suite: B122
+suite: b122
 phone: (928) 282-0255
 website: https://bellafinegoods.com
 coordinates: "-111.7632, 34.8620793"

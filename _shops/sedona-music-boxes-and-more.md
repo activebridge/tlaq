@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Sedona Music Boxes & More
 subtitle: Music boxes & other musical gift & collectible items
-suite: A209
+suite: a209
 phone: (928) 203-4116
 website: https://musicboxessedona.com
 coordinates: "-111.7628308, 34.8621602"

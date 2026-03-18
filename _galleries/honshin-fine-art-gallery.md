@@ -4,7 +4,7 @@ date: 2026-02-24
 published: true
 title: Honshin Fine Art Gallery
 subtitle: Local artists fine art gallery
-suite: C205
+suite: c205
 phone: (928) 282-0709
 website: https://honshinfineart.com
 coordinates: "-111.7630168, 34.8615215"

@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Adorn Collection
 subtitle: Artisan home decor, jewelry and wardrobe accents
-suite: A208
+suite: a208
 phone: (928) 649-9511
 website: https://adorncollectionaz.com
 coordinates: "-111.7628035, 34.8620352"

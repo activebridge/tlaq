@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Natural Wonders
 subtitle: Gem, minerals & fossils from around the world
-suite: A210
+suite: a210
 phone: (928) 282-1334
 website: https://naturalwonders-sedona.com
 coordinates: "-111.7627983, 34.8621982"

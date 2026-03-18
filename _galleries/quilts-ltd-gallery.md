@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Quilts Ltd. Gallery
 subtitle: Premier fiber gallery featuring collectible wearable art & quilts by Arizona artists
-suite: B105
+suite: b105
 phone: (800) 255-2306
 website: https://sedonaquiltgallery.com
 coordinates: "-111.7630575, 34.8620148"

@@ -4,7 +4,7 @@ date: 2026-02-24
 published: true
 title: Creative Gateways Gallery
 subtitle: Contemporary art glass, interior accessories & wearable art
-suite: B125
+suite: b125
 phone: (928) 282-1212
 website: https://creativegateways.com
 coordinates: "-111.7631764, 34.862281"

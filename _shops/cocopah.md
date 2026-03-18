@@ -4,7 +4,7 @@ date: 2026-03-06
 published: true
 title: Cocopah
 subtitle: Arizona's oldest bead store
-suite: C101
+suite: c101
 phone: (928) 282-4928
 website: https://www.scenicsedona.com/cocopah/
 coordinates: "-111.7632148, 34.8617285"

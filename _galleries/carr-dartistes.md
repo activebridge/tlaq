@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Carré d'Artistes
 subtitle: Original, contemporary small format artwork from around the world
-suite: B121
+suite: b121
 phone: (928) 282-8704
 website: https://www.carredartistes.com
 coordinates: "-111.7631983, 34.8620155"

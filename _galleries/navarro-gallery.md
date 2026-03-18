@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Navarro Gallery
 subtitle: Western art, wildlife & landscape inspired fine art, & sculpture garden
-suite: D103
+suite: d103
 phone: (928) 204-1144
 website: https://chrisnavarro.com
 coordinates: "-111.7638018, 34.8625404"

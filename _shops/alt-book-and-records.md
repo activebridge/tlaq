@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Alt Books and Records
 subtitle: Used, rare & out of print books and vintage vinyl records
-suite: C203
+suite: c203
 phone: (928) 554-7840
 website: https://alt-books-and-records.business.site
 coordinates: "-111.7631377, 34.8616415"

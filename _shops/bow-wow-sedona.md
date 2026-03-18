@@ -4,7 +4,7 @@ date: 2026-03-08
 published: true
 title: Bow Wow Sedona
 subtitle: Offering the finest in fashion accessories, health & nutrition for the quad pet set
-suite: A14
+suite: a14
 phone: (928) 203-9002
 website: https://www.loc8nearme.com/arizona/sedona/bowwow-sedona/6653749/
 coordinates: "-111.763149, 34.86308"

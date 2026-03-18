@@ -4,7 +4,7 @@ date: 2026-02-22
 published: false
 title: Tlaquepaque Toy Town
 subtitle: Toys for kids of all ages
-suite: A205
+suite: a205
 phone: (928) 282-1087
 website: https://www.toytownhalfpint.com
 coordinates: "-111.762578, 34.861897"

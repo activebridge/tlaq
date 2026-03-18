@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Spirits & Spice
 subtitle: High-quality spirits, custom spice blends, oils, vinegar & wine
-suite: C102
+suite: c102
 phone: (928) 282-2595
 website: https://www.spiritsandspice.com
 coordinates: "-111.7631805, 34.8616835"

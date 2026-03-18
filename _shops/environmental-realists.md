@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Environmental Realists
 subtitle: Mixed metal jewelry, handcrafted knives & wood accessories
-suite: A106
+suite: a106
 phone: (928) 282-4945
 website: https://www.environmentalrealists.com
 coordinates: "-111.7625598, 34.8622247"

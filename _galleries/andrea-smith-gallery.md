@@ -4,7 +4,7 @@ date: 2026-02-24
 published: true
 title: Andrea Smith Gallery
 subtitle: Peace gallery with original art, sacred sculptures, unique jewelry & inspirational books
-suite: D102
+suite: d102
 phone: (928) 203-9002
 website: https://www.andreasmithgallery.com
 coordinates: "-111.7637677, 34.8624763"

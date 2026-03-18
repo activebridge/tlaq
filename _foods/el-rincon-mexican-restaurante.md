@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: El Rincon Mexican Restaurante
 subtitle: Arizona-style Mexican cuisine, Sedona's margaritas
-suite: A112
+suite: a112
 phone: (928) 282-4648
 website: https://www.elrinconrestaurant.com
 image: "/assets/images/stores/el-rincon-mexican-restaurante.webp"
