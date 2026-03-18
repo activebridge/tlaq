@@ -3,14 +3,14 @@
     <picture>
       <source
         media="(max-width: 480px)"
-        srcset="{{ event.image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+        srcset="{{ '/assets/images/' | append: event.image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
       >
       <source
         media="(min-width: 768px)"
-        srcset="{{ event.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+        srcset="{{ '/assets/images/' | append: event.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
       >
       <img
-        src="{{ event.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+        src="{{ '/assets/images/' | append: event.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
         alt="{{ event.title }}"
         style="--transition-name: {{ event.image | downcase | replace: '/', '-' | replace: '.', '-' }};"
       >

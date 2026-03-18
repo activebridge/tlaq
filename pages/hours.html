@@ -4,19 +4,10 @@ title: Hours
 permalink: /hours
 store_type: hours
 ---
-{% assign desktop_image_path = "/assets/images/hours.webp" | prepend: '/cdn-cgi/image/width=900,height=800,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
-{% assign mobile_image_path = "/assets/images/hours.webp" | prepend: '/cdn-cgi/image/width=500,height=800,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
-{% assign low_mob_image_path = "/assets/images/hours.webp" | prepend: '/cdn-cgi/image/width=300,height=800,fit=cover,quality=4,gravity=top/' | prepend: site.cdn_url %}
-{% assign low_desk_image_path = "/assets/images/hours.webp" | prepend: '/cdn-cgi/image/width=900,height=800,fit=cover,quality=4,gravity=top/' | prepend: site.cdn_url %}
 
-<figure class="hero"
-  style="
-    --desktop-image: url('{{ desktop_image_path }}');
-    --mobile-image: url('{{ mobile_image_path }}');
-    --low-mob-image: url('{{ low_mob_image_path }}');
-    --low-desk-image: url('{{ low_desk_image_path }}');
-    --transition-name: {{ page.store_type }};
-  "></figure>
+{% assign image_path = "hours.webp" %}
+{% assign transition-name = page.store_type %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
   <h5 title="visit">Visit</h5>
