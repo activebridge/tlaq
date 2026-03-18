@@ -195,6 +195,7 @@ permalink: /admin/showcase
     vertical-align: middle;
     margin-left: 0.5rem;
   }
+
 </style>
 
 <!-- Force-load lazy CSS for store/events components -->
@@ -416,30 +417,32 @@ permalink: /admin/showcase
 
     <p class="showcase-label">Base Button <span class="showcase-tag">.btn</span></p>
     <div class="showcase-row">
-      <a class="btn" href="javascript:void(0)">Default .btn</a>
+      <a class="btn" href="javascript:void(0)">Default</a>
+      <a class="btn" href="javascript:void(0)" disabled>Disabled</a>
     </div>
 
     <p class="showcase-label">Primary Button <span class="showcase-tag">.btn.btn-primary</span></p>
     <div class="showcase-row">
-      <a class="btn btn-primary" href="javascript:void(0)">Primary Button</a>
+      <a class="btn btn-primary" href="javascript:void(0)">Default</a>
+      <a class="btn btn-primary" href="javascript:void(0)" disabled>Disabled</a>
     </div>
 
-    <p class="showcase-label">Disabled State <span class="showcase-tag">[disabled]</span></p>
-    <div class="showcase-row">
-      <a class="btn btn-primary" href="javascript:void(0)" disabled>Disabled Primary</a>
-      <button class="btn" disabled>Disabled Button</button>
-    </div>
-
-    <p class="showcase-label">Category Variants <span class="showcase-tag">.shop / .gallery / .food</span></p>
+    <p class="showcase-label">Category Variants <span class="showcase-tag">.shop / .gallery / .food / .events / .weddings</span></p>
     <div class="showcase-row">
       <div class="shop">
-        <a class="btn btn-primary" href="javascript:void(0)">Shop Button</a>
+        <a class="btn btn-primary" href="javascript:void(0)">Shop</a>
       </div>
       <div class="gallery">
-        <a class="btn btn-primary" href="javascript:void(0)">Gallery Button</a>
+        <a class="btn btn-primary" href="javascript:void(0)">Gallery</a>
       </div>
       <div class="food">
-        <a class="btn btn-primary" href="javascript:void(0)">Food Button</a>
+        <a class="btn btn-primary" href="javascript:void(0)">Food</a>
+      </div>
+      <div class="events">
+        <a class="btn btn-primary" href="javascript:void(0)">Events</a>
+      </div>
+      <div class="weddings">
+        <a class="btn btn-primary" href="javascript:void(0)">Weddings</a>
       </div>
     </div>
   </div>
