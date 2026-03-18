@@ -388,20 +388,21 @@
     border-image: fill 1 linear-gradient(#0000005d);
   }
 
-  #landing-banner iframe.videobgframe {
+  #landing-banner video.videobgframe {
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
     width: max(100%, calc(100vh * 16 / 9));
     height: max(100%, calc(100vw * 9 / 16));
     transform: translate(-50%, -50%);
+    object-fit: cover;
     z-index: 0;
     opacity: 0;
     transition: opacity 1s;
-    border: 0;
   }
 
-  #landing-banner iframe.videobgframe.loaded {
+  #landing-banner video.videobgframe.loaded {
     opacity: 1;
   }
 
