@@ -1,0 +1,17 @@
+---
+layout: page
+title: News
+permalink: /news
+---
+<div class="content-wrapper">
+  <h5 title="news">WHAT'S NEW</h5>
+
+  <h2>New moments of discovery are always taking shape across Tlaquepaque village.</h2>
+
+  <div class="list-container">
+    {% assign blogs = site.blogs | sort: "date" | reverse %}
+    {% for blog in blogs %}
+      {% include blog/card.html blog=blog %}
+    {% endfor %}
+  </div>
+</div>
