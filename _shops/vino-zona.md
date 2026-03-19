@@ -8,7 +8,7 @@ suite: a207
 phone: (928) 282-2650
 website: https://vinozona.love/
 coordinates: "-111.7628138, 34.8619"
-image: "/assets/images/stores/vino-zona.webp"
+image: "stores/vino-zona.webp"
 instagram: https://www.instagram.com/vinozona
 facebook: https://www.facebook.com/vinozonajerome/
 full_location: 336 AZ-179 Suite A207, Sedona, AZ 86336

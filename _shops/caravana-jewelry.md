@@ -8,7 +8,7 @@ suite: b120
 phone: (928) 282-3370
 website: https://www.caravana-collection.com
 coordinates: "-111.7632938, 34.8620033"
-image: "/assets/images/stores/caravana-jewelry.webp"
+image: "stores/caravana-jewelry.webp"
 instagram: https://www.instagram.com/caravanajewelry/
 facebook: https://www.facebook.com/caravanajewelry/
 full_location: 336 AZ-179 Suite B120, Sedona, AZ 86336

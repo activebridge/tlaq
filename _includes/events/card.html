@@ -1,20 +1,7 @@
 <div class="card">
   {% if event.image %}
-    <picture>
-      <source
-        media="(max-width: 480px)"
-        srcset="{{ '/assets/images/' | append: event.image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-      >
-      <source
-        media="(min-width: 768px)"
-        srcset="{{ '/assets/images/' | append: event.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-      >
-      <img
-        src="{{ '/assets/images/' | append: event.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-        alt="{{ event.title }}"
-        style="--transition-name: {{ event.image | downcase | replace: '/', '-' | replace: '.', '-' }};"
-      >
-    </picture>
+    {% assign wedding_transition_name = event.image | downcase | replace: '/', '-' | replace: '.', '-' %}
+    {% include responsive-card-image.html src=event.image alt=event.title transition_name=wedding_transition_name %}
   {% else %}
     <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ event.title }}">
   {% endif %}

@@ -8,7 +8,7 @@ suite: b102
 phone: (928) 282-1295
 website: https://www.bennali.com
 coordinates: "-111.7630505, 34.8618565"
-image: "/assets/images/stores/bennali-outdoor-gear.webp"
+image: "stores/bennali-outdoor-gear.webp"
 instagram: https://www.instagram.com/bennalioutdoorboutique/
 facebook: https://www.facebook.com/Bennali-Outdoor-Gear-257841877625577/
 full_location: 336 AZ-179 Suite B102, Sedona, AZ 86336

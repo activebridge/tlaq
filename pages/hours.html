@@ -44,10 +44,9 @@ store_type: hours
 
   <div class="list-container">
     {% for location in site.data.hours.locations %}
-      {% capture loc_image_path %}{{ site.cdn_url }}/cdn-cgi/image/width=800,height=600,fit=cover,gravity=center,format=webp/{{ location.image }}{% endcapture %}
       <div class="card">
         <figure>
-          <img src="{{ loc_image_path }}" alt="{{ location.name }}" loading="lazy" width="800" height="600">
+          {% include responsive-card-image.html src=location.image alt='location.name' %}
         </figure>
         <h4>{{ location.name }}</h4>
         <a href="{{ location.maps_url }}" target="_blank" rel="noopener noreferrer">
@@ -78,17 +77,7 @@ store_type: hours
     <div class="card">
       <h3>Accessibility</h3>
       <figure>
-        <picture>
-          <source
-          media="(max-width: 480px)"
-          srcset="{{ site.data.hours.accessibility.image | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url }}"
-          >
-          <source
-          media="(min-width: 768px)"
-          srcset="{{ site.data.hours.accessibility.image | prepend: '/cdn-cgi/image/width=800,height=600,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url }}"
-          >
-        </picture>
-        <img src="{{ site.data.hours.accessibility.image | prepend: '/cdn-cgi/image/width=800,height=600,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url }}" alt="Accessibility Icon" loading="lazy">
+        {% include responsive-card-image.html src=site.data.hours.accessibility.image alt='Accessibility Icon' %}
       </figure>
       <p>Accessible parking, entrances, and restrooms are available throughout Tlaquepaque North and South. All accessible features can be easily located on the village map for convenient navigation during your visit. While wheelchair rentals are not available on property, guests are welcome to bring their own mobility devices.</p>
     </div>
@@ -96,17 +85,7 @@ store_type: hours
     <div class="card">
       <h3>Family and Dog Friendly</h3>
       <figure>
-        <picture>
-          <source
-            media="(max-width: 480px)"
-            srcset="{{ site.data.hours.family_friendly.image | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url }}"
-          >
-          <source
-            media="(min-width: 768px)"
-            srcset="{{ site.data.hours.family_friendly.image | prepend: '/cdn-cgi/image/width=800,height=600,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url }}"
-          >
-          <img src="{{ site.data.hours.family_friendly.image | prepend: '/cdn-cgi/image/width=800,height=600,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url }}" alt="Family and Dog Friendly Icon" loading="lazy">
-        </picture>
+        {% include responsive-card-image.html src=site.data.hours.family_friendly.image alt='Family and Dog Friendly Icon' %}
       </figure>
       <p>Tlaquepaque is a family-friendly destination with shops, dining, and events for visitors of all ages. We welcome leashed pets and offer water sources near the village restrooms.</p>
       <p>Please never under any circumstances leave your pets unattended in your vehicle due to the potential dangers of Arizona's extreme heat.</p>

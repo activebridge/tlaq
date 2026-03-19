@@ -6,7 +6,7 @@ title: 'Dulce: Ice Cream, Churros, & Candies'
 subtitle: A joy-filled destination to savor a snack, sip a refreshing drink, or enjoy a new or old favorite treat
 suite: f104
 phone: (928) 301-2666
-image: "/assets/images/stores/dulce-ice-cream-churros-candies.webp"
+image: "stores/dulce-ice-cream-churros-candies.webp"
 website: https://dulce-icecream.com
 coordinates: "-111.7637071, 34.8624058"
 instagram: https://www.instagram.com/dulcesedona/

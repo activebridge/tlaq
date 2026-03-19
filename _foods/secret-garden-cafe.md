@@ -6,7 +6,7 @@ title: Secret Garden Cafe
 subtitle: Garden setting, featuring organic produce & wines, all natural meats, gourmet salads & sandwiches
 suite: f101
 phone: (928) 203-9564
-image: "/assets/images/stores/secret-garden-cafe.webp"
+image: "stores/secret-garden-cafe.webp"
 website: https://www.sedonasecretgardencafe.com
 coordinates: "-111.7636712, 34.8627542"
 instagram: https://www.instagram.com/secretgardencafe/

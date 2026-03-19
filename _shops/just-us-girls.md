@@ -8,7 +8,7 @@ suite: c105
 phone: (928) 274-3664
 website: https://www.justusgirlssedona.com
 coordinates: "-111.763047, 34.8615615"
-image: "/assets/images/stores/just-us-girls.webp"
+image: "stores/just-us-girls.webp"
 instagram: https://www.instagram.com/justusgirlssedonaaz/
 facebook: https://www.facebook.com/p/Just-Us-Girls-100057492698082/
 full_location: 336 AZ-179 Suite C105, Sedona, AZ 86336
