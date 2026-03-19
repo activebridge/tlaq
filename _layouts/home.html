@@ -11,12 +11,12 @@ layout: default
 {% assign video_url = site.cdn_url | append: '/assets/video/tlaq.mp4' %}
 <link rel="prefetch" href="{{ video_url }}" as="video" type="video/mp4">
 
-<section id="landing-banner" style="
-  --desktop-image: url('{{ desktop_image_path }}');
-  --mobile-image: url('{{ mobile_image_path }}');
-">
+<section id="landing-banner">
+  <img class="banner-bg" src="{{ desktop_image_path }}" fetchpriority="high" decoding="async" alt=""
+    srcset="{{ mobile_image_path }} 600w, {{ desktop_image_path }} 1600w"
+    sizes="(max-width: 770px) 600px, 1600px">
   <video class="videobgframe" autoplay loop muted playsinline id="videoBg"
-    onloadeddata="setTimeout(() => { this.classList.add('loaded'); }, 1610)">
+    oncanplaythrough="setTimeout(() => { this.classList.add('loaded'); }, 1610)">
     <source src="{{ video_url }}" type="video/mp4">
   </video>
   <h1>{{ banner.heading }}</h1>

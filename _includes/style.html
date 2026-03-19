@@ -17,9 +17,11 @@
   :root {
     /* Header */
     --header-height: 131px;
-    --header-status-height: 37px;
+    --header-status-height: 33px;
     --header-nav-height: 25px;
     --layout-max-width: 1440px;
+    --font-montserrat: "Montserrat", "Montserrat Fallback", sans-serif;
+    --font-caslon: "Big Caslon", "Big Caslon Fallback", serif;
 
     /* Color palette */
     --navy: #111c4e;
@@ -67,10 +69,6 @@
     --secondary-text: var(--secondary);
   }
 
-  @view-transition {
-    navigation: auto;
-  }
-
   html {
     background: var(--primary);
     scroll-padding-top: calc(var(--header-height) + var(--header-status-height) + 4rem);
@@ -80,11 +78,64 @@
     }
   }
 
-  html, body {
+  @font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/Montserrat-Regular.woff2") format("woff2");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/assets/fonts/Montserrat-Medium.woff2") format("woff2");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 600;
+    src: url("/assets/fonts/Montserrat-SemiBold.woff2") format("woff2");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Big Caslon";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/assets/fonts/BigCaslon-Medium.woff2") format("woff2");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Montserrat Fallback";
+    font-weight: 400;
+    src: local("SF Pro Text"), local("SF Pro Display"), local("Segoe UI"), local("Roboto"), local("Oxygen-Sans"), local("Ubuntu"), local("Cantarell"), local("Helvetica Neue");
+    size-adjust: 107.2%;
+  }
+
+  @font-face {
+    font-family: "Montserrat Fallback";
+    font-weight: 500;
+    src: local("SF Pro Text"), local("SF Pro Display"), local("Segoe UI"), local("Roboto"), local("Oxygen-Sans"), local("Ubuntu"), local("Cantarell"), local("Helvetica Neue");
+    size-adjust: 107.2%;
+  }
+
+  @font-face {
+    font-family: "Big Caslon Fallback";
+    font-weight: 400;
+    src: local("Book Antiqua"), local("Palatino Linotype"), local("Georgia"), local("Times New Roman");
+    size-adjust: 95%;
+  }
+
+html, body {
     height: 100%;
     margin: 0;
     color: var(--text);
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-montserrat);
     font-weight: 400;
     font-size: 12px;
     scroll-behavior: smooth;
@@ -172,7 +223,7 @@
   #root, #__next { isolation: isolate; }
 
   h1, h2, h3, h4 {
-    font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+    font-family: var(--font-caslon);
     font-weight: 500;
     line-height: 1;
     letter-spacing: 0.04em;
@@ -184,7 +235,7 @@
   h4 { font-size: clamp(18px, 3vw, 34px); }
 
   h5, h6 {
-    font-family: "Montserrat", sans-serif;
+    font-family: var(--font-montserrat);
     line-height: 1;
   }
 
@@ -198,8 +249,7 @@
   p { font-size: clamp(12px, 1.7vw, 20px); }
 
   ul {
-    font-family: "Montserrat", sans-serif;
-    line-height: 1;
+    font-family: var(--font-montserrat);
     font-size: clamp(12px, 1.7vw, 20px);
     line-height: clamp(20px, 2.5vw, 40px);
   }
@@ -230,6 +280,10 @@
   header a {
     text-decoration: none;
     color: inherit;
+
+    svg:first-of-type {
+      margin-right: 0.5rem;
+    }
   }
 
   header a.logo {
@@ -269,47 +323,123 @@
     align-items: center;
     gap: 1rem;
     text-transform: uppercase;
-  }
 
-  header nav#desktop a,
-  header nav#desktop button#visit-popover-anchor {
-    color: var(--cream);
-    font-size: clamp(12px, 1.7vw, 20px);
-    background: transparent;
-    display: inline-flex;
-    gap: 0.35rem;
-    padding: 0 0.5rem;
-    align-items: center;
-    text-transform: uppercase;
-    height: var(--header-nav-height);
-    border: none;
-  }
+    a {
+      font-size: clamp(12px, 1.7vw, 20px);
+      display: inline-flex;
+      gap: 0.35rem;
+      padding: 0 0.5rem;
+      align-items: center;
+      flex-direction: row;
+      height: var(--header-nav-height);
+      text-transform: uppercase;
+      white-space: nowrap;
 
-  header nav#desktop div#visit-popover {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    position: absolute;
+      svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        margin-right: 0.5rem;
+      }
+    }
+
+    a {
+      padding: 1rem 0.5rem;
+    }
+
+    button#visit-popover-anchor {
+      all: unset;
+      height: 100%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: clamp(12px, 1.7vw, 20px);
+      text-transform: uppercase;
+      white-space: nowrap;
+      anchor-name: --visit-popover-anchor;
+    }
+
+    div#visit-popover {
+      position: absolute;
+      min-width: 220px;
+      padding: 0 0 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate(-50%, -8px);
+      top: anchor(--visit-popover-anchor bottom);
+      left: anchor(--visit-popover-anchor center);
+
+      a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 1.5rem 1rem;
+        font-size: 15px;
+      }
+    }
   }
 
   header nav#mobile {
     display: none;
     height: 0;
+    position: absolute;
+    top: calc(100% - var(--header-status-height));
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    pointer-events: none;
+    z-index: 10;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 770px) {
+    header nav#mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    header input#nav-toggle:checked ~ nav#mobile {
+      height: calc(100dvh - (var(--header-height) - var(--header-status-height)));
+      padding: 0 0 2rem;
+      pointer-events: all;
+    }
   }
 
   header aside#status {
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    align-content: center;
     background: var(--cream);
     color: var(--navy);
-    text-align: center;
     padding: 0.45rem 1rem;
     height: var(--header-status-height);
     font-size: clamp(12px, 1.7vw, 15px);
-    letter-spacing: 0.05em;
     font-weight: 500;
     width: 100%;
+    grid-column: 1 / -1;
+  }
+
+  #weather {
+    position: relative;
+
+    img {
+      width: clamp(41px, 6.1vw, 50px);
+      height: 24px;
+    }
   }
 
   @media (max-width: 770px) {
@@ -362,7 +492,9 @@
 
     header nav#desktop { display: none; }
 
-    header aside#status { grid-column: 1 / -1; }
+    #weather img {
+      height: 19px;
+    }
   }
 
   #landing-banner {
@@ -376,13 +508,17 @@
     top: 0;
     overflow: hidden;
     isolation: isolate;
-    background-image: var(--desktop-image);
-    background-size: cover;
-    background-position: center;
+    background-color: var(--navy-40);
+  }
 
-    @media (max-width: 770px) {
-      background-image: var(--mobile-image);
-    }
+  #landing-banner img.banner-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   #landing-banner::after {
@@ -406,6 +542,7 @@
     z-index: 0;
     opacity: 0;
     transition: opacity 1s;
+    background: transparent;
   }
 
   #landing-banner video.videobgframe.loaded {
@@ -417,12 +554,34 @@
     text-align: center;
     position: relative;
     z-index: 2;
+    color: var(--cream);
   }
 
   #landing-banner a.btn {
     position: relative;
     margin-top: 5rem;
     z-index: 2;
+    display: inline-block;
+    padding: 12px 24px;
+    color: var(--cream);
+    border: 1px solid var(--cream);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.333rem;
+    letter-spacing: 0.03em;
+    line-height: 1.375;
+    font-weight: 500;
+    border-radius: 3px;
+
+    &:hover {
+      background: var(--cream);
+      color: var(--navy);
+    }
+
+    &:active,
+    &:focus-visible {
+      outline-color: var(--cream);
+    }
   }
 
   #landing-nav {

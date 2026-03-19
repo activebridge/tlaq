@@ -23,7 +23,8 @@
     *, *::before, *::after { box-sizing: border-box; }
     body { margin: 0; font-family: "Montserrat", sans-serif; overflow: hidden; }
   </style>
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.css" crossorigin>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.css" crossorigin media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.css" crossorigin></noscript>
 </head>
 <body>
   {{ content }}

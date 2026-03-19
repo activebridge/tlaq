@@ -17,6 +17,10 @@
   <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
   <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
 
+  <link rel="preload" href="{{ '/assets/fonts/Montserrat-Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/Montserrat-Medium.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ '/assets/fonts/BigCaslon-Medium.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
+
   <link rel="stylesheet" href="{{ '/assets/css/application.css' | relative_url }}?v={{ site.time | date: '%s' }}" media="print" onload="this.media='all'">
 
   <noscript>
