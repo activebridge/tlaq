@@ -8,7 +8,7 @@
   <h3>{{ event.title }}</h3>
   {% if event.subtitle %}<p>{{ event.subtitle }}</p>{% endif %}
   {% if event.starts_at and event.ends_at %}
-    <div class="card-datetime">
+    <div class="datetime">
       {{ event.starts_at | date: "%B %-d, %Y" }} | {{ event.starts_at | date: "%-I:%M %p" }} - {{ event.ends_at | date: "%-I:%M %p" }}
     </div>
   {% endif %}
