@@ -7,7 +7,7 @@ layout: default
 {% include hero-banner.html image_path=image_path transition-name="events "%}
 
 <div class="content-wrapper">
-  <hgroup>
+  <hgroup style="--transition-name: title-{{transition-name}};">
     <h5 class="icon-events">
       {% include icons/windows/events.svg %}
       {{ site.data.events.events }}
