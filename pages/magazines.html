@@ -1,0 +1,23 @@
+---
+layout: page
+title: Magazines
+permalink: /magazines
+---
+<div class="content-wrapper">
+  <h5 title="magazines">MAGAZINE ARCHIVE</h5>
+
+  <div class="list-container">
+    {% for magazine in site.data.magazines %}
+      <div class="card">
+        {% if magazine.link != "" %}
+          <a href="{{ magazine.link }}" target="_blank" rel="noopener">
+            <img src="{{ magazine.image }}" alt="{{ magazine.title }}">
+          </a>
+        {% else %}
+          <img src="{{ magazine.image }}" alt="{{ magazine.title }}">
+        {% endif %}
+        <h6>{{ magazine.title }}</h6>
+      </div>
+    {% endfor %}
+  </div>
+</div>
