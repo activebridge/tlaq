@@ -7,7 +7,7 @@ layout: default
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
-  <hgroup>
+  <hgroup style="--transition-name: title-{{transition-name}};">
     <h5>{{ site.data.weddings.weddings }}</h5>
     <h2>{{ site.data.weddings.title }}</h2>
     <h6>{{ site.data.weddings.description }}</h6>

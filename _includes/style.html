@@ -1,15 +1,18 @@
 <style>
   @view-transition { navigation: auto; }
-  ::view-transition-old(*) { opacity: 0.3; }
+  ::view-transition-old(*) { opacity: 0.1; }
 
-  nav#landing-nav a img {
+  nav#landing-nav a {
     view-transition-name: var(--transition-name);
+    div { view-transition-name: var(--transition-name); }
   }
 
   .list-container {
     .card { flex: 1 1 500px; }
-    img {view-transition-name: var(--transition-name);}
+    img { view-transition-name: var(--transition-name); }
   }
+
+  hgroup { view-transition-name: var(--transition-name); }
 
   :root {
     /* Header */
@@ -425,6 +428,7 @@
   #landing-nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: clamp(144px, 25vw + 24px, 314px);
     padding-top: 17px;
     padding-bottom: clamp(2rem, 6vw, 5rem);
     position: relative;
@@ -439,8 +443,6 @@
     position: relative;
     overflow: hidden;
     text-decoration: none;
-    aspect-ratio: 2 / 1;
-    height: auto;
   }
 
   #landing-nav a img {
