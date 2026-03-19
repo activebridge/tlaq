@@ -22,7 +22,7 @@
     <a href="/galleries/">{% include icons/windows/galleries.svg %} Galleries</a>
     <a href="/foods/">{% include icons/windows/foods.svg %} Foods</a>
     <a href="/events/">{% include icons/windows/events.svg %} Events</a>
-    <a href="/weddings">{% include icons/windows/shops.svg %} Weddings</a>
+    <a href="/weddings">{% include icons/windows/weddings.svg %} Weddings</a>
   </nav>
 
   <a href="{{ '/' | relative_url }}" class="logo">
@@ -61,15 +61,14 @@
     <a href="/galleries/">{% include icons/windows/galleries.svg %} Galleries</a>
     <a href="/foods/">{% include icons/windows/foods.svg %} Foods</a>
     <a href="/events/">{% include icons/windows/events.svg %} Events</a>
-    <a href="/weddings">{% include icons/windows/shops.svg %} Weddings</a>
+    <a href="/weddings">{% include icons/windows/weddings.svg %} Weddings</a>
   </nav>
 
   <aside id="status" aria-label="Store hours and weather">
     OPEN TODAY:&nbsp;<time datetime="10:00-17:00">10:00 AM - 5:00 PM</time>
     &nbsp;|&nbsp;
-    <a id="weather" href="{{ site.data.site.weather_url }}" target="_blank" aria-label="Current weather" style="position: relative;">
-      <img src="{{ site.data.site.weather_widget }}" height="16" style="vertical-align: middle; display: inline-block;"
-        alt="Current Weather">
+    <a id="weather" href="{{ site.data.site.weather_url }}" target="_blank" aria-label="Current weather">
+      <img src="{{ site.data.site.weather_widget }}" height="16" alt="Current Weather">
     </a>
   </aside>
 </header>
