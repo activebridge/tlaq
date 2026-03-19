@@ -8,21 +8,8 @@
         {% if wedding.subtitle %}<h6>{{ wedding.subtitle }}</h6>{% endif %}
         <div>
           {% if wedding.image %}
-            <picture>
-              <source
-                media="(max-width: 480px)"
-                srcset="{{ '/assets/images/' | append: wedding.image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-              >
-              <source
-                media="(min-width: 768px)"
-                srcset="{{ '/assets/images/' | append: wedding.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-              >
-              <img
-                src="{{ '/assets/images/' | append: wedding.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-                alt="{{ site.data.weddings.venues }}"
-                style="--transition-name: {{ wedding.image | downcase | replace: '/', '-' | replace: '.', '-' }};"
-              >
-            </picture>
+            {% assign wedding_transition_name = wedding.image | downcase | replace: '/', '-' | replace: '.', '-' %}
+            {% include responsive-card-image.html src=wedding.image alt=site.data.weddings.venues transition_name=wedding_transition_name %}
           {% else %}
             <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ wedding.title }}">
           {% endif %}

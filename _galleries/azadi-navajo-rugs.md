@@ -10,7 +10,7 @@ website: https://www.azadifinerugs.com
 coordinates: "-111.7632347, 34.8621347"
 instagram: https://www.instagram.com/azadifinerugs/
 facebook: https://www.facebook.com/azadifinerugsaz/
-image: /assets/images/stores/azadi-navajo-rugs.webp
+image: stores/azadi-navajo-rugs.webp
 full_location: 336 AZ-179 Suite B123, Sedona, AZ 86336
 store_hours:
   monday: 10AM - 6PM

@@ -8,7 +8,7 @@ suite: a204-5
 phone: (928) 549-0513
 website: https://truewesthats.com/
 coordinates: "-111.762574, 34.862001"
-image: "/assets/images/stores/true-west-hats.webp"
+image: "stores/true-west-hats.webp"
 instagram: https://www.instagram.com/truewesthats/
 facebook: https://www.facebook.com/truewesthats
 full_location: 336 AZ-179 Suite A204-5, Sedona, AZ 86336

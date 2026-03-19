@@ -8,7 +8,7 @@ suite: a102-3
 phone: (928) 282-8877
 website: https://rowegallery.com
 coordinates: "-111.7626800, 34.8623355"
-image: /assets/images/stores/rowe-gallery.webp
+image: stores/rowe-gallery.webp
 instagram: https://www.instagram.com/rowegallery4027/
 facebook: https://www.facebook.com/rowegallery/
 full_location: 336 AZ-179 Suite A102-3, Sedona, AZ 86336

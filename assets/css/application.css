@@ -774,6 +774,11 @@ hgroup {
     > *:last-child {
       margin-top: auto;
     }
+
+    .datetime {
+      font-size: clamp(12px, 2.2vw, 20px);
+      margin-bottom: 0.75rem;
+    }
   }
 
   &:not(:has(.card:not(.hidden)))::after {
