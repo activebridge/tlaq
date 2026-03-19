@@ -1,0 +1,11 @@
+<div class="card">
+  {% if blog.image %}
+    <img src="{{ blog.image }}" alt="{{ blog.title }}" loading="lazy">
+  {% else %}
+    <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ blog.title }}">
+  {% endif %}
+  <h3>{{ blog.title }}</h3>
+  {% if blog.date %}<div class="datetime">{{ blog.date | date: "%B %-d, %Y" }}</div>{% endif %}
+  {% if blog.description %}<p>{{ blog.description }}</p>{% endif %}
+  <a href="{{ blog.url | relative_url }}" class="btn btn-primary">Read More</a>
+</div>

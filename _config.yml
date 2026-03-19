@@ -6,6 +6,9 @@ email: "katatsu12@gmail.com"
 cdn_url: "https://tlaq.ab.team"
 
 collections:
+  blogs:
+    output: true
+    permalink: /news/:slug/
   landing:
     output: false
   shops:
@@ -54,6 +57,12 @@ defaults:
     values:
       layout: "events/show"
       store_type: "event"
+  - scope:
+      path: ""
+      type: "blogs"
+    values:
+      layout: "blog/show"
+      store_type: "blog"
   - scope:
       path: ""
       type: "articles"
