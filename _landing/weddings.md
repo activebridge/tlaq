@@ -20,5 +20,5 @@ images:
 description: "From intimate weddings to corporate gatherings, our enchanting village creates unforgettable moments. Let us help you plan your perfect event."
 link:
   url: /weddings
-  text: Learn More
+  text: Explore Weddings & Events
 ---

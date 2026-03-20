@@ -7,7 +7,7 @@ icon: icons/windows/default.svg
 image: /assets/images/landing/magazine.webp
 alt: Discover Tlaquepaque Magazine
 description: "Featuring seasonal events and new art, emerging artists, distinctive shops, and must-have products, be sure to read it cover to cover."
-magazines:
+links:
   - text: View Latest Issue
   - url: "/magazines"
     text: Browse Previous Issues
