@@ -14,7 +14,7 @@
       <dialog id="magazinePreview" onclick="this.close()">
         <iframe src="https://player.flipsnack.com?hash=Qzg3QkNEOTlFOEMrdjdoaTF1Y3J6cA" width="100%" height="100%" scrolling="no" frameBorder="O" allowFullScreen allow="autoplay; clipboard-read; clipboard-write"></iframe>
       </dialog>
-      <button command="show-modal" commandfor="magazinePreview" class="btn btn-primary">{{ magazine.links[0].text }}</button>
+      <button command="show-modal" commandfor="magazinePreview" class="btn btn-primary" aria-label="{{ magazine.links[0].text }}">{{ magazine.links[0].text }}</button>
       <a href="{{ magazine.links[1].url }}" class="btn btn-primary">{{ magazine.links[1].text }}</a>
     </div>
   </section>
