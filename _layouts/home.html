@@ -4,12 +4,11 @@ layout: default
 {% assign banner = site.landing | where: "section", "banner" | first %}
 {% assign img_path = '/assets/images/' | append: banner.image | append: '.webp' %}
 {% assign desktop_image_path = img_path | prepend:
-'/cdn-cgi/image/width=1600,height=800,fit=cover,quality=85,gravity=center/' | prepend: site.cdn_url %}
+'/cdn-cgi/image/width=1600,height=800,fit=cover,quality=60,gravity=center/' | prepend: site.cdn_url %}
 {% assign mobile_image_path = img_path | prepend:
-'/cdn-cgi/image/width=600,height=800,fit=cover,quality=85,gravity=center/' | prepend: site.cdn_url %}
+'/cdn-cgi/image/width=600,height=800,fit=cover,quality=60,gravity=center/' | prepend: site.cdn_url %}
 
 {% assign video_url = site.cdn_url | append: '/assets/video/tlaq.mp4' %}
-<link rel="prefetch" href="{{ video_url }}" as="video" type="video/mp4">
 
 <section id="landing-banner">
   <img class="banner-bg" src="{{ desktop_image_path }}" fetchpriority="high" decoding="async" alt=""
@@ -26,9 +25,9 @@ layout: default
 <nav id="landing-nav" aria-label="{{ page.nav.label }}">
   {% for item in page.nav.items %}
   {% assign image = '/assets/images/' | append: item.image | prepend:
-  '/cdn-cgi/image/width=320,height=160,fit=cover,format=webp,gravity=center/' | prepend: site.cdn_url %}
+  '/cdn-cgi/image/width=320,height=160,fit=cover,format=webp,quality=2,gravity=center/' | prepend: site.cdn_url %}
   <a href="{{ item.url }}" class="{{ item.type }}-link" style="--transition-name: {{ item.type }};">
-    <img src="{{ image }}" alt="" loading="lazy" fetchpriority="low" width="320" height="160">
+    <img src="{{ image }}" alt="" loading="lazy" fetchpriority="low" width="320" height="160" onload="this.classList.add('loaded')">
     <div style="--transition-name: title-{{item.type}};">
       <h5>{{ item.title }}</h5>
       <p>{{ item.description }}</p>

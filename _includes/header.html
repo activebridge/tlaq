@@ -1,32 +1,12 @@
 <header>
-  <input id="nav-toggle" name="nav-toggle" type="checkbox">
-  <label for="nav-toggle" aria-label="Toggle navigation menu"></label>
-
-  <nav id="mobile">
-    <input id="visit-toggle" type="checkbox">
-    <label id="mobile-submenu-toggle" for="visit-toggle" aria-label="Visit submenu">
-      {% include icons/windows/shops.svg %}
-      Visit
-      {% include icons/caret_down.svg %}
-    </label>
-    <nav id="mobile-submenu-content" aria-label="Visit pages">
-      <a href="{{ '/' | relative_url }}">{% include icons/windows/shops.svg %} Main</a>
-      <a href="{{ '/hours' | relative_url }}">{% include icons/windows/shops.svg %} Hours</a>
-      <a href="{{ '/locations' | relative_url }}">{% include icons/windows/shops.svg %} Locations</a>
-      <a href="{{ '/parking' | relative_url }}">{% include icons/windows/shops.svg %} Parking</a>
-      <a href="{{ '/village_map' | relative_url }}">{% include icons/windows/shops.svg %} Village Map</a>
-      <a href="{{ '/accessibility' | relative_url }}">{% include icons/windows/shops.svg %} Accessibility</a>
-      <a href="{{ '/family_and_pet' | relative_url }}">{% include icons/windows/shops.svg %} Family &amp; Pet</a>
-    </nav>
-    <a href="/shops/">{% include icons/windows/shops.svg %} Shops</a>
-    <a href="/galleries/">{% include icons/windows/galleries.svg %} Galleries</a>
-    <a href="/foods/">{% include icons/windows/foods.svg %} Foods</a>
-    <a href="/events/">{% include icons/windows/events.svg %} Events</a>
-    <a href="/weddings">{% include icons/windows/weddings.svg %} Weddings</a>
-  </nav>
+  <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true')"></button>
 
   <a href="{{ '/' | relative_url }}" class="logo">
-    <img src="{{ '/assets/images/logos/main.webp' | relative_url }}" alt="Tlaquepaque Arts &amp; Shopping Village" width="347" height="72">
+    <img src="{{ site.cdn_url }}/cdn-cgi/image/width=347,height=72,fit=cover,quality=55/assets/images/logos/main.webp"
+      srcset="{{ site.cdn_url }}/cdn-cgi/image/width=247,height=51,fit=cover,quality=55/assets/images/logos/main.webp 247w,
+              {{ site.cdn_url }}/cdn-cgi/image/width=347,height=72,fit=cover,quality=55/assets/images/logos/main.webp 347w"
+      sizes="(max-width: 770px) 247px, 347px"
+      alt="Tlaquepaque Arts &amp; Shopping Village" width="347" height="72" fetchpriority="high">
   </a>
 
   <ul class="header-actions">
@@ -71,4 +51,27 @@
       <img src="{{ site.data.site.weather_widget }}" height="16" alt="Current Weather">
     </a>
   </aside>
+
+  <nav id="mobile">
+    <input id="visit-toggle" type="checkbox">
+    <label id="mobile-submenu-toggle" for="visit-toggle" aria-label="Visit submenu">
+      {% include icons/windows/shops.svg %}
+      Visit
+      {% include icons/caret_down.svg %}
+    </label>
+    <nav id="mobile-submenu-content" aria-label="Visit pages">
+      <a href="{{ '/' | relative_url }}">{% include icons/windows/shops.svg %} Main</a>
+      <a href="{{ '/hours' | relative_url }}">{% include icons/windows/shops.svg %} Hours</a>
+      <a href="{{ '/locations' | relative_url }}">{% include icons/windows/shops.svg %} Locations</a>
+      <a href="{{ '/parking' | relative_url }}">{% include icons/windows/shops.svg %} Parking</a>
+      <a href="{{ '/village_map' | relative_url }}">{% include icons/windows/shops.svg %} Village Map</a>
+      <a href="{{ '/accessibility' | relative_url }}">{% include icons/windows/shops.svg %} Accessibility</a>
+      <a href="{{ '/family_and_pet' | relative_url }}">{% include icons/windows/shops.svg %} Family &amp; Pet</a>
+    </nav>
+    <a href="/shops/">{% include icons/windows/shops.svg %} Shops</a>
+    <a href="/galleries/">{% include icons/windows/galleries.svg %} Galleries</a>
+    <a href="/foods/">{% include icons/windows/foods.svg %} Foods</a>
+    <a href="/events/">{% include icons/windows/events.svg %} Events</a>
+    <a href="/weddings">{% include icons/windows/weddings.svg %} Weddings</a>
+  </nav>
 </header>
