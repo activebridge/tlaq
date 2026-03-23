@@ -1522,9 +1522,10 @@ dialog {
   }
 }
 
-/* Leasing Page */
+/* Leasing Page & Filming & Photography Page */
 
-.leasing {
+.leasing,
+.filming-photography {
   padding-bottom: 2rem;
   .btn-primary { margin-bottom: 2rem; }
 
