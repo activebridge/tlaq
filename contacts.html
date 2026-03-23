@@ -1,0 +1,37 @@
+---
+permalink: /contacts/
+layout: default
+title: site.data.contacts.title
+store_type: contacts
+---
+
+{% assign image_path = site.data.contacts.hero_banner %}
+{% assign transition-name = "contacts" %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+<div class="content-wrapper">
+  <hgroup style="--transition-name: title-{{transition-name}};">
+    <h5 title>{{ site.data.contacts.title }}</h5>
+  </hgroup>
+
+  {% for item in site.data.contacts.items %}
+    <div>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.content }}</p>
+      <hr>
+    </div>
+  {% endfor %}
+
+  <h3>{{ site.data.contacts.follow_us }}</h3>
+  <div>
+    <a href="{{ site.data.contacts.facebook }}" target="_blank" rel="noopener noreferrer" class="social">
+      {% include icons/socials/facebook.svg %}
+    </a>
+    <a href="{{ site.data.contacts.instagram }}" target="_blank" rel="noopener noreferrer" class="social">
+      {% include icons/socials/instagram.svg %}
+    </a>
+  </div>
+  <a href="#" class="btn btn-primary">{{ site.data.contacts.buttons.leasing }}</a>
+  <a href="#" class="btn btn-primary">{{ site.data.contacts.buttons.filming }}</a>
+  <a href="/weddings" class="btn btn-primary">{{ site.data.contacts.buttons.weddings }}</a>
+</div>

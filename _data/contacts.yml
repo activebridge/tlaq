@@ -1,0 +1,20 @@
+title: Contacts
+hero_banner: "contacts.webp"
+items:
+  - title: Address
+    content: 336 State Route 179, Sedona, AZ 86336
+  - title: Mailing Address
+    content: PO Box 1868 Sedona, AZ 86339
+  - title: Phone
+    content: (928) 282-4838
+  - title: Fax
+    content: (928) 282-4805
+  - title: Email
+    content: visitorinfo@tlaq.com
+follow_us: Follow Us
+facebook: "https://www.facebook.com/tlaqsedona/"
+instagram: "https://www.instagram.com/tlaqsedona/"
+buttons:
+  leasing: LEASING
+  filming: FILMING & PHOTOGRAPHY PERMITS
+  weddings: WEDDINGS & PRIVATE EVENTS

@@ -7,8 +7,8 @@ phone: "(800) 255-2306"
 email: quiltsltd@gmail.com
 category: one-time
 website: sedonaquiltgallery.com
-facebook: facebook.com
-instagram: instagram.com
+facebook: "https://www.facebook.com/tlaqsedona/"
+instagram: "https://www.instagram.com/tlaqsedona/"
 image: "events/spirit-sculpture-payat-the-medicine-man.webp"
 subtitle: '"Spirit Sculpture", Payat The Medicine Man'
 ---

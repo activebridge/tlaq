@@ -625,7 +625,7 @@ hgroup {
   top: calc(var(--header-height) + var(--header-status-height));
   background: var(--bg);
   z-index: 1;
-  view-transition-name: jump_navigation;
+  animation: header-jump-fade-in 0.9s ease-out both;
 
   div {
     display: flex;
@@ -635,12 +635,16 @@ hgroup {
     font-size: clamp(12px, 2.2vw, 20px);
   }
 }
-::view-transition-group(jump_navigation) { z-index: 2; }
-::view-transition-new(jump_navigation) { animation: jump-nav-in 0.4ms ease both; }
 
-@keyframes jump-nav-in {
-  from { opacity: 0; transform: translateY(-70px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes header-jump-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* LIST CONTAINER */
@@ -1228,7 +1232,7 @@ input[type="search"] {
 
 .calendar-items {
   display: grid;
-  grid-template-columns: repeat( auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(clamp(320px, 33vw, 350px), 1fr));
   gap: 1.5rem;
   padding-bottom: 3.25rem;
 }
@@ -1467,12 +1471,13 @@ table {
     align-items: center;
     justify-content: space-between;
   }
+}
 
-  .social {
-    width: 26px;
-    height: 26px;
-    margin: 1rem 0.5rem 0 0;
-  }
+.event .social,
+.contacts .social {
+  width: clamp(2rem, 4vw, 4rem);
+  height: clamp(2rem, 4vw, 4rem);
+  margin: 1rem 0.5rem 0 0;
 }
 
 /* Dialog modals styles */
@@ -1494,5 +1499,25 @@ dialog {
     z-index: 10;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     padding: 10px;
+  }
+}
+
+/* Contacts Page */
+
+.contacts {
+  div { display: grid;}
+
+  h3 + div {
+    display: flex;
+    gap: 0.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .btn-primary {
+    margin-bottom: 1rem;
+
+    &:last-of-type {
+      background-color: var(--pink-40);
+    }
   }
 }
