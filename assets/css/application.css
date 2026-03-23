@@ -1492,3 +1492,19 @@ dialog {
     }
   }
 }
+
+/* Leasing Page */
+
+.leasing {
+  padding-bottom: 2rem;
+  .btn-primary { margin-bottom: 2rem; }
+
+  ul {
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+
+    &:last-of-type + hr {
+      display: none;
+    }
+  }
+}

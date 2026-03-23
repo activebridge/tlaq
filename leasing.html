@@ -1,0 +1,32 @@
+---
+permalink: /leasing/
+layout: default
+title: Leasing
+store_type: leasing
+---
+
+{% assign image_path = site.data.leasing.hero_banner %}
+{% assign transition-name = "leasing" %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+<div class="content-wrapper">
+  <hgroup style="--transition-name: title-{{transition-name}};">
+    <h5 title>{{ site.data.leasing.title }}</h5>
+    <h2>{{ site.data.leasing.subtitle }}</h2>
+    <h6>{{ site.data.leasing.description }}</h6>
+  </hgroup>
+
+  <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.leasing.buttons.inquire_about_space }}</a>
+  <h6>{{ site.data.leasing.guidelines_intro }}</h6>
+  <hr>
+
+  {% for section in site.data.leasing.sections %}
+    <h3>{{ section.title }}</h3>
+    <ul>
+      {% for item in section.items %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    <hr>
+  {% endfor %}
+</div>
