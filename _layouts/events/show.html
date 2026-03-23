@@ -8,7 +8,7 @@ layout: default
 
   <div class="top-section">
     <div class="content-wrapper">
-      <h3>{{ page.title }}</h3>
+      <h3 class="transition-title" style="--transition-name: {{ page.title | downcase | replace: ' ', '-'}};">{{ page.title }}</h3>
       {% if page.starts_at %}
         <p>
           {% include icons/calendar.svg %}

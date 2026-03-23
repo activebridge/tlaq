@@ -596,7 +596,7 @@ hgroup {
   top: calc(var(--header-height) + var(--header-status-height));
   background: var(--bg);
   z-index: 1;
-  view-transition-name: jump_navigation;
+  animation: header-jump-fade-in 0.9s ease-out both;
 
   div {
     display: flex;
@@ -606,12 +606,16 @@ hgroup {
     font-size: clamp(12px, 2.2vw, 20px);
   }
 }
-::view-transition-group(jump_navigation) { z-index: 2; }
-::view-transition-new(jump_navigation) { animation: jump-nav-in 0.4ms ease both; }
 
-@keyframes jump-nav-in {
-  from { opacity: 0; transform: translateY(-70px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes header-jump-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* LIST CONTAINER */
@@ -1199,7 +1203,7 @@ input[type="search"] {
 
 .calendar-items {
   display: grid;
-  grid-template-columns: repeat( auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(clamp(320px, 33vw, 350px), 1fr));
   gap: 1.5rem;
   padding-bottom: 3.25rem;
 }
