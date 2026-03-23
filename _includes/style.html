@@ -19,6 +19,7 @@
     --header-height: 131px;
     --header-status-height: 33px;
     --header-nav-height: 25px;
+    --header-padding-top: max(40px, env(safe-area-inset-top, 0px));
     --layout-max-width: 1440px;
     --font-montserrat: "Montserrat", "Montserrat Fallback", sans-serif;
     --font-caslon: "Big Caslon", "Big Caslon Fallback", serif;
@@ -478,6 +479,140 @@ html, body {
     #weather img {
       height: 19px;
     }
+
+  }
+
+  /* Search toggle checkbox — hidden */
+  #search-toggle {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    width: 0;
+  }
+
+  /* Search icon / close icon — stacked in same cell */
+  .search-btn-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  header a.logo,
+  header button.nav-toggle,
+  header ul.header-actions,
+  header .search-btn-wrap {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .search-toggle-btn,
+  .search-close-btn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 420ms cubic-bezier(0.4, 0, 0.2, 1),
+                transform 420ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .search-toggle-btn {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  .search-close-btn {
+    opacity: 0;
+    transform: scale(0.6) rotate(-45deg);
+  }
+
+  header:has(#search-toggle:checked) .search-toggle-btn {
+    opacity: 0;
+    transform: scale(0.6) rotate(45deg);
+  }
+
+  header:has(#search-toggle:checked) .search-close-btn {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  /* Search bar — hidden by default */
+  .header-search {
+    display: none;
+  }
+
+  @media (max-width: 770px) {
+    /* Keep checkbox out of grid flow */
+    #search-toggle {
+      display: none;
+    }
+
+    /* Search bar: covers logo area, slides in from right to left */
+    header .header-search {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: absolute;
+      left: 20%;
+      right: 23%;
+      top: var(--header-padding-top);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 420ms cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 420ms cubic-bezier(0.4, 0, 0.2, 1);
+
+      input[type="search"] {
+        flex: 1;
+        min-width: 0;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid var(--cream);
+        color: var(--cream);
+        font-size: 20px;
+        line-height: 1;
+        padding: 0;
+        padding-bottom: 6px;
+        vertical-align: bottom;
+        outline: none;
+
+        &::placeholder {
+          color: color-mix(in srgb, var(--cream) 55%, transparent);
+        }
+
+        &::-webkit-search-cancel-button {
+          display: none;
+        }
+      }
+    }
+
+    /* Header content transitions */
+    header a.logo,
+    header button.nav-toggle,
+    header a.direction {
+      transition: transform 420ms cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 420ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Open state — slides in from right, lands at position */
+    header:has(#search-toggle:checked) .header-search {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    /* Content slides left and fades out */
+    header:has(#search-toggle:checked) a.logo,
+    header:has(#search-toggle:checked) button.nav-toggle,
+    header:has(#search-toggle:checked) a.direction {
+      transform: translateX(-20px);
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 
   #landing-banner {
@@ -670,10 +805,23 @@ html, body {
       to   { padding-top: env(safe-area-inset-top, 0px); }
     }
 
+    @keyframes search-top-collapse {
+      from { top: var(--header-padding-top); }
+      to   { top: max(10px, env(safe-area-inset-top, 0px)); }
+    }
+
     header {
       animation: header-collapse linear both;
       animation-timeline: scroll(root);
       animation-range: 0px 60px;
+    }
+
+    @media (max-width: 770px) {
+      header .header-search {
+        animation: search-top-collapse linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0px 60px;
+      }
     }
 
     .hero {

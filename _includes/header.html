@@ -9,18 +9,29 @@
       alt="Tlaquepaque Arts &amp; Shopping Village" width="347" height="72" fetchpriority="high">
   </a>
 
+  <input type="checkbox" id="search-toggle" aria-hidden="true">
+
   <ul class="header-actions">
     <li>
       <a class="direction" href="{{ site.data.site.directions_url }}" target="_blank" rel="noopener" aria-label="Get directions">
         {% include icons/location.svg %}
       </a>
     </li>
-    <li>
-      <button type="button" aria-label="Search">
+    <li class="search-btn-wrap">
+      <label for="search-toggle" class="search-toggle-btn" role="button" aria-label="Search">
         {% include icons/search.svg %}
-      </button>
+      </label>
+      <label for="search-toggle" class="search-close-btn" aria-label="Close search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </label>
     </li>
   </ul>
+
+  <div class="header-search" role="search">
+    <input type="search" name="q" placeholder="Search…" autocomplete="off" aria-label="Search site">
+  </div>
 
   <nav id="desktop">
     <button type="button" id="visit-popover-anchor" aria-haspopup="true" aria-controls="visit-popover">
