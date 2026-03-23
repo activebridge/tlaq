@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   {% include head.html %}
-  <body>
+  <body onpageshow="window.mobile?.hidePopover()">
     {% include header.html %}
     <main class="{{ page.store_type }}">
       {{ content }}

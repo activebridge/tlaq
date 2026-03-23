@@ -11,7 +11,8 @@
     img { view-transition-name: var(--transition-name); }
   }
 
-  hgroup { view-transition-name: var(--transition-name); }
+  .content-wrapper hgroup,
+  nav#landing-nav a div { view-transition-name: var(--transition-name); }
 
   :root {
     /* Header */
@@ -259,12 +260,11 @@ html, body {
   header {
     position: sticky;
     top: 0;
-    margin-top: 30px;
+    padding-top: max(30px, env(safe-area-inset-top, 0px));
     text-align: center;
     background: var(--navy);
     color: var(--cream);
     z-index: 10;
-    box-shadow: 0px -30px 0px var(--navy);
     width: 100%;
     display: flex;
     align-items: center;
@@ -380,10 +380,6 @@ html, body {
     }
   }
 
-  nav#mobile {
-    display: none;
-  }
-
   aside#status {
     display: flex;
     flex-direction: row;
@@ -401,34 +397,6 @@ html, body {
     grid-column: 1 / -1;
   }
 
-  @media (max-width: 770px) {
-    nav#mobile {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      position: absolute;
-      top: calc(100% - var(--header-status-height));
-      left: 0;
-      width: 100%;
-      height: 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      overflow-anchor: none;
-      scrollbar-width: none;
-      pointer-events: none;
-      z-index: 11;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
-
-    body:has(.nav-toggle[aria-expanded="true"]) nav#mobile {
-      height: calc(100dvh - (var(--header-height) - var(--header-nav-height) - var(--header-status-height)));
-      padding: 0 0 2rem;
-      pointer-events: all;
-    }
-  }
 
   #weather {
     position: relative;
@@ -490,6 +458,21 @@ html, body {
       padding: 0;
     }
 
+    header button.nav-toggle::before,
+    header button.nav-toggle::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 28px;
+      height: 1px;
+      background: var(--cream);
+      transition: transform 180ms ease, top 180ms ease;
+      transform: translateX(-50%);
+    }
+
+    header button.nav-toggle::before { top: 3px; }
+    header button.nav-toggle::after  { top: 15px; }
+
     header nav#desktop { display: none; }
 
     #weather img {
@@ -500,10 +483,6 @@ html, body {
   #landing-banner {
     min-height: 427px;
     height: calc(100dvh - var(--header-height) - var(--header-status-height) - 3rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: sticky;
     top: 0;
     overflow: hidden;
@@ -530,6 +509,16 @@ html, body {
     border-image: fill 1 linear-gradient(#0000005d);
   }
 
+  #landing-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background: var(--cream);
+    opacity: 0;
+  }
+
   #landing-banner video.videobgframe {
     display: block;
     position: absolute;
@@ -552,14 +541,19 @@ html, body {
   #landing-banner h1 {
     width: 100%;
     text-align: center;
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
     z-index: 2;
     color: var(--cream);
   }
 
   #landing-banner a.btn {
-    position: relative;
-    margin-top: 5rem;
+    position: absolute;
+    top: calc(50% + 5rem);
+    left: 50%;
+    transform: translate(-50%, 0);
     z-index: 2;
     display: inline-block;
     padding: 12px 24px;
@@ -665,11 +659,63 @@ html, body {
   }
 
   @supports (animation-timeline: scroll()) {
+    @keyframes header-collapse {
+      from { padding-top: max(30px, env(safe-area-inset-top, 0px)); }
+      to   { padding-top: env(safe-area-inset-top, 0px); }
+    }
+
+    header {
+      animation: header-collapse linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0px 60px;
+    }
+
     .hero {
       animation: hero-fade-out linear forwards;
       animation-timeline: scroll(root);
       animation-range: 0px 100vh;
       will-change: opacity;
+    }
+
+    @keyframes banner-h1-scroll {
+      from { top: 50%; transform: translateY(-50%); opacity: 1; }
+      to   { top: 2rem; transform: translateY(0);   opacity: 0; }
+    }
+
+    @keyframes banner-btn-scroll {
+      from { top: calc(50% + 5rem); opacity: 1; }
+      to   { top: calc(2rem + 3rem); opacity: 0; }
+    }
+
+    #landing-banner h1 {
+      animation: banner-h1-scroll linear forwards;
+      animation-timeline: scroll(root);
+      animation-range:
+        calc((100dvh - var(--header-height) - var(--header-status-height) - 3rem) * 0.6)
+        calc(100dvh - var(--header-height) - var(--header-status-height) - 3rem);
+      will-change: top, opacity, transform;
+    }
+
+    #landing-banner a.btn {
+      animation: banner-btn-scroll linear forwards;
+      animation-timeline: scroll(root);
+      animation-range:
+        calc((100dvh - var(--header-height) - var(--header-status-height) - 3rem) * 0.6)
+        calc(100dvh - var(--header-height) - var(--header-status-height) - 3rem);
+      will-change: top, opacity;
+    }
+
+    @keyframes banner-cream-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    #landing-banner::before {
+      animation: banner-cream-in linear forwards;
+      animation-timeline: scroll(root);
+      animation-range:
+        calc((100dvh - var(--header-height) - var(--header-status-height) - 3rem) * 0.5)
+        calc((100dvh - var(--header-height) - var(--header-status-height) - 3rem) * 0.85);
     }
   }
 

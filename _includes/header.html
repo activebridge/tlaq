@@ -1,5 +1,5 @@
 <header>
-  <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true')"></button>
+  <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" popovertarget="mobile"></button>
 
   <a href="{{ '/' | relative_url }}" class="logo">
     <img src="{{ site.cdn_url }}/cdn-cgi/image/width=347,height=72,fit=cover,quality=55/assets/images/logos/main.webp"
@@ -24,18 +24,18 @@
 
   <nav id="desktop">
     <button type="button" id="visit-popover-anchor" aria-haspopup="true" aria-controls="visit-popover">
-      {% include icons/windows/shops.svg %}
+      {% include icons/windows/events.svg %}
       Visit
       {% include icons/caret_down.svg %}
     </button>
     <div id="visit-popover" popover="auto">
-      <a href="{{ '/' | relative_url }}">{% include icons/windows/shops.svg %} Main</a>
-      <a href="{{ '/hours' | relative_url }}">{% include icons/windows/shops.svg %} Hours</a>
-      <a href="{{ '/locations' | relative_url }}">{% include icons/windows/shops.svg %} Locations</a>
-      <a href="{{ '/parking' | relative_url }}">{% include icons/windows/shops.svg %} Parking</a>
-      <a href="{{ '/village_map' | relative_url }}">{% include icons/windows/shops.svg %} Village Map</a>
-      <a href="{{ '/accessibility' | relative_url }}">{% include icons/windows/shops.svg %} Accessibility</a>
-      <a href="{{ '/family_and_pet' | relative_url }}">{% include icons/windows/shops.svg %} Family &amp; Pet</a>
+      <a href="{{ '/' | relative_url }}">{% include icons/windows/events.svg %} Main</a>
+      <a href="{{ '/hours' | relative_url }}">{% include icons/windows/events.svg %} Hours</a>
+      <a href="{{ '/locations' | relative_url }}">{% include icons/windows/events.svg %} Locations</a>
+      <a href="{{ '/parking' | relative_url }}">{% include icons/windows/events.svg %} Parking</a>
+      <a href="{{ '/village_map' | relative_url }}">{% include icons/windows/events.svg %} Village Map</a>
+      <a href="{{ '/accessibility' | relative_url }}">{% include icons/windows/events.svg %} Accessibility</a>
+      <a href="{{ '/family_and_pet' | relative_url }}">{% include icons/windows/events.svg %} Family &amp; Pet</a>
     </div>
     <a href="/shops/">{% include icons/windows/shops.svg %} Shops</a>
     <a href="/galleries/">{% include icons/windows/galleries.svg %} Galleries</a>
@@ -52,21 +52,21 @@
     </a>
   </aside>
 
-  <nav id="mobile">
+  <nav id="mobile" popover="auto">
     <input id="visit-toggle" type="checkbox">
     <label id="mobile-submenu-toggle" for="visit-toggle" aria-label="Visit submenu">
-      {% include icons/windows/shops.svg %}
+      {% include icons/windows/events.svg %}
       Visit
       {% include icons/caret_down.svg %}
     </label>
     <nav id="mobile-submenu-content" aria-label="Visit pages">
-      <a href="{{ '/' | relative_url }}">{% include icons/windows/shops.svg %} Main</a>
-      <a href="{{ '/hours' | relative_url }}">{% include icons/windows/shops.svg %} Hours</a>
-      <a href="{{ '/locations' | relative_url }}">{% include icons/windows/shops.svg %} Locations</a>
-      <a href="{{ '/parking' | relative_url }}">{% include icons/windows/shops.svg %} Parking</a>
-      <a href="{{ '/village_map' | relative_url }}">{% include icons/windows/shops.svg %} Village Map</a>
-      <a href="{{ '/accessibility' | relative_url }}">{% include icons/windows/shops.svg %} Accessibility</a>
-      <a href="{{ '/family_and_pet' | relative_url }}">{% include icons/windows/shops.svg %} Family &amp; Pet</a>
+      <a href="{{ '/' | relative_url }}">{% include icons/windows/events.svg %} Main</a>
+      <a href="{{ '/hours' | relative_url }}">{% include icons/windows/events.svg %} Hours</a>
+      <a href="{{ '/locations' | relative_url }}">{% include icons/windows/events.svg %} Locations</a>
+      <a href="{{ '/parking' | relative_url }}">{% include icons/windows/events.svg %} Parking</a>
+      <a href="{{ '/village_map' | relative_url }}">{% include icons/windows/events.svg %} Village Map</a>
+      <a href="{{ '/accessibility' | relative_url }}">{% include icons/windows/events.svg %} Accessibility</a>
+      <a href="{{ '/family_and_pet' | relative_url }}">{% include icons/windows/events.svg %} Family &amp; Pet</a>
     </nav>
     <a href="/shops/">{% include icons/windows/shops.svg %} Shops</a>
     <a href="/galleries/">{% include icons/windows/galleries.svg %} Galleries</a>
