@@ -113,13 +113,13 @@ p {
 header {
   position: sticky;
   top: 0;
-  margin-top: 30px;
+  padding-top: max(30px, env(safe-area-inset-top, 0px));
   text-align: center;
   background: var(--navy);
   color: var(--cream);
   z-index: 10;
-  box-shadow: 0px -30px 0px var(--navy);
   width: 100%;
+  anchor-name: --header;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -183,6 +183,7 @@ header {
 
     a,
     button#visit-popover-anchor {
+      cursor: pointer;
       color: var(--cream);
       font-size: clamp(12px, 1.7vw, 20px);
       background: transparent;
@@ -213,6 +214,11 @@ header {
       align-items: center;
       gap: 0.85rem;
       font-size: clamp(12px, 1.7vw, 20px);
+
+      svg:first-of-type {
+        width: 16px;
+        height: 16px;
+      }
 
       svg:last-of-type {
         fill: var(--cream);
@@ -320,36 +326,6 @@ header {
       padding: 0;
     }
 
-    button.nav-toggle::before,
-    button.nav-toggle::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      width: 28px;
-      height: 1px;
-      background: var(--cream);
-      transition: transform 180ms ease, top 180ms ease, box-shadow 180ms ease;
-      transform: translateX(-50%);
-    }
-
-    button.nav-toggle::before {
-      top: 3px;
-    }
-
-    button.nav-toggle::after {
-      top: 15px;
-    }
-
-    button.nav-toggle[aria-expanded="true"]::before {
-      top: 6px;
-      transform: translateX(-50%) rotate(45deg);
-    }
-
-    button.nav-toggle[aria-expanded="true"]::after {
-      top: 6px;
-      transform: translateX(-50%) rotate(-45deg);
-    }
-
     nav#desktop {
       display: none;
     }
@@ -357,102 +333,172 @@ header {
 }
 
 @media (max-width: 770px) {
-  nav#mobile {
-    transition: height 380ms ease-in-out;
+  body:has(#mobile:popover-open) button.nav-toggle::before {
+    top: 6px;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  body:has(#mobile:popover-open) button.nav-toggle::after {
+    top: 6px;
+    transform: translateX(-50%) rotate(-45deg);
+  }
+}
+
+@media (max-width: 770px) {
+  body:has(#mobile:popover-open) main {
+    filter: blur(4px);
+    transition: filter 350ms ease;
+  }
+
+  body:has(#mobile:popover-open) aside#status {
     background: var(--navy);
+    transition: background 350ms ease, color 350ms ease;
+  }
+}
 
-    input#visit-toggle {
-      position: fixed;
-      opacity: 0;
-      pointer-events: none;
-      height: 0;
-      width: 0;
+nav#mobile {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  position-anchor: --header;
+  inset: unset;
+  top: calc(anchor(bottom) - var(--header-status-height));
+  left: anchor(left);
+  right: anchor(right);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: var(--navy);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  max-height: 0;
+  transition:
+    max-height 350ms ease,
+    overflow-y 0s 350ms,
+    overlay 350ms allow-discrete,
+    display 350ms allow-discrete;
+
+  &:popover-open {
+    max-height: calc(100dvh - var(--header-height) - var(--header-status-height));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transition:
+      max-height 350ms ease,
+      overlay 350ms allow-discrete,
+      display 350ms allow-discrete;
+  }
+}
+
+@starting-style {
+  nav#mobile:popover-open {
+    max-height: 0;
+  }
+}
+
+nav#mobile {
+  input#visit-toggle {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    width: 0;
+  }
+
+  label#mobile-submenu-toggle,
+  a {
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.95rem;
+    min-height: 60px;
+    padding: 0.9rem 2.5rem;
+    width: 100%;
+    gap: 0.9rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--cream) 65%, transparent);
+    box-sizing: border-box;
+
+    svg:first-of-type {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+  }
+
+  label#mobile-submenu-toggle {
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+
+    svg {
+      fill: var(--cream);
     }
 
-    label#mobile-submenu-toggle,
-    a {
-      color: var(--cream);
-      display: flex;
-      align-items: center;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.95rem;
-      min-height: 60px;
-      padding: 0.9rem 2.5rem;
-      width: 100%;
-      gap: 0.9rem;
-      border-bottom: 1px solid color-mix(in srgb, var(--cream) 65%, transparent);
-    }
-
-    label#mobile-submenu-toggle {
-      font-weight: 600;
-      cursor: pointer;
-      position: relative;
-      user-select: none;
-
-      svg {
-        fill: var(--cream);
-      }
-    }
-
-    label#mobile-submenu-toggle > svg:last-of-type {
+    & > svg:last-of-type {
       margin-left: auto;
       transition: transform 300ms ease;
     }
 
-    label#mobile-submenu-toggle:hover,
-    a:hover {
+    &:hover {
       color: var(--navy);
       background: var(--cream);
-      transition: background-color 180ms ease, color 180ms ease;
-    }
 
-    label#mobile-submenu-toggle:hover svg {
-      fill: var(--navy);
-    }
-
-    nav#mobile-submenu-content {
-      display: flex;
-      flex-direction: column;
-      max-height: 0;
-      overflow: clip;
-      opacity: 0;
-      transition: max-height 300ms ease, opacity 300ms ease;
-    }
-
-    input#visit-toggle:checked + label#mobile-submenu-toggle + nav#mobile-submenu-content {
-      max-height: 500px;
-      opacity: 1;
-    }
-
-    input#visit-toggle:checked + label#mobile-submenu-toggle > svg:last-of-type {
-      transform: rotate(180deg);
-    }
-
-    a {
-      background: transparent;
-      flex-direction: row;
-      justify-content: flex-start;
-      font-weight: 600;
-      position: relative;
-
-      &:last-child {
-        border-bottom: none;
+      svg {
+        fill: var(--navy);
       }
     }
+  }
 
-    a .nav-icon {
-      margin-right: 0;
-    }
+  a:hover {
+    color: var(--navy);
+    background: var(--cream);
+    transition: background-color 180ms ease, color 180ms ease;
+  }
 
-    nav#mobile-submenu-content a {
-      font-weight: 500;
-      padding-left: 3.5rem;
-    }
+  nav#mobile-submenu-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    overflow: clip;
+    opacity: 0;
+    transition: max-height 300ms ease, opacity 300ms ease;
+  }
 
-    nav#mobile-submenu-content a:last-child {
+  input#visit-toggle:checked + label#mobile-submenu-toggle + nav#mobile-submenu-content {
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  input#visit-toggle:checked + label#mobile-submenu-toggle > svg:last-of-type {
+    transform: rotate(180deg);
+  }
+
+  a {
+    background: transparent;
+    flex-direction: row;
+    justify-content: flex-start;
+    font-weight: 600;
+    position: relative;
+
+    &:last-child {
       border-bottom: none;
     }
+  }
+
+  a .nav-icon {
+    margin-right: 0;
+  }
+
+  nav#mobile-submenu-content a {
+    font-weight: 500;
+    padding-left: 3.5rem;
+  }
+
+  nav#mobile-submenu-content a:last-child {
+    border-bottom: none;
   }
 }
 
@@ -543,40 +589,23 @@ header {
       }
     }
 
-    &.shops-link {
-      background: var(--pink);
-      --category-overlay: var(--pink-40);
+    background: color-mix(in srgb, var(--bg-color) 40%, var(--cream));
+    transition: background 500ms ease;
+
+    &:has(img.loaded) {
+      background: var(--bg-color);
     }
 
-    &.galleries-link {
-      background: var(--blue);
-      --category-overlay: var(--blue-40);
-    }
-
-    &.foods-link {
-      background: var(--orange);
-      --category-overlay: var(--orange-40);
-    }
-
-    &.events-link {
-      background: var(--purple);
-      --category-overlay: var(--purple-40);
-    }
-
+    &.shops-link    { --bg-color: var(--pink);   --category-overlay: var(--pink-40); }
+    &.galleries-link { --bg-color: var(--blue);  --category-overlay: var(--blue-40); }
+    &.foods-link    { --bg-color: var(--orange);  --category-overlay: var(--orange-40); }
+    &.events-link   { --bg-color: var(--purple);  --category-overlay: var(--purple-40); }
     &.weddings-link {
-      background: var(--pink-40);
+      --bg-color: var(--pink);
       --category-overlay: var(--pink-40);
-
-      h5 {
-        background: none;
-        padding: 0;
-      }
+      h5 { background: none; padding: 0; }
     }
-
-    &.village-map-link {
-      background: var(--navy);
-      --category-overlay: var(--navy-80);
-    }
+    &.village-map-link { --bg-color: var(--navy); --category-overlay: var(--navy-80); }
   }
 }
 
@@ -1072,7 +1101,7 @@ footer {
       width: 1em;
       height: 1em;
       flex-shrink: 0;
-      background: url("/assets/images/icons/wedding.svg") no-repeat center / contain;
+      background: url("/assets/images/icons/weddings.svg") no-repeat center / contain;
       margin-top: calc(1em / 3);
     }
   }
