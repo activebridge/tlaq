@@ -690,6 +690,11 @@ hgroup {
     font-size: clamp(16px, 2vw, 25px);
   }
 
+  @media only screen and (min-width: 1024px) {
+    .card {
+      width: 678px;
+    }
+  }
 }
 
 /* ARTICLES */
@@ -949,12 +954,6 @@ article {
       }
     }
   }
-}
-
-.magazine-placeholder {
-  width: 85px;
-  height: 112px;
-  background-color: var(--cream);
 }
 
 .social {
@@ -1537,4 +1536,11 @@ dialog {
       display: none;
     }
   }
+}
+
+.magazine-cover {
+  padding: 0;
+  width: 85px;
+  height: 112px;
+  background-color: var(--cream);
 }
