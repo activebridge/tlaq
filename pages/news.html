@@ -1,7 +1,14 @@
 ---
 layout: page
 title: News
-permalink: /news
+permalink: /news/
+layout_type: news
+pagination:
+  enabled: true
+  collection: blogs
+  per_page: 8
+  sort_field: date
+  sort_reverse: true
 ---
 <div class="content-wrapper">
   <h5 title="news">WHAT'S NEW</h5>
@@ -9,9 +16,10 @@ permalink: /news
   <h2>New moments of discovery are always taking shape across Tlaquepaque village.</h2>
 
   <div class="list-container">
-    {% assign blogs = site.blogs | sort: "date" | reverse %}
-    {% for blog in blogs %}
+    {% for blog in paginator.posts %}
       {% include blog/card.html blog=blog %}
     {% endfor %}
   </div>
+
+  {% include pagination.html %}
 </div>
