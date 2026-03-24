@@ -1,0 +1,17 @@
+---
+permalink: /terms-and-conditions/
+layout: default
+title: Terms and Conditions
+---
+
+<div class="content-wrapper">
+  <hgroup>
+    <h5 title>{{ site.data.terms-and-conditions.title }}</h5>
+  </hgroup>
+
+  {% for section in site.data.terms-and-conditions.sections %}
+    <h3>{{ section.title }}</h3>
+    <p>{{ section.content }}</p>
+    <hr>
+  {% endfor %}
+</div>

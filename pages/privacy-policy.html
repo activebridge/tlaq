@@ -1,0 +1,17 @@
+---
+permalink: /privacy-policy/
+layout: default
+title: Privacy Policy
+---
+
+<div class="content-wrapper">
+  <hgroup>
+    <h5 title>{{ site.data.privacy-policy.title }}</h5>
+  </hgroup>
+
+  {% for section in site.data.privacy-policy.sections %}
+    <h3>{{ section.title }}</h3>
+    <p>{{ section.content }}</p>
+    <hr>
+  {% endfor %}
+</div>
