@@ -10,9 +10,30 @@ layout: default
     <div class="content-wrapper">
       <h3 class="transition-title" style="--transition-name: {{ page.title | downcase | replace: ' ', '-'}};">{{ page.title }}</h3>
       {% if page.starts_at %}
+        {% assign recurring_days = page.weekdays | default: page.recurrence_weekdays %}
+        {% assign recurring_days_label = "" %}
+        {% if recurring_days and recurring_days.size > 0 %}
+          {% for day in recurring_days %}
+            {% assign day_key = day | downcase %}
+            {% assign day_name = day_key %}
+            {% if day_key == "sun" %}{% assign day_name = "SUNDAY" %}{% endif %}
+            {% if day_key == "mon" %}{% assign day_name = "MONDAY" %}{% endif %}
+            {% if day_key == "tue" %}{% assign day_name = "TUESDAY" %}{% endif %}
+            {% if day_key == "wed" %}{% assign day_name = "WEDNESDAY" %}{% endif %}
+            {% if day_key == "thu" %}{% assign day_name = "THURSDAY" %}{% endif %}
+            {% if day_key == "fri" %}{% assign day_name = "FRIDAY" %}{% endif %}
+            {% if day_key == "sat" %}{% assign day_name = "SATURDAY" %}{% endif %}
+            {% if recurring_days_label != "" %}{% assign recurring_days_label = recurring_days_label | append: ", " %}{% endif %}
+            {% assign recurring_days_label = recurring_days_label | append: day_name %}
+          {% endfor %}
+        {% endif %}
         <p>
           {% include icons/calendar.svg %}
-          {{ page.starts_at | date: "%A, %B %-d, %Y" | upcase }}
+          {% if page.schedule_type == "recurring" and recurring_days and recurring_days.size > 0 %}
+            EVERY {{ recurring_days_label }}
+          {% else %}
+            {{ page.starts_at | date: "%A, %B %-d, %Y" | upcase }}
+          {% endif %}
         </p>
       {% endif %}
 
