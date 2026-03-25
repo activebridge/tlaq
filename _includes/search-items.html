@@ -3,54 +3,54 @@
   <div>{% include icons/windows/shops.svg %}<span>Shops</span></div>
 </li>
 {%- for item in site.shops -%}
-<li role="option" aria-selected="false" data-hidden data-type="shop"
-  data-search="{{ item.title | downcase }} {{ item.subtitle | default: "" | downcase }}"><a
-    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a></li>
+<li role="option" aria-selected="false" data-hidden data-type="shop" data-search="{{ item.title | downcase }}"><a
+    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a>
+</li>
 {%- endfor -%}
 {%- comment -%} GALLERIES {%- endcomment -%}
 <li class="search-result-group-header" data-hidden aria-hidden="true">
   <div>{% include icons/windows/galleries.svg %}<span>Galleries</span></div>
 </li>
 {%- for item in site.galleries -%}
-<li role="option" aria-selected="false" data-hidden data-type="gallery"
-  data-search="{{ item.title | downcase }} {{ item.subtitle | default: "" | downcase }}"><a
-    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a></li>
+<li role="option" aria-selected="false" data-hidden data-type="gallery" data-search="{{ item.title | downcase }}"><a
+    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a>
+</li>
 {%- endfor -%}
 {%- comment -%} FOODS {%- endcomment -%}
 <li class="search-result-group-header" data-hidden aria-hidden="true">
   <div>{% include icons/windows/foods.svg %}<span>Food &amp; Drink</span></div>
 </li>
 {%- for item in site.foods -%}
-<li role="option" aria-selected="false" data-hidden data-type="food"
-  data-search="{{ item.title | downcase }} {{ item.subtitle | default: "" | downcase }}"><a
-    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a></li>
+<li role="option" aria-selected="false" data-hidden data-type="food" data-search="{{ item.title | downcase }}"><a
+    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a>
+</li>
 {%- endfor -%}
 {%- comment -%} EVENTS {%- endcomment -%}
 <li class="search-result-group-header" data-hidden aria-hidden="true">
   <div>{% include icons/windows/events.svg %}<span>Events</span></div>
 </li>
 {%- for item in site.events -%}
-<li role="option" aria-selected="false" data-hidden data-type="event"
-  data-search="{{ item.title | downcase }} {{ item.subtitle | default: "" | downcase }}"><a
-    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a></li>
+<li role="option" aria-selected="false" data-hidden data-type="event" data-search="{{ item.title | downcase }}"><a
+    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a>
+</li>
 {%- endfor -%}
 {%- comment -%} BLOGS {%- endcomment -%}
 <li class="search-result-group-header" data-hidden aria-hidden="true">
   <div>{% include icons/windows/events.svg %}<span>News</span></div>
 </li>
 {%- for item in site.blogs -%}
-<li role="option" aria-selected="false" data-hidden data-type="blog"
-  data-search="{{ item.title | downcase }} {{ item.description | default: "" | downcase }}"><a
-    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a></li>
+<li role="option" aria-selected="false" data-hidden data-type="blog" data-search="{{ item.title | downcase }}"><a
+    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a>
+</li>
 {%- endfor -%}
 {%- comment -%} WEDDINGS {%- endcomment -%}
 <li class="search-result-group-header" data-hidden aria-hidden="true">
   <div>{% include icons/windows/weddings.svg %}<span>Wedding Venues</span></div>
 </li>
 {%- for item in site.weddings -%}
-<li role="option" aria-selected="false" data-hidden data-type="wedding"
-  data-search="{{ item.title | downcase }} {{ item.subtitle | default: "" | downcase }}"><a
-    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a></li>
+<li role="option" aria-selected="false" data-hidden data-type="wedding" data-search="{{ item.title | downcase }}"><a
+    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a>
+</li>
 {%- endfor -%}
 {%- comment -%} WEDDING ARTICLES {%- endcomment -%}
 <li class="search-result-group-header" data-hidden aria-hidden="true">
@@ -58,15 +58,15 @@
 </li>
 {%- for item in site.wedding-articles -%}
 <li role="option" aria-selected="false" data-hidden data-type="wedding-article"
-  data-search="{{ item.title | downcase }} {{ item.subtitle | default: item.description | default: "" | downcase }}"><a
-    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a></li>
+  data-search="{{ item.title | downcase }}"><a href="{{ item.url | relative_url }}" class="search-result-title"
+    onclick="searchDialog.close()">{{ item.title }}</a></li>
 {%- endfor -%}
 {%- comment -%} ARTICLES {%- endcomment -%}
 <li class="search-result-group-header" data-hidden aria-hidden="true">
   <div>{% include icons/windows/events.svg %}<span>Articles</span></div>
 </li>
 {%- for item in site.articles -%}
-<li role="option" aria-selected="false" data-hidden data-type="article"
-  data-search="{{ item.title | downcase }} {{ item.description | default: "" | downcase }}"><a
-    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a></li>
+<li role="option" aria-selected="false" data-hidden data-type="article" data-search="{{ item.title | downcase }}"><a
+    href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a>
+</li>
 {%- endfor -%}
