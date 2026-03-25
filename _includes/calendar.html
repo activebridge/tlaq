@@ -1,66 +1,29 @@
-{% assign calendar_events = site.events | sort: "starts_at" %}
-
-{% comment %}Build unique month options{% endcomment %}
-{% assign months = "" %}
-{% for event in calendar_events %}
-  {% if event.starts_at %}
-    {% assign month_val = event.starts_at | date: "%Y-%m" %}
-    {% assign month_label = event.starts_at | date: "%B %Y" | upcase %}
-    {% unless months contains month_val %}
-      {% if months != "" %}{% assign months = months | append: "|" %}{% endif %}
-      {% assign months = months | append: month_val | append: ":" | append: month_label %}
-    {% endunless %}
-  {% endif %}
-{% endfor %}
-{% assign month_pairs = months | split: "|" %}
-
 <div class="calendar" id="calendar">
   <div class="calendar-filter">
-    <select class="calendar-select" id="calendar-select" aria-label="Filter events by month">
-      {% for pair in month_pairs %}
-        {% assign parts = pair | split: ":" %}
-        <option value="{{ parts[0] }}">{{ parts[1] }}</option>
-      {% endfor %}
-    </select>
+    <select class="calendar-select" id="calendarSelect" aria-label="Filter events by month"></select>
   </div>
-
-  <div class="calendar-items">
-    {% for event in calendar_events %}
-      {% if event.starts_at %}
-        <a href="{{ event.url }}" class="calendar-item" data-month="{{ event.starts_at | date: '%Y-%m' }}">
-          <div class="calendar-item-content">
-            <div class="calendar-item-image">
-              {% if event.image %}
-                {% assign image_path = '/assets/images/' | append: event.image | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,quality=85,gravity=top,format=webp/' | prepend: site.cdn_url %}
-
-                <img src="{{ image_path }}" alt="{{ event.title }}">
-              {% else %}
-                <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ event.title }}">
-              {% endif %}
-            </div>
-            <div class="calendar-item-details">
-              <div class="calendar-item-date">
-                <span>{{ event.starts_at | date: "%A" | upcase }}</span>
-                <span>,&nbsp;</span>
-                <span>{{ event.starts_at | date: "%b %-d" | upcase }}</span>
-              </div>
-              <h3 class="calendar-item-title">{{ event.title }}</h3>
-              {% if event.subtitle %}
-                <p class="calendar-item-subtitle">{{ event.subtitle }}</p>
-              {% endif %}
-              <div class="calendar-item-time">
-                {% if event.ends_at %}
-                  {{ event.starts_at | date: "%-I:%M" }} - {{ event.ends_at | date: "%-I:%M %p" }}
-                {% else %}
-                  {{ event.starts_at | date: "%-I:%M %p" }}
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </a>
-      {% endif %}
-    {% endfor %}
-  </div>
+  <div class="calendar-items" id="calendarItems"></div>
 </div>
+
+<script type="application/json" id="calendarEventsData">
+  [
+    {% assign calendar_events = site.events | sort: "starts_at" %}
+    {% for event in calendar_events %}
+      {% assign image_path = '/assets/images/' | append: event.image | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,quality=85,gravity=top,format=webp/' | prepend: site.cdn_url %}
+      {
+        "title": {{ event.title | jsonify }},
+        "url": {{ event.url | relative_url | jsonify }},
+        "starts_at": {{ event.starts_at | date: "%Y-%m-%d %H:%M:%S" | jsonify }},
+        "ends_at": {{ event.ends_at | date: "%Y-%m-%d %H:%M:%S" | jsonify }},
+        "subtitle": {{ event.subtitle | jsonify }},
+        "image": {{ image_path | jsonify }},
+        "annual": {{ event.annual | jsonify }},
+        "schedule_type": {{ event.schedule_type | jsonify }},
+        "recurs_until": {{ event.recurs_until | date: "%Y-%m-%d %H:%M:%S" | jsonify }},
+        "recurrence_weekdays": {{ event.recurrence_weekdays | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+</script>
 
 <script src="{{ '/assets/js/calendar.js' | relative_url }}" defer></script>

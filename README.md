@@ -35,6 +35,71 @@ Open http://localhost:4000
 Each vendor is a Markdown file with front matter (`title`, `subtitle`, `date`, `slug`, `hours`, etc.).
 Images live in `assets/images/` as `.webp` at 480/960/1440px sizes.
 
+## Events Management
+
+Events live in `_events/` (Markdown + YAML front matter), and are shown in:
+
+- Annual cards block on `events/index`
+- Monthly calendar (`_includes/calendar.html`)
+
+### Event fields
+
+Required/common fields:
+
+- `title`, `slug`, `starts_at`, `location`, `image`, `subtitle`
+- `annual` (`true`/`false`)
+  - `true` = **annual event** (repeats every year on the same date/time)
+    - shown in annual cards block on `events/index`
+    - calendar treats it as yearly and **ignores** `schedule_type`, `recurs_until`, and weekday fields (if someone sets them by mistake)
+  - `false` = normal event (calendar uses `schedule_type`)
+- `schedule_type` (`single`, `range`, `recurring`)
+
+Optional fields by schedule:
+
+- `single`: optional `ends_at` (same-day time range)
+- `range`: required `ends_at` (inclusive date range, rendered daily)
+- `recurring`: required `recurs_until` + `weekdays`
+  - `weekdays` format: `[mon, thu]`
+  - supported day values: `sun`, `mon`, `tue`, `wed`, `thu`, `fri`, `sat`
+
+### Examples
+
+Single-day event:
+
+```yaml
+starts_at: '2025-12-14 17:00:00'
+ends_at: '2025-12-14 21:00:00'
+annual: false
+schedule_type: single
+```
+
+Date range event (daily cards generated):
+
+```yaml
+starts_at: '2025-11-29 10:00:00'
+ends_at: '2025-12-05 17:00:00'
+annual: false
+schedule_type: range
+```
+
+Recurring weekly event:
+
+```yaml
+starts_at: '2025-11-01 11:00:00'
+ends_at: '2025-11-01 17:00:00'
+recurs_until: '2026-12-31 23:59:59'
+weekdays: [mon, thu, fri]
+annual: true
+schedule_type: recurring
+```
+
+### Calendar implementation
+
+- Source content stays in `_events/*.md` (YAML front matter), not JSON files.
+- `_includes/calendar.html` outputs a JSON payload into the page (`calendar-events-data` script tag).
+- `assets/js/calendar.js` reads that payload, generates occurrences, sorts by day, and renders cards.
+- Month filter options are generated in JS from occurrences and default to current month when available.
+
 ## Tech
 
 - Jekyll ~4.3

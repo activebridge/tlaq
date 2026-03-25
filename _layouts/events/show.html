@@ -10,9 +10,23 @@ layout: default
     <div class="content-wrapper">
       <h3 class="transition-title" style="--transition-name: {{ page.title | downcase | replace: ' ', '-'}};">{{ page.title }}</h3>
       {% if page.starts_at %}
+        {% assign recurring_days = page.weekdays | default: page.recurrence_weekdays %}
+        {% assign recurring_days_label = "" %}
+        {% if recurring_days and recurring_days.size > 0 %}
+          {% for day in recurring_days %}
+            {% assign day_key = day | downcase %}
+            {% assign day_name = site.data.days[day_key] | default: day_key | upcase %}
+            {% if recurring_days_label != "" %}{% assign recurring_days_label = recurring_days_label | append: ", " %}{% endif %}
+            {% assign recurring_days_label = recurring_days_label | append: day_name %}
+          {% endfor %}
+        {% endif %}
         <p>
           {% include icons/calendar.svg %}
-          {{ page.starts_at | date: "%A, %B %-d, %Y" | upcase }}
+          {% if page.schedule_type == "recurring" and recurring_days and recurring_days.size > 0 %}
+            EVERY {{ recurring_days_label }}
+          {% else %}
+            {{ page.starts_at | date: "%A, %B %-d" | upcase }}
+          {% endif %}
         </p>
       {% endif %}
 
