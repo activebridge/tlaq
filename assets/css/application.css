@@ -1578,11 +1578,6 @@ dialog {
     text-decoration: none;
     font-size: 0.9rem;
     transition: background-color 0.2s ease, color 0.2s ease;
-
-    &:disabled {
-      opacity: 0.35;
-      pointer-events: none;
-    }
   }
 }
 
