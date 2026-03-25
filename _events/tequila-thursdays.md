@@ -7,8 +7,8 @@ recurs_until: '2027-03-26 23:59:59'
 location: Tlaquepaque Village
 annual: false
 schedule_type: recurring
-recurrence_weekdays: [thu]
-image: "events/the-marigold-mural-project.webp"
+recurrence_weekdays: [thu, fri]
+image: "events/tequila-thursdays.webp"
 subtitle: Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions
   of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
 ---

@@ -1,11 +1,11 @@
 <div class="calendar" id="calendar">
   <div class="calendar-filter">
-    <select class="calendar-select" id="calendar-select" aria-label="Filter events by month"></select>
+    <select class="calendar-select" id="calendarSelect" aria-label="Filter events by month"></select>
   </div>
-  <div class="calendar-items" id="calendar-items"></div>
+  <div class="calendar-items" id="calendarItems"></div>
 </div>
 
-<script id="calendar-events-data" type="application/json">
+<script type="application/json" id="calendarEventsData">
   [
     {% assign calendar_events = site.events | sort: "starts_at" %}
     {% for event in calendar_events %}

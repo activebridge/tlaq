@@ -1,76 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
-  let ge = (e) => { return document.getElementById(e); }
-  const select = ge('calendar-select');
-  const container = ge('calendar-items');
-  const dataNode = ge('calendar-events-data');
+  const select = window.calendarSelect;
+  const container = window.calendarItems;
+  const dataNode = window.calendarEventsData;
   if (!select || !container || !dataNode) return;
 
-  let parseDateTime = (value) => {
-    if (!value) return null;
-    const raw = String(value).trim();
-    const match = raw.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?/);
-    if (match) {
-      const year = Number(match[1]);
-      const month = Number(match[2]) - 1;
-      const day = Number(match[3]);
-      const hour = Number(match[4]);
-      const minute = Number(match[5]);
-      const second = Number(match[6] || '0');
-      return new Date(year, month, day, hour, minute, second);
-    }
-    return new Date(raw);
-  }
-  let toMonthKey = (date) => {
+  const toMonthKey = (date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     return year + '-' + month;
   }
-  let formatDay = (date) => { return date.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase(); }
-  let formatMonthDay = (date) => { const mon = date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(); return mon + ' ' + date.getDate(); }
-  let formatTime = (date) => {
+  const formatDay = (date) => date.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase();
+  const formatMonthDay = (date) => {
+    const mon = date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+    return mon + ' ' + date.getDate();
+  };
+  const formatTime = (date) => {
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const hour24 = date.getHours();
     const hour12 = hour24 % 12 || 12;
     const ampm = hour24 >= 12 ? 'PM' : 'AM';
     return hour12 + ':' + minutes + ' ' + ampm;
-  }
-
-  function escapeHtml(value) {
-    return String(value || '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  }
-
-  function normalizeWeekdays(values) {
-    if (!Array.isArray(values)) return [];
-    return values.map(function(day) { return String(day).toLowerCase().slice(0, 3); });
-  }
-
-  function inferScheduleType(event, startDate, endDate) {
-    if (event.schedule_type) return event.schedule_type;
-    const weekdays = Array.isArray(event.weekdays) && event.weekdays.length ? event.weekdays : event.recurrence_weekdays;
-    if (event.recurs_until && Array.isArray(weekdays) && weekdays.length) {
-      return 'recurring';
-    }
-    if (endDate && startDate.toDateString() !== endDate.toDateString()) return 'range';
-    return 'single';
-  }
+  };
 
   function buildOccurrences(event) {
-    const startDate = parseDateTime(event.starts_at);
-    if (!startDate) return [];
-
-    const endDate = parseDateTime(event.ends_at) || new Date(startDate.getTime());
-    const scheduleType = inferScheduleType(event, startDate, endDate);
+    const startDate = new Date(event.starts_at);
+    const endDate = new Date(event.ends_at) || new Date(startDate.getTime());
+    const scheduleType = event.schedule_type;
     const occurrences = [];
 
     if (scheduleType === 'recurring') {
-      const until = parseDateTime(event.recurs_until);
-      const weekdaysSource = Array.isArray(event.weekdays) && event.weekdays.length ? event.weekdays : event.recurrence_weekdays;
-      const weekdays = normalizeWeekdays(weekdaysSource);
+      const until = new Date(event.recurs_until);
+      const weekdays = event.recurrence_weekdays;
       if (!until || !weekdays.length) return [];
 
       const durationMs = Math.max(0, endDate.getTime() - startDate.getTime());
@@ -117,12 +77,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function renderOccurrence(item) {
     const event = item.event;
-    const subtitle = event.subtitle ? '<p class="calendar-item-subtitle">' + escapeHtml(event.subtitle) + '</p>' : '';
+    const subtitle = event.subtitle ? '<p class="calendar-item-subtitle">' + event.subtitle + '</p>' : '';
     return '' +
-      '<a href="' + escapeHtml(event.url) + '" class="calendar-item" data-month="' + toMonthKey(item.start) + '">' +
+      '<a href="' + event.url + '" class="calendar-item" data-month="' + toMonthKey(item.start) + '">' +
         '<div class="calendar-item-content">' +
           '<div class="calendar-item-image">' +
-            '<img src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.title) + '">' +
+            '<img src="' + event.image + '" alt="' + event.title + '">' +
           '</div>' +
           '<div class="calendar-item-details">' +
             '<div class="calendar-item-date">' +
@@ -130,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
               '<span>,&nbsp;</span>' +
               '<span>' + formatMonthDay(item.start) + '</span>' +
             '</div>' +
-            '<h3 class="calendar-item-title">' + escapeHtml(event.title) + '</h3>' +
+            '<h3 class="calendar-item-title">' + event.title + '</h3>' +
             subtitle +
             '<div class="calendar-item-time">' + formatTime(item.start) + ' - ' + formatTime(item.end) + '</div>' +
           '</div>' +
@@ -140,47 +100,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function buildMonths(occurrences) {
     const monthMap = new Map();
-    occurrences.forEach(function(item) {
+    occurrences.forEach((item) => {
       const key = toMonthKey(item.start);
       if (!monthMap.has(key)) {
         const label = item.start.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }).toUpperCase();
         monthMap.set(key, label);
       }
     });
-    return Array.from(monthMap.entries()).sort(function(a, b) { return a[0].localeCompare(b[0]); });
+    return Array.from(monthMap.entries()).sort((a, b) => a[0].localeCompare(b[0]));
   }
 
   function renderMonthOptions(months) {
-    select.innerHTML = months.map(function(entry) {
-      return '<option value="' + entry[0] + '">' + escapeHtml(entry[1]) + '</option>';
-    }).join('');
+    select.innerHTML = months
+      .map(([value, label]) => '<option value="' + value + '">' + label + '</option>')
+      .join('');
   }
 
   function renderByMonth(allOccurrences, monthKey) {
-    const visible = allOccurrences.filter(function(item) {
-      return !monthKey || toMonthKey(item.start) === monthKey;
-    }).sort(function(a, b) {
-      return a.start.getTime() - b.start.getTime();
-    });
+    const visible = allOccurrences.filter((item) => !monthKey || toMonthKey(item.start) === monthKey);
     container.innerHTML = visible.map(renderOccurrence).join('');
   }
 
   const sourceEvents = JSON.parse(dataNode.textContent || '[]');
   const allOccurrences = sourceEvents
     .flatMap(buildOccurrences)
-    .sort(function(a, b) { return a.start.getTime() - b.start.getTime(); });
+    .sort((a, b) => a.start.getTime() - b.start.getTime());
 
   const months = buildMonths(allOccurrences);
   if (!months.length) return;
 
   renderMonthOptions(months);
   const currentMonth = toMonthKey(new Date());
-  const hasCurrentMonth = months.some(function(entry) { return entry[0] === currentMonth; });
+  const hasCurrentMonth = months.some((entry) => entry[0] === currentMonth);
   if (hasCurrentMonth) {
     select.value = currentMonth;
   }
 
-  let handleFilter = () => { return renderByMonth(allOccurrences, select.value); }
+  const handleFilter = () => renderByMonth(allOccurrences, select.value);
   select.addEventListener('change', handleFilter);
   window.addEventListener('pageshow', handleFilter);
   handleFilter();

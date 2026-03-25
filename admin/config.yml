@@ -135,9 +135,12 @@ collections:
       - { label: "Starts At", name: "starts_at", widget: "datetime" }
       - { label: "Ends At", name: "ends_at", widget: "datetime", required: false }
       - { label: "Location", name: "location", widget: "string" }
-      - { label: "Category", name: "category", widget: "string", required: false, hint: "e.g. annual" }
+      - { label: "Annual", name: "annual", widget: "boolean", default: false }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Subtitle", name: "subtitle", widget: "text" }
+      - { label: "Schedule Type", name: "schedule_type", widget: "select", options: ["single", "range", "recurring"] }
+      - { label: "Recurrence Until", name: "recurs_until", widget: "datetime", required: false }
+      - { label: "Recurrence Weekdays", name: "recurrence_weekdays", widget: "select", multiple: true, required: false, options: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"] }
       - label: "Schedule"
         name: "schedule"
         widget: "list"
