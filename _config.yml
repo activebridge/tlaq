@@ -79,6 +79,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate-v2
+  - jekyll-minifier
 
 pagination:
   enabled: true
@@ -96,3 +97,8 @@ exclude:
   - Gemfile.lock
   - scripts/
   - vendor/
+
+jekyll-minifier:
+  compress_css: true
+  compress_javascript: true
+  compress_html: true
