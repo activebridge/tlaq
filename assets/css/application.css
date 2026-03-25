@@ -93,7 +93,6 @@ h5 {
   gap: 0.725rem;
   display: flex;
   align-items: center;
-  text-transform: uppercase;
   margin: 1.5rem 0;
 
   svg {
@@ -297,6 +296,10 @@ header {
       #visit-popover-anchor svg:last-of-type {
         transform: rotate(180deg);
       }
+    }
+
+    > .search-toggle-btn {
+      cursor: pointer;
     }
   }
 
@@ -548,14 +551,6 @@ nav#mobile {
       z-index: 1;
       mix-blend-mode: hue;
       transition: opacity 500ms ease;
-    }
-
-    div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      gap: 1rem;
     }
 
     h5, p {
@@ -1589,4 +1584,167 @@ dialog {
       pointer-events: none;
     }
   }
+}
+
+/* Search dialog */
+
+.search-dialog {
+  border: none;
+  background: transparent;
+  opacity: 0;
+  transform: translateY(-2rem);
+  transition: opacity 250ms ease, transform 300ms cubic-bezier(0.34, 1.2, 0.64, 1),
+              display 300ms allow-discrete, overlay 300ms allow-discrete;
+
+  &[open] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &::before {
+    display: none;
+  }
+
+  @starting-style {
+    &[open] {
+      opacity: 0;
+      transform: translateY(-2rem);
+    }
+  }
+
+  &::backdrop {
+    background: color-mix(in srgb, var(--navy) 55%, transparent);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 250ms ease,
+                display 300ms allow-discrete, overlay 300ms allow-discrete;
+  }
+
+  &[open]::backdrop {
+    opacity: 1;
+  }
+
+  @starting-style {
+    &[open]::backdrop {
+      opacity: 0;
+    }
+  }
+}
+
+.search-modal-card {
+  background: var(--navy);
+  color: var(--cream);
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-close-btn {
+  color: var(--cream-60);
+  cursor: pointer;
+  &:hover { color: var(--cream); }
+}
+
+.search-modal-card input[type="search"] {
+  border: none;
+  border-bottom: 1px solid var(--cream-40);
+  color: var(--cream);
+  font-size: clamp(16px, 2vw, 18px);
+  padding: 1rem 3.25rem 1rem 1rem;
+
+  &::placeholder { color: var(--cream-60); }
+  &::-webkit-search-cancel-button { display: none; }
+  &::-moz-search-clear-button { display: none; }
+}
+
+.search-results {
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  li {
+    transition: height 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 200ms ease;
+  }
+
+  li[data-hidden] {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    border: none;
+  }
+
+  .search-result-group-header {
+    text-align: left;
+    pointer-events: none;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.4rem;
+      padding: 0.9rem 1.25rem 0.4rem;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cream-60);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.search-dialog:has(#searchInput[aria-expanded="true"]) .search-results {
+  max-height: 360px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.search-results [role="option"] {
+  cursor: pointer;
+  border-bottom: 1px solid var(--cream-40);
+  text-align: left;
+  transition: background 200ms ease;
+
+  & > a {
+    display: block;
+    padding: 0.75rem 1.25rem;
+  }
+
+  &:last-child { border-bottom: none; }
+
+  &:hover,
+  &[aria-selected="true"] {
+    background: color-mix(in srgb, var(--cream) 12%, var(--navy));
+  }
+}
+
+.search-result-title {
+  display: block;
+  font-weight: 500;
+  font-size: clamp(15px, 2vw, 17px);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: inherit;
+  text-decoration: none;
+}
+
+.search-results[data-no-results]::after {
+  content: "No results found";
+  display: block;
+  padding: 1.25rem;
+  font-size: 14px;
+  color: var(--cream-60);
+  text-align: center;
 }
