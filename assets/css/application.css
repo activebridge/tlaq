@@ -297,6 +297,10 @@ header {
         transform: rotate(180deg);
       }
     }
+
+    > .search-toggle-btn {
+      cursor: pointer;
+    }
   }
 
   @media (max-width: 770px) {
@@ -1529,6 +1533,59 @@ dialog {
   }
 }
 
+.magazine-cover {
+  padding: 0;
+  width: 85px;
+  height: 112px;
+  background-color: var(--cream);
+  cursor: pointer;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 3rem 0 2rem;
+
+  .pages {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    padding: 0.6rem 1.2rem;
+
+    &:hover {
+      background-color: var(--navy);
+      color: var(--cream);
+    }
+  }
+
+  button {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+  }
+}
+
 /* Search dialog */
 
 .search-dialog {
@@ -1601,10 +1658,6 @@ dialog {
   &::placeholder { color: var(--cream-60); }
   &::-webkit-search-cancel-button { display: none; }
   &::-moz-search-clear-button { display: none; }
-}
-
-header nav#desktop > .search-toggle-btn {
-  cursor: pointer;
 }
 
 .search-results {
@@ -1694,56 +1747,4 @@ header nav#desktop > .search-toggle-btn {
   font-size: 14px;
   color: var(--cream-60);
   text-align: center;
-}
-.magazine-cover {
-  padding: 0;
-  width: 85px;
-  height: 112px;
-  background-color: var(--cream);
-  cursor: pointer;
-}
-
-/* Pagination */
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin: 3rem 0 2rem;
-
-  .pages {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--navy);
-    color: var(--navy);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    padding: 0.6rem 1.2rem;
-
-    &:hover {
-      background-color: var(--navy);
-      color: var(--cream);
-    }
-  }
-
-  button {
-    padding: 0.6rem 1.2rem;
-    border: 1px solid var(--navy);
-    color: var(--navy);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: background-color 0.2s ease, color 0.2s ease;
-
-    &:disabled {
-      opacity: 0.35;
-      pointer-events: none;
-    }
-  }
 }
