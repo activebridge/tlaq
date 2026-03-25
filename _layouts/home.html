@@ -14,7 +14,7 @@ layout: default
   <img class="banner-bg" src="{{ desktop_image_path }}" fetchpriority="high" decoding="async" alt=""
     srcset="{{ mobile_image_path }} 600w, {{ desktop_image_path }} 1600w"
     sizes="(max-width: 770px) 600px, 1600px">
-  <video class="videobgframe" autoplay loop muted playsinline id="videoBg"
+  <video class="videobgframe" autoplay loop muted playsinline preload="none" id="videoBg"
     oncanplaythrough="setTimeout(() => { this.classList.add('loaded'); }, 1610)">
     <source src="{{ video_url }}" type="video/mp4">
   </video>

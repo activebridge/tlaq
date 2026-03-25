@@ -148,9 +148,7 @@ html, body {
     min-height: 100%;
     height: auto;
 
-    &:has(.nav-toggle[aria-expanded="true"]) {
-      overflow-y: hidden;
-    }
+    &:has(:popover-open) { overflow-y: hidden; }
   }
 
   main {
@@ -218,8 +216,6 @@ html, body {
   p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
   h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
 
-  #root, #__next { isolation: isolate; }
-
   h1, h2, h3, h4 {
     font-family: var(--font-caslon);
     font-weight: 500;
@@ -237,7 +233,7 @@ html, body {
     line-height: 1;
   }
 
-  h5 { font-size: clamp(20px, 2.5vw, 32px); }
+  h5 { font-size: clamp(20px, 2.5vw, 32px); text-transform: uppercase; }
 
   h6 {
     font-size: clamp(12px, 1.7vw, 20px);
@@ -314,6 +310,7 @@ html, body {
 
   header nav#desktop {
     height: var(--header-nav-height);
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -324,7 +321,7 @@ html, body {
       font-size: clamp(12px, 1.7vw, 20px);
       display: inline-flex;
       gap: 0.35rem;
-      padding: 0 0.5rem;
+      padding: 1rem 0.5rem;
       align-items: center;
       flex-direction: row;
       height: var(--header-nav-height);
@@ -337,10 +334,6 @@ html, body {
         flex-shrink: 0;
         margin-right: 0.5rem;
       }
-    }
-
-    a {
-      padding: 1rem 0.5rem;
     }
 
     button#visit-popover-anchor {
@@ -425,6 +418,7 @@ html, body {
       margin-top: 1rem;
       padding: 0;
       justify-self: start;
+      align-items: center;
     }
 
     header ul.header-actions li {
@@ -438,6 +432,8 @@ html, body {
       cursor: pointer;
       color: var(--cream);
       padding: 0;
+      display: inline-flex;
+      align-items: center;
     }
 
     header ul.header-actions svg {
@@ -478,7 +474,42 @@ html, body {
     #weather img {
       height: 19px;
     }
+
   }
+
+  header a.logo,
+  header button.nav-toggle,
+  header ul.header-actions {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .search-dialog {
+    top: calc(var(--header-height) + var(--header-status-height) + 1rem);
+    left: 50%;
+    translate: -50% 0;
+    width: min(560px, calc(100% - 3rem));
+    padding: 0;
+    overflow: visible;
+  }
+
+  .search-close-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.25rem;
+  }
+
+  header nav#desktop > .search-toggle-btn {
+    all: unset;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      margin-top: 5px;
+    }
+  }
+
 
   #landing-banner {
     min-height: 427px;
@@ -596,6 +627,15 @@ html, body {
     position: relative;
     overflow: hidden;
     text-decoration: none;
+    color: var(--cream);
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
 
   #landing-nav a img {
@@ -731,5 +771,16 @@ html, body {
       top: 0;
       opacity: 1;
     }
+  }
+
+  .search-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable both-edges;
   }
 </style>

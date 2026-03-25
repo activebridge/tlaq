@@ -16,7 +16,7 @@
       </a>
     </li>
     <li>
-      <button type="button" aria-label="Search">
+      <button class="search-toggle-btn" type="button" aria-label="Search" onclick="searchDialog.showModal()">
         {% include icons/search.svg %}
       </button>
     </li>
@@ -43,7 +43,24 @@
     <a href="/foods/">{% include icons/windows/foods.svg %} Foods</a>
     <a href="/events/">{% include icons/windows/events.svg %} Events</a>
     <a href="/weddings">{% include icons/windows/weddings.svg %} Weddings</a>
+    <button class="search-toggle-btn" type="button" aria-label="Search" onclick="searchDialog.showModal()">
+      {% include icons/search.svg %}
+    </button>
   </nav>
+
+  <dialog id="searchDialog" class="search-dialog" aria-label="Search">
+    <div class="search-modal-card">
+      <button type="button" class="search-close-btn" aria-label="Close search" onclick="searchDialog.close()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="3" x2="17" y2="17"/><line x1="17" y1="3" x2="3" y2="17"/></svg>
+      </button>
+      <input id="searchInput" type="search" name="q" placeholder="Search…" autocomplete="off" aria-label="Search site"
+        role="combobox" aria-expanded="false" aria-controls="searchResults" aria-autocomplete="list" autofocus>
+
+      <ul id="searchResults" class="search-results" role="listbox" aria-label="Search results">
+        {% include search-items.html %}
+      </ul>
+    </div>
+  </dialog>
 
   <aside id="status" aria-label="Store hours and weather">
     OPEN TODAY:&nbsp;<time datetime="10:00-17:00">10:00 AM - 5:00 PM</time>
