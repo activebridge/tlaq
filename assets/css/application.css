@@ -1487,6 +1487,20 @@ dialog {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     padding: 10px;
   }
+
+  &::backdrop {
+    background: color-mix(in srgb, var(--navy) 55%, transparent);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 250ms ease,
+                display 300ms allow-discrete, overlay 300ms allow-discrete;
+  }
+
+  &[open]::backdrop { opacity: 1; }
+
+  @starting-style {
+    &[open]::backdrop { opacity: 0; }
+  }
 }
 
 /* Contacts Page */
@@ -1598,19 +1612,6 @@ dialog {
     }
   }
 
-  &::backdrop {
-    background: color-mix(in srgb, var(--navy) 55%, transparent);
-    backdrop-filter: blur(4px);
-    opacity: 0;
-    transition: opacity 250ms ease,
-                display 300ms allow-discrete, overlay 300ms allow-discrete;
-  }
-
-  &[open]::backdrop { opacity: 1; }
-
-  @starting-style {
-    &[open]::backdrop { opacity: 0; }
-  }
 }
 
 .search-modal-card {
