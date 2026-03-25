@@ -97,9 +97,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function renderOccurrence(item) {
     const event = item.event;
-    const subtitle = event.subtitle ? '<p class="calendar-item-subtitle">' + event.subtitle + '</p>' : '';
+    const subtitle = event.subtitle ? '<p>' + event.subtitle + '</p>' : '';
     return '' +
-      '<a href="' + event.url + '" class="calendar-item" data-month="' + toMonthKey(item.start) + '">' +
+      '<a href="' + event.url + '" data-month="' + toMonthKey(item.start) + '">' +
         '<div class="calendar-item-content">' +
           '<div class="calendar-item-image">' +
             '<img src="' + event.image + '" alt="' + event.title + '">' +
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
               '<span>,&nbsp;</span>' +
               '<span>' + formatMonthDay(item.start) + '</span>' +
             '</div>' +
-            '<h3 class="calendar-item-title">' + event.title + '</h3>' +
+            '<h3>' + event.title + '</h3>' +
             subtitle +
             '<div class="calendar-item-time">' + formatTime(item.start) + ' - ' + formatTime(item.end) + '</div>' +
           '</div>' +
