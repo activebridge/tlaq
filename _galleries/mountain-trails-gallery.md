@@ -8,7 +8,7 @@ suite: a201
 phone: (928) 282-3225
 website: https://mountaintrailssedona.com
 coordinates: "-111.7625608, 34.862085"
-image: "stores/mountain-trails-gallery.webp"
+image: "assets/images/stores/mountain-trails-gallery.webp"
 instagram: https://www.instagram.com/mountaintrailssedona/
 facebook: https://www.facebook.com/MTGSedona/
 full_location: 336 AZ-179 Suite A201, Sedona, AZ 86336

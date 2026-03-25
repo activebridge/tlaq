@@ -8,7 +8,7 @@ suite: b125
 phone: (928) 282-1212
 website: https://creativegateways.com
 coordinates: "-111.7631764, 34.862281"
-image: "stores/creative-gateways.webp"
+image: "assets/images/stores/creative-gateways.webp"
 instagram: https://www.instagram.com/creativegatewaysgalleries/
 facebook: https://www.facebook.com/creativegatewaysgallery/
 full_location: 336 AZ-179 Suite B125, Sedona, AZ 86336

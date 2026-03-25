@@ -8,7 +8,7 @@ suite: b122
 phone: (928) 282-0255
 website: https://bellafinegoods.com
 coordinates: "-111.7632, 34.8620793"
-image: "stores/bella-fine-goods.webp"
+image: "assets/images/stores/bella-fine-goods.webp"
 instagram: https://www.instagram.com/bellafinegoodssedona/
 facebook: https://www.facebook.com/bellafinegoods/
 full_location: 336 AZ-179 Suite B122, Sedona, AZ 86336

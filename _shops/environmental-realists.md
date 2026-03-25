@@ -8,7 +8,7 @@ suite: a106
 phone: (928) 282-4945
 website: https://www.environmentalrealists.com
 coordinates: "-111.7625598, 34.8622247"
-image: "stores/environmental-realists.webp"
+image: "assets/images/stores/environmental-realists.webp"
 instagram: https://www.instagram.com/environmentalrealists/
 facebook: https://www.facebook.com/environmentalrealists/
 full_location: 336 AZ-179 Suite A106, Sedona, AZ 86336

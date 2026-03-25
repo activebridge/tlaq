@@ -8,7 +8,7 @@ suite: a208
 phone: (623) 341-8608
 website:
 coordinates:
-image: "stores/aura-and-astrology.webp"
+image: "assets/images/stores/aura-and-astrology.webp"
 instagram:
 facebook:
 full_location: 336 AZ-179 Suite A208, Sedona, AZ 86336

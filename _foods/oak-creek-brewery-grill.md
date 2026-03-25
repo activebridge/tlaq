@@ -4,7 +4,7 @@ date: 2026-02-22
 published: true
 title: Oak Creek Brewery & Grill
 subtitle: American grill, premium beers brewed on site
-image: "stores/oak-creek-brewery-grill.webp"
+image: "assets/images/stores/oak-creek-brewery-grill.webp"
 suite: d201
 phone: (928) 282-3300
 website: https://oakcreekbreweryandgrill.com

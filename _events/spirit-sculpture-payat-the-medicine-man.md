@@ -11,7 +11,7 @@ schedule_type: single
 website: sedonaquiltgallery.com
 facebook: "https://www.facebook.com/tlaqsedona/"
 instagram: "https://www.instagram.com/tlaqsedona/"
-image: "events/spirit-sculpture-payat-the-medicine-man.webp"
+image: "assets/images/events/spirit-sculpture-payat-the-medicine-man.webp"
 subtitle: '"Spirit Sculpture", Payat The Medicine Man'
 ---
 ###### Quilts Ltd Gallery Presents "Spirit Sculpture", Original Art One-of-a-kind fiber sculptures by Gretchen Wood, Arizona fiber artist. Her work is not only an expression of what she sees, but what she feels. She creates the message and gives a voice to the Spirit inside who has patiently waited to be heard. These messages can be felt through her fiber sculptures.
