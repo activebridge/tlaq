@@ -38,31 +38,31 @@ defaults:
       type: "shops"
     values:
       layout: "store/show"
-      store_type: "shop"
+      layout_type: "shop"
   - scope:
       path: ""
       type: "galleries"
     values:
       layout: "store/show"
-      store_type: "gallery"
+      layout_type: "gallery"
   - scope:
       path: ""
       type: "foods"
     values:
       layout: "store/show"
-      store_type: "food"
+      layout_type: "food"
   - scope:
       path: ""
       type: "events"
     values:
       layout: "events/show"
-      store_type: "event"
+      layout_type: "event"
   - scope:
       path: ""
       type: "blogs"
     values:
       layout: "blog/show"
-      store_type: "blog"
+      layout_type: "blog"
   - scope:
       path: ""
       type: "articles"
@@ -73,11 +73,20 @@ defaults:
       type: "weddings"
     values:
       layout: "weddings/show"
-      store_type: "wedding"
+      layout_type: "wedding"
 
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-paginate-v2
+
+pagination:
+  enabled: true
+  per_page: 8
+  permalink: '/page/:num/'
+  title: ':title - page :num'
+  sort_field: 'date'
+  sort_reverse: true
 
 include:
   - .well-known

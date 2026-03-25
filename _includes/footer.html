@@ -17,13 +17,18 @@
       <a href="/contacts">Contact Us</a>
       <a href="/events/">Events</a>
       <a href="#">Gift Cards</a>
-      <a href="#">Leasing</a>
+      <a href="/leasing">Leasing</a>
       <a href="/weddings">Wedding and Private Events</a>
-      <a href="#">Filming</a>
+      <a href="/filming-photography">Filming & Photography</a>
     </nav>
     <nav>
-      <p>Read the Magazine</p>
-      <div class="magazine-placeholder" role="img" aria-label="{{ site.data.site.footer.magazine_alt }}"></div>
+      {% assign latest = site.data.magazines | first %}
+      <dialog id="magazineFooterPreview" onclick="this.close()">
+        <iframe src="https://player.flipsnack.com?hash=Qzg3QkNEOTlFOEMrdjdoaTF1Y3J6cA" width="100%" height="100%" scrolling="no" frameBorder="0" allowFullScreen allow="autoplay; clipboard-read; clipboard-write"></iframe>
+      </dialog>
+      <button command="show-modal" commandfor="magazineFooterPreview" class="magazine-cover" aria-label="View latest magazine issue">
+        <img src="{{ latest.image }}" alt="{{ site.data.site.footer.magazine_alt }}" loading="lazy">
+      </button>
       <p>Follow Us</p>
       <a class="social" href="https://www.facebook.com/tlaqsedona/" target="_blank" title="Facebook">
         {% include icons/socials/facebook.svg %}
@@ -35,8 +40,8 @@
   </div>
   <p>&copy;{{ 'now' | date: '%Y' }} Tlaquepaque Arts &amp; Shopping Village. All Rights Reserved.</p>
   <p>
-    <a href="#">Privacy Policy</a>
+    <a href="/privacy-policy/">Privacy Policy</a>
      |
-    <a href="#">Terms and Conditions</a>
+    <a href="/terms-and-conditions/">Terms and Conditions</a>
   </p>
 </footer>

@@ -1,0 +1,30 @@
+---
+permalink: /filming-photography/
+layout: default
+title: Filming & Photography
+layout_type: filming-photography
+---
+
+{% assign image_path = site.data.filming-photography.hero_banner %}
+{% assign transition-name = "filming-photography" %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+<div class="content-wrapper">
+  <hgroup style="--transition-name: title-{{transition-name}};">
+    <h5 title>{{ site.data.filming-photography.title }}</h5>
+    <h2>{{ site.data.filming-photography.subtitle }}</h2>
+    <h6>{{ site.data.filming-photography.description }}</h6>
+  </hgroup>
+
+  <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.filming-photography.buttons.request_a_permit }}</a>
+
+  {% for section in site.data.filming-photography.sections %}
+    <h3>{{ section.title }}</h3>
+    <ul>
+      {% for item in section.items %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+  <h6>{{ site.data.filming-photography.wedding_exemption_note }}</h6>
+</div>

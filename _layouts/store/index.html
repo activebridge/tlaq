@@ -3,11 +3,11 @@ layout: default
 ---
 
 {% assign image_path = page.header_image %}
-{% assign transition-name = page.store_type %}
+{% assign transition-name = page.layout_type %}
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
-  {% include store/header.html type=page.store_type title=page.store_title description=page.store_description %}
+  {% include store/header.html type=page.layout_type title=page.store_title description=page.store_description %}
 
   <div class="header-jump">
     <input type="search" id="storeSearch" list="storeSearchList" placeholder="SEARCH FOR A STORE">
@@ -23,7 +23,7 @@ layout: default
   <div class="list-container">
     {% assign stores = site[page.collection_name] | sort: "date" | reverse %}
     {% for store in stores %}
-      {% include store/card.html store=store type=page.store_type %}
+      {% include store/card.html store=store type=page.layout_type %}
     {% endfor %}
   </div>
 </div>
