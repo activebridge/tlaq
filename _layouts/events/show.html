@@ -15,14 +15,7 @@ layout: default
         {% if recurring_days and recurring_days.size > 0 %}
           {% for day in recurring_days %}
             {% assign day_key = day | downcase %}
-            {% assign day_name = day_key %}
-            {% if day_key == "sun" %}{% assign day_name = "SUNDAY" %}{% endif %}
-            {% if day_key == "mon" %}{% assign day_name = "MONDAY" %}{% endif %}
-            {% if day_key == "tue" %}{% assign day_name = "TUESDAY" %}{% endif %}
-            {% if day_key == "wed" %}{% assign day_name = "WEDNESDAY" %}{% endif %}
-            {% if day_key == "thu" %}{% assign day_name = "THURSDAY" %}{% endif %}
-            {% if day_key == "fri" %}{% assign day_name = "FRIDAY" %}{% endif %}
-            {% if day_key == "sat" %}{% assign day_name = "SATURDAY" %}{% endif %}
+            {% assign day_name = site.data.days[day_key] | default: day_key | upcase %}
             {% if recurring_days_label != "" %}{% assign recurring_days_label = recurring_days_label | append: ", " %}{% endif %}
             {% assign recurring_days_label = recurring_days_label | append: day_name %}
           {% endfor %}
