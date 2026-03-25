@@ -8,7 +8,7 @@ suite: b103
 phone: (928) 282-4686
 website: https://www.estebanssedona.com
 coordinates: "-111.7630503, 34.8619145"
-image: "stores/estebans.webp"
+image: "assets/images/stores/estebans.webp"
 instagram: https://www.instagram.com/estebans_pottery/
 facebook: https://www.facebook.com/estebanssedona/
 full_location: 336 AZ-179 Suite B103, Sedona, AZ 86336

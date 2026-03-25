@@ -11,7 +11,7 @@ coordinates: "-111.7628120, 34.8619472"
 instagram: https://www.instagram.com/sedonacakecouture/
 facebook: https://www.facebook.com/sedonacakecouture/
 full_location: 336 AZ-179 Suite A114, Sedona, AZ 86336
-image: "stores/cake-couture.webp"
+image: "assets/images/stores/cake-couture.webp"
 store_hours:
   monday: 10am - 6pm
   tuesday: 10am - 6pm

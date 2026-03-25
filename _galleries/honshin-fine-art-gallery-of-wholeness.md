@@ -7,7 +7,7 @@ subtitle: Original meditational paintings, sculpture & jewelry by Nicholas Kirst
 suite: a117
 phone: (928) 451-4739
 website: https://honshin.com
-image: stores/honshin-fine-art-gallery-of-wholeness.webp
+image: assets/images/stores/honshin-fine-art-gallery-of-wholeness.webp
 coordinates: "-111.7628265, 34.8620697"
 instagram: https://www.instagram.com/honshin_fine_art/
 full_location: 336 AZ-179 Suite A117, Sedona, AZ 86336

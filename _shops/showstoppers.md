@@ -8,7 +8,7 @@ suite: c107
 phone: (928) 203-9096
 website: https://eventsbyshowstoppers.com
 coordinates: "-111.7629335, 34.861406"
-image: "stores/showstoppers.webp"
+image: "assets/images/stores/showstoppers.webp"
 instagram: https://www.instagram.com/eventsbyshowstoppers/
 facebook: https://www.facebook.com/eventsbyshowstoppersAZ/
 full_location: 336 AZ-179 Suite C107, Sedona, AZ 86336

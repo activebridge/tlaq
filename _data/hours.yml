@@ -27,14 +27,14 @@ locations:
   - name: Tlaquepaque South
     address: "336 AZ-179 Sedona, AZ 86336"
     maps_url: "https://www.google.com/maps/dir/?api=1&destination=336+AZ-179+Sedona+AZ+86336&travelmode=driving"
-    image: "locations/south.webp"
+    image: "assets/images/locations/south.webp"
   - name: Tlaquepaque North
     address: "313 AZ-179 Sedona, AZ 86336"
     maps_url: "https://www.google.com/maps/dir/?api=1&destination=313+AZ-179+Sedona+AZ+86336&travelmode=driving"
-    image: "locations/north.webp"
+    image: "assets/images/locations/north.webp"
 
 accessibility:
-  image: "accessibility.webp"
+  image: "assets/images/accessibility.webp"
 
 family_friendly:
-  image: "family-friendly.webp"
+  image: "assets/images/family-friendly.webp"

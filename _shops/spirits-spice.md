@@ -8,7 +8,7 @@ suite: c102
 phone: (928) 282-2595
 website: https://www.spiritsandspice.com
 coordinates: "-111.7631805, 34.8616835"
-image: "stores/spirits-spice.webp"
+image: "assets/images/stores/spirits-spice.webp"
 instagram: https://www.instagram.com/spiritsandspice/
 facebook: https://www.facebook.com/spiritsandspicesedona/
 full_location: 336 AZ-179 Suite C102, Sedona, AZ 86336

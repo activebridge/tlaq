@@ -8,7 +8,7 @@ suite: c101
 phone: (928) 282-4928
 website: https://www.scenicsedona.com/cocopah/
 coordinates: "-111.7632148, 34.8617285"
-image: "stores/cocopah.webp"
+image: "assets/images/stores/cocopah.webp"
 full_location: 336 AZ-179 Suite C101, Sedona, AZ 86336
 instagram:
 facebook:
