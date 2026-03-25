@@ -47,7 +47,11 @@ Events live in `_events/` (Markdown + YAML front matter), and are shown in:
 Required/common fields:
 
 - `title`, `slug`, `starts_at`, `location`, `image`, `subtitle`
-- `annual` (`true`/`false`) - controls appearance in annual cards block
+- `annual` (`true`/`false`)
+  - `true` = **annual event** (repeats every year on the same date/time)
+    - shown in annual cards block on `events/index`
+    - calendar treats it as yearly and **ignores** `schedule_type`, `recurs_until`, and weekday fields (if someone sets them by mistake)
+  - `false` = normal event (calendar uses `schedule_type`)
 - `schedule_type` (`single`, `range`, `recurring`)
 
 Optional fields by schedule:
