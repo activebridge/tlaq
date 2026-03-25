@@ -11,7 +11,6 @@ schedule_type: recurring
 recurs_until: 2027-03-26T23:59:00
 recurrence_weekdays:
   - thu
-  - wed
 phone: ''
 website: ''
 ---
