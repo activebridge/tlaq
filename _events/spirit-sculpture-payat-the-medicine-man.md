@@ -7,7 +7,7 @@ location: QUILTS, SUITE B105
 phone: "(800) 255-2306"
 email: quiltsltd@gmail.com
 annual: false
-schedule_type: range
+schedule_type: single
 website: sedonaquiltgallery.com
 facebook: "https://www.facebook.com/tlaqsedona/"
 instagram: "https://www.instagram.com/tlaqsedona/"

@@ -17,6 +17,7 @@
         "ends_at": {{ event.ends_at | date: "%Y-%m-%d %H:%M:%S" | jsonify }},
         "subtitle": {{ event.subtitle | jsonify }},
         "image": {{ image_path | jsonify }},
+        "annual": {{ event.annual | jsonify }},
         "schedule_type": {{ event.schedule_type | jsonify }},
         "recurs_until": {{ event.recurs_until | date: "%Y-%m-%d %H:%M:%S" | jsonify }},
         "recurrence_weekdays": {{ event.recurrence_weekdays | jsonify }}

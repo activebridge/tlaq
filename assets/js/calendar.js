@@ -28,7 +28,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const scheduleType = event.schedule_type;
     const occurrences = [];
 
-    if (scheduleType === 'recurring') {
+    if (event.annual) {
+      // Annual events: ignore schedule_type/recurrence and repeat every year
+      // on the same start/end day+time. (We generate two years for the calendar.)
+      const durationMs = Math.max(0, endDate.getTime() - startDate.getTime());
+      const startYear = startDate.getFullYear();
+
+      for (let y = 0; y <= 1; y += 1) {
+        const year = startYear + y;
+        const occStart = new Date(startDate.getTime());
+        occStart.setFullYear(year);
+        occurrences.push({
+          event: event,
+          start: occStart,
+          end: new Date(occStart.getTime() + durationMs)
+        });
+      }
+
+      return occurrences;
+    }
+
+    if (scheduleType === 'recurring' && !event.annual) {
       const until = new Date(event.recurs_until);
       const weekdays = event.recurrence_weekdays;
       if (!until || !weekdays.length) return [];
@@ -51,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return occurrences;
     }
 
-    if (scheduleType === 'range') {
+    if (scheduleType === 'range' && !event.annual) {
       const startClockMs = (startDate.getHours() * 60 + startDate.getMinutes()) * 60000;
       const endClockMs = (endDate.getHours() * 60 + endDate.getMinutes()) * 60000;
       let dailyDurationMs = endClockMs - startClockMs;
@@ -138,6 +158,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const handleFilter = () => renderByMonth(allOccurrences, select.value);
   select.addEventListener('change', handleFilter);
-  window.addEventListener('pageshow', handleFilter);
   handleFilter();
 });

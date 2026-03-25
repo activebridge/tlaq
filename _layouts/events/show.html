@@ -25,7 +25,7 @@ layout: default
           {% if page.schedule_type == "recurring" and recurring_days and recurring_days.size > 0 %}
             EVERY {{ recurring_days_label }}
           {% else %}
-            {{ page.starts_at | date: "%A, %B %-d, %Y" | upcase }}
+            {{ page.starts_at | date: "%A, %B %-d" | upcase }}
           {% endif %}
         </p>
       {% endif %}
