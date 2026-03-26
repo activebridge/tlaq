@@ -7,7 +7,7 @@ location: Tlaquepaque Village
 image: assets/images/events/tequila-thursdays.webp
 subtitle: Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
 schedule_type: weekly
-recurs_until: 2027-03-26T23:59:00
+recurs_until: 2027-03-26 23:59:00
 recurrence_weekdays:
   - thu
 phone: ''

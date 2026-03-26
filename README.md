@@ -39,28 +39,43 @@ Images live in `assets/images/` as `.webp` at 480/960/1440px sizes.
 
 Events live in `_events/` (Markdown + YAML front matter), and are shown in:
 
-- Annual cards block on `events/index`
+- Main event cards block on `events/index` (yearly events)
 - Monthly calendar (`_includes/calendar.html`)
 
 ### Event fields
 
-Required/common fields:
+Common fields:
 
-- `title`, `slug`, `starts_at`, `location`, `image`, `subtitle`
-- `annual` (`true`/`false`)
-  - `true` = **annual event** (repeats every year on the same date/time)
-    - shown in annual cards block on `events/index`
-    - calendar treats it as yearly and **ignores** `schedule_type`, `recurs_until`, and weekday fields (if someone sets them by mistake)
-  - `false` = normal event (calendar uses `schedule_type`)
-- `schedule_type` (`single`, `range`, `recurring`)
+- `title`, `slug`, `starts_at`, `location`, `subtitle`
+- `image` (optional)
+- `ends_at`
+  - for `single`, `weekly`, `monthly`, `yearly`: optional, used as the end time for the event instance (usually same date as `starts_at`, different time)
+  - for `range`: required, because it defines the final day/time of the date span
+- `schedule_type` (required): `single`, `range`, `weekly`, `monthly`, `yearly`
 
-Optional fields by schedule:
+Recurrence fields:
 
-- `single`: optional `ends_at` (same-day time range)
-- `range`: required `ends_at` (inclusive date range, rendered daily)
-- `recurring`: required `recurs_until` + `weekdays`
-  - `weekdays` format: `[mon, thu]`
-  - supported day values: `sun`, `mon`, `tue`, `wed`, `thu`, `fri`, `sat`
+- `recurs_until` (required for `weekly` and `monthly`, optional for others)
+- `recurrence_weekdays` (required for `weekly` and `monthly`)
+  - format: `[mon, thu]`
+  - supported values: `sun`, `mon`, `tue`, `wed`, `thu`, `fri`, `sat`
+
+### `schedule_type` behavior
+
+- `single`
+  One event instance at `starts_at`.
+
+- `range`
+  Creates one card per day from `starts_at` through `ends_at` (inclusive), preserving time-of-day.
+
+- `weekly`
+  Repeats on `recurrence_weekdays` every week from `starts_at` until `recurs_until`.
+
+- `monthly`
+  Repeats on the **first matching weekday(s)** of each month (based on `recurrence_weekdays`) until `recurs_until`.
+
+- `yearly`
+  Repeats on the same month/day/time each year. Weekday fields are ignored for yearly logic.
 
 ### Examples
 
@@ -69,7 +84,6 @@ Single-day event:
 ```yaml
 starts_at: '2025-12-14 17:00:00'
 ends_at: '2025-12-14 21:00:00'
-annual: false
 schedule_type: single
 ```
 
@@ -78,27 +92,50 @@ Date range event (daily cards generated):
 ```yaml
 starts_at: '2025-11-29 10:00:00'
 ends_at: '2025-12-05 17:00:00'
-annual: false
 schedule_type: range
 ```
 
-Recurring weekly event:
+Weekly recurring event:
 
 ```yaml
 starts_at: '2025-11-01 11:00:00'
 ends_at: '2025-11-01 17:00:00'
 recurs_until: '2026-12-31 23:59:59'
-weekdays: [mon, thu, fri]
-annual: true
-schedule_type: recurring
+recurrence_weekdays: [mon, thu, fri]
+schedule_type: weekly
+```
+
+Monthly recurring event (first matching weekdays):
+
+```yaml
+starts_at: '2025-11-01 11:00:00'
+ends_at: '2025-11-01 17:00:00'
+recurs_until: '2026-12-31 23:59:59'
+recurrence_weekdays: [sat]
+schedule_type: monthly
+```
+
+Yearly event:
+
+```yaml
+starts_at: '2025-11-02 10:00:00'
+ends_at: '2025-11-02 16:00:00'
+schedule_type: yearly
 ```
 
 ### Calendar implementation
 
-- Source content stays in `_events/*.md` (YAML front matter), not JSON files.
-- `_includes/calendar.html` outputs a JSON payload into the page (`calendar-events-data` script tag).
+- Source content stays in `_events/*.md` (YAML front matter), not JSON files in the repo.
+- `_includes/calendar.html` serializes event front matter into a JSON payload in the page (`calendarEventsData` script tag).
 - `assets/js/calendar.js` reads that payload, generates occurrences, sorts by day, and renders cards.
 - Month filter options are generated in JS from occurrences and default to current month when available.
+
+### Notes for editors
+
+- Use `weekly` for repeat-on-weekdays patterns.
+- Use `monthly` only when you want the first matching weekday(s) each month.
+- Use `yearly` for same date each year (no weekday setup needed).
+- If `recurs_until` is blank on a recurring type, that event will not generate recurrence instances.
 
 ## Tech
 
