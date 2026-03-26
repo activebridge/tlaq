@@ -4,7 +4,7 @@ slug: day-of-the-dead
 starts_at: '2025-11-01 11:00:00'
 ends_at: '2025-11-01 17:00:00'
 location: 'THROUGHOUT TLAQUEPAQUE '
-annual: true
+schedule_type: yearly
 image: "assets/images/events/day-of-the-dead.webp"
 schedule:
   - location: Tlaquepaque North
