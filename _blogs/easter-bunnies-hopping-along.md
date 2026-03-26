@@ -3,7 +3,6 @@ title: "Our Easter Bunnies Are Hop, Hop, Hopping Along..."
 date: 2020-04-08
 description: "ARCTIC HARE by Sandra Byland — a highlight of our Easter art collection."
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/unnamed+%2815%29-1920w.jpg"
-external_url: "https://www.tlaq.com/easter-bunnies-hopping-along"
 ---
 
 Since we are all encouraged to celebrate Easter at home this year, we are bringing a playful parade of Tlaquepaque rabbits to you. Painted, drawn or sculpted by renowned American artists, these bunnies are sure to bring a smile to your face. The image of the rabbit reminds us that spring is right around the corner, and brighter, joy-filled days are soon to come.

@@ -3,7 +3,6 @@ title: "Tlaquepaque's Day of the Dead and the Marigold Mural Project"
 date: 2019-10-01
 description: "The Day of the Dead is an evening of non-stop fun, Muertos-style."
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/MASK-546x800-1920w.jpg"
-external_url: "https://www.tlaq.com/copy-of-tlaquepaque-s-day-of-the-dead-and-the-marigold-mural-project-1"
 ---
 
 ## A Dazzling Celebration of Life and Remembrance

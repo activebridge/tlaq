@@ -3,7 +3,6 @@ title: "Tlaquepaque's First Friday in the Galleries"
 date: 2018-05-31
 description: "Visit Sedona, Arizona this coming Friday, June 1st and immerse yourself into the vibrant art scene."
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/Boothe_R7EOQhPES8aOH50p0tAg-512x550-1920w.jpg"
-external_url: "https://www.tlaq.com/sedonas-first-friday-gallery-tour"
 ---
 
 ## Friday, June 1st from 5 p.m. to 8 p.m.

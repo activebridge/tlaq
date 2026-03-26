@@ -3,7 +3,6 @@ title: "Meet World Peace Artist Andrea Smith"
 date: 2018-05-04
 description: "Friday May 4th 5–8 pm at Andrea Smith Gallery in Tlaquepaque."
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/logo-large-1920w.png"
-external_url: "https://www.tlaq.com/meet-world-peace-artist-andrea-smith"
 ---
 
 ## Friday, May 4th, 5 - 8 pm at Andrea Smith Gallery in Tlaquepaque

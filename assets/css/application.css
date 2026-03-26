@@ -62,6 +62,16 @@
   outline: 1px solid var(--btn-color);
 }
 
+.btn-share {
+  background: transparent;
+  color: var(--navy);
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  margin: 10px 20px;
+  gap: 0.5rem;
+}
+
 hr {
   margin: 1rem 0;
   height: 1px;
@@ -1316,6 +1326,23 @@ h5[title] {
   .btn-primary { --btn-color: var(--pink); }
 }
 
+a.read-more {
+  text-transform: uppercase;
+  font-size: clamp(12px, 1.5vw, 16px);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  padding-top: 0.5rem;
+
+  &::after {
+    content: "›";
+    font-size: 1.3em;
+    line-height: 0;
+    position: relative;
+    right: -10px;
+  }
+}
+
+
 .foods {
   h5 {
     color: var(--orange);
@@ -1585,6 +1612,11 @@ dialog {
     text-decoration: none;
     font-size: 0.9rem;
     transition: background-color 0.2s ease, color 0.2s ease;
+  
+    &:disabled {
+      background-color: #D1D5DB;
+      cursor: not-allowed;
+    }
   }
 }
 

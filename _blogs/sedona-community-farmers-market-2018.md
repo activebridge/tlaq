@@ -3,7 +3,6 @@ title: "Sedona Community Farmer's Market Celebrates Opening of 2018 Summer Seaso
 date: 2018-05-01
 description: "Sedona Community Farmers Market Summer Season opens in the courtyard at Tlaquepaque Arts & Shopping Village."
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/tlaquepaque-sedona-farmers-market-fridays-1920w.jpg"
-external_url: "https://www.tlaq.com/sedona-community-farmer-s-market-celebrates-opening-of-2018-summer-season"
 ---
 
 ## May 11th through October 12th — Fridays, 8 AM to 11:30 AM

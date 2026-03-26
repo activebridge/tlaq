@@ -7,5 +7,5 @@
   <h3>{{ blog.title }}</h3>
   {% if blog.date %}<div class="datetime">{{ blog.date | date: "%B %-d, %Y" }}</div>{% endif %}
   {% if blog.description %}<p>{{ blog.description }}</p>{% endif %}
-  <a href="{{ blog.url | relative_url }}" class="btn btn-primary">Read More</a>
+  <a class="read-more" href="{{ blog.url | relative_url }}">Read More</a>
 </div>

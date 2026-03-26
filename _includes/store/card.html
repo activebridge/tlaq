@@ -5,7 +5,7 @@
   {% else %}
     <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ include.store.title }}" width="600" loading="lazy">
   {% endif %}
-  <h3 class="transition-title" style="--transition-name: {{ include.store.title | downcase | replace: ' ', '-'}};">{{ include.store.title }}</h3>
+  <h3 style="--transition-name: {{ include.store.title | downcase | replace: ' ', '-'}};">{{ include.store.title }}</h3>
   {% if include.store.subtitle %}
     <h6>{{ include.store.subtitle }}</h6>
   {% endif %}

@@ -5,7 +5,7 @@
   {% else %}
     <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ event.title }}">
   {% endif %}
-  <h3 class="transition-title" style="--transition-name: {{ event.title | downcase | replace: ' ', '-'}};">{{ event.title }}</h3>
+  <h3 style="--transition-name: {{ event.title | downcase | replace: ' ', '-'}};">{{ event.title }}</h3>
   {% if event.subtitle %}<p>{{ event.subtitle }}</p>{% endif %}
   {% if event.starts_at and event.ends_at %}
     <div class="datetime">

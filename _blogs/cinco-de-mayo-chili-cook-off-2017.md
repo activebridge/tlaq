@@ -3,7 +3,6 @@ title: "You Are Invited to Our Cinco de Mayo Celebration and the Great Sedona Ch
 date: 2017-01-01
 description: "If you're in town the first weekend in May, you won't want to miss this!"
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/2c44a17f-b93e-46f5-96f0-f078a716a3da-1920w.jpg"
-external_url: "https://www.tlaq.com/you-are-invited-to-join-us-for-our-cinco-de-mayo-celebration-and-the-great-sedona-chili-cook-off"
 ---
 
 A Tlaquepaque Cultural Experience! There is going to be a Fiesta at Tlaquepaque! Prepare to be dazzled by the upcoming Cinco de Mayo Fiesta, Saturday, May 5th 2018. For over 45 years the Arts and Crafts Village of Tlaquepaque -- meaning the "the best of everything" -- has been the epicenter of Sedona's art, entertainment and cultural celebrations. Tlaquepaque's fiestas, events and parties are great family fun, and this year is no exception. Savor fabulous Mexican dishes, enjoy the beats of world-class musicians, take in high-energy folklórico dancers and participate in "The Great Sedona Chili Cook Off." Admission is free.

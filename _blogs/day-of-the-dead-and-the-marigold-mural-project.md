@@ -3,7 +3,6 @@ title: "Day of the Dead and the Marigold Mural Project"
 date: 2021-09-17
 description: "Tlaquepaque is moving forward with planning for this year's Day of the Dead festivities."
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/DOD+1+for+chamber-1920w.jpg"
-external_url: "https://www.tlaq.com/day-of-the-dead-and-the-marigold-mural-project"
 ---
 
 ## Wednesday, October 27 – Saturday, October 30, 2021

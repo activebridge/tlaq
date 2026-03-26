@@ -3,7 +3,6 @@ title: "Cinco de Mayo Celebration 2023"
 date: 2023-04-24
 description: "A tribute to Mexican Art & Culture — Saturday, May 6, 11:00 AM - 5:00 PM"
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/unnamed-bb5c4178-1920w.png"
-external_url: "https://www.tlaq.com/cinco-de-mayo-celebration-2023"
 ---
 
 ## A TRIBUTE TO MEXICAN ART & CULTURE — SATURDAY, MAY 6 | 11:00 AM - 5:00 PM

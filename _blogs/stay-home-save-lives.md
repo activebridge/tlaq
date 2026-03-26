@@ -3,7 +3,6 @@ title: "Stay Home & Save Lives Easter Celebrations"
 date: 2020-04-01
 description: "Since you can't come to us, we're bringing the beauty, joy, and spirit of Tlaquepaque to you."
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/unnamed%2B-281-29-629321da-1920w.jpg"
-external_url: "https://www.tlaq.com/stay-home-save-lives"
 ---
 
 Since you can't come to us, we're bringing the beauty, joy, and sense of discovery of Tlaquepaque Arts & Shopping Village to you.

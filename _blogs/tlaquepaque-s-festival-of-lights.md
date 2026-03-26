@@ -3,7 +3,6 @@ title: "Tlaquepaque's Festival of Lights"
 date: 2019-12-14
 description: "Tlaquepaque's 47th Festival of Lights: 6,000 Luminarias!"
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/_P7D1374-HDR-1920w.jpg"
-external_url: "https://www.tlaq.com/tlaquepaque-s-festival-of-lights"
 ---
 
 ## Saturday, December 14, 2019 — 6,000 Luminarias! Entertainment, Santa, Holiday Cheer for Everyone!

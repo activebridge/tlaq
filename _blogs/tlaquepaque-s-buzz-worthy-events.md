@@ -3,7 +3,6 @@ title: "Tlaquepaque's Buzz Worthy Events"
 date: 2019-09-01
 description: "Your insider's guide to what's happening this September at Tlaquepaque!"
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/Kaylah_and_Michael-Sedona_Wedding-Andrew_and_Ada_Photography-421-1067x1600-1920w.jpg"
-external_url: "https://www.tlaq.com/tlaquepaque-s-buzz-worthy-events"
 ---
 
 Your insider's guide to what's happening this September at Tlaquepaque!

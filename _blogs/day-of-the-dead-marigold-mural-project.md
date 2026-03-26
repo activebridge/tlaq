@@ -3,7 +3,6 @@ title: "Day of the Dead & Marigold Mural Project"
 date: 2020-10-30
 description: "Our annual Marigold Mural project is back this year with a new safe and exciting format."
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/unnamed-8344d6c2-1920w.jpg"
-external_url: "https://www.tlaq.com/day-of-the-dead-marigold-mural-project"
 ---
 
 Tlaquepaque Arts and Shopping Village has provided the perfect setting for south of the border fiestas, festivals, and cultural extravaganzas for the last four decades. Unfortunately, this year we are dealing with the unprecedented COVID pandemic and must pause our highly attended Day of the Dead celebration. There's good news though! Our annual Marigold Mural project is back this year with a NEW SAFE AND EXCITING FORMAT.

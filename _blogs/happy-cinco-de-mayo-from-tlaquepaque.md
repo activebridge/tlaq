@@ -3,7 +3,6 @@ title: "Happy Cinco de Mayo from Tlaquepaque!"
 date: 2020-05-05
 description: "Since you can't come to us to celebrate Cinco de Mayo this year, we're bringing memories of past celebrations to you."
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/168212391.PU1SvQeN._81A1747-2-8e183f24-1920w.jpg"
-external_url: "https://www.tlaq.com/happy-cinco-de-mayo-from-tlaquepaque"
 ---
 
 Since you can't come to us to celebrate Cinco de Mayo this year, we're bringing memories of past celebrations to you. Enjoy!

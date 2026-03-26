@@ -14,18 +14,16 @@ layout: default
 <div class="top-section">
   <div class="content-wrapper">
     <h3>{{ page.title }}</h3>
-    {% if page.description %}<p>{{ page.description }}</p>{% endif %}
-    {% if page.date %}<span class="datetime">{{ page.date | date: "%m / %-d / %Y" }}</span>{% endif %}
-    <button onclick="navigator.share ? navigator.share({title: document.title, url: location.href}) : navigator.clipboard.writeText(location.href)">
-      SHARE <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-    </button>
+    <hr>
+    <div>
+      {% if page.date %}<span class="datetime">{{ page.date | date: "%m / %-d / %Y" }}</span>{% endif %}
+      <button class="btn btn-share" onclick="navigator.share ? navigator.share({title: document.title, url: location.href}) : navigator.clipboard.writeText(location.href)">
+        SHARE <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      </button>
+    </div>
   </div>
 </div>
 
 <div class="content-wrapper">
   {{ content }}
-  {% if page.external_url %}
-    <hr>
-    <a href="{{ page.external_url }}" class="btn btn-primary" target="_blank" rel="noopener">View Original Post</a>
-  {% endif %}
 </div>

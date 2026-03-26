@@ -4,7 +4,7 @@
     {% assign weddings = site.weddings | sort: "date" %}
     {% for wedding in weddings %}
       <div class="card">
-        <h3 class="transition-title" style="--transition-name: {{ wedding.title | downcase | replace: ' ', '-'}};">{{ wedding.title }}</h3>
+        <h3 style="--transition-name: {{ wedding.title | downcase | replace: ' ', '-'}};">{{ wedding.title }}</h3>
         {% if wedding.subtitle %}<h6>{{ wedding.subtitle }}</h6>{% endif %}
         <div>
           {% if wedding.image %}

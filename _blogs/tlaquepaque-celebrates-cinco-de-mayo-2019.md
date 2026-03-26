@@ -3,7 +3,6 @@ title: "Tlaquepaque Celebrates Cinco de Mayo"
 date: 2019-05-04
 description: "Savor the outstanding tastes, sights and sounds of Old Mexico at Sedona's kick off Cinco de Mayo celebration."
 image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/_81A1968-1920w.jpg"
-external_url: "https://www.tlaq.com/tlaquepaque-celebrates-cinco-de-mayo-saturday-may-4-9th-annual-great-sedona-chili-cook-off"
 ---
 
 Savor the outstanding tastes, sights and sounds of Old Mexico at Sedona's kick off spring festival, the Cinco de Mayo celebration. Tlaquepaque Arts & Shopping Village, the perennial host of all things festive, welcomes one and all. Paired with the 9th Annual Great Sedona Chili Cook-Off, it's all happening on Saturday, May 4th from 11 am to 6 pm. Admission is free with free parking and free Trolley service available from the Sedona Municipal Lot on Schnebly Rd, Church of Latter Day Saints on Mormon Road, and the 260 Brewer Road Lot.
