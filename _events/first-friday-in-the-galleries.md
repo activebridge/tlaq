@@ -20,6 +20,4 @@ facebook: https://www.facebook.com/tlaqsedona/
 instagram: https://www.instagram.com/tlaqsedona/
 ---
 
-On the First Friday of each month be a part of the Sedona art scene. Enjoy gallery receptions, music, wine tastings and treats, as you immerse yourself in the work of renowned artists from Sedona and around the world. Meet the artists in person during these delightful events.
-
-######
+###### On the First Friday of each month be a part of the Sedona art scene. Enjoy gallery receptions, music, wine tastings and treats, as you immerse yourself in the work of renowned artists from Sedona and around the world. Meet the artists in person during these delightful events.
