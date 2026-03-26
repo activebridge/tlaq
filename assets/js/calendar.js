@@ -3,12 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const container = window.calendarItems;
   const dataNode = window.calendarEventsData;
   if (!select || !container || !dataNode) return;
+  const DAY_NAMES = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+  const WEEKDAY_INDEX = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
+  const MAX_DAYS = 730;
+  const MAX_MONTHS = 24;
 
   const toMonthKey = (date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     return year + '-' + month;
-  }
+  };
   const formatDay = (date) => date.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase();
   const formatMonthDay = (date) => {
     const mon = date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
@@ -21,78 +25,111 @@ document.addEventListener('DOMContentLoaded', function() {
     const ampm = hour24 >= 12 ? 'PM' : 'AM';
     return hour12 + ':' + minutes + ' ' + ampm;
   };
+  const getDurationMs = (startDate, endDate) => Math.max(0, endDate.getTime() - startDate.getTime());
+  const createOccurrence = (event, start, durationMs) => ({
+    event: event,
+    start: start,
+    end: new Date(start.getTime() + durationMs)
+  });
+  const getWeekdayCode = (date) => DAY_NAMES[date.getDay()];
+
+  function buildYearlyOccurrences(event, startDate, endDate) {
+    const occurrences = [];
+    const durationMs = getDurationMs(startDate, endDate);
+    const startYear = startDate.getFullYear();
+
+    for (let y = 0; y <= 1; y += 1) {
+      const occStart = new Date(startDate.getTime());
+      occStart.setFullYear(startYear + y);
+      occurrences.push(createOccurrence(event, occStart, durationMs));
+    }
+
+    return occurrences;
+  }
+
+  function buildWeeklyOccurrences(event, startDate, endDate) {
+    const until = new Date(event.recurs_until);
+    const weekdays = event.recurrence_weekdays;
+    if (!until || !weekdays || !weekdays.length) return [];
+
+    const occurrences = [];
+    const durationMs = getDurationMs(startDate, endDate);
+    const occurrenceStart = new Date(startDate.getTime());
+
+    for (let i = 0; i <= MAX_DAYS; i += 1) {
+      if (occurrenceStart > until) break;
+      if (weekdays.includes(getWeekdayCode(occurrenceStart))) {
+        occurrences.push(createOccurrence(event, new Date(occurrenceStart.getTime()), durationMs));
+      }
+      occurrenceStart.setDate(occurrenceStart.getDate() + 1);
+    }
+
+    return occurrences;
+  }
+
+  function buildMonthlyOccurrences(event, startDate, endDate) {
+    const until = new Date(event.recurs_until);
+    const weekdays = event.recurrence_weekdays;
+    if (!until || !weekdays || !weekdays.length) return [];
+
+    const occurrences = [];
+    const durationMs = getDurationMs(startDate, endDate);
+    const yearStart = startDate.getFullYear();
+    const monthStart = startDate.getMonth();
+
+    for (let offset = 0; offset <= MAX_MONTHS; offset += 1) {
+      const monthDate = new Date(yearStart, monthStart + offset, 1);
+      if (monthDate > until) break;
+
+      const firstDay = monthDate.getDay();
+      weekdays.forEach((weekdayCode) => {
+        const target = WEEKDAY_INDEX[String(weekdayCode).toLowerCase().slice(0, 3)];
+        if (target === undefined) return;
+
+        const dayOffset = (target - firstDay + 7) % 7;
+        const occStart = new Date(monthDate.getTime());
+        occStart.setDate(1 + dayOffset);
+        occStart.setHours(
+          startDate.getHours(),
+          startDate.getMinutes(),
+          startDate.getSeconds()
+        );
+
+        if (occStart <= until) {
+          occurrences.push(createOccurrence(event, occStart, durationMs));
+        }
+      });
+    }
+
+    return occurrences;
+  }
+
+  function buildRangeOccurrences(event, startDate, endDate) {
+    const occurrences = [];
+    const startClockMs = (startDate.getHours() * 60 + startDate.getMinutes()) * 60000;
+    const endClockMs = (endDate.getHours() * 60 + endDate.getMinutes()) * 60000;
+    let dailyDurationMs = endClockMs - startClockMs;
+    if (dailyDurationMs <= 0) dailyDurationMs += 86400000;
+
+    const dayStart = new Date(startDate.getTime());
+    for (let d = 0; d <= MAX_DAYS; d += 1) {
+      if (dayStart > endDate) break;
+      occurrences.push(createOccurrence(event, new Date(dayStart.getTime()), dailyDurationMs));
+      dayStart.setDate(dayStart.getDate() + 1);
+    }
+
+    return occurrences;
+  }
 
   function buildOccurrences(event) {
     const startDate = new Date(event.starts_at);
     const endDate = new Date(event.ends_at) || new Date(startDate.getTime());
     const scheduleType = event.schedule_type;
-    const occurrences = [];
-
-    if (event.annual) {
-      // Annual events: ignore schedule_type/recurrence and repeat every year
-      // on the same start/end day+time. (We generate two years for the calendar.)
-      const durationMs = Math.max(0, endDate.getTime() - startDate.getTime());
-      const startYear = startDate.getFullYear();
-
-      for (let y = 0; y <= 1; y += 1) {
-        const year = startYear + y;
-        const occStart = new Date(startDate.getTime());
-        occStart.setFullYear(year);
-        occurrences.push({
-          event: event,
-          start: occStart,
-          end: new Date(occStart.getTime() + durationMs)
-        });
-      }
-
-      return occurrences;
-    }
-
-    if (scheduleType === 'recurring' && !event.annual) {
-      const until = new Date(event.recurs_until);
-      const weekdays = event.recurrence_weekdays;
-      if (!until || !weekdays.length) return [];
-
-      const durationMs = Math.max(0, endDate.getTime() - startDate.getTime());
-      const occurrenceStart = new Date(startDate.getTime());
-      for (let i = 0; i <= 730; i += 1) {
-        if (occurrenceStart > until) break;
-        const weekday = occurrenceStart.toLocaleDateString('en-US', { weekday: 'short' }).toLowerCase().slice(0, 3);
-        if (weekdays.includes(weekday)) {
-          occurrences.push({
-            event: event,
-            start: new Date(occurrenceStart.getTime()),
-            end: new Date(occurrenceStart.getTime() + durationMs)
-          });
-        }
-        occurrenceStart.setDate(occurrenceStart.getDate() + 1);
-      }
-
-      return occurrences;
-    }
-
-    if (scheduleType === 'range' && !event.annual) {
-      const startClockMs = (startDate.getHours() * 60 + startDate.getMinutes()) * 60000;
-      const endClockMs = (endDate.getHours() * 60 + endDate.getMinutes()) * 60000;
-      let dailyDurationMs = endClockMs - startClockMs;
-      if (dailyDurationMs <= 0) dailyDurationMs += 86400000;
-
-      const dayStart = new Date(startDate.getTime());
-      for (let d = 0; d <= 730; d += 1) {
-        if (dayStart > endDate) break;
-        occurrences.push({
-          event: event,
-          start: new Date(dayStart.getTime()),
-          end: new Date(dayStart.getTime() + dailyDurationMs)
-        });
-        dayStart.setDate(dayStart.getDate() + 1);
-      }
-
-      return occurrences;
-    }
-
-    occurrences.push({ event: event, start: startDate, end: endDate });
-    return occurrences;
+    if (scheduleType === 'yearly') return buildYearlyOccurrences(event, startDate, endDate);
+    if (scheduleType === 'weekly') return buildWeeklyOccurrences(event, startDate, endDate);
+    if (scheduleType === 'monthly') return buildMonthlyOccurrences(event, startDate, endDate);
+    if (scheduleType === 'range') return buildRangeOccurrences(event, startDate, endDate);
+    return [{ event: event, start: startDate, end: endDate }];
   }
 
   function renderOccurrence(item) {

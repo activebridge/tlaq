@@ -22,8 +22,10 @@ layout: default
         {% endif %}
         <p>
           {% include icons/calendar.svg %}
-          {% if page.schedule_type == "recurring" and recurring_days and recurring_days.size > 0 %}
+          {% if page.schedule_type == "weekly" and recurring_days and recurring_days.size > 0 %}
             EVERY {{ recurring_days_label }}
+          {% elsif page.schedule_type == "monthly" and recurring_days and recurring_days.size > 0 %}
+            FIRST {{ recurring_days_label }} OF EACH MONTH
           {% else %}
             {{ page.starts_at | date: "%A, %B %-d" | upcase }}
           {% endif %}
