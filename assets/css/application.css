@@ -1436,6 +1436,12 @@ table {
   }
 }
 
+img.village-map {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
 /* Events Show Page */
 
 .event {
