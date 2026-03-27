@@ -399,6 +399,42 @@ collections:
           - { label: "Weather URL", name: "weather_url", widget: "string" }
           - { label: "Weather Widget URL", name: "weather_widget", widget: "string" }
 
+      - name: "history_data"
+        label: "History Data"
+        file: "_data/history.yml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Hero Image", name: "hero_image", widget: "image" }
+          - { label: "Video Cover", name: "video_cover", widget: "image" }
+          - label: "Vision Section"
+            name: "vision"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Text", name: "text", widget: "text" }
+          - label: "Collage Images"
+            name: "collage"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt", name: "image_alt", widget: "string" }
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
+              - { label: "Quote", name: "quote", widget: "string", required: false }
+
       - name: "hours_defaults"
         label: "Default Store Hours"
         file: "_data/store/hours_defaults.yml"
