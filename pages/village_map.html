@@ -4,6 +4,13 @@ title: Village Map
 permalink: /village_map/
 ---
 <div class="content-wrapper">
-  <iframe src="{{ '/map_embed' | relative_url }}" loading="lazy" title="Village Map"
+  <iframe id="villageMapFrame" src="{{ '/map_embed' | relative_url }}" loading="lazy" title="Village Map"
     style="width:100%;height:500px;border:none"></iframe>
 </div>
+<script>
+  var suite = new URLSearchParams(window.location.search).get('suite');
+  if (suite) {
+    var frame = document.getElementById('villageMapFrame');
+    frame.src = frame.src + '?suite=' + encodeURIComponent(suite);
+  }
+</script>

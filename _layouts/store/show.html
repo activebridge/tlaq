@@ -8,8 +8,13 @@ layout: default
 <div class="content-wrapper">
   <h2 style="--transition-name: {{ page.title | downcase | replace: ' ', '-'}};">{{ page.title }}</h2>
   {{ content }}
-  {% capture map_src %}{{ '/map_embed' | relative_url }}{% if page.suite %}?suite={{ page.suite | url_encode }}{% endif %}{% endcapture %}
-  <iframe src="{{ map_src }}" loading="lazy" title="Village Map" style="width:100%;height:500px;border:none"></iframe>
+  {% if page.suite %}
+    <a href="{{ '/village_map/' | relative_url }}?suite={{ page.suite | url_encode }}">
+      <img src="{{ '/assets/images/stores-map/' | append: page.suite | append: '.webp' | relative_url }}" alt="Village Map" class="village-map">
+    </a>
+  {% else %}
+    <img src="{{ '/assets/images/village-map.webp' | relative_url }}" alt="Village Map" class="village-map">
+  {% endif %}
   <hr>
   <h6>LOCATION</h6>
   <h7>{{ page.full_location }}</h7>
