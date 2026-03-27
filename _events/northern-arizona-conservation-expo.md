@@ -1,6 +1,7 @@
 ---
 title: Northern Arizona Conservation Expo
 slug: northern-arizona-conservation-expo
+published: true
 starts_at: '2026-04-19 10:00:00'
 ends_at: '2026-04-19 14:00:00'
 location: Calle Independencia

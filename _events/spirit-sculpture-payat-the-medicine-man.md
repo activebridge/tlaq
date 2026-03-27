@@ -1,6 +1,7 @@
 ---
 title: '"Spirit Sculpture", Payat The Medicine Man'
 slug: spirit-sculpture-payat-the-medicine-man
+published: true
 starts_at: '2025-11-29 10:00:00'
 ends_at: '2025-12-05 17:00:00'
 location: QUILTS, SUITE B105

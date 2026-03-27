@@ -1,6 +1,7 @@
 ---
 title: Cinco De Mayo
 slug: cinco-de-mayo
+published: true
 starts_at: '2026-05-02 13:00:00'
 ends_at: '2026-05-02 16:00:00'
 location: Tlaquepaque Village

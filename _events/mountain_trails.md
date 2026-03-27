@@ -1,6 +1,7 @@
 ---
 title: Mountain Trails Presents
 slug: mountain_trails
+published: true
 starts_at: '2026-04-03 16:00:00'
 location: Tlaquepaque Village
 schedule_type: single

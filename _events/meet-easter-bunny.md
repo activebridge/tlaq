@@ -1,6 +1,7 @@
 ---
 title: Meet the Easter Bunny at Tlaquepaque!
 slug: meet-easter-bunny
+published: true
 starts_at: '2026-04-04 13:00:00'
 ends_at: '2026-04-04 15:00:00'
 location: Tlaquepaque Village

@@ -1,6 +1,7 @@
 ---
 title: Tequila Thursdays
 slug: tequila-thursdays
+published: true
 starts_at: 2026-03-26 16:00:00
 ends_at: 2026-03-26 16:45:00
 location: Tlaquepaque Village

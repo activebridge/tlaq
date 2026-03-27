@@ -1,6 +1,7 @@
 ---
 title: First Friday in the Galleries
 slug: first-friday-galleries
+published: true
 starts_at: 2026-03-06T16:00:00
 ends_at: 2026-03-06T19:00:00
 location: Tlaquepaque Village

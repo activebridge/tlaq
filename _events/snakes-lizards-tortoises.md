@@ -1,6 +1,7 @@
 ---
 title: Snakes! Lizards! Tortoises!
 slug: snakes-lizards-tortoises
+published: true
 starts_at: '2026-04-07 11:00:00'
 ends_at: '2026-04-07 14:00:00'
 location: Tlaquepaque Village

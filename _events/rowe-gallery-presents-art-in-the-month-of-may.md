@@ -1,6 +1,7 @@
 ---
 title: 'Rowe Gallery Presents: Art in the Month of May'
 slug: rowe-gallery-presents-art-in-the-month-of-may
+published: true
 starts_at: '2026-05-01 16:00:00'
 ends_at: '2026-05-01 19:00:00'
 location: Tlaquepaque Village

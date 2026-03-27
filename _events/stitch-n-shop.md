@@ -1,6 +1,7 @@
 ---
 title: Stitch-N-Shop
 slug: stitch-n-shop
+published: true
 starts_at: '2026-04-09 17:00:00'
 ends_at: '2026-04-09 18:00:00'
 location: Tlaquepaque Village

@@ -1,6 +1,7 @@
 ---
 title: Verses In The Village
 slug: verses-in-the-village
+published: true
 starts_at: '2026-04-15 17:00:00'
 ends_at: '2026-04-15 18:00:00'
 location: Patio De Las Campanas

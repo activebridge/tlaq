@@ -1,6 +1,7 @@
 ---
 title: "Honshin Presents: Wisdom Keepers"
 slug: honshin-presents-wisdom-keepers
+published: true
 starts_at: '2026-05-01 16:00:00'
 ends_at: '2026-05-01 19:00:00'
 location: Tlaquepaque Village
