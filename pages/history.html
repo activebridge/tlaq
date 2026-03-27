@@ -9,8 +9,8 @@ layout_type: history
 {% assign video_url = site.cdn_url | append: '/assets/video/tlaq.mp4' %}
 {% assign data = site.data.history %}
 
-{% assign hero_image_path = data.hero_image | prepend: '/' %}
-{% include hero-banner.html image_path=hero_image_path transition-name=transition-name %}
+{% assign image_path = site.data.history.hero_banner %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
   <hgroup style="--transition-name: title-{{transition-name}};">
