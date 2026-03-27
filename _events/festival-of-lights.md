@@ -1,6 +1,7 @@
 ---
 title: Festival of Lights
 slug: festival-of-lights
+published: true
 starts_at: '2025-12-14 17:00:00'
 ends_at: '2025-12-14 21:00:00'
 location: Tlaquepaque Village

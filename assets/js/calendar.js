@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function buildOccurrences(event) {
     const startDate = new Date(event.starts_at);
-    const endDate = new Date(event.ends_at) || new Date(startDate.getTime());
+    const endDate = event.ends_at ? new Date(event.ends_at) : new Date(startDate.getTime());
     const scheduleType = event.schedule_type;
     if (scheduleType === 'yearly') return buildYearlyOccurrences(event, startDate, endDate);
     if (scheduleType === 'weekly') return buildWeeklyOccurrences(event, startDate, endDate);
@@ -135,6 +135,9 @@ document.addEventListener('DOMContentLoaded', function() {
   function renderOccurrence(item) {
     const event = item.event;
     const subtitle = event.subtitle ? '<p>' + event.subtitle + '</p>' : '';
+    const timeText = event.ends_at
+      ? formatTime(item.start) + ' - ' + formatTime(item.end)
+      : formatTime(item.start);
     return '' +
       '<a href="' + event.url + '" data-month="' + toMonthKey(item.start) + '">' +
         '<div class="calendar-item-content">' +
@@ -149,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
             '</div>' +
             '<h3>' + event.title + '</h3>' +
             subtitle +
-            '<div class="calendar-item-time">' + formatTime(item.start) + ' - ' + formatTime(item.end) + '</div>' +
+            '<div class="calendar-item-time">' + timeText + '</div>' +
           '</div>' +
         '</div>' +
       '</a>';

@@ -1,6 +1,7 @@
 ---
 title: The Marigold Mural Project
 slug: the-marigold-mural-project
+published: true
 starts_at: '2025-11-01 11:00:00'
 ends_at: '2025-11-01 17:00:00'
 schedule_type: yearly

@@ -1,6 +1,7 @@
 ---
 title: Day of the Dead
 slug: day-of-the-dead
+published: true
 starts_at: '2025-11-01 11:00:00'
 ends_at: '2025-11-01 17:00:00'
 location: 'THROUGHOUT TLAQUEPAQUE '
