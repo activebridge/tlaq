@@ -774,7 +774,7 @@
 
     // --- Popups ---
     const CDN_URL = '{{ site.cdn_url }}';
-    const cdnImage = (path, width, height) => path ? `${CDN_URL}/cdn-cgi/image/width=${width},height=${height},fit=cover,quality=85,gravity=center/assets/images/${path}` : '';
+    const cdnImage = (path, width, height) => path ? `${CDN_URL}/cdn-cgi/image/width=${width},height=${height},fit=cover,quality=85,gravity=center/${path}` : '';
 
     const renderPopupHtml = (store) => {
       const icon = getIconByType(store.type);
