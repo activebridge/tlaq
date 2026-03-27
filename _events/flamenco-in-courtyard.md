@@ -5,7 +5,7 @@ published: true
 starts_at: 2026-03-29 15:30:00
 ends_at: 2026-03-29 19:30:00
 location: Tlaquepaque Village
-image: /assets/images/flamenco-in-courtyard.webp
+image: /assets/images/events/flamenco-in-courtyard.webp
 subtitle: Master guitarist Gaetano and fellow artists light up Patio De Las Campanas with spirited live music, plus drinks from El Rincon’s outdoor bar.
 schedule_type: weekly
 recurs_until: 2027-04-20 15:30:00
