@@ -8,8 +8,16 @@ layout: default
 <div class="content-wrapper">
   <h2 style="--transition-name: {{ page.title | downcase | replace: ' ', '-'}};">{{ page.title }}</h2>
   {{ content }}
-  {% capture map_src %}{{ '/map_embed' | relative_url }}{% if page.suite %}?suite={{ page.suite | url_encode }}{% endif %}{% endcapture %}
-  <iframe src="{{ map_src }}" loading="lazy" title="Village Map" style="width:100%;height:500px;border:none"></iframe>
+  {% if page.coordinates %}
+    {% assign coord_parts = page.coordinates | split: "," %}
+    {% assign lng = coord_parts[0] | strip %}
+    {% assign lat = coord_parts[1] | strip %}
+    {% assign map_token = "pk.eyJ1Ijoic3RvcmNoYWsiLCJhIjoiY21tZDZsMGdmMDAydDJwczhqbGhhOTNtciJ9.gPoufGUfsywbXf1wN8D0yw" %}
+    <!-- /mapbox/streets-v12/ DEFAULT STYLES -->
+    <!-- /storchak/cmmew5gbs000l01sbb2mld1pq CUSTOM STYLES -->
+    {% capture map_img_src %}https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/pin-s+d41367({{ lng }},{{ lat }})/{{ lng }},{{ lat }},17,0,20/800x500@2x?access_token={{ map_token }}{% endcapture %}
+    <img src="{{ map_img_src }}" alt="Map of {{ page.title }}" style="width:100%;height:500px;object-fit:cover;border:none;" loading="lazy">
+  {% endif %}
   <hr>
   <h6>LOCATION</h6>
   <h7>{{ page.full_location }}</h7>
