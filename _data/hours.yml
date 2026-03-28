@@ -5,7 +5,7 @@ jump_to_links:
   locations:
     text: LOCATIONS
     id: "#locations"
-  village map:
+  village_map:
     text: VILLAGE MAP
     id: "#village-map"
 
