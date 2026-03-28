@@ -25,16 +25,13 @@ layout_type: history
       <source src="{{ video_url }}" type="video/mp4">
     </video>
     <script>
-      // Fallback: remove video if autoplay is blocked (e.g. Safari low power mode)
-      const removeIfNotPlaying = () => { removeIfNotPlaying.ok || videoBg.remove(); };
-      videoBg.addEventListener('playing', () => {
-        removeIfNotPlaying.ok = true;
-        historyVideoBlock.classList.add('video-playing');
-      }, { once: true });
+      // Fallback: show cover image if autoplay is blocked (e.g. Safari low power mode)
+      let played = false;
+      videoBg.addEventListener('playing', () => { played = true; }, { once: true });
 
-      videoBg.addEventListener('suspend', removeIfNotPlaying, { once: true });
-      videoBg.play().catch(removeIfNotPlaying);
-      setTimeout(removeIfNotPlaying, 3000);
+      const showCover = () => { played || (videoBg.remove(), historyVideoBlock.classList.add('video-failed')); };
+      videoBg.play().catch(showCover);
+      setTimeout(showCover, 3000);
     </script>
   </section>
 
