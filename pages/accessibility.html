@@ -2,5 +2,67 @@
 layout: page
 title: Accessibility
 permalink: /accessibility
+layout_type: accessibility
 ---
-<h1>Accessibility</h1>
+
+{% assign image_path = site.data.hours.accessibility.image %}
+{% assign transition-name = "accessibility" %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+<div class="content-wrapper">
+  <hgroup style="--transition-name: title-{{transition-name}};">
+    <h5 title>Accessibility</h5>
+    <h2>Welcoming all guests to our vibrant village.</h2>
+    <h6>Tlaquepaque Arts &amp; Shopping Village is committed to providing an enjoyable experience for visitors of all abilities.</h6>
+  </hgroup>
+
+  <div class="list-container">
+    <div class="card">
+      <h3>Accessible Features</h3>
+      <figure>
+        {% include responsive-card-image.html src=site.data.hours.accessibility.image alt='Accessibility Icon' %}
+      </figure>
+      <p>Accessible parking, entrances, and restrooms are available throughout Tlaquepaque North and South. All accessible features can be easily located on the village map for convenient navigation during your visit.</p>
+      <p>While wheelchair rentals are not available on property, guests are welcome to bring their own mobility devices.</p>
+      <a href="/village_map" class="btn btn-primary">View Village Map</a>
+    </div>
+
+    <div class="card">
+      <h3>Family &amp; Dog Friendly</h3>
+      <figure>
+        {% include responsive-card-image.html src=site.data.hours.family_friendly.image alt='Family and Dog Friendly Icon' %}
+      </figure>
+      <p>Tlaquepaque is a family-friendly destination with shops, dining, and events for visitors of all ages. We welcome leashed pets and offer water sources near the village restrooms.</p>
+      <p>Please never under any circumstances leave your pets unattended in your vehicle due to the potential dangers of Arizona's extreme heat.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h3>Hours</h3>
+  <table id="storeHours">
+    <caption>
+      <h7>
+        {% include icons/clock.svg %} The village is open today <span id="todayHours"></span>
+      </h7>
+    </caption>
+    {% assign days = "monday,tuesday,wednesday,thursday,friday,saturday,sunday" | split: "," %}
+    {% for day in days %}
+      <tr data-day="{{ day }}" data-hours="{{ site.data.hours.village_hours[day] }}">
+        <td>{{ day | capitalize }}</td>
+        <td>{{ site.data.hours.village_hours[day] }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <p>{{ site.data.hours.notes.restaurants }}</p>
+  <p>{{ site.data.hours.notes.holidays }}</p>
+  <script src="{{ '/assets/js/store/hours.js' | relative_url }}"></script>
+  <a href="/hours" class="btn btn-primary">Full Hours &amp; Locations</a>
+
+  <hr>
+
+  <h3>Parking</h3>
+  <p>Parking while visiting Tlaquepaque is free. There are several parking lots surrounding the property and one additional lot, across the street, at our Tlaquepaque North location.</p>
+  <p>RVs, 5th wheelers, and tour buses can easily be parked in the Portal Lane lot, located directly northwest of Tlaquepaque Arts &amp; Crafts Village.</p>
+  <a href="/parking" class="btn btn-primary">Parking Details</a>
+</div>
