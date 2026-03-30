@@ -1,6 +1,7 @@
 ---
 title: Playing With Knives
 slug: playing-with-knives
+published: true
 starts_at: '2026-03-07 11:00:00'
 ends_at: '2026-03-07 13:00:00'
 recurs_until: 2027-03-26 23:59:00

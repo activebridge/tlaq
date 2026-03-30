@@ -7,7 +7,7 @@ permalink: /magazines
   <h5 title="magazines">MAGAZINE ARCHIVE</h5>
 
   <div class="list-container">
-    {% for magazine in site.data.magazines %}
+    {% for magazine in site.data.magazines.issues %}
       <div class="card">
         {% if magazine.link != "" %}
           <a href="{{ magazine.link }}" target="_blank" rel="noopener">

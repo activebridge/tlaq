@@ -132,12 +132,13 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Published", name: "published", widget: "boolean", default: true, hint: "If false, the event will not be shown on the calendar or website." }
       - { label: "Starts At", name: "starts_at", widget: "datetime" }
       - { label: "Ends At", name: "ends_at", widget: "datetime", required: false, hint: "Usually same date as Starts At with a later end time. For Schedule Type: 'range', this is required and defines the from-to span end." }
       - { label: "Location", name: "location", widget: "string" }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Subtitle", name: "subtitle", widget: "text" }
-      - { label: "Schedule Type", name: "schedule_type", widget: "select", options: ["single", "range", "weekly", "monthly", "yearly"], required: true }
+      - { label: "Schedule Type", name: "schedule_type", widget: "select", options: ["single", "range", "weekly", "monthly", "yearly"], required: true, hint: "single: one date; range: daily from start to end; weekly: selected weekdays until Recurrence Until; monthly: first selected weekday(s) each month until Recurrence Until; yearly: same date each year." }
       - { label: "Recurrence Until", name: "recurs_until", widget: "datetime", required: false, hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
       - { label: "Recurrence Weekdays", name: "recurrence_weekdays", widget: "select", multiple: true, required: false, options: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"], hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
       - label: "Schedule"
@@ -305,99 +306,101 @@ collections:
           - { label: "Content", name: "body", widget: "code", default_language: "html" }
       - name: "history"
         label: "History"
-        file: "pages/history.html"
+        file: "_data/history.yml"
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - { label: "Content", name: "body", widget: "code", default_language: "html" }
-      - name: "hours"
-        label: "Hours"
-        file: "pages/hours.html"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - { label: "Content", name: "body", widget: "code", default_language: "html" }
-      - name: "locations"
-        label: "Locations"
-        file: "pages/locations.html"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - { label: "Content", name: "body", widget: "code", default_language: "html" }
-      - name: "parking"
-        label: "Parking"
-        file: "pages/parking.html"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - { label: "Content", name: "body", widget: "code", default_language: "html" }
-      - name: "village_map"
-        label: "Village Map"
-        file: "pages/village_map.html"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - { label: "Content", name: "body", widget: "code", default_language: "html" }
-      - name: "weddings"
-        label: "Weddings"
-        file: "pages/weddings.html"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - { label: "Content", name: "body", widget: "code", default_language: "html" }
-
-  - name: "settings"
-    label: "Settings"
-    files:
-      - name: "homepage"
-        label: "Homepage"
-        file: "index.md"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "home" }
-          - { label: "Title", name: "title", widget: "string" }
-          - label: "Navigation"
-            name: "nav"
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - { label: "Video Cover", name: "video_cover", widget: "image" }
+          - label: "Vision Section"
+            name: "vision"
             widget: "object"
             fields:
               - { label: "Label", name: "label", widget: "string" }
-              - label: "Items"
-                name: "items"
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Text", name: "text", widget: "text" }
+          - label: "Collage Images"
+            name: "collage"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt", name: "image_alt", widget: "string" }
+              - label: "Paragraphs"
+                name: "paragraphs"
                 widget: "list"
-                fields:
-                  - { label: "Type", name: "type", widget: "string" }
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Description", name: "description", widget: "string" }
-                  - { label: "URL", name: "url", widget: "string" }
-                  - { label: "Image", name: "image", widget: "image" }
-
-      - name: "site_config"
-        label: "Site Configuration"
-        file: "_data/site.yml"
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
+              - { label: "Quote", name: "quote", widget: "string", required: false }
+      - name: "hours"
+        label: "Hours & Locations"
+        file: "_data/hours.yml"
         fields:
-          - { label: "App Name", name: "app_name", widget: "string" }
-          - { label: "App Description", name: "app_description", widget: "string" }
-          - label: "Footer"
-            name: "footer"
+          - label: "Jump To Links"
+            name: "jump_to_links"
             widget: "object"
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Phone", name: "phone", widget: "string" }
-              - { label: "Formatted Phone", name: "formatted_phone", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Street Address", name: "street_address", widget: "string" }
-              - { label: "Mail Address", name: "mail_address", widget: "string" }
-              - { label: "Join Text", name: "join", widget: "text" }
-              - { label: "Magazine Alt Text", name: "magazine_alt", widget: "string" }
-          - { label: "Directions URL", name: "directions_url", widget: "string" }
-          - { label: "Weather URL", name: "weather_url", widget: "string" }
-          - { label: "Weather Widget URL", name: "weather_widget", widget: "string" }
-
+              - label: "Hours"
+                name: "hours"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Locations"
+                name: "locations"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Village Map"
+                name: "village_map"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+          - label: "Village Hours"
+            name: "village_hours"
+            widget: "object"
+            fields:
+              - { label: "Monday", name: "monday", widget: "string" }
+              - { label: "Tuesday", name: "tuesday", widget: "string" }
+              - { label: "Wednesday", name: "wednesday", widget: "string" }
+              - { label: "Thursday", name: "thursday", widget: "string" }
+              - { label: "Friday", name: "friday", widget: "string" }
+              - { label: "Saturday", name: "saturday", widget: "string" }
+              - { label: "Sunday", name: "sunday", widget: "string" }
+          - label: "Notes"
+            name: "notes"
+            widget: "object"
+            fields:
+              - { label: "Restaurants", name: "restaurants", widget: "string" }
+              - { label: "Holidays", name: "holidays", widget: "string" }
+              - { label: "Village Map", name: "village_map", widget: "text" }
+          - label: "Locations"
+            name: "locations"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "Google Maps URL", name: "maps_url", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+          - label: "Accessibility"
+            name: "accessibility"
+            widget: "object"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+          - label: "Family Friendly"
+            name: "family_friendly"
+            widget: "object"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
       - name: "hours_defaults"
         label: "Default Store Hours"
         file: "_data/store/hours_defaults.yml"
@@ -430,3 +433,296 @@ collections:
             name: "sunday"
             widget: "list"
             field: { label: "Time", name: "time", widget: "string" }
+      - name: "parking"
+        label: "Parking"
+        file: "_data/parking.yml"
+        fields:
+          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - label: "Jump To Links"
+            name: "jump_to_links"
+            widget: "object"
+            fields:
+              - label: "Overview"
+                name: "overview"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Parking Lots"
+                name: "parking_lots"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Oversized Vehicles"
+                name: "oversized"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Shuttle"
+                name: "shuttle"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+          - label: "Notes"
+            name: "notes"
+            widget: "object"
+            fields:
+              - { label: "General", name: "general", widget: "text" }
+              - { label: "Visitors Only", name: "visitors_only", widget: "string" }
+          - label: "Parking Lots"
+            name: "lots"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Note", name: "note", widget: "string", required: false }
+              - { label: "Map URL", name: "map_url", widget: "string", required: false }
+          - label: "Oversized Vehicles"
+            name: "oversized"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Vehicles"
+                name: "vehicles"
+                widget: "list"
+                field: { label: "Vehicle", name: "vehicle", widget: "string" }
+          - label: "Shuttle"
+            name: "shuttle"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Boarding", name: "boarding", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Link Text", name: "link_text", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+      - name: "village_map"
+        label: "Village Map"
+        file: "pages/village_map.html"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Permalink", name: "permalink", widget: "string" }
+          - { label: "Content", name: "body", widget: "code", default_language: "html" }
+      - name: "weddings"
+        label: "Weddings"
+        file: "_data/weddings.yml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Weddings Label", name: "weddings", widget: "string" }
+          - { label: "Venues Label", name: "venues", widget: "string" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - label: "Gallery"
+            name: "gallery"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Video URL", name: "video_url", widget: "string" }
+          - label: "Brochure"
+            name: "brochure"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Brochure URL", name: "brochure_url", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+          - label: "Corporate & Private Events"
+            name: "events"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Brochure URL", name: "brochure_url", widget: "string" }
+          - label: "Buttons"
+            name: "buttons"
+            widget: "object"
+            fields:
+              - { label: "Learn More", name: "learn_more", widget: "string" }
+              - { label: "Explore More", name: "explore_more", widget: "string" }
+              - { label: "FAQ", name: "faq", widget: "string" }
+              - { label: "Download Brochure", name: "download_brochure", widget: "string" }
+              - { label: "Submit Inquiry", name: "inquiry_submit", widget: "string" }
+              - { label: "Download Site Plan", name: "download_site_plan", widget: "string" }
+          - label: "Jump To Links"
+            name: "jump_to_links"
+            widget: "object"
+            fields:
+              - label: "Venues"
+                name: "venues"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Gallery"
+                name: "gallery"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Private Events"
+                name: "private_events"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+          - label: "Site Plan"
+            name: "site_plan"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Plan URL", name: "plan_url", widget: "string" }
+      - name: "leasing"
+        label: "Leasing"
+        file: "_data/leasing.yml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Guidelines Intro", name: "guidelines_intro", widget: "text" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                field: { label: "Item", name: "item", widget: "string" }
+          - label: "Buttons"
+            name: "buttons"
+            widget: "object"
+            fields:
+              - { label: "Inquire About Space", name: "inquire_about_space", widget: "string" }
+      - name: "filming_photography"
+        label: "Filming & Photography"
+        file: "_data/filming-photography.yml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                field: { label: "Item", name: "item", widget: "string" }
+          - { label: "Wedding Exemption Note", name: "wedding_exemption_note", widget: "text" }
+          - label: "Buttons"
+            name: "buttons"
+            widget: "object"
+            fields:
+              - { label: "Request a Permit", name: "request_a_permit", widget: "string" }
+      - name: "privacy_policy"
+        label: "Privacy Policy"
+        file: "_data/privacy-policy.yml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Content", name: "content", widget: "text" }
+      - name: "terms_and_conditions"
+        label: "Terms & Conditions"
+        file: "_data/terms-and-conditions.yml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Content", name: "content", widget: "text" }
+      - name: "connect_us"
+        label: "Connect With Us"
+        file: "_data/connect-us.yml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Form Placeholders"
+            name: "form_placeholders"
+            widget: "object"
+            fields:
+              - { label: "First Name", name: "first_name", widget: "string" }
+              - { label: "Last Name", name: "last_name", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Event Date", name: "event_date", widget: "string" }
+              - { label: "Guests", name: "guests", widget: "string" }
+              - { label: "Budget", name: "budget", widget: "string" }
+          - { label: "Submit Button", name: "submit_button", widget: "string" }
+      - name: "magazines"
+        label: "Magazines"
+        file: "_data/magazines.yml"
+        fields:
+          - label: "Issues"
+            name: "issues"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Link", name: "link", widget: "string", required: false, hint: "Leave empty if issue is not yet available." }
+              - { label: "Cover Image", name: "image", widget: "string", hint: "URL of the cover image." }
+
+  - name: "landing_navigation"
+    label: "Landing Navigation"
+    files:
+      - name: "landing_navigation"
+        label: "Landing Navigation"
+        file: "index.md"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "home" }
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Navigation"
+            name: "nav"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Type", name: "type", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Image", name: "image", widget: "image" }
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - name: "site_config"
+        label: "Site Configuration"
+        file: "_data/site.yml"
+        fields:
+          - { label: "App Name", name: "app_name", widget: "string" }
+          - { label: "App Description", name: "app_description", widget: "string" }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Formatted Phone", name: "formatted_phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Street Address", name: "street_address", widget: "string" }
+              - { label: "Mail Address", name: "mail_address", widget: "string" }
+              - { label: "Join Text", name: "join", widget: "text" }
+              - { label: "Magazine Alt Text", name: "magazine_alt", widget: "string" }
+          - { label: "Directions URL", name: "directions_url", widget: "string" }
+          - { label: "Weather URL", name: "weather_url", widget: "string" }
+          - { label: "Weather Widget URL", name: "weather_widget", widget: "string" }

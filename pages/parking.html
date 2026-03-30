@@ -2,5 +2,68 @@
 layout: page
 title: Parking
 permalink: /parking
+layout_type: parking
 ---
-<h1>Parking</h1>
+
+{% assign image_path = site.data.parking.hero_banner %}
+{% assign transition-name = page.layout_type %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+<div class="content-wrapper">
+  <h5 title="visit">Visit</h5>
+  <h2>Parking at Tlaquepaque Arts & Crafts Village.</h2>
+  <h6>Free parking is available for all visitors across multiple lots surrounding the village.</h6>
+
+  {% assign jump_nav_links = "overview,parking_lots,oversized,shuttle" | split: "," %}
+  {% assign jump_nav_slugs = "parking" %}
+  {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
+
+  <h3 id="overview">Overview</h3>
+  <p>{{ site.data.parking.notes.general }}</p>
+  <p>{{ site.data.parking.notes.visitors_only }}</p>
+
+  <hr>
+
+  <h2 id="parking-lots">Parking Lots</h2>
+
+  <div class="list-container">
+    {% for lot in site.data.parking.lots %}
+      <div class="card">
+        {% if lot.map_url %}
+          <figure>
+            <img src="{{ lot.map_url }}" alt="{{ lot.name }} map" loading="lazy">
+          </figure>
+        {% endif %}
+        <h4>{{ lot.name }}</h4>
+        <p>{{ lot.description }}</p>
+        {% if lot.note != "" %}
+          <p>{{ lot.note }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <hr>
+
+  <h2 id="oversized">Oversized Vehicles</h2>
+  <p>{{ site.data.parking.oversized.description }}</p>
+  <ul>
+    {% for vehicle in site.data.parking.oversized.vehicles %}
+      <li>{{ vehicle }}</li>
+    {% endfor %}
+  </ul>
+
+  <hr>
+
+  <h2 id="shuttle">Sedona Shuttle</h2>
+  <div class="list-container">
+    <div class="card">
+      <figure>
+        {% include responsive-card-image.html src=site.data.parking.shuttle.image alt='Sedona Shuttle' %}
+      </figure>
+      <p>{{ site.data.parking.shuttle.description }}</p>
+      <p>{{ site.data.parking.shuttle.boarding }}</p>
+    </div>
+  </div>
+
+</div>

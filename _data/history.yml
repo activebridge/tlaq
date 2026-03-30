@@ -1,0 +1,73 @@
+title: History
+subtitle: Discover the story of artistry and dedication that shaped Tlaquepaque's distinctiveness.
+description: From its architectural inspiration to artistic tradition, learn about the vision behind our village that continues today.
+hero_banner: assets/images/history/hero.webp
+video_cover: assets/images/history/video-cover.webp
+
+collage:
+  - image: assets/images/history/abe-planing.webp
+    alt: Abe Miller reviewing plans
+  - image: assets/images/history/patio.webp
+    alt: Tlaquepaque patio courtyard
+  - image: assets/images/history/fountain.webp
+    alt: Tlaquepaque fountain courtyard
+
+vision:
+  label: VISION
+  image: assets/images/history/arch.webp
+  text: "In the 1970s, when Sedona had just one stoplight, Nevada businessman Abe Miller discovered a distinctive sycamore grove near Oak Creek. A lover of Mexico and the arts, Abe envisioned creating an enchanting village reflecting Old Mexico's charm—a living arts community where artisans would create in full view of visitors, just as it worked in Mexico. He named it Tlaquepaque after a colorful Mexican city, meaning \"the best of everything\" in the ancient Aztec language."
+
+sections:
+  - id: abe-miller
+    heading: "The Abe Miller Story: Visionary, Developer, Lover of the Arts"
+    image: assets/images/history/arch.webp
+    image_alt: Founder Abe Miller overlooking Tlaquepaque with construction underway
+    paragraphs:
+      - "Back in the 1970s Sedona had one stoplight and most of the area was still open range. It wasn't uncommon to wake up and find cattle in your backyard munching on what little grass there was. Just south of Highway 89A at the bridge crossing over Oak Creek, there was a nursery that was home to a distinctive sycamore grove on several acres of land owned by Harry and Ruby Girard."
+      - "Around that time, Abe Miller, a successful Nevada businessman, started coming to Sedona on vacations. Being in the real estate development business he had an eye for possibility. Abe was a traveler and he loved Mexico. He also fell in love with Sedona and specifically the Girard's beautiful creekside property. It was his heart's desire to build—someday, somewhere—an enchanting arts village reflecting the charm and mood of Old Mexico. After traveling the entire Southwest, Abe knew he'd found this to be the perfect site for his plan."
+      - "The conceptual history of Tlaquepaque is truly a story of Abe's love for beauty and perfection. Under the influence of the lively creative arts scene in Mexico, it struck him that Sedona was a natural location for a living arts community…a village where artisans create in full view of visitors and live on-site as well. He called it Tlaquepaque after a colorful Mexican city on the outskirts of Guadalajara by the same name. Tlaquepaque is a word from the Nahuatl Native Indian language, the ancient language of the Aztecs meaning the \"best of everything.\""
+      - "So Abe began a courtship with the Girards to acquire the property. It took two years of quiet persuasion and absolute assurances to Harry that the beloved sycamores would remain untouched and healthy. And finally the Girards said yes."
+
+  - id: birth-of-a-dream
+    heading: Birth of a Dream
+    image: assets/images/history/construction.webp
+    image_alt: Tlaquepaque during construction
+    paragraphs:
+      - "Immediately, Abe hired Bob McIntyre, a gifted, if unconventional architect, and the adventure began. Bob McIntyre, Abe Miller and Bill Herrick, the general contractor, flew Abe's plane all over Mexico and ventured into small villages to photograph, sketch, and document the look and feel of the material, their structural components, and their overall flow and design to be interpreted as authentically as possible in their recast Tlaquepaque village. They photographed thousands of scenes from rural villages and sketched dozens of vignettes of Spanish Colonial architecture. They took special note of how the patios, courtyards, tiled walls and plazas created natural gathering places for the villagers to sell their crafts and mingle together."
+      - "Bob reported that when he and Abe came upon a small village they would just sit and watch for hours, coming to know the importance of how people, gardens, fountains, and trees shaped social interaction in a public space. They carefully studied the architectural forms, columns and arches, the fine tiled nooks and grand courtyard fountains, stucco walls and intricate ironwork, cobblestone walkways and overhanging balconies. They were soul searching, discovering what life really looked like in rural Mexico, what elements embraced and defined close community."
+      - "Like a couple of cultural anthropologists, Abe and Bob began acquiring artifacts reflecting the Mexican culture. Venturing into Mexico on multiple road trips, they scoured villages and markets, purchasing what they intuitively thought would work at Tlaquepaque. Truckloads of iron grillwork, enormous carved doors, handmade lanterns, clay pots and benches came up from Mexico to Sedona on a regular basis…all to create the genuine feel and spirit of Tlaquepaque."
+
+  - id: forget-the-plumb
+    heading: "Forget the Plumb… Use the Thumb"
+    image: assets/images/history/construction.webp
+    image_alt: Construction detail at Tlaquepaque
+    paragraphs:
+      - "Bob McIntyre was an unconventional architect, purposely hiring only amateur artisans and self-trained plasterers, chosen for their heart and enthusiasm for the Tlaquepaque project. He worked right alongside them. No professional stonemasons were on the crew. Tremendous artistic freedom was given to the workers who \"loved to be turned loose on a wall and watch it grow under their hands.\" And if they weren't happy with their day's work, Abe allowed them to tear it down and start over. \"Forget the plumb, use the thumb,\" was a favorite saying on the construction site."
+      - "Very little of Tlaquepaque was sketched out on paper. Abe always allowed his workers a lot of latitude, sometimes as much as plus or minus 24 inches! Everything was eyeballed, keeping the basic orders of columns and capitals, but allowing for many variables. It's all part of the recipe that gives Tlaquepaque its authenticity and charm."
+      - "From the beginning, Abe had a concept, a dream, but he never asked his crew to accept it saying this is the way it has to be. He would wake up each morning, have a cup of coffee, look at what he created the day before and say, \"OK. Let's reevaluate. Maybe we should add this. Maybe we should try that.\""
+      - "A building that was too symmetrical had no life to Bob McIntyre who said: \"Buildings must be built to echo laughter, dancing and singing. Candles, barrels, flickering fires, fountains and flowers are what architecture is all about.\""
+      - "When the first phase of construction began in 1971, a building was created just to experiment with the design elements found in Spanish Colonial architecture. Utterly charming, the building ultimately became home to El Rincon Restaurante Mexicano, a Sedona icon for over three decades."
+
+  - id: the-chapel
+    heading: The Chapel
+    image: assets/images/history/chapel.webp
+    image_alt: Tlaquepaque Chapel at Night
+    paragraphs:
+      - "The Chapel was Abe's favorite building. He commissioned Eileen Conn to create a painting of St. Augustine, Pope Pius X, St. Bonaventure, Samuel, Peter, and John the Baptist. Almost twelve feet square it is resplendently set off in a beautiful gold leaf frame that was painted by Abe and Linn Miller. The Chapel is a place of serenity in the midst of the liveliness of Tlaquepaque. Like the wonderful churches of Old Mexico, the Chapel was designed as a place for meditation and contemplation. Perhaps Abe Miller never fully realized the tremendous joy the Chapel would bring to those fortunate enough to have their weddings there."
+
+  - id: landscaping
+    heading: Inspired Landscaping
+    image: assets/images/history/landscaping.webp
+    image_alt: Sycamore trees and gardens at Tlaquepaque
+    paragraphs:
+      - "Landscaping was a special challenge at Tlaquepaque. Abe's promise to Harry Girard was that the beautiful sycamore grove would always remain untouched. So as structures went up, they were built around the tall sycamores. At great cost in labor and materials all plans were modified to incorporate the trees' natural form. So today you will find huge sycamore limbs merging with rooflines, growing through massive walls and even up through an art gallery. Inside the Rowe Fine Art Gallery a magnificent sycamore twists skyward through the roof."
+      - "Tlaquepaque was, from the beginning, awash in flowers and brilliant colors. A greenhouse nurtured thousands of potted flowers, which were rotated seasonally. Abe loved the vibrant gardens and began a tradition that has expanded to a grand scale today, filling Tlaquepaque with a palette of ever-changing hues throughout the seasons."
+      - "Today, after years of growth, Tlaquepaque is graced with climbing vines of sweet scented honeysuckle, purple clematis, ivy trumpet vine and silver lace. Pansies are everywhere in early spring and remain until late April when the Arizona sun becomes too strong. Summer at Tlaquepaque is bedecked in rainbow colors around every corner. Fountains are seasonally decorated with fantastic floral creations in celebration of one of the many year round fiestas, weddings or private events."
+
+  - id: legacy
+    heading: Legacy
+    image: assets/images/history/abe-miller-portrait.webp
+    image_alt: Abe Miller, founder of Tlaquepaque
+    paragraphs:
+      - "Often the measure of a person is how they connect with others in everyday life. Abe was known for his humility. It was quite common to see Abe in blue jeans, a workshirt and his signature baseball cap just walking the property. He totally downplayed his role at Tlaquepaque. Abe didn't just tell people what to do. He would help them and work right alongside them. He was quick to give credit to others rather than keeping it for himself."
+    quote: "Some men only dream. Others make dreams come true."

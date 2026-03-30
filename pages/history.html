@@ -1,6 +1,79 @@
 ---
-layout: page
+layout: default
 title: History
 permalink: /history
+layout_type: history
 ---
-<h1>History</h1>
+
+{% assign transition-name = "history" %}
+{% assign video_url = site.cdn_url | append: '/assets/video/tlaq.mp4' %}
+{% assign data = site.data.history %}
+
+{% assign image_path = site.data.history.hero_banner %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+<div class="content-wrapper">
+  <hgroup style="--transition-name: title-{{transition-name}};">
+    <h5 title>{{ data.title }}</h5>
+    <h2>{{ data.subtitle }}</h2>
+    <h6>{{ data.description }}</h6>
+  </hgroup>
+
+  {% assign video_cover_url = data.video_cover | prepend: '/cdn-cgi/image/width=1920,fit=contain,quality=80,format=webp/' | prepend: site.cdn_url %}
+  <section class="history-video-block" id="historyVideoBlock" aria-label="The history of Tlaquepaque" style="--video-cover: url('{{ video_cover_url }}');">
+    <video class="videobgframe" autoplay loop muted playsinline preload="metadata" id="videoBg">
+      <source src="{{ video_url }}" type="video/mp4">
+    </video>
+    <script>
+      // Fallback: show cover image if autoplay is blocked (e.g. Safari low power mode)
+      let played = false;
+      videoBg.addEventListener('playing', () => { played = true; }, { once: true });
+
+      const showCover = () => { played || (videoBg.remove(), historyVideoBlock.classList.add('video-failed')); };
+      videoBg.play().catch(showCover);
+      setTimeout(showCover, 3000);
+    </script>
+  </section>
+
+  {% assign vision_image_url = data.vision.image | prepend: '/cdn-cgi/image/width=1600,fit=cover,quality=85,gravity=center/' | prepend: site.cdn_url %}
+  <section class="history-vision-block" aria-label="Our vision" style="background-image: url('{{ vision_image_url }}');">
+    <span class="history-vision" aria-hidden="true">{{ data.vision.label }}</span>
+    <p>{{ data.vision.text }}</p>
+  </section>
+
+  <hr>
+
+  <div class="history-collage">
+    {% for item in data.collage %}
+    {% assign img_mobile = item.image | prepend: '/cdn-cgi/image/width=400,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
+    {% assign img_desktop = item.image | prepend: '/cdn-cgi/image/width=800,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
+    <img src="{{ img_desktop }}" srcset="{{ img_mobile }} 400w, {{ img_desktop }} 800w" sizes="(max-width: 770px) 400px, 800px" alt="{{ item.alt }}" loading="lazy" decoding="async">
+    {% endfor %}
+  </div>
+
+  <hr>
+
+  {% for section in data.sections %}
+  {% assign sec_img_mobile = section.image | prepend: '/cdn-cgi/image/width=600,height=338,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
+  {% assign sec_img_desktop = section.image | prepend: '/cdn-cgi/image/width=1200,height=675,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
+  <section id="{{ section.id }}" aria-labelledby="{{ section.id }}-heading">
+    <h3 id="{{ section.id }}-heading">{{ section.heading }}</h3>
+    <img src="{{ sec_img_desktop }}"
+      srcset="{{ sec_img_mobile }} 600w, {{ sec_img_desktop }} 1200w"
+      sizes="(max-width: 770px) 600px, 1200px"
+      alt="{{ section.image_alt }}" loading="lazy" decoding="async" width="1200" height="675">
+    {% for paragraph in section.paragraphs %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+    {% if section.quote %}
+    <blockquote>
+      <h6>"{{ section.quote }}"</h6>
+    </blockquote>
+    {% endif %}
+  </section>
+  {% unless forloop.last %}
+  <hr>
+  {% endunless %}
+  {% endfor %}
+
+</div>
