@@ -14,7 +14,7 @@ layout_type: hours
   <h2>Plan your visit to our vibrant village.</h2>
   <h6>Home to over 50 world-class shops, galleries, and dining experiences set amid distinctive architecture and beautifully landscaped grounds.</h6>
 
-  {% assign jump_nav_links = "hours,locations,village map" | split: "," %}
+  {% assign jump_nav_links = "hours,locations,village_map,accessibility" | split: "," %}
   {% assign jump_nav_slugs = "hours" %}
   {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
 
@@ -67,13 +67,13 @@ layout_type: hours
 
   <hr>
 
-  <h3>Parking & Shuttle</h3>
+  <h3 id="parking">Parking & Shuttle</h3>
   <p>Limited free parking is available onsite for village visitors only.</p>
   <p>The Sedona Shuttle offers a convenient, free alternative means of transportation and can be boarded at the Sedona Municipal Parking lot at Jordan and Schnebly roads. More shuttle information is available <a href="https://www.sedonashuttle.com/" target="_blank" rel="noopener noreferrer">here</a>.</p>
 
   <hr>
 
-  <div class="list-container">
+  <div id="accessibility" class="list-container">
     <div class="card">
       <h3>Accessibility</h3>
       <figure>
