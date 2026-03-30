@@ -8,7 +8,7 @@ layout: default
 
   <div class="top-section">
     <div class="content-wrapper">
-      <h3 style="--transition-name: {{ page.title | downcase | replace: ' ', '-'}};">{{ page.title }}</h3>
+      <h3 style="view-transition-name: {{ page.title | downcase | replace: ' ', '-'}};">{{ page.title }}</h3>
       {% if page.starts_at %}
         {% assign recurring_days = page.weekdays | default: page.recurrence_weekdays %}
         {% assign recurring_days_label = "" %}

@@ -1,4 +1,4 @@
-<picture>
+<picture style="view-transition-name: {{ include.transition_name }};">
   <source
     media="(max-width: 480px)"
     srcset="{{ include.src | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
@@ -11,6 +11,5 @@
     src="{{ include.src | prepend: '/cdn-cgi/image/width=600,height=400,fit=cover,format=webp/' | prepend: site.cdn_url }}"
     alt="{{ alt }}"
     loading="lazy"
-    style="--transition-name: {{ include.transition_name }};"
   >
 </picture>

@@ -1,18 +1,18 @@
 <style>
   @view-transition { navigation: auto; }
 
-  nav.landing-nav a {
-    view-transition-name: var(--transition-name);
-    div { view-transition-name: var(--transition-name); }
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    mix-blend-mode: normal;
+  }
+
+  ::view-transition-group(*) {
+    animation-duration: .3s;
   }
 
   .list-container {
     .card { flex: 1 1 500px; }
-    img { view-transition-name: var(--transition-name); }
   }
-
-  .content-wrapper hgroup,
-  nav.landing-nav a div { view-transition-name: var(--transition-name); }
 
   :root {
     /* Header */
@@ -268,7 +268,11 @@ html, body {
     flex-direction: column;
     view-transition-name: header;
   }
-  ::view-transition-group(header) { z-index: 1; }
+  ::view-transition-group(header) {
+    z-index: 1;
+    animation:none;
+  }
+
 
   header a {
     text-decoration: none;
@@ -727,8 +731,8 @@ html, body {
   }
 
   .hero {
-    view-transition-name: var(--transition-name);
     background-image: var(--low-desk-image);
+    background-color: var(--cream);
     height: calc(100dvh - 210px);
     background-size: cover;
     background-position: center;

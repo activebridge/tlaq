@@ -6,7 +6,7 @@ layout: default
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
-  <h2 style="--transition-name: {{ page.title | downcase | replace: ' ', '-'}};">{{ page.title }}</h2>
+  <h2 style="view-transition-name: {{ page.title | downcase | replace: ' ', '-'}};">{{ page.title }}</h2>
   {{ content }}
   {% if page.suite %}
     <a href="{{ '/village_map/' | relative_url }}?suite={{ page.suite | url_encode }}">
