@@ -342,6 +342,26 @@ html, body {
       }
     }
 
+    > a {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0.5rem;
+        right: 0.5rem;
+        height: 0;
+        background: var(--cream);
+        transition: height 0.25s ease;
+      }
+
+      &:hover::after,
+      &[aria-current="page"]::after {
+        height: 4px;
+      }
+    }
+
     button#visit-popover-anchor {
       all: unset;
       height: 100%;

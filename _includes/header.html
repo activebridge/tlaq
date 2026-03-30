@@ -40,11 +40,11 @@
       <a href="{{ '/news/' | relative_url }}">{% include icons/windows/events.svg %} News</a>
       <a href="{{ '/contacts' | relative_url }}">{% include icons/windows/events.svg %} Contact Us</a>
     </div>
-    <a href="/shops/">{% include icons/windows/shops.svg %} Shops</a>
-    <a href="/galleries/">{% include icons/windows/galleries.svg %} Galleries</a>
-    <a href="/foods/">{% include icons/windows/foods.svg %} Foods</a>
-    <a href="/events/">{% include icons/windows/events.svg %} Events</a>
-    <a href="/weddings">{% include icons/windows/weddings.svg %} Weddings</a>
+    <a href="/shops/"{% if page.url contains '/shops/' %} aria-current="page"{% endif %}>{% include icons/windows/shops.svg %} Shops</a>
+    <a href="/galleries/"{% if page.url contains '/galleries/' %} aria-current="page"{% endif %}>{% include icons/windows/galleries.svg %} Galleries</a>
+    <a href="/foods/"{% if page.url contains '/foods/' %} aria-current="page"{% endif %}>{% include icons/windows/foods.svg %} Foods</a>
+    <a href="/events/"{% if page.url contains '/events/' %} aria-current="page"{% endif %}>{% include icons/windows/events.svg %} Events</a>
+    <a href="/weddings"{% if page.url contains '/weddings' %} aria-current="page"{% endif %}>{% include icons/windows/weddings.svg %} Weddings</a>
     <button class="search-toggle-btn" type="button" aria-label="Search" onclick="searchDialog.showModal()">
       {% include icons/search.svg %}
     </button>
@@ -91,10 +91,11 @@
       <a href="{{ '/news/' | relative_url }}">{% include icons/windows/events.svg %} News</a>
       <a href="{{ '/contacts' | relative_url }}">{% include icons/windows/events.svg %} Contact Us</a>
     </nav>
-    <a href="/shops/">{% include icons/windows/shops.svg %} Shops</a>
-    <a href="/galleries/">{% include icons/windows/galleries.svg %} Galleries</a>
-    <a href="/foods/">{% include icons/windows/foods.svg %} Foods</a>
-    <a href="/events/">{% include icons/windows/events.svg %} Events</a>
-    <a href="/weddings">{% include icons/windows/weddings.svg %} Weddings</a>
+    <a href="/shops/"{% if page.url contains '/shops/' %} aria-current="page"{% endif %}>{% include icons/windows/shops.svg %} Shops</a>
+    <a href="/galleries/"{% if page.url contains '/galleries/' %} aria-current="page"{% endif %}>{% include icons/windows/galleries.svg %} Galleries</a>
+    <a href="/foods/"{% if page.url contains '/foods/' %} aria-current="page"{% endif %}>{% include icons/windows/foods.svg %} Foods</a>
+    <a href="/events/"{% if page.url contains '/events/' %} aria-current="page"{% endif %}>{% include icons/windows/events.svg %} Events</a>
+    <a href="/weddings"{% if page.url contains '/weddings' %} aria-current="page"{% endif %}>{% include icons/windows/weddings.svg %} Weddings</a>
+    <a href="{{ '/contacts' | relative_url }}">{% include icons/windows/events.svg %} Contact Us</a>
   </nav>
 </header>
