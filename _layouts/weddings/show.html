@@ -7,7 +7,7 @@ layout: default
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
-  <h5 style="--transition-name: {{ page.title | downcase | replace: ' ', '-' }};">{{ page.title }}</h5>
+  <h5 style="view-transition-name: {{ page.title | downcase | replace: ' ', '-' }};">{{ page.title }}</h5>
   <article>
     {{ content }}
   </article>
