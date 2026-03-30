@@ -13,10 +13,6 @@ layout_type: family_and_pet
   <h5 title="visit">Family &amp; Pet</h5>
   <h6>{{ site.data.family_and_pet.notes.intro }}</h6>
 
-  {% assign jump_nav_links = "family,pets" | split: "," %}
-  {% assign jump_nav_slugs = "family_and_pet" %}
-  {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
-
   <div class="list-container">
     <div class="card" id="family">
       <figure>

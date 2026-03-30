@@ -438,34 +438,6 @@ collections:
         file: "_data/parking.yml"
         fields:
           - { label: "Hero Image", name: "hero_banner", widget: "image" }
-          - label: "Jump To Links"
-            name: "jump_to_links"
-            widget: "object"
-            fields:
-              - label: "Overview"
-                name: "overview"
-                widget: "object"
-                fields:
-                  - { label: "Text", name: "text", widget: "string" }
-                  - { label: "ID", name: "id", widget: "string" }
-              - label: "Parking Lots"
-                name: "parking_lots"
-                widget: "object"
-                fields:
-                  - { label: "Text", name: "text", widget: "string" }
-                  - { label: "ID", name: "id", widget: "string" }
-              - label: "Oversized Vehicles"
-                name: "oversized"
-                widget: "object"
-                fields:
-                  - { label: "Text", name: "text", widget: "string" }
-                  - { label: "ID", name: "id", widget: "string" }
-              - label: "Shuttle"
-                name: "shuttle"
-                widget: "object"
-                fields:
-                  - { label: "Text", name: "text", widget: "string" }
-                  - { label: "ID", name: "id", widget: "string" }
           - label: "Notes"
             name: "notes"
             widget: "object"
@@ -503,6 +475,7 @@ collections:
         file: "pages/village_map.html"
         fields:
           - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
+          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "village_map" }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Permalink", name: "permalink", widget: "string" }
           - { label: "Content", name: "body", widget: "code", default_language: "html" }

@@ -14,10 +14,6 @@ layout_type: parking
   <h2>Parking at Tlaquepaque Arts & Crafts Village.</h2>
   <h6>Free parking is available for all visitors across multiple lots surrounding the village.</h6>
 
-  {% assign jump_nav_links = "overview,parking_lots,oversized,shuttle" | split: "," %}
-  {% assign jump_nav_slugs = "parking" %}
-  {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
-
   <h3 id="overview">Overview</h3>
   <p>{{ site.data.parking.notes.general }}</p>
   <p>{{ site.data.parking.notes.visitors_only }}</p>
