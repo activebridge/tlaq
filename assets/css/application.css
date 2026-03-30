@@ -24,6 +24,10 @@
   transition: background-color 0.2s ease, outline-offset 0.1s ease, outline-color 0.1s ease;
 }
 
+a, p {
+  font-size: clamp(12px, 1.7vw, 20px);
+}
+
 .btn:hover {
   opacity: 0.85;
 }
@@ -658,6 +662,8 @@ hgroup {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
 
   .card {
     display: flex;
@@ -985,6 +991,7 @@ footer {
 
   address {
     font-style: normal;
+    font-size: clamp(12px, 1.7vw, 20px);
   }
 
   div {
