@@ -1,13 +1,5 @@
 hero_banner: "assets/images/pets.webp"
 
-jump_to_links:
-  family:
-    text: FAMILY
-    id: "#family"
-  pets:
-    text: PETS
-    id: "#pets"
-
 notes:
   intro: "Tlaquepaque is a welcoming destination for the whole family, including four-legged friends. Explore our cobblestone courtyards, fountains, and galleries at your own pace."
 

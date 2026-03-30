@@ -1,22 +1,5 @@
 hero_banner: "assets/images/contacts.webp"
 
-jump_to_links:
-  overview:
-    text: OVERVIEW
-    id: "#overview"
-  parking_lots:
-    text: PARKING LOTS
-    id: "#parking-lots"
-  oversized:
-    text: OVERSIZED VEHICLES
-    id: "#oversized"
-  accessibility:
-    text: ACCESSIBILITY
-    id: "#accessibility"
-  shuttle:
-    text: SHUTTLE
-    id: "#shuttle"
-
 notes:
   general: "Parking is free for all Tlaquepaque visitors. Multiple lots surround the main property on all sides, providing convenient access from any direction."
   visitors_only: "Parking facilities are intended for village visitors only."
