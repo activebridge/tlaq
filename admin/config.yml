@@ -435,12 +435,69 @@ collections:
             field: { label: "Time", name: "time", widget: "string" }
       - name: "parking"
         label: "Parking"
-        file: "pages/parking.html"
+        file: "_data/parking.yml"
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - { label: "Content", name: "body", widget: "code", default_language: "html" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - label: "Jump To Links"
+            name: "jump_to_links"
+            widget: "object"
+            fields:
+              - label: "Overview"
+                name: "overview"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Parking Lots"
+                name: "parking_lots"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Oversized Vehicles"
+                name: "oversized"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Shuttle"
+                name: "shuttle"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+          - label: "Notes"
+            name: "notes"
+            widget: "object"
+            fields:
+              - { label: "General", name: "general", widget: "text" }
+              - { label: "Visitors Only", name: "visitors_only", widget: "string" }
+          - label: "Parking Lots"
+            name: "lots"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Note", name: "note", widget: "string", required: false }
+              - { label: "Map URL", name: "map_url", widget: "string", required: false }
+          - label: "Oversized Vehicles"
+            name: "oversized"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Vehicles"
+                name: "vehicles"
+                widget: "list"
+                field: { label: "Vehicle", name: "vehicle", widget: "string" }
+          - label: "Shuttle"
+            name: "shuttle"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Boarding", name: "boarding", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Link Text", name: "link_text", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
       - name: "village_map"
         label: "Village Map"
         file: "pages/village_map.html"

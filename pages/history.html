@@ -63,7 +63,7 @@ layout_type: history
       sizes="(max-width: 770px) 600px, 1200px"
       alt="{{ section.image_alt }}" loading="lazy" decoding="async" width="1200" height="675">
     {% for paragraph in section.paragraphs %}
-    <h6>{{ paragraph }}</h6>
+    <p>{{ paragraph }}</p>
     {% endfor %}
     {% if section.quote %}
     <blockquote>
