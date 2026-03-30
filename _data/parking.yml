@@ -1,0 +1,50 @@
+hero_banner: "assets/images/contacts.webp"
+
+jump_to_links:
+  overview:
+    text: OVERVIEW
+    id: "#overview"
+  parking_lots:
+    text: PARKING LOTS
+    id: "#parking-lots"
+  oversized:
+    text: OVERSIZED VEHICLES
+    id: "#oversized"
+  accessibility:
+    text: ACCESSIBILITY
+    id: "#accessibility"
+  shuttle:
+    text: SHUTTLE
+    id: "#shuttle"
+
+notes:
+  general: "Parking is free for all Tlaquepaque visitors. Multiple lots surround the main property on all sides, providing convenient access from any direction."
+  visitors_only: "Parking facilities are intended for village visitors only."
+
+lots:
+  - name: Tlaquepaque South Lots
+    description: "Multiple free parking lots surround Tlaquepaque South, located at 336 AZ-179, providing easy access to all shops, galleries, and restaurants."
+    note: ""
+    map_url: "https://api.mapbox.com/styles/v1/storchak/cmn8owty5000701s86k1b6048/static/pin-s+ff0000(-111.763196,34.862531)/-111.763196,34.862531,17/600x400@2x?access_token=pk.eyJ1Ijoic3RvcmNoYWsiLCJhIjoiY21uOG5jNG00MDR0cDJvcjA4NnBjeGQ1byJ9.OzK5yYPrH-Dot9_Gf09xOw"
+  - name: Tlaquepaque North Lot
+    description: "Tlaquepaque North at 313 AZ-179 has an additional dedicated parking lot across the street from the main entrance."
+    note: ""
+    map_url: "https://api.mapbox.com/styles/v1/storchak/cmn8owty5000701s86k1b6048/static/pin-s+ff0000(-111.762834,34.863014)/-111.762834,34.863014,18/600x400@2x?access_token=pk.eyJ1Ijoic3RvcmNoYWsiLCJhIjoiY21uOG5jNG00MDR0cDJvcjA4NnBjeGQ1byJ9.OzK5yYPrH-Dot9_Gf09xOw"
+
+oversized:
+  description: "The Portal Lane lot, located to the northwest of the main village, is designed to accommodate oversized and large vehicles."
+  vehicles:
+    - RVs
+    - Fifth-wheel trailers
+    - Tour buses
+
+accessibility:
+  description: "Accessible parking spaces are available at both Tlaquepaque North and South locations. All accessible features can be located on the village map for easy navigation during your visit."
+  image: "assets/images/accessibility.webp"
+
+shuttle:
+  description: "The Sedona Shuttle offers a free and convenient alternative means of transportation to the village."
+  boarding: "Board at the Sedona Municipal Parking lot at Jordan and Schnebly roads."
+  url: "https://www.sedonashuttle.com/"
+  link_text: "More shuttle information"
+  image: "assets/images/shuttle.webp"
