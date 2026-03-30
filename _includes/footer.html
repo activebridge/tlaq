@@ -22,7 +22,7 @@
       <a href="/filming-photography">Filming & Photography</a>
     </nav>
     <nav>
-      {% assign latest = site.data.magazines | first %}
+      {% assign latest = site.data.magazines.issues | first %}
       <dialog id="magazineFooterPreview" onclick="this.close()">
         <iframe src="https://player.flipsnack.com?hash=Qzg3QkNEOTlFOEMrdjdoaTF1Y3J6cA" width="100%" height="100%" scrolling="no" frameBorder="0" allowFullScreen allow="autoplay; clipboard-read; clipboard-write"></iframe>
       </dialog>
