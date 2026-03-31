@@ -18,10 +18,10 @@ collections:
       - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
-      - { label: "Suite", name: "suite", widget: "string" }
+      - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
       - { label: "Phone", name: "phone", widget: "string" }
       - { label: "Website", name: "website", widget: "string", required: false }
-      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350" }
+      - { label: "Coordinates", name: "coordinates", widget: "string", required: false, hint: "Format: -111.76260, 34.86350. Optional if Suite is set." }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
@@ -52,10 +52,10 @@ collections:
       - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
-      - { label: "Suite", name: "suite", widget: "string" }
+      - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
       - { label: "Phone", name: "phone", widget: "string" }
       - { label: "Website", name: "website", widget: "string", required: false }
-      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350", required: false }
+      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350. Optional if Suite is set.", required: false }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
@@ -86,10 +86,10 @@ collections:
       - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
-      - { label: "Suite", name: "suite", widget: "string" }
+      - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
       - { label: "Phone", name: "phone", widget: "string" }
       - { label: "Website", name: "website", widget: "string", required: false }
-      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350", required: false }
+      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350. Optional if Suite is set.", required: false }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }

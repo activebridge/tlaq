@@ -527,7 +527,7 @@
 
   <div id="map" style="width:100%;height:100%;position:relative" data-focus-suite='{{ include.suite | escape }}'>
     <script type="application/json"
-      id="mapStoreData">[{% assign has_prev = false %}{% for store in all_stores %}{% if store.coordinates %}{% if has_prev %},{% endif %}{"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"suite":{{ store.suite | default: "" | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | default: "" | jsonify }},"url":{{ store.url | jsonify }},"type":{{ store.layout_type | jsonify }},"hours":{{ store.store_hours | default: "" | jsonify }}}{% assign has_prev = true %}{% endif %}{% endfor %}]</script>
+      id="mapStoreData">[{% assign has_prev = false %}{% for store in all_stores %}{% if store.suite or store.coordinates %}{% if has_prev %},{% endif %}{"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"suite":{{ store.suite | default: "" | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | default: "" | jsonify }},"url":{{ store.url | jsonify }},"type":{{ store.layout_type | jsonify }},"hours":{{ store.store_hours | default: "" | jsonify }}}{% assign has_prev = true %}{% endif %}{% endfor %}]</script>
     <div id="mapPlaceholder" style="--map-bg:url('{{ '/assets/images/map-placeholder.webp' | relative_url }}')"></div>
     <div id="mapSpinner">
       <span>{% include icons/loader.svg %}</span>
@@ -617,6 +617,21 @@
 
     // GeoJSON feature lookup tables (populated after fetch)
     let knownFeatureIds = new Set();
+    const suiteCentroid = new Map();
+    const polygonCentroid = (ring) => {
+      const n = ring.length - 1;
+      const sum = ring.slice(0, n).reduce((acc, c) => [acc[0] + c[0], acc[1] + c[1]], [0, 0]);
+      return [sum[0] / n, sum[1] / n];
+    };
+    const markerCoords = (store) => {
+      if (store.suite) {
+        if (suiteCentroid.has(store.suite)) return suiteCentroid.get(store.suite);
+        const dash = store.suite.indexOf('-');
+        const prefix = dash > 0 ? store.suite.slice(0, dash) : null;
+        if (prefix && suiteCentroid.has(prefix)) return suiteCentroid.get(prefix);
+      }
+      return store.coordinates ? parseCoordinates(store.coordinates) : null;
+    };
     let buildingDataReady = false;
     let pendingStoreHighlight = null;
 
@@ -721,6 +736,9 @@
         geojson.features.forEach(feature => {
           const { id } = feature.properties || {};
           if (isValidFeatureId(id)) knownFeatureIds.add(id);
+          if (id && feature.geometry?.type === 'Polygon') {
+            suiteCentroid.set(id, polygonCentroid(feature.geometry.coordinates[0]));
+          }
         });
         buildingDataReady = true;
         if (pendingStoreHighlight) {
@@ -728,6 +746,30 @@
           pendingStoreHighlight = null;
           highlightStoreBuilding(store);
         }
+
+        // Re-position store markers that depend on suite centroids, spreading duplicates in a circle
+        const suiteOccupants = new Map(); // resolved coord key → [storeIndex, ...]
+        stores.forEach((store, index) => {
+          if (!store.suite) return;
+          const coords = markerCoords(store);
+          if (!coords || isNaN(coords[0])) return;
+          const key = coords[0].toFixed(7) + ',' + coords[1].toFixed(7);
+          if (!suiteOccupants.has(key)) suiteOccupants.set(key, []);
+          suiteOccupants.get(key).push(index);
+        });
+        const SPREAD_DEG = 0.00003; // ~3m radius
+        suiteOccupants.forEach((indices, key) => {
+          const [baseLng, baseLat] = key.split(',').map(Number);
+          indices.forEach((storeIndex, i) => {
+            let lng = baseLng, lat = baseLat;
+            if (indices.length > 1) {
+              const angle = (2 * Math.PI * i) / indices.length;
+              lng = baseLng + SPREAD_DEG * Math.cos(angle);
+              lat = baseLat + SPREAD_DEG * Math.sin(angle);
+            }
+            if (storeMarkers[storeIndex]) storeMarkers[storeIndex].marker.setLngLat([lng, lat]).addTo(map);
+          });
+        });
 
         // Emoji markers for special point/polygon features
         const pointEmojiByType = { restroom: '🚻', fountain: '⛲', atm: '🏧', information: 'ℹ️', 'drinking-water': '🚰', tree: '🌳', 'bus-stop': '🚏' };
@@ -829,10 +871,10 @@
       const svgNode = iconNode.querySelector('svg');
       markerElement.appendChild(svgNode || iconNode);
 
+      const initialCoords = markerCoords(store);
       const marker = new mapboxgl.Marker({ element: markerElement })
-        .setLngLat(parseCoordinates(store.coordinates))
-        .setPopup(createPopup(store))
-        .addTo(map);
+        .setPopup(createPopup(store));
+      if (initialCoords && !isNaN(initialCoords[0])) marker.setLngLat(initialCoords).addTo(map);
       marker.getElement().addEventListener('click', (event) => { event.stopPropagation(); focusStore(index); });
       storeMarkers.push({ marker, type: store.type });
     });
@@ -840,7 +882,7 @@
     // Navigate to a store: highlight building, fly to location, open popup
     const focusStore = (index, animationOptions = {}) => {
       highlightStoreBuilding(stores[index]);
-      map.easeTo({ center: parseCoordinates(stores[index].coordinates), padding: { top: 150 }, duration: 600, ...animationOptions });
+      map.easeTo({ center: storeMarkers[index].marker.getLngLat(), padding: { top: 150 }, duration: 600, ...animationOptions });
       storeMarkers[index].marker.addTo(map);
       if (!storeMarkers[index].marker.getPopup().isOpen()) storeMarkers[index].marker.togglePopup();
     };
