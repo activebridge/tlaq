@@ -76,6 +76,7 @@ Recurrence fields:
 
 - `yearly`
   Repeats on the same month/day/time each year. Weekday fields are ignored for yearly logic.
+  `recurs_until` is not required for yearly events.
 
 ### Examples
 
@@ -128,14 +129,15 @@ schedule_type: yearly
 - Source content stays in `_events/*.md` (YAML front matter), not JSON files in the repo.
 - `_includes/calendar.html` serializes event front matter into a JSON payload in the page (`calendarEventsData` script tag).
 - `assets/js/calendar.js` reads that payload, generates occurrences, sorts by day, and renders cards.
+- Calendar output is limited to the current month through 12 months ahead.
 - Month filter options are generated in JS from occurrences and default to current month when available.
 
 ### Notes for editors
 
 - Use `weekly` for repeat-on-weekdays patterns.
 - Use `monthly` only when you want the first matching weekday(s) each month.
-- Use `yearly` for same date each year (no weekday setup needed).
-- If `recurs_until` is blank on a recurring type, that event will not generate recurrence instances.
+- Use `yearly` for same date each year (no weekday setup needed, no `recurs_until` required).
+- Keep `recurs_until` filled for `weekly` and `monthly`, or those recurrences will not generate instances.
 
 ## Tech
 

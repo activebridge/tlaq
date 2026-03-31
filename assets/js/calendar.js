@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const WEEKDAY_INDEX = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
   const MAX_DAYS = 730;
   const MAX_MONTHS = 24;
+  const getVisibleRange = () => {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), now.getMonth(), 1);
+    const end = new Date(now.getFullYear(), now.getMonth() + 13, 1);
+    return { start: start, end: end };
+  };
+  const VISIBLE_RANGE = getVisibleRange();
 
   const toMonthKey = (date) => {
     const year = date.getFullYear();
@@ -37,10 +44,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const occurrences = [];
     const durationMs = getDurationMs(startDate, endDate);
     const startYear = startDate.getFullYear();
+    const firstVisibleYear = Math.max(startYear, VISIBLE_RANGE.start.getFullYear());
+    const lastVisibleYear = VISIBLE_RANGE.end.getFullYear();
 
-    for (let y = 0; y <= 1; y += 1) {
+    for (let y = firstVisibleYear; y <= lastVisibleYear; y += 1) {
       const occStart = new Date(startDate.getTime());
-      occStart.setFullYear(startYear + y);
+      occStart.setFullYear(y);
       occurrences.push(createOccurrence(event, occStart, durationMs));
     }
 
@@ -184,6 +193,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const sourceEvents = JSON.parse(dataNode.textContent || '[]');
   const allOccurrences = sourceEvents
     .flatMap(buildOccurrences)
+    .filter((item) => (
+      item.start >= VISIBLE_RANGE.start &&
+      item.start < VISIBLE_RANGE.end
+    ))
     .sort((a, b) => a.start.getTime() - b.start.getTime());
 
   const months = buildMonths(allOccurrences);
