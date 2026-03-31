@@ -166,6 +166,31 @@ Log in with GitHub credentials. Only users with write access to the `activebridg
 | Landing Sections | `_landing/` | Homepage section content (banner, calendar, what's new, etc.) |
 | Pages | `pages/` | Static HTML pages (About, Hours, History, etc.) |
 
+### Managing Store Map Pins
+
+Each shop, gallery, and food entry can appear as a pin on the interactive village map. There are two ways to place a pin:
+
+**Option A — Suite number (recommended)**
+
+Set the **Suite** field to the store's suite code, e.g. `a208`. The pin will automatically appear at the center of that building on the map. You do not need to fill in Coordinates.
+
+- If you don't know the suite code, check the building label on the village map or ask a manager.
+- Suite codes are case-sensitive lowercase letters followed by numbers: `a101`, `b3`, `e205`, etc.
+
+**Option B — Manual coordinates**
+
+Leave Suite empty and fill in the **Coordinates** field in the format `-111.76260, 34.86350` (longitude, latitude). Use Google Maps to find the exact coordinates: right-click a point on the map and copy the coordinates shown.
+
+**If both are filled in**, Suite takes priority and coordinates are ignored for pin placement.
+
+**If neither is filled in**, the store will not appear on the map.
+
+**Two stores in the same suite**
+
+If two stores share the same suite (e.g. both set `a208`), their pins will be placed slightly apart so both are visible and clickable.
+
+**Changes go live** after saving in the admin panel — the site rebuilds automatically within a minute or two.
+
 ### Settings
 
 - **Homepage** — Navigation structure and site settings (`index.md`)
