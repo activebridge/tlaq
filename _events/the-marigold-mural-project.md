@@ -2,8 +2,8 @@
 title: The Marigold Mural Project
 slug: the-marigold-mural-project
 published: true
-starts_at: '2025-11-01 11:00:00'
-ends_at: '2025-11-01 17:00:00'
+starts_at: '2026-11-01 11:00:00'
+ends_at: '2026-11-01 17:00:00'
 schedule_type: yearly
 recurs_until: '2026-12-31 23:59:59'
 location: Tlaquepaque Village
