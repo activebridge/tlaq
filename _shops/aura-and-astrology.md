@@ -13,13 +13,13 @@ instagram:
 facebook:
 full_location: 336 AZ-179 Suite A208, Sedona, AZ 86336
 store_hours:
-  monday:
-  tuesday:
-  wednesday:
-  thursday:
-  friday:
-  saturday:
-  sunday:
+  monday: 10:00 am–6:00 pm
+  tuesday: 10:00 am–6:00 pm
+  wednesday: 10:00 am–6:00 pm
+  thursday: 10:00 am–6:00 pm
+  friday: 10:00 am–6:00 pm
+  saturday: 10:00 am–6:00 pm
+  sunday: 10:00 am–6:00 pm
 
 ---
 <h6>A curated space for aura readings, Vedic astrology, and sacred goods.</h6>
