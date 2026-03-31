@@ -635,15 +635,29 @@ hgroup {
   background: var(--bg);
   z-index: 1;
   animation: header-jump-fade-in 0.9s ease-out both;
+  container-name: header-jump;
+  container-type: inline-size;
 
   div {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: clamp(1rem, 3.5vw, 1.5rem) 0;
+    padding: clamp(1rem, 3.5vw, 1.5rem) 0;
     font-size: clamp(12px, 2.2vw, 20px);
+    width: 100cqw;
+    overflow: scroll;
+    gap: 10px;
   }
-
+  
+  .jump-to {
+    white-space: nowrap;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--bg);
+  }
+  
+  a { white-space: nowrap }
   hr { margin: 0 }
 }
 
