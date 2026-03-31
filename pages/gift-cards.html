@@ -1,0 +1,46 @@
+---
+layout: page
+title: Gift Cards
+permalink: /gift-cards
+layout_type: gift-cards
+---
+
+{% assign image_path = site.data.gift_cards.hero_banner %}
+{% assign transition-name = page.layout_type %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+<div class="content-wrapper">
+  <h5 title="visit">Gift Cards</h5>
+  <h2>{{ site.data.gift_cards.notes.intro }}</h2>
+
+  <h3 id="details">Details</h3>
+  <p>{{ site.data.gift_cards.details.description }}</p>
+  <ul>
+    {% for feature in site.data.gift_cards.details.features %}
+      <li>{{ feature }}</li>
+    {% endfor %}
+  </ul>
+
+  <h3 id="terms">Terms</h3>
+  <ul>
+    {% for term in site.data.gift_cards.details.terms %}
+      <li>{{ term }}</li>
+    {% endfor %}
+  </ul>
+
+  <hr>
+
+  <h2 id="purchase">How to Purchase</h2>
+  <p>{{ site.data.gift_cards.purchase.description }}</p>
+  <ul>
+    <li>Phone: <a href="tel:{{ site.data.gift_cards.purchase.phone }}">{{ site.data.gift_cards.purchase.phone }}</a></li>
+    <li>Email: <a href="mailto:{{ site.data.gift_cards.purchase.email }}">{{ site.data.gift_cards.purchase.email }}</a></li>
+  </ul>
+  <h4>Hours</h4>
+  <ul>
+    {% for hour in site.data.gift_cards.purchase.hours %}
+      <li>{{ hour }}</li>
+    {% endfor %}
+  </ul>
+  <p>{{ site.data.gift_cards.purchase.note }}</p>
+</div>

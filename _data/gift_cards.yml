@@ -1,0 +1,23 @@
+hero_banner: "assets/images/shops.webp"
+
+notes:
+  intro: "Tlaquepaque gift cards make the perfect present for art lovers, foodies, and anyone who appreciates handcrafted beauty."
+
+details:
+  description: "Gift cards are redeemable at all Tlaquepaque and Tlaquepaque North stores and restaurants."
+  features:
+    - Available in any denomination
+    - Optional personalized gift message included
+    - Delivered via priority mail to customer or recipient
+  terms:
+    - Non-refundable
+    - Expire within 12 months of issuance
+
+purchase:
+  description: "To purchase a gift card, contact our visitor information team by phone or email."
+  phone: "(928) 282-4838"
+  email: "visitorinfo@tlaq.com"
+  hours:
+    - "Monday–Thursday: 10:00 am–5:00 pm"
+    - "Friday–Sunday: 10:00 am–6:00 pm"
+  note: "Restaurant hours vary."
