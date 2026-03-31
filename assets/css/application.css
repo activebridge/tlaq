@@ -1252,7 +1252,7 @@ input[type="search"] {
 
 .calendar-items {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(clamp(320px, 33vw, 350px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(clamp(320px, 33vw, 450px), 1fr));
   gap: 1.5rem;
   padding-bottom: 3.25rem;
 
@@ -1275,7 +1275,7 @@ input[type="search"] {
   }
 
   p {
-    font-size: 0.875rem;
+    font-size: clamp(0.875rem, 1vw, 1.25rem);
     color: #666;
     margin: 0 0 0.25rem 0;
   }
@@ -1296,7 +1296,7 @@ input[type="search"] {
 }
 
 .calendar-item-image {
-  width: 110px;
+  width: clamp(110px, 14vw, 170px);
   flex-shrink: 0;
   overflow: hidden;
   border-radius: 4px;
@@ -1317,7 +1317,7 @@ input[type="search"] {
 }
 
 .calendar-item-time {
-  font-size: 0.875rem;
+  font-size: clamp(0.875rem, 1vw, 1.25rem);
   color: #888;
 }
 
