@@ -25,9 +25,11 @@ layout_type: parking
   <div class="list-container">
     {% for lot in site.data.parking.lots %}
       <div class="card">
-        {% if lot.map_url %}
+        {% if lot.map_image %}
           <figure>
-            <img src="{{ lot.map_url }}" alt="{{ lot.name }} map" loading="lazy">
+            <a href="{{ '/village_map/' | relative_url }}">
+              <img src="{{ lot.map_image | relative_url }}" alt="{{ lot.name }} map" class="village-map" loading="lazy">
+            </a>
           </figure>
         {% endif %}
         <h4>{{ lot.name }}</h4>
