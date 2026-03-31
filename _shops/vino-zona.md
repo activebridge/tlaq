@@ -13,12 +13,12 @@ instagram: https://www.instagram.com/vinozona
 facebook: https://www.facebook.com/vinozonajerome/
 full_location: 336 AZ-179 Suite A207, Sedona, AZ 86336
 store_hours:
-  monday: 11am - 6pm
-  tuesday: 11am - 6pm
-  wednesday: 11am - 6pm
-  thursday: 11am - 6pm
-  friday: 11am - 7pm
-  saturday: 10am - 7pm
-  sunday: 10am - 6pm
+  monday: 11:00 am–6:00 pm
+  tuesday: 11:00 am–6:00 pm
+  wednesday: 11:00 am–6:00 pm
+  thursday: 11:00 am–6:00 pm
+  friday: 11:00 am–7:00 pm
+  saturday: 10:00 am–7:00 pm
+  sunday: 10:00 am–6:00 pm
 ---
 <h6>A curated wine tasting of the best 100% Arizona grown and made wine!</h6>

@@ -13,13 +13,13 @@ instagram: https://www.instagram.com/reneetaylorgallery/
 facebook: https://www.facebook.com/ReneeTaylorJewelry/
 full_location: 313 AZ-179 Suite B14, Sedona, AZ 86336
 store_hours:
-  monday: 9AM - 6:30PM
-  tuesday: 9AM - 6:30PM
-  wednesday: 9AM - 6:30PM
-  thursday: 9AM - 6:30PM
-  friday: 9AM - 6:30PM
-  saturday: 9AM - 6:30PM
-  sunday: 9AM - 6:30PM
+  monday: 9:00 am–6:30 pm
+  tuesday: 9:00 am–6:30 pm
+  wednesday: 9:00 am–6:30 pm
+  thursday: 9:00 am–6:30 pm
+  friday: 9:00 am–6:30 pm
+  saturday: 9:00 am–6:30 pm
+  sunday: 9:00 am–6:30 pm
 
 ---
 <h6>Contemporary, fashion forward jewelry.</h6>

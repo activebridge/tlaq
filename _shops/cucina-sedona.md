@@ -13,13 +13,13 @@ instagram:
 facebook:
 full_location: 336 AZ-179 Suite D101, Sedona, AZ 86336
 store_hours:
-  monday: 9:30am - 6pm
-  tuesday: 9:30am - 6pm
-  wednesday: 9:30am - 6pm
-  thursday: 9:30am - 6pm
-  friday: 9:30am - 6pm
-  saturday: 9:30am - 6pm
-  sunday: 9:30am - 6pm
+  monday: 9:30 am–6:00 pm
+  tuesday: 9:30 am–6:00 pm
+  wednesday: 9:30 am–6:00 pm
+  thursday: 9:30 am–6:00 pm
+  friday: 9:30 am–6:00 pm
+  saturday: 9:30 am–6:00 pm
+  sunday: 9:30 am–6:00 pm
 
 ---
 <h6>Southwestern salsas, gadgets, linens, pottery & tableware.</h6>

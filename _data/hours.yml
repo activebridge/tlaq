@@ -13,13 +13,13 @@ jump_to_links:
     id: "#accessibility"
 
 village_hours:
-  monday: "10:00 A.M. - 5:00 P.M."
-  tuesday: "10:00 A.M. - 5:00 P.M."
-  wednesday: "10:00 A.M. - 5:00 P.M."
-  thursday: "10:00 A.M. - 5:00 P.M."
-  friday: "10:00 A.M. - 5:00 P.M."
-  saturday: "10:00 A.M. - 6:00 P.M."
-  sunday: "10:00 A.M. - 6:00 P.M."
+  monday: 10:00 am–5:00 pm
+  tuesday: 10:00 am–5:00 pm
+  wednesday: 10:00 am–5:00 pm
+  thursday: 10:00 am–5:00 pm
+  friday: 10:00 am–5:00 pm
+  saturday: 10:00 am–6:00 pm
+  sunday: 10:00 am–6:00 pm
 
 notes:
   restaurants: "Onsite restaurants offer extended evening hours."

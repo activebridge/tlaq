@@ -1433,9 +1433,10 @@ table {
     padding: 8px 0;
     border-bottom: 1px solid var(--navy);
     font-size: 14px;
-  
+
     &:last-child {
       text-align: right;
+      text-transform: uppercase;
     }
   }
 
