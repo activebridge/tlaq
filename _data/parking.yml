@@ -8,11 +8,11 @@ lots:
   - name: Tlaquepaque South Lots
     description: "Multiple free parking lots surround Tlaquepaque South, located at 336 AZ-179, providing easy access to all shops, galleries, and restaurants."
     note: ""
-    map_url: "https://api.mapbox.com/styles/v1/storchak/cmn8owty5000701s86k1b6048/static/pin-s+ff0000(-111.763196,34.862531)/-111.763196,34.862531,17/600x400@2x?access_token=pk.eyJ1Ijoic3RvcmNoYWsiLCJhIjoiY21uOG5jNG00MDR0cDJvcjA4NnBjeGQ1byJ9.OzK5yYPrH-Dot9_Gf09xOw"
+    map_image: "assets/images/stores-map/parking-south.webp"
   - name: Tlaquepaque North Lot
     description: "Tlaquepaque North at 313 AZ-179 has an additional dedicated parking lot across the street from the main entrance."
     note: ""
-    map_url: "https://api.mapbox.com/styles/v1/storchak/cmn8owty5000701s86k1b6048/static/pin-s+ff0000(-111.762834,34.863014)/-111.762834,34.863014,18/600x400@2x?access_token=pk.eyJ1Ijoic3RvcmNoYWsiLCJhIjoiY21uOG5jNG00MDR0cDJvcjA4NnBjeGQ1byJ9.OzK5yYPrH-Dot9_Gf09xOw"
+    map_image: "assets/images/stores-map/parking-north.webp"
 
 oversized:
   description: "The Portal Lane lot, located to the northwest of the main village, is designed to accommodate oversized and large vehicles."
