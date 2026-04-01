@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+{% assign image_path = page.image | default: page.images[0] %}
+{% assign transition_name = image_path | downcase | replace: '/', '-' | replace: '.', '-' %}
+{% if image_path %}
+  {% include hero-banner.html image_path=image_path transition-name=transition_name %}
+{% endif %}
+
+<div class="content-wrapper">
+  <hgroup>
+    <h5>{{ page.title }}</h5>
+    <h2>{{ page.title }}</h2>
+    <h6>{{ page.description | default: page.subtitle }}</h6>
+  </hgroup>
+  {% if page.images %}
+    <div class="image-split">
+      {% for image in page.images %}
+        <img src="{{ image }}" alt="{{ page.title }}">
+      {% endfor %}
+    </div>
+  {% endif %}
+  <article>
+    {{ content }}
+  </article>
+</div>
