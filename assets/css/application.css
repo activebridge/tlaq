@@ -233,9 +233,6 @@ header {
         transition: transform 500ms ease;
       }
 
-      &:hover svg:last-of-type {
-        fill: var(--navy);
-      }
 
       anchor-name: --visit-popover-anchor;
     }
