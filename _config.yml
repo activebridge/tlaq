@@ -67,7 +67,14 @@ defaults:
       path: ""
       type: "articles"
     values:
-      layout: "article"
+      layout: "articles/show"
+      layout_type: "article"
+  - scope:
+      path: ""
+      type: "wedding-articles"
+    values:
+      layout: "articles/show"
+      layout_type: "article"
   - scope:
       path: ""
       type: "weddings"
