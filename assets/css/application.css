@@ -683,6 +683,10 @@ hgroup {
     flex-direction: column;
     max-width: 678px;
 
+    p {
+      margin-top: auto;
+    }
+
     img {
       margin: 1.5rem 0;
       height: auto;
@@ -692,10 +696,6 @@ hgroup {
 
     &.hidden {
       display: none;
-    }
-
-    > *:last-child {
-      margin-top: auto;
     }
 
     .datetime {
