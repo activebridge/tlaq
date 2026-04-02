@@ -21,6 +21,8 @@ layout_type: contacts
         <p><a href="tel:{{ item.content | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ item.content }}</a></p>
       {% elsif item.title == "Email" %}
         <p><a href="mailto:{{ item.content }}">{{ item.content }}</a></p>
+      {% elsif item.title == "Address" %}
+        <p><a href="{{ site.data.site.directions_url }}" target="_blank" rel="noopener noreferrer">{{ item.content }}</a></p>
       {% else %}
         <p>{{ item.content }}</p>
       {% endif %}
