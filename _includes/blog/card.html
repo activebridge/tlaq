@@ -1,10 +1,11 @@
 <div class="card">
   {% if blog.image %}
-    <img src="{{ blog.image }}" alt="{{ blog.title }}" loading="lazy">
+    {% assign card_transition_name = blog.image | downcase | replace: '/', '-' | replace: '.', '-' %}
+    {% include responsive-card-image.html src=blog.image alt=blog.title transition_name=card_transition_name %}
   {% else %}
-    <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ blog.title }}">
+    <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ blog.title }}" loading="lazy">
   {% endif %}
-  <h3>{{ blog.title }}</h3>
+  <h3 style="view-transition-name: {{ blog.title | downcase | replace: ' ', '-' }};">{{ blog.title }}</h3>
   {% if blog.date %}<div class="datetime">{{ blog.date | date: "%B %-d, %Y" }}</div>{% endif %}
   {% if blog.description %}<p>{{ blog.description }}</p>{% endif %}
   <a class="read-more" href="{{ blog.url | relative_url }}">Read More</a>

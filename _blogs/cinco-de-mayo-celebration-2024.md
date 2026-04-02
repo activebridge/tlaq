@@ -2,7 +2,7 @@
 title: "Cinco de Mayo Celebration 2024"
 date: 2024-04-25
 description: "Get ready to celebrate Saturday, May 4, 11:00 AM - 5:00 PM"
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/unnamed-bb5c4178-1920w.png"
+image: "assets/images/blogs/cinco-de-mayo-celebration-2024.png"
 ---
 
 ## GET READY TO CELEBRATE — SATURDAY, MAY 4 | 11:00 AM - 5:00 PM

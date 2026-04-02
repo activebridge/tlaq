@@ -2,7 +2,7 @@
 title: "Tlaquepaque's 8th Annual Day of the Dead Extravaganza!"
 date: 2018-10-30
 description: "Get ready for Sedona's spectacular version of Mexico's most vibrant holiday."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/d18e94b8-ae7c-4302-ae53-5282f392076c.dm.edit_xiUwP0-706x929-1920w.jpg"
+image: "assets/images/blogs/tlaquepaque-8th-annual-day-of-the-dead.jpg"
 ---
 
 ## Saturday, November 3, 2018

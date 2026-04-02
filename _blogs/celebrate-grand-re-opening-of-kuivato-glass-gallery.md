@@ -2,7 +2,7 @@
 title: "Celebrate Grand Re-Opening of Kuivato Glass Gallery"
 date: 2018-08-02
 description: "After forty-five years, Kuivato Glass Gallery is changing to a new identity."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/cd04804e-188a-4bf9-8d26-3281bb6d0474.dm.edit_2GAvfP-724x817-1920w.jpg"
+image: "assets/images/blogs/celebrate-grand-re-opening-of-kuivato-glass-gallery.jpg"
 ---
 
 After forty-five years, Kuivato Glass Gallery is changing to Kuivato, a Creative Gateways Gallery with a change in ownership. This August, Kuivato celebrates their grand re-opening and explores their artists' many successes in their new exhibit *Mastering Craft*. Join them for a lively reception and see the new look, Friday, August 3rd, from 5 pm - 8 pm during 1st Friday in the Galleries.

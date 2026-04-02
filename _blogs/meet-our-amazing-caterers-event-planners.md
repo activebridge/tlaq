@@ -2,7 +2,7 @@
 title: "Meet Our Amazing Caterers & Event Planners"
 date: 2021-03-22
 description: "Events at Tlaquepaque are made all the more memorable by the event planning and food the guests enjoy."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/unnamed-63b3a973-1920w.jpg"
+image: "assets/images/blogs/meet-our-amazing-caterers-event-planners.jpg"
 ---
 
 ## Helping Make Magical Moments — Meet Two of Tlaquepaque's Exclusive Wedding Vendors

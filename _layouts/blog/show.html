@@ -2,18 +2,13 @@
 layout: default
 ---
 
-{% assign transition_name = page.image | downcase | replace: '/', '-' | replace: '.', '-' %}
-<figure class="hero" style="
-  --desktop-image: url('{{ page.image }}');
-  --mobile-image: url('{{ page.image }}');
-  --low-mob-image: url('{{ page.image }}');
-  --low-desk-image: url('{{ page.image }}');
-  view-transition-name: {{ transition_name }};
-"></figure>
+{% assign image_path = page.image | relative_url %}
+{% assign transition-name = page.image | downcase | replace: '/', '-' | replace: '.', '-' %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="top-section">
   <div class="content-wrapper">
-    <h3>{{ page.title }}</h3>
+    <h3 style="view-transition-name: {{ page.title | downcase | replace: ' ', '-' }};">{{ page.title }}</h3>
     <hr>
     <div>
       {% if page.date %}<span class="datetime">{{ page.date | date: "%m / %-d / %Y" }}</span>{% endif %}

@@ -2,7 +2,7 @@
 title: "Swingin' Soiree at Tlaquepaque"
 date: 2018-04-01
 description: "Gatsby-Themed Gala to be Sedona Soiree of the Season — a benefit for the Sedona Community Foundation."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/9e33307e-808c-456f-9ebd-5d070ff5b6b6.dm.edit_jfoNKd-663x1024-1920w.jpg"
+image: "assets/images/blogs/swingin-soiree-at-tlaquepaque.jpg"
 ---
 
 ## Gatsby-Themed Gala to Be Sedona Soiree of the Season

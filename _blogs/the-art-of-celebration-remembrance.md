@@ -2,7 +2,7 @@
 title: "The Art of Celebration & Remembrance"
 date: 2022-10-24
 description: "October 29 - November 2, 11:00 AM - 6:00 PM"
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/d1-07492bc2-1920w.jpg"
+image: "assets/images/blogs/the-art-of-celebration-remembrance.jpg"
 ---
 
 ## THE ART OF CELEBRATION & REMEMBRANCE — OCTOBER 29 - NOVEMBER 2 | 11:00 AM - 6:00 PM

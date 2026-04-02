@@ -2,7 +2,7 @@
 title: "Our Behind-the-Scene Heroes"
 date: 2020-04-14
 description: "Bursts of color from fragrant seasonal blossoms, sycamores reaching skyward — this is Tlaquepaque in spring."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/unnamed-f1ee506a-1920w.jpg"
+image: "assets/images/blogs/our-behind-the-scene-heroes.jpg"
 ---
 
 Bursts of color from fragrant seasonal blossoms, sycamores reaching up to the sky, beautifully landscaped plazas and pathways — these are some of the first things that captivate visitors when they come to Tlaquepaque Arts and Shopping Village.
