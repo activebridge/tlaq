@@ -17,7 +17,13 @@ layout_type: contacts
   {% for item in site.data.contacts.items %}
     <div>
       <h3>{{ item.title }}</h3>
-      <p>{{ item.content }}</p>
+      {% if item.title == "Phone" or item.title == "Fax" %}
+        <p><a href="tel:{{ item.content | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ item.content }}</a></p>
+      {% elsif item.title == "Email" %}
+        <p><a href="mailto:{{ item.content }}">{{ item.content }}</a></p>
+      {% else %}
+        <p>{{ item.content }}</p>
+      {% endif %}
       <hr>
     </div>
   {% endfor %}

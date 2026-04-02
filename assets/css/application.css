@@ -1920,4 +1920,9 @@ main.history {
     text-align: center;
     justify-items: center;
   }
+
+  .btn-primary {
+    width: fit-content;
+    margin-inline: auto;
+  }
 }
