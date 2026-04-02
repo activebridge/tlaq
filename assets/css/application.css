@@ -1153,22 +1153,6 @@ form {
   }
 }
 
-.hero {
-  background-image: var(--desktop-image);
-
-  @media (max-width: 770px) {
-    background-image: var(--mobile-image);
-  }
-}
-
-@supports (-webkit-touch-callout: none) {
-  @media (max-width: 770px) {
-    .hero {
-      background-attachment: scroll;
-    }
-  }
-}
-
 input[type="search"] {
   appearance: none;
   -webkit-appearance: none;

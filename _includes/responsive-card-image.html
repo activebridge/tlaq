@@ -1,15 +1,26 @@
-<picture style="view-transition-name: {{ include.transition_name }};">
+{% assign fallback = '/assets/images/placeholder.webp' | prepend: site.baseurl %}
+
+{% if include.src %}
+  {% assign mob = include.src | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
+  {% assign desk = include.src | prepend: '/cdn-cgi/image/width=600,height=400,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
+{% else %}
+  {% assign mob = fallback %}
+  {% assign desk = fallback %}
+{% endif %}
+
+<picture{% if include.transition_name %} style="view-transition-name: {{ include.transition_name }};"{% endif %}>
   <source
     media="(max-width: 480px)"
-    srcset="{{ include.src | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+    srcset="{{ mob }}"
   >
   <source
     media="(min-width: 768px)"
-    srcset="{{ include.src | prepend: '/cdn-cgi/image/width=600,height=400,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+    srcset="{{ desk }}"
   >
   <img
-    src="{{ include.src | prepend: '/cdn-cgi/image/width=600,height=400,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+    src="{{ desk }}"
     alt="{{ alt }}"
     loading="lazy"
+    decoding="async"
   >
 </picture>
