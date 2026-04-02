@@ -6,7 +6,7 @@
       <div class="card">
         <h3 style="view-transition-name: {{ wedding.title | downcase | replace: ' ', '-'}};">{{ wedding.title }}</h3>
         {% if wedding.subtitle %}<h6>{{ wedding.subtitle }}</h6>{% endif %}
-        <div>
+        <div class="card-media">
           {% if wedding.image %}
             {% assign wedding_transition_name = wedding.image | downcase | replace: '/', '-' | replace: '.', '-' %}
             {% include responsive-card-image.html src=wedding.image alt=site.data.weddings.venues transition_name=wedding_transition_name %}

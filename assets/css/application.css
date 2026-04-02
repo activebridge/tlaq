@@ -683,7 +683,7 @@ hgroup {
     flex-direction: column;
     max-width: 678px;
 
-    p {
+    p, .card-media {
       margin-top: auto;
     }
 
