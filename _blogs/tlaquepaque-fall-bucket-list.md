@@ -2,7 +2,7 @@
 title: "Tlaquepaque's Fall Bucket List of Things to Do!"
 date: 2018-10-15
 description: "Fall in Tlaquepaque is a spectacular time of year. With the changing leaves and cooler temperatures..."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/b4512124-c3dc-43cb-916a-1ab5818d2d25-1920w.jpg"
+image: "assets/images/blogs/tlaquepaque-fall-bucket-list.jpg"
 ---
 
 ## October and November Special Events

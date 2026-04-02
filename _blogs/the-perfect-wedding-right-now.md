@@ -2,7 +2,7 @@
 title: "The Perfect Wedding, Right Now"
 date: 2020-09-04
 description: "Plan a bite-sized version of a traditional wedding and celebrate with 50 or fewer of your closest friends and family."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/unnamed-4504b865-1920w.jpg"
+image: "assets/images/blogs/the-perfect-wedding-right-now.jpg"
 ---
 
 Eager to tie the knot? Don't wait. Now more than ever, we need to feel the joy, love, and support that a wedding brings. Here are suggestions for safe, celebratory weddings you can plan and have now.

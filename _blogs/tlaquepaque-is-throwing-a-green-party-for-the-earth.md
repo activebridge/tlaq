@@ -2,7 +2,7 @@
 title: "Tlaquepaque is Throwing a Green Party for the Earth!"
 date: 2018-04-22
 description: "Earth Day, April 22, falls on a Sunday this year and Tlaquepaque celebrates in style."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/7fa0dfbd-d7c0-499a-b862-9a75406a9ece-1920w.jpg"
+image: "assets/images/blogs/tlaquepaque-is-throwing-a-green-party-for-the-earth.jpg"
 ---
 
 Stop by and enjoy an afternoon celebrating and nurturing nature. Earth Day, April 22, falls on a Sunday this year and Tlaquepaque Arts & Crafts Village is celebrating! Everyone is warmly invited to attend the free event from 1:00 to 5:30 pm.

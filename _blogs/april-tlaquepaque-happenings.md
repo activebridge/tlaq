@@ -2,7 +2,7 @@
 title: "April Tlaquepaque Happenings!"
 date: 2019-04-01
 description: "Spring is officially here in Sedona, Arizona and we are thrilled to welcome the season."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/Carre+D-Artiste+Image-1920w.jpg"
+image: "assets/images/blogs/april-tlaquepaque-happenings.jpg"
 ---
 
 Spring is officially here in Sedona, Arizona and we are thrilled to welcome the warmer weather and the gorgeous flowers and vegetation that are starting to pop into full bloom! Now is the time to stop by Tlaquepaque and enjoy outdoor dining, drinks, new artwork and seasonal merchandise to explore in our shops and galleries. You will want to stop by for the start up of our local Farmer's Market and the anticipated and very enjoyable Gaetano and Friends in Patio de las Campanas this month.

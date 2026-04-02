@@ -2,7 +2,7 @@
 title: "The Crane Wedding at Tlaquepaque"
 date: 2018-01-01
 description: "We always get excited when we are able to share beautiful Tlaquepaque wedding stories."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/Kaylah_and_Michael-Sedona_Wedding-Andrew_and_Ada_Photography-421-1067x1600-1920w.jpg"
+image: "assets/images/blogs/the-crane-wedding-at-tlaquepaque.jpg"
 ---
 
 We always get excited when we are able to share a most memorable and beautiful occasion like the Crane Wedding. A beautifully orchestrated event planned by Bloom & Blueprint as well as Ashley, the bride. We hope you will enjoy these magical photos from Ashley Rae Photography.

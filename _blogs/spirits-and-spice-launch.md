@@ -2,7 +2,7 @@
 title: "Introducing the Launch of Spirits & Spice, Formerly VomFass Sedona"
 date: 2017-01-01
 description: "Today is the official launch of Spirits & Spice, formerly known as VomFass Sedona."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/1514568138_SpiritsandSpice-300x260-1920w.png"
+image: "assets/images/blogs/spirits-and-spice-launch.png"
 ---
 
 Today is the official launch of Spirits & Spice and we are giddy with excitement. You are in for a lot of mouth-watering fun! We are THE place to find all things delicious including the highest quality spirits, custom spice blends, amazing oils, vinegar and wine. We're a little bit sassy and a lot passionate about food and we invite you to explore and enjoy.

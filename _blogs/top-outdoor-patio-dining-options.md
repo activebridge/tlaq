@@ -2,7 +2,7 @@
 title: "Top Outdoor Patio Dining Options at Tlaquepaque"
 date: 2017-01-01
 description: "Patio dining is in full swing and it's the perfect time of year to dine al fresco."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/469974f1-1841-4292-8e89-c95db655be6a-1920w.jpg"
+image: "assets/images/blogs/top-outdoor-patio-dining-options.jpg"
 ---
 
 Forty-six years ago Abe Miller, visionary and founder of Tlaquepaque, imagined a bustling arts village rich in south-of-the-border culture that brought the community together through festivals and family-friendly events. As the village has evolved, so have the options for exceptional dining experiences.

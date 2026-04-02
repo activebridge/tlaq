@@ -2,7 +2,7 @@
 title: "What's New and Upcoming Events"
 date: 2020-12-03
 description: "Tune in to watch our annual tree-lighting ceremony on Tlaquepaque's Facebook page."
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/unnamed-8344d6c2-1920w.jpg"
+image: "assets/images/blogs/whats-new-and-upcoming-events.jpg"
 ---
 
 ## Upcoming Events

@@ -2,7 +2,7 @@
 title: "Join Us Tomorrow to Celebrate Cinco de Mayo on Facebook Live!"
 date: 2020-05-04
 description: "Join us to celebrate Cinco de Mayo with Gaetano on Facebook Live!"
-image: "https://lirp.cdn-website.com/164890e9/dms3rep/multi/opt/_81A5655-Edit%2Bcopy-1920w.jpg"
+image: "assets/images/blogs/join-us-tomorrow-on-facebook-live.jpg"
 ---
 
 Enjoy a free live streaming performance from master guitarist Gaetano Frankel. Tomorrow, May 5, 2020 at 5:30 PM (MST) join us as we listen together to the high-spirited, FREE live streaming performance of Gaetano Frankel from under the arches of Tlaquepaque's Patio Las Campañas. Grab a drink, put on your dancing shoes, and celebrate Cinco de Mayo from the safety of your own home.
