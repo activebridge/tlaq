@@ -24,9 +24,9 @@
     <nav>
       {% assign latest = site.data.magazines.issues | first %}
       <dialog id="magazineFooterPreview" onclick="this.close()">
-        <iframe src="https://player.flipsnack.com?hash=Qzg3QkNEOTlFOEMrdjdoaTF1Y3J6cA" width="100%" height="100%" scrolling="no" frameBorder="0" allowFullScreen allow="autoplay; clipboard-read; clipboard-write"></iframe>
+        <iframe data-src="https://player.flipsnack.com?hash=Qzg3QkNEOTlFOEMrdjdoaTF1Y3J6cA" width="100%" height="100%" scrolling="no" frameBorder="0" allowFullScreen allow="autoplay; clipboard-read; clipboard-write"></iframe>
       </dialog>
-      <button command="show-modal" commandfor="magazineFooterPreview" class="magazine-cover" aria-label="View latest magazine issue">
+      <button command="show-modal" commandfor="magazineFooterPreview" class="magazine-cover" aria-label="View latest magazine issue" onclick="var f=magazineFooterPreview.querySelector('iframe');if(!f.src)f.src=f.dataset.src;">
         <img src="{{ latest.image }}" alt="{{ site.data.site.footer.magazine_alt }}" loading="lazy">
       </button>
       <p>Follow Us</p>
