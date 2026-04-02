@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign image_path = page.image | relative_url %}
+{% assign image_path = page.image %}
 {% assign transition-name = page.image | downcase | replace: '/', '-' | replace: '.', '-' %}
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
