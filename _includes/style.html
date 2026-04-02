@@ -269,10 +269,25 @@ html, body {
     view-transition-name: header;
   }
 
+  :active-view-transition { body { background: var(--cream); } }
+
   ::view-transition-group(header) {
     z-index: 1;
+    animation-duration: 300ms;
+    animation-timing-function: ease-in-out;
   }
 
+  ::view-transition-old(header) {
+    object-position: top;
+    width: 100%;
+    height: 100%;
+  }
+
+  ::view-transition-new(header) {
+    object-position: bottom;
+    width: 100%;
+    height: 100%;
+  }
 
   header a {
     text-decoration: none;
@@ -425,11 +440,6 @@ html, body {
     width: 100%;
     margin-top: auto;
     grid-column: 1 / -1;
-    view-transition-name: status;
-  }
-
-  ::view-transition-group(status) {
-    z-index: 1;
   }
 
   #weather {
@@ -759,12 +769,12 @@ html, body {
     to { opacity: 0; }
   }
 
-  @supports (animation-timeline: scroll()) {
-    @keyframes header-collapse {
-      from { padding-top: max(30px, env(safe-area-inset-top, 0px)); }
-      to   { padding-top: env(safe-area-inset-top, 0px); }
-    }
+  @keyframes header-collapse {
+    from { padding-top: max(30px, env(safe-area-inset-top, 0px)); }
+    to   { padding-top: env(safe-area-inset-top, 0px); }
+  }
 
+  @supports (animation-timeline: scroll()) {
     header {
       --banner-bottom: calc(100dvh - var(--header-height) - var(--header-status-height));
       animation: header-collapse linear both;
