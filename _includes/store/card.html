@@ -17,7 +17,7 @@
       <span class="separator">|</span>
     {% endif %}
     {% if include.store.phone %}
-      <span>{{ include.store.phone }}</span>
+      <a href="tel:{{ include.store.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ include.store.phone }}</a>
     {% endif %}
   </p>
   <a href="{{ include.store.url }}" class="btn btn-primary">DETAILS</a>

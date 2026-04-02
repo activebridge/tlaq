@@ -64,7 +64,7 @@ layout: default
       <hr>
       <div>
         <label>PHONE</label>
-        <p>{{ page.phone }}</p>
+        <p><a href="tel:{{ page.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ page.phone }}</a></p>
       </div>
     {% endif %}
   

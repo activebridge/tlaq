@@ -30,7 +30,7 @@ layout: default
     {% endfor %}
   </table>
   <h6>PHONE</h6>
-  <h7>{{ page.phone }}</h7>
+  <h7><a href="tel:{{ page.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ page.phone }}</a></h7>
   <hr>
   <h6>WEBSITE</h6>
   <h7><a href="{{ page.website }}" target="_blank">{{ page.website | remove: 'https://' | split: '/' | first }}</a></h7>
