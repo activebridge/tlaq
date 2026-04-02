@@ -20,6 +20,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const month = String(date.getMonth() + 1).padStart(2, '0');
     return year + '-' + month;
   };
+  const sanitizeTransitionToken = (value) => String(value || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  const getEventSlug = (event) => {
+    const path = String(event.url || '').split('?')[0];
+    const parts = path.split('/').filter(Boolean);
+    const slug = parts.length ? parts[parts.length - 1] : '';
+    return sanitizeTransitionToken(slug || event.title || 'event');
+  };
+  const buildTransitionBase = (event, startDate) => {
+    const eventToken = getEventSlug(event);
+    return eventToken + '-' + startDate.getTime();
+  };
+  const appendTransitionParam = (url, transitionBase) => {
+    const separator = url.includes('?') ? '&' : '?';
+    return url + separator + 'vt=' + encodeURIComponent(transitionBase);
+  };
   const formatDay = (date) => date.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase();
   const formatMonthDay = (date) => {
     const mon = date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
@@ -141,17 +159,22 @@ document.addEventListener('DOMContentLoaded', function() {
     return [{ event: event, start: startDate, end: endDate }];
   }
 
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
   function renderOccurrence(item) {
+    const image = isMobile ? item.event.mobile_image : item.event.image;
     const event = item.event;
+    const transitionBase = buildTransitionBase(event, item.start);
+    const href = appendTransitionParam(event.url, transitionBase);
     const subtitle = event.subtitle ? '<p>' + event.subtitle + '</p>' : '';
     const timeText = event.ends_at
       ? formatTime(item.start) + ' - ' + formatTime(item.end)
       : formatTime(item.start);
     return '' +
-      '<a href="' + event.url + '" data-month="' + toMonthKey(item.start) + '">' +
+      '<a href="' + href + '" data-month="' + toMonthKey(item.start) + '">' +
         '<div class="calendar-item-content">' +
           '<div class="calendar-item-image">' +
-            '<img src="' + event.image + '" alt="' + event.title + '">' +
+            '<img src="' + image + '" alt="' + event.title + '" data-event-image style="view-transition-name: ' + transitionBase + '-image;">' +
           '</div>' +
           '<div class="calendar-item-details">' +
             '<div class="calendar-item-date">' +
@@ -159,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
               '<span>,&nbsp;</span>' +
               '<span>' + formatMonthDay(item.start) + '</span>' +
             '</div>' +
-            '<h3>' + event.title + '</h3>' +
+            '<h3 data-event-title style="view-transition-name: ' + transitionBase + '-title;">' + event.title + '</h3>' +
             subtitle +
             '<div class="calendar-item-time">' + timeText + '</div>' +
           '</div>' +

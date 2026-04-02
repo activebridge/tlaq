@@ -8,7 +8,7 @@
   {% assign desk = fallback %}
 {% endif %}
 
-<picture{% if include.transition_name %} style="view-transition-name: {{ include.transition_name }};"{% endif %}>
+<picture{% if include.transition_name %} style="view-transition-name: {{ include.transition_name }};"{% endif %}{% if include.data_event_image %} data-event-image{% endif %}>
   <source
     media="(max-width: 480px)"
     srcset="{{ mob }}"

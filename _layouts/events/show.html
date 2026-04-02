@@ -3,12 +3,15 @@ layout: default
 ---
 
 {% assign image_path = page.image %}
-{% assign transition-name = page.image | downcase | replace: '/', '-' | replace: '.', '-' %}
-{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+{% assign page_transition_base = page.url | downcase | replace: '/', '-' | replace: '.', '-' %}
+{% assign page_image_transition_name = page_transition_base | append: '-image' %}
+{% assign page_title_transition_name = page_transition_base | append: '-title' %}
+
+{% include hero-banner.html image_path=image_path transition-name=page_image_transition_name data_event_image=true %}
 
   <div class="top-section">
     <div class="content-wrapper">
-      <h3 style="view-transition-name: {{ page.title | downcase | replace: ' ', '-'}};">{{ page.title }}</h3>
+      <h3 style="view-transition-name: {{ page_title_transition_name }};" data-event-title>{{ page.title }}</h3>
       {% if page.starts_at %}
         {% assign recurring_days = page.weekdays | default: page.recurrence_weekdays %}
         {% assign recurring_days_label = "" %}
@@ -100,3 +103,18 @@ layout: default
       </div>
     {% endif %}
   </div>
+
+<script>
+  (function() {
+    const vt = new URLSearchParams(window.location.search).get('vt');
+    const safeVt = vt.toLowerCase().replace(/[^a-z0-9_-]/g, '');
+    const transitionBase = /^\d+$/.test(safeVt) ? 'vt-' + safeVt : safeVt;
+    const apply = function() {
+      const imageEl = document.querySelector('[data-event-image]');
+      const titleEl = document.querySelector('[data-event-title]');
+      if (imageEl) imageEl.style.viewTransitionName = transitionBase + '-image';
+      if (titleEl) titleEl.style.viewTransitionName = transitionBase + '-title';
+    };
+    apply();
+  })();
+</script>

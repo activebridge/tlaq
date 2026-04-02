@@ -26,6 +26,7 @@
     loading="eager"
     fetchpriority="high"
     decoding="async"
+    {% if include.data_event_image %}data-event-image{% endif %}
     style="view-transition-name: {{ transition-name }};"
   >
 </figure>

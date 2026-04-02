@@ -9,14 +9,16 @@
   [
     {% assign calendar_events = site.events | sort: "starts_at" %}
     {% for event in calendar_events %}
-      {% assign image_path = event.image | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,quality=85,gravity=top,format=webp/' | prepend: site.cdn_url %}
+      {% assign desktop_image_path = event.image | prepend: '/cdn-cgi/image/width=600,height=400,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
+      {% assign mobile_image_path = event.image | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
       {
         "title": {{ event.title | jsonify }},
         "url": {{ event.url | relative_url | jsonify }},
         "starts_at": {{ event.starts_at | date: "%Y-%m-%d %H:%M:%S" | jsonify }},
         "ends_at": {{ event.ends_at | date: "%Y-%m-%d %H:%M:%S" | jsonify }},
         "subtitle": {{ event.subtitle | jsonify }},
-        "image": {{ image_path | jsonify }},
+        "image": {{ desktop_image_path | jsonify }},
+        "mobile_image": {{ mobile_image_path | jsonify }},
         "annual": {{ event.annual | jsonify }},
         "schedule_type": {{ event.schedule_type | jsonify }},
         "recurs_until": {{ event.recurs_until | date: "%Y-%m-%d %H:%M:%S" | jsonify }},
