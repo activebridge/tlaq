@@ -1914,3 +1914,10 @@ main.history {
   color: var(--cream-60);
   text-align: center;
 }
+
+.error {
+  hgroup {
+    text-align: center;
+    justify-items: center;
+  }
+}
