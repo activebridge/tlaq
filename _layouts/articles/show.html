@@ -17,7 +17,7 @@ layout: default
   {% if page.images %}
     <div class="image-split">
       {% for image in page.images %}
-        <img src="{{ image }}" alt="{{ page.title }}">
+        <img src="{{ image }}" alt="{{ page.title }}" onerror="imageError(this)">
       {% endfor %}
     </div>
   {% endif %}

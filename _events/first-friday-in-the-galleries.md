@@ -5,7 +5,7 @@ published: true
 starts_at: 2026-03-06T16:00:00
 ends_at: 2026-03-06T19:00:00
 location: Tlaquepaque Village
-image: /assets/images/first-friday-galleries.webp
+image: /assets/images/events/first-friday-galleries.webp
 subtitle: 'First Friday in Sedona: gallery receptions, live music, wine, and artist meet-and-greets in a vibrant evening of local and global art.'
 schedule_type: monthly
 recurs_until: 2027-03-05T16:00:00

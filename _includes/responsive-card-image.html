@@ -1,5 +1,3 @@
-{% assign fallback = '/assets/images/placeholder.webp' | prepend: site.baseurl %}
-
 {% if include.src %}
   {% assign mob = include.src | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
   {% assign desk = include.src | prepend: '/cdn-cgi/image/width=600,height=400,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
@@ -22,5 +20,6 @@
     alt="{{ alt }}"
     loading="lazy"
     decoding="async"
+    onerror="imageError(this)"
   >
 </picture>

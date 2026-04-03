@@ -1,4 +1,4 @@
-hero_banner: "assets/images/contacts.webp"
+hero_banner: "assets/images/landing/contacts.webp"
 
 notes:
   general: "Parking is free for all Tlaquepaque visitors. Multiple lots surround the main property on all sides, providing convenient access from any direction."
@@ -23,11 +23,11 @@ oversized:
 
 accessibility:
   description: "Accessible parking spaces are available at both Tlaquepaque North and South locations. All accessible features can be located on the village map for easy navigation during your visit."
-  image: "assets/images/accessibility.webp"
+  image: "assets/images/hours/accessibility.webp"
 
 shuttle:
   description: "The Sedona Shuttle offers a free and convenient alternative means of transportation to the village."
   boarding: "Board at the Sedona Municipal Parking lot at Jordan and Schnebly roads."
   url: "https://www.sedonashuttle.com/"
   link_text: "More shuttle information"
-  image: "assets/images/shuttle.webp"
+  image: "assets/images/parking/shuttle.webp"

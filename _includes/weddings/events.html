@@ -16,6 +16,7 @@
     <img
       src="{{ site.data.weddings.events.image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}"
       alt="{{ site.data.weddings.events.title }}"
+      onerror="imageError(this)"
     >
   </picture>
   <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.weddings.buttons.inquiry_submit }}</a>

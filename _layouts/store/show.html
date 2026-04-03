@@ -10,10 +10,10 @@ layout: default
   {{ content }}
   {% if page.suite %}
     <a href="{{ '/village_map/' | relative_url }}?suite={{ page.suite | url_encode }}">
-      <img src="{{ '/assets/images/stores-map/' | append: page.suite | append: '.webp' | relative_url }}" alt="Village Map" class="village-map">
+      <img src="{{ '/assets/images/stores-map/' | append: page.suite | append: '.webp' | relative_url }}" alt="Village Map" class="village-map" onerror="imageError(this)">
     </a>
   {% else %}
-    <img src="{{ '/assets/images/village-map.webp' | relative_url }}" alt="Village Map" class="village-map">
+    <img src="{{ '/assets/images/landing/village-map.webp' | relative_url }}" alt="Village Map" class="village-map" onerror="imageError(this)">
   {% endif %}
   <hr>
   <h6>LOCATION</h6>
