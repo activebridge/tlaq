@@ -269,7 +269,9 @@ html, body {
     view-transition-name: header;
   }
 
-  :active-view-transition { body { background: var(--cream); } }
+  @media (min-width: 771px) {
+    :active-view-transition { body { background: var(--cream); } }
+  }
 
   @keyframes header-vt-pos-out {
     from {
