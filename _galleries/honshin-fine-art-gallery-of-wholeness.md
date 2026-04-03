@@ -11,5 +11,13 @@ image: assets/images/galleries/honshin-fine-art-gallery-of-wholeness.webp
 coordinates: "-111.7628265, 34.8620697"
 instagram: https://www.instagram.com/honshin_fine_art/
 full_location: 336 AZ-179 Suite A117, Sedona, AZ 86336
+store_hours:
+  monday: 10:00 am–5:00 pm
+  tuesday: 10:00 am–5:00 pm
+  wednesday: 10:00 am–5:00 pm
+  thursday: 10:00 am–5:00 pm
+  friday: 10:00 am–5:00 pm
+  saturday: 10:00 am–6:00 pm
+  sunday: 10:00 am–6:00 pm
 ---
 The original paintings, sculpture, and jewelry of Nicholas Kirsten-Honshin are created with joy. It is the artist's desire to express a moment of peace and beauty that will enrich the life and environment of your home, office, or body. His art is inspired and flows from the sacred meditational space of the transcendental archetypal symbols of Christianity, Zen, and Tibetan Buddhism as well as the shamanistic practices of the world's perennial philosophies.
