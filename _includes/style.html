@@ -327,6 +327,13 @@ html, body {
     margin: 2rem 1rem 1rem;
     outline: none;
     width: clamp(215px, 30vw, 347px);
+    view-transition-name: logo;
+  }
+
+  ::view-transition-group(logo) {
+    z-index: 2;
+    animation-duration: 500ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   header a.logo img {
