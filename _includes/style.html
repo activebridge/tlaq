@@ -271,22 +271,42 @@ html, body {
 
   :active-view-transition { body { background: var(--cream); } }
 
+  @keyframes header-vt-pos-out {
+    from {
+      object-position: top center;
+    }
+    to {
+      object-position: center center;
+    }
+  }
+
+  @keyframes header-vt-pos-in {
+    from {
+      object-position: bottom center;
+    }
+    to {
+      object-position: center center;
+    }
+  }
+
   ::view-transition-group(header) {
     z-index: 1;
-    animation-duration: 300ms;
-    animation-timing-function: ease-in-out;
+    animation-duration: 500ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   ::view-transition-old(header) {
-    object-position: top;
     width: 100%;
     height: 100%;
+    object-position: top center;
+    animation: header-vt-pos-out 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   ::view-transition-new(header) {
-    object-position: bottom;
     width: 100%;
     height: 100%;
+    object-position: bottom center;
+    animation: header-vt-pos-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   header a {
