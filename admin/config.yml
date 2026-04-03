@@ -179,6 +179,18 @@ collections:
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Content", name: "body", widget: "markdown" }
 
+  - name: "blogs"
+    label: "News"
+    folder: "_blogs"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Content", name: "body", widget: "markdown" }
+
   - name: "landing"
     label: "Landing Sections"
     files:
