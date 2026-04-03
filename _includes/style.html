@@ -803,6 +803,11 @@ html, body {
     to   { padding-top: env(safe-area-inset-top, 0px); }
   }
 
+  @keyframes hero-reveal {
+    from { height: 0; }
+    to { height: 100%; }
+  }
+
   @supports (animation-timeline: scroll()) {
     header {
       --banner-bottom: calc(100dvh - var(--header-height) - var(--header-status-height));
@@ -818,6 +823,20 @@ html, body {
       animation-timeline: scroll(root);
       animation-range: 0px 75dvh;
       will-change: opacity;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 0;
+      background: var(--cream);
+      z-index: 2;
+      animation: hero-reveal linear forwards;
+      animation-timeline: scroll(root);
+      animation-range: 0px 75dvh;
     }
 
     .landing-banner {
