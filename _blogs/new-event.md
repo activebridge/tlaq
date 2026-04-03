@@ -22,7 +22,7 @@ description: |-
   Ornare massa eget egestas purus viverra accumsan in nisl nisi scelerisque.
   Leo vel fringilla est ullamcorper eget nulla facilisi etiam dignissim.
   Egestas quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci.
-image: assets/images/blogs/Sunset over Sedona's red rocks.png
+image: /assets/images/Sunset over Sedona's red rocks.png
 ---
 
 #### Lorem ipsum dolor sit amet, consectetur adipiscing elit.
