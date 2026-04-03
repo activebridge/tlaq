@@ -1,8 +1,8 @@
 ---
-title: "April Tlaquepaque Happenings!"
+title: April Tlaquepaque Happenings!
 date: 2019-04-01
-description: "Spring is officially here in Sedona, Arizona and we are thrilled to welcome the season."
-image: "assets/images/blogs/april-tlaquepaque-happenings.jpg"
+description: Spring is officially here in Sedona, Arizona and we are thrilled to welcome the season.
+image: /assets/images/Screenshot 2026-04-03 at 10.01.30.png
 ---
 
 Spring is officially here in Sedona, Arizona and we are thrilled to welcome the warmer weather and the gorgeous flowers and vegetation that are starting to pop into full bloom! Now is the time to stop by Tlaquepaque and enjoy outdoor dining, drinks, new artwork and seasonal merchandise to explore in our shops and galleries. You will want to stop by for the start up of our local Farmer's Market and the anticipated and very enjoyable Gaetano and Friends in Patio de las Campanas this month.
@@ -27,7 +27,7 @@ Join master guitarist Gaetano for spirited musical performances. Presented by Tl
 
 **Rowe Fine Art Gallery** — "Joshua Tobey: Art with Attitude." Impressionistic wildlife sculptor Joshua Tobey returns for his annual one-man show. The Colorado-based artist will meet his collectors and talk about his techniques. April 5th 5 - 8 p.m. and April 6th 1 - 4 p.m. Suite A102.
 
-## Other Exciting News
+## Other Exciting News Updated
 
 Join us for the Grand Opening of CREAM at Tlaquepaque North featuring Hand Made Ice Cream, ice cream sandwiches, cakes and sundaes! Stop by Cream in Suite A11.
 
