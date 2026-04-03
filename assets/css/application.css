@@ -1153,6 +1153,15 @@ form {
   }
 }
 
+input[type="number"] {
+  appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  display: none;
+}
+
 input[type="search"] {
   appearance: none;
   -webkit-appearance: none;
