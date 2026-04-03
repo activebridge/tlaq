@@ -12,6 +12,8 @@ collections:
     folder: "_shops"
     create: true
     slug: "{{slug}}"
+    media_folder: "assets/images/shops"
+    public_folder: "/assets/images/shops"
     fields:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
@@ -46,6 +48,8 @@ collections:
     folder: "_foods"
     create: true
     slug: "{{slug}}"
+    media_folder: "assets/images/foods"
+    public_folder: "/assets/images/foods"
     fields:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
@@ -80,6 +84,8 @@ collections:
     folder: "_galleries"
     create: true
     slug: "{{slug}}"
+    media_folder: "assets/images/galleries"
+    public_folder: "/assets/images/galleries"
     fields:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
@@ -114,6 +120,8 @@ collections:
     folder: "_weddings"
     create: true
     slug: "{{slug}}"
+    media_folder: "assets/images/weddings"
+    public_folder: "/assets/images/weddings"
     fields:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
@@ -129,6 +137,8 @@ collections:
     folder: "_events"
     create: true
     slug: "{{slug}}"
+    media_folder: "assets/images/events"
+    public_folder: "/assets/images/events"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Slug", name: "slug", widget: "string" }
@@ -184,6 +194,8 @@ collections:
     folder: "_blogs"
     create: true
     slug: "{{slug}}"
+    media_folder: "assets/images/blogs"
+    public_folder: "/assets/images/blogs"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
@@ -197,6 +209,8 @@ collections:
       - name: "banner"
         label: "Banner"
         file: "_landing/banner.md"
+        media_folder: "assets/images/landing"
+        public_folder: "/assets/images/landing"
         fields: &landing_fields
           - { label: "Order", name: "order", widget: "number", value_type: "int" }
           - { label: "Section", name: "section", widget: "select", options: ["banner", "articles", "footer"] }
@@ -263,30 +277,44 @@ collections:
       - name: "village_map"
         label: "Village Map"
         file: "_landing/village-map.md"
+        media_folder: "assets/images/landing"
+        public_folder: "/assets/images/landing"
         fields: *landing_fields
       - name: "calendar"
         label: "Calendar"
         file: "_landing/calendar.md"
+        media_folder: "assets/images/landing"
+        public_folder: "/assets/images/landing"
         fields: *landing_fields
       - name: "whats_new"
         label: "What's New"
         file: "_landing/whats-new.md"
+        media_folder: "assets/images/landing"
+        public_folder: "/assets/images/landing"
         fields: *landing_fields
       - name: "magazine"
         label: "Our Magazine"
         file: "_landing/magazine.md"
+        media_folder: "assets/images/landing"
+        public_folder: "/assets/images/landing"
         fields: *landing_fields
       - name: "weddings"
         label: "Weddings & Private Events"
         file: "_landing/weddings.md"
+        media_folder: "assets/images/landing"
+        public_folder: "/assets/images/landing"
         fields: *landing_fields
       - name: "filming"
         label: "Filming & Photography Permits"
         file: "_landing/filming.md"
+        media_folder: "assets/images/landing"
+        public_folder: "/assets/images/landing"
         fields: *landing_fields
       - name: "awards"
         label: "Awards"
         file: "_landing/awards.md"
+        media_folder: "assets/images/landing"
+        public_folder: "/assets/images/landing"
         fields: *landing_fields
 
   - name: "pages"
@@ -319,6 +347,8 @@ collections:
       - name: "history"
         label: "History"
         file: "_data/history.yml"
+        media_folder: "assets/images/history"
+        public_folder: "/assets/images/history"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
@@ -354,6 +384,8 @@ collections:
       - name: "hours"
         label: "Hours & Locations"
         file: "_data/hours.yml"
+        media_folder: "assets/images/hours"
+        public_folder: "/assets/images/hours"
         fields:
           - label: "Jump To Links"
             name: "jump_to_links"
@@ -448,6 +480,8 @@ collections:
       - name: "parking"
         label: "Parking"
         file: "_data/parking.yml"
+        media_folder: "assets/images/parking"
+        public_folder: "/assets/images/parking"
         fields:
           - { label: "Hero Image", name: "hero_banner", widget: "image" }
           - label: "Notes"
@@ -494,6 +528,8 @@ collections:
       - name: "weddings"
         label: "Weddings"
         file: "_data/weddings.yml"
+        media_folder: "assets/images/weddings"
+        public_folder: "/assets/images/weddings"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
@@ -568,6 +604,8 @@ collections:
       - name: "leasing"
         label: "Leasing"
         file: "_data/leasing.yml"
+        media_folder: "assets/images/leasing"
+        public_folder: "/assets/images/leasing"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
@@ -591,6 +629,8 @@ collections:
       - name: "filming_photography"
         label: "Filming & Photography"
         file: "_data/filming-photography.yml"
+        media_folder: "assets/images/filming"
+        public_folder: "/assets/images/filming"
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
@@ -669,6 +709,8 @@ collections:
       - name: "landing_navigation"
         label: "Landing Navigation"
         file: "index.md"
+        media_folder: "assets/images/landing"
+        public_folder: "/assets/images/landing"
         fields:
           - { label: "Layout", name: "layout", widget: "hidden", default: "home" }
           - { label: "Title", name: "title", widget: "string" }

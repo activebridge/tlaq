@@ -37,7 +37,7 @@ locations:
     image: "assets/images/locations/north.webp"
 
 accessibility:
-  image: "assets/images/accessibility.webp"
+  image: "assets/images/hours/accessibility.webp"
 
 family_friendly:
-  image: "assets/images/family-friendly.webp"
+  image: "assets/images/landing/family-friendly.webp"

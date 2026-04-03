@@ -5,7 +5,7 @@ published: true
 starts_at: 2026-03-06T16:00:00
 ends_at: 2026-03-06T17:00:00
 location: Tlaquepaque Village
-image: /assets/images/rowe-gallery-presents.webp
+image: /assets/images/events/rowe-gallery-presents.webp
 subtitle: Join Rowe Fine Art Gallery for a colorful spring evening featuring bold new works and exclusive limited-edition prints by longtime favorite colorist Jen Farnsworth, plus fresh original creations.
 schedule_type: single
 recurs_until: ''

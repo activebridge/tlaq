@@ -6,14 +6,14 @@
   </h5>
   <h2>{{ whats_new.heading }}</h2>
   <div>
-    <img src="{{ whats_new.featured.image | relative_url }}" alt="{{ whats_new.featured.alt }}" loading="lazy" width="1246" height="890">
+    <img src="{{ whats_new.featured.image | relative_url }}" alt="{{ whats_new.featured.alt }}" loading="lazy" width="1246" height="890" onerror="imageError(this)">
     <h3>{{ whats_new.featured.title }}</h3>
     <p>{{ whats_new.featured.description }}</p>
   </div>
   <div>
     {% for item in whats_new.items %}
     <section>
-      <img src="{{ item.image | relative_url }}" alt="{{ item.alt }}" loading="lazy" width="592" height="385">
+      <img src="{{ item.image | relative_url }}" alt="{{ item.alt }}" loading="lazy" width="592" height="385" onerror="imageError(this)">
       <h3>{{ item.title }}</h3>
       <p>{{ item.description }}</p>
     </section>

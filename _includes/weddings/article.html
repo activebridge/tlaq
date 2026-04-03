@@ -18,6 +18,7 @@
             <img
               src="{{ image | prepend: '/cdn-cgi/image/width=600,height=700,fit=cover,gravity=top,format=webp/' | prepend: site.cdn_url }}"
               alt="{{ wedding_article.title }}"
+              onerror="imageError(this)"
             >
           </picture>
         {% endfor %}

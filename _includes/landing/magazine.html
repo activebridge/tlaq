@@ -6,7 +6,7 @@
   </h5>
   <h2>{{ magazine.heading }}</h2>
   <figure>
-    <img src="{{ magazine.image | relative_url }}" alt="{{ magazine.alt }}" loading="lazy" width="900" height="600">
+    <img src="{{ magazine.image | relative_url }}" alt="{{ magazine.alt }}" loading="lazy" width="900" height="600" onerror="imageError(this)">
   </figure>
   <section class="footer">
     <h6>{{ magazine.description | escape }}</h6>

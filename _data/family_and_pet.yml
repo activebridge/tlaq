@@ -1,4 +1,4 @@
-hero_banner: "assets/images/pets.webp"
+hero_banner: "assets/images/landing/pets.webp"
 
 notes:
   intro: "Tlaquepaque is a welcoming destination for the whole family, including four-legged friends. Explore our cobblestone courtyards, fountains, and galleries at your own pace."
@@ -9,7 +9,7 @@ pets:
     - Keep pets on a leash at all times
     - Always clean up after your pet
     - Water stations are available near restrooms throughout the village
-  image: "assets/images/pets.webp"
+  image: "assets/images/landing/pets.webp"
 
 family:
   description: "Tlaquepaque is designed for leisurely exploration with wide cobblestone paths, shaded courtyards, and plenty of places to rest. The village hosts a variety of family-friendly and culturally rich events throughout the year."
@@ -18,4 +18,4 @@ family:
     - Family-friendly events year-round including Cinco de Mayo, Día de los Muertos, and Festival of Lights
     - Restrooms conveniently located throughout the property
     - Stroller-friendly pathways through the village
-  image: "assets/images/fountain.webp"
+  image: "assets/images/landing/fountain.webp"
