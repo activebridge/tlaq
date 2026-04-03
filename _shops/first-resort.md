@@ -8,7 +8,7 @@ suite: a119
 phone: (928) 649-9511
 website:
 coordinates: "-111.7628117, 34.8622485"
-image: "assets/images/stores/first-resort.webp"
+image: "assets/images/shops/first-resort.webp"
 instagram:
 facebook:
 full_location: 336 AZ-179 Suite A119, Sedona, AZ 86336

@@ -8,7 +8,7 @@ suite: b105
 phone: (800) 255-2306
 website: https://sedonaquiltgallery.com
 coordinates: "-111.7630575, 34.8620148"
-image: assets/images/stores/quilts-ltd-gallery.webp
+image: assets/images/galleries/quilts-ltd-gallery.webp
 full_location: 336 AZ-179 Suite B105, Sedona, AZ 86336
 store_hours:
   monday: 10AM - 6PM

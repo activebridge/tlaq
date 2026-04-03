@@ -8,7 +8,7 @@ suite: a211
 phone: (928) 204-1050
 website: https://www.yelp.com/biz/diva-sedona-sedona
 coordinates: "-111.7635747, 34.8622490"
-image: "assets/images/stores/diva-sedona.webp"
+image: "assets/images/shops/diva-sedona.webp"
 full_location: 336 AZ-179 Suite A211, Sedona, AZ 86336
 store_hours:
   monday: 10:00 am–6:00 pm

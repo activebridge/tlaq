@@ -8,7 +8,7 @@ suite: b118
 phone: (928) 282-9225
 website: https://renerestaurantsedona.com
 coordinates: "-111.7633734, 34.8620944"
-image: "assets/images/stores/rene-restaurant-wine-bar.webp"
+image: "assets/images/foods/rene-restaurant-wine-bar.webp"
 instagram: https://www.instagram.com/renetlaquepaque/
 facebook: https://www.facebook.com/ReneAtTlaquepaque/
 full_location: 336 AZ-179 Suite B118, Sedona, AZ 86336

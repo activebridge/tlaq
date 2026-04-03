@@ -8,7 +8,7 @@ suite: f103
 phone: (928) 282-5000
 website: https://www.pinkadventuretours.com
 coordinates: "-111.7636795, 34.8623367"
-image: "assets/images/stores/pink-jeep-tours.webp"
+image: "assets/images/shops/pink-jeep-tours.webp"
 instagram: https://www.instagram.com/pinkjeeptours/
 facebook: https://www.facebook.com/pinkjeeptours/
 full_location: 336 AZ-179 Suite F103, Sedona, AZ 86336

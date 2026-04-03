@@ -8,7 +8,7 @@ suite: a205
 phone: (928) 282-1087
 website: https://www.toytownhalfpint.com
 coordinates: "-111.762578, 34.861897"
-image: "assets/images/stores/tlaquepaque-toy-town.webp"
+image: "assets/images/shops/tlaquepaque-toy-town.webp"
 instagram: https://www.instagram.com/tlaqtoytown/
 facebook: https://www.facebook.com/tlaqtoytown/
 full_location: 336 AZ-179 Suite A205, Sedona, AZ 86336

@@ -8,7 +8,7 @@ suite: e101
 phone: (928) 282-1575
 website: https://www.reneetaylorgallery.com
 coordinates: "-111.7625455, 34.8611165"
-image: assets/images/stores/vue-gallery.webp
+image: assets/images/galleries/vue-gallery.webp
 facebook: https://www.facebook.com/VueGallery/
 full_location: 336 AZ-179 Suite E101, Sedona, AZ 86336
 store_hours:

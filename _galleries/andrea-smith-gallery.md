@@ -8,7 +8,7 @@ suite: d102
 phone: (928) 203-9002
 website: https://www.andreasmithgallery.com
 coordinates: "-111.7637677, 34.8624763"
-image: "assets/images/stores/andrea-smith-gallery.webp"
+image: "assets/images/galleries/andrea-smith-gallery.webp"
 instagram: https://www.instagram.com/andreasmithgallery/
 facebook: https://www.facebook.com/andreasmithgallery/
 full_location: 336 AZ-179 Suite D102, Sedona, AZ 86336

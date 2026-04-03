@@ -8,7 +8,7 @@ suite: b218
 phone: (928) 203-9096
 website: https://sedonaweddingservices.com/
 coordinates: "-111.763458, 34.862149"
-image: "assets/images/stores/sedona-wedding-services.webp"
+image: "assets/images/shops/sedona-wedding-services.webp"
 instagram: https://www.instagram.com/sedonaweddings
 facebook: https://www.facebook.com/SedonaWeddingServices
 full_location: 336 AZ-179 Suite B218, Sedona, AZ 86336

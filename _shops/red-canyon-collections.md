@@ -8,7 +8,7 @@ suite: a120
 phone: (928) 282-2030
 website: https://redcanyoncollections.com
 coordinates: "-111.762827, 34.8621095"
-image: "assets/images/stores/red-canyon-collections.webp"
+image: "assets/images/shops/red-canyon-collections.webp"
 instagram:
 facebook:
 full_location: 336 AZ-179 Suite A120, Sedona, AZ 86336

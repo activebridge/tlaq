@@ -8,7 +8,7 @@ suite: a208
 phone: (928) 649-9511
 website: https://adorncollectionaz.com
 coordinates: "-111.7628035, 34.8620352"
-image: "assets/images/stores/adorn-collection.webp"
+image: "assets/images/shops/adorn-collection.webp"
 instagram: https://www.instagram.com/_adorncollection_/
 facebook: https://www.facebook.com/p/Adorn-Collection-Sedona-AZ-100077269873228/
 full_location: 336 AZ-179 Suite A208, Sedona, AZ 86336
