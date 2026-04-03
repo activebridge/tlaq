@@ -25,7 +25,6 @@ layout: default
       setTimeout(() => videoBg.classList.add('loaded'), 1610);
     }, { once: true });
 
-    videoBg.addEventListener('suspend', removeIfNotPlaying, { once: true });
     videoBg.play().catch(removeIfNotPlaying);
     setTimeout(removeIfNotPlaying, 3000);
   </script>
