@@ -630,8 +630,8 @@ hgroup {
   position: sticky;
   top: calc(var(--header-height) + var(--header-status-height));
   background: var(--bg);
-  z-index: 1;
-  animation: header-jump-fade-in 0.9s ease-out both;
+  z-index: 3;
+  animation: header-jump-fade-in 1.3s ease-out both;
   container-name: header-jump;
   container-type: inline-size;
 
@@ -661,7 +661,7 @@ hgroup {
 @keyframes header-jump-fade-in {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-50px);
   }
   to {
     opacity: 1;
