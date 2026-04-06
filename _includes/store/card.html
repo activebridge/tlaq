@@ -1,4 +1,4 @@
-<div class="card" id="storeItem">
+<div class="card" id="storeItem" data-tags="{{ include.store.tags | join: ',' | downcase }}">
   {% if include.store.image %}
     {% assign card_transition_name = include.store.image | downcase | replace: '/', '-' | replace: '.', '-' %}
     {% include responsive-card-image.html src=include.store.image alt=include.store.title transition_name=card_transition_name %}
