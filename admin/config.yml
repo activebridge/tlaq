@@ -22,6 +22,11 @@ collections:
       - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "e.g. jewelry, art, handmade"
       - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
       - { label: "Phone", name: "phone", widget: "string" }
       - { label: "Website", name: "website", widget: "string", required: false }
@@ -60,6 +65,11 @@ collections:
       - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "e.g. coffee, desserts, fine dining"
       - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
       - { label: "Phone", name: "phone", widget: "string" }
       - { label: "Website", name: "website", widget: "string", required: false }
@@ -98,6 +108,11 @@ collections:
       - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "e.g. paintings, sculptures, jewelry"
       - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
       - { label: "Phone", name: "phone", widget: "string" }
       - { label: "Website", name: "website", widget: "string", required: false }
