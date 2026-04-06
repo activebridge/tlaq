@@ -631,7 +631,6 @@ hgroup {
   top: calc(var(--header-height) + var(--header-status-height));
   background: var(--bg);
   z-index: 3;
-  animation: header-jump-fade-in 1.3s ease-out both;
   container-name: header-jump;
   container-type: inline-size;
 
@@ -656,6 +655,14 @@ hgroup {
   
   a { white-space: nowrap }
   hr { margin: 0 }
+}
+
+::view-transition-group(header-jump) { z-index: 1; }
+::view-transition-new(header-jump) { animation: header-jump-fade-in 0.9s ease-out both; }
+
+::view-transition-old(header-jump) {
+  opacity: 0;
+  animation: none;
 }
 
 @keyframes header-jump-fade-in {

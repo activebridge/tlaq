@@ -214,7 +214,7 @@ html, body {
   input, button, textarea, select { font: inherit; }
 
   p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
-  h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
+  h1, h2, h3, h4, h5, h6 { text-wrap: auto; }
 
   h1, h2, h3, h4 {
     font-family: var(--font-caslon);
@@ -292,7 +292,7 @@ html, body {
   }
 
   ::view-transition-group(header) {
-    z-index: 1;
+    z-index: 2;
     animation-duration: 500ms;
     animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -479,6 +479,7 @@ html, body {
       height: 24px;
     }
   }
+  .header-jump { view-transition-name: header-jump; }
 
   @media (max-width: 770px) {
     header {
