@@ -3,7 +3,7 @@
   <div>{% include icons/windows/shops.svg %}<span>Shops</span></div>
 </li>
 {%- for item in site.shops -%}
-<li role="option" aria-selected="false" data-hidden data-type="shop" data-search="{{ item.title | downcase }}"><a
+<li role="option" aria-selected="false" data-hidden data-type="shop" data-search="{{ item.title | downcase }} {{ item.tags | join: ' ' | downcase }}"><a
     href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a>
 </li>
 {%- endfor -%}
@@ -12,7 +12,7 @@
   <div>{% include icons/windows/galleries.svg %}<span>Galleries</span></div>
 </li>
 {%- for item in site.galleries -%}
-<li role="option" aria-selected="false" data-hidden data-type="gallery" data-search="{{ item.title | downcase }}"><a
+<li role="option" aria-selected="false" data-hidden data-type="gallery" data-search="{{ item.title | downcase }} {{ item.tags | join: ' ' | downcase }}"><a
     href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a>
 </li>
 {%- endfor -%}
@@ -21,7 +21,7 @@
   <div>{% include icons/windows/foods.svg %}<span>Food &amp; Drink</span></div>
 </li>
 {%- for item in site.foods -%}
-<li role="option" aria-selected="false" data-hidden data-type="food" data-search="{{ item.title | downcase }}"><a
+<li role="option" aria-selected="false" data-hidden data-type="food" data-search="{{ item.title | downcase }} {{ item.tags | join: ' ' | downcase }}"><a
     href="{{ item.url | relative_url }}" class="search-result-title" onclick="searchDialog.close()">{{ item.title }}</a>
 </li>
 {%- endfor -%}
