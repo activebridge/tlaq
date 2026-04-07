@@ -8,20 +8,19 @@ layout: default
 
 <div class="content-wrapper">
   {% include store/header.html type=page.layout_type title=page.store_title description=page.store_description %}
+  {% assign stores = site[page.collection_name] | sort: "date" | reverse %}
 
   <div class="header-jump">
     <input type="search" id="storeSearch" list="storeSearchList" placeholder="SEARCH FOR A STORE">
   </div>
 
   <datalist id="storeSearchList">
-    {% assign stores = site[page.collection_name] | sort: "date" | reverse %}
-     {% for store in stores %}
+    {% for store in stores %}
       <option value="{{ store.title }}"></option>
     {% endfor %}
   </datalist>
 
   <div class="list-container">
-    {% assign stores = site[page.collection_name] | sort: "date" | reverse %}
     {% for store in stores %}
       {% include store/card.html store=store type=page.layout_type %}
     {% endfor %}

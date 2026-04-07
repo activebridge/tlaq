@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const update = () => {
       cards.forEach((card) => {
-        const text = card.querySelector("h3")?.textContent.toLowerCase();
-
-        card.classList.toggle("hidden", !text?.includes(query));
+        const title = card.querySelector("h3")?.textContent.toLowerCase() ?? "";
+        const tags = card.dataset.tags ?? "";
+        card.classList.toggle("hidden", !!query && !title.includes(query) && !tags.includes(query));
       });
     };
 
