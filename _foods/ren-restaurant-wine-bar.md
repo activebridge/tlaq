@@ -4,6 +4,7 @@ date: 2026-02-22
 published: true
 tags:
   - french
+  - wine
   - food
 title: René Restaurant & Wine Bar
 subtitle: Classical cuisine, picturesque patio & intimate bar

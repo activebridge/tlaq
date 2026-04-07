@@ -2,6 +2,10 @@
 slug: pump-house-station
 date: 2026-02-22
 published: true
+tags:
+  - cafe
+  - american
+  - food
 image: "assets/images/foods/pump-house-station.webp"
 title: Pump House Station
 subtitle: Farm-to-table & artisanal foods including Organic coffee, artisan pastries, local crafted beers, signature cocktails

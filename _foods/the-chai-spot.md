@@ -4,6 +4,7 @@ date: 2026-02-22
 published: true
 tags:
   - cafe
+  - tea
   - food
 title: The Chai Spot
 subtitle: Traditional chai and South Asian handcrafted home goods
