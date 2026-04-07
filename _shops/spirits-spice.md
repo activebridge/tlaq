@@ -2,6 +2,10 @@
 slug: spirits-spice
 date: 2026-02-22
 published: true
+tags:
+  - wine
+  - food
+  - shop
 title: Spirits & Spice
 subtitle: High-quality spirits, custom spice blends, oils, vinegar & wine
 suite: c102

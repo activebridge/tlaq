@@ -2,6 +2,9 @@
 slug: renee-taylor-jewelry
 date: 2026-02-22
 published: true
+tags:
+  - jewelry
+  - shop
 title: Renee Taylor Jewelry
 subtitle: Contemporary, fashion forward jewelry
 suite: b14

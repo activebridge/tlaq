@@ -2,6 +2,10 @@
 slug: natural-wonders
 date: 2026-02-22
 published: true
+tags:
+  - minerals
+  - gems
+  - shop
 title: Natural Wonders
 subtitle: Gem, minerals & fossils from around the world
 suite: a210

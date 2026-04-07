@@ -2,6 +2,10 @@
 slug: navarro-gallery
 date: 2026-02-22
 published: true
+tags:
+  - painting
+  - sculpture
+  - gallery
 title: Navarro Gallery
 subtitle: Western art, wildlife & landscape inspired fine art, & sculpture garden
 suite: d103

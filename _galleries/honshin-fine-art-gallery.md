@@ -2,6 +2,9 @@
 slug: honshin-fine-art-gallery
 date: 2026-02-24
 published: true
+tags:
+  - painting
+  - gallery
 title: Honshin Fine Art Gallery
 subtitle: Local artists fine art gallery
 suite: c205

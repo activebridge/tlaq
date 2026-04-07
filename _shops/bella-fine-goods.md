@@ -2,6 +2,9 @@
 slug: bella-fine-goods
 date: 2026-02-22
 published: true
+tags:
+  - gifts
+  - shop
 title: Bella Fine Goods
 subtitle: Specialty goods from around the world
 suite: b122

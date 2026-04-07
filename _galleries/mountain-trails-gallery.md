@@ -2,6 +2,10 @@
 slug: mountain-trails-gallery
 date: 2026-02-24
 published: true
+tags:
+  - painting
+  - sculpture
+  - gallery
 title: Mountain Trails Gallery
 subtitle: Wildlife & western bronzes, paintings & contemporary art
 suite: a201

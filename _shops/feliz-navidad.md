@@ -2,6 +2,9 @@
 slug: feliz-navidad
 date: 2026-02-22
 published: true
+tags:
+  - christmas
+  - shop
 title: Feliz Navidad
 subtitle: Christmas art & ornaments
 suite: a116

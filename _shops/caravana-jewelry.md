@@ -2,6 +2,9 @@
 slug: caravana-jewelry
 date: 2026-02-22
 published: true
+tags:
+  - jewelry
+  - shop
 title: Caravana Jewelry
 subtitle: Silver & gemstone jewelry by Arizona artists
 suite: b120

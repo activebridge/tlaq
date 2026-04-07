@@ -2,6 +2,10 @@
 slug: showstoppers
 date: 2026-02-22
 published: true
+tags:
+  - home decor
+  - gifts
+  - shop
 title: Showstoppers
 subtitle: Floral & event decorating, home decor, furnishings & gifts
 suite: c107

@@ -2,6 +2,9 @@
 slug: tlaquepaque-toy-town
 date: 2026-02-22
 published: true
+tags:
+  - toys
+  - shop
 title: Tlaquepaque Toy Town
 subtitle: Toys for kids of all ages
 suite: a205

@@ -2,6 +2,10 @@
 slug: cucina-sedona
 date: 2026-02-22
 published: true
+tags:
+  - kitchen
+  - home decor
+  - shop
 title: Cucina Sedona
 subtitle: Southwestern salsas, gadgets, linens, pottery & tableware
 suite: d101

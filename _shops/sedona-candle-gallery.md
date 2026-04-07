@@ -2,6 +2,9 @@
 slug: sedona-candle-gallery
 date: 2026-02-22
 published: true
+tags:
+  - candles
+  - shop
 title: Sedona Candle Gallery
 subtitle: Unique & custom candles created with patented candle making process
 suite: c104

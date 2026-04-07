@@ -2,6 +2,10 @@
 slug: andrea-smith-gallery
 date: 2026-02-24
 published: true
+tags:
+  - sculpture
+  - jewelry
+  - gallery
 title: Andrea Smith Gallery
 subtitle: Peace gallery with original art, sacred sculptures, unique jewelry & inspirational books
 suite: d102

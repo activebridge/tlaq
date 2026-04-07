@@ -2,6 +2,9 @@
 slug: dorine-daniels
 date: 2026-02-22
 published: true
+tags:
+  - home decor
+  - shop
 title: Dorine Daniels
 subtitle: Bed & bath products
 suite: b106

@@ -2,6 +2,9 @@
 slug: sedona-wedding-services
 date: 2026-03-05
 published: true
+tags:
+  - weddings
+  - shop
 title: Sedona Wedding Services
 subtitle: Vendor Guide for Weddings in Sedona and Northern Arizona
 suite: b218

@@ -2,6 +2,9 @@
 slug: just-us-girls
 date: 2026-02-22
 published: true
+tags:
+  - clothing
+  - shop
 title: Just Us Girls
 subtitle: Women's contemporary clothing & accessories
 suite: c105

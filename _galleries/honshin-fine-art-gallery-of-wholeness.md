@@ -2,6 +2,10 @@
 slug: honshin-fine-art-gallery-of-wholeness
 date: 2026-02-22
 published: true
+tags:
+  - painting
+  - sculpture
+  - gallery
 title: Honshin Fine Art Gallery of Wholeness
 subtitle: Original meditational paintings, sculpture & jewelry by Nicholas Kirsten-Honshin
 suite: a117

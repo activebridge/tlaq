@@ -2,6 +2,9 @@
 slug: diva-sedona
 date: 2026-03-05
 published: true
+tags:
+  - clothing
+  - shop
 title: Diva Sedona
 subtitle: Experience the extraordinary at Diva Hillside, Sedona's premier Lifestyle boutique.
 suite: a211

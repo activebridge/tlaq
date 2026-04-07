@@ -2,6 +2,10 @@
 slug: alt-book-and-records
 date: 2026-02-22
 published: true
+tags:
+  - books
+  - music
+  - shop
 title: Alt Books and Records
 subtitle: Used, rare & out of print books and vintage vinyl records
 suite: c203

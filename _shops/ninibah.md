@@ -2,6 +2,10 @@
 slug: ninibah
 date: 2026-02-22
 published: true
+tags:
+  - native american art
+  - jewelry
+  - shop
 title: Ninibah
 subtitle: Authentic indian jewelry, baskets & kachinas
 suite: a107

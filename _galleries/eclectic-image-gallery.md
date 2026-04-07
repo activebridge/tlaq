@@ -2,6 +2,9 @@
 slug: eclectic-image-gallery
 date: 2026-02-22
 published: true
+tags:
+  - photography
+  - gallery
 title: Eclectic Image Gallery
 subtitle: Original impressionistic, fine art photography & mixed media artwork
 suite: a109

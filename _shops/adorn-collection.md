@@ -2,6 +2,10 @@
 slug: adorn-collection
 date: 2026-02-22
 published: true
+tags:
+  - jewelry
+  - home decor
+  - shop
 title: Adorn Collection
 subtitle: Artisan home decor, jewelry and wardrobe accents
 suite: a208

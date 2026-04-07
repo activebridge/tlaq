@@ -2,6 +2,9 @@
 slug: ren-restaurant-wine-bar
 date: 2026-02-22
 published: true
+tags:
+  - french
+  - food
 title: René Restaurant & Wine Bar
 subtitle: Classical cuisine, picturesque patio & intimate bar
 suite: b118

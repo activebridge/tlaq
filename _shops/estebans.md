@@ -2,6 +2,9 @@
 slug: estebans
 date: 2026-02-22
 published: true
+tags:
+  - pottery
+  - shop
 title: Esteban's
 subtitle: Handcrafted functional & decorative pottery by Southwestern artists
 suite: b103

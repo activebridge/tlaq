@@ -2,6 +2,9 @@
 slug: red-canyon-collections
 date: 2026-02-22
 published: true
+tags:
+  - jewelry
+  - shop
 title: Red Canyon Collections
 subtitle: Fine contemporary jewelry & southwestern art
 suite: a120

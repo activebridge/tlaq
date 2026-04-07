@@ -2,6 +2,9 @@
 slug: el-picaflor
 date: 2026-02-22
 published: true
+tags:
+  - folk art
+  - shop
 title: El Picaflor
 subtitle: Folk art & crafts
 suite: a206

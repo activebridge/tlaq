@@ -2,6 +2,10 @@
 slug: cocopah
 date: 2026-03-06
 published: true
+tags:
+  - beads
+  - jewelry
+  - shop
 title: Cocopah
 subtitle: Arizona's oldest bead store
 suite: c101
