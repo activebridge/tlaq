@@ -11,7 +11,7 @@
   {% endif %}
   <p>
     {% if include.store.suite %}
-      <span>SUITE {{ include.store.suite }}</span>
+      <span>SUITE {{ include.store.suite | upcase }}</span>
     {% endif %}
     {% if include.store.suite and include.store.phone %}
       <span class="separator">|</span>
