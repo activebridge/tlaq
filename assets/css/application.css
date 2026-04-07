@@ -1468,7 +1468,7 @@ img.village-map {
   }
 
   .top-section {
-    padding: 1rem 0 2rem 0;
+    padding: 2rem 0 2rem 0;
     background-color: var(--purple-light);
     position: relative;
     z-index: 1;
@@ -1481,10 +1481,14 @@ img.village-map {
       svg { height: 1em; }
     }
 
-    .content-wrapper {
-      background-color: var(--purple-light);
-      box-shadow: none;
-      clip-path: unset;
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      left: calc(50% - 50vw);
+      right: calc(50% - 50vw);
+      background: var(--purple-light);
+      z-index: -1;
     }
   }
 
@@ -1502,6 +1506,17 @@ img.village-map {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  .header-jump { margin-bottom: 2rem; }
+
+  .header-jump::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: calc(50% - 50vw);
+    right: calc(50% - 50vw);
+    background: var(--bg);
+    z-index: -1;
   }
 }
 

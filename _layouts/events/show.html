@@ -9,100 +9,102 @@ layout: default
 
 {% include hero-banner.html image_path=image_path transition-name=page_image_transition_name data_event_image=true %}
 
+<div class="content-wrapper">
+  {% assign jump_nav_links = "calendar" | split: "," %}
+  {% assign jump_nav_slugs = "events" %}
+  {% assign jump_nav_base_url = '/events/' | relative_url %}
+  {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs base_url=jump_nav_base_url %}
+
   <div class="top-section">
-    <div class="content-wrapper">
-      <h3 style="view-transition-name: {{ page_title_transition_name }};" data-event-title>{{ page.title }}</h3>
-      {% if page.starts_at %}
-        {% assign recurring_days = page.weekdays | default: page.recurrence_weekdays %}
-        {% assign recurring_days_label = "" %}
-        {% if recurring_days and recurring_days.size > 0 %}
-          {% for day in recurring_days %}
-            {% assign day_key = day | downcase %}
-            {% assign day_name = site.data.days[day_key] | default: day_key | upcase %}
-            {% if recurring_days_label != "" %}{% assign recurring_days_label = recurring_days_label | append: ", " %}{% endif %}
-            {% assign recurring_days_label = recurring_days_label | append: day_name %}
-          {% endfor %}
+    <h3 style="view-transition-name: {{ page_title_transition_name }};" data-event-title>{{ page.title }}</h3>
+    {% if page.starts_at %}
+      {% assign recurring_days = page.weekdays | default: page.recurrence_weekdays %}
+      {% assign recurring_days_label = "" %}
+      {% if recurring_days and recurring_days.size > 0 %}
+        {% for day in recurring_days %}
+          {% assign day_key = day | downcase %}
+          {% assign day_name = site.data.days[day_key] | default: day_key | upcase %}
+          {% if recurring_days_label != "" %}{% assign recurring_days_label = recurring_days_label | append: ", " %}{% endif %}
+          {% assign recurring_days_label = recurring_days_label | append: day_name %}
+        {% endfor %}
+      {% endif %}
+      <p>
+        {% include icons/calendar.svg %}
+        {% if page.schedule_type == "weekly" and recurring_days and recurring_days.size > 0 %}
+          EVERY {{ recurring_days_label }}
+        {% elsif page.schedule_type == "monthly" and recurring_days and recurring_days.size > 0 %}
+          FIRST {{ recurring_days_label }} OF EACH MONTH
+        {% else %}
+          {{ page.starts_at | date: "%A, %B %-d" | upcase }}
         {% endif %}
-        <p>
-          {% include icons/calendar.svg %}
-          {% if page.schedule_type == "weekly" and recurring_days and recurring_days.size > 0 %}
-            EVERY {{ recurring_days_label }}
-          {% elsif page.schedule_type == "monthly" and recurring_days and recurring_days.size > 0 %}
-            FIRST {{ recurring_days_label }} OF EACH MONTH
-          {% else %}
-            {{ page.starts_at | date: "%A, %B %-d" | upcase }}
-          {% endif %}
-        </p>
-      {% endif %}
+      </p>
+    {% endif %}
 
-      {% if page.starts_at %}
-        <p>
-          {% include icons/clock.svg %}
-          {% if page.ends_at %}
-            {{ page.starts_at | date: "%-I:%M %p" | upcase }} - {{ page.ends_at | date: "%-I:%M %p" | upcase }}
-          {% else %}
-            {{ page.starts_at | date: "%-I:%M %p" | upcase }}
-          {% endif %}
-        </p>
-      {% endif %}
+    {% if page.starts_at %}
+      <p>
+        {% include icons/clock.svg %}
+        {% if page.ends_at %}
+          {{ page.starts_at | date: "%-I:%M %p" | upcase }} - {{ page.ends_at | date: "%-I:%M %p" | upcase }}
+        {% else %}
+          {{ page.starts_at | date: "%-I:%M %p" | upcase }}
+        {% endif %}
+      </p>
+    {% endif %}
 
-      {% if page.location %}
-        <p>
-          {% include icons/location.svg %}
-          {{ page.location | upcase }}
-        </p>
+    {% if page.location %}
+      <p>
+        {% include icons/location.svg %}
+        {{ page.location | upcase }}
+      </p>
+    {% endif %}
+  </div>
+
+  {{ content }}
+
+  {% if page.category == "annual" %}
+    {% include events/annual-details.html event=page %}
+  {% endif %}
+
+  {% if page.phone %}
+    <hr>
+    <div>
+      <label>PHONE</label>
+      <p><a href="tel:{{ page.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ page.phone }}</a></p>
+    </div>
+  {% endif %}
+
+  {% if page.website %}
+    <hr>
+    <div>
+      <label>WEBSITE</label>
+      <p><a href="{{ page.website }}" target="_blank" rel="noopener noreferrer">{{ page.website }}</a></p>
+    </div>
+  {% endif %}
+
+  {% if page.email %}
+    <hr>
+    <div>
+      <label>EMAIL</label>
+      <p><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
+    </div>
+  {% endif %}
+
+  {% if page.facebook or page.instagram %}
+    <hr>
+    <div>
+      {% if page.facebook %}
+        <a href="{{ page.facebook }}" target="_blank" rel="noopener noreferrer" class="social">
+          {% include icons/socials/facebook.svg %}
+        </a>
+      {% endif %}
+      {% if page.instagram %}
+        <a href="{{ page.instagram }}" target="_blank" rel="noopener noreferrer" class="social">
+          {% include icons/socials/instagram.svg %}
+        </a>
       {% endif %}
     </div>
-    
-  </div>
-  
-  <div class="content-wrapper">
-    {{ content }}
-  
-    {% if page.category == "annual" %}
-      {% include events/annual-details.html event=page %}
-    {% endif %}
-  
-    {% if page.phone %}
-      <hr>
-      <div>
-        <label>PHONE</label>
-        <p><a href="tel:{{ page.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ page.phone }}</a></p>
-      </div>
-    {% endif %}
-  
-    {% if page.website %}
-      <hr>
-      <div>
-        <label>WEBSITE</label>
-        <p><a href="{{ page.website }}" target="_blank" rel="noopener noreferrer">{{ page.website }}</a></p>
-      </div>
-    {% endif %}
-  
-    {% if page.email %}
-      <hr>
-      <div>
-        <label>EMAIL</label>
-        <p><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
-      </div>
-    {% endif %}
-  
-    {% if page.facebook or page.instagram %}
-      <hr>
-      <div>
-        {% if page.facebook %}
-          <a href="{{ page.facebook }}" target="_blank" rel="noopener noreferrer" class="social">
-            {% include icons/socials/facebook.svg %}
-          </a>
-        {% endif %}
-        {% if page.instagram %}
-          <a href="{{ page.instagram }}" target="_blank" rel="noopener noreferrer" class="social">
-            {% include icons/socials/instagram.svg %}
-          </a>
-        {% endif %}
-      </div>
-    {% endif %}
-  </div>
+  {% endif %}
+</div>
 
 <script>
   (function() {

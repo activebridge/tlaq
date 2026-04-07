@@ -7,6 +7,11 @@ layout: default
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
+  {% assign jump_nav_links = "venues,gallery,private_events" | split: "," %}
+  {% assign jump_nav_slugs = "weddings" %}
+  {% assign jump_nav_base_url = '/weddings/' | relative_url %}
+  {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs base_url=jump_nav_base_url %}
+
   <h5 style="view-transition-name: {{ page.title | downcase | replace: ' ', '-' }};">{{ page.title }}</h5>
   <article>
     {{ content }}
