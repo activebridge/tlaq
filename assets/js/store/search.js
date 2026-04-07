@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
       cards.forEach((card) => {
         const title = card.querySelector("h3")?.textContent.toLowerCase() ?? "";
         const tags = card.dataset.tags ?? "";
-        card.classList.toggle("hidden", !!query && !title.includes(query) && !tags.includes(query));
+        const suite = card.dataset.suite ?? "";
+        card.classList.toggle("hidden", !!query && !title.includes(query) && !tags.includes(query) && !suite.includes(query));
       });
     };
 
