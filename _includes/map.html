@@ -235,6 +235,14 @@
     background: var(--cream-80);
   }
 
+  .sidebar-result-suite {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--navy-60);
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
   .sidebar-no-results {
     padding: 16px;
     font-size: 13px;
@@ -327,10 +335,17 @@
     }
   }
 
+  .map-marker-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+
+
   .map-marker {
     width: 16px;
     height: 16px;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -355,6 +370,24 @@
   .map-marker svg {
     width: 100%;
     height: 100%;
+  }
+
+  .map-marker-suite {
+    margin-top: 2px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--navy);
+    white-space: nowrap;
+    pointer-events: none;
+    line-height: 1;
+    background: var(--cream);
+    padding: 2px 5px;
+    border-radius: 4px;
+    border: 1px solid var(--navy);
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   .mapboxgl-popup-content {
@@ -397,7 +430,28 @@
     margin: 0;
     line-height: 0;
     height: 120px;
+    position: relative;
     background: color-mix(in srgb, var(--category-color, white) 80%, transparent);
+  }
+
+  .mapboxgl-popup-content .popup-suite:empty {
+    display: none;
+  }
+
+  .mapboxgl-popup-content .popup-suite {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background: var(--category-color, var(--navy));
+    color: var(--cream, #fff8f0);
+    text-transform: uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 3px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
   }
 
   .mapboxgl-popup-content figure img {
@@ -542,6 +596,7 @@
   <section>
     <figure>
       <a href="$url" target="_parent"><img src="$image" alt="$title" loading="lazy" onload="this.classList.add('loaded')"></a>
+      <span class="popup-suite">$suite</span>
     </figure>
     <h3>$icon$title</h3>
     <p class="popup-subtitle">$subtitle</p>
@@ -767,7 +822,7 @@
               lng = baseLng + SPREAD_DEG * Math.cos(angle);
               lat = baseLat + SPREAD_DEG * Math.sin(angle);
             }
-            if (storeMarkers[storeIndex]) storeMarkers[storeIndex].marker.setLngLat([lng, lat]).addTo(map);
+            if (storeMarkers[storeIndex]) { storeMarkers[storeIndex].marker.setLngLat([lng, lat]).addTo(map); }
           });
         });
 
@@ -829,7 +884,8 @@
         image: cdnImage(store.image, 200, 120) || placeholderImage,
         title: store.title, subtitle: store.subtitle, icon: icon.outerHTML,
         url: isSafeUrl(store.url) ? store.url : '#',
-        todayHours: store.hours?.[todayName] || ''
+        todayHours: store.hours?.[todayName] || '',
+        suite: store.suite || ''
       };
       return window.mapPopup.innerHTML.replace(/\$(\w+)/g, (_, key) => templateData[key] ?? '');
     };
@@ -865,16 +921,22 @@
         if (dashIndex > 0) storeIndexBySuite.set(normalized.slice(0, dashIndex), index);
       }
 
+      const wrapper = Object.assign(document.createElement('div'), { className: 'map-marker-wrapper' });
       const markerElement = Object.assign(document.createElement('div'), { className: 'map-marker' });
       markerElement.dataset.type = store.type;
       const iconNode = getIconByType(store.type);
       const svgNode = iconNode.querySelector('svg');
       markerElement.appendChild(svgNode || iconNode);
+      wrapper.appendChild(markerElement);
+      if (store.suite) {
+        const suiteLabel = Object.assign(document.createElement('span'), { className: 'map-marker-suite', textContent: store.suite });
+        wrapper.appendChild(suiteLabel);
+      }
 
       const initialCoords = markerCoords(store);
-      const marker = new mapboxgl.Marker({ element: markerElement })
+      const marker = new mapboxgl.Marker({ element: wrapper, anchor: 'top' })
         .setPopup(createPopup(store));
-      if (initialCoords && !isNaN(initialCoords[0])) marker.setLngLat(initialCoords).addTo(map);
+      if (initialCoords && !isNaN(initialCoords[0])) { marker.setLngLat(initialCoords).addTo(map); }
       marker.getElement().addEventListener('click', (event) => { event.stopPropagation(); focusStore(index); });
       storeMarkers.push({ marker, type: store.type });
     });
@@ -910,7 +972,8 @@
       listItem.setAttribute('role', 'option');
       if (categoryColors[store.type]) listItem.style.setProperty('--cat-color', categoryColors[store.type]);
       listItem.appendChild(getIconByType(store.type));
-      listItem.appendChild(Object.assign(document.createElement('span'), { textContent: store.title }));
+      listItem.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-title', textContent: store.title }));
+      if (store.suite) listItem.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-suite', textContent: store.suite }));
       listItem.addEventListener('click', () => {
         if (mobileQuery.matches && !mapSidebar.classList.contains('collapsed')) {
           mapSidebar.classList.add('collapsed');
@@ -991,7 +1054,7 @@
       if (!query) { applyTypeFilter(null); showCategoryView(); return; }
       const matchingIndices = new Set();
       const matchingList = stores.reduce((indices, store, i) => {
-        if (store.title.toLowerCase().includes(query)) { matchingIndices.add(i); indices.push(i); }
+        if (store.title.toLowerCase().includes(query) || (store.suite && store.suite.toLowerCase().includes(query))) { matchingIndices.add(i); indices.push(i); }
         return indices;
       }, []);
       showStoreList(matchingList);
@@ -1005,19 +1068,23 @@
     });
 
     // Dynamic marker sizing based on zoom level
+    const SUITE_LABEL_MIN_ZOOM = 18.79;
     map.once('idle', () => {
       const baseZoom = map.getZoom();
-      const svgMarkers = document.querySelectorAll('.map-marker:has(svg)');
-      const emojiMarkers = document.querySelectorAll('.map-marker:not(:has(svg))');
-      map.on('zoom', () => {
-        const scale = 1 + (map.getZoom() - baseZoom) * 0.35; // 0.35 — growth rate per zoom level
+      const applyMarkerScale = () => {
+        const currentZoom = map.getZoom();
+        const scale = 1 + (currentZoom - baseZoom) * 0.35; // 0.35 — growth rate per zoom level
         const svgSize = 12 * scale + 'px';     // 12px — store icon base size
         const emojiSize = 16 * scale + 'px';   // 16px — emoji base size
         const pad = 2 * scale + 'px';          // 2px  — white circle padding
-        svgMarkers.forEach(el => { el.style.width = svgSize; el.style.height = svgSize; el.style.padding = pad; });
+        document.querySelectorAll('.map-marker:has(svg)').forEach(el => { el.style.width = svgSize; el.style.height = svgSize; el.style.padding = pad; });
         const parkingSize = 10 * scale + 'px'; // 10px — parking emoji base size (smaller)
-        emojiMarkers.forEach(el => { el.style.fontSize = el.dataset.feature === 'parking' ? parkingSize : emojiSize; });
-      });
+        document.querySelectorAll('.map-marker:not(:has(svg))').forEach(el => { el.style.fontSize = el.dataset.feature === 'parking' ? parkingSize : emojiSize; });
+        const showSuites = currentZoom >= SUITE_LABEL_MIN_ZOOM;
+        document.querySelectorAll('.map-marker-suite').forEach(el => { el.style.opacity = showSuites ? '1' : '0'; });
+      };
+      applyMarkerScale();
+      map.on('zoom', applyMarkerScale);
     });
   }
 </script>
