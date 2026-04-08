@@ -1,0 +1,52 @@
+---
+layout: default
+title: Newsletter
+permalink: /newsletter
+layout_type: page
+---
+
+{% assign nl = site.data.newsletter %}
+{% assign image_path = nl.hero_image %}
+{% assign transition-name = "newsletter" %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+<div class="content-wrapper">
+  <h5 title>{{ nl.eyebrow }}</h5>
+  <h2>{{ nl.title }}</h2>
+  <h6>{{ nl.description }}</h6>
+  <p><small>{{ nl.required_note }}</small></p>
+
+  <form id="subscribeForm"
+    data-success="{{ nl.success }}"
+    data-error="{{ nl.error }}">
+
+    <input type="text" name="first_name" placeholder="{{ nl.first_name }} *" required>
+    <input type="text" name="last_name" placeholder="{{ nl.last_name }} *" required>
+    <input type="email" name="email" placeholder="{{ nl.email }} *" required>
+    <input type="text" name="country" placeholder="{{ nl.country }} *" required>
+
+    <fieldset>
+      <legend>{{ nl.consent_privacy | raw }}</legend>
+      <label><input type="checkbox" name="consent_privacy" required> YES</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>{{ nl.consent_emails | raw }}</legend>
+      <label><input type="checkbox" name="consent_emails" required> YES</label>
+    </fieldset>
+
+    <p id="subscribeMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
+    <button id="subscribeBtn" class="btn btn-primary" type="submit">{{ nl.submit }}</button>
+  </form>
+</div>
+
+<script>
+  function show(ok){subscribeMsg.textContent=subscribeForm.dataset[ok?"success":"error"];if(!ok){subscribeMsg.setAttribute("data-error","");}subscribeBtn.disabled=false;subscribeMsg.removeAttribute("aria-hidden");}
+  subscribeForm.addEventListener("submit",function(e){
+    e.preventDefault();
+    subscribeBtn.disabled=true;subscribeMsg.setAttribute("aria-hidden","true");subscribeMsg.removeAttribute("data-error");
+    fetch("https://tlaq-contacts.pwt.workers.dev/",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(subscribeForm)))})
+      .then(function(r){if(r.ok)subscribeForm.reset();show(r.ok);})
+      .catch(function(){show(false);});
+  });
+</script>
