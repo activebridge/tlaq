@@ -7,8 +7,11 @@ monthly_calendar: Monthly Calendar
 # Jump to links
 jump_to_links:
   calendar:
-    text: CALENDAR
+    text: MONTHLY CALENDAR
     id: "#calendar"
+  annual_events:
+    text: ANNUAL EVENTS
+    id: "#annual-events"
 
 # Buttons
 buttons:

@@ -16,12 +16,12 @@ layout: default
     <h6>{{ site.data.events.description }}</h6>
   </hgroup>
 
-  {% assign jump_nav_links = "calendar" | split: "," %}
+  {% assign jump_nav_links = "annual_events,calendar" | split: "," %}
   {% assign jump_nav_slugs = "events" %}
   {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
 
   <article>
-    <div class="list-container">
+    <div class="list-container" id="annual-events">
       {% assign annual_events = site.events | where: "schedule_type", "yearly" | sort: "starts_at" %}
       {% for event in annual_events %}
         {% include events/card.html event=event %}
