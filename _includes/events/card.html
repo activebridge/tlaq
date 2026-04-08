@@ -8,7 +8,7 @@
   {% else %}
     <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ event.title }}" style="view-transition-name: {{ event_image_transition_name }};" data-event-image>
   {% endif %}
-  <h3 style="view-transition-name: {{ event_title_transition_name }};" data-event-title>{{ event.title }}</h3>
+  <h5 style="view-transition-name: {{ event_title_transition_name }};" data-event-title>{{ event.title }}</h5>
   {% if event.subtitle %}<p>{{ event.subtitle }}</p>{% endif %}
   {% if event.starts_at and event.ends_at %}
     <div class="datetime">

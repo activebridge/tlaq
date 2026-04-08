@@ -11,7 +11,7 @@ layout: default
 
   <div class="top-section">
     <div class="content-wrapper">
-      <h3 style="view-transition-name: {{ page_title_transition_name }};" data-event-title>{{ page.title }}</h3>
+      <h5 style="view-transition-name: {{ page_title_transition_name }};" data-event-title>{{ page.title }}</h5>
       {% if page.starts_at %}
         {% assign recurring_days = page.weekdays | default: page.recurrence_weekdays %}
         {% assign recurring_days_label = "" %}
