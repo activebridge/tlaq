@@ -20,7 +20,7 @@ permalink: /admin/showcase
 
   .showcase-nav {
     position: sticky;
-    top: calc(var(--header-height) + 4rem);
+    top: calc(var(--header-height) + var(--header-status-height) + 3rem);
     align-self: flex-start;
     width: 180px;
     flex-shrink: 0;
@@ -214,6 +214,7 @@ permalink: /admin/showcase
       <li><a href="#store-search">Store Search</a></li>
       <li><a href="#store-cards">Store Cards</a></li>
       <li><a href="#store-hours">Store Hours</a></li>
+      <li><a href="#forms">Forms</a></li>
       <li><a href="#calendar">Calendar Items</a></li>
       <li><a href="#map">Map</a></li>
     </ul>
@@ -551,6 +552,30 @@ permalink: /admin/showcase
         </ul>
       </div>
     </div>
+  </div>
+
+  <!-- Forms -->
+  <div class="showcase-section" id="forms">
+    <h2>Forms</h2>
+
+    <p class="showcase-label">Text Inputs <span class="showcase-tag">input[type="text"] / input[type="email"]</span></p>
+    <form>
+      <input type="text" placeholder="FIRST NAME *">
+      <input type="email" placeholder="EMAIL *">
+    </form>
+
+    <p class="showcase-label">Checkbox Fieldset <span class="showcase-tag">fieldset + legend + label</span></p>
+    <form>
+      <fieldset>
+        <legend>I agree to Tlaquepaque Arts and Shopping Village <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a></legend>
+        <label><input type="checkbox"> YES</label>
+      </fieldset>
+      <fieldset>
+        <legend>Yes, I would like to receive emails from Tlaquepaque Arts and Shopping Village</legend>
+        <label><input type="checkbox"> YES</label>
+      </fieldset>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
   </div>
 
   <!-- Calendar Items -->

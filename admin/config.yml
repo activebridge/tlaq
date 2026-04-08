@@ -718,6 +718,24 @@ collections:
               - { label: "Guests", name: "guests", widget: "string" }
               - { label: "Budget", name: "budget", widget: "string" }
           - { label: "Submit Button", name: "submit_button", widget: "string" }
+      - name: "newsletter"
+        label: "Newsletter"
+        file: "_data/newsletter.yml"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Required Note", name: "required_note", widget: "string" }
+          - { label: "First Name Placeholder", name: "first_name", widget: "string" }
+          - { label: "Last Name Placeholder", name: "last_name", widget: "string" }
+          - { label: "Email Placeholder", name: "email", widget: "string" }
+          - { label: "Country Placeholder", name: "country", widget: "string" }
+          - { label: "Privacy Consent Label", name: "consent_privacy", widget: "string" }
+          - { label: "Email Consent Label", name: "consent_emails", widget: "string" }
+          - { label: "Submit Button", name: "submit", widget: "string" }
+          - { label: "Success Message", name: "success", widget: "string" }
+          - { label: "Error Message", name: "error", widget: "string" }
+          - { label: "Hero Image", name: "hero_image", widget: "image" }
       - name: "magazines"
         label: "Magazines"
         file: "_data/magazines.yml"
@@ -775,7 +793,7 @@ collections:
               - { label: "Email", name: "email", widget: "string" }
               - { label: "Street Address", name: "street_address", widget: "string" }
               - { label: "Mail Address", name: "mail_address", widget: "string" }
-              - { label: "Join Text", name: "join", widget: "text" }
+              - { label: "Subscribe Button", name: "subscribe_button", widget: "string" }
               - { label: "Magazine Alt Text", name: "magazine_alt", widget: "string" }
           - { label: "Directions URL", name: "directions_url", widget: "string" }
           - { label: "Weather URL", name: "weather_url", widget: "string" }

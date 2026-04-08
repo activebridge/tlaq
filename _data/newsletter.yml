@@ -1,0 +1,14 @@
+eyebrow: Newsletter
+title: Join our community
+description: Sign up to receive the latest news about Tlaquepaque Arts and Shopping Village!
+required_note: (* Indicates required field)
+first_name: First Name
+last_name: Last Name
+email: Email
+country: Country
+consent_privacy: "I agree to Tlaquepaque Arts and Shopping Village <a href='/privacy-policy/'>Privacy Policy</a> and <a href='/terms-and-conditions/'>Terms of Use</a> *"
+consent_emails: "Yes, I would like to receive emails from Tlaquepaque Arts and Shopping Village *"
+submit: Submit
+success: "Thank you! You're on the list."
+error: "Something went wrong. Please try again."
+hero_image: assets/images/newsletter/newsletter.webp
