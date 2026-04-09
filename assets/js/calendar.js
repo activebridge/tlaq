@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const container = window.calendarItems;
   const dataNode = window.calendarEventsData;
   if (!select || !container || !dataNode) return;
+  const limit = parseInt(container.dataset.limit, 10) || 0;
   const DAY_NAMES = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
   const WEEKDAY_INDEX = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
   const MAX_DAYS = 730;
@@ -209,7 +210,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function renderByMonth(allOccurrences, monthKey) {
-    const visible = allOccurrences.filter((item) => !monthKey || toMonthKey(item.start) === monthKey);
+    let visible = allOccurrences.filter((item) => !monthKey || toMonthKey(item.start) === monthKey);
+    if (limit) visible = visible.slice(0, limit);
     container.innerHTML = visible.map(renderOccurrence).join('');
   }
 
