@@ -1,24 +1,87 @@
-<article id="events">
+<article id="events" class="private-events">
   <h5>{{ site.data.weddings.events.title }}</h5>
-  <picture>
-    <source
-      media="(max-width: 480px)"
-      srcset="{{ site.data.weddings.events.image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-    >
-    <source
-      media="(max-width: 768px)"
-      srcset="{{ site.data.weddings.events.image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-    >
-    <source
-      media="(min-width: 768px)"
-      srcset="{{ site.data.weddings.events.image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-    >
-    <img
-      src="{{ site.data.weddings.events.image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-      alt="{{ site.data.weddings.events.title }}"
-      onerror="imageError(this)"
-    >
-  </picture>
+
+  {% assign slides = site.data.weddings.events.images %}
+  {% assign slide_count = slides.size %}
+  {% assign total_slides = slide_count | times: 2 %}
+
+  <div class="events-slideshow">
+    <div class="events-barrier">
+      <div class="events-track" id="eventsTrack" style="--count: {{ slide_count }}; --slides: {{ total_slides }}; --duration-per-slide: 4s;">
+
+        {% for image in slides %}
+          <picture class="events-slide">
+            <source
+              media="(max-width: 480px)"
+              srcset="{{ image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+            >
+            <source
+              media="(max-width: 768px)"
+              srcset="{{ image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+            >
+            <source
+              media="(min-width: 768px)"
+              srcset="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+            >
+            <img
+              src="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+              alt="{{ site.data.weddings.events.title }}"
+              onerror="imageError(this)"
+            >
+          </picture>
+        {% endfor %}
+        {% for image in slides %}
+          <picture class="events-slide" aria-hidden="true">
+            <source
+              media="(max-width: 480px)"
+              srcset="{{ image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+            >
+            <source
+              media="(max-width: 768px)"
+              srcset="{{ image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+            >
+            <source
+              media="(min-width: 768px)"
+              srcset="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+            >
+            <img
+              src="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+              alt=""
+              onerror="imageError(this)"
+            >
+          </picture>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
   <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.weddings.buttons.inquiry_submit }}</a>
   <a href="{{ site.data.weddings.events.brochure_url }}" target="_blank" class="btn btn-primary">{{ site.data.weddings.buttons.download_brochure }}</a>
 </article>
+
+<!-- Small script to dynamically calculate the animation keyframes for the events slideshow -->
+
+<script>
+  (() => {
+    const track = window.eventsTrack;
+    const slideCount = +track.style.getPropertyValue('--count');
+    if (slideCount < 2) return;
+
+    const sec = parseFloat(track.style.getPropertyValue('--duration-per-slide')) || 4;
+    const seg = 1 / slideCount, hold = 0.75, step = 50 / slideCount;
+    const keyframes = Array.from({ length: slideCount }, (_, i) => {
+      const start = i * seg, end = (i + 1) * seg, shift = i * step, next = (i + 1) * step;
+      return [
+        { offset: start, transform: `translateX(-${shift}%)` },
+        { offset: start + seg * hold, transform: `translateX(-${shift}%)` },
+        { offset: end, transform: `translateX(-${next}%)` }
+      ];
+    }).flat();
+
+    track.style.animation = 'none';
+    track.animate(keyframes, {
+      duration: slideCount * sec * 1000,
+      iterations: Infinity,
+      easing: 'linear'
+    });
+  })();
+</script>
