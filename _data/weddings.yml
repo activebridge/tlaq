@@ -17,7 +17,14 @@ brochure:
 events:
   title: CORPORATE & PRIVATE EVENTS
   description: Host memorable gatherings—from awards dinners and executive retreats to milestone birthdays, anniversaries, and private celebrations—set within our iconic courtyards and other venues beneath the sycamore trees.
-  image: "/assets/images/weddings/events.webp"
+  images:
+    - "/assets/images/weddings/event_1.webp"
+    - "/assets/images/weddings/event_2.webp"
+    - "/assets/images/weddings/event_3.webp"
+    - "/assets/images/weddings/event_4.webp"
+    - "/assets/images/weddings/event_5.webp"
+    - "/assets/images/weddings/event_6.webp"
+    - "/assets/images/weddings/event_7.webp"
   brochure_url: "https://irp.cdn-website.com/164890e9/files/uploaded/Tlaq_Wedding_Brochure_062625_R.pdf"
 
 # Buttons
