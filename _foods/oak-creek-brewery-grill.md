@@ -3,9 +3,12 @@ slug: oak-creek-brewery-grill
 date: 2026-02-22
 published: true
 tags:
-  - american
-  - brewery
   - food
+  - brewery
+  - beer
+  - american food
+  - restaurant
+  - grill
 title: Oak Creek Brewery & Grill
 subtitle: American grill, premium beers brewed on site
 image: "assets/images/foods/oak-creek-brewery-grill.webp"

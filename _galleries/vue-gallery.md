@@ -3,9 +3,10 @@ slug: vue-gallery
 date: 2026-02-22
 published: true
 tags:
-  - painting
-  - sculpture
   - gallery
+  - contemporary art
+  - sculpture
+  - outdoor art
 title: Vue
 subtitle: Local & international contemporary fine art & sculpture garden alongside Oak Creek
 suite: e101

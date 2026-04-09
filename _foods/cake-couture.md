@@ -3,8 +3,12 @@ slug: cake-couture
 date: 2026-02-22
 published: true
 tags:
-  - dessert
   - food
+  - desserts
+  - cake
+  - bakery
+  - coffee
+  - sweets
 title: Sedona Cake Couture
 subtitle: Fine dessert and coffee
 suite: a114

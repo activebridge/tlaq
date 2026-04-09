@@ -5,9 +5,11 @@ published: true
 title: True West Hats
 subtitle: A custom hat experience with heirloom craftsmanship and handmade goods
 tags:
-  - hats
-  - clothing
   - shop
+  - hats
+  - western wear
+  - custom hats
+  - accessories
 suite: a204
 phone: (928) 549-0513
 website: https://truewesthats.com/

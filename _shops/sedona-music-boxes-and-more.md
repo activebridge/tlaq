@@ -3,8 +3,12 @@ slug: sedona-music-boxes-and-more
 date: 2026-02-22
 published: true
 tags:
-  - gifts
   - shop
+  - music boxes
+  - gifts
+  - collectibles
+  - music
+  - souvenirs
 title: Sedona Music Boxes & More
 subtitle: Music boxes & other musical gift & collectible items
 suite: a209

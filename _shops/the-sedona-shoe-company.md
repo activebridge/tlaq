@@ -3,8 +3,11 @@ slug: the-sedona-shoe-company
 date: 2026-02-22
 published: true
 tags:
-  - shoes
   - shop
+  - shoes
+  - women's shoes
+  - footwear
+  - fashion
 title: The Sedona Shoe Company
 subtitle: Stylish women's shoes "from cobblestones to cocktails"
 suite: b107

@@ -3,8 +3,12 @@ slug: el-rincon-mexican-restaurante
 date: 2026-02-22
 published: true
 tags:
-  - mexican
   - food
+  - mexican food
+  - restaurant
+  - margaritas
+  - lunch
+  - dinner
 title: El Rincon Mexican Restaurante
 subtitle: Arizona-style Mexican cuisine, Sedona's margaritas
 suite: a112

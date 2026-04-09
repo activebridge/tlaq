@@ -3,8 +3,11 @@ slug: cream-handmade-ice-cream
 date: 2026-02-22
 published: true
 tags:
-  - ice cream
   - food
+  - ice cream
+  - dessert
+  - coffee
+  - sweets
 title: CREAM Handmade Ice Cream
 subtitle: Ice Cream, shakes, artisan waffle cones, sundaes and splits
 suite: a11
