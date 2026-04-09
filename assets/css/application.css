@@ -434,7 +434,8 @@ nav#mobile {
     padding: 0.9rem 2.5rem;
     width: 100%;
     gap: 0.9rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--cream) 65%, transparent);
+    border-bottom: 1px solid var(--cream-60);
+    border-image: linear-gradient(to right, transparent 2.5rem, var(--cream-60) 2.5rem, var(--cream-60) calc(100% - 2.5rem), transparent calc(100% - 2.5rem)) 1;
     box-sizing: border-box;
 
     svg:first-of-type {
@@ -512,6 +513,7 @@ nav#mobile {
   nav#mobile-submenu-content a {
     font-weight: 500;
     padding-left: 3.5rem;
+    border-image: linear-gradient(to right, transparent 3.5rem, var(--cream-60) 3.5rem, var(--cream-60) calc(100% - 2.5rem), transparent calc(100% - 2.5rem)) 1;
   }
 
   nav#mobile-submenu-content a:last-child {
@@ -521,6 +523,27 @@ nav#mobile {
   > a[aria-current="page"] {
     border-left: 4px solid var(--cream);
     padding-left: calc(2.5rem - 4px);
+  }
+
+  a:has(+ a.weddings-private)::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -7px;
+    left: 0;
+    right: 0;
+    height: 0;
+    border-bottom: 3px solid var(--cream-60);
+    margin: 0 2.4rem;
+    padding-top: 3px;
+  }
+
+  a.weddings-private {
+    color: var(--pink-light);
+    border-bottom: none;
+    height: 6rem;
+
+    svg { fill: var(--pink-light); }
   }
 }
 

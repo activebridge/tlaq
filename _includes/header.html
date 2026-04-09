@@ -81,23 +81,22 @@
       {% include icons/caret_down.svg %}
     </label>
     <nav id="mobile-submenu-content" aria-label="Visit pages">
-      <a href="{{ '/' | relative_url }}">{% include icons/windows/tlaq.svg %} Main</a>
       <a href="{{ '/hours' | relative_url }}">{% include icons/windows/tlaq.svg %} Hours</a>
       <a href="{{ '/locations' | relative_url }}">{% include icons/windows/tlaq.svg %} Locations</a>
       <a href="{{ '/parking' | relative_url }}">{% include icons/windows/tlaq.svg %} Parking</a>
-      <a href="{{ '/village_map' | relative_url }}">{% include icons/windows/tlaq.svg %} Village Map</a>
       <a href="{{ '/accessibility' | relative_url }}">{% include icons/windows/tlaq.svg %} Accessibility</a>
       <a href="{{ '/family_and_pet' | relative_url }}">{% include icons/windows/tlaq.svg %} Family &amp; Pet</a>
       <a href="{{ '/gift-cards' | relative_url }}">{% include icons/windows/tlaq.svg %} Gift Cards</a>
       <a href="{{ '/history' | relative_url }}">{% include icons/windows/tlaq.svg %} History</a>
       <a href="{{ '/news/' | relative_url }}">{% include icons/windows/tlaq.svg %} News</a>
-      <a href="{{ '/contacts' | relative_url }}">{% include icons/windows/tlaq.svg %} Contact Us</a>
     </nav>
+    <a href="{{ '/village_map' | relative_url }}"{% if page.url contains '/village_map' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} Village Map</a>
     <a href="/shops/"{% if page.url contains '/shops/' %} aria-current="page"{% endif %}>{% include icons/windows/shops.svg %} Shops</a>
     <a href="/galleries/"{% if page.url contains '/galleries/' %} aria-current="page"{% endif %}>{% include icons/windows/galleries.svg %} Galleries</a>
-    <a href="/foods/"{% if page.url contains '/foods/' %} aria-current="page"{% endif %}>{% include icons/windows/foods.svg %} Foods</a>
+    <a href="/foods/"{% if page.url contains '/foods/' %} aria-current="page"{% endif %}>{% include icons/windows/foods.svg %} Food</a>
     <a href="/events/"{% if page.url contains '/events/' %} aria-current="page"{% endif %}>{% include icons/windows/events.svg %} Events</a>
-    <a href="/weddings"{% if page.url contains '/weddings' %} aria-current="page"{% endif %}>{% include icons/windows/weddings.svg %} Weddings</a>
-    <a href="{{ '/contacts' | relative_url }}">{% include icons/windows/events.svg %} Contact Us</a>
+    <a href="{{ '/about' | relative_url }}"{% if page.url contains '/about' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} About</a>
+    <a href="{{ '/contacts' | relative_url }}">{% include icons/windows/tlaq.svg %} Contact Us</a>
+    <a href="/weddings" class="weddings-private"{% if page.url contains '/weddings' %} aria-current="page"{% endif %}>{% include icons/windows/weddings.svg %} Weddings &amp; Private Events</a>
   </nav>
 </header>
