@@ -3,8 +3,12 @@ slug: secret-garden-cafe
 date: 2026-02-22
 published: true
 tags:
-  - cafe
   - food
+  - cafe
+  - breakfast
+  - lunch
+  - organic food
+  - outdoor dining
 title: Secret Garden Cafe
 subtitle: Garden setting, featuring organic produce & wines, all natural meats, gourmet salads & sandwiches
 suite: f101

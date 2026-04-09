@@ -3,9 +3,11 @@ slug: creative-gateways
 date: 2026-02-24
 published: true
 tags:
-  - glass
-  - jewelry
   - gallery
+  - glass art
+  - art gallery
+  - wearable art
+  - home decor
 title: Creative Gateways Gallery
 subtitle: Contemporary art glass, interior accessories & wearable art
 suite: b125

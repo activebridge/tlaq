@@ -3,9 +3,10 @@ slug: renee-taylor-gallery
 date: 2026-02-22
 published: true
 tags:
-  - painting
-  - jewelry
   - gallery
+  - contemporary art
+  - fine art
+  - jewelry
 title: Renee Taylor Gallery
 subtitle: Original contemporary fine art & jewelry
 suite: b124

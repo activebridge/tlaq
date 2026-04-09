@@ -3,9 +3,11 @@ slug: azadi-navajo-rugs
 date: 2026-02-22
 published: true
 tags:
-  - rugs
-  - native american art
   - gallery
+  - navajo rugs
+  - textiles
+  - handmade rugs
+  - southwestern
 title: Azadi Navajo Rugs
 subtitle: Exquisite array of handwoven Navajo textiles
 suite: b123

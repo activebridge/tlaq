@@ -3,9 +3,10 @@ slug: rowe-gallery
 date: 2026-02-22
 published: true
 tags:
-  - painting
-  - sculpture
   - gallery
+  - western art
+  - paintings
+  - sculpture
 title: Rowe Gallery
 subtitle: Traditional & contemporary western & wildlife paintings & sculptures
 suite: a102-3

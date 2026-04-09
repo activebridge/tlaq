@@ -3,8 +3,11 @@ slug: quilts-ltd-gallery
 date: 2026-02-22
 published: true
 tags:
-  - textile
   - gallery
+  - quilts
+  - fiber art
+  - wearable art
+  - textiles
 title: Quilts Ltd. Gallery
 subtitle: Premier fiber gallery featuring collectible wearable art & quilts by Arizona artists
 suite: b105
