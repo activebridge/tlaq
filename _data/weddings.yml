@@ -32,7 +32,7 @@ buttons:
 # Jump to links
 jump_to_links:
   venues:
-    text: VENUES
+    text: BROCHURE
     id: "#venues"
   gallery:
     text: INSPIRATION
@@ -40,6 +40,9 @@ jump_to_links:
   private_events:
     text: PRIVATE EVENTS
     id: "#events"
+  connect:
+    text: CONNECT
+    id: "#connect"
 
 # Site Plan
 site_plan:
