@@ -2,7 +2,7 @@
   <div class="calendar-filter">
     <select class="calendar-select" id="calendarSelect" aria-label="Filter events by month"></select>
   </div>
-  <div class="calendar-items" id="calendarItems"></div>
+  <div class="calendar-items" id="calendarItems"{% if include.limit %} data-limit="{{ include.limit }}"{% endif %}></div>
 </div>
 
 <script type="application/json" id="calendarEventsData">
