@@ -591,8 +591,14 @@ nav#mobile {
       inset: 0;
       background: var(--category-overlay);
       z-index: 1;
-      mix-blend-mode: hue;
       transition: opacity 500ms ease;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
     }
 
     h5, p {
@@ -605,8 +611,10 @@ nav#mobile {
     }
 
     p {
-      font-size: clamp(16px, 2.2vw, 25px);
+      font-size: clamp(14px, 1.8vw, 22px);
       font-weight: 500;
+      overflow: hidden;
+      line-clamp: 2;
     }
 
     &:hover,
@@ -638,11 +646,11 @@ nav#mobile {
     &.foods-link    { --bg-color: var(--orange);  --category-overlay: var(--orange-40); }
     &.events-link   { --bg-color: var(--purple);  --category-overlay: var(--purple-40); }
     &.weddings-link {
-      --bg-color: var(--pink);
-      --category-overlay: var(--pink-40);
+      --bg-color: var(--pink-light);
+      --category-overlay: color-mix(in srgb, var(--pink-light) 40%, transparent);
       h5 { background: none; padding: 0; }
     }
-    &.village-map-link { --bg-color: var(--navy); --category-overlay: var(--navy-80); }
+    &.village-map-link { --bg-color: var(--navy-80); --category-overlay: var(--navy-40); }
   }
 }
 
