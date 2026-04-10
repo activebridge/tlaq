@@ -1170,7 +1170,7 @@ footer {
   }
 
   .site-plan {
-    img { mix-blend-mode: multiply; }
+    picture { mix-blend-mode: multiply; }
   }
 }
 
