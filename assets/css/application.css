@@ -101,12 +101,9 @@ h1 {
   z-index: 1;
 }
 
-h2, h3, h4 {
-  margin: 0.5rem 0;
-}
-
-h5, h6 {
-  margin: 0.5rem 0;
+hgroup {
+  display: grid;
+  gap: 1.25rem;
 }
 
 h5 {
@@ -115,7 +112,6 @@ h5 {
   gap: 0.725rem;
   display: flex;
   align-items: flex-start;
-  margin: 0.75rem 0;
 
   svg {
     width: clamp(20px, 2.2vw, 30px);
@@ -124,7 +120,6 @@ h5 {
 }
 
 p {
-  margin: 0.75rem 0;
   text-wrap: pretty;
   font-weight: 400;
 }
@@ -658,12 +653,6 @@ nav#mobile {
   height: 50dvh;
 }
 
-/* FIRST SECTION */
-hgroup {
-  display: grid;
-  padding: clamp(0.6rem, 3.5vw, 2rem) 0;
-}
-
 /* PAGE JUMP NAV */
 .header-jump {
   position: sticky;
@@ -683,7 +672,7 @@ hgroup {
     overflow: scroll;
     gap: 10px;
   }
-  
+
   .jump-to {
     white-space: nowrap;
     position: sticky;
@@ -691,7 +680,7 @@ hgroup {
     z-index: 1;
     background: var(--bg);
   }
-  
+
   a { white-space: nowrap }
   hr { margin: 0 }
 }
@@ -708,17 +697,16 @@ hgroup {
 
 /* LIST CONTAINER */
 .list-container {
-  padding: 0.75rem 0 0 0;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  margin: 2rem 0;
 
   .card {
     display: flex;
     flex-direction: column;
     max-width: 678px;
+    gap: 1.25rem;
 
     p, .card-media {
       margin-top: auto;
@@ -761,9 +749,7 @@ hgroup {
   }
 
   @media only screen and (min-width: 1024px) {
-    .card {
-      width: 678px;
-    }
+    .card { width: 678px; }
   }
 }
 
@@ -774,10 +760,6 @@ article {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-
-  h2, h5, h6, p { margin: 0; }
-
-  /* h5 { margin-bottom: clamp(0rem, 2vw, 1rem); } */
 
   .btn:not(.btn-primary) {
     background: var(--navy);
@@ -817,8 +799,6 @@ article {
 
 
   &#whats-new {
-    gap: 0.75rem;
-
     img { margin-bottom: 0.75rem; }
 
     >div:first-of-type {
@@ -886,9 +866,7 @@ article {
       gap: 1.5rem;
 
 
-      a.btn {
-        flex: 1;
-      }
+      a.btn { flex: 1; }
     }
   }
 
@@ -908,9 +886,7 @@ article {
         height: 100%;
         object-fit: cover;
 
-        &:first-child {
-          grid-row: 1 / -1;
-        }
+        &:first-child { grid-row: 1 / -1; }
       }
     }
 
@@ -948,15 +924,11 @@ article {
       align-items: stretch;
       padding: 0;
 
-      .btn {
-        width: 100%;
-      }
+      .btn { width: 100%; }
     }
 
     &#whats-new {
-      &>div:last-of-type {
-        display: none;
-      }
+      &>div:last-of-type { display: none; }
     }
 
     &#filming>img,
@@ -971,20 +943,12 @@ article {
         flex-direction: column;
         align-items: stretch;
 
-        .btn {
-          width: 100%;
-        }
+        .btn { width: 100%; }
       }
     }
 
     &#magazine {
-      figure {
-        padding: 2rem;
-
-        img {
-          width: 100%;
-        }
-      }
+      figure img { width: 100%; }
     }
 
     &#weddings {
@@ -1038,9 +1002,7 @@ article {
   margin: 0;
   margin-right: 1.5rem;
 
-  svg {
-    fill: var(--cream);
-  }
+  svg { fill: var(--cream); }
 }
 
 /* FOOTER */
@@ -1420,7 +1382,6 @@ input[type="search"] {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(clamp(320px, 33vw, 450px), 1fr));
   gap: 1.5rem;
-  padding-bottom: 3.25rem;
 
   a {
     display: flex;
