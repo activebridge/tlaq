@@ -4,26 +4,27 @@ date: 2026-02-25
 title: Terrace at Patio del Norte
 subtitle: This elegant, stuccoed terrace offers partial and seasonal views if the Red Rocks.
 image: "assets/images/weddings/terrace-at-patio-del-norte.webp"
+intro:
+  subtitle: Elegant, stuccoed terrace offers partial and seasonal views of the Red Rocks.
+  description: Situated above Patio del Norte with its hand-carved wooden doors, tiled fountain, beautiful plantings, and stately trees, festivities here feel like those held on the terrace of a grand Spanish hacienda.
+site_plan: "assets/images/weddings/terrace-at-patio-del-norte/site-plan.webp"
 ---
 
-###### A private venue, this elegant stuccoed terrace offers breathtaking views of the Red Rock Mountains. Situated above our renowned Patio del Norte with its regal hand carved wooden doors, tiled fountains, beautiful plantings, and stately trees, holding your festivities here will feel like you are celebrating on the Terrace of a grand Spanish hacienda.
-
+![`ceremony`](/assets/images/weddings/terrace-at-patio-del-norte/ceremony.webp)
 ### Ceremony
-- 90 MINUTES/ 5-6:30 p.m. or 7-8:30 P.M.
-- On site custodian to ensure privacy and assist you with any issues.
-- The Wedding Peal-special ringing of the chapel bells following the ceremony.
-- Officiant, additions decor, sound systems.
+###### The perfect private location, the Terrace is ideal for an outdoor wedding ceremony overlooking the village.
+- 5:30-7 P.M. (Setup 4-5:30 P.M.)
+- Up to 100 Seated Guests
+- Venue space and overhead portofino string lights
 
-### COCKTAILS
-- 60 MINUTES AFTER 5 P. M.
-- Venue Space.
-- Overhead Portofino String Lights.
-- Outdoor heaters available for rent
+![`event`](/assets/images/weddings/terrace-at-patio-del-norte/event.webp)
+### Welcome Event
+###### The Terrace is a private, elegant location to welcome guests to your wedding event or weekend festivities.
+- After 6 P.M. / 60 minutes
+- Up to 80 Standing Guests
 
+![`event`](/assets/images/weddings/terrace-at-patio-del-norte/reception.webp)
 ### RECEPTION
-- 5 HOURS AFTER 6:30 P. M.
-- Venue Space.
-- Overhead Portofino String Lights.
-- Outdoor heaters available for rent
-
-![`terrace`](/assets/images/weddings/terrace-at-patio-del-norte/terrace.webp)
+###### Plan an intimate, post-wedding reception on the Terrace.
+- 7-11 P.M. (Setup 4-7 P.M.)
+- Up to 60 Seated Guests

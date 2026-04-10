@@ -7,12 +7,22 @@ layout: default
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
-  <h5 style="view-transition-name: {{ page.title | downcase | replace: ' ', '-' }};">{{ page.title }}</h5>
+  <hgroup>
+    <h5 style="view-transition-name: {{ page.title | downcase | replace: ' ', '-' }};">{{ page.title }}</h5>
+    <h2>{{ page.intro.subtitle }}</h2>
+    <h6>{{ page.intro.description }}</h6>
+  </hgroup>
+
+  {% assign jump_nav_links = site.weddings | where_exp: "item", "item.slug != page.slug" | map: "slug" %}
+  {% assign jump_nav_slugs = "weddings" %}
+  {% assign jump_nav_base_url = '/weddings/'%}
+  {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs base_url=jump_nav_base_url %}
+
   <article>
     {{ content }}
   </article>
   {% include weddings/article.html %}
-  {% include weddings/site-plan.html %}
+  {% include weddings/site-plan.html image_path=page.site_plan %}
   {% include connect-us.html %}
   {% include weddings/brochure.html %}
 </div>

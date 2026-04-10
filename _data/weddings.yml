@@ -50,6 +50,18 @@ jump_to_links:
   connect:
     text: CONNECT
     id: "#connect"
+  calle-independencia:
+    text: CALLE INDEPENDENCIA
+    id: "calle-independencia"
+  terrace-at-patio-del-norte:
+    text: TERRACE AT PATIO DEL NORTE
+    id: "terrace-at-patio-del-norte"
+  patio-de-las-campanas:
+    text: PATIO DE LAS CAMPAÑAS
+    id: "patio-de-las-campanas"
+  chapel-at-tlaquepaque:
+    text: CHAPEL
+    id: "chapel-at-tlaquepaque"
 
 # Site Plan
 site_plan:
