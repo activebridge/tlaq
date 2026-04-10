@@ -1111,6 +1111,7 @@ footer {
     --btn-color: var(--pink-40);
     width: 100%;
   }
+  .site-plan { img { mix-blend-mode: multiply; } }
 }
 
 .weddings {
@@ -1167,10 +1168,6 @@ footer {
         animation: none;
       }
     }
-  }
-
-  .site-plan {
-    picture { mix-blend-mode: multiply; }
   }
 }
 
