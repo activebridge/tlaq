@@ -12,12 +12,9 @@ intro:
 site_plan: "assets/images/weddings/chapel-at-tlaquepaque/site-plan.webp"
 ---
 
+![`ceremony`](/assets/images/weddings/chapel-at-tlaquepaque/ceremony.webp)
 ### Ceremony
-
 ###### The elegance and beautiful details of the Tlaquepaque Chapel make it the perfect location for an intimate, indoor Sedona wedding.
-
 - 5-6:30 P.M. or 7-8:30 P.M.
 - 45 Guests
 - On-site custodian to ensure privacy and assist you with any issues. The Wedding Peal—special ringing of the chapel bells following the ceremony
-
-![`ceremony`](/assets/images/weddings/chapel-at-tlaquepaque/ceremony.webp)
