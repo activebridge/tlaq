@@ -1,0 +1,25 @@
+---
+layout: default
+title: Wedding FAQ
+permalink: /wedding_faq/
+layout_type: wedding
+---
+
+{% assign image_path = site.data.wedding-faq.hero_banner %}
+{% assign transition-name = "wedding-faq" %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+<div class="content-wrapper">
+  <hgroup>
+    <h5>{{ site.data.wedding-faq.title }}</h5>
+  </hgroup>
+
+  {% for block in site.data.wedding-faq.blocks %}
+    <article>
+      <h3>{{ block.title }}</h3>
+      <h6>{{ block.content }}</h6>
+    </article>
+  {% endfor %}
+  {% include connect-us.html %}
+  {% include weddings/brochure.html %}
+</div>
