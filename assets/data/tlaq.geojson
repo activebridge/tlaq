@@ -38,7 +38,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "fountain-4",
+        "id": "patio-del-norte",
         "type": "fountain"
       },
       "geometry": {
@@ -61,11 +61,11 @@
           [
             [
               -111.762755,
-              34.86217
+              34.862175
             ],
             [
               -111.762788,
-              34.862171
+              34.862174
             ],
             [
               -111.762785,
@@ -85,7 +85,7 @@
             ],
             [
               -111.762755,
-              34.86217
+              34.862175
             ]
           ]
         ],
@@ -310,6 +310,41 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "el-pasillo-pequeno",
+        "type": "area"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -111.763153,
+              34.862164
+            ],
+            [
+              -111.763151,
+              34.86198
+            ],
+            [
+              -111.763105,
+              34.861979
+            ],
+            [
+              -111.763104,
+              34.862163
+            ],
+            [
+              -111.763153,
+              34.862164
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "0d31d92e81d600937c84418cb6518940"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "information",
         "type": "information"
       },
@@ -321,6 +356,21 @@
         "type": "Point"
       },
       "id": "0df5f7387d0660960a99242794032dc8"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "elevator",
+        "type": "elevator"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.763761,
+          34.862617
+        ],
+        "type": "Point"
+      },
+      "id": "0e77dcaba908d90c02d0041cb7ada234"
     },
     {
       "type": "Feature",
@@ -434,31 +484,23 @@
         "coordinates": [
           [
             [
-              -111.762635,
+              -111.762633,
               34.861928
             ],
             [
-              -111.762514,
+              -111.762516,
               34.861927
             ],
             [
-              -111.762514,
-              34.861892
+              -111.762516,
+              34.861865
             ],
             [
-              -111.762585,
-              34.861892
-            ],
-            [
-              -111.762584,
-              34.861869
+              -111.762634,
+              34.861867
             ],
             [
               -111.762633,
-              34.86187
-            ],
-            [
-              -111.762635,
               34.861928
             ]
           ]
@@ -512,15 +554,15 @@
         "coordinates": [
           [
             [
-              -111.7626,
-              34.862272
+              -111.762604,
+              34.862271
             ],
             [
               -111.762517,
               34.862271
             ],
             [
-              -111.762518,
+              -111.762516,
               34.862177
             ],
             [
@@ -528,8 +570,8 @@
               34.862177
             ],
             [
-              -111.7626,
-              34.862272
+              -111.762604,
+              34.862271
             ]
           ]
         ],
@@ -540,7 +582,37 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "parking-2",
+        "id": "parking-handicap",
+        "type": "parking-handicap"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.762826,
+          34.863134
+        ],
+        "type": "Point"
+      },
+      "id": "1479463e7cef4039f225b92aeefce04d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "parking-handicap",
+        "type": "parking-handicap"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.763483,
+          34.862485
+        ],
+        "type": "Point"
+      },
+      "id": "1b54551a4dfdf1a76601f619305c3d62"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "parking-del-norte",
         "type": "parking"
       },
       "geometry": {
@@ -592,8 +664,8 @@
       },
       "geometry": {
         "coordinates": [
-          -111.763424,
-          34.861891
+          -111.763449,
+          34.861877
         ],
         "type": "Point"
       },
@@ -641,6 +713,21 @@
         "type": "Polygon"
       },
       "id": "240437eba554e13b440e777cd4afe7ce"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "elevator",
+        "type": "elevator"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.763457,
+          34.862239
+        ],
+        "type": "Point"
+      },
+      "id": "2445f105331f5011796ccaf8f5fdc0bb"
     },
     {
       "type": "Feature",
@@ -755,8 +842,8 @@
       },
       "geometry": {
         "coordinates": [
-          -111.763659,
-          34.862111
+          -111.763678,
+          34.862097
         ],
         "type": "Point"
       },
@@ -863,11 +950,11 @@
         "coordinates": [
           [
             [
-              -111.762518,
+              -111.762516,
               34.862178
             ],
             [
-              -111.762518,
+              -111.762515,
               34.862111
             ],
             [
@@ -879,7 +966,7 @@
               34.862178
             ],
             [
-              -111.762518,
+              -111.762516,
               34.862178
             ]
           ]
@@ -1381,12 +1468,27 @@
       },
       "geometry": {
         "coordinates": [
-          -111.763879,
-          34.862333
+          -111.763892,
+          34.862302
         ],
         "type": "Point"
       },
       "id": "4e863b720f4274e645c17cb6a275a90b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "parking-handicap-2",
+        "type": "parking-handicap"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.763841,
+          34.862818
+        ],
+        "type": "Point"
+      },
+      "id": "502645c9b7466dd1c278082de0cc06df"
     },
     {
       "type": "Feature",
@@ -1410,16 +1512,20 @@
               34.862154
             ],
             [
-              -111.763001,
-              34.862152
+              -111.763033,
+              34.862155
             ],
             [
-              -111.763021,
-              34.86227
+              -111.763034,
+              34.862229
             ],
             [
-              -111.763043,
-              34.862303
+              -111.763044,
+              34.862273
+            ],
+            [
+              -111.763067,
+              34.862304
             ],
             [
               -111.763097,
@@ -1480,8 +1586,8 @@
         "coordinates": [
           [
             [
-              -111.762545,
-              34.862364
+              -111.762544,
+              34.862371
             ],
             [
               -111.762544,
@@ -1492,12 +1598,12 @@
               34.862304
             ],
             [
-              -111.762814,
-              34.86237
+              -111.762815,
+              34.862373
             ],
             [
-              -111.762545,
-              34.862364
+              -111.762544,
+              34.862371
             ]
           ]
         ],
@@ -1605,11 +1711,15 @@
               34.86187
             ],
             [
-              -111.762584,
-              34.86187
+              -111.762515,
+              34.861866
             ],
             [
-              -111.762581,
+              -111.762516,
+              34.861798
+            ],
+            [
+              -111.762538,
               34.861723
             ],
             [
@@ -1679,7 +1789,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "parking-1",
+        "id": "parking-portal-lane",
         "type": "parking"
       },
       "geometry": {
@@ -1820,8 +1930,8 @@
         "coordinates": [
           [
             [
-              -111.762938,
-              34.86148
+              -111.762935,
+              34.861482
             ],
             [
               -111.762841,
@@ -1836,8 +1946,8 @@
               34.861431
             ],
             [
-              -111.762938,
-              34.86148
+              -111.762935,
+              34.861482
             ]
           ]
         ],
@@ -2100,7 +2210,7 @@
               34.861971
             ],
             [
-              -111.762514,
+              -111.762516,
               34.861927
             ],
             [
@@ -2120,6 +2230,21 @@
         "type": "Polygon"
       },
       "id": "6b21781700beef321036ff1399aab4c1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "entrance",
+        "type": "entrance"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.763234,
+          34.86307
+        ],
+        "type": "Point"
+      },
+      "id": "6be8b1819287a50187167999bdba15f4"
     },
     {
       "type": "Feature",
@@ -2230,6 +2355,84 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "el-pasillo-pequeno",
+        "type": "fountain"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.763115,
+          34.862072
+        ],
+        "type": "Point"
+      },
+      "id": "74e7dde005e744b48604d80dacee2ef1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "avenida-de-la-constitution",
+        "type": "area"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -111.762516,
+              34.861796
+            ],
+            [
+              -111.762515,
+              34.86204
+            ],
+            [
+              -111.762517,
+              34.862282
+            ],
+            [
+              -111.762487,
+              34.862284
+            ],
+            [
+              -111.762477,
+              34.862161
+            ],
+            [
+              -111.762467,
+              34.86204
+            ],
+            [
+              -111.762463,
+              34.861974
+            ],
+            [
+              -111.762465,
+              34.861919
+            ],
+            [
+              -111.762466,
+              34.861857
+            ],
+            [
+              -111.762467,
+              34.861813
+            ],
+            [
+              -111.762471,
+              34.861799
+            ],
+            [
+              -111.762516,
+              34.861796
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "74f64c508d5739b68d811f3fdb1fd5c6"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "null",
         "type": "tree"
       },
@@ -2245,17 +2448,112 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "fountain-1",
-        "type": "fountain"
+        "id": "soldier-wash-walkway",
+        "type": "area"
       },
       "geometry": {
         "coordinates": [
-          -111.763618,
-          34.862574
+          [
+            [
+              -111.763968,
+              34.862447
+            ],
+            [
+              -111.763232,
+              34.86175
+            ],
+            [
+              -111.763185,
+              34.861773
+            ],
+            [
+              -111.763208,
+              34.861818
+            ],
+            [
+              -111.763243,
+              34.861885
+            ],
+            [
+              -111.763344,
+              34.861985
+            ],
+            [
+              -111.763369,
+              34.861987
+            ],
+            [
+              -111.763473,
+              34.862087
+            ],
+            [
+              -111.763596,
+              34.862209
+            ],
+            [
+              -111.763754,
+              34.862349
+            ],
+            [
+              -111.763914,
+              34.862486
+            ],
+            [
+              -111.763968,
+              34.862447
+            ]
+          ]
         ],
-        "type": "Point"
+        "type": "Polygon"
       },
-      "id": "7d2b14c69b84d1ca4b369c486a81697d"
+      "id": "780a06b472db5a3be79d15827bcae104"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "calle-miller",
+        "type": "area"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -111.763198,
+              34.861765
+            ],
+            [
+              -111.763185,
+              34.861772
+            ],
+            [
+              -111.763068,
+              34.861771
+            ],
+            [
+              -111.76274,
+              34.861437
+            ],
+            [
+              -111.762841,
+              34.861382
+            ],
+            [
+              -111.763021,
+              34.861573
+            ],
+            [
+              -111.763123,
+              34.861674
+            ],
+            [
+              -111.763198,
+              34.861765
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "7d2ab323ab325a56eb809ec2b6d04027"
     },
     {
       "type": "Feature",
@@ -2272,7 +2570,7 @@
               34.862114
             ],
             [
-              -111.762517,
+              -111.762515,
               34.862113
             ],
             [
@@ -2322,6 +2620,21 @@
         "type": "Point"
       },
       "id": "85806d21eab5486532dea086937dc5a9"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "entrance",
+        "type": "entrance"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.76324,
+          34.861832
+        ],
+        "type": "Point"
+      },
+      "id": "8b978d680b8e8e769c5fa73b34ccb241"
     },
     {
       "type": "Feature",
@@ -2509,7 +2822,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "parking-3",
+        "id": "parking-creekside",
         "type": "parking"
       },
       "geometry": {
@@ -2713,8 +3026,8 @@
       },
       "geometry": {
         "coordinates": [
-          -111.763023,
-          34.862225
+          -111.763044,
+          34.862211
         ],
         "type": "Point"
       },
@@ -2734,8 +3047,8 @@
               34.862224
             ],
             [
-              -111.762755,
-              34.86217
+              -111.762754,
+              34.862173
             ],
             [
               -111.76284,
@@ -2758,7 +3071,42 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "fountain-2",
+        "id": "crosswalk-to-tlaquepaque-north",
+        "type": "crosswalk"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -111.762903,
+              34.862855
+            ],
+            [
+              -111.762976,
+              34.862696
+            ],
+            [
+              -111.762883,
+              34.862669
+            ],
+            [
+              -111.762817,
+              34.862829
+            ],
+            [
+              -111.762903,
+              34.862855
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "ab7ebc6c96fbb85008d4c7f7ff1f9cca"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plaza-de-la-fuente",
         "type": "fountain"
       },
       "geometry": {
@@ -2769,6 +3117,21 @@
         "type": "Point"
       },
       "id": "ab9a73f9035157e890ccb26b106a47c6"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "parking-handicap",
+        "type": "parking-handicap"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.762447,
+          34.861822
+        ],
+        "type": "Point"
+      },
+      "id": "ae0b8b324db00dcf6de08c0d1c257564"
     },
     {
       "type": "Feature",
@@ -2937,7 +3300,22 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "parking-5",
+        "id": "entrance",
+        "type": "entrance"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.763786,
+          34.862701
+        ],
+        "type": "Point"
+      },
+      "id": "b0495fb518e7038c119d5462a9b4035d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "parking-west",
         "type": "parking"
       },
       "geometry": {
@@ -2980,6 +3358,56 @@
         "type": "Polygon"
       },
       "id": "b16545323185ae29d44867e4b97a40bf"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "bike-rack",
+        "type": "bike-rack"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.763197,
+          34.862678
+        ],
+        "type": "Point"
+      },
+      "id": "b80c57aeefc8c056f2b015a32c569027"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "null",
+        "type": "wall"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -111.762848,
+              34.862304
+            ],
+            [
+              -111.762563,
+              34.862301
+            ],
+            [
+              -111.762564,
+              34.862268
+            ],
+            [
+              -111.762848,
+              34.862272
+            ],
+            [
+              -111.762848,
+              34.862304
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "baa593d5c42dd9871962080c91ceb53d"
     },
     {
       "type": "Feature",
@@ -3068,16 +3496,8 @@
               34.86187
             ],
             [
-              -111.762817,
-              34.861871
-            ],
-            [
-              -111.762817,
-              34.861895
-            ],
-            [
               -111.762868,
-              34.861895
+              34.86187
             ],
             [
               -111.762868,
@@ -3158,6 +3578,45 @@
         "type": "Polygon"
       },
       "id": "c8c79386311eed661acf794e36bd09e2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "calle-independencia",
+        "type": "area"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -111.763001,
+              34.862274
+            ],
+            [
+              -111.762871,
+              34.862273
+            ],
+            [
+              -111.762869,
+              34.861827
+            ],
+            [
+              -111.762999,
+              34.861827
+            ],
+            [
+              -111.763003,
+              34.862039
+            ],
+            [
+              -111.763001,
+              34.862274
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "c90aa65bdd3098042c2f23edc1f98cc2"
     },
     {
       "type": "Feature",
@@ -3359,8 +3818,8 @@
         "coordinates": [
           [
             [
-              -111.762835,
-              34.861872
+              -111.762868,
+              34.86187
             ],
             [
               -111.762816,
@@ -3372,15 +3831,15 @@
             ],
             [
               -111.762755,
-              34.861827
+              34.861825
             ],
             [
-              -111.762835,
-              34.861827
+              -111.762868,
+              34.861826
             ],
             [
-              -111.762835,
-              34.861872
+              -111.762868,
+              34.86187
             ]
           ]
         ],
@@ -3421,6 +3880,20 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "tlaq-north"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.763144,
+          34.863328
+        ],
+        "type": "Point"
+      },
+      "id": "e2dedb99162b61528ef7c66c2736e9e1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "null",
         "type": "tree"
       },
@@ -3432,6 +3905,21 @@
         "type": "Point"
       },
       "id": "e3b9f515f8183be12749800c53e8d72e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "entrance",
+        "type": "entrance"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.76293,
+          34.862649
+        ],
+        "type": "Point"
+      },
+      "id": "e57a2b41738b36a695090245891f08ea"
     },
     {
       "type": "Feature",
@@ -3471,7 +3959,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "parking-4",
+        "id": "parking-east",
         "type": "parking"
       },
       "geometry": {
@@ -3591,6 +4079,21 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "handicap-bathroom-1",
+        "type": "handicap-bathroom"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.76338,
+          34.863434
+        ],
+        "type": "Point"
+      },
+      "id": "f53a4093086c2da048b5a5d72eb2b7ac"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "b107",
         "type": "building"
       },
@@ -3657,6 +4160,36 @@
         "type": "Polygon"
       },
       "id": "f929ffc45a9d34355c507778bf3a5ea5"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "handicap-bathroom",
+        "type": "handicap-bathroom"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.763052,
+          34.862267
+        ],
+        "type": "Point"
+      },
+      "id": "fd504d4a03c1003d0b36d798731a29b4"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wind-sculpture-garden",
+        "type": "wind-sculpture-garden"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.762435,
+          34.861305
+        ],
+        "type": "Point"
+      },
+      "id": "fe7e57647c9166e85c8b30e9e01c5963"
     }
   ],
   "type": "FeatureCollection"

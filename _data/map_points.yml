@@ -1,0 +1,87 @@
+types:
+  bus-stop:
+    title: "Sedona Shuttle Stop"
+    description: "Free shuttle to/from Sedona Municipal Parking at Jordan & Schnebly roads."
+  atm:
+    title: "ATM"
+    description: "Walk-up ATM available during village hours."
+  restroom:
+    title: "Restrooms"
+    description: "Public restrooms available during village hours."
+  fountain:
+    title: "Fountain"
+    description: "One of Tlaquepaque's signature fountains throughout the village."
+  drinking-water:
+    title: "Drinking Water"
+    description: "Public drinking water station."
+  information:
+    title: "Information"
+    description: "Village information and maps available here."
+  parking:
+    title: "Parking"
+    description: "Free parking for all Tlaquepaque visitors."
+  handicap-restroom:
+    title: "Accessible Restroom"
+    description: "Accessible restroom available during village hours."
+  handicap-bathroom:
+    title: "Accessible Restroom"
+    description: "Accessible restroom available during village hours."
+  parking-handicap:
+    title: "Accessible Parking"
+    description: "Accessible parking available for visitors with disabilities."
+  bike-rack:
+    title: "Bike Rack"
+    description: "Bicycle parking available for visitors."
+  entrance:
+    title: "Entrance"
+    description: "Village entrance point."
+  elevator:
+    title: "Elevator"
+    description: "Accessible elevator available during village hours."
+
+points:
+  patio-del-norte:
+    title: "Patio del Norte Fountain"
+    description: "Decorative fountain at the north entrance of Tlaquepaque."
+  plaza-de-la-fuente:
+    title: "Plaza de la Fuente"
+    description: "Central plaza featuring Tlaquepaque's signature fountain."
+  fountain-3:
+    title: "Fountain"
+    description: "One of Tlaquepaque's signature fountains throughout the village."
+  fountain-5:
+    title: "Fountain"
+    description: "One of Tlaquepaque's signature fountains throughout the village."
+  tlaque-paque-north:
+    title: "Shuttle Stop — North"
+    description: "Free shuttle to/from Sedona Municipal Parking at Jordan & Schnebly roads."
+  tlaque-paque-south:
+    title: "Shuttle Stop — South"
+    description: "Free shuttle to/from Sedona Municipal Parking at Jordan & Schnebly roads."
+
+ui:
+  search_placeholder: "Search"
+  search_label: "Search stores"
+  no_results: "No results found"
+  category_shops: "Shops"
+  category_galleries: "Galleries"
+  category_food: "Food & Beverage"
+  show_all: "Show All"
+  stores_heading: "Stores"
+  legend_restrooms: "Restrooms"
+  legend_parking: "Parking"
+  legend_amenities: "Amenities"
+  legend_transport: "Transport"
+  legend_navigation: "Navigation"
+
+areas:
+  wind-sculpture-garden: "Wind Sculpture Garden"
+  el-pasillo-pequeno: "El Pasillo Pequeño"
+  patio-de-las-campanas: "Patio de las Campanas"
+  patio-de-la-capila: "Patio de la Capilla"
+  patio-del-norte: "Patio del Norte"
+  avenida-de-la-constitution: "Avenida de la Constitución"
+  soldier-wash-walkway: "Soldier Wash Walkway"
+  calle-miller: "Calle Miller"
+  calle-independencia: "Calle Independencia"
+  patio-azul: "Patio Azul"
