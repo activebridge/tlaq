@@ -97,7 +97,8 @@
       "type": "Feature",
       "properties": {
         "id": "wind-sculpture-garden",
-        "type": "area"
+        "type": "area",
+        "name": "Wind Sculpture Garden"
       },
       "geometry": {
         "coordinates": [
@@ -311,7 +312,8 @@
       "type": "Feature",
       "properties": {
         "id": "el-pasillo-pequeno",
-        "type": "area"
+        "type": "area",
+        "name": "El Pasillo Pequeno"
       },
       "geometry": {
         "coordinates": [
@@ -1615,7 +1617,8 @@
       "type": "Feature",
       "properties": {
         "id": "patio-de-las-campanas",
-        "type": "area"
+        "type": "area",
+        "name": "Patio De Las Campanas"
       },
       "geometry": {
         "coordinates": [
@@ -1873,7 +1876,8 @@
       "type": "Feature",
       "properties": {
         "id": "patio-de-la-capila",
-        "type": "area"
+        "type": "area",
+        "name": "Patio De La Capila"
       },
       "geometry": {
         "coordinates": [
@@ -2293,7 +2297,8 @@
       "type": "Feature",
       "properties": {
         "id": "patio-del-norte",
-        "type": "area"
+        "type": "area",
+        "name": "Patio Del Norte"
       },
       "geometry": {
         "coordinates": [
@@ -2371,7 +2376,8 @@
       "type": "Feature",
       "properties": {
         "id": "avenida-de-la-constitution",
-        "type": "area"
+        "type": "area",
+        "name": "Avenida De La Constitution"
       },
       "geometry": {
         "coordinates": [
@@ -2449,7 +2455,8 @@
       "type": "Feature",
       "properties": {
         "id": "soldier-wash-walkway",
-        "type": "area"
+        "type": "area",
+        "name": "Soldier Wash Walkway"
       },
       "geometry": {
         "coordinates": [
@@ -2512,7 +2519,8 @@
       "type": "Feature",
       "properties": {
         "id": "calle-miller",
-        "type": "area"
+        "type": "area",
+        "name": "Calle Miller"
       },
       "geometry": {
         "coordinates": [
@@ -3583,7 +3591,8 @@
       "type": "Feature",
       "properties": {
         "id": "calle-independencia",
-        "type": "area"
+        "type": "area",
+        "name": "Calle Independencia"
       },
       "geometry": {
         "coordinates": [
@@ -3707,7 +3716,8 @@
       "type": "Feature",
       "properties": {
         "id": "patio-azul",
-        "type": "area"
+        "type": "area",
+        "name": "Patio Azul"
       },
       "geometry": {
         "coordinates": [
