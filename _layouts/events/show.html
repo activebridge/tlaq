@@ -13,6 +13,8 @@ layout: default
     <div class="content-wrapper">
       <h5 style="view-transition-name: {{ page_title_transition_name }};" data-event-title>{{ page.title }}</h5>
       {% if page.starts_at %}
+        {% assign starts_on = page.starts_at | date: "%Y-%m-%d" %}
+        {% assign ends_on = page.ends_at | date: "%Y-%m-%d" %}
         {% assign recurring_days = page.weekdays | default: page.recurrence_weekdays %}
         {% assign recurring_days_label = "" %}
         {% if recurring_days and recurring_days.size > 0 %}
@@ -29,6 +31,8 @@ layout: default
             EVERY {{ recurring_days_label }}
           {% elsif page.schedule_type == "monthly" and recurring_days and recurring_days.size > 0 %}
             FIRST {{ recurring_days_label }} OF EACH MONTH
+          {% elsif page.schedule_type == "yearly" and page.ends_at and starts_on != ends_on %}
+            {{ page.starts_at | date: "%A, %B %-d" | upcase }} - {{ page.ends_at | date: "%A, %B %-d" | upcase }}
           {% else %}
             {{ page.starts_at | date: "%A, %B %-d" | upcase }}
           {% endif %}
@@ -59,7 +63,7 @@ layout: default
   <div class="content-wrapper">
     {{ content }}
   
-    {% if page.category == "annual" %}
+    {% if page.schedule_type == "yearly" %}
       {% include events/annual-details.html event=page %}
     {% endif %}
   

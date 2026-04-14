@@ -69,7 +69,7 @@ Recurrence fields:
   Creates one card per day from `starts_at` through `ends_at` (inclusive), preserving time-of-day.
 
 - `weekly`
-  Repeats on `recurrence_weekdays` every week from `starts_at` until `recurs_until`.
+  Repeats weekly from `starts_at` until `recurs_until` on the first day in `recurrence_weekdays`. If multiple weekdays are provided, they are used as display text only (for example, `SUNDAY - TUESDAY`).
 
 - `monthly`
   Repeats on the **first matching weekday(s)** of each month (based on `recurrence_weekdays`) until `recurs_until`.

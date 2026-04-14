@@ -22,6 +22,8 @@ layout: default
 
   <article>
     <div class="list-container" id="annual-events">
+      <h3>{{ site.data.events.annual_calendar }}</h3>
+
       {% assign annual_events = site.events | where: "schedule_type", "yearly" | sort: "starts_at" %}
       {% for event in annual_events %}
         {% include events/card.html event=event %}

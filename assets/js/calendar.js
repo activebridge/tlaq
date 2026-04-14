@@ -4,8 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const dataNode = window.calendarEventsData;
   if (!select || !container || !dataNode) return;
   const limit = parseInt(container.dataset.limit, 10) || 0;
-  const DAY_NAMES = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
   const WEEKDAY_INDEX = { sun: 0, mon: 1, tue: 2, wed: 3, thu: 4, fri: 5, sat: 6 };
+  const WEEKDAY_LABEL = {
+    sun: 'Sunday',
+    mon: 'Monday',
+    tue: 'Tuesday',
+    wed: 'Wednesday',
+    thu: 'Thursday',
+    fri: 'Friday',
+    sat: 'Saturday'
+  };
   const MAX_DAYS = 730;
   const MAX_MONTHS = 24;
   const getVisibleRange = () => {
@@ -57,7 +65,16 @@ document.addEventListener('DOMContentLoaded', function() {
     start: start,
     end: new Date(start.getTime() + durationMs)
   });
-  const getWeekdayCode = (date) => DAY_NAMES[date.getDay()];
+
+  const getWeeklyRangeText = (event) => {
+    const weekdays = Array.isArray(event.recurrence_weekdays) ? event.recurrence_weekdays : [];
+    const validWeekdays = weekdays.filter((weekdayCode) => WEEKDAY_LABEL[weekdayCode]);
+    if (validWeekdays.length <= 1) return '';
+
+    const startLabel = WEEKDAY_LABEL[validWeekdays[0]];
+    const endLabel = WEEKDAY_LABEL[validWeekdays[validWeekdays.length - 1]];
+    return '<p class="calendar-item-weekdays">' + 'from ' + startLabel + ' through ' + endLabel + '</p>';
+  };
 
   function buildYearlyOccurrences(event, startDate, endDate) {
     const occurrences = [];
@@ -78,18 +95,18 @@ document.addEventListener('DOMContentLoaded', function() {
   function buildWeeklyOccurrences(event, startDate, endDate) {
     const until = new Date(event.recurs_until);
     const weekdays = event.recurrence_weekdays;
-    if (!until || !weekdays || !weekdays.length) return [];
-
     const occurrences = [];
     const durationMs = getDurationMs(startDate, endDate);
+    const primaryWeekday = weekdays[0];
+    const targetDay = WEEKDAY_INDEX[primaryWeekday];
     const occurrenceStart = new Date(startDate.getTime());
+    const dayOffset = (targetDay - occurrenceStart.getDay() + 7) % 7;
+    occurrenceStart.setDate(occurrenceStart.getDate() + dayOffset);
 
-    for (let i = 0; i <= MAX_DAYS; i += 1) {
+    for (let i = 0; i <= MAX_DAYS; i += 7) {
       if (occurrenceStart > until) break;
-      if (weekdays.includes(getWeekdayCode(occurrenceStart))) {
-        occurrences.push(createOccurrence(event, new Date(occurrenceStart.getTime()), durationMs));
-      }
-      occurrenceStart.setDate(occurrenceStart.getDate() + 1);
+      occurrences.push(createOccurrence(event, new Date(occurrenceStart.getTime()), durationMs));
+      occurrenceStart.setDate(occurrenceStart.getDate() + 7);
     }
 
     return occurrences;
@@ -168,6 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const transitionBase = buildTransitionBase(event, item.start);
     const href = appendTransitionParam(event.url, transitionBase);
     const subtitle = event.subtitle ? '<p>' + event.subtitle + '</p>' : '';
+    const weeklyRangeText = event.schedule_type === 'weekly' ? getWeeklyRangeText(event) : '';
     const timeText = event.ends_at
       ? formatTime(item.start) + ' - ' + formatTime(item.end)
       : formatTime(item.start);
@@ -185,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
             '</div>' +
             '<h3 data-event-title style="view-transition-name: ' + transitionBase + '-title;">' + event.title + '</h3>' +
             subtitle +
+            weeklyRangeText +
             '<div class="calendar-item-time">' + timeText + '</div>' +
           '</div>' +
         '</div>' +
