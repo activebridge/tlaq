@@ -803,10 +803,85 @@
       if (ids.length) highlightBuildings(ids, store.type);
     };
 
+    const polyLongestEdgeLine = (coords) => {
+      // Return a 2-point LineString along the longest edge of the polygon exterior ring,
+      // centered on the polygon centroid so the label sits in the middle of the poly.
+      let maxLen = -1, bestI = 0;
+      for (let i = 0; i < coords.length - 1; i++) {
+        const dx = coords[i + 1][0] - coords[i][0];
+        const dy = coords[i + 1][1] - coords[i][1];
+        const len = dx * dx + dy * dy;
+        if (len > maxLen) { maxLen = len; bestI = i; }
+      }
+      // Centroid of exterior ring
+      let cx = 0, cy = 0;
+      const n = coords.length - 1;
+      for (let i = 0; i < n; i++) { cx += coords[i][0]; cy += coords[i][1]; }
+      cx /= n; cy /= n;
+      // Direction unit vector of longest edge
+      const dx = coords[bestI + 1][0] - coords[bestI][0];
+      const dy = coords[bestI + 1][1] - coords[bestI][1];
+      const len = Math.sqrt(dx * dx + dy * dy);
+      const ux = dx / len, uy = dy / len;
+      // Half-length: use longest edge length so text has room
+      const half = len * 0.5;
+      return [
+        [cx - ux * half, cy - uy * half],
+        [cx + ux * half, cy + uy * half]
+      ];
+    };
+
     // --- Map layers and interactions ---
     map.on('load', () => {
       const geojsonPath = '{{ "/assets/data/tlaq.geojson" | relative_url }}';
       map.addSource('map-data', { type: 'geojson', data: geojsonPath, promoteId: 'id' });
+
+      fetch(geojsonPath)
+        .then(r => r.json())
+        .then(data => {
+          const areaFeatures = data.features.filter(f =>
+            f.properties.type === 'area' &&
+            f.properties.name &&
+            f.geometry.type === 'Polygon'
+          ).map(f => ({
+            ...f,
+            geometry: {
+              type: 'LineString',
+              coordinates: polyLongestEdgeLine(f.geometry.coordinates[0])
+            }
+          }));
+          map.getLayer('area-labels') && map.removeLayer('area-labels');
+          if (map.getSource('area-label-data')) {
+            map.getSource('area-label-data').setData({ type: 'FeatureCollection', features: areaFeatures });
+          } else {
+            map.addSource('area-label-data', {
+              type: 'geojson',
+              data: { type: 'FeatureCollection', features: areaFeatures }
+            });
+          }
+          map.addLayer({
+            id: 'area-labels', type: 'symbol', source: 'area-label-data',
+            layout: {
+              'symbol-placement': 'line-center',
+              'text-field': ['get', 'name'],
+              'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
+              'text-size': 11,
+              'text-max-width': 8,
+              'text-anchor': 'center',
+              'text-allow-overlap': false,
+              'text-ignore-placement': false,
+              'text-rotation-alignment': 'map',
+              'text-pitch-alignment': 'map',
+              'text-padding': 6,
+            },
+            paint: {
+              'text-color': BUILDING_BASE_COLOR,
+              'text-halo-color': 'rgba(255,255,255,0.25)',
+              'text-halo-width': 2,
+            }
+          });
+        });
+
 
       const borderFilter = ['==', ['get', 'type'], 'border'];
       map.addLayer({
@@ -832,13 +907,14 @@
       map.addLayer({
         id: 'area-fill', type: 'fill', source: 'map-data',
         filter: ['all', polygonFilter, areaFilter],
-        paint: { 'fill-color': AREA_COLOR, 'fill-opacity': 0.08 }
+        paint: { 'fill-color': AREA_COLOR, 'fill-opacity': ['case', ['has', 'name'], 0, 0.08] }
       });
       map.addLayer({
         id: 'area-outline', type: 'line', source: 'map-data',
         filter: ['all', polygonFilter, areaFilter],
-        paint: { 'line-color': AREA_COLOR, 'line-width': 1, 'line-dasharray': [4, 3], 'line-opacity': 0.4 }
+        paint: { 'line-color': AREA_COLOR, 'line-width': 1, 'line-dasharray': [4, 3], 'line-opacity': 0.1 }
       });
+      // area-labels added dynamically after fetch (with labelAngle computed from longest polygon edge)
 
       // 3D extruded buildings
       map.addLayer({
@@ -923,6 +999,7 @@
             }
           } else if (feature.geometry.type === 'Polygon' && polygonSvgTypes.has(featureType)) {
             const ring = feature.geometry.coordinates[0];
+            if (featureType === 'area' && feature.properties.name) return;
             const markerType = featureType === 'area' ? 'tree' : featureType;
             const marker = new mapboxgl.Marker({ element: makeSvgMarker(markerType) }).setLngLat(polygonCentroid(ring));
             if (featureType !== 'area') marker.setPopup(createPointPopup(featureType, featureId));
@@ -936,7 +1013,7 @@
 
         // Build legend grouped by sense
         const legendGroups = [
-          { label: pointLabels.ui?.legend_restrooms || 'Restrooms',  types: ['restroom', 'handicap-restroom', 'handicap-bathroom'] },
+          { label: pointLabels.ui?.legend_restrooms  || 'Restrooms',  types: ['restroom', 'handicap-restroom', 'handicap-bathroom'] },
           { label: pointLabels.ui?.legend_parking    || 'Parking',    types: ['parking', 'parking-handicap', 'bike-rack'] },
           { label: pointLabels.ui?.legend_amenities  || 'Amenities',  types: ['atm', 'drinking-water', 'information', 'fountain'] },
           { label: pointLabels.ui?.legend_transport  || 'Transport',  types: ['bus-stop', 'elevator'] },
