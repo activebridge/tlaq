@@ -798,3 +798,164 @@ collections:
           - { label: "Directions URL", name: "directions_url", widget: "string" }
           - { label: "Weather URL", name: "weather_url", widget: "string" }
           - { label: "Weather Widget URL", name: "weather_widget", widget: "string" }
+
+  - name: "map_content"
+    label: "Map Content"
+    files:
+      - name: "map_points"
+        label: "Map Point Labels"
+        file: "_data/map_points.yml"
+        fields:
+          - label: "By Type (defaults)"
+            name: "types"
+            widget: "object"
+            fields:
+              - label: "Bus Stop"
+                name: "bus-stop"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "ATM"
+                name: "atm"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Restrooms"
+                name: "restroom"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Fountain"
+                name: "fountain"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Drinking Water"
+                name: "drinking-water"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Information"
+                name: "information"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Parking"
+                name: "parking"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Accessible Restroom"
+                name: "handicap-restroom"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Entrance"
+                name: "entrance"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Elevator"
+                name: "elevator"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Accessible Bathroom"
+                name: "handicap-bathroom"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Accessible Parking"
+                name: "parking-handicap"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Bike Rack"
+                name: "bike-rack"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+          - label: "By Point ID (overrides)"
+            name: "points"
+            widget: "object"
+            fields:
+              - label: "Patio del Norte Fountain"
+                name: "patio-del-norte"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Plaza de la Fuente"
+                name: "plaza-de-la-fuente"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Fountain 3"
+                name: "fountain-3"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Fountain 5"
+                name: "fountain-5"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Shuttle Stop — North"
+                name: "tlaque-paque-north"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Shuttle Stop — South"
+                name: "tlaque-paque-south"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+          - label: "Area Labels"
+            name: "areas"
+            widget: "object"
+            fields:
+              - { label: "Wind Sculpture Garden", name: "wind-sculpture-garden", widget: "string" }
+              - { label: "El Pasillo Pequeño", name: "el-pasillo-pequeno", widget: "string" }
+              - { label: "Patio de las Campanas", name: "patio-de-las-campanas", widget: "string" }
+              - { label: "Patio de la Capilla", name: "patio-de-la-capila", widget: "string" }
+              - { label: "Patio del Norte", name: "patio-del-norte", widget: "string" }
+              - { label: "Avenida de la Constitución", name: "avenida-de-la-constitution", widget: "string" }
+              - { label: "Soldier Wash Walkway", name: "soldier-wash-walkway", widget: "string" }
+              - { label: "Calle Miller", name: "calle-miller", widget: "string" }
+              - { label: "Calle Independencia", name: "calle-independencia", widget: "string" }
+              - { label: "Patio Azul", name: "patio-azul", widget: "string" }
+          - label: "Sidebar UI Text"
+            name: "ui"
+            widget: "object"
+            fields:
+              - { label: "Search label (screen reader)", name: "search_label", widget: "string" }
+              - { label: "Search placeholder", name: "search_placeholder", widget: "string" }
+              - { label: "No results message", name: "no_results", widget: "string" }
+              - { label: "Category: Shops", name: "category_shops", widget: "string" }
+              - { label: "Category: Galleries", name: "category_galleries", widget: "string" }
+              - { label: "Category: Food & Beverage", name: "category_food", widget: "string" }
+              - { label: "Show All button", name: "show_all", widget: "string" }
+              - { label: "Stores heading", name: "stores_heading", widget: "string" }
+              - { label: "Legend group: Restrooms", name: "legend_restrooms", widget: "string" }
+              - { label: "Legend group: Parking", name: "legend_parking", widget: "string" }
+              - { label: "Legend group: Amenities", name: "legend_amenities", widget: "string" }
+              - { label: "Legend group: Transport", name: "legend_transport", widget: "string" }
+              - { label: "Legend group: Navigation", name: "legend_navigation", widget: "string" }

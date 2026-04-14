@@ -164,7 +164,8 @@
 
   .sidebar-category,
   .sidebar-back,
-  .sidebar-show-all {
+  .sidebar-show-all,
+  .sidebar-legend-item {
     display: flex;
     align-items: center;
     border: none;
@@ -180,6 +181,7 @@
   .sidebar-category:hover,
   .sidebar-back:hover,
   .sidebar-show-all:hover,
+  .sidebar-legend-item:hover,
   .sidebar-result:hover {
     background: color-mix(in srgb, var(--green) 60%, var(--cream));
   }
@@ -259,7 +261,8 @@
   }
 
   .sidebar-category,
-  .sidebar-show-all {
+  .sidebar-show-all,
+  .sidebar-legend-item {
     gap: 12px;
     padding: 10px 16px 10px 0px;
     font-size: 14px;
@@ -272,22 +275,14 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    width: 24px;
+    height: 24px;
   }
 
   .sidebar-result-icon svg,
   .sidebar-category-icon svg {
     width: 100%;
     height: 100%;
-  }
-
-  .sidebar-result-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .sidebar-category-icon {
-    width: 24px;
-    height: 24px;
   }
 
   .sidebar-category-label {
@@ -302,6 +297,27 @@
 
   .sidebar-show-all {
     border-top: 1px solid var(--cream-60);
+  }
+
+  .sidebar-legend {
+    border-top: 1px solid var(--cream-60);
+  }
+
+  .sidebar-legend-group + .sidebar-legend-group {
+    border-top: 1px solid var(--cream-60);
+  }
+
+  .sidebar-legend-heading {
+    padding: 6px 16px 2px 0;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy-60);
+  }
+
+  .sidebar-legend-item.active {
+    font-weight: 700;
   }
 
   #mapPlaceholder,
@@ -342,29 +358,26 @@
     cursor: pointer;
   }
 
-
   .map-marker {
     width: 16px;
     height: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+  }
+
+  .map-marker:has(svg) {
+    width: 14px;
+    height: 14px;
+  }
+
+  .map-marker.with-bg {
     background: white;
     border-radius: 50%;
     padding: 2px;
     box-sizing: border-box;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .35);
-  }
-
-  .map-marker.emoji {
-    background: none;
-    box-shadow: none;
-    padding: 0;
-  }
-
-  .map-marker:has(svg) {
-    width: 12px;
-    height: 12px;
   }
 
   .map-marker svg {
@@ -373,21 +386,18 @@
   }
 
   .map-marker-suite {
-    margin-top: 2px;
     font-family: "Montserrat", sans-serif;
-    font-size: 8px;
+    font-size: 6px;
     font-weight: 600;
-    color: var(--navy);
+    color: white;
     white-space: nowrap;
     pointer-events: none;
     line-height: 1;
-    background: var(--cream);
-    padding: 2px 5px;
+    background: var(--suite-cat-color, var(--navy));
+    padding: 1px 4px;
     border-radius: 4px;
-    border: 1px solid var(--navy);
+    border: 1px solid var(--cream);
     text-transform: uppercase;
-    opacity: 0;
-    transition: opacity 0.3s ease;
   }
 
   .mapboxgl-popup-content {
@@ -531,13 +541,37 @@
   .mapboxgl-popup-content a[href="#"] {
     display: none;
   }
+
+  .point-popup {
+    padding: 8px 10px 12px;
+  }
+
+  .point-popup h3 {
+    font-size: 14px;
+    padding: 0 0 4px;
+    color: var(--navy);
+  }
+
+  .point-popup p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--navy-60, #666);
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .point-popup p:empty {
+    display: none;
+  }
+
+
 </style>
 
 <div class="map-container" id="mapContainer">
   <nav id="mapSidebar" class="hidden" aria-label="Store filter">
     <search class="sidebar-search">
-      <label for="mapSearch" class="sr-only">Search stores</label>
-      <input type="search" id="mapSearch" placeholder="Search stores..." autocomplete="off">
+      <label for="mapSearch" class="sr-only">{{ site.data.map_points.ui.search_label }}</label>
+      <input type="search" id="mapSearch" placeholder="{{ site.data.map_points.ui.search_placeholder }}" autocomplete="off">
     </search>
     <button class="sidebar-back" id="mapBack" aria-label="Back to all categories">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -547,29 +581,31 @@
       <span>All Categories</span>
     </button>
     <ul class="sidebar-results" id="mapSearchResults" role="listbox" aria-label="Search results"></ul>
-    <p class="sidebar-no-results" id="mapNoResults" role="status" aria-live="polite">No results found</p>
+    <p class="sidebar-no-results" id="mapNoResults" role="status" aria-live="polite">{{ site.data.map_points.ui.no_results }}</p>
+    <div class="sidebar-legend-heading" style="padding-top:10px">{{ site.data.map_points.ui.stores_heading }}</div>
     <fieldset class="sidebar-categories" id="mapCategories">
       <legend class="sr-only">Filter by category</legend>
       <button class="sidebar-category" data-type="shop" style="--cat-color: var(--pink)" aria-pressed="false">
         <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/shops.svg %}</span>
-        <span class="sidebar-category-label">Shops</span>
+        <span class="sidebar-category-label">{{ site.data.map_points.ui.category_shops }}</span>
         <span class="sidebar-category-count">{{ site.shops | where_exp: "s", "s.coordinates" | size }}</span>
       </button>
       <button class="sidebar-category" data-type="gallery" style="--cat-color: var(--blue)" aria-pressed="false">
         <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/galleries.svg %}</span>
-        <span class="sidebar-category-label">Galleries</span>
+        <span class="sidebar-category-label">{{ site.data.map_points.ui.category_galleries }}</span>
         <span class="sidebar-category-count">{{ site.galleries | where_exp: "s", "s.coordinates" | size }}</span>
       </button>
       <button class="sidebar-category" data-type="food" style="--cat-color: var(--orange)" aria-pressed="false">
         <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/foods.svg %}</span>
-        <span class="sidebar-category-label">Food & Beverage</span>
+        <span class="sidebar-category-label">{{ site.data.map_points.ui.category_food }}</span>
         <span class="sidebar-category-count">{{ site.foods | where_exp: "s", "s.coordinates" | size }}</span>
       </button>
     </fieldset>
     <button class="sidebar-show-all" id="mapShowAll">
       <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/default.svg %}</span>
-      <span class="sidebar-category-label">Show All</span>
+      <span class="sidebar-category-label">{{ site.data.map_points.ui.show_all }}</span>
     </button>
+    <div class="sidebar-legend" id="mapLegend"></div>
   </nav>
 
   <button id="mapSidebarToggle" class="hidden" aria-label="Toggle sidebar">
@@ -580,6 +616,7 @@
   </button>
 
   <div id="map" style="width:100%;height:100%;position:relative" data-focus-suite='{{ include.suite | escape }}'>
+    <script type="application/json" id="mapPointLabels">{{ site.data.map_points | jsonify }}</script>
     <script type="application/json"
       id="mapStoreData">[{% assign has_prev = false %}{% for store in all_stores %}{% if store.suite or store.coordinates %}{% if has_prev %},{% endif %}{"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"suite":{{ store.suite | default: "" | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | default: "" | jsonify }},"url":{{ store.url | jsonify }},"type":{{ store.layout_type | jsonify }},"hours":{{ store.store_hours | default: "" | jsonify }},"tags":{{ store.tags | default: "" | jsonify }}}{% assign has_prev = true %}{% endif %}{% endfor %}]</script>
     <div id="mapPlaceholder" style="--map-bg:url('{{ '/assets/images/landing/map-placeholder.webp' | relative_url }}')"></div>
@@ -607,12 +644,33 @@
   </section>
 </template>
 
+<template id="mapPointPopup">
+  <section class="point-popup">
+    <h3 class="point-popup-title">$title</h3>
+    <p class="point-popup-description">$description</p>
+  </section>
+</template>
+
 <template id="storeIcons">
   <span class="sidebar-result-icon" data-type="shop">{% include icons/windows/shops.svg %}</span>
   <span class="sidebar-result-icon" data-type="gallery">{% include icons/windows/galleries.svg %}</span>
   <span class="sidebar-result-icon" data-type="food">{% include icons/windows/foods.svg %}</span>
   <span class="sidebar-result-icon" data-type="wedding">{% include icons/windows/weddings.svg %}</span>
   <span class="sidebar-result-icon" data-type="default">{% include icons/windows/default.svg %}</span>
+  <span class="sidebar-result-icon" data-type="parking">{% include icons/map/parking.svg %}</span>
+  <span class="sidebar-result-icon" data-type="restroom">{% include icons/map/restroom.svg %}</span>
+  <span class="sidebar-result-icon" data-type="information">{% include icons/map/info.svg %}</span>
+  <span class="sidebar-result-icon" data-type="drinking-water">{% include icons/map/water.svg %}</span>
+  <span class="sidebar-result-icon" data-type="fountain">{% include icons/map/fountain.svg %}</span>
+  <span class="sidebar-result-icon" data-type="atm">{% include icons/map/atm.svg %}</span>
+  <span class="sidebar-result-icon" data-type="tree">{% include icons/map/tree.svg %}</span>
+  <span class="sidebar-result-icon" data-type="bus-stop">{% include icons/map/shuttle.svg %}</span>
+  <span class="sidebar-result-icon" data-type="elevator">{% include icons/map/elevator.svg %}</span>
+  <span class="sidebar-result-icon" data-type="entrance">{% include icons/map/arc.svg %}</span>
+  <span class="sidebar-result-icon" data-type="handicap-restroom">{% include icons/map/handicap-restroom.svg %}</span>
+  <span class="sidebar-result-icon" data-type="handicap-bathroom">{% include icons/map/handicap-restroom.svg %}</span>
+  <span class="sidebar-result-icon" data-type="parking-handicap">{% include icons/map/handicap-parking.svg %}</span>
+  <span class="sidebar-result-icon" data-type="bike-rack">{% include icons/map/bike-rack.svg %}</span>
 </template>
 
 <script>
@@ -627,7 +685,7 @@
 
   function initMap() {
     mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvcmNoYWsiLCJhIjoiY21tZDZsMGdmMDAydDJwczhqbGhhOTNtciJ9.gPoufGUfsywbXf1wN8D0yw';
-    const { mapSearch, mapSearchResults, mapNoResults, mapCategories, mapBack, mapSidebar, mapShowAll, mapContainer, mapSidebarToggle } = window;
+    const { mapSearch, mapSearchResults, mapNoResults, mapCategories, mapBack, mapSidebar, mapShowAll, mapLegend, mapContainer, mapSidebarToggle } = window;
     const DATA_LAYER = 'building-outlines';
     const map = new mapboxgl.Map({
       container: 'map', style: 'mapbox://styles/storchak/cmmew5gbs000l01sbb2mld1pq',
@@ -659,7 +717,7 @@
     };
     const DEFAULT_HIGHLIGHT_COLOR = categoryColors.shop;
     const BUILDING_BASE_COLOR = '#111c4e';  // --navy
-    const BORDER_FILL_COLOR = '#111c4e';   // --navy
+    const BORDER_FILL_COLOR = BUILDING_BASE_COLOR;
     const AREA_COLOR = '#008066';          // --green
     const PARKING_COLOR = '#8c8c8c';
 
@@ -668,11 +726,33 @@
     const isValidFeatureId = (id) => (typeof id === 'string' || typeof id === 'number') && id !== 'null' && id !== '';
     const parseCoordinates = (coordString) => coordString.split(',').map(Number);
     const { content: iconsTemplate } = window.storeIcons;
+    const makeSvgMarker = (type, extraClass = '') => {
+      const iconNode = getIconByType(type);
+      const svgNode = iconNode.querySelector('svg');
+      const el = Object.assign(document.createElement('div'), { className: ('map-marker ' + extraClass).trim() });
+      el.appendChild(svgNode || iconNode);
+      return el;
+    };
     const getIconByType = (type) => (iconsTemplate.querySelector(`[data-type="${type || 'default'}"]`) || iconsTemplate.querySelector('[data-type="default"]')).cloneNode(true);
+
+    const polygonLongestEdge = (ring) => {
+      let best = { dist: 0, a: ring[0], b: ring[1] };
+      for (let i = 0; i < ring.length - 1; i++) {
+        const dx = ring[i + 1][0] - ring[i][0], dy = ring[i + 1][1] - ring[i][1];
+        const d = dx * dx + dy * dy;
+        if (d > best.dist) best = { dist: d, a: ring[i], b: ring[i + 1] };
+      }
+      return best;
+    };
+    const polygonAngle = (ring) => {
+      const { a, b } = polygonLongestEdge(ring);
+      return Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI;
+    };
 
     // GeoJSON feature lookup tables (populated after fetch)
     let knownFeatureIds = new Set();
     const suiteCentroid = new Map();
+    const pointMarkers = []; // { type, title, marker } for non-store POI markers
     const polygonCentroid = (ring) => {
       const n = ring.length - 1;
       const sum = ring.slice(0, n).reduce((acc, c) => [acc[0] + c[0], acc[1] + c[1]], [0, 0]);
@@ -710,10 +790,9 @@
 
     const getBuildingIds = (store) => {
       if (!store?.suite) return [];
-      const normalized = store.suite;
-      const dashIndex = normalized.indexOf('-');
-      const prefix = dashIndex > 0 ? normalized.slice(0, dashIndex) : null;
-      return knownFeatureIds.has(normalized) ? [normalized] : prefix && knownFeatureIds.has(prefix) ? [prefix] : [];
+      const dashIndex = store.suite.indexOf('-');
+      const prefix = dashIndex > 0 ? store.suite.slice(0, dashIndex) : null;
+      return knownFeatureIds.has(store.suite) ? [store.suite] : prefix && knownFeatureIds.has(prefix) ? [prefix] : [];
     };
 
     // Highlight building for a store; queues if data not yet loaded
@@ -802,17 +881,18 @@
           highlightStoreBuilding(store);
         }
 
-        // Re-position store markers that depend on suite centroids, spreading duplicates in a circle
-        const suiteOccupants = new Map(); // resolved coord key → [storeIndex, ...]
+        // Position suite markers at building centroids, spreading duplicates in a circle
+        const suiteOccupants = new Map();
         stores.forEach((store, index) => {
           if (!store.suite) return;
-          const coords = markerCoords(store);
-          if (!coords || isNaN(coords[0])) return;
+          const dash = store.suite.indexOf('-');
+          const coords = suiteCentroid.get(store.suite) || (dash > 0 && suiteCentroid.get(store.suite.slice(0, dash)));
+          if (!coords) return;
           const key = coords[0].toFixed(7) + ',' + coords[1].toFixed(7);
           if (!suiteOccupants.has(key)) suiteOccupants.set(key, []);
           suiteOccupants.get(key).push(index);
         });
-        const SPREAD_DEG = 0.00003; // ~3m radius
+        const SPREAD_DEG = 0.00003;
         suiteOccupants.forEach((indices, key) => {
           const [baseLng, baseLat] = key.split(',').map(Number);
           indices.forEach((storeIndex, i) => {
@@ -822,33 +902,69 @@
               lng = baseLng + SPREAD_DEG * Math.cos(angle);
               lat = baseLat + SPREAD_DEG * Math.sin(angle);
             }
-            if (storeMarkers[storeIndex]) { storeMarkers[storeIndex].marker.setLngLat([lng, lat]).addTo(map); }
+            storeMarkers[storeIndex].marker.setLngLat([lng, lat]).addTo(map);
           });
         });
 
-        // Emoji markers for special point/polygon features
-        const pointEmojiByType = { restroom: '🚻', fountain: '⛲', atm: '🏧', information: 'ℹ️', 'drinking-water': '🚰', tree: '🌳', 'bus-stop': '🚏' };
-        const typesWithBackground = new Set(['fountain', 'drinking-water']);
-        const polygonEmojiByType = { 'parking': '🅿️', 'area': '🌳' };
+        // SVG markers for special point/polygon features
+        const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'bike-rack']);
+        const polygonSvgTypes = new Set(['parking', 'area']);
         geojson.features.forEach(feature => {
-          const featureType = feature.properties?.type;
+          const { type: featureType, id: featureId } = feature.properties || {};
           if (!featureType) return;
 
-          if (feature.geometry.type === 'Point' && pointEmojiByType[featureType]) {
-            const element = Object.assign(document.createElement('div'), { className: typesWithBackground.has(featureType) ? 'map-marker' : 'map-marker emoji' });
-            element.textContent = pointEmojiByType[featureType];
-            element.style.fontSize = '16px';
-            new mapboxgl.Marker({ element }).setLngLat(feature.geometry.coordinates).addTo(map);
-          } else if (feature.geometry.type === 'Polygon' && polygonEmojiByType[featureType]) {
+          if (feature.geometry.type === 'Point' && pointSvgTypes.has(featureType)) {
+            const marker = new mapboxgl.Marker({ element: makeSvgMarker(featureType) }).setLngLat(feature.geometry.coordinates);
+            if (featureType !== 'tree') marker.setPopup(createPointPopup(featureType, featureId));
+            marker.addTo(map);
+            if (featureType !== 'tree') {
+              const { title = featureType } = pointLabels.points?.[featureId] || pointLabels.types?.[featureType] || {};
+              pointMarkers.push({ type: featureType, title, marker });
+            }
+          } else if (feature.geometry.type === 'Polygon' && polygonSvgTypes.has(featureType)) {
             const ring = feature.geometry.coordinates[0];
-            const centerLng = ring.reduce((sum, coord) => sum + coord[0], 0) / ring.length;
-            const centerLat = ring.reduce((sum, coord) => sum + coord[1], 0) / ring.length;
-            const element = Object.assign(document.createElement('div'), { className: 'map-marker emoji' });
-            element.dataset.feature = featureType;
-            element.textContent = polygonEmojiByType[featureType];
-            element.style.fontSize = featureType === 'parking' ? '10px' : '16px';
-            new mapboxgl.Marker({ element }).setLngLat([centerLng, centerLat]).addTo(map);
+            const markerType = featureType === 'area' ? 'tree' : featureType;
+            const marker = new mapboxgl.Marker({ element: makeSvgMarker(markerType) }).setLngLat(polygonCentroid(ring));
+            if (featureType !== 'area') marker.setPopup(createPointPopup(featureType, featureId));
+            marker.addTo(map);
+            if (featureType === 'parking') {
+              const { title = featureType } = pointLabels.types?.['parking'] || {};
+              pointMarkers.push({ type: 'parking', title, marker });
+            }
           }
+        });
+
+        // Build legend grouped by sense
+        const legendGroups = [
+          { label: pointLabels.ui?.legend_restrooms || 'Restrooms',  types: ['restroom', 'handicap-restroom', 'handicap-bathroom'] },
+          { label: pointLabels.ui?.legend_parking    || 'Parking',    types: ['parking', 'parking-handicap', 'bike-rack'] },
+          { label: pointLabels.ui?.legend_amenities  || 'Amenities',  types: ['atm', 'drinking-water', 'information', 'fountain'] },
+          { label: pointLabels.ui?.legend_transport  || 'Transport',  types: ['bus-stop', 'elevator'] },
+          { label: pointLabels.ui?.legend_navigation || 'Navigation', types: ['entrance'] },
+        ];
+        const typeMap = new Map(pointMarkers.map(p => [p.type, p]));
+        legendGroups.forEach(({ label, types }) => {
+          const present = types.filter(t => typeMap.has(t));
+          if (!present.length) return;
+          const group = document.createElement('div');
+          group.className = 'sidebar-legend-group';
+          group.appendChild(Object.assign(document.createElement('div'), { className: 'sidebar-legend-heading', textContent: label }));
+          present.forEach(type => {
+            const { title } = typeMap.get(type);
+            const btn = document.createElement('button');
+            btn.className = 'sidebar-legend-item';
+            btn.dataset.type = type;
+            const icon = getIconByType(type);
+            icon.className = 'sidebar-category-icon';
+            btn.appendChild(icon);
+            btn.appendChild(Object.assign(document.createElement('span'), { textContent: title }));
+            btn.addEventListener('click', () => {
+              mapSearch.value = '';
+              showPointTypeList(type);
+            });
+            group.appendChild(btn);
+          });
+          mapLegend.appendChild(group);
         });
       });
 
@@ -895,16 +1011,21 @@
     const createPopup = (store) => {
       const popup = new mapboxgl.Popup({ offset: 10, maxWidth: '200px', focusAfterOpen: false, anchor: 'bottom' }).setHTML(renderPopupHtml(store));
       popup.on('open', () => {
-        if (currentOpenPopup && currentOpenPopup !== popup) {
-          const previousPopup = currentOpenPopup;
-          currentOpenPopup = popup;
-          previousPopup.remove();
-        } else {
-          currentOpenPopup = popup;
-        }
+        if (currentOpenPopup && currentOpenPopup !== popup) currentOpenPopup.remove();
+        currentOpenPopup = popup;
         if (categoryColors[store.type]) popup.getElement().style.setProperty('--category-color', categoryColors[store.type]);
       });
       popup.on('close', () => { if (currentOpenPopup === popup) { currentOpenPopup = null; clearHighlightedBuildings(); } });
+      return popup;
+    };
+
+    const pointLabels = JSON.parse(window.mapPointLabels.textContent);
+    const createPointPopup = (type, id) => {
+      const { title = type, description = '' } = pointLabels.points?.[id] || pointLabels.types?.[type] || {};
+      const html = window.mapPointPopup.innerHTML.replace(/\$(\w+)/g, (_, k) => ({ title, description })[k] ?? '');
+      const popup = new mapboxgl.Popup({ offset: 10, maxWidth: '200px', focusAfterOpen: false, anchor: 'bottom' }).setHTML(html);
+      popup.on('open', () => { if (currentOpenPopup && currentOpenPopup !== popup) currentOpenPopup.remove(); currentOpenPopup = popup; });
+      popup.on('close', () => { if (currentOpenPopup === popup) currentOpenPopup = null; });
       return popup;
     };
 
@@ -915,30 +1036,29 @@
 
     stores.forEach((store, index) => {
       if (store.suite) {
-        const normalized = store.suite;
-        storeIndexBySuite.set(normalized, index);
-        const dashIndex = normalized.indexOf('-');
-        if (dashIndex > 0) storeIndexBySuite.set(normalized.slice(0, dashIndex), index);
+        storeIndexBySuite.set(store.suite, index);
+        const dashIndex = store.suite.indexOf('-');
+        if (dashIndex > 0) storeIndexBySuite.set(store.suite.slice(0, dashIndex), index);
       }
 
       const wrapper = Object.assign(document.createElement('div'), { className: 'map-marker-wrapper' });
-      const markerElement = Object.assign(document.createElement('div'), { className: 'map-marker' });
-      markerElement.dataset.type = store.type;
-      const iconNode = getIconByType(store.type);
-      const svgNode = iconNode.querySelector('svg');
-      markerElement.appendChild(svgNode || iconNode);
-      wrapper.appendChild(markerElement);
-      if (store.suite) {
+      if (store.suite && store.suite !== 'chappel') {
         const suiteLabel = Object.assign(document.createElement('span'), { className: 'map-marker-suite', textContent: store.suite });
+        if (categoryColors[store.type]) suiteLabel.style.setProperty('--suite-cat-color', categoryColors[store.type]);
         wrapper.appendChild(suiteLabel);
+        const marker = new mapboxgl.Marker({ element: wrapper, anchor: 'center' }).setPopup(createPopup(store));
+        marker.getElement().addEventListener('click', (event) => { event.stopPropagation(); focusStore(index); });
+        storeMarkers.push({ marker, type: store.type });
+      } else {
+        const markerElement = makeSvgMarker(store.type, 'with-bg');
+        markerElement.dataset.type = store.type;
+        wrapper.appendChild(markerElement);
+        const initialCoords = markerCoords(store);
+        const marker = new mapboxgl.Marker({ element: wrapper, anchor: 'top' }).setPopup(createPopup(store));
+        if (initialCoords && !isNaN(initialCoords[0])) marker.setLngLat(initialCoords).addTo(map);
+        marker.getElement().addEventListener('click', (event) => { event.stopPropagation(); focusStore(index); });
+        storeMarkers.push({ marker, type: store.type });
       }
-
-      const initialCoords = markerCoords(store);
-      const marker = new mapboxgl.Marker({ element: wrapper, anchor: 'top' })
-        .setPopup(createPopup(store));
-      if (initialCoords && !isNaN(initialCoords[0])) { marker.setLngLat(initialCoords).addTo(map); }
-      marker.getElement().addEventListener('click', (event) => { event.stopPropagation(); focusStore(index); });
-      storeMarkers.push({ marker, type: store.type });
     });
 
     // Navigate to a store: highlight building, fly to location, open popup
@@ -963,7 +1083,11 @@
         entry.marker.remove();
       }
     });
-    const applyTypeFilter = (type) => filterMarkers((entry) => !type || entry.type === type);
+    const applyTypeFilter = (type) => {
+      filterMarkers((entry) => !type || entry.type === type);
+      // Hide all POI markers when a store type filter is active
+      pointMarkers.forEach(({ marker }) => type ? marker.remove() : marker.addTo(map));
+    };
 
     const renderListItem = (storeIndex) => {
       const store = stores[storeIndex];
@@ -987,10 +1111,36 @@
       return listItem;
     };
 
+    // Show list of point markers for a given type
+    const showPointTypeList = (type) => {
+      const targets = pointMarkers.filter(p => p.type === type);
+      if (!targets.length) return;
+      // Hide all store markers, show only matching POI type
+      filterMarkers(() => false);
+      pointMarkers.forEach(({ type: t, marker }) => t === type ? marker.addTo(map) : marker.remove());
+      showStoreList([]);
+      mapNoResults.style.display = 'none';
+      targets.forEach(({ title, marker }) => {
+        const li = document.createElement('li');
+        li.className = 'sidebar-result';
+        li.setAttribute('role', 'option');
+        const icon = getIconByType(type);
+        li.appendChild(icon);
+        li.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-title', textContent: title }));
+        li.addEventListener('click', () => {
+          map.easeTo({ center: marker.getLngLat(), duration: 600 });
+          if (!marker.getPopup().isOpen()) marker.togglePopup();
+        });
+        mapSearchResults.appendChild(li);
+      });
+      mapSearchResults.classList.add('visible');
+    };
+
     // Show filtered store list in sidebar
     const showStoreList = (storeIndices) => {
       mapCategories.style.display = 'none';
       mapShowAll.style.display = 'none';
+      mapLegend.style.display = 'none';
       mapBack.classList.add('visible');
       mapSearchResults.innerHTML = '';
       activeListItem = null;
@@ -1010,6 +1160,7 @@
       mapSearchResults.innerHTML = '';
       mapNoResults.style.display = 'none';
       mapBack.classList.remove('visible');
+      mapLegend.style.display = '';
       mapCategories.style.display = '';
       mapShowAll.style.display = '';
     };
@@ -1047,11 +1198,13 @@
     mapBack.addEventListener('click', resetSidebar);
     mapShowAll.addEventListener('click', resetSidebar);
 
-    // Live search by store name
+    // Live search by store name + point type
     mapSearch.addEventListener('input', () => {
       const query = mapSearch.value.trim().toLowerCase();
       activeFilterType = null;
       if (!query) { applyTypeFilter(null); showCategoryView(); return; }
+
+      // Match stores
       const matchingIndices = new Set();
       const matchingList = stores.reduce((indices, store, i) => {
         const tagMatch = Array.isArray(store.tags) && store.tags.some(t => t.toLowerCase().includes(query));
@@ -1060,6 +1213,26 @@
       }, []);
       showStoreList(matchingList);
       filterMarkers((_, index) => matchingIndices.has(index));
+
+      // Match point types — append to results list
+      const matchedPointTypes = [...new Map(pointMarkers.map(p => [p.type, p])).values()]
+        .filter(({ title }) => title.toLowerCase().includes(query));
+      const matchedPointTypeSet = new Set(matchedPointTypes.map(p => p.type));
+      pointMarkers.forEach(({ type, marker }) => matchedPointTypeSet.has(type) ? marker.addTo(map) : marker.remove());
+      if (matchedPointTypes.length) {
+        mapNoResults.style.display = 'none';
+        matchedPointTypes.forEach(({ type, title }) => {
+          const li = document.createElement('li');
+          li.className = 'sidebar-result';
+          li.setAttribute('role', 'option');
+          const icon = getIconByType(type);
+          li.appendChild(icon);
+          li.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-title', textContent: title }));
+          li.addEventListener('click', () => showPointTypeList(type));
+          mapSearchResults.appendChild(li);
+          mapSearchResults.classList.add('visible');
+        });
+      }
     });
 
     // Toggle sidebar collapse
@@ -1069,20 +1242,16 @@
     });
 
     // Dynamic marker sizing based on zoom level
-    const SUITE_LABEL_MIN_ZOOM = 18.79;
     map.once('idle', () => {
       const baseZoom = map.getZoom();
       const applyMarkerScale = () => {
         const currentZoom = map.getZoom();
         const scale = 1 + (currentZoom - baseZoom) * 0.35; // 0.35 — growth rate per zoom level
-        const svgSize = 12 * scale + 'px';     // 12px — store icon base size
-        const emojiSize = 16 * scale + 'px';   // 16px — emoji base size
-        const pad = 2 * scale + 'px';          // 2px  — white circle padding
-        document.querySelectorAll('.map-marker:has(svg)').forEach(el => { el.style.width = svgSize; el.style.height = svgSize; el.style.padding = pad; });
-        const parkingSize = 10 * scale + 'px'; // 10px — parking emoji base size (smaller)
-        document.querySelectorAll('.map-marker:not(:has(svg))').forEach(el => { el.style.fontSize = el.dataset.feature === 'parking' ? parkingSize : emojiSize; });
-        const showSuites = currentZoom >= SUITE_LABEL_MIN_ZOOM;
-        document.querySelectorAll('.map-marker-suite').forEach(el => { el.style.opacity = showSuites ? '1' : '0'; });
+        const svgSize = 14 * scale + 'px';     // 14px — marker base size
+        document.querySelectorAll('.map-marker:has(svg)').forEach(el => { el.style.width = svgSize; el.style.height = svgSize; });
+        const suiteFs = Math.min(12, 6 * scale);  // 6px base → max 12px
+        const suitePad = Math.min(2, 1 * scale) + 'px ' + Math.min(5, 4 * scale) + 'px';
+        document.querySelectorAll('.map-marker-suite').forEach(el => { el.style.fontSize = suiteFs + 'px'; el.style.padding = suitePad; });
       };
       applyMarkerScale();
       map.on('zoom', applyMarkerScale);
