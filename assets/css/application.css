@@ -1149,6 +1149,8 @@ footer {
       width: calc(100% * var(--slides));
       height: 100%;
       animation: events-autoplay calc(var(--count) * var(--duration-per-slide)) linear infinite;
+      will-change: transform;
+      transform: translateZ(0);
     }
 
     .events-slide {
