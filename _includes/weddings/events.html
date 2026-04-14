@@ -59,29 +59,33 @@
 </article>
 
 <!-- Small script to dynamically calculate the animation keyframes for the events slideshow -->
-
 <script>
   (() => {
     const track = window.eventsTrack;
-    const slideCount = +track.style.getPropertyValue('--count');
-    if (slideCount < 2) return;
+    const n = +track.style.getPropertyValue('--count');
+    if (n < 2) return;
+  
+    const seg = 100 / n;
+    const hold = seg * 0.6;
+    const step = 50 / n;
+  
+    const rules = Array.from({ length: n }, (_, i) => {
+      const start = i * seg;
+      const mid = start + hold;
+      const end = (i + 1) * seg;
+      const shift = i * step;
+      const next = (i + 1) * step;
 
-    const sec = parseFloat(track.style.getPropertyValue('--duration-per-slide')) || 4;
-    const seg = 1 / slideCount, hold = 0.75, step = 50 / slideCount;
-    const keyframes = Array.from({ length: slideCount }, (_, i) => {
-      const start = i * seg, end = (i + 1) * seg, shift = i * step, next = (i + 1) * step;
-      return [
-        { offset: start, transform: `translateX(-${shift}%)` },
-        { offset: start + seg * hold, transform: `translateX(-${shift}%)` },
-        { offset: end, transform: `translateX(-${next}%)` }
-      ];
-    }).flat();
+      return `
+        ${start}%, ${mid}% { transform: translateX(-${shift}%); }
+        ${end}% { transform: translateX(-${next}%); }
+      `;
+    }).join('');
 
-    track.style.animation = 'none';
-    track.animate(keyframes, {
-      duration: slideCount * sec * 1000,
-      iterations: Infinity,
-      easing: 'linear'
-    });
+    const style = document.createElement('style');
+    style.textContent = `@keyframes events-dynamic { ${rules} }`;
+    document.head.appendChild(style);
+    const duration = n * (parseFloat(track.style.getPropertyValue('--duration-per-slide')) || 4);
+    track.style.animation = `events-dynamic ${duration}s linear infinite`;
   })();
-</script>
+  </script>
