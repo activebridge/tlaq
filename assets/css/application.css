@@ -736,6 +736,7 @@ nav#mobile {
       text-align: center;
       h5 { text-align: left; }
     }
+    a { margin-top: auto; }
   }
 
   &:not(:has(.card:not(.hidden)))::after {
