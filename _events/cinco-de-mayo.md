@@ -6,7 +6,7 @@ starts_at: '2026-05-02 13:00:00'
 ends_at: '2026-05-02 16:00:00'
 location: THROUGHOUT TLAQUEPAQUE
 schedule_type: yearly
-image: "assets/images/events/cinco-de-mayo.webp"
+image: "assets/images/events/the-cinco-de-mayo.webp"
 subtitle: Celebrate spring at Tlaquepaque with our annual Cinco de Mayo festivities. Admission is free and everyone is invited! Enjoy the pulsating sounds, savory flavors, and colorful dances of Mexico in a fun-filled South of the Border bash.
 schedule:
   - location: Tlaquepaque North

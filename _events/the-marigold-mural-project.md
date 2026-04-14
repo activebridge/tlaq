@@ -7,7 +7,7 @@ ends_at: '2026-10-31 17:00:00'
 schedule_type: yearly
 recurs_until: '2026-12-31 23:59:59'
 location: CALLE INDEPENDENCIA
-image: "assets/images/events/the-marigold-mural-project.webp"
+image: "assets/images/events/marigold-mural-project.webp"
 subtitle: Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions
   of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
 ---
