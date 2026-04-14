@@ -1,11 +1,6 @@
 {% comment %}
   Annual event details. Expects page.schedule to be defined in event front matter.
 {% endcomment %}
-<div class="video">
-  {% if include.event.video.video_url %}
-    <video src="{{ include.event.video.video_url }}" controls></video>
-  {% endif %}
-</div>
 
 {% if include.event.schedule %}
   <h3>Schedule</h3>
