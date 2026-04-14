@@ -3,6 +3,7 @@ description: Tlaquepaque’s events showcase live music, cultural celebrations, 
 events: EVENTS
 hero_banner: "assets/images/events/events.webp"
 monthly_calendar: Monthly Calendar
+annual_calendar: Annual Events
 
 # Jump to links
 jump_to_links:
