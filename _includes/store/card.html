@@ -12,16 +12,5 @@
   {% if include.store.subtitle %}
     <h6>{{ include.store.subtitle }}</h6>
   {% endif %}
-  <p>
-    {% if include.store.suite %}
-      <span>SUITE {{ include.store.suite | upcase }}</span>
-    {% endif %}
-    {% if include.store.suite and include.store.phone %}
-      <span class="separator">|</span>
-    {% endif %}
-    {% if include.store.phone %}
-      <a href="tel:{{ include.store.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ include.store.phone }}</a>
-    {% endif %}
-  </p>
   <a href="{{ include.store.url }}" class="btn btn-primary">DETAILS</a>
 </div>
