@@ -1017,9 +1017,16 @@ footer {
   margin: auto;
 
   address {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     font-style: normal;
     font-size: clamp(12px, 1.7vw, 20px);
+
+    p { margin: 0; }
   }
+
+  .uppercase { text-transform: uppercase; }
 
   div {
     display: flex;
@@ -1041,11 +1048,14 @@ footer {
     flex: 1;
 
     &:first-child {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
       border-right: 0.75px solid var(--secondary);
     }
 
     &:last-child {
-      padding-left: 2rem;
+      padding-left: 3rem;
     }
 
     a {
@@ -1227,6 +1237,7 @@ form {
     transition: opacity 0.2s ease, outline-offset 0.1s ease, outline-color 0.1s ease;
     &:focus { outline: none; }
     &:active { outline: none; }
+    &::-webkit-calendar-picker-indicator { display: none; }
   }
 
   fieldset {
@@ -1252,8 +1263,8 @@ form {
     label {
       cursor: pointer;
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      align-items: flex-start;
+      gap: 1rem;
     }
 
     input[type="checkbox"] {
@@ -1289,6 +1300,61 @@ form {
     &[aria-hidden="true"] { opacity: 0; pointer-events: none; }
     &[data-error] { color: var(--red); }
   }
+
+  .file-upload-area {
+    position: relative;
+    border: 1.5px solid var(--navy);
+    border-radius: 0.25rem;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+    text-align: center;
+    transition: background-color 0.2s ease;
+
+    &:focus-within { outline: 2px solid var(--navy); outline-offset: 2px; }
+
+    &.drag-over { background-color: color-mix(in srgb, var(--navy) 8%, transparent); }
+    &.has-file { border-color: var(--green); }
+
+    svg { color: var(--navy); margin-bottom: 0.5rem; }
+
+    .file-upload-label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      margin: 0;
+    }
+
+    .file-upload-hint { font-size: 0.8rem; margin: 0; opacity: 0.7; }
+
+    label.btn { margin-top: 0.75rem; cursor: pointer; }
+
+    input[type="file"] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      padding: 0;
+      border: none;
+    }
+
+    .file-name {
+      margin: 0;
+      font-size: 0.85rem;
+      word-break: break-all;
+      &[data-error] { color: var(--red); }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .file-upload-area { transition: none; }
 }
 
 input[type="number"] {
@@ -1731,7 +1797,7 @@ dialog {
   height: 112px;
   background-color: var(--cream);
   cursor: pointer;
-  margin: 10px auto;
+  margin: 2rem auto;
 }
 
 /* Pagination */

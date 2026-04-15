@@ -1,0 +1,22 @@
+eyebrow: Call for Submission
+title: Share your Tlaquepaque moments
+description_1: We love seeing Tlaquepaque through your eyes.
+description_2: "If you've captured a beautiful moment in the village, we'd love to see it. Selected photos may be featured in Discover Tlaquepaque, on Tlaquepaque's website, and on social media."
+description_3: "While we truly appreciate every submission, not all photos will be selected or used."
+description_3_bold: "If your photo is selected, we'll reach out to you and celebrate your work by giving you credit."
+upload_label: SELECT PHOTO TO UPLOAD
+upload_hint: "Supported Format: JPG, PNG, TIFF (10MB MAX)"
+upload_button: SELECT FILE
+first_name: First Name
+last_name: Last Name
+email: Email
+phone: Phone
+instagram: Instagram Handle
+caption: Photo Caption
+photo_date: Date Photo Was Taken
+consent: "I confirm that I took this photo or have full rights to submit it, and I grant Tlaquepaque Arts & Shopping Village the right to use, reproduce, publish, crop, edit, and share this image across its magazine, website, and social media, without compensation or guarantee of use."
+submit: Submit
+success: "Thank you for your submission! We'll be in touch if your photo is selected."
+upload_type_error: "Unsupported file type. Please upload a JPG, PNG, or TIFF."
+upload_size_error: "File too large. Maximum 10MB."
+error: "Something went wrong. Please try again."

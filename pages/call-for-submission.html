@@ -1,0 +1,133 @@
+---
+permalink: /call-for-submission/
+layout: default
+title: Call for Submission
+layout_type: call-for-submission
+---
+
+{% assign cfs = site.data['call-for-submission'] %}
+
+<div class="content-wrapper">
+  <hgroup style="view-transition-name: title-submission;">
+    <h5 title>{{ cfs.eyebrow }}</h5>
+    <h2>{{ cfs.title }}</h2>
+  </hgroup>
+
+  <h6>{{ cfs.description_1 }}</h6>
+  <h6>{{ cfs.description_2 }}</h6>
+  <h6>{{ cfs.description_3 }} <strong>{{ cfs.description_3_bold }}</strong></h6>
+
+  <form id="submissionForm">
+
+    <div class="file-upload-area" id="fileUploadArea">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/>
+        <line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+      <p class="file-upload-label">{{ cfs.upload_label }} *</p>
+      <p class="file-upload-hint">{{ cfs.upload_hint }}</p>
+      <label class="btn btn-primary" for="photo">{{ cfs.upload_button }}</label>
+      <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.tiff,.tif" required>
+      <p class="file-name" id="fileName" aria-live="polite"></p>
+    </div>
+
+    <input type="text" name="first_name" aria-label="{{ cfs.first_name }}" placeholder="{{ cfs.first_name }} *" required>
+    <input type="text" name="last_name" aria-label="{{ cfs.last_name }}" placeholder="{{ cfs.last_name }} *" required>
+    <input type="email" name="email" aria-label="{{ cfs.email }}" placeholder="{{ cfs.email }} *" required>
+    <input type="tel" name="phone" aria-label="{{ cfs.phone }}" placeholder="{{ cfs.phone }} *" required>
+    <input type="text" name="instagram" aria-label="{{ cfs.instagram }}" placeholder="{{ cfs.instagram }}">
+    <input type="text" name="caption" aria-label="{{ cfs.caption }}" placeholder="{{ cfs.caption }} *" required>
+    <input type="date" name="photo_date" aria-label="{{ cfs.photo_date }}">
+
+    <fieldset>
+      <label>
+        <input type="checkbox" name="consent" required>
+        {{ cfs.consent }}
+      </label>
+    </fieldset>
+
+    <button class="btn btn-primary" type="submit">{{ cfs.submit }}</button>
+    <p id="submissionMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
+  </form>
+  <span id="uploadTypeError" hidden>{{ cfs.upload_type_error }}</span>
+  <span id="uploadSizeError" hidden>{{ cfs.upload_size_error }}</span>
+</div>
+
+<script>
+  const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/tiff'];
+
+  function validateFile(file) {
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      fileName.textContent = uploadTypeError.textContent;
+      fileName.setAttribute('data-error', '');
+      photo.value = '';
+      fileUploadArea.classList.remove('has-file');
+      return;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      fileName.textContent = uploadSizeError.textContent;
+      fileName.setAttribute('data-error', '');
+      photo.value = '';
+      fileUploadArea.classList.remove('has-file');
+      return;
+    }
+    fileName.textContent = file.name;
+    fileName.removeAttribute('data-error');
+    fileUploadArea.classList.add('has-file');
+  }
+
+  photo.addEventListener('change', function() {
+    if (photo.files.length > 0) validateFile(photo.files[0]);
+  });
+
+  let dragCounter = 0;
+
+  fileUploadArea.addEventListener('dragenter', function(e) {
+    e.preventDefault();
+    dragCounter++;
+    fileUploadArea.classList.add('drag-over');
+  });
+
+  fileUploadArea.addEventListener('dragleave', function() {
+    dragCounter--;
+    if (dragCounter === 0) fileUploadArea.classList.remove('drag-over');
+  });
+
+  fileUploadArea.addEventListener('dragover', function(e) { e.preventDefault(); });
+
+  fileUploadArea.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dragCounter = 0;
+    fileUploadArea.classList.remove('drag-over');
+    if (e.dataTransfer.files.length) {
+      const dt = new DataTransfer();
+      dt.items.add(e.dataTransfer.files[0]);
+      photo.files = dt.files;
+      photo.dispatchEvent(new Event('change'));
+    }
+  });
+
+  submissionForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const d = new FormData(submissionForm);
+    const body = [
+      'First Name: ' + (d.get('first_name') || ''),
+      'Last Name: ' + (d.get('last_name') || ''),
+      'Email: ' + (d.get('email') || ''),
+      'Phone: ' + (d.get('phone') || ''),
+      'Instagram: ' + (d.get('instagram') || ''),
+      'Photo Caption: ' + (d.get('caption') || ''),
+      'Date Photo Was Taken: ' + (d.get('photo_date') || ''),
+      '',
+      'Photo file: ' + (photo.files.length ? photo.files[0].name : '—') + ' (please attach manually)',
+      '',
+      'Consent: Agreed'
+    ].join('\n');
+    window.location.href = 'mailto:visitorinfo@tlaq.com'
+      + '?subject=' + encodeURIComponent('Call for Submission')
+      + '&body=' + encodeURIComponent(body);
+    submissionMsg.textContent = {{ cfs.success | jsonify }};
+    submissionMsg.removeAttribute('aria-hidden');
+  });
+</script>
