@@ -6,12 +6,13 @@ starts_at: 2026-05-10T18:00:00
 ends_at: 2026-05-10T22:00:00
 location: '336 AZ-179 #104, Sedona, AZ 86336, United States'
 image: /assets/images/events/golden_night.png
+video_url: ''
 subtitle: |-
   Join us for an unforgettable evening at How Sweet It Is Café in Tlaquepaque Arts & Shopping Village! 🌙
   Enjoy music, great vibes, and a touch of golden glamour in a cozy, artistic setting.
 
   Dress in your best gold & chic style and get ready to sip, dance, and celebrate the night away.
-schedule_type: single
+schedule_type: yearly
 recurs_until: ''
 recurrence_weekdays: []
 schedule: []
@@ -37,9 +38,7 @@ Dress in your best gold & chic style and get ready to sip, dance, and celebrate 
 
 📍 Tlaquepaque Arts & Shopping Village
 
-
 📍 How Sweet It Is Café
-
 
 🕖 10.05.2026 6PM
 
