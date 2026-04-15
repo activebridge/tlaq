@@ -36,7 +36,11 @@ Enjoy music, great vibes, and a touch of golden glamour in a cozy, artistic sett
 Dress in your best gold & chic style and get ready to sip, dance, and celebrate the night away.
 
 📍 Tlaquepaque Arts & Shopping Village
+
+
 📍 How Sweet It Is Café
+
+
 🕖 10.05.2026 6PM
 
 Let’s make it a night to remember ✨
