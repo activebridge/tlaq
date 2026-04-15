@@ -896,6 +896,10 @@
           f.geometry.type === 'Polygon'
         ).map(f => ({
           ...f,
+          properties: {
+            ...f.properties,
+            name: pointLabels.areas?.[f.properties.id] || f.properties.name
+          },
           geometry: { type: 'LineString', coordinates: polyLongestEdgeLine(f.geometry.coordinates[0]) }
         }));
         map.getLayer('area-labels') && map.removeLayer('area-labels');
