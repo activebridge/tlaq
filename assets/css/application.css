@@ -1731,6 +1731,7 @@ dialog {
   height: 112px;
   background-color: var(--cream);
   cursor: pointer;
+  margin: 10px auto;
 }
 
 /* Pagination */
