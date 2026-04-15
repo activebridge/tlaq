@@ -1,5 +1,5 @@
 ---
-category: Garden Ceremony
+category: terrace-at-patio-del-norte
 date: 2026-04-15
 title: The Magic of a Garden Vineyard Ceremony
 subtitle: Ceremony
