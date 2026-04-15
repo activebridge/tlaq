@@ -1,15 +1,18 @@
 types:
   bus-stop:
     title: Shuttle Stop
+    title_plural: Shuttle Stops
     description: This stop serves the Verde Shuttle, providing direct service between Cottonwood and Sedona, with stops at major destinations including West Sedona, Uptown, Tlaquepaque, Hillside, and Poco Diablo Resort.
   atm:
     title: ATM
     description: Walk-up ATM available during village hours.
   restroom:
-    title: Restrooms
+    title: Restroom
+    title_plural: Restrooms
     description: Restrooms are available for village visitors only. We kindly ask that you help keep them clean for everyone's enjoyment.
   fountain:
     title: Fountain
+    title_plural: Fountains
     description: One of Tlaquepaque's signature fountains throughout the village.
   drinking-water:
     title: Drinking Water
@@ -19,25 +22,38 @@ types:
     description: Village information and maps available here.
   parking:
     title: Parking
+    title_plural: Parking Areas
     description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
   handicap-restroom:
     title: Accessible Restroom
+    title_plural: Accessible Restrooms
     description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
   entrance:
-    title: Entrances
+    title: Entrance
+    title_plural: Entrances
     description: Village entrance point.
   elevator:
     title: Elevator
+    title_plural: Elevators
     description: Accessible elevator available during village hours.
   handicap-bathroom:
     title: Accessible Restroom
+    title_plural: Accessible Restrooms
     description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
   parking-handicap:
     title: Accessible Parking
+    title_plural: Accessible Parking
     description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
   bike-rack:
     title: Bike Rack
+    title_plural: Bike Racks
     description: Bicycle parking available for visitors.
+  bell-tower:
+    title: Bell Tower
+    description: A visually striking, ivy-covered landmark rising from the Patio de las Campañas.
+  wind-sculpture-garden:
+    title: Wind Sculpture Garden
+    description: An outdoor garden featuring kinetic wind sculptures by Lyman Whitaker.
 points:
   restroom-north:
     title: North Restrooms
@@ -90,6 +106,12 @@ points:
   el-pasillo-pequeno:
     title: El Pasillo Pequeño Fountain
     description: ""
+  handicap-bathroom-1:
+    title: North Accessible Restroom
+    description: ""
+  handicap-bathroom:
+    title: South Accessible Restroom
+    description: ""
 areas:
   wind-sculpture-garden: Wind Sculpture Garden
   el-pasillo-pequeno: El Pasillo Pequeño
@@ -115,3 +137,4 @@ ui:
   legend_amenities: Amenities
   legend_transport: Transport
   legend_navigation: Entrances
+  legend_landmarks: Landmarks

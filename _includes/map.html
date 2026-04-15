@@ -588,6 +588,10 @@
     </button>
     <ul class="sidebar-results" id="mapSearchResults" role="listbox" aria-label="Search results"></ul>
     <p class="sidebar-no-results" id="mapNoResults" role="status" aria-live="polite">{{ site.data.map_points.ui.no_results }}</p>
+    <button class="sidebar-show-all" id="mapShowAll">
+      <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/default.svg %}</span>
+      <span class="sidebar-category-label">{{ site.data.map_points.ui.show_all }}</span>
+    </button>
     <div class="sidebar-legend-heading" style="padding-top:10px">{{ site.data.map_points.ui.stores_heading }}</div>
     <fieldset class="sidebar-categories" id="mapCategories">
       <legend class="sr-only">Filter by category</legend>
@@ -607,10 +611,6 @@
         <span class="sidebar-category-count">{{ site.foods | where_exp: "s", "s.coordinates" | size }}</span>
       </button>
     </fieldset>
-    <button class="sidebar-show-all" id="mapShowAll">
-      <span class="sidebar-category-icon" aria-hidden="true">{% include icons/windows/default.svg %}</span>
-      <span class="sidebar-category-label">{{ site.data.map_points.ui.show_all }}</span>
-    </button>
     <div class="sidebar-legend" id="mapLegend"></div>
   </nav>
 
@@ -963,6 +963,7 @@
               lat = baseLat + SPREAD_DEG * Math.sin(angle);
             }
             storeMarkers[storeIndex].marker.setLngLat([lng, lat]).addTo(map);
+            storeMarkers[storeIndex].positioned = true;
           });
         });
 
@@ -1001,7 +1002,8 @@
           { label: pointLabels.ui?.legend_parking    || 'Parking',    types: ['parking', 'parking-handicap', 'bike-rack'] },
           { label: pointLabels.ui?.legend_amenities  || 'Amenities',  types: ['atm', 'drinking-water', 'information', 'fountain'] },
           { label: pointLabels.ui?.legend_transport  || 'Transport',  types: ['bus-stop', 'elevator'] },
-          { label: pointLabels.ui?.legend_navigation || 'Navigation', types: ['entrance'] },
+          { label: pointLabels.ui?.legend_navigation || 'Entrances',  types: ['entrance'] },
+          { label: pointLabels.ui?.legend_landmarks  || 'Landmarks',  types: ['bell-tower', 'wind-sculpture-garden'] },
         ];
         const typeMap = new Map(pointMarkers.map(p => [p.type, p]));
         legendGroups.forEach(({ label, types }) => {
@@ -1011,7 +1013,9 @@
           group.className = 'sidebar-legend-group';
           group.appendChild(Object.assign(document.createElement('div'), { className: 'sidebar-legend-heading', textContent: label }));
           present.forEach(type => {
-            const { title } = pointLabels.types?.[type] || typeMap.get(type);
+            const typeInfo = pointLabels.types?.[type] || typeMap.get(type);
+            const count = pointMarkers.filter(p => p.type === type).length;
+            const title = (count > 1 && typeInfo.title_plural) ? typeInfo.title_plural : typeInfo.title;
             const btn = document.createElement('button');
             btn.className = 'sidebar-legend-item';
             btn.dataset.type = type;
@@ -1038,9 +1042,12 @@
         if (storeIndex !== undefined) focusStore(storeIndex);
       });
 
-      // Click empty space to clear highlight
+      // Click empty space to clear highlight / reset POI focus
       map.on('click', (event) => {
-        if (!map.queryRenderedFeatures(event.point, { layers: [DATA_LAYER] }).length && highlightedBuildingIds.size) clearHighlightedBuildings();
+        if (!map.queryRenderedFeatures(event.point, { layers: [DATA_LAYER] }).length) {
+          if (activePOIType) { resetSidebar(); return; }
+          if (highlightedBuildingIds.size) clearHighlightedBuildings();
+        }
       });
 
       map.on('mouseenter', DATA_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
@@ -1109,36 +1116,43 @@
         wrapper.appendChild(suiteLabel);
         const marker = new mapboxgl.Marker({ element: wrapper, anchor: 'center' }).setPopup(createPopup(store));
         marker.getElement().addEventListener('click', (event) => { event.stopPropagation(); focusStore(index); });
-        storeMarkers.push({ marker, type: store.type });
+        storeMarkers.push({ marker, type: store.type, positioned: false });
       } else {
         const markerElement = makeSvgMarker(store.type, 'with-bg');
         markerElement.dataset.type = store.type;
         wrapper.appendChild(markerElement);
         const initialCoords = markerCoords(store);
         const marker = new mapboxgl.Marker({ element: wrapper, anchor: 'top' }).setPopup(createPopup(store));
-        if (initialCoords && !isNaN(initialCoords[0])) marker.setLngLat(initialCoords).addTo(map);
+        const hasCoords = !!(initialCoords && !isNaN(initialCoords[0]));
+        if (hasCoords) marker.setLngLat(initialCoords).addTo(map);
         marker.getElement().addEventListener('click', (event) => { event.stopPropagation(); focusStore(index); });
-        storeMarkers.push({ marker, type: store.type });
+        storeMarkers.push({ marker, type: store.type, positioned: hasCoords });
       }
     });
 
     // Navigate to a store: highlight building, fly to location, open popup
     const focusStore = (index, animationOptions = {}) => {
       highlightStoreBuilding(stores[index]);
-      map.easeTo({ center: storeMarkers[index].marker.getLngLat(), padding: { top: 150 }, duration: 600, ...animationOptions });
+      const lngLat = storeMarkers[index].marker.getLngLat();
+      if (lngLat) map.easeTo({ center: lngLat, padding: { top: 150 }, duration: 600, ...animationOptions });
       storeMarkers[index].marker.addTo(map);
       if (!storeMarkers[index].marker.getPopup().isOpen()) storeMarkers[index].marker.togglePopup();
+      // Sync sidebar active state
+      activeListItem?.classList.remove('active');
+      activeListItem = mapSearchResults.querySelector(`[data-store-index="${index}"]`) || null;
+      activeListItem?.classList.add('active');
     };
 
     // --- Sidebar ---
     let activeFilterType = null;
+    let activePOIType = null;
     let activeListItem = null;
     const categoryButtons = mapCategories.querySelectorAll('.sidebar-category');
 
     // Show/hide markers based on filter; close popup before removing
     const filterMarkers = (predicate) => storeMarkers.forEach((entry, index) => {
       if (predicate(entry, index)) {
-        entry.marker.addTo(map);
+        if (entry.positioned) entry.marker.addTo(map);
       } else {
         if (entry.marker.getPopup().isOpen()) entry.marker.togglePopup();
         entry.marker.remove();
@@ -1155,6 +1169,7 @@
       const listItem = document.createElement('li');
       listItem.className = 'sidebar-result';
       listItem.setAttribute('role', 'option');
+      listItem.dataset.storeIndex = storeIndex;
       if (categoryColors[store.type]) listItem.style.setProperty('--cat-color', categoryColors[store.type]);
       listItem.appendChild(getIconByType(store.type));
       listItem.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-title', textContent: store.title }));
@@ -1176,9 +1191,17 @@
     const showPointTypeList = (type) => {
       const targets = pointMarkers.filter(p => p.type === type);
       if (!targets.length) return;
+      activePOIType = type;
       // Hide all store markers, show only matching POI type
       filterMarkers(() => false);
       pointMarkers.forEach(({ type: t, marker }) => t === type ? marker.addTo(map) : marker.remove());
+      // Single result: focus directly without showing a subcategory list
+      if (targets.length === 1) {
+        const { marker } = targets[0];
+        map.easeTo({ center: marker.getLngLat(), duration: 600 });
+        if (!marker.getPopup().isOpen()) marker.togglePopup();
+        return;
+      }
       showStoreList([]);
       mapNoResults.style.display = 'none';
       targets.forEach(({ title, marker }) => {
@@ -1229,6 +1252,7 @@
     const resetSidebar = () => {
       mapSearch.value = '';
       activeFilterType = null;
+      activePOIType = null;
       categoryButtons.forEach(button => button.setAttribute('aria-pressed', 'false'));
       applyTypeFilter(null);
       showCategoryView();
