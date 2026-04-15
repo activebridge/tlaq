@@ -153,7 +153,34 @@ collections:
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Suite", name: "suite", widget: "string", required: false }
       - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350", required: false }
+      - label: "Intro"
+        name: "intro"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Site Plan", name: "site_plan", widget: "image", required: false }
       - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "wedding-articles"
+    label: "Wedding Articles"
+    folder: "_wedding-articles"
+    create: true
+    slug: "{{slug}}"
+    sort_by: "date"
+    sort_direction: Descending
+    fields:
+      - { label: "Category", name: "category", widget: "string", hint: "Wedding slug (e.g., chapel-at-tlaquepaque)" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        field: { label: "Image", name: "image", widget: "image" }
+      - { label: "Content", name: "body", widget: "markdown", required: false }
 
   - name: "events"
     label: "Events"
