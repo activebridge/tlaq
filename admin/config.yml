@@ -7,256 +7,30 @@ media_folder: "/assets/images"
 public_folder: "/assets/images"
 
 collections:
-  - name: "shops"
-    label: "Shops"
-    folder: "_shops"
-    create: true
-    slug: "{{slug}}"
-    sort_by: "date"
-    sort_direction: Descending
-    media_folder: "/assets/images/shops"
-    public_folder: "/assets/images/shops"
-    fields:
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Published", name: "published", widget: "boolean", default: true }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Subtitle", name: "subtitle", widget: "string" }
-      - label: "Tags"
-        name: "tags"
-        widget: "list"
-        required: false
-        hint: "e.g. jewelry, art, handmade"
-      - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
-      - { label: "Phone", name: "phone", widget: "string" }
-      - { label: "Website", name: "website", widget: "string", required: false }
-      - { label: "Coordinates", name: "coordinates", widget: "string", required: false, hint: "Format: -111.76260, 34.86350. Optional if Suite is set." }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Instagram", name: "instagram", widget: "string", required: false }
-      - { label: "Facebook", name: "facebook", widget: "string", required: false }
-      - { label: "Full Location", name: "full_location", widget: "string", required: false }
-      - label: "Store Hours"
-        name: "store_hours"
-        widget: "object"
-        required: false
-        collapsed: true
+  - name: "settings"
+    label: "Settings"
+    files:
+      - name: "site_config"
+        label: "Site Configuration"
+        file: "_data/site.yml"
         fields:
-          - { label: "Monday", name: "monday", widget: "string", required: false }
-          - { label: "Tuesday", name: "tuesday", widget: "string", required: false }
-          - { label: "Wednesday", name: "wednesday", widget: "string", required: false }
-          - { label: "Thursday", name: "thursday", widget: "string", required: false }
-          - { label: "Friday", name: "friday", widget: "string", required: false }
-          - { label: "Saturday", name: "saturday", widget: "string", required: false }
-          - { label: "Sunday", name: "sunday", widget: "string", required: false }
-      - { label: "Description", name: "body", widget: "markdown" }
-
-  - name: "foods"
-    label: "Food & Dining"
-    folder: "_foods"
-    create: true
-    slug: "{{slug}}"
-    sort_by: "date"
-    sort_direction: Descending
-    media_folder: "/assets/images/foods"
-    public_folder: "/assets/images/foods"
-    fields:
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Published", name: "published", widget: "boolean", default: true }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Subtitle", name: "subtitle", widget: "string" }
-      - label: "Tags"
-        name: "tags"
-        widget: "list"
-        required: false
-        hint: "e.g. coffee, desserts, fine dining"
-      - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
-      - { label: "Phone", name: "phone", widget: "string" }
-      - { label: "Website", name: "website", widget: "string", required: false }
-      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350. Optional if Suite is set.", required: false }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Instagram", name: "instagram", widget: "string", required: false }
-      - { label: "Facebook", name: "facebook", widget: "string", required: false }
-      - { label: "Full Location", name: "full_location", widget: "string", required: false }
-      - label: "Store Hours"
-        name: "store_hours"
-        widget: "object"
-        required: false
-        collapsed: true
-        fields:
-          - { label: "Monday", name: "monday", widget: "string", required: false }
-          - { label: "Tuesday", name: "tuesday", widget: "string", required: false }
-          - { label: "Wednesday", name: "wednesday", widget: "string", required: false }
-          - { label: "Thursday", name: "thursday", widget: "string", required: false }
-          - { label: "Friday", name: "friday", widget: "string", required: false }
-          - { label: "Saturday", name: "saturday", widget: "string", required: false }
-          - { label: "Sunday", name: "sunday", widget: "string", required: false }
-      - { label: "Description", name: "body", widget: "markdown" }
-
-  - name: "galleries"
-    label: "Galleries"
-    folder: "_galleries"
-    create: true
-    slug: "{{slug}}"
-    sort_by: "date"
-    sort_direction: Descending
-    media_folder: "/assets/images/galleries"
-    public_folder: "/assets/images/galleries"
-    fields:
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Published", name: "published", widget: "boolean", default: true }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Subtitle", name: "subtitle", widget: "string" }
-      - label: "Tags"
-        name: "tags"
-        widget: "list"
-        required: false
-        hint: "e.g. paintings, sculptures, jewelry"
-      - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
-      - { label: "Phone", name: "phone", widget: "string" }
-      - { label: "Website", name: "website", widget: "string", required: false }
-      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350. Optional if Suite is set.", required: false }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Instagram", name: "instagram", widget: "string", required: false }
-      - { label: "Facebook", name: "facebook", widget: "string", required: false }
-      - { label: "Full Location", name: "full_location", widget: "string", required: false }
-      - label: "Store Hours"
-        name: "store_hours"
-        widget: "object"
-        required: false
-        collapsed: true
-        fields:
-          - { label: "Monday", name: "monday", widget: "string", required: false }
-          - { label: "Tuesday", name: "tuesday", widget: "string", required: false }
-          - { label: "Wednesday", name: "wednesday", widget: "string", required: false }
-          - { label: "Thursday", name: "thursday", widget: "string", required: false }
-          - { label: "Friday", name: "friday", widget: "string", required: false }
-          - { label: "Saturday", name: "saturday", widget: "string", required: false }
-          - { label: "Sunday", name: "sunday", widget: "string", required: false }
-      - { label: "Description", name: "body", widget: "markdown" }
-
-  - name: "weddings"
-    label: "Weddings"
-    folder: "_weddings"
-    create: true
-    slug: "{{slug}}"
-    sort_by: "date"
-    sort_direction: Descending
-    media_folder: "/assets/images/weddings"
-    public_folder: "/assets/images/weddings"
-    fields:
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Subtitle", name: "subtitle", widget: "string" }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Suite", name: "suite", widget: "string", required: false }
-      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350", required: false }
-      - label: "Intro"
-        name: "intro"
-        widget: "object"
-        collapsed: true
-        required: false
-        fields:
-          - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
-          - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Site Plan", name: "site_plan", widget: "image", required: false }
-      - { label: "Description", name: "body", widget: "markdown" }
-
-  - name: "wedding-articles"
-    label: "Wedding Articles"
-    folder: "_wedding-articles"
-    create: true
-    slug: "{{slug}}"
-    sort_by: "date"
-    sort_direction: Descending
-    fields:
-      - { label: "Category", name: "category", widget: "string", hint: "Wedding slug (e.g., chapel-at-tlaquepaque)" }
-      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Subtitle", name: "subtitle", widget: "string" }
-      - label: "Images"
-        name: "images"
-        widget: "list"
-        field: { label: "Image", name: "image", widget: "image" }
-      - { label: "Content", name: "body", widget: "markdown", required: false }
-
-  - name: "events"
-    label: "Events"
-    folder: "_events"
-    create: true
-    slug: "{{slug}}"
-    sort_by: "starts_at"
-    sort_direction: Descending
-    media_folder: "/assets/images/events"
-    public_folder: "/assets/images/events"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Published", name: "published", widget: "boolean", default: true, hint: "If false, the event will not be shown on the calendar or website." }
-      - { label: "Starts At", name: "starts_at", widget: "datetime" }
-      - { label: "Ends At", name: "ends_at", widget: "datetime", required: false, hint: "Usually same date as Starts At with a later end time. For Schedule Type: 'range', this is required and defines the from-to span end." }
-      - { label: "Location", name: "location", widget: "string" }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Video URL", name: "video_url", widget: "string", required: false, hint: "If set, the annual event will display a video background instead of an image." }
-      - { label: "Subtitle", name: "subtitle", widget: "text" }
-      - { label: "Schedule Type", name: "schedule_type", widget: "select", options: ["single", "range", "weekly", "monthly", "yearly"], required: true, hint: "single: one date; range: daily from start to end; weekly: selected weekdays until Recurrence Until; monthly: first selected weekday(s) each month until Recurrence Until; yearly: same date each year." }
-      - { label: "Recurrence Until", name: "recurs_until", widget: "datetime", required: false, hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
-      - { label: "Recurrence Weekdays", name: "recurrence_weekdays", widget: "select", multiple: true, required: false, options: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"], hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
-      - label: "Schedule"
-        name: "schedule"
-        widget: "list"
-        required: false
-        collapsed: true
-        fields:
-          - { label: "Location", name: "location", widget: "string" }
-          - label: "Performances"
-            name: "performances"
-            widget: "list"
+          - { label: "App Name", name: "app_name", widget: "string" }
+          - { label: "App Description", name: "app_description", widget: "string" }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
             fields:
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Time", name: "time", widget: "string" }
-      - label: "Map"
-        name: "map"
-        widget: "object"
-        required: false
-        collapsed: true
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Button Label", name: "button_label", widget: "string" }
-          - { label: "URL", name: "url", widget: "string" }
-      - label: "Video"
-        name: "video"
-        widget: "object"
-        required: false
-        collapsed: true
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Video URL", name: "video_url", widget: "string", required: false }
-      - { label: "Phone", name: "phone", widget: "string", required: false }
-      - { label: "Website", name: "website", widget: "string", required: false }
-      - { label: "Email", name: "email", widget: "string", required: false }
-      - { label: "Facebook", name: "facebook", widget: "string", required: false }
-      - { label: "Instagram", name: "instagram", widget: "string", required: false }
-      - { label: "Content", name: "body", widget: "markdown" }
-
-  - name: "blogs"
-    label: "News"
-    folder: "_blogs"
-    create: true
-    slug: "{{slug}}"
-    sort_by: "date"
-    sort_direction: Descending
-    media_folder: "/assets/images/blogs"
-    public_folder: "/assets/images/blogs"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Content", name: "body", widget: "markdown" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Formatted Phone", name: "formatted_phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Street Address", name: "street_address", widget: "string" }
+              - { label: "Mail Address", name: "mail_address", widget: "string" }
+              - { label: "Subscribe Button", name: "subscribe_button", widget: "string" }
+              - { label: "Magazine Alt Text", name: "magazine_alt", widget: "string" }
+          - { label: "Directions URL", name: "directions_url", widget: "string" }
+          - { label: "Weather URL", name: "weather_url", widget: "string" }
+          - { label: "Weather Widget URL", name: "weather_widget", widget: "string" }
 
   - name: "landing"
     label: "Landing Sections"
@@ -371,6 +145,309 @@ collections:
         media_folder: "/assets/images/landing"
         public_folder: "/assets/images/landing"
         fields: *landing_fields
+
+  - name: "landing_navigation"
+    label: "Landing Navigation"
+    files:
+      - name: "landing_navigation"
+        label: "Landing Navigation"
+        file: "index.md"
+        media_folder: "/assets/images/landing"
+        public_folder: "/assets/images/landing"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "home" }
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Navigation"
+            name: "nav"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Type", name: "type", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Image", name: "image", widget: "image" }
+
+  - name: "map_content"
+    label: "Map"
+    files:
+      - name: "map_points"
+        label: "Map Labels & Text"
+        file: "_data/map_points.yml"
+        fields:
+
+          # ── Sidebar UI ──────────────────────────────────────────────────────
+          - label: "Sidebar UI Text"
+            name: "ui"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Search field label (screen reader)", name: "search_label", widget: "string" }
+              - { label: "Search placeholder", name: "search_placeholder", widget: "string" }
+              - { label: "No results message", name: "no_results", widget: "string" }
+              - { label: "Stores heading", name: "stores_heading", widget: "string" }
+              - { label: "Show All button", name: "show_all", widget: "string" }
+              - { label: "Category: Shops", name: "category_shops", widget: "string" }
+              - { label: "Category: Galleries", name: "category_galleries", widget: "string" }
+              - { label: "Category: Food & Beverage", name: "category_food", widget: "string" }
+              - { label: "Legend group: Restrooms", name: "legend_restrooms", widget: "string" }
+              - { label: "Legend group: Parking", name: "legend_parking", widget: "string" }
+              - { label: "Legend group: Amenities", name: "legend_amenities", widget: "string" }
+              - { label: "Legend group: Transport", name: "legend_transport", widget: "string" }
+              - { label: "Legend group: Entrances", name: "legend_navigation", widget: "string" }
+              - { label: "Legend group: Landmarks", name: "legend_landmarks", widget: "string" }
+
+          # ── Area Labels (shown on map polygons) ─────────────────────────────
+          - label: "Area Labels"
+            name: "areas"
+            widget: "object"
+            collapsed: true
+            hint: "Text displayed directly on the map over named areas. Overrides GeoJSON data."
+            fields:
+              - { label: "Wind Sculpture Garden", name: "wind-sculpture-garden", widget: "string" }
+              - { label: "El Pasillo Pequeño", name: "el-pasillo-pequeno", widget: "string" }
+              - { label: "Patio de las Campanas", name: "patio-de-las-campanas", widget: "string" }
+              - { label: "Patio de la Capilla", name: "patio-de-la-capila", widget: "string" }
+              - { label: "Patio del Norte", name: "patio-del-norte", widget: "string" }
+              - { label: "Avenida de la Constitución", name: "avenida-de-la-constitution", widget: "string" }
+              - { label: "Soldier Wash Walkway", name: "soldier-wash-walkway", widget: "string" }
+              - { label: "Calle Miller", name: "calle-miller", widget: "string" }
+              - { label: "Calle Independencia", name: "calle-independencia", widget: "string" }
+              - { label: "Patio Azul", name: "patio-azul", widget: "string" }
+
+          # ── Point Types — default titles & descriptions ──────────────────────
+          - label: "Point Types (defaults)"
+            name: "types"
+            widget: "object"
+            collapsed: true
+            hint: "Default title and popup description for each marker type. Individual points below can override these."
+            fields:
+              - label: "Restroom"
+                name: "restroom"
+                widget: "object"
+                fields:
+                  - { label: "Title (singular)", name: "title", widget: "string" }
+                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Accessible Restroom"
+                name: "handicap-restroom"
+                widget: "object"
+                fields:
+                  - { label: "Title (singular)", name: "title", widget: "string" }
+                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Accessible Bathroom"
+                name: "handicap-bathroom"
+                widget: "object"
+                fields:
+                  - { label: "Title (singular)", name: "title", widget: "string" }
+                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Parking"
+                name: "parking"
+                widget: "object"
+                fields:
+                  - { label: "Title (singular)", name: "title", widget: "string" }
+                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Accessible Parking"
+                name: "parking-handicap"
+                widget: "object"
+                fields:
+                  - { label: "Title (singular)", name: "title", widget: "string" }
+                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Bike Rack"
+                name: "bike-rack"
+                widget: "object"
+                fields:
+                  - { label: "Title (singular)", name: "title", widget: "string" }
+                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Fountain"
+                name: "fountain"
+                widget: "object"
+                fields:
+                  - { label: "Title (singular)", name: "title", widget: "string" }
+                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Drinking Water"
+                name: "drinking-water"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "ATM"
+                name: "atm"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Information"
+                name: "information"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Entrance"
+                name: "entrance"
+                widget: "object"
+                fields:
+                  - { label: "Title (singular)", name: "title", widget: "string" }
+                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Elevator"
+                name: "elevator"
+                widget: "object"
+                fields:
+                  - { label: "Title (singular)", name: "title", widget: "string" }
+                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Shuttle Stop"
+                name: "bus-stop"
+                widget: "object"
+                fields:
+                  - { label: "Title (singular)", name: "title", widget: "string" }
+                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Bell Tower"
+                name: "bell-tower"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Wind Sculpture Garden"
+                name: "wind-sculpture-garden"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+
+          # ── Individual Points — override defaults above ───────────────────────
+          - label: "Individual Points (overrides)"
+            name: "points"
+            widget: "object"
+            collapsed: true
+            hint: "Per-location title and description. These override the type defaults above."
+            fields:
+              - label: "Restrooms — North"
+                name: "restroom-north"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Restrooms — South"
+                name: "restroom-south"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Restrooms — Central"
+                name: "restroom-central"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Restrooms — West"
+                name: "restroom-west"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Accessible Restroom — North"
+                name: "handicap-bathroom-1"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Accessible Restroom — South"
+                name: "handicap-bathroom"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Shuttle Stop — North"
+                name: "tlaque-paque-north"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Shuttle Stop — South"
+                name: "tlaque-paque-south"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Entrance — North"
+                name: "entrance-north"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Entrance — South"
+                name: "entrance-south"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Entrance — West"
+                name: "entrance-west"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Main Gate"
+                name: "entrance-main-gate"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Fountain — Patio del Norte"
+                name: "patio-del-norte"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Fountain — Plaza de la Fuente"
+                name: "plaza-de-la-fuente"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Fountain — Campanas"
+                name: "fountain-3"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Fountain — Tlaquepaque North"
+                name: "fountain-5"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Fountain — El Pasillo Pequeño"
+                name: "el-pasillo-pequeno"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Bell Tower"
+                name: "bell-tower"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
+              - label: "Wind Sculpture Garden"
+                name: "wind-sculpture-garden"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Popup description", name: "description", widget: "string" }
 
   - name: "pages"
     label: "Pages"
@@ -776,330 +853,253 @@ collections:
               - { label: "Link", name: "link", widget: "string", required: false, hint: "Leave empty if issue is not yet available." }
               - { label: "Cover Image", name: "image", widget: "string", hint: "URL of the cover image." }
 
-  - name: "landing_navigation"
-    label: "Landing Navigation"
-    files:
-      - name: "landing_navigation"
-        label: "Landing Navigation"
-        file: "index.md"
-        media_folder: "/assets/images/landing"
-        public_folder: "/assets/images/landing"
+  - name: "blogs"
+    label: "News"
+    folder: "_blogs"
+    create: true
+    slug: "{{slug}}"
+    sort_by: "date"
+    sort_direction: Descending
+    media_folder: "/assets/images/blogs"
+    public_folder: "/assets/images/blogs"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Content", name: "body", widget: "markdown" }
+
+  - name: "shops"
+    label: "Shops"
+    folder: "_shops"
+    create: true
+    slug: "{{slug}}"
+    sort_by: "date"
+    sort_direction: Descending
+    media_folder: "/assets/images/shops"
+    public_folder: "/assets/images/shops"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "e.g. jewelry, art, handmade"
+      - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
+      - { label: "Phone", name: "phone", widget: "string" }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "Coordinates", name: "coordinates", widget: "string", required: false, hint: "Format: -111.76260, 34.86350. Optional if Suite is set." }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Instagram", name: "instagram", widget: "string", required: false }
+      - { label: "Facebook", name: "facebook", widget: "string", required: false }
+      - { label: "Full Location", name: "full_location", widget: "string", required: false }
+      - label: "Store Hours"
+        name: "store_hours"
+        widget: "object"
+        required: false
+        collapsed: true
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "home" }
+          - { label: "Monday", name: "monday", widget: "string", required: false }
+          - { label: "Tuesday", name: "tuesday", widget: "string", required: false }
+          - { label: "Wednesday", name: "wednesday", widget: "string", required: false }
+          - { label: "Thursday", name: "thursday", widget: "string", required: false }
+          - { label: "Friday", name: "friday", widget: "string", required: false }
+          - { label: "Saturday", name: "saturday", widget: "string", required: false }
+          - { label: "Sunday", name: "sunday", widget: "string", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "foods"
+    label: "Food & Dining"
+    folder: "_foods"
+    create: true
+    slug: "{{slug}}"
+    sort_by: "date"
+    sort_direction: Descending
+    media_folder: "/assets/images/foods"
+    public_folder: "/assets/images/foods"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "e.g. coffee, desserts, fine dining"
+      - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
+      - { label: "Phone", name: "phone", widget: "string" }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350. Optional if Suite is set.", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Instagram", name: "instagram", widget: "string", required: false }
+      - { label: "Facebook", name: "facebook", widget: "string", required: false }
+      - { label: "Full Location", name: "full_location", widget: "string", required: false }
+      - label: "Store Hours"
+        name: "store_hours"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Monday", name: "monday", widget: "string", required: false }
+          - { label: "Tuesday", name: "tuesday", widget: "string", required: false }
+          - { label: "Wednesday", name: "wednesday", widget: "string", required: false }
+          - { label: "Thursday", name: "thursday", widget: "string", required: false }
+          - { label: "Friday", name: "friday", widget: "string", required: false }
+          - { label: "Saturday", name: "saturday", widget: "string", required: false }
+          - { label: "Sunday", name: "sunday", widget: "string", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "galleries"
+    label: "Galleries"
+    folder: "_galleries"
+    create: true
+    slug: "{{slug}}"
+    sort_by: "date"
+    sort_direction: Descending
+    media_folder: "/assets/images/galleries"
+    public_folder: "/assets/images/galleries"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "e.g. paintings, sculptures, jewelry"
+      - { label: "Suite", name: "suite", widget: "string", required: false, hint: "e.g. a208 — places the map pin on the building automatically" }
+      - { label: "Phone", name: "phone", widget: "string" }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350. Optional if Suite is set.", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Instagram", name: "instagram", widget: "string", required: false }
+      - { label: "Facebook", name: "facebook", widget: "string", required: false }
+      - { label: "Full Location", name: "full_location", widget: "string", required: false }
+      - label: "Store Hours"
+        name: "store_hours"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Monday", name: "monday", widget: "string", required: false }
+          - { label: "Tuesday", name: "tuesday", widget: "string", required: false }
+          - { label: "Wednesday", name: "wednesday", widget: "string", required: false }
+          - { label: "Thursday", name: "thursday", widget: "string", required: false }
+          - { label: "Friday", name: "friday", widget: "string", required: false }
+          - { label: "Saturday", name: "saturday", widget: "string", required: false }
+          - { label: "Sunday", name: "sunday", widget: "string", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "weddings"
+    label: "Weddings"
+    folder: "_weddings"
+    create: true
+    slug: "{{slug}}"
+    sort_by: "date"
+    sort_direction: Descending
+    media_folder: "/assets/images/weddings"
+    public_folder: "/assets/images/weddings"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Suite", name: "suite", widget: "string", required: false }
+      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350", required: false }
+      - label: "Intro"
+        name: "intro"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Site Plan", name: "site_plan", widget: "image", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "wedding-articles"
+    label: "Wedding Articles"
+    folder: "_wedding-articles"
+    create: true
+    slug: "{{slug}}"
+    sort_by: "date"
+    sort_direction: Descending
+    fields:
+      - { label: "Category", name: "category", widget: "string", hint: "Wedding slug (e.g., chapel-at-tlaquepaque)" }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        field: { label: "Image", name: "image", widget: "image" }
+      - { label: "Content", name: "body", widget: "markdown", required: false }
+
+  - name: "events"
+    label: "Events"
+    folder: "_events"
+    create: true
+    slug: "{{slug}}"
+    sort_by: "starts_at"
+    sort_direction: Descending
+    media_folder: "/assets/images/events"
+    public_folder: "/assets/images/events"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Published", name: "published", widget: "boolean", default: true, hint: "If false, the event will not be shown on the calendar or website." }
+      - { label: "Starts At", name: "starts_at", widget: "datetime" }
+      - { label: "Ends At", name: "ends_at", widget: "datetime", required: false, hint: "Usually same date as Starts At with a later end time. For Schedule Type: 'range', this is required and defines the from-to span end." }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Video URL", name: "video_url", widget: "string", required: false, hint: "If set, the annual event will display a video background instead of an image." }
+      - { label: "Subtitle", name: "subtitle", widget: "text" }
+      - { label: "Schedule Type", name: "schedule_type", widget: "select", options: ["single", "range", "weekly", "monthly", "yearly"], required: true, hint: "single: one date; range: daily from start to end; weekly: selected weekdays until Recurrence Until; monthly: first selected weekday(s) each month until Recurrence Until; yearly: same date each year." }
+      - { label: "Recurrence Until", name: "recurs_until", widget: "datetime", required: false, hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
+      - { label: "Recurrence Weekdays", name: "recurrence_weekdays", widget: "select", multiple: true, required: false, options: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"], hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
+      - label: "Schedule"
+        name: "schedule"
+        widget: "list"
+        required: false
+        collapsed: true
+        fields:
+          - { label: "Location", name: "location", widget: "string" }
+          - label: "Performances"
+            name: "performances"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Time", name: "time", widget: "string" }
+      - label: "Map"
+        name: "map"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
           - { label: "Title", name: "title", widget: "string" }
-          - label: "Navigation"
-            name: "nav"
-            widget: "object"
-            fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - label: "Items"
-                name: "items"
-                widget: "list"
-                fields:
-                  - { label: "Type", name: "type", widget: "string" }
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Description", name: "description", widget: "string" }
-                  - { label: "URL", name: "url", widget: "string" }
-                  - { label: "Image", name: "image", widget: "image" }
-
-  - name: "settings"
-    label: "Settings"
-    files:
-      - name: "site_config"
-        label: "Site Configuration"
-        file: "_data/site.yml"
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Button Label", name: "button_label", widget: "string" }
+          - { label: "URL", name: "url", widget: "string" }
+      - label: "Video"
+        name: "video"
+        widget: "object"
+        required: false
+        collapsed: true
         fields:
-          - { label: "App Name", name: "app_name", widget: "string" }
-          - { label: "App Description", name: "app_description", widget: "string" }
-          - label: "Footer"
-            name: "footer"
-            widget: "object"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Phone", name: "phone", widget: "string" }
-              - { label: "Formatted Phone", name: "formatted_phone", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Street Address", name: "street_address", widget: "string" }
-              - { label: "Mail Address", name: "mail_address", widget: "string" }
-              - { label: "Subscribe Button", name: "subscribe_button", widget: "string" }
-              - { label: "Magazine Alt Text", name: "magazine_alt", widget: "string" }
-          - { label: "Directions URL", name: "directions_url", widget: "string" }
-          - { label: "Weather URL", name: "weather_url", widget: "string" }
-          - { label: "Weather Widget URL", name: "weather_widget", widget: "string" }
-
-  - name: "map_content"
-    label: "Map"
-    files:
-      - name: "map_points"
-        label: "Map Labels & Text"
-        file: "_data/map_points.yml"
-        fields:
-
-          # ── Sidebar UI ──────────────────────────────────────────────────────
-          - label: "Sidebar UI Text"
-            name: "ui"
-            widget: "object"
-            collapsed: false
-            fields:
-              - { label: "Search field label (screen reader)", name: "search_label", widget: "string" }
-              - { label: "Search placeholder", name: "search_placeholder", widget: "string" }
-              - { label: "No results message", name: "no_results", widget: "string" }
-              - { label: "Stores heading", name: "stores_heading", widget: "string" }
-              - { label: "Show All button", name: "show_all", widget: "string" }
-              - { label: "Category: Shops", name: "category_shops", widget: "string" }
-              - { label: "Category: Galleries", name: "category_galleries", widget: "string" }
-              - { label: "Category: Food & Beverage", name: "category_food", widget: "string" }
-              - { label: "Legend group: Restrooms", name: "legend_restrooms", widget: "string" }
-              - { label: "Legend group: Parking", name: "legend_parking", widget: "string" }
-              - { label: "Legend group: Amenities", name: "legend_amenities", widget: "string" }
-              - { label: "Legend group: Transport", name: "legend_transport", widget: "string" }
-              - { label: "Legend group: Entrances", name: "legend_navigation", widget: "string" }
-              - { label: "Legend group: Landmarks", name: "legend_landmarks", widget: "string" }
-
-          # ── Area Labels (shown on map polygons) ─────────────────────────────
-          - label: "Area Labels"
-            name: "areas"
-            widget: "object"
-            collapsed: true
-            hint: "Text displayed directly on the map over named areas. Overrides GeoJSON data."
-            fields:
-              - { label: "Wind Sculpture Garden", name: "wind-sculpture-garden", widget: "string" }
-              - { label: "El Pasillo Pequeño", name: "el-pasillo-pequeno", widget: "string" }
-              - { label: "Patio de las Campanas", name: "patio-de-las-campanas", widget: "string" }
-              - { label: "Patio de la Capilla", name: "patio-de-la-capila", widget: "string" }
-              - { label: "Patio del Norte", name: "patio-del-norte", widget: "string" }
-              - { label: "Avenida de la Constitución", name: "avenida-de-la-constitution", widget: "string" }
-              - { label: "Soldier Wash Walkway", name: "soldier-wash-walkway", widget: "string" }
-              - { label: "Calle Miller", name: "calle-miller", widget: "string" }
-              - { label: "Calle Independencia", name: "calle-independencia", widget: "string" }
-              - { label: "Patio Azul", name: "patio-azul", widget: "string" }
-
-          # ── Point Types — default titles & descriptions ──────────────────────
-          - label: "Point Types (defaults)"
-            name: "types"
-            widget: "object"
-            collapsed: true
-            hint: "Default title and popup description for each marker type. Individual points below can override these."
-            fields:
-              - label: "Restroom"
-                name: "restroom"
-                widget: "object"
-                fields:
-                  - { label: "Title (singular)", name: "title", widget: "string" }
-                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Accessible Restroom"
-                name: "handicap-restroom"
-                widget: "object"
-                fields:
-                  - { label: "Title (singular)", name: "title", widget: "string" }
-                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Accessible Bathroom"
-                name: "handicap-bathroom"
-                widget: "object"
-                fields:
-                  - { label: "Title (singular)", name: "title", widget: "string" }
-                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Parking"
-                name: "parking"
-                widget: "object"
-                fields:
-                  - { label: "Title (singular)", name: "title", widget: "string" }
-                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Accessible Parking"
-                name: "parking-handicap"
-                widget: "object"
-                fields:
-                  - { label: "Title (singular)", name: "title", widget: "string" }
-                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Bike Rack"
-                name: "bike-rack"
-                widget: "object"
-                fields:
-                  - { label: "Title (singular)", name: "title", widget: "string" }
-                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Fountain"
-                name: "fountain"
-                widget: "object"
-                fields:
-                  - { label: "Title (singular)", name: "title", widget: "string" }
-                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Drinking Water"
-                name: "drinking-water"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "ATM"
-                name: "atm"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Information"
-                name: "information"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Entrance"
-                name: "entrance"
-                widget: "object"
-                fields:
-                  - { label: "Title (singular)", name: "title", widget: "string" }
-                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Elevator"
-                name: "elevator"
-                widget: "object"
-                fields:
-                  - { label: "Title (singular)", name: "title", widget: "string" }
-                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Shuttle Stop"
-                name: "bus-stop"
-                widget: "object"
-                fields:
-                  - { label: "Title (singular)", name: "title", widget: "string" }
-                  - { label: "Title (plural)", name: "title_plural", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Bell Tower"
-                name: "bell-tower"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Wind Sculpture Garden"
-                name: "wind-sculpture-garden"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-
-          # ── Individual Points — override defaults above ───────────────────────
-          - label: "Individual Points (overrides)"
-            name: "points"
-            widget: "object"
-            collapsed: true
-            hint: "Per-location title and description. These override the type defaults above."
-            fields:
-              - label: "Restrooms — North"
-                name: "restroom-north"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Restrooms — South"
-                name: "restroom-south"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Restrooms — Central"
-                name: "restroom-central"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Restrooms — West"
-                name: "restroom-west"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Accessible Restroom — North"
-                name: "handicap-bathroom-1"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Accessible Restroom — South"
-                name: "handicap-bathroom"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Shuttle Stop — North"
-                name: "tlaque-paque-north"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Shuttle Stop — South"
-                name: "tlaque-paque-south"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Entrance — North"
-                name: "entrance-north"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Entrance — South"
-                name: "entrance-south"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Entrance — West"
-                name: "entrance-west"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Main Gate"
-                name: "entrance-main-gate"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Fountain — Patio del Norte"
-                name: "patio-del-norte"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Fountain — Plaza de la Fuente"
-                name: "plaza-de-la-fuente"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Fountain — Campanas"
-                name: "fountain-3"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Fountain — Tlaquepaque North"
-                name: "fountain-5"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Fountain — El Pasillo Pequeño"
-                name: "el-pasillo-pequeno"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Bell Tower"
-                name: "bell-tower"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
-              - label: "Wind Sculpture Garden"
-                name: "wind-sculpture-garden"
-                widget: "object"
-                fields:
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Popup description", name: "description", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Video URL", name: "video_url", widget: "string", required: false }
+      - { label: "Phone", name: "phone", widget: "string", required: false }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Facebook", name: "facebook", widget: "string", required: false }
+      - { label: "Instagram", name: "instagram", widget: "string", required: false }
+      - { label: "Content", name: "body", widget: "markdown" }
