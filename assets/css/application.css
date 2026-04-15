@@ -720,7 +720,6 @@ nav#mobile {
     img {
       margin: 1.5rem 0;
       height: auto;
-      aspect-ratio: 2 / 1;
       object-fit: cover;
     }
 
