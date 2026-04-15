@@ -9,6 +9,7 @@ recurs_until: '2026-12-31 23:59:59'
 location: THROUGHOUT TLAQUEPAQUE
 image: "assets/images/events/tree-lighting.webp"
 subtitle: The beloved holiday tradition returns as families and friends gather at Tlaquepaque North. Enjoy festive entertainment, children’s activities, and complimentary hot chocolate while awaiting Santa’s arrival. A 26-foot Christmas tree sparkles, filling the night with joy and wonder.
+video_url: "https://vid.cdn-website.com/164890e9/videos/PsNbS5M0Tx6imKwuz1GU_SS22-v.mp4"
 ---
 
 ###### Visitors and locals gather for the Annual Holiday Tree Lighting, co-sponsored with the Sedona Chamber of Commerce & Tourism Bureau. This event marks the official beginning of the holiday season in one of Arizona’s most enchanting destinations.

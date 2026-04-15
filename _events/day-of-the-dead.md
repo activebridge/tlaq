@@ -25,9 +25,7 @@ map:
   description: Use this map to learn about the symbolism and locate the artful Day of the Dead altars and vignettes on display throughout the village during this day long celebration.
   button_label: DOWNLOAD THE ALTAR MAP
   url: '#'
-video:
-  title: DOD VIDEO
-  # video_url: Put the video URL here
+video_url: "https://vid.cdn-website.com/164890e9/videos/PsNbS5M0Tx6imKwuz1GU_SS22-v.mp4"
 ---
 
 ###### When Abe Miller envisioned Tlaquepaque, he wanted to bring more than Mexican architecture to Sedona—he wanted to share the vibrant culture, music, art, and time-honored celebrations. Our Día de los Muertos celebration honors that vision.

@@ -7,7 +7,28 @@ layout: default
 {% assign page_image_transition_name = page_transition_base | append: '-image' %}
 {% assign page_title_transition_name = page_transition_base | append: '-title' %}
 
-{% include hero-banner.html image_path=image_path transition-name=page_image_transition_name data_event_image=true %}
+{% if page.schedule_type == "yearly" %}
+  {% assign video_url = page.video_url %}
+
+  <section id="landing-banner" class="landing-banner">
+    {% include hero-banner.html image_path=image_path transition-name=page_image_transition_name data_event_image=true %}
+    <video class="videobgframe" src="{{ video_url }}" autoplay loop muted playsinline preload="metadata" id="videoBg"></video>
+    <script>
+      // Fallback: remove video if autoplay is blocked (e.g. Safari low power mode)
+      const videoBg = window.videoBg;
+      const removeIfNotPlaying = () => { removeIfNotPlaying.ok || videoBg.remove(); };
+      videoBg.addEventListener('playing', () => {
+        removeIfNotPlaying.ok = true;
+        setTimeout(() => videoBg.classList.add('loaded'), 1000);
+      }, { once: true });
+
+      videoBg.play().catch(removeIfNotPlaying);
+      setTimeout(removeIfNotPlaying, 1000);
+    </script>
+  </section>
+{% else %}
+  {% include hero-banner.html image_path=image_path transition-name=page_image_transition_name data_event_image=true %}
+{% endif %}
 
   <div class="top-section">
     <div class="content-wrapper">

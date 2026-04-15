@@ -19,6 +19,7 @@ schedule:
         time: "11:30 A.M. to 2:30 P.M."
       - name: Eric Miller
         time: "3:00 P.M. to 6:00 P.M."
+video_url: "https://vid.cdn-website.com/164890e9/videos/PsNbS5M0Tx6imKwuz1GU_SS22-v.mp4"
 ---
 
 ###### All are welcome at our annual festival celebrating Mexico’s rich culture and heritage. Enjoy the rhythm of Flamenco and Latin beats, the sounds of the mariachi, and the swirls of dancers performing throughout our village. 

@@ -1554,6 +1554,12 @@ a.read-more {
     --btn-color: var(--purple);
     width: 100%;
   }
+
+  .landing-banner {
+    height: calc(100vh - 210px);
+    &::after { display: none; }
+    .hero { top: 0; }
+  }
 }
 
 /* Store Hours Display Component */
