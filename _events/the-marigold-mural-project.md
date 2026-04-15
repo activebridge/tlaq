@@ -10,6 +10,7 @@ location: CALLE INDEPENDENCIA
 image: "assets/images/events/marigold-mural-project.webp"
 subtitle: Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions
   of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
+video_url: "https://vid.cdn-website.com/164890e9/videos/PsNbS5M0Tx6imKwuz1GU_SS22-v.mp4"
 ---
 
 ###### Paint a tribute to a lost loved one on the 26-foot long community remembrance wall. Artist Lovejoy will be on hand to guide and support the process.
