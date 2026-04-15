@@ -138,3 +138,8 @@ ui:
   legend_transport: Transport
   legend_navigation: Entrances
   legend_landmarks: Landmarks
+  locate_msgs:
+    locate_outside_area: "You're not in the village area"
+    locate_permission_denied: Enable location in your browser settings to use this feature
+    locate_timeout: Location request timed out
+    locate_error: Unable to get your location

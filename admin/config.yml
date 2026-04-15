@@ -200,6 +200,16 @@ collections:
               - { label: "Legend group: Transport", name: "legend_transport", widget: "string" }
               - { label: "Legend group: Entrances", name: "legend_navigation", widget: "string" }
               - { label: "Legend group: Landmarks", name: "legend_landmarks", widget: "string" }
+              - label: "Location Button — Toast Messages"
+                name: "locate_msgs"
+                widget: "object"
+                collapsed: true
+                hint: "These messages appear as small pop-up notifications when a visitor uses the 'Show my location' button on the map. Edit them to match the voice and language of the site."
+                fields:
+                  - { label: "Outside village area", name: "locate_outside_area", widget: "string", hint: "Shown when the visitor's GPS position is outside the Tlaquepaque village boundary." }
+                  - { label: "Location permission denied", name: "locate_permission_denied", widget: "string", hint: "Shown when the visitor's browser or device has blocked location access. Should guide them to fix it." }
+                  - { label: "Request timed out", name: "locate_timeout", widget: "string", hint: "Shown when GPS takes too long to respond (over 8 seconds)." }
+                  - { label: "General location error", name: "locate_error", widget: "string", hint: "Shown for any other geolocation failure not covered above." }
 
           # ── Area Labels (shown on map polygons) ─────────────────────────────
           - label: "Area Labels"
