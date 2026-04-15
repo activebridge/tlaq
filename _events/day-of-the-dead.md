@@ -47,8 +47,6 @@ schedule:
         time: "11:00 A.M. to 5:00 P.M."
       - name: Food vendors
         time: "11:00 A.M. to 5:00 P.M."
-subtitle: Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions
-  of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
 map:
   title: Altar Map
   description: Use this map to learn about the symbolism and locate the artful Day of the Dead altars and vignettes on display throughout the village during this day long celebration.
