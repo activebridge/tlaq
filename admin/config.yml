@@ -1061,9 +1061,9 @@ collections:
       - { label: "Ends At", name: "ends_at", widget: "datetime", required: false, hint: "Usually same date as Starts At with a later end time. For Schedule Type: 'range', this is required and defines the from-to span end." }
       - { label: "Location", name: "location", widget: "string" }
       - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Video URL", name: "video_url", widget: "string", required: false, hint: "If set, the annual event will display a video background instead of an image." }
+      - { label: "Video URL", name: "video_url", widget: "string", required: false, hint: "If set, the yearly event will display a video background instead of an image." }
       - { label: "Subtitle", name: "subtitle", widget: "text" }
-      - { label: "Schedule Type", name: "schedule_type", widget: "select", options: ["single", "range", "weekly", "monthly", "yearly"], required: true, hint: "single: one date; range: daily from start to end; weekly: selected weekdays until Recurrence Until; monthly: first selected weekday(s) each month until Recurrence Until; yearly: same date each year." }
+      - { label: "Schedule Type", name: "schedule_type", widget: "select", options: ["single", "range", "weekly", "monthly", "yearly"], required: true, hint: "single: one date; range: daily from start to end; weekly: selected weekdays until Recurrence Until; monthly: first selected weekday(s) each month until Recurrence Until; yearly: same date each year, shown in Annual Events." }
       - { label: "Recurrence Until", name: "recurs_until", widget: "datetime", required: false, hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
       - { label: "Recurrence Weekdays", name: "recurrence_weekdays", widget: "select", multiple: true, required: false, options: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"], hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
       - label: "Schedule"
@@ -1089,14 +1089,6 @@ collections:
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Button Label", name: "button_label", widget: "string" }
           - { label: "URL", name: "url", widget: "string" }
-      - label: "Video"
-        name: "video"
-        widget: "object"
-        required: false
-        collapsed: true
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Video URL", name: "video_url", widget: "string", required: false }
       - { label: "Phone", name: "phone", widget: "string", required: false }
       - { label: "Website", name: "website", widget: "string", required: false }
       - { label: "Email", name: "email", widget: "string", required: false }
