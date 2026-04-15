@@ -40,44 +40,73 @@ collections:
         file: "_landing/banner.md"
         media_folder: "/assets/images/landing"
         public_folder: "/assets/images/landing"
-        fields: &landing_fields
-          - { label: "Order", name: "order", widget: "number", value_type: "int" }
-          - { label: "Section", name: "section", widget: "select", options: ["banner", "articles", "footer"] }
-          - { label: "Heading", name: "heading", widget: "string", required: false }
-          - { label: "Title", name: "title", widget: "string", required: false }
-          - { label: "Icon", name: "icon", widget: "string", required: false }
-          - { label: "Description", name: "description", widget: "text", required: false }
-          - { label: "Image", name: "image", widget: "image", required: false }
-          - { label: "Alt Text", name: "alt", widget: "string", required: false }
-          - { label: "Empty Message", name: "empty_message", widget: "string", required: false }
+        fields:
+          - { label: "Section", name: "section", widget: "hidden", default: "banner" }
+          - { label: "Heading", name: "heading", widget: "string", hint: "Large hero heading displayed over the banner image/video." }
+          - { label: "Image", name: "image", widget: "image", hint: "Fallback image shown when the background video cannot autoplay (e.g. low-power mode, slow connection). Also used for social sharing previews." }
           - label: "Button"
             name: "button"
             widget: "object"
-            required: false
-            collapsed: true
+            hint: "Primary CTA button shown on the banner."
             fields:
               - { label: "Text", name: "text", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
+      - name: "village_map"
+        label: "Village Map"
+        file: "_landing/village-map.md"
+        media_folder: "/assets/images/landing"
+        public_folder: "/assets/images/landing"
+        fields:
+          - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
+          - { label: "Section", name: "section", widget: "hidden", default: "articles" }
+          - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the map." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
+          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/default.svg)." }
+          - { label: "Description", name: "description", widget: "text", hint: "Body text shown below the heading, above the map embed." }
+          - { label: "Empty Message", name: "empty_message", widget: "string", required: false, hint: "Fallback text shown if the map cannot load." }
+      - name: "calendar"
+        label: "Calendar"
+        file: "_landing/calendar.md"
+        media_folder: "/assets/images/landing"
+        public_folder: "/assets/images/landing"
+        fields:
+          - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
+          - { label: "Section", name: "section", widget: "hidden", default: "articles" }
+          - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the calendar widget." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
+          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/default.svg)." }
+          - { label: "Description", name: "description", widget: "text", hint: "Body text shown below the heading, above the calendar." }
+          - { label: "Empty Message", name: "empty_message", widget: "string", hint: "Fallback text shown when no upcoming events exist." }
           - label: "Link"
             name: "link"
             widget: "object"
-            required: false
-            collapsed: true
+            hint: "Text link shown below the calendar (e.g. 'View All Events')."
             fields:
               - { label: "URL", name: "url", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
-          - label: "Links"
-            name: "links"
-            widget: "list"
-            required: false
+      - name: "whats_new"
+        label: "What's New"
+        file: "_landing/whats-new.md"
+        media_folder: "/assets/images/landing"
+        public_folder: "/assets/images/landing"
+        fields:
+          - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
+          - { label: "Section", name: "section", widget: "hidden", default: "articles" }
+          - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the news content." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
+          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/default.svg)." }
+          - { label: "Empty Message", name: "empty_message", widget: "string", required: false, hint: "Fallback text shown when no news items exist." }
+          - label: "Link"
+            name: "link"
+            widget: "object"
+            hint: "Text link shown below the news grid (e.g. 'View All News')."
             fields:
               - { label: "URL", name: "url", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
           - label: "Featured"
             name: "featured"
             widget: "object"
-            required: false
-            collapsed: true
+            hint: "Main spotlight story shown at the top of the section."
             fields:
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Alt", name: "alt", widget: "string" }
@@ -86,65 +115,99 @@ collections:
           - label: "Items"
             name: "items"
             widget: "list"
-            required: false
+            hint: "Secondary news cards shown in a grid below the featured story."
             fields:
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Alt", name: "alt", widget: "string" }
-              - { label: "Title", name: "title", widget: "string", required: false }
-              - { label: "Description", name: "description", widget: "text", required: false }
-              - { label: "Width", name: "width", widget: "number", required: false }
-              - { label: "Height", name: "height", widget: "number", required: false }
-          - label: "Images"
-            name: "images"
-            widget: "list"
-            required: false
-            fields:
-              - { label: "Image", name: "image", widget: "image" }
-              - { label: "Alt", name: "alt", widget: "string" }
-              - { label: "Width", name: "width", widget: "number" }
-              - { label: "Height", name: "height", widget: "number" }
-      - name: "village_map"
-        label: "Village Map"
-        file: "_landing/village-map.md"
-        media_folder: "/assets/images/landing"
-        public_folder: "/assets/images/landing"
-        fields: *landing_fields
-      - name: "calendar"
-        label: "Calendar"
-        file: "_landing/calendar.md"
-        media_folder: "/assets/images/landing"
-        public_folder: "/assets/images/landing"
-        fields: *landing_fields
-      - name: "whats_new"
-        label: "What's New"
-        file: "_landing/whats-new.md"
-        media_folder: "/assets/images/landing"
-        public_folder: "/assets/images/landing"
-        fields: *landing_fields
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
       - name: "magazine"
         label: "Our Magazine"
         file: "_landing/magazine.md"
         media_folder: "/assets/images/landing"
         public_folder: "/assets/images/landing"
-        fields: *landing_fields
+        fields:
+          - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
+          - { label: "Section", name: "section", widget: "hidden", default: "articles" }
+          - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the magazine content." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
+          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/default.svg)." }
+          - { label: "Image", name: "image", widget: "image", hint: "Magazine cover photo displayed in the section." }
+          - { label: "Alt Text", name: "alt", widget: "string", hint: "Alt text for the magazine cover image." }
+          - { label: "Description", name: "description", widget: "text", hint: "Body text shown beside the magazine cover." }
+          - label: "Links"
+            name: "links"
+            widget: "list"
+            hint: "Buttons rendered below the description (e.g. 'View Latest Issue', 'Browse Previous Issues')."
+            fields:
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Text", name: "text", widget: "string" }
       - name: "weddings"
         label: "Weddings & Private Events"
         file: "_landing/weddings.md"
         media_folder: "/assets/images/landing"
         public_folder: "/assets/images/landing"
-        fields: *landing_fields
+        fields:
+          - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
+          - { label: "Section", name: "section", widget: "hidden", default: "articles" }
+          - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the weddings content." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
+          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/weddings.svg)." }
+          - { label: "Description", name: "description", widget: "text", hint: "Body text shown below the image collage." }
+          - label: "Images"
+            name: "images"
+            widget: "list"
+            hint: "3-photo collage layout. Each image requires exact pixel width and height for correct rendering."
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt", name: "alt", widget: "string" }
+              - { label: "Width", name: "width", widget: "number" }
+              - { label: "Height", name: "height", widget: "number" }
+          - label: "Link"
+            name: "link"
+            widget: "object"
+            hint: "Text link shown below the section (e.g. 'Explore Weddings & Events')."
+            fields:
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Text", name: "text", widget: "string" }
       - name: "filming"
         label: "Filming & Photography Permits"
         file: "_landing/filming.md"
         media_folder: "/assets/images/landing"
         public_folder: "/assets/images/landing"
-        fields: *landing_fields
+        fields:
+          - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
+          - { label: "Section", name: "section", widget: "hidden", default: "articles" }
+          - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the filming content." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
+          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/default.svg)." }
+          - { label: "Image", name: "image", widget: "image", hint: "Feature image displayed in the section." }
+          - { label: "Alt Text", name: "alt", widget: "string", hint: "Alt text for the feature image." }
+          - { label: "Description", name: "description", widget: "text", hint: "Body text shown beside or below the image." }
+          - label: "Link"
+            name: "link"
+            widget: "object"
+            hint: "Text link / CTA button shown below the description."
+            fields:
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Text", name: "text", widget: "string" }
       - name: "awards"
         label: "Awards"
         file: "_landing/awards.md"
-        media_folder: "/assets/images/landing"
-        public_folder: "/assets/images/landing"
-        fields: *landing_fields
+        media_folder: "/assets/images/awards"
+        public_folder: "/assets/images/awards"
+        fields:
+          - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the footer section." }
+          - { label: "Section", name: "section", widget: "hidden", default: "footer" }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            hint: "Award badge/logo images shown in the footer strip. Width and height required for correct layout."
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt", name: "alt", widget: "string" }
+              - { label: "Width", name: "width", widget: "number" }
+              - { label: "Height", name: "height", widget: "number" }
 
   - name: "landing_navigation"
     label: "Landing Navigation"

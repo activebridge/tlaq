@@ -2,7 +2,7 @@
 layout: default
 ---
 {% assign banner = site.landing | where: "section", "banner" | first %}
-{% assign img_path = '/assets/images/' | append: banner.image | append: '.webp' %}
+{% assign img_path = banner.image %}
 {% assign desktop_image_path = img_path | prepend:
 '/cdn-cgi/image/width=1600,height=800,fit=cover,quality=60,gravity=center/' | prepend: site.cdn_url %}
 {% assign mobile_image_path = img_path | prepend:
