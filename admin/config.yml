@@ -928,6 +928,90 @@ collections:
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "string" }
+              - label: "Entrance — North (ID: entrance-north)"
+                name: "entrance-north"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Entrance — South (ID: entrance-south)"
+                name: "entrance-south"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Entrance — West (ID: entrance-west)"
+                name: "entrance-west"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Main Gate (ID: entrance-main-gate)"
+                name: "entrance-main-gate"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Bell Tower (ID: bell-tower)"
+                name: "bell-tower"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Wind Sculpture Garden (ID: wind-sculpture-garden)"
+                name: "wind-sculpture-garden"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "North Restrooms (ID: restroom-north)"
+                name: "restroom-north"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "South Restrooms (ID: restroom-south)"
+                name: "restroom-south"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Central Restrooms (ID: restroom-central)"
+                name: "restroom-central"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "West Restrooms (ID: restroom-west)"
+                name: "restroom-west"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Accessible Restroom 1 (ID: handicap-bathroom-1)"
+                name: "handicap-bathroom-1"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Accessible Parking 2 (ID: parking-handicap-2)"
+                name: "parking-handicap-2"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "El Pasillo Pequeño Fountain (ID: el-pasillo-pequeno)"
+                name: "el-pasillo-pequeno"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+              - label: "Elevator (ID: elevator)"
+                name: "elevator"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
           - label: "Area Labels"
             name: "areas"
             widget: "object"
