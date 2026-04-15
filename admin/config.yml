@@ -530,25 +530,66 @@ collections:
         file: "pages/about.html"
         fields:
           - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
+          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "about" }
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - { label: "Content", name: "body", widget: "code", default_language: "html" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/about" }
+          - { label: "Heading", name: "heading", widget: "string", hint: "Large h2 heading shown at the top of the page." }
+          - { label: "Subheading", name: "subheading", widget: "text", hint: "Smaller h6 text shown below the heading." }
+          - { label: "History Description", name: "history_description", widget: "text", hint: "Paragraph shown below the history image, above the 'Explore History' button." }
+          - { label: "History Button Text", name: "history_button_text", widget: "string" }
+          - { label: "History Button URL", name: "history_button_url", widget: "string" }
       - name: "accessibility"
         label: "Accessibility"
         file: "pages/accessibility.html"
         fields:
           - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
+          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "accessibility" }
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - { label: "Content", name: "body", widget: "code", default_language: "html" }
-      - name: "family_and_pet"
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/accessibility" }
+          - { label: "Heading", name: "heading", widget: "string", hint: "Large h2 heading shown at the top of the page." }
+          - { label: "Subheading", name: "subheading", widget: "text", hint: "h6 text shown below the heading." }
+          - { label: "Accessible Features Description", name: "accessibility_description", widget: "text", hint: "Paragraph in the Accessible Features card." }
+          - { label: "Family & Dog Friendly Description", name: "family_description", widget: "text", hint: "Paragraph in the Family & Dog Friendly card." }
+          - { label: "Parking Heading", name: "parking_heading", widget: "string" }
+          - label: "Parking Paragraphs"
+            name: "parking_paragraphs"
+            widget: "list"
+            hint: "Each item is one paragraph in the Parking section."
+            field: { label: "Paragraph", name: "paragraph", widget: "text" }
+      - name: "family_and_pet_page"
         label: "Family & Pet"
-        file: "pages/family_and_pet.html"
+        file: "_data/family_and_pet.yml"
+        media_folder: "/assets/images/landing"
+        public_folder: "/assets/images/landing"
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Permalink", name: "permalink", widget: "string" }
-          - { label: "Content", name: "body", widget: "code", default_language: "html" }
+          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the page." }
+          - label: "Notes"
+            name: "notes"
+            widget: "object"
+            fields:
+              - { label: "Intro", name: "intro", widget: "text", hint: "Introductory paragraph shown below the hero." }
+          - label: "Family Section"
+            name: "family"
+            widget: "object"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Amenities"
+                name: "amenities"
+                widget: "list"
+                hint: "Bullet-point list of family amenities."
+                field: { label: "Amenity", name: "amenity", widget: "string" }
+          - label: "Pets Section"
+            name: "pets"
+            widget: "object"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Rules"
+                name: "rules"
+                widget: "list"
+                hint: "Bullet-point list of pet rules."
+                field: { label: "Rule", name: "rule", widget: "string" }
       - name: "history"
         label: "History"
         file: "_data/history.yml"
@@ -914,6 +955,86 @@ collections:
           - { label: "Success Message", name: "success", widget: "string" }
           - { label: "Error Message", name: "error", widget: "string" }
           - { label: "Hero Image", name: "hero_image", widget: "image" }
+      - name: "gift_cards"
+        label: "Gift Cards"
+        file: "_data/gift_cards.yml"
+        media_folder: "/assets/images"
+        public_folder: "/assets/images"
+        fields:
+          - { label: "Hero Banner", name: "hero_banner", widget: "image" }
+          - label: "Notes"
+            name: "notes"
+            widget: "object"
+            fields:
+              - { label: "Intro", name: "intro", widget: "text", hint: "Introductory paragraph shown at the top of the page." }
+          - label: "Details"
+            name: "details"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                hint: "Bullet-point list of gift card features."
+                field: { label: "Feature", name: "feature", widget: "string" }
+              - label: "Terms"
+                name: "terms"
+                widget: "list"
+                hint: "Bullet-point list of terms."
+                field: { label: "Term", name: "term", widget: "string" }
+          - label: "Purchase Info"
+            name: "purchase"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - label: "Hours"
+                name: "hours"
+                widget: "list"
+                hint: "Each item is one line of operating hours (e.g. Monday–Thursday: 10:00 am–5:00 pm)."
+                field: { label: "Hours Line", name: "line", widget: "string" }
+              - { label: "Note", name: "note", widget: "string", hint: "e.g. Restaurant hours vary." }
+      - name: "contacts"
+        label: "Contacts"
+        file: "_data/contacts.yml"
+        media_folder: "/assets/images"
+        public_folder: "/assets/images"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Banner", name: "hero_banner", widget: "image" }
+          - label: "Contact Items"
+            name: "items"
+            widget: "list"
+            hint: "Each item is a contact info row (Address, Phone, Email, etc.)."
+            fields:
+              - { label: "Label", name: "title", widget: "string" }
+              - { label: "Value", name: "content", widget: "string" }
+          - { label: "Follow Us Label", name: "follow_us", widget: "string" }
+          - { label: "Facebook URL", name: "facebook", widget: "string" }
+          - { label: "Instagram URL", name: "instagram", widget: "string" }
+          - label: "Buttons"
+            name: "buttons"
+            widget: "object"
+            fields:
+              - { label: "Leasing Button", name: "leasing", widget: "string" }
+              - { label: "Filming Button", name: "filming", widget: "string" }
+              - { label: "Weddings Button", name: "weddings", widget: "string" }
+      - name: "wedding_faq"
+        label: "Wedding FAQ"
+        file: "_data/wedding-faq.yml"
+        media_folder: "/assets/images/weddings"
+        public_folder: "/assets/images/weddings"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Banner", name: "hero_banner", widget: "image" }
+          - label: "FAQ Items"
+            name: "blocks"
+            widget: "list"
+            hint: "Each item is one question and answer."
+            fields:
+              - { label: "Question", name: "title", widget: "string" }
+              - { label: "Answer", name: "content", widget: "text" }
       - name: "magazines"
         label: "Magazines"
         file: "_data/magazines.yml"

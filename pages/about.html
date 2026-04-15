@@ -3,12 +3,17 @@ layout: page
 title: About
 permalink: /about
 layout_type: about
+heading: "A celebrated arts and shopping village in the heart of Sedona."
+subheading: "A unique destination where curated outdoor art, seasonal landscaping, a rich heritage, and artisan culture can be experienced throughout the village."
+history_description: "From its architectural inspiration to artistic tradition, learn about the vision behind our village that continues today."
+history_button_text: "Explore Tlaquepaque History"
+history_button_url: "/history"
 ---
 
 <div class="content-wrapper">
   <h5 title>About</h5>
-  <h2>A celebrated arts and shopping village in the heart of Sedona.</h2>
-  <h6>A unique destination where curated outdoor art, seasonal landscaping, a rich heritage, and artisan culture can be experienced throughout the village.</h6>
+  <h2>{{ page.heading }}</h2>
+  <h6>{{ page.subheading }}</h6>
 
   <h3 id="map">Village Map</h3>
   <iframe src="{{ '/map_embed' | relative_url }}" loading="lazy" title="Village Map"
@@ -21,6 +26,6 @@ layout_type: about
   <figure>
     <img src="{{ img_src }}" alt="The History of Tlaquepaque" width="1200" height="675" loading="lazy" decoding="async">
   </figure>
-  <p>From its architectural inspiration to artistic tradition, learn about the vision behind our village that continues today.</p>
-  <a class="btn btn-primary" href="/history">Explore Tlaquepaque History</a>
+  <p>{{ page.history_description }}</p>
+  <a class="btn btn-primary" href="{{ page.history_button_url }}">{{ page.history_button_text }}</a>
 </div>

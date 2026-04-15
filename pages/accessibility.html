@@ -3,6 +3,14 @@ layout: page
 title: Accessibility
 permalink: /accessibility
 layout_type: accessibility
+heading: "Welcoming all guests to our vibrant village."
+subheading: "Tlaquepaque Arts & Shopping Village is committed to providing an enjoyable experience for visitors of all abilities."
+accessibility_description: "Accessible parking, entrances, and restrooms are available throughout Tlaquepaque North and South. All accessible features can be easily located on the village map for convenient navigation during your visit. While wheelchair rentals are not available on property, guests are welcome to bring their own mobility devices."
+family_description: "Tlaquepaque is a family-friendly destination with shops, dining, and events for visitors of all ages. We welcome leashed pets and offer water sources near the village restrooms. Please never under any circumstances leave your pets unattended in your vehicle due to the potential dangers of Arizona's extreme heat."
+parking_heading: "Parking"
+parking_paragraphs:
+  - "Parking while visiting Tlaquepaque is free. There are several parking lots surrounding the property and one additional lot, across the street, at our Tlaquepaque North location."
+  - "RVs, 5th wheelers, and tour buses can easily be parked in the Portal Lane lot, located directly northwest of Tlaquepaque Arts & Crafts Village."
 ---
 
 {% assign image_path = site.data.hours.accessibility.image %}
@@ -12,8 +20,8 @@ layout_type: accessibility
 <div class="content-wrapper">
   <hgroup style="--transition-name: title-{{transition-name}};">
     <h5 title>Accessibility</h5>
-    <h2>Welcoming all guests to our vibrant village.</h2>
-    <h6>Tlaquepaque Arts &amp; Shopping Village is committed to providing an enjoyable experience for visitors of all abilities.</h6>
+    <h2>{{ page.heading }}</h2>
+    <h6>{{ page.subheading }}</h6>
   </hgroup>
 
   <div class="list-container">
@@ -22,8 +30,7 @@ layout_type: accessibility
       <figure>
         {% include responsive-card-image.html src=site.data.hours.accessibility.image alt='Accessibility Icon' %}
       </figure>
-      <p>Accessible parking, entrances, and restrooms are available throughout Tlaquepaque North and South. All accessible features can be easily located on the village map for convenient navigation during your visit.</p>
-      <p>While wheelchair rentals are not available on property, guests are welcome to bring their own mobility devices.</p>
+      <p>{{ page.accessibility_description }}</p>
       <a href="/village_map" class="btn btn-primary">View Village Map</a>
     </div>
 
@@ -32,8 +39,7 @@ layout_type: accessibility
       <figure>
         {% include responsive-card-image.html src=site.data.hours.family_friendly.image alt='Family and Dog Friendly Icon' %}
       </figure>
-      <p>Tlaquepaque is a family-friendly destination with shops, dining, and events for visitors of all ages. We welcome leashed pets and offer water sources near the village restrooms.</p>
-      <p>Please never under any circumstances leave your pets unattended in your vehicle due to the potential dangers of Arizona's extreme heat.</p>
+      <p>{{ page.family_description }}</p>
     </div>
   </div>
 
@@ -61,8 +67,9 @@ layout_type: accessibility
 
   <hr>
 
-  <h3>Parking</h3>
-  <p>Parking while visiting Tlaquepaque is free. There are several parking lots surrounding the property and one additional lot, across the street, at our Tlaquepaque North location.</p>
-  <p>RVs, 5th wheelers, and tour buses can easily be parked in the Portal Lane lot, located directly northwest of Tlaquepaque Arts &amp; Crafts Village.</p>
+  <h3>{{ page.parking_heading }}</h3>
+  {% for paragraph in page.parking_paragraphs %}
+    <p>{{ paragraph }}</p>
+  {% endfor %}
   <a href="/parking" class="btn btn-primary">Parking Details</a>
 </div>
