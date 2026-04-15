@@ -35,7 +35,6 @@
     z-index: 4;
     scrollbar-width: thin;
     scrollbar-color: var(--cream-60) transparent;
-    transform: translateX(0);
   }
 
   #mapSidebar::-webkit-scrollbar {
@@ -235,6 +234,13 @@
   .sidebar-result.active {
     border-left-color: var(--cat-color);
     background: var(--cream-80);
+  }
+
+  .sidebar-result-title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .sidebar-result-suite {
@@ -662,6 +668,8 @@
   <span class="sidebar-result-icon" data-type="information">{% include icons/map/info.svg %}</span>
   <span class="sidebar-result-icon" data-type="drinking-water">{% include icons/map/water.svg %}</span>
   <span class="sidebar-result-icon" data-type="fountain">{% include icons/map/fountain.svg %}</span>
+  <span class="sidebar-result-icon" data-type="bell-tower">{% include icons/map/tower.svg %}</span>
+  <span class="sidebar-result-icon" data-type="wind-sculpture-garden">{% include icons/map/garden.svg %}</span>
   <span class="sidebar-result-icon" data-type="atm">{% include icons/map/atm.svg %}</span>
   <span class="sidebar-result-icon" data-type="tree">{% include icons/map/tree.svg %}</span>
   <span class="sidebar-result-icon" data-type="bus-stop">{% include icons/map/shuttle.svg %}</span>
@@ -677,7 +685,7 @@
   function loadMapbox() {
     if (window._mapboxLoading) return;
     window._mapboxLoading = true;
-    var s = document.createElement('script');
+    const s = document.createElement('script');
     s.src = 'https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.js';
     s.onload = initMap;
     document.head.appendChild(s);
@@ -717,7 +725,6 @@
     };
     const DEFAULT_HIGHLIGHT_COLOR = categoryColors.shop;
     const BUILDING_BASE_COLOR = '#111c4e';  // --navy
-    const BORDER_FILL_COLOR = BUILDING_BASE_COLOR;
     const AREA_COLOR = '#008066';          // --green
     const PARKING_COLOR = '#8c8c8c';
 
@@ -734,20 +741,6 @@
       return el;
     };
     const getIconByType = (type) => (iconsTemplate.querySelector(`[data-type="${type || 'default'}"]`) || iconsTemplate.querySelector('[data-type="default"]')).cloneNode(true);
-
-    const polygonLongestEdge = (ring) => {
-      let best = { dist: 0, a: ring[0], b: ring[1] };
-      for (let i = 0; i < ring.length - 1; i++) {
-        const dx = ring[i + 1][0] - ring[i][0], dy = ring[i + 1][1] - ring[i][1];
-        const d = dx * dx + dy * dy;
-        if (d > best.dist) best = { dist: d, a: ring[i], b: ring[i + 1] };
-      }
-      return best;
-    };
-    const polygonAngle = (ring) => {
-      const { a, b } = polygonLongestEdge(ring);
-      return Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI;
-    };
 
     // GeoJSON feature lookup tables (populated after fetch)
     let knownFeatureIds = new Set();
@@ -836,58 +829,13 @@
       const geojsonPath = '{{ "/assets/data/tlaq.geojson" | relative_url }}';
       map.addSource('map-data', { type: 'geojson', data: geojsonPath, promoteId: 'id' });
 
-      fetch(geojsonPath)
-        .then(r => r.json())
-        .then(data => {
-          const areaFeatures = data.features.filter(f =>
-            f.properties.type === 'area' &&
-            f.properties.name &&
-            f.geometry.type === 'Polygon'
-          ).map(f => ({
-            ...f,
-            geometry: {
-              type: 'LineString',
-              coordinates: polyLongestEdgeLine(f.geometry.coordinates[0])
-            }
-          }));
-          map.getLayer('area-labels') && map.removeLayer('area-labels');
-          if (map.getSource('area-label-data')) {
-            map.getSource('area-label-data').setData({ type: 'FeatureCollection', features: areaFeatures });
-          } else {
-            map.addSource('area-label-data', {
-              type: 'geojson',
-              data: { type: 'FeatureCollection', features: areaFeatures }
-            });
-          }
-          map.addLayer({
-            id: 'area-labels', type: 'symbol', source: 'area-label-data',
-            layout: {
-              'symbol-placement': 'line-center',
-              'text-field': ['get', 'name'],
-              'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
-              'text-size': 11,
-              'text-max-width': 8,
-              'text-anchor': 'center',
-              'text-allow-overlap': false,
-              'text-ignore-placement': false,
-              'text-rotation-alignment': 'map',
-              'text-pitch-alignment': 'map',
-              'text-padding': 6,
-            },
-            paint: {
-              'text-color': BUILDING_BASE_COLOR,
-              'text-halo-color': 'rgba(255,255,255,0.25)',
-              'text-halo-width': 2,
-            }
-          });
-        });
 
 
       const borderFilter = ['==', ['get', 'type'], 'border'];
       map.addLayer({
         id: 'borders-fill', type: 'fill', source: 'map-data',
         filter: borderFilter,
-        paint: { 'fill-color': BORDER_FILL_COLOR, 'fill-opacity': 0.2 }
+        paint: { 'fill-color': BUILDING_BASE_COLOR, 'fill-opacity': 0.2 }
       });
 
       const parkingFilter = ['==', ['get', 'type'], 'parking'];
@@ -912,10 +860,8 @@
       map.addLayer({
         id: 'area-outline', type: 'line', source: 'map-data',
         filter: ['all', polygonFilter, areaFilter],
-        paint: { 'line-color': AREA_COLOR, 'line-width': 1, 'line-dasharray': [4, 3], 'line-opacity': 0.1 }
+        paint: { 'line-color': AREA_COLOR, 'line-width': 1, 'line-dasharray': [4, 3], 'line-opacity': ['case', ['has', 'name'], 0, 0.1] }
       });
-      // area-labels added dynamically after fetch (with labelAngle computed from longest polygon edge)
-
       // 3D extruded buildings
       map.addLayer({
         id: DATA_LAYER, type: 'fill-extrusion', source: 'map-data',
@@ -941,8 +887,46 @@
         }
       });
 
-      // Build lookup tables and place emoji markers from GeoJSON
-      fetch(geojsonPath).then(response => response.json()).then(geojson => {
+      // Build lookup tables, area labels, and place markers from GeoJSON
+      fetch(geojsonPath).then(r => r.json()).then(geojson => {
+        // Area label source/layer
+        const areaFeatures = geojson.features.filter(f =>
+          f.properties.type === 'area' &&
+          f.properties.name &&
+          f.geometry.type === 'Polygon'
+        ).map(f => ({
+          ...f,
+          geometry: { type: 'LineString', coordinates: polyLongestEdgeLine(f.geometry.coordinates[0]) }
+        }));
+        map.getLayer('area-labels') && map.removeLayer('area-labels');
+        if (map.getSource('area-label-data')) {
+          map.getSource('area-label-data').setData({ type: 'FeatureCollection', features: areaFeatures });
+        } else {
+          map.addSource('area-label-data', { type: 'geojson', data: { type: 'FeatureCollection', features: areaFeatures } });
+        }
+        map.addLayer({
+          id: 'area-labels', type: 'symbol', source: 'area-label-data',
+          layout: {
+            'symbol-placement': 'line-center',
+            'text-field': ['get', 'name'],
+            'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
+            'text-size': 11,
+            'text-max-width': 8,
+            'text-anchor': 'center',
+            'text-allow-overlap': false,
+            'text-ignore-placement': false,
+            'text-rotation-alignment': 'map',
+            'text-pitch-alignment': 'map',
+            'text-padding': 6,
+          },
+          paint: {
+            'text-color': BUILDING_BASE_COLOR,
+            'text-halo-color': 'rgba(255,255,255,0.25)',
+            'text-halo-width': 2,
+          }
+        });
+
+        // Feature lookup tables
         geojson.features.forEach(feature => {
           const { id } = feature.properties || {};
           if (isValidFeatureId(id)) knownFeatureIds.add(id);
@@ -983,7 +967,7 @@
         });
 
         // SVG markers for special point/polygon features
-        const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'bike-rack']);
+        const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'bike-rack', 'bell-tower', 'wind-sculpture-garden']);
         const polygonSvgTypes = new Set(['parking', 'area']);
         geojson.features.forEach(feature => {
           const { type: featureType, id: featureId } = feature.properties || {};
@@ -1027,7 +1011,7 @@
           group.className = 'sidebar-legend-group';
           group.appendChild(Object.assign(document.createElement('div'), { className: 'sidebar-legend-heading', textContent: label }));
           present.forEach(type => {
-            const { title } = typeMap.get(type);
+            const { title } = pointLabels.types?.[type] || typeMap.get(type);
             const btn = document.createElement('button');
             btn.className = 'sidebar-legend-item';
             btn.dataset.type = type;
@@ -1322,8 +1306,7 @@
     map.once('idle', () => {
       const baseZoom = map.getZoom();
       const applyMarkerScale = () => {
-        const currentZoom = map.getZoom();
-        const scale = 1 + (currentZoom - baseZoom) * 0.35; // 0.35 — growth rate per zoom level
+        const scale = 1 + (map.getZoom() - baseZoom) * 0.35; // 0.35 — growth rate per zoom level
         const svgSize = 14 * scale + 'px';     // 14px — marker base size
         document.querySelectorAll('.map-marker:has(svg)').forEach(el => { el.style.width = svgSize; el.style.height = svgSize; });
         const suiteFs = Math.min(12, 6 * scale);  // 6px base → max 12px

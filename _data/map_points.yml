@@ -1,13 +1,13 @@
 types:
   bus-stop:
-    title: Sedona Shuttle Stop
-    description: Free shuttle to/from Sedona Municipal Parking at Jordan & Schnebly roads.
+    title: Shuttle Stop
+    description: This stop serves the Verde Shuttle, providing direct service between Cottonwood and Sedona, with stops at major destinations including West Sedona, Uptown, Tlaquepaque, Hillside, and Poco Diablo Resort.
   atm:
     title: ATM
     description: Walk-up ATM available during village hours.
   restroom:
     title: Restrooms
-    description: Public restrooms available during village hours.
+    description: Restrooms are available for village visitors only. We kindly ask that you help keep them clean for everyone's enjoyment.
   fountain:
     title: Fountain
     description: One of Tlaquepaque's signature fountains throughout the village.
@@ -19,44 +19,77 @@ types:
     description: Village information and maps available here.
   parking:
     title: Parking
-    description: Free parking for all Tlaquepaque visitors.
+    description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
   handicap-restroom:
     title: Accessible Restroom
-    description: Accessible restroom available during village hours.
+    description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
   entrance:
-    title: Entrance
+    title: Entrances
     description: Village entrance point.
   elevator:
     title: Elevator
     description: Accessible elevator available during village hours.
   handicap-bathroom:
     title: Accessible Restroom
-    description: Accessible restroom available during village hours.
+    description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
   parking-handicap:
     title: Accessible Parking
-    description: Accessible parking available for visitors with disabilities.
+    description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
   bike-rack:
     title: Bike Rack
     description: Bicycle parking available for visitors.
 points:
+  restroom-north:
+    title: North Restrooms
+    description: Restrooms are available for village visitors only. We kindly ask that you help keep them clean for everyone's enjoyment.
+  restroom-south:
+    title: South Restrooms
+    description: Restrooms are available for village visitors only. We kindly ask that you help keep them clean for everyone's enjoyment.
+  restroom-central:
+    title: Central Restrooms
+    description: Restrooms are available for village visitors only. We kindly ask that you help keep them clean for everyone's enjoyment.
+  restroom-west:
+    title: West Restrooms
+    description: Restrooms are available for village visitors only. We kindly ask that you help keep them clean for everyone's enjoyment.
   patio-del-norte:
     title: Patio del Norte Fountain
-    description: Decorative fountain at the north entrance of Tlaquepaque.
+    description: The heart of the village, this lush, ground-level courtyard is defined by hand-carved wooden doors, tiled fountains, mature trees, and cobblestone paths that evoke an authentic Old World atmosphere.
   plaza-de-la-fuente:
     title: Plaza de la Fuente
-    description: Central plaza featuring Tlaquepaque's signature fountain.
+    description: Anchored by a large Spanish-style, tile-lined stone fountain and encircled by cobblestone streets, this plaza at the end of Calle Independencia is one of the village's most animated gathering places.
   fountain-3:
-    title: Fountain
+    title: Campanas Fountain
     description: One of Tlaquepaque's signature fountains throughout the village.
   fountain-5:
-    title: Fountain
+    title: Tlaquepaque North Fountain
     description: One of Tlaquepaque's signature fountains throughout the village.
   tlaque-paque-north:
-    title: Tlaquepaque North
-    description: Free shuttle to/from Sedona Municipal Parking at Jordan & Schnebly roads.
+    title: Shuttle Stop North
+    description: This stop serves the Verde Shuttle, providing direct service between Cottonwood and Sedona, with stops at major destinations including West Sedona, Uptown, Tlaquepaque, Hillside, and Poco Diablo Resort.
   tlaque-paque-south:
-    title: Tlaquepaque South
-    description: Free shuttle to/from Sedona Municipal Parking at Jordan & Schnebly roads.
+    title: Shuttle Stop South
+    description: This stop serves the Verde Shuttle, providing direct service between Cottonwood and Sedona, with stops at major destinations including West Sedona, Uptown, Tlaquepaque, Hillside, and Poco Diablo Resort.
+  entrance-north:
+    title: North Entrance
+    description: ""
+  entrance-south:
+    title: South Entrance
+    description: ""
+  entrance-west:
+    title: West Entrance
+    description: ""
+  entrance-main-gate:
+    title: Main Gate
+    description: The iconic Spanish Colonial-style entrance to the village, where a distinctive stucco arch and old-world wooden doors mark the threshold into Tlaquepaque.
+  bell-tower:
+    title: Bell Tower
+    description: A visually striking, ivy-covered landmark rising from the Patio de las Campañas, the Bell Tower is one of Tlaquepaque's most recognizable architectural features and among the tallest structures in Sedona.
+  wind-sculpture-garden:
+    title: Wind Sculpture Garden
+    description: An outdoor garden featuring a rotating collection of kinetic wind sculptures by Lyman Whitaker, set among the sycamores in a peaceful, shaded space outside Vue Gallery.
+  el-pasillo-pequeno:
+    title: El Pasillo Pequeño Fountain
+    description: ""
 areas:
   wind-sculpture-garden: Wind Sculpture Garden
   el-pasillo-pequeno: El Pasillo Pequeño
@@ -81,4 +114,4 @@ ui:
   legend_parking: Parking
   legend_amenities: Amenities
   legend_transport: Transport
-  legend_navigation: Navigation
+  legend_navigation: Entrances
