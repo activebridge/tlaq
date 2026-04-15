@@ -3,7 +3,7 @@ slug: how-sweet-it-is
 date: 2026-02-22
 published: true
 title: How Sweet It Is
-subtitle: '123'
+subtitle: Small-batch homemade chocolate. Big flavor. Pure happiness.
 tags: []
 suite: D201
 phone: '+19999999999'
