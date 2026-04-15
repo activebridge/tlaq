@@ -11,15 +11,15 @@ layout_type: about
   <h6>A unique destination where curated outdoor art, seasonal landscaping, a rich heritage, and artisan culture can be experienced throughout the village.</h6>
 
   <h3 id="map">Village Map</h3>
-  <figure>
-    <img src="https://placehold.co/350x263" alt="Tlaquepaque Arts &amp; Shopping Village" width="100%">
-  </figure>
+  <iframe src="{{ '/map_embed' | relative_url }}" loading="lazy" title="Village Map"
+    style="width:100%;height:500px;border:none"></iframe>
 
   <hr>
 
   <h3>The History of Tlaquepaque</h3>
+  {% assign img_src = "assets/images/history/hero.webp" | prepend: '/cdn-cgi/image/width=1200,height=675,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
   <figure>
-    <img src="https://placehold.co/349x239" alt="Tlaquepaque Arts &amp; Shopping Village" width="100%">
+    <img src="{{ img_src }}" alt="The History of Tlaquepaque" width="1200" height="675" loading="lazy" decoding="async">
   </figure>
   <p>From its architectural inspiration to artistic tradition, learn about the vision behind our village that continues today.</p>
   <a class="btn btn-primary" href="/history">Explore Tlaquepaque History</a>
