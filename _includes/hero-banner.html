@@ -2,9 +2,9 @@
 
 {% if image_path %}
   {% assign card_mob_small = image_path | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
-  {% assign card_desk = image_path | prepend: '/cdn-cgi/image/width=600,height=400,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
+  {% assign card_desk = image_path | prepend: '/cdn-cgi/image/width=600,height=450,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
   {% assign hero_mob_hi = image_path | prepend: '/cdn-cgi/image/width=1200,height=900,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
-  {% assign hero_desk_hi = image_path | prepend: '/cdn-cgi/image/width=1600,height=800,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
+  {% assign hero_desk_hi = image_path | prepend: '/cdn-cgi/image/width=1600,height=1200,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
 {% else %}
   {% assign card_mob_small = fallback %}
   {% assign card_desk = fallback %}
