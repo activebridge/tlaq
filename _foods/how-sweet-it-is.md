@@ -4,7 +4,12 @@ date: 2026-02-22
 published: true
 title: How Sweet It Is
 subtitle: Small-batch homemade chocolate. Big flavor. Pure happiness.
-tags: []
+tags:
+  - food
+  - ice cream
+  - dessert
+  - coffee
+  - sweets
 suite: D201
 phone: '+19999999999'
 website: ''
