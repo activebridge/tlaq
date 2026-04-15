@@ -43,8 +43,9 @@
     </div>
     <a href="/shops/"{% if page.url contains '/shops/' %} aria-current="page"{% endif %}>{% include icons/windows/shops.svg %} Shops</a>
     <a href="/galleries/"{% if page.url contains '/galleries/' %} aria-current="page"{% endif %}>{% include icons/windows/galleries.svg %} Galleries</a>
-    <a href="/foods/"{% if page.url contains '/foods/' %} aria-current="page"{% endif %}>{% include icons/windows/foods.svg %} Foods</a>
+    <a href="/foods/"{% if page.url contains '/foods/' %} aria-current="page"{% endif %}>{% include icons/windows/foods.svg %} Food</a>
     <a href="/events/"{% if page.url contains '/events/' %} aria-current="page"{% endif %}>{% include icons/windows/events.svg %} Events</a>
+    <a href="{{ '/about' | relative_url }}"{% if page.url contains '/about' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} About</a>
     <a href="/weddings"{% if page.url contains '/weddings' %} aria-current="page"{% endif %}>{% include icons/windows/weddings.svg %} Weddings</a>
     <button class="search-toggle-btn" type="button" aria-label="Search" onclick="searchDialog.showModal()">
       {% include icons/search.svg %}
