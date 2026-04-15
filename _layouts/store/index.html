@@ -8,10 +8,10 @@ layout: default
 
 <div class="content-wrapper">
   {% include store/header.html type=page.layout_type title=page.store_title description=page.store_description %}
-  {% assign stores = site[page.collection_name] | sort: "date" | reverse %}
+  {% assign stores = site[page.collection_name] | sort: "title" %}
 
   <div class="header-jump">
-    <input type="search" id="storeSearch" list="storeSearchList" placeholder="SEARCH FOR A STORE">
+    <input type="search" id="storeSearch" list="storeSearchList" placeholder="SEARCH">
   </div>
 
   <datalist id="storeSearchList">

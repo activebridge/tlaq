@@ -1306,10 +1306,10 @@ input[type="search"] {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid var(--navy-40);
-  border-top: 1px solid var(--navy-40);
+  border-bottom: 1px solid var(--navy);
+  border-top: 1px solid var(--navy);
   padding: 12px 40px 12px 0;
-  font-size: 1.667rem;
+  font-size: 1.2rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   color: var(--navy);
@@ -1320,13 +1320,9 @@ input[type="search"] {
   background-size: 20px;
   line-height: 100%;
 
-  &::-webkit-search-cancel-button {
-    display: none;
-  }
-
-  &::webkit-details-marker {
-    display: none;
-  }
+  &::placeholder { color: var(--navy) }
+  &::-webkit-search-cancel-button { display: none }
+  &::webkit-details-marker { display: none }
 }
 
 .image-split {
