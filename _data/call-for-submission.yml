@@ -20,3 +20,7 @@ success: "Thank you for your submission! We'll be in touch if your photo is sele
 upload_type_error: "Unsupported file type. Please upload a JPG, PNG, or TIFF."
 upload_size_error: "File too large. Maximum 10MB."
 error: "Something went wrong. Please try again."
+sending: "Sending…"
+photo_required: "Please select a valid photo before submitting."
+reset_success: "Reset form"
+reset_error: "Reset form"

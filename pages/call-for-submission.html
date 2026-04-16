@@ -47,9 +47,10 @@ layout_type: call-for-submission
       </label>
     </fieldset>
 
-    <button class="btn btn-primary" type="submit">{{ cfs.submit }}</button>
+    <button id="submitBtn" class="btn btn-primary" type="submit">{{ cfs.submit }}</button>
     <p id="submissionMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
   </form>
+  <button id="resetBtn" class="btn btn-primary btn--hidden">{{ cfs.reset_success }}</button>
   <span id="uploadTypeError" hidden>{{ cfs.upload_type_error }}</span>
   <span id="uploadSizeError" hidden>{{ cfs.upload_size_error }}</span>
 </div>
@@ -108,26 +109,70 @@ layout_type: call-for-submission
     }
   });
 
-  submissionForm.addEventListener('submit', function(e) {
+  const WORKER_URL = 'https://sweet-salad-9b35.alexsstorchak.workers.dev';
+
+  submissionForm.addEventListener('submit', async function(e) {
     e.preventDefault();
-    const d = new FormData(submissionForm);
-    const body = [
-      'First Name: ' + (d.get('first_name') || ''),
-      'Last Name: ' + (d.get('last_name') || ''),
-      'Email: ' + (d.get('email') || ''),
-      'Phone: ' + (d.get('phone') || ''),
-      'Instagram: ' + (d.get('instagram') || ''),
-      'Photo Caption: ' + (d.get('caption') || ''),
-      'Date Photo Was Taken: ' + (d.get('photo_date') || ''),
-      '',
-      'Photo file: ' + (photo.files.length ? photo.files[0].name : '—') + ' (please attach manually)',
-      '',
-      'Consent: Agreed'
-    ].join('\n');
-    window.location.href = 'mailto:visitorinfo@tlaq.com'
-      + '?subject=' + encodeURIComponent('Call for Submission')
-      + '&body=' + encodeURIComponent(body);
-    submissionMsg.textContent = {{ cfs.success | jsonify }};
-    submissionMsg.removeAttribute('aria-hidden');
+
+    if (photo.files.length === 0) {
+      fileName.textContent = {{ cfs.photo_required | jsonify }};
+      fileName.setAttribute('data-error', '');
+      fileUploadArea.classList.remove('has-file');
+      return;
+    }
+
+    const originalLabel = submitBtn.textContent;
+
+    submissionMsg.setAttribute('aria-hidden', 'true');
+    submissionMsg.removeAttribute('data-error');
+    submissionMsg.textContent = '';
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = {{ cfs.sending | jsonify }};
+
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        body: new FormData(submissionForm),
+      });
+
+      if (!res.ok) throw new Error('Server error');
+
+      submissionForm.hidden = true;
+      submitBtn.classList.add('btn--hidden');
+      submissionMsg.textContent = {{ cfs.success | jsonify }};
+      submissionMsg.removeAttribute('aria-hidden');
+      resetBtn.textContent = {{ cfs.reset_success | jsonify }};
+      resetBtn.classList.remove('btn--hidden');
+    } catch {
+      submissionMsg.setAttribute('data-error', '');
+      submissionMsg.textContent = {{ cfs.error | jsonify }};
+      submissionMsg.removeAttribute('aria-hidden');
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+      submitBtn.classList.add('btn--hidden');
+      resetBtn.textContent = {{ cfs.reset_error | jsonify }};
+      resetBtn.classList.remove('btn--hidden');
+    }
+  });
+
+  resetBtn.addEventListener('click', function() {
+    submissionForm.reset();
+    submissionForm.hidden = false;
+
+    dragCounter = 0;
+    fileName.textContent = '';
+    fileName.removeAttribute('data-error');
+    fileUploadArea.classList.remove('has-file', 'drag-over');
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = {{ cfs.submit | jsonify }};
+    submitBtn.classList.remove('btn--hidden');
+
+    submissionMsg.setAttribute('aria-hidden', 'true');
+    submissionMsg.removeAttribute('data-error');
+    submissionMsg.textContent = '';
+
+    resetBtn.classList.add('btn--hidden');
   });
 </script>

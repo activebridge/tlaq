@@ -51,6 +51,8 @@ a:not(.btn) {
   border-radius: 3px;
 }
 
+.btn--hidden { display: none; }
+
 .btn:disabled,
 .btn[disabled] {
   opacity: 0.5;
@@ -1291,8 +1293,9 @@ form {
   }
 
   .form-message {
-    margin: 0;
-    font-size: 14px;
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
     opacity: 1;
     transition: opacity 0.3s ease;
 
@@ -1348,6 +1351,7 @@ form {
       margin: 0;
       font-size: 0.85rem;
       word-break: break-all;
+      min-height: 1.5em;
       &[data-error] { color: var(--red); }
     }
   }
