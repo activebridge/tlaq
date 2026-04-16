@@ -2,12 +2,15 @@
   <h3>{{ site.data.site.footer.title }}</h3>
   <a href="/newsletter" class="btn btn-primary">{{ site.data.site.footer.subscribe_button }}</a>
   <hr>
+  <p style="text-transform: uppercase">{{ site.data.site.footer.name }}</p>
   <address>
-    <a href="tel:{{ site.data.site.footer.phone }}">{{ site.data.site.footer.formatted_phone }}</a>
-     |
-    <a href="mailto:{{ site.data.site.footer.email }}">{{ site.data.site.footer.email }}</a>
+    <span>
+      <a href="tel:{{ site.data.site.footer.phone }}">{{ site.data.site.footer.formatted_phone }}</a>
+        |
+      <a href="mailto:{{ site.data.site.footer.email }}">{{ site.data.site.footer.email }}</a>
+    </span>
     <p>Street Address: {{ site.data.site.footer.street_address }}</p>
-    <p>Mail Address: {{ site.data.site.footer.mail_address }}</p>
+    <p>{{ site.data.site.footer.mail_address }}</p>
   </address>
   <div>
     <nav>
@@ -19,6 +22,7 @@
       <a href="/leasing">Leasing</a>
       <a href="/weddings">Weddings</a>
       <a href="/filming-photography">Filming & Photography</a>
+      <a href="/call-for-submission">Call for Submission</a>
     </nav>
     <nav>
       {% assign latest = site.data.magazines.issues | first %}
@@ -38,10 +42,9 @@
       </a>
     </nav>
   </div>
-  <p>&copy; {{ 'now' | date: '%Y' }} Tlaquepaque Arts &amp; Shopping Village. All Rights Reserved.</p>
-  <p>
-    <a href="/privacy-policy/">Privacy Policy</a>
+  <p>&copy; {{ 'now' | date: '%Y' }} {{ site.data.site.footer.name }}. {{ site.data.site.footer.rights }}
+    <a href="/privacy-policy/">{{ site.data.site.footer.privacy_policy_label }}</a>
      |
-    <a href="/terms-and-conditions/">Terms and Conditions</a>
+    <a href="/terms-and-conditions/">{{ site.data.site.footer.terms_label }}</a>
   </p>
 </footer>

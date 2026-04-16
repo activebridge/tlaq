@@ -198,6 +198,16 @@ permalink: /admin/showcase
 
 </style>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var f = document.getElementById('showcase-file');
+    if (f) f.addEventListener('change', function() {
+      var n = document.getElementById('showcaseFileName');
+      n.textContent = f.files.length ? f.files[0].name : '';
+    });
+  });
+</script>
+
 <!-- Force-load lazy CSS for store/events components -->
 <link rel="stylesheet" href="{{ '/assets/css/events.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/store/index.css' | relative_url }}">
@@ -215,6 +225,11 @@ permalink: /admin/showcase
       <li><a href="#store-cards">Store Cards</a></li>
       <li><a href="#store-hours">Store Hours</a></li>
       <li><a href="#forms">Forms</a></li>
+      <li><a href="#form-inputs">— Inputs</a></li>
+      <li><a href="#form-date">— Date</a></li>
+      <li><a href="#form-checkbox">— Checkbox</a></li>
+      <li><a href="#form-consent">— Consent</a></li>
+      <li><a href="#form-upload">— File Upload</a></li>
       <li><a href="#calendar">Calendar Items</a></li>
       <li><a href="#map">Map</a></li>
     </ul>
@@ -558,13 +573,22 @@ permalink: /admin/showcase
   <div class="showcase-section" id="forms">
     <h2>Forms</h2>
 
-    <p class="showcase-label">Text Inputs <span class="showcase-tag">input[type="text"] / input[type="email"]</span></p>
+    <p class="showcase-label" id="form-inputs">Text Inputs <span class="showcase-tag">input[type="text|email|tel|number|password|url"]</span></p>
     <form>
-      <input type="text" placeholder="FIRST NAME *">
+      <input type="text" placeholder="TEXT *">
       <input type="email" placeholder="EMAIL *">
+      <input type="tel" placeholder="PHONE *">
+      <input type="number" placeholder="NUMBER *">
+      <input type="password" placeholder="PASSWORD *">
+      <input type="url" placeholder="URL *">
     </form>
 
-    <p class="showcase-label">Checkbox Fieldset <span class="showcase-tag">fieldset + legend + label</span></p>
+    <p class="showcase-label" id="form-date">Date Input <span class="showcase-tag">input[type="date"]</span></p>
+    <form>
+      <input type="date" aria-label="Date">
+    </form>
+
+    <p class="showcase-label" id="form-checkbox">Checkbox Fieldset <span class="showcase-tag">fieldset + legend + label</span></p>
     <form>
       <fieldset>
         <legend>I agree to Tlaquepaque Arts and Shopping Village <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a></legend>
@@ -575,6 +599,32 @@ permalink: /admin/showcase
         <label><input type="checkbox"> YES</label>
       </fieldset>
       <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+    <p class="showcase-label" id="form-consent">Consent Checkbox <span class="showcase-tag">fieldset + label</span></p>
+    <form>
+      <fieldset>
+        <label>
+          <input type="checkbox">
+          I confirm that I took this photo or have full rights to submit it, and I grant Tlaquepaque Arts &amp; Shopping Village the right to use, reproduce, publish, crop, edit, and share this image across its magazine, website, and social media, without compensation or guarantee of use.
+        </label>
+      </fieldset>
+    </form>
+
+    <p class="showcase-label" id="form-upload">File Upload Area <span class="showcase-tag">.file-upload-area</span></p>
+    <form>
+      <div class="file-upload-area">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        <p class="file-upload-label">SELECT PHOTO TO UPLOAD *</p>
+        <p class="file-upload-hint">Supported Format: JPG, PNG, TIFF (10MB MAX)</p>
+        <label class="btn btn-primary" for="showcase-file">SELECT FILE</label>
+        <input type="file" id="showcase-file" accept=".jpg,.jpeg,.png,.tiff,.tif">
+        <p class="file-name" id="showcaseFileName" aria-live="polite"></p>
+      </div>
     </form>
   </div>
 
