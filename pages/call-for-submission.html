@@ -7,19 +7,23 @@ layout_type: call-for-submission
 
 {% assign cfs = site.data['call-for-submission'] %}
 
+{% assign image_path = cfs.hero_banner %}
+{% assign transition-name = page.layout_type %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
 <div class="content-wrapper">
   <hgroup style="view-transition-name: title-submission;">
     <h5 title>{{ cfs.eyebrow }}</h5>
     <h2>{{ cfs.title }}</h2>
   </hgroup>
 
-  <h6>{{ cfs.description_1 }}</h6>
-  <h6>{{ cfs.description_2 }}</h6>
-  <h6>{{ cfs.description_3 }} <strong>{{ cfs.description_3_bold }}</strong></h6>
+  <h6>{{ cfs.intro }}</h6>
+  <h6>{{ cfs.submission_info }}</h6>
+  <h6>{{ cfs.selection_notice }} <strong>{{ cfs.credit_notice }}</strong></h6>
 
-  <form id="submissionForm">
+  <form id="submissionForm" onsubmit="sendEmail(event)">
 
-    <div class="file-upload-area" id="fileUploadArea">
+    <label id="fileUploadArea" ondragenter="onDragEnter(event)" ondragleave="onDragLeave(event)" ondragover="onDragOver(event)" ondrop="onDrop(event)">
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
         <polyline points="17 8 12 3 7 8"/>
@@ -27,10 +31,10 @@ layout_type: call-for-submission
       </svg>
       <p class="file-upload-label">{{ cfs.upload_label }} *</p>
       <p class="file-upload-hint">{{ cfs.upload_hint }}</p>
-      <label class="btn btn-primary" for="photo">{{ cfs.upload_button }}</label>
-      <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.tiff,.tif" required>
+      <span class="btn btn-primary">{{ cfs.upload_button }}</span>
+      <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.tiff,.tif" onchange="if(this.files.length) validateFile(this.files[0])" required>
       <p class="file-name" id="fileName" aria-live="polite"></p>
-    </div>
+    </label>
 
     <input type="text" name="first_name" aria-label="{{ cfs.first_name }}" placeholder="{{ cfs.first_name }} *" required>
     <input type="text" name="last_name" aria-label="{{ cfs.last_name }}" placeholder="{{ cfs.last_name }} *" required>
@@ -38,7 +42,10 @@ layout_type: call-for-submission
     <input type="tel" name="phone" aria-label="{{ cfs.phone }}" placeholder="{{ cfs.phone }} *" required>
     <input type="text" name="instagram" aria-label="{{ cfs.instagram }}" placeholder="{{ cfs.instagram }}">
     <input type="text" name="caption" aria-label="{{ cfs.caption }}" placeholder="{{ cfs.caption }} *" required>
-    <input type="date" name="photo_date" aria-label="{{ cfs.photo_date }}">
+    <label class="date-field" for="photoDate">
+      {{ cfs.photo_date }}
+      <input type="date" id="photoDate" name="photo_date" min="1960-01-01">
+    </label>
 
     <fieldset>
       <label>
@@ -50,129 +57,9 @@ layout_type: call-for-submission
     <button id="submitBtn" class="btn btn-primary" type="submit">{{ cfs.submit }}</button>
     <p id="submissionMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
   </form>
-  <button id="resetBtn" class="btn btn-primary btn--hidden">{{ cfs.reset_success }}</button>
+  <button id="resetBtn" class="btn btn-primary" style="display:none" onclick="onReset()">{{ cfs.reset }}</button>
   <span id="uploadTypeError" hidden>{{ cfs.upload_type_error }}</span>
   <span id="uploadSizeError" hidden>{{ cfs.upload_size_error }}</span>
 </div>
 
-<script>
-  const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/tiff'];
-
-  function validateFile(file) {
-    if (!ALLOWED_TYPES.includes(file.type)) {
-      fileName.textContent = uploadTypeError.textContent;
-      fileName.setAttribute('data-error', '');
-      photo.value = '';
-      fileUploadArea.classList.remove('has-file');
-      return;
-    }
-    if (file.size > 10 * 1024 * 1024) {
-      fileName.textContent = uploadSizeError.textContent;
-      fileName.setAttribute('data-error', '');
-      photo.value = '';
-      fileUploadArea.classList.remove('has-file');
-      return;
-    }
-    fileName.textContent = file.name;
-    fileName.removeAttribute('data-error');
-    fileUploadArea.classList.add('has-file');
-  }
-
-  photo.addEventListener('change', function() {
-    if (photo.files.length > 0) validateFile(photo.files[0]);
-  });
-
-  let dragCounter = 0;
-
-  fileUploadArea.addEventListener('dragenter', function(e) {
-    e.preventDefault();
-    dragCounter++;
-    fileUploadArea.classList.add('drag-over');
-  });
-
-  fileUploadArea.addEventListener('dragleave', function() {
-    dragCounter--;
-    if (dragCounter === 0) fileUploadArea.classList.remove('drag-over');
-  });
-
-  fileUploadArea.addEventListener('dragover', function(e) { e.preventDefault(); });
-
-  fileUploadArea.addEventListener('drop', function(e) {
-    e.preventDefault();
-    dragCounter = 0;
-    fileUploadArea.classList.remove('drag-over');
-    if (e.dataTransfer.files.length) {
-      const dt = new DataTransfer();
-      dt.items.add(e.dataTransfer.files[0]);
-      photo.files = dt.files;
-      photo.dispatchEvent(new Event('change'));
-    }
-  });
-
-  const WORKER_URL = 'https://sweet-salad-9b35.alexsstorchak.workers.dev';
-
-  submissionForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    if (photo.files.length === 0) {
-      fileName.textContent = {{ cfs.photo_required | jsonify }};
-      fileName.setAttribute('data-error', '');
-      fileUploadArea.classList.remove('has-file');
-      return;
-    }
-
-    const originalLabel = submitBtn.textContent;
-
-    submissionMsg.setAttribute('aria-hidden', 'true');
-    submissionMsg.removeAttribute('data-error');
-    submissionMsg.textContent = '';
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = {{ cfs.sending | jsonify }};
-
-    try {
-      const res = await fetch(WORKER_URL, {
-        method: 'POST',
-        body: new FormData(submissionForm),
-      });
-
-      if (!res.ok) throw new Error('Server error');
-
-      submissionForm.hidden = true;
-      submitBtn.classList.add('btn--hidden');
-      submissionMsg.textContent = {{ cfs.success | jsonify }};
-      submissionMsg.removeAttribute('aria-hidden');
-      resetBtn.textContent = {{ cfs.reset_success | jsonify }};
-      resetBtn.classList.remove('btn--hidden');
-    } catch {
-      submissionMsg.setAttribute('data-error', '');
-      submissionMsg.textContent = {{ cfs.error | jsonify }};
-      submissionMsg.removeAttribute('aria-hidden');
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalLabel;
-      submitBtn.classList.add('btn--hidden');
-      resetBtn.textContent = {{ cfs.reset_error | jsonify }};
-      resetBtn.classList.remove('btn--hidden');
-    }
-  });
-
-  resetBtn.addEventListener('click', function() {
-    submissionForm.reset();
-    submissionForm.hidden = false;
-
-    dragCounter = 0;
-    fileName.textContent = '';
-    fileName.removeAttribute('data-error');
-    fileUploadArea.classList.remove('has-file', 'drag-over');
-
-    submitBtn.disabled = false;
-    submitBtn.textContent = {{ cfs.submit | jsonify }};
-    submitBtn.classList.remove('btn--hidden');
-
-    submissionMsg.setAttribute('aria-hidden', 'true');
-    submissionMsg.removeAttribute('data-error');
-    submissionMsg.textContent = '';
-
-    resetBtn.classList.add('btn--hidden');
-  });
-</script>
+<script src="/assets/js/call-for-submission.js"></script>

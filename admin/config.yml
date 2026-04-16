@@ -31,6 +31,8 @@ collections:
           - { label: "Directions URL", name: "directions_url", widget: "string" }
           - { label: "Weather URL", name: "weather_url", widget: "string" }
           - { label: "Weather Widget URL", name: "weather_widget", widget: "string" }
+          - { label: "Submission Worker URL", name: "submission_worker_url", widget: "string" }
+          - { label: "Newsletter Worker URL", name: "newsletter_worker_url", widget: "string" }
 
   - name: "landing"
     label: "Landing Sections"
@@ -556,6 +558,31 @@ collections:
             widget: "list"
             hint: "Each item is one paragraph in the Parking section."
             field: { label: "Paragraph", name: "paragraph", widget: "text" }
+      - name: "call_for_submission"
+        label: "Call for Submission"
+        file: "_data/call-for-submission.yml"
+        media_folder: "/assets/images/call-for-submission"
+        public_folder: "/assets/images/call-for-submission"
+        fields:
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the page." }
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Submission Info", name: "submission_info", widget: "text" }
+          - { label: "Selection Notice", name: "selection_notice", widget: "text" }
+          - { label: "Credit Notice", name: "credit_notice", widget: "text" }
+          - { label: "Upload Label", name: "upload_label", widget: "string" }
+          - { label: "Upload Hint", name: "upload_hint", widget: "string" }
+          - { label: "Upload Button", name: "upload_button", widget: "string" }
+          - { label: "Consent Text", name: "consent", widget: "text" }
+          - { label: "Submit Button", name: "submit", widget: "string" }
+          - { label: "Success Message", name: "success", widget: "text" }
+          - { label: "Error Message", name: "error", widget: "string" }
+          - { label: "Photo Required Error", name: "photo_required", widget: "string" }
+          - { label: "Upload Type Error", name: "upload_type_error", widget: "string" }
+          - { label: "Upload Size Error", name: "upload_size_error", widget: "string" }
+          - { label: "Reset Button", name: "reset", widget: "string" }
+          - { label: "Max File Size (MB)", name: "max_file_size_mb", widget: "number", value_type: "int" }
       - name: "family_and_pet_page"
         label: "Family & Pet"
         file: "_data/family_and_pet.yml"

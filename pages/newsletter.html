@@ -45,7 +45,7 @@ layout_type: page
   subscribeForm.addEventListener("submit",function(e){
     e.preventDefault();
     subscribeBtn.disabled=true;subscribeMsg.setAttribute("aria-hidden","true");subscribeMsg.removeAttribute("data-error");
-    fetch("https://tlaq-contacts.pwt.workers.dev/",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(subscribeForm)))})
+    fetch({{ site.data.site.newsletter_worker_url | jsonify }},{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(subscribeForm)))})
       .then(function(r){if(r.ok)subscribeForm.reset();show(r.ok);})
       .catch(function(){show(false);});
   });

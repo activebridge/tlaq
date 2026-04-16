@@ -51,8 +51,6 @@ a:not(.btn) {
   border-radius: 3px;
 }
 
-.btn--hidden { display: none; }
-
 .btn:disabled,
 .btn[disabled] {
   opacity: 0.5;
@@ -1028,8 +1026,6 @@ footer {
     p { margin: 0; }
   }
 
-  .uppercase { text-transform: uppercase; }
-
   div {
     display: flex;
     border-top: 0.75px solid var(--secondary);
@@ -1214,9 +1210,7 @@ footer {
   }
 }
 
-/* CONNECT WITH US */
 form {
-  margin-top: 0.75rem;
   display: flex;
   flex-direction: column;
 
@@ -1240,6 +1234,23 @@ form {
     &:focus { outline: none; }
     &:active { outline: none; }
     &::-webkit-calendar-picker-indicator { display: none; }
+  }
+
+  label.date-field {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--navy);
+    padding-top: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--navy);
+
+    input[type="date"] {
+      border-bottom: none;
+      padding-top: 0;
+      padding-bottom: 41px;
+    }
   }
 
   fieldset {
@@ -1304,7 +1315,7 @@ form {
     &[data-error] { color: var(--red); }
   }
 
-  .file-upload-area {
+  label:has(input[type="file"]) {
     position: relative;
     border: 1.5px solid var(--navy);
     border-radius: 0.25rem;
@@ -1313,15 +1324,12 @@ form {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    margin: 2rem 0;
     text-align: center;
     transition: background-color 0.2s ease;
 
     &:focus-within { outline: 2px solid var(--navy); outline-offset: 2px; }
 
     &.drag-over { background-color: color-mix(in srgb, var(--navy) 8%, transparent); }
-    &.has-file { border-color: var(--green); }
-
     svg { color: var(--navy); margin-bottom: 0.5rem; }
 
     .file-upload-label {
@@ -1333,7 +1341,9 @@ form {
 
     .file-upload-hint { font-size: 0.8rem; margin: 0; opacity: 0.7; }
 
-    label.btn { margin-top: 0.75rem; cursor: pointer; }
+    cursor: pointer;
+
+    span.btn { margin-top: 0.75rem; }
 
     input[type="file"] {
       position: absolute;
@@ -1358,7 +1368,7 @@ form {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .file-upload-area { transition: none; }
+  label:has(input[type="file"]) { transition: none; }
 }
 
 input[type="number"] {
