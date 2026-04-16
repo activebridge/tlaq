@@ -1,5 +1,9 @@
 {% assign fallback = '/assets/images/placeholder.webp' | prepend: site.baseurl %}
 
+{% if include.interior_image %}
+  {% assign interior_cdn = include.interior_image | prepend: '/cdn-cgi/image/width=1600,height=1200,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
+{% endif %}
+
 {% if image_path %}
   {% assign card_mob_small = image_path | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
   {% assign card_desk = image_path | prepend: '/cdn-cgi/image/width=600,height=450,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
@@ -26,6 +30,8 @@
     loading="eager"
     fetchpriority="high"
     decoding="async"
+    {% if include.interior_image %}data-interior="{{ interior_cdn }}"{% endif %}
+    style="transition: opacity 0.6s ease"
   >
 </figure>
 
@@ -66,3 +72,11 @@
     loadHiRes(img, hiSrc);
   }
 </script>
+{% if include.interior_image %}
+<script>
+  setTimeout(() => {
+    heroImg.style.opacity = '0';
+    setTimeout(() => { heroImg.src = heroImg.dataset.interior; heroImg.style.opacity = '1'; }, 600);
+  }, 1000);
+</script>
+{% endif %}

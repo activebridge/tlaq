@@ -3,7 +3,7 @@ layout: default
 ---
 {% assign image_path = page.image %}
 {% assign transition-name = page.image | downcase | replace: '/', '-' | replace: '.', '-' %}
-{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name interior_image=page.interior_image %}
 
 <div class="content-wrapper">
   <h5 style="view-transition-name: {{ page.title | downcase | replace: ' ', '-'}};">{{ page.title }}</h5>
