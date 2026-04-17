@@ -40,6 +40,32 @@ collections:
           - { label: "Terms Label", name: "terms_label", widget: "string" }
           - { label: "Magazine Alt Text", name: "magazine_alt", widget: "string" }
 
+  - name: "landing_navigation"
+    label: "Landing Navigation"
+    files:
+      - name: "landing_navigation"
+        label: "Landing Navigation"
+        file: "index.md"
+        media_folder: "/assets/images/landing"
+        public_folder: "/assets/images/landing"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "home" }
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Navigation"
+            name: "nav"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Type", name: "type", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Image", name: "image", widget: "image" }
+
   - name: "landing"
     label: "Landing Sections"
     files:
@@ -206,32 +232,6 @@ collections:
             fields:
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Alt", name: "alt", widget: "string" }
-
-  - name: "landing_navigation"
-    label: "Landing Navigation"
-    files:
-      - name: "landing_navigation"
-        label: "Landing Navigation"
-        file: "index.md"
-        media_folder: "/assets/images/landing"
-        public_folder: "/assets/images/landing"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "home" }
-          - { label: "Title", name: "title", widget: "string" }
-          - label: "Navigation"
-            name: "nav"
-            widget: "object"
-            fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - label: "Items"
-                name: "items"
-                widget: "list"
-                fields:
-                  - { label: "Type", name: "type", widget: "string" }
-                  - { label: "Title", name: "title", widget: "string" }
-                  - { label: "Description", name: "description", widget: "string" }
-                  - { label: "URL", name: "url", widget: "string" }
-                  - { label: "Image", name: "image", widget: "image" }
 
   - name: "map_content"
     label: "Map"
