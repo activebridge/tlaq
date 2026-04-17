@@ -1,23 +1,21 @@
 hero_banner: "assets/images/shops/shops.webp"
 
-notes:
-  intro: "Tlaquepaque gift cards make the perfect present for art lovers, foodies, and anyone who appreciates handcrafted beauty."
+heading: "Give the Gift of Discovery"
 
-details:
-  description: "Gift cards are redeemable at all Tlaquepaque and Tlaquepaque North stores and restaurants."
-  features:
-    - Available in any denomination
-    - Optional personalized gift message included
-    - Delivered via priority mail to customer or recipient
-  terms:
-    - Non-refundable
-    - Expire within 12 months of issuance
+intro: "A Tlaquepaque Arts & Shopping Village gift card is an invitation to wander, discover, and enjoy the village's distinctive mix of art, dining, and independent shops—usable at locations throughout the village. Whether celebrating a milestone or simply sharing something special, it offers the freedom to explore at one's own pace and a thoughtful way to give the experience of Tlaquepaque."
 
-purchase:
-  description: "To purchase a gift card, contact our visitor information team by phone or email."
-  phone: "(928) 282-4838"
-  email: "visitorinfo@tlaq.com"
-  hours:
-    - "Monday–Thursday: 10:00 am–5:00 pm"
-    - "Friday–Sunday: 10:00 am–6:00 pm"
-  note: "Restaurant hours vary."
+purchase_button:
+  label: "Purchase a Gift Card"
+  url: "" # TODO: add yiftee URL once client sets up account
+
+how_it_works:
+  heading: "Here's How It Works"
+  items:
+    - label: "Digital Delivery"
+      description: "Send instantly by email or print to share in person"
+    - label: "Easy to Use"
+      description: "Save to your digital wallet for simple, seamless payment"
+    - label: "A Gift of Choice"
+      description: "Enjoy at participating shops, galleries, and restaurants throughout Tlaquepaque"
+    - label: "Helpful Reminders"
+      description: "Receive gentle nudges to ensure your gift is enjoyed"

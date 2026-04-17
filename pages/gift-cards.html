@@ -11,36 +11,43 @@ layout_type: gift-cards
 
 <div class="content-wrapper">
   <h5 title="visit">Gift Cards</h5>
-  <h2>{{ site.data.gift_cards.notes.intro }}</h2>
+  <h2>{{ site.data.gift_cards.heading }}</h2>
+  <p>{{ site.data.gift_cards.intro }}</p>
 
-  <h3 id="details">Details</h3>
-  <p>{{ site.data.gift_cards.details.description }}</p>
-  <ul>
-    {% for feature in site.data.gift_cards.details.features %}
-      <li>{{ feature }}</li>
-    {% endfor %}
-  </ul>
+  {% if site.data.gift_cards.purchase_button.url != "" %}
+    <a href="{{ site.data.gift_cards.purchase_button.url }}" class="btn btn--primary" target="_blank" rel="noopener">
+      {{ site.data.gift_cards.purchase_button.label }}
+    </a>
+  {% else %}
+    <a href="#" class="btn btn--primary">
+      {{ site.data.gift_cards.purchase_button.label }}
+    </a>
+  {% endif %}
 
-  <h3 id="terms">Terms</h3>
-  <ul>
-    {% for term in site.data.gift_cards.details.terms %}
-      <li>{{ term }}</li>
+  <hr>
+
+  <h3>{{ site.data.gift_cards.how_it_works.heading }}</h3>
+  <ul class="how-it-works">
+    {% for item in site.data.gift_cards.how_it_works.items %}
+      <li><strong>{{ item.label }}</strong> — {{ item.description }}</li>
     {% endfor %}
   </ul>
 
   <hr>
 
-  <h2 id="purchase">How to Purchase</h2>
-  <p>{{ site.data.gift_cards.purchase.description }}</p>
-  <ul>
-    <li>Phone: <a href="tel:{{ site.data.gift_cards.purchase.phone }}">{{ site.data.gift_cards.purchase.phone }}</a></li>
-    <li>Email: <a href="mailto:{{ site.data.gift_cards.purchase.email }}">{{ site.data.gift_cards.purchase.email }}</a></li>
-  </ul>
-  <h4>Hours</h4>
-  <ul>
-    {% for hour in site.data.gift_cards.purchase.hours %}
-      <li>{{ hour }}</li>
+  <h3>View All Participating Businesses</h3>
+  <ul class="participating-businesses">
+    {% assign all_shops = site.shops | sort: "title" %}
+    {% for shop in all_shops %}
+      <li>{{ shop.title }}</li>
+    {% endfor %}
+    {% assign all_galleries = site.galleries | sort: "title" %}
+    {% for gallery in all_galleries %}
+      <li>{{ gallery.title }}</li>
+    {% endfor %}
+    {% assign all_foods = site.foods | sort: "title" %}
+    {% for food in all_foods %}
+      <li>{{ food.title }}</li>
     {% endfor %}
   </ul>
-  <p>{{ site.data.gift_cards.purchase.note }}</p>
 </div>
