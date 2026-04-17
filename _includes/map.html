@@ -808,11 +808,11 @@
   }
 
   function initMap() {
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvcmNoYWsiLCJhIjoiY21tZDZsMGdmMDAydDJwczhqbGhhOTNtciJ9.gPoufGUfsywbXf1wN8D0yw';
+    mapboxgl.accessToken = '{{ site.data.site.mapbox_token }}';
     const { mapSearch, mapSearchResults, mapNoResults, mapCategories, mapBack, mapSidebar, mapShowAll, mapLegend, mapContainer, mapSidebarToggle, mapLocateBtn, mapLocationToast } = window;
     const DATA_LAYER = 'building-outlines';
     const map = new mapboxgl.Map({
-      container: 'map', style: 'mapbox://styles/storchak/cmmew5gbs000l01sbb2mld1pq',
+      container: 'map', style: '{{ site.data.site.mapbox_style }}',
       center: [-111.763522, 34.862363], zoom: 14, pitch: 20,
       minZoom: 14, maxZoom: 20, maxBounds: [[-111.7659, 34.8606], [-111.7611, 34.8642]],
       cooperativeGestures: true

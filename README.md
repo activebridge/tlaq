@@ -208,3 +208,140 @@ Hosted on GitHub Pages via the built-in Jekyll deployment.
 Push to `main` to trigger an automatic build and deploy.
 
 The site is live at: https://activebridge.github.io/tlaq/
+
+---
+
+## Site Handover / Migration Guide
+
+When transferring site management to a new person, the following third-party accounts and credentials must be replaced. No secrets are stored in this repository — all values are either hardcoded in source files or configured in `_data/site.yml`.
+
+---
+
+### 1. Mapbox
+
+**What it does:** Powers the interactive village map with store pins.
+
+**Values to replace:**
+
+| Value | Location |
+|-------|----------|
+| `mapbox_token` | `_data/site.yml` (also editable via CMS → Settings → Site Configuration) |
+| `mapbox_style` | `_data/site.yml` (also editable via CMS → Settings → Site Configuration) |
+
+**Steps:**
+1. Create account at [mapbox.com](https://mapbox.com)
+2. Create a new public token — required scopes: `styles:read`, `tiles:read`
+3. In Mapbox Studio, duplicate the existing map style (request share link from current owner) or create a new one
+4. Update `mapbox_token` and `mapbox_style` in `_data/site.yml` or via the CMS
+5. Revoke the old token in the original Mapbox account
+
+---
+
+### 2. Cloudflare
+
+**What it does:** CDN image optimization (via `tlaq.ab.team`) and three serverless Workers.
+
+#### 2a. CDN / Image Optimization
+
+Images are transformed via Cloudflare's `/cdn-cgi/image/...` URLs served from `tlaq.ab.team`.
+
+| Value | Location |
+|-------|----------|
+| `cdn_url` | `_config.yml` |
+
+**Steps:**
+1. Add the domain to a new Cloudflare account
+2. Enable Cloudflare Image Resizing (available on Pro plan or higher)
+3. Update `cdn_url` in `_config.yml` to the new domain
+
+#### 2b. Cloudflare Workers
+
+Three Workers are referenced in `_data/site.yml`:
+
+| Key | Current URL | Purpose |
+|-----|------------|---------|
+| `submission_worker_url` | `https://sweet-salad-9b35.alexsstorchak.workers.dev` | Call-for-submission photo uploads |
+| `newsletter_worker_url` | `https://tlaq-contacts.pwt.workers.dev/` | Email newsletter subscriptions |
+| `weather_widget_url` | `https://weather.pwt.workers.dev/widget.svg` | Weather widget SVG |
+
+> **Note:** Worker source code is **not** in this repository. Request it from the current developer before proceeding.
+
+**Steps:**
+1. Create a Cloudflare account and set up Workers
+2. Deploy each Worker from source
+3. Update all three URLs in `_data/site.yml`
+
+---
+
+### 3. SendGrid
+
+**What it does:** Sends newsletter subscription confirmation emails. Used inside the `tlaq-contacts` Cloudflare Worker — not referenced directly in this repo.
+
+**Steps:**
+1. Create account at [sendgrid.com](https://sendgrid.com)
+2. Verify your sender domain
+3. Generate an API key with `Mail Send` permission
+4. Add the key to the new newsletter Worker's environment variables in the Cloudflare dashboard
+
+---
+
+### 4. Flipsnack
+
+**What it does:** Embeds the digital magazine viewer on the homepage and in the footer.
+
+**Values to replace:**
+
+| Value | Location |
+|-------|----------|
+| Embed hash in iframe `src` | `_includes/footer.html` (search for `flipsnack.com`) |
+| Embed hash in iframe `src` | `_includes/landing/magazine.html` |
+
+**Steps:**
+1. Log in to [flipsnack.com](https://flipsnack.com) — the current account holds the publication
+2. **Preferred:** Transfer the Flipsnack account directly to the new owner
+3. **Alternative:** Re-upload the magazine PDF to a new account, get the new embed hash from the Flipsnack embed dialog, and replace the hash value in both files above
+
+---
+
+### 5. GitHub Repository & CMS Access
+
+**What it does:** Hosts source code and serves as the CMS backend (Sveltia CMS authenticates via GitHub write access).
+
+**Current repo:** `activebridge/tlaq` — configured in `admin/config.yml`
+
+**Steps:**
+1. Transfer the repository: GitHub repo → **Settings → Transfer**
+2. Update the `repo` field in `admin/config.yml` to match the new `owner/repo` path
+3. Ensure the new owner has **write access** to the repo (required for CMS login at `/admin/`)
+4. Update GitHub Pages settings if a custom domain is in use
+
+---
+
+### 6. External Media (cdn-website.com)
+
+**What it does:** Hosts wedding brochure PDFs and video files referenced by the site.
+
+**Account ID in URLs:** `164890e9`
+
+**Files referencing these URLs:**
+- `_data/weddings.yml` — brochure PDFs and wedding videos
+- `_data/magazines.yml` — magazine issue files
+
+**Steps:**
+1. Request access to the cdn-website.com account from the current owner
+2. **Or:** Download all files and re-host elsewhere (Cloudflare R2 is a good fit since Cloudflare is already in use)
+3. If re-hosting, update all matching URLs in `_data/weddings.yml` and `_data/magazines.yml`
+
+---
+
+### Handover Checklist
+
+| Service | Files to Update | Action Required |
+|---------|----------------|-----------------|
+| Mapbox | `_config.yml` (`mapbox_token`, `mapbox_style`) | New account → new token + new style URL |
+| Cloudflare CDN | `_config.yml` (`cdn_url`) | Transfer domain or recreate Cloudflare zone |
+| Cloudflare Workers (×3) | `_data/site.yml` | Redeploy workers from source, update 3 URLs |
+| SendGrid | Inside Cloudflare Worker env vars | New API key |
+| Flipsnack | `_includes/footer.html`, `_includes/landing/magazine.html` | Transfer account or replace embed hash |
+| GitHub repo | `admin/config.yml` (`repo`) | Transfer repo + grant write access |
+| cdn-website.com | `_data/weddings.yml`, `_data/magazines.yml` | Transfer account or re-host all files |

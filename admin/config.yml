@@ -33,6 +33,8 @@ collections:
           - { label: "Weather Widget URL", name: "weather_widget", widget: "string" }
           - { label: "Submission Worker URL", name: "submission_worker_url", widget: "string" }
           - { label: "Newsletter Worker URL", name: "newsletter_worker_url", widget: "string" }
+          - { label: "Mapbox Token", name: "mapbox_token", widget: "string" }
+          - { label: "Mapbox Style URL", name: "mapbox_style", widget: "string" }
 
   - name: "landing"
     label: "Landing Sections"
