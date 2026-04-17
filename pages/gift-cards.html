@@ -19,7 +19,7 @@ layout_type: gift-cards
       {{ site.data.gift_cards.purchase_button.label }}
     </a>
   {% else %}
-    <a href="#" class="btn btn--primary">
+    <a href="#" class="btn btn-primary">
       {{ site.data.gift_cards.purchase_button.label }}
     </a>
   {% endif %}
@@ -27,7 +27,7 @@ layout_type: gift-cards
   <hr>
 
   <h3>{{ site.data.gift_cards.how_it_works.heading }}</h3>
-  <ul class="how-it-works">
+  <ul>
     {% for item in site.data.gift_cards.how_it_works.items %}
       <li><strong>{{ item.label }}</strong> — {{ item.description }}</li>
     {% endfor %}
@@ -36,7 +36,7 @@ layout_type: gift-cards
   <hr>
 
   <h3>View All Participating Businesses</h3>
-  <ul class="participating-businesses">
+  <ul>
     {% assign all_shops = site.shops | sort: "title" %}
     {% for shop in all_shops %}
       <li>{{ shop.title }}</li>
