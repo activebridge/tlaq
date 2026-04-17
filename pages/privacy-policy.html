@@ -2,7 +2,12 @@
 permalink: /privacy-policy/
 layout: default
 title: Privacy Policy
+layout_type: privacy
 ---
+
+{% assign image_path = site.data.privacy-policy.hero_banner %}
+{% assign transition-name = "privacy-policy" %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
   <hgroup>
@@ -11,7 +16,26 @@ title: Privacy Policy
 
   {% for section in site.data.privacy-policy.sections %}
     <h3>{{ section.title }}</h3>
-    <p>{{ section.content }}</p>
+    {% if section.intro %}<p>{{ section.intro }}</p>{% endif %}
+    {% if section.items %}
+      <ul>
+        {% for item in section.items %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% for para in section.paragraphs %}
+      <p>{{ para }}</p>
+    {% endfor %}
+    {% if section.contact %}
+      <p>
+        <strong>{{ section.contact.name }}</strong><br>
+        Phone: {{ section.contact.phone }}<br>
+        Email: <a href="mailto:{{ section.contact.email }}">{{ section.contact.email }}</a>
+      </p>
+    {% endif %}
     <hr>
   {% endfor %}
+
+  <p>{{ site.data.privacy-policy.copyright }}</p>
 </div>

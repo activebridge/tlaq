@@ -929,14 +929,39 @@ collections:
       - name: "privacy_policy"
         label: "Privacy Policy"
         file: "_data/privacy-policy.yml"
+        media_folder: "/assets/images/privacy-policy"
+        public_folder: "/assets/images/privacy-policy"
         fields:
           - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - { label: "Copyright", name: "copyright", widget: "string" }
           - label: "Sections"
             name: "sections"
             widget: "list"
             fields:
               - { label: "Title", name: "title", widget: "string" }
-              - { label: "Content", name: "content", widget: "text" }
+              - { label: "Intro", name: "intro", widget: "text", required: false, hint: "Sentence shown before the bullet list." }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                required: false
+                hint: "Bullet-point list items."
+                field: { label: "Item", name: "item", widget: "string" }
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                required: false
+                hint: "Text paragraphs shown after the list."
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
+              - label: "Contact"
+                name: "contact"
+                widget: "object"
+                required: false
+                hint: "Optional contact block (used for Contact Us section)."
+                fields:
+                  - { label: "Name", name: "name", widget: "string", required: false }
+                  - { label: "Phone", name: "phone", widget: "string", required: false }
+                  - { label: "Email", name: "email", widget: "string", required: false }
       - name: "terms_and_conditions"
         label: "Terms & Conditions"
         file: "_data/terms-and-conditions.yml"
