@@ -16,18 +16,6 @@ collections:
         fields:
           - { label: "App Name", name: "app_name", widget: "string" }
           - { label: "App Description", name: "app_description", widget: "string" }
-          - label: "Footer"
-            name: "footer"
-            widget: "object"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Phone", name: "phone", widget: "string" }
-              - { label: "Formatted Phone", name: "formatted_phone", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Street Address", name: "street_address", widget: "string" }
-              - { label: "Mail Address", name: "mail_address", widget: "string" }
-              - { label: "Subscribe Button", name: "subscribe_button", widget: "string" }
-              - { label: "Magazine Alt Text", name: "magazine_alt", widget: "string" }
           - { label: "Directions URL", name: "directions_url", widget: "string" }
           - { label: "Weather URL", name: "weather_url", widget: "string" }
           - { label: "Weather Widget URL", name: "weather_widget", widget: "string" }
@@ -35,6 +23,22 @@ collections:
           - { label: "Newsletter Worker URL", name: "newsletter_worker_url", widget: "string" }
           - { label: "Mapbox Token", name: "mapbox_token", widget: "string" }
           - { label: "Mapbox Style URL", name: "mapbox_style", widget: "string" }
+      - name: "footer_config"
+        label: "Footer"
+        file: "_data/footer.yml"
+        fields:
+          - { label: "Newsletter Title", name: "title", widget: "string" }
+          - { label: "Subscribe Button Text", name: "subscribe_button", widget: "string" }
+          - { label: "Phone (raw)", name: "phone", widget: "string" }
+          - { label: "Formatted Phone", name: "formatted_phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Street Address", name: "street_address", widget: "string" }
+          - { label: "Mail Address", name: "mail_address", widget: "string" }
+          - { label: "Organization Name", name: "name", widget: "string" }
+          - { label: "Rights Text", name: "rights", widget: "string" }
+          - { label: "Privacy Policy Label", name: "privacy_policy_label", widget: "string" }
+          - { label: "Terms Label", name: "terms_label", widget: "string" }
+          - { label: "Magazine Alt Text", name: "magazine_alt", widget: "string" }
 
   - name: "landing"
     label: "Landing Sections"
@@ -64,8 +68,7 @@ collections:
           - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
           - { label: "Section", name: "section", widget: "hidden", default: "articles" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the map." }
-          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
-          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/default.svg)." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown in the header." }
           - { label: "Description", name: "description", widget: "text", hint: "Body text shown below the heading, above the map embed." }
           - { label: "Empty Message", name: "empty_message", widget: "string", required: false, hint: "Fallback text shown if the map cannot load." }
       - name: "calendar"
@@ -77,8 +80,7 @@ collections:
           - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
           - { label: "Section", name: "section", widget: "hidden", default: "articles" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the calendar widget." }
-          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
-          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/default.svg)." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown in the header." }
           - { label: "Description", name: "description", widget: "text", hint: "Body text shown below the heading, above the calendar." }
           - { label: "Empty Message", name: "empty_message", widget: "string", hint: "Fallback text shown when no upcoming events exist." }
           - label: "Link"
@@ -97,8 +99,7 @@ collections:
           - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
           - { label: "Section", name: "section", widget: "hidden", default: "articles" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the news content." }
-          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
-          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/default.svg)." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown in the header." }
           - { label: "Empty Message", name: "empty_message", widget: "string", required: false, hint: "Fallback text shown when no news items exist." }
           - label: "Link"
             name: "link"
@@ -134,8 +135,7 @@ collections:
           - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
           - { label: "Section", name: "section", widget: "hidden", default: "articles" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the magazine content." }
-          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
-          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/default.svg)." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown in the header." }
           - { label: "Image", name: "image", widget: "image", hint: "Magazine cover photo displayed in the section." }
           - { label: "Alt Text", name: "alt", widget: "string", hint: "Alt text for the magazine cover image." }
           - { label: "Description", name: "description", widget: "text", hint: "Body text shown beside the magazine cover." }
@@ -155,18 +155,15 @@ collections:
           - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
           - { label: "Section", name: "section", widget: "hidden", default: "articles" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the weddings content." }
-          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
-          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/weddings.svg)." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown in the header." }
           - { label: "Description", name: "description", widget: "text", hint: "Body text shown below the image collage." }
           - label: "Images"
             name: "images"
             widget: "list"
-            hint: "3-photo collage layout. Each image requires exact pixel width and height for correct rendering."
+            hint: "3-photo collage layout."
             fields:
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Alt", name: "alt", widget: "string" }
-              - { label: "Width", name: "width", widget: "number" }
-              - { label: "Height", name: "height", widget: "number" }
           - label: "Link"
             name: "link"
             widget: "object"
@@ -183,8 +180,7 @@ collections:
           - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
           - { label: "Section", name: "section", widget: "hidden", default: "articles" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the filming content." }
-          - { label: "Title", name: "title", widget: "string", hint: "Section label shown next to the icon." }
-          - { label: "Icon", name: "icon", widget: "string", hint: "SVG icon path shown beside the title (e.g. icons/windows/default.svg)." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown in the header." }
           - { label: "Image", name: "image", widget: "image", hint: "Feature image displayed in the section." }
           - { label: "Alt Text", name: "alt", widget: "string", hint: "Alt text for the feature image." }
           - { label: "Description", name: "description", widget: "text", hint: "Body text shown beside or below the image." }
@@ -206,12 +202,10 @@ collections:
           - label: "Items"
             name: "items"
             widget: "list"
-            hint: "Award badge/logo images shown in the footer strip. Width and height required for correct layout."
+            hint: "Award badge/logo images shown in the footer strip."
             fields:
               - { label: "Image", name: "image", widget: "image" }
               - { label: "Alt", name: "alt", widget: "string" }
-              - { label: "Width", name: "width", widget: "number" }
-              - { label: "Height", name: "height", widget: "number" }
 
   - name: "landing_navigation"
     label: "Landing Navigation"

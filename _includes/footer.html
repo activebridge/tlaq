@@ -1,16 +1,16 @@
 <footer>
-  <h3>{{ site.data.site.footer.title }}</h3>
-  <a href="/newsletter" class="btn btn-primary">{{ site.data.site.footer.subscribe_button }}</a>
+  <h3>{{ site.data.footer.title }}</h3>
+  <a href="/newsletter" class="btn btn-primary">{{ site.data.footer.subscribe_button }}</a>
   <hr>
-  <p style="text-transform: uppercase">{{ site.data.site.footer.name }}</p>
+  <p style="text-transform: uppercase">{{ site.data.footer.name }}</p>
   <address>
     <span>
-      <a href="tel:{{ site.data.site.footer.phone }}">{{ site.data.site.footer.formatted_phone }}</a>
+      <a href="tel:{{ site.data.footer.phone }}">{{ site.data.footer.formatted_phone }}</a>
         |
-      <a href="mailto:{{ site.data.site.footer.email }}">{{ site.data.site.footer.email }}</a>
+      <a href="mailto:{{ site.data.footer.email }}">{{ site.data.footer.email }}</a>
     </span>
-    <p>Street Address: {{ site.data.site.footer.street_address }}</p>
-    <p>{{ site.data.site.footer.mail_address }}</p>
+    <p>Street Address: {{ site.data.footer.street_address }}</p>
+    <p>{{ site.data.footer.mail_address }}</p>
   </address>
   <div>
     <nav>
@@ -31,7 +31,7 @@
       </dialog>
       <a onclick="window.mainMagazine.click()">Read the Magazine</a>
       <button command="show-modal" id="mainMagazine" commandfor="magazineFooterPreview" class="magazine-cover" aria-label="View latest magazine issue" onclick="var f=magazineFooterPreview.querySelector('iframe');if(!f.src)f.src=f.dataset.src;">
-        <img src="{{ latest.image }}" alt="{{ site.data.site.footer.magazine_alt }}" loading="lazy" onerror="imageError(this)">
+        <img src="{{ latest.image }}" alt="{{ site.data.footer.magazine_alt }}" loading="lazy" onerror="imageError(this)">
       </button>
       <p>Follow Us</p>
       <a class="social" href="https://www.facebook.com/tlaqsedona/" target="_blank" title="Facebook">
@@ -42,9 +42,9 @@
       </a>
     </nav>
   </div>
-  <p>&copy; {{ 'now' | date: '%Y' }} {{ site.data.site.footer.name }}. {{ site.data.site.footer.rights }}
-    <a href="/privacy-policy/">{{ site.data.site.footer.privacy_policy_label }}</a>
+  <p>&copy; {{ 'now' | date: '%Y' }} {{ site.data.footer.name }}. {{ site.data.footer.rights }}
+    <a href="/privacy-policy/">{{ site.data.footer.privacy_policy_label }}</a>
      |
-    <a href="/terms-and-conditions/">{{ site.data.site.footer.terms_label }}</a>
+    <a href="/terms-and-conditions/">{{ site.data.footer.terms_label }}</a>
   </p>
 </footer>
