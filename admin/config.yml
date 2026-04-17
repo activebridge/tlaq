@@ -16,7 +16,12 @@ collections:
         fields:
           - { label: "App Name", name: "app_name", widget: "string" }
           - { label: "App Description", name: "app_description", widget: "string" }
-          - { label: "Directions URL", name: "directions_url", widget: "string" }
+          - {
+              label: "Directions URL",
+              name: "directions_url",
+              widget: "string",
+              hint: "Google Maps directions URL. Generate at maps.google.com: search your location → click 'Directions' → copy the browser URL. Used in: site header 'Get Directions' button and Contacts page."
+            }
           - { label: "Weather URL", name: "weather_url", widget: "string" }
           - { label: "Weather Widget URL", name: "weather_widget", widget: "string" }
           - { label: "Submission Worker URL", name: "submission_worker_url", widget: "string" }
