@@ -1111,6 +1111,7 @@ collections:
     sort_direction: Descending
     media_folder: "/assets/images/shops"
     public_folder: "/assets/images/shops"
+    summary: "{{title}} ({{suite}})"
     fields:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
@@ -1155,6 +1156,7 @@ collections:
     sort_direction: Descending
     media_folder: "/assets/images/foods"
     public_folder: "/assets/images/foods"
+    summary: "{{title}} ({{suite}})"
     fields:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
@@ -1199,6 +1201,7 @@ collections:
     sort_direction: Descending
     media_folder: "/assets/images/galleries"
     public_folder: "/assets/images/galleries"
+    summary: "{{title}} ({{suite}})"
     fields:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
