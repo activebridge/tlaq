@@ -1791,7 +1791,8 @@ dialog {
 /* Leasing Page & Filming & Photography Page */
 
 .leasing,
-.filming-photography {
+.filming-photography,
+.privacy {
   padding-bottom: 2rem;
   .btn-primary { margin-bottom: 2rem; }
 

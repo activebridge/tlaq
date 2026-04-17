@@ -1,14 +1,67 @@
 title: Privacy Policy
+hero_banner: "assets/images/leasing/leasing.webp"
+
 sections:
   - title: Introduction
-    content: Tlaquepaque respects each individual's right to personal privacy. We will collect and use information through our Web site only in the ways disclosed in this statement. This statement applies solely to information collected at Tlaquepaque's Web site.
-  - title: Part I – Information Collection
-    content: Tlaquepaque collects information through our Web site at several points. We collect the following information about primary visitors&#58; Name, Company name, Address, Email address, Phone number, Web address &amp; Descriptions of business issues. We may also collect usage data through Google Analytics and information which our customers divulge about other people, such as referrals or gift purchases. Tlaquepaque does not actively market to children, and we never knowingly ask a child under 13 to divulge personal information. We collect demographic data in order to help us in our own marketing efforts. We collect this information through a quote request &amp; contact form, Google Analytics tracking and word of mouth or email.
-  - title: Part II – Information Usage
-    content: The information collected by Tlaquepaque will be used for marketing purposes. Users who provide information may receive an email, phone call or opt-in email for a newsletter. The information we collect will not be used to create customer profiles based on browsing or purchasing history. We may share data with third parties involved in the consulting, creation or maintenance of the services we provide. These third parties will use the information for the consulting, creation and maintenance of the services we provide. We offer links to other Web sites. Please note&#58; when you click on links to other Web sites, we encourage you to read their privacy policies. Their standards may differ from ours.
-  - title: Part III – Access to Information
-    content: Users may access their own personal information and contact us about inaccuracies they may find. Users may delete their information from our database by letting us know through email or phone contact.
-  - title: Part IV – Problem Resolution
-    content: If problems arise, users may contact Tlaquepaque by email or phone. We are committed to resolving disputes within a reasonable time frame.
-  - title: Part V – Data Storage and Security
-    content: Tlaquepaque protects user information with the following security measures&#58; secure password protected servers, firewalls and other technology and procedures used to protect consumer privacy. Users may delete their information from our database by letting us know through email or phone contact and it will be deleted immediately after the message is received.
+    paragraphs:
+      - "Tlaquepaque Arts & Shopping Village values privacy as part of the care we extend to our visitors, guests, and community. This Privacy Policy explains how information is collected, used, and protected when you visit our website."
+      - "This policy applies solely to information collected through the Tlaquepaque website and does not apply to information collected offline or through third-party websites."
+
+  - title: Information We Collect
+    intro: "When you interact with our website, you may choose to share personal information with us, such as:"
+    items:
+      - Name
+      - Company or business name
+      - Mailing address
+      - Email address
+      - Phone number
+      - Website address
+      - Information shared through inquiries, requests, or forms
+    paragraphs:
+      - "We may also collect non-personal information automatically through analytics tools, including Google Analytics. This information may include browser type, device information, pages visited, and general usage patterns. It helps us understand how our site is used and how we can improve the experience."
+      - "Tlaquepaque does not knowingly collect personal information from children under the age of 13."
+
+  - title: How Information Is Used
+    intro: "Information collected through the website may be used to:"
+    items:
+      - Respond to inquiries and requests
+      - Communicate about services, events, or opportunities
+      - Improve website performance, content, and usability
+      - Send occasional communications when you have opted to receive them
+    paragraphs:
+      - "We do not sell personal information."
+
+  - title: Sharing of Information
+    paragraphs:
+      - "We may share information with trusted service providers who support the operation and maintenance of our website and communications. These partners are authorized to use information only as necessary to perform services on our behalf."
+      - "Our website may include links to external sites. Tlaquepaque is not responsible for the privacy practices of those websites, and we encourage visitors to review their policies independently."
+
+  - title: Cookies & Analytics
+    paragraphs:
+      - "Our website uses cookies and similar technologies to support functionality and gather analytics data. You may manage cookie preferences through your browser settings."
+
+  - title: Access, Updates & Deletion
+    paragraphs:
+      - "You may request access to, correction of, or deletion of your personal information by contacting us using the information below. Requests will be addressed within a reasonable timeframe."
+
+  - title: California Privacy Rights
+    paragraphs:
+      - "If you are a California resident, you may have additional rights under the California Consumer Privacy Act (CCPA), as amended by the California Privacy Rights Act (CPRA). These rights may include the ability to request access to or deletion of personal information collected through this website. Tlaquepaque Arts & Shopping Village does not sell personal information. Requests related to California privacy rights may be submitted using the contact information provided below."
+
+  - title: Data Security
+    paragraphs:
+      - "We take reasonable administrative and technical measures to safeguard personal information. While we strive to protect your information, no online system can be guaranteed to be entirely secure."
+
+  - title: Contact Us
+    paragraphs:
+      - "If you have questions about this Privacy Policy or our data practices, please contact us:"
+    contact:
+      name: "Tlaquepaque Arts & Shopping Village"
+      phone: "(928) 282-4838"
+      email: "visitorinfo@tlaq.com"
+
+  - title: Policy Updates
+    paragraphs:
+      - "This Privacy Policy may be updated periodically. Any changes will be reflected on this page with an updated effective date."
+
+copyright: "© Tlaquepaque Arts & Shopping Village"
