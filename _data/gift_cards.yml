@@ -6,7 +6,7 @@ intro: "A Tlaquepaque Arts & Shopping Village gift card is an invitation to wand
 
 purchase_button:
   label: "Purchase a Gift Card"
-  url: "" # TODO: add yiftee URL once client sets up account
+  url: ""
 
 how_it_works:
   heading: "Here's How It Works"

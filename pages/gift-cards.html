@@ -14,15 +14,9 @@ layout_type: gift-cards
   <h2>{{ site.data.gift_cards.heading }}</h2>
   <p>{{ site.data.gift_cards.intro }}</p>
 
-  {% if site.data.gift_cards.purchase_button.url != "" %}
-    <a href="{{ site.data.gift_cards.purchase_button.url }}" class="btn btn--primary" target="_blank" rel="noopener">
-      {{ site.data.gift_cards.purchase_button.label }}
-    </a>
-  {% else %}
-    <a href="#" class="btn btn-primary">
-      {{ site.data.gift_cards.purchase_button.label }}
-    </a>
-  {% endif %}
+  <a href="{{ site.data.gift_cards.purchase_button.url }}" class="btn btn-primary" target="_blank" rel="noopener">
+    {{ site.data.gift_cards.purchase_button.label }}
+  </a>
 
   <hr>
 

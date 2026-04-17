@@ -1016,39 +1016,25 @@ collections:
         public_folder: "/assets/images"
         fields:
           - { label: "Hero Banner", name: "hero_banner", widget: "image" }
-          - label: "Notes"
-            name: "notes"
+          - { label: "Page Heading", name: "heading", widget: "string" }
+          - { label: "Intro Paragraph", name: "intro", widget: "text" }
+          - label: "Purchase Button"
+            name: "purchase_button"
             widget: "object"
             fields:
-              - { label: "Intro", name: "intro", widget: "text", hint: "Introductory paragraph shown at the top of the page." }
-          - label: "Details"
-            name: "details"
+              - { label: "Button Label", name: "label", widget: "string" }
+              - { label: "Button URL", name: "url", widget: "string", hint: "Yiftee purchase page URL. Leave empty until account is set up." }
+          - label: "Here's How It Works"
+            name: "how_it_works"
             widget: "object"
             fields:
-              - { label: "Description", name: "description", widget: "text" }
-              - label: "Features"
-                name: "features"
+              - { label: "Section Heading", name: "heading", widget: "string" }
+              - label: "Items"
+                name: "items"
                 widget: "list"
-                hint: "Bullet-point list of gift card features."
-                field: { label: "Feature", name: "feature", widget: "string" }
-              - label: "Terms"
-                name: "terms"
-                widget: "list"
-                hint: "Bullet-point list of terms."
-                field: { label: "Term", name: "term", widget: "string" }
-          - label: "Purchase Info"
-            name: "purchase"
-            widget: "object"
-            fields:
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Phone", name: "phone", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - label: "Hours"
-                name: "hours"
-                widget: "list"
-                hint: "Each item is one line of operating hours (e.g. Monday–Thursday: 10:00 am–5:00 pm)."
-                field: { label: "Hours Line", name: "line", widget: "string" }
-              - { label: "Note", name: "note", widget: "string", hint: "e.g. Restaurant hours vary." }
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
       - name: "contacts"
         label: "Contacts"
         file: "_data/contacts.yml"
