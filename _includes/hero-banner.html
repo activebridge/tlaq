@@ -19,19 +19,17 @@
 <figure class="hero" style="view-transition-name: {{ transition-name }};" {% if include.data_event_image %}data-event-image{% endif %}>
   <img
     id="heroImg"
-    src="{{ card_desk }}"
+    src="{{ interior_cdn | default: card_desk }}"
     data-mob-low="{{ card_mob_small }}"
     data-desk-low="{{ card_desk }}"
-    data-mob-hi="{{ hero_mob_hi }}"
-    data-desk-hi="{{ hero_desk_hi }}"
+    data-mob-hi="{{ interior_cdn | default: hero_mob_hi }}"
+    data-desk-hi="{{ interior_cdn | default: hero_desk_hi }}"
     alt=""
     width="1600"
     height="800"
     loading="eager"
     fetchpriority="high"
     decoding="async"
-    {% if include.interior_image %}data-interior="{{ interior_cdn }}"{% endif %}
-    style="transition: opacity 0.6s ease"
   >
 </figure>
 
@@ -72,11 +70,3 @@
     loadHiRes(img, hiSrc);
   }
 </script>
-{% if include.interior_image %}
-<script>
-  setTimeout(() => {
-    heroImg.style.opacity = '0';
-    setTimeout(() => { heroImg.src = heroImg.dataset.interior; heroImg.style.opacity = '1'; }, 600);
-  }, 1000);
-</script>
-{% endif %}
