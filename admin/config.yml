@@ -1115,6 +1115,7 @@ collections:
       - { label: "Website", name: "website", widget: "string", required: false }
       - { label: "Coordinates", name: "coordinates", widget: "string", required: false, hint: "Format: -111.76260, 34.86350. Optional if Suite is set." }
       - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Interior Image", name: "interior_image", widget: "image", required: false, hint: "Optional interior photo shown as hero on the detail page." }
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
       - { label: "Full Location", name: "full_location", widget: "string", required: false }
@@ -1158,6 +1159,7 @@ collections:
       - { label: "Website", name: "website", widget: "string", required: false }
       - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350. Optional if Suite is set.", required: false }
       - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Interior Image", name: "interior_image", widget: "image", required: false, hint: "Optional interior photo shown as hero on the detail page." }
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
       - { label: "Full Location", name: "full_location", widget: "string", required: false }
@@ -1201,6 +1203,7 @@ collections:
       - { label: "Website", name: "website", widget: "string", required: false }
       - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350. Optional if Suite is set.", required: false }
       - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Interior Image", name: "interior_image", widget: "image", required: false, hint: "Optional interior photo shown as hero on the detail page." }
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
       - { label: "Full Location", name: "full_location", widget: "string", required: false }
