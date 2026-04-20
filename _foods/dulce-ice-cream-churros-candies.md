@@ -16,7 +16,9 @@ phone: (928) 301-2666
 website: https://dulce-icecream.com
 coordinates: -111.7637071, 34.8624058
 image: /assets/images/foods/Dulce_ext.jpg
+interior_image: /assets/images/foods/Dulce_int.jpg
 instagram: https://www.instagram.com/dulcesedona/
+facebook: ''
 full_location: 336 AZ-179 Suite F104, Sedona, AZ 86336
 store_hours:
   monday: 10:00 am–5:00 pm
