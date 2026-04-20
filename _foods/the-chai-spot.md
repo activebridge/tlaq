@@ -16,6 +16,7 @@ phone: (928) 852-0583
 website: https://www.thechaispot.com
 coordinates: -111.7630495, 34.8617985
 image: /assets/images/foods/The_Chai-Spot_int1.jpg
+interior_image: /assets/images/foods/The_Chai_Spot_int2.jpg
 instagram: https://www.instagram.com/thechaispot/
 facebook: https://www.facebook.com/TheChaiSpot/
 full_location: 336 AZ-179 Suite B201, Sedona, AZ 86336
