@@ -606,7 +606,7 @@ nav#mobile {
     }
 
     p {
-      font-size: clamp(14px, 1.8vw, 22px);
+      font-size: clamp(12px, 2vw, 22px);
       font-weight: 500;
       overflow: hidden;
     }
