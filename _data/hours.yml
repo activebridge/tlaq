@@ -1,17 +1,16 @@
 jump_to_links:
   hours:
     text: HOURS
-    id: "#hours"
+    id: '#hours'
   locations:
     text: LOCATIONS
-    id: "#locations"
+    id: '#locations'
   village_map:
     text: VILLAGE MAP
-    id: "#village-map"
+    id: '#village-map'
   accessibility:
+    id: '#accessibility'
     text: ACCESSIBILITY
-    id: "#accessibility"
-
 village_hours:
   monday: 10:00 AM – 5:00 PM
   tuesday: 10:00 AM – 5:00 PM
@@ -20,24 +19,20 @@ village_hours:
   friday: 10:00 AM – 5:00 PM
   saturday: 10:00 AM – 6:00 PM
   sunday: 10:00 AM – 6:00 PM
-
 notes:
-  restaurants: "Onsite restaurants offer extended evening hours."
-  holidays: "Please note the village is closed for in observance of the holidays on Christmas and Thanksgiving Day."
-  village_map: "Our interactive village map provides easy navigation to all 50+ shops, galleries, and restaurants, helping you discover every corner of Tlaquepaque North and South during your visit."
-
+  restaurants: Onsite restaurants offer extended evening hours.
+  holidays: Please note the village is closed in observance of the holidays on Christmas and Thanksgiving Day.
+  village_map: Our interactive village map provides easy navigation to all 50+ shops, galleries, and restaurants, helping you discover every corner of Tlaquepaque North and South during your visit.
 locations:
   - name: Tlaquepaque South
-    address: "336 AZ-179 Sedona, AZ 86336"
-    maps_url: "https://www.google.com/maps/dir/?api=1&destination=336+AZ-179+Sedona+AZ+86336&travelmode=driving"
-    image: "assets/images/locations/south.webp"
+    address: 336 AZ-179 Sedona, AZ 86336
+    maps_url: https://www.google.com/maps/dir/?api=1&destination=336+AZ-179+Sedona+AZ+86336&travelmode=driving
+    image: assets/images/locations/south.webp
   - name: Tlaquepaque North
-    address: "313 AZ-179 Sedona, AZ 86336"
-    maps_url: "https://www.google.com/maps/dir/?api=1&destination=313+AZ-179+Sedona+AZ+86336&travelmode=driving"
-    image: "assets/images/locations/north.webp"
-
+    address: 313 AZ-179 Sedona, AZ 86336
+    maps_url: https://www.google.com/maps/dir/?api=1&destination=313+AZ-179+Sedona+AZ+86336&travelmode=driving
+    image: assets/images/locations/north.webp
 accessibility:
-  image: "assets/images/hours/accessibility.webp"
-
+  image: assets/images/hours/accessibility.webp
 family_friendly:
-  image: "assets/images/landing/family-friendly.webp"
+  image: assets/images/landing/family-friendly.webp
