@@ -813,7 +813,7 @@
     const DATA_LAYER = 'building-outlines';
     const map = new mapboxgl.Map({
       container: 'map', style: '{{ site.data.site.mapbox_style }}',
-      center: [-111.763522, 34.862363], zoom: 14, pitch: 20,
+      center: [-111.763522, 34.862363], zoom: 14, pitch: 20, bearing: -8,
       minZoom: 14, maxZoom: 20, maxBounds: [[-111.7659, 34.8606], [-111.7611, 34.8642]],
       cooperativeGestures: true
     });
@@ -957,27 +957,26 @@
       const parkingFilter = ['==', ['get', 'type'], 'parking'];
       const polygonFilter = ['==', ['geometry-type'], 'Polygon'];
       map.addLayer({
-        id: 'parking-fill', type: 'fill', source: 'map-data',
-        filter: ['all', polygonFilter, parkingFilter],
-        paint: { 'fill-color': PARKING_COLOR, 'fill-opacity': 0.2 }
-      });
-      map.addLayer({
         id: 'parking-outline', type: 'line', source: 'map-data',
         filter: ['all', polygonFilter, parkingFilter],
         paint: { 'line-color': PARKING_COLOR, 'line-width': 1, 'line-dasharray': [4, 3], 'line-opacity': 0.5 }
       });
 
+      const underpassFilter = ['==', ['get', 'id'], 'underpass'];
+      map.addLayer({
+        id: 'underpass-outline', type: 'line', source: 'map-data',
+        filter: ['all', polygonFilter, underpassFilter],
+        paint: { 'line-color': BUILDING_BASE_COLOR, 'line-width': 1.5, 'line-dasharray': [4, 3], 'line-opacity': 0.7 }
+      });
+
+      const crosswalkFilter = ['==', ['get', 'type'], 'crosswalk'];
+      map.addLayer({
+        id: 'crosswalk-outline', type: 'line', source: 'map-data',
+        filter: ['all', polygonFilter, crosswalkFilter],
+        paint: { 'line-color': '#ffffff', 'line-width': 1, 'line-opacity': 0.6 }
+      });
+
       const areaFilter = ['==', ['get', 'type'], 'area'];
-      map.addLayer({
-        id: 'area-fill', type: 'fill', source: 'map-data',
-        filter: ['all', polygonFilter, areaFilter],
-        paint: { 'fill-color': AREA_COLOR, 'fill-opacity': ['case', ['has', 'name'], 0, 0.08] }
-      });
-      map.addLayer({
-        id: 'area-outline', type: 'line', source: 'map-data',
-        filter: ['all', polygonFilter, areaFilter],
-        paint: { 'line-color': AREA_COLOR, 'line-width': 1, 'line-dasharray': [4, 3], 'line-opacity': ['case', ['has', 'name'], 0, 0.1] }
-      });
       // 3D extruded buildings
       map.addLayer({
         id: DATA_LAYER, type: 'fill-extrusion', source: 'map-data',
@@ -1008,13 +1007,15 @@
         // Area label source/layer
         const areaFeatures = geojson.features.filter(f =>
           f.properties.type === 'area' &&
-          f.properties.name &&
+          f.properties.id &&
+          f.properties.id !== 'null' &&
+          pointLabels.areas?.[f.properties.id] &&
           f.geometry.type === 'Polygon'
         ).map(f => ({
           ...f,
           properties: {
             ...f.properties,
-            name: pointLabels.areas?.[f.properties.id] || f.properties.name
+            name: pointLabels.areas[f.properties.id]?.title
           },
           geometry: { type: 'LineString', coordinates: polyLongestEdgeLine(f.geometry.coordinates[0]) }
         }));
@@ -1046,6 +1047,24 @@
           }
         });
 
+        // Area label click → popup
+        map.on('click', 'area-labels', e => {
+          if (!e.features?.length || !e.features[0]?.properties?.id) return;
+          const { id } = e.features[0].properties;
+          const areaData = pointLabels.areas?.[id];
+          if (!areaData?.title) return;
+          const title = areaData.title;
+          const description = areaData.description || '';
+          if (currentOpenPopup) { currentOpenPopup.remove(); currentOpenPopup = null; }
+          currentOpenPopup = new mapboxgl.Popup({ closeButton: true, maxWidth: '240px' })
+            .setLngLat(e.lngLat)
+            .setHTML(`<section class="point-popup"><h3 class="point-popup-title">${title}</h3>${description ? `<p class="point-popup-description">${description}</p>` : ''}</section>`)
+            .addTo(map);
+          currentOpenPopup.on('close', () => { currentOpenPopup = null; });
+        });
+        map.on('mouseenter', 'area-labels', () => { map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', 'area-labels', () => { map.getCanvas().style.cursor = ''; });
+
         // Feature lookup tables
         geojson.features.forEach(feature => {
           const { id } = feature.properties || {};
@@ -1054,6 +1073,19 @@
             suiteCentroid.set(id, polygonCentroid(feature.geometry.coordinates[0]));
           }
         });
+        // 2 geographic stripes inside crosswalk polygon
+        const cwFeature = geojson.features.find(f => f.properties.type === 'crosswalk' && f.geometry.type === 'Polygon');
+        if (cwFeature) {
+          const r = cwFeature.geometry.coordinates[0];
+          if (!r || r.length < 4) return;
+          const lerp = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+          const features = Array.from({length: 8}, (_, i) => { const t = (i * 2 + 1) / 16; return { type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates: [lerp(r[0], r[1], t), lerp(r[3], r[2], t)] } }; });
+          map.addSource('crosswalk-stripes', { type: 'geojson', data: { type: 'FeatureCollection', features } });
+          map.addLayer({ id: 'crosswalk-stripes', type: 'line', source: 'crosswalk-stripes', beforeId: 'area-labels',
+            paint: { 'line-color': '#ffffff', 'line-opacity': 0.85, 'line-width': ['interpolate', ['exponential', 2], ['zoom'], 14, 0.5, 20, 24] }
+          });
+        }
+
         buildingDataReady = true;
         if (pendingStoreHighlight) {
           const store = pendingStoreHighlight;
@@ -1089,7 +1121,7 @@
 
         // SVG markers for special point/polygon features
         const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'bike-rack', 'bell-tower', 'wind-sculpture-garden']);
-        const polygonSvgTypes = new Set(['parking', 'area']);
+        const polygonSvgTypes = new Set(['parking']);
         geojson.features.forEach(feature => {
           const { type: featureType, id: featureId } = feature.properties || {};
           if (!featureType) return;
@@ -1102,15 +1134,85 @@
               const { title = featureType } = pointLabels.points?.[featureId] || pointLabels.types?.[featureType] || {};
               pointMarkers.push({ type: featureType, title, marker });
             }
+          } else if (feature.geometry.type === 'Polygon' && featureType === 'compass') {
+            const ring = feature.geometry.coordinates[0];
+            const centroid = polygonCentroid(ring);
+            // Compute polygon diameter in meters to drive icon-size expression
+            const toRad = d => d * Math.PI / 180;
+            const haversine = ([lng1, lat1], [lng2, lat2]) => {
+              const R = 6371000, dLat = toRad(lat2 - lat1), dLng = toRad(lng2 - lng1);
+              const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng/2)**2;
+              return 2 * R * Math.asin(Math.sqrt(a));
+            };
+            const verts = ring.slice(0, -1);
+            let maxDist = 0;
+            for (let i = 0; i < verts.length; i++)
+              for (let j = i+1; j < verts.length; j++)
+                maxDist = Math.max(maxDist, haversine(verts[i], verts[j]));
+            // meters-per-pixel at centroid lat, zoom z: 156543.03392 * cos(lat) / 2^z
+            // icon-size = polygon_meters / (512px_tile_size * icon_native_px / tile_meters)
+            // Simpler: use interpolate expression, icon native size = 256px, target fill = maxDist meters
+            const iconSizeAtZoom = z => {
+              const metersPerPx = 156543.03392 * Math.cos(toRad(centroid[1])) / Math.pow(2, z);
+              return maxDist / (metersPerPx * 256);
+            };
+            const compassSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <polygon points="128,20 196,220 128,175 60,220" fill="black" stroke="black" stroke-width="4" stroke-linejoin="miter"/>
+  <polygon points="128,20 60,220 128,175" fill="white"/>
+  <line x1="128" y1="20" x2="128" y2="175" stroke="black" stroke-width="3"/>
+</svg>`;
+            const blob = new Blob([compassSvg], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const img = new Image(256, 256);
+            img.onload = () => {
+              if (!map.hasImage('compass-icon')) map.addImage('compass-icon', img, { sdf: false });
+              URL.revokeObjectURL(url);
+              const compassSource = {
+                type: 'geojson',
+                data: { type: 'Feature', geometry: { type: 'Point', coordinates: centroid }, properties: {} }
+              };
+              if (!map.getSource('compass-source')) map.addSource('compass-source', compassSource);
+              if (!map.getLayer('compass-layer')) map.addLayer({
+                id: 'compass-layer',
+                type: 'symbol',
+                source: 'compass-source',
+                layout: {
+                  'icon-image': 'compass-icon',
+                  'icon-rotation': -32,
+                  'icon-rotation-alignment': 'map',
+                  'icon-pitch-alignment': 'map',
+                  'icon-allow-overlap': true,
+                  'icon-ignore-placement': true,
+                  'icon-size': ['interpolate', ['exponential', 2], ['zoom'],
+                    14, iconSizeAtZoom(14) * 0.5,
+                    20, iconSizeAtZoom(20) * 0.5
+                  ],
+                  'text-field': 'N',
+                  'text-font': ['Montserrat Regular', 'Arial Unicode MS Regular'],
+                  'text-rotation-alignment': 'map',
+                  'text-pitch-alignment': 'map',
+                  'text-anchor': 'bottom',
+                  'text-offset': [0, -1.2],
+                  'text-allow-overlap': true,
+                  'text-ignore-placement': true,
+                  'text-size': ['interpolate', ['exponential', 2], ['zoom'],
+                    14, Math.max(8, maxDist / (156543.03392 * Math.cos(toRad(centroid[1])) / Math.pow(2, 14)) * 0.18),
+                    20, Math.max(8, maxDist / (156543.03392 * Math.cos(toRad(centroid[1])) / Math.pow(2, 20)) * 0.18)
+                  ]
+                },
+                paint: {
+                  'text-color': '#000000'
+                }
+              });
+            };
+            img.src = url;
           } else if (feature.geometry.type === 'Polygon' && polygonSvgTypes.has(featureType)) {
             const ring = feature.geometry.coordinates[0];
-            if (featureType === 'area' && feature.properties.name) return;
-            const markerType = featureType === 'area' ? 'tree' : featureType;
-            const marker = new mapboxgl.Marker({ element: makeSvgMarker(markerType) }).setLngLat(polygonCentroid(ring));
-            if (featureType !== 'area') marker.setPopup(createPointPopup(featureType, featureId));
+            const marker = new mapboxgl.Marker({ element: makeSvgMarker(featureType) }).setLngLat(polygonCentroid(ring));
+            marker.setPopup(createPointPopup(featureType, featureId));
             marker.addTo(map);
             if (featureType === 'parking') {
-              const { title = featureType } = pointLabels.types?.['parking'] || {};
+              const { title = featureType } = pointLabels.points?.[featureId] || pointLabels.types?.['parking'] || {};
               pointMarkers.push({ type: 'parking', title, marker });
             }
           }
@@ -1166,6 +1268,7 @@
       map.on('click', (event) => {
         if (!map.queryRenderedFeatures(event.point, { layers: [DATA_LAYER] }).length) {
           if (activePOIType) { resetSidebar(); return; }
+          if (suppressClearHighlight) return;
           if (highlightedBuildingIds.size) clearHighlightedBuildings();
         }
       });
@@ -1196,14 +1299,19 @@
 
     // Enforce single open popup with category color
     let currentOpenPopup = null;
+    let suppressClearHighlight = false;
     const createPopup = (store) => {
       const popup = new mapboxgl.Popup({ offset: 10, maxWidth: '200px', focusAfterOpen: false, anchor: 'bottom' }).setHTML(renderPopupHtml(store));
       popup.on('open', () => {
-        if (currentOpenPopup && currentOpenPopup !== popup) currentOpenPopup.remove();
+        if (currentOpenPopup && currentOpenPopup !== popup) {
+          suppressClearHighlight = true;
+          currentOpenPopup.remove();
+          suppressClearHighlight = false;
+        }
         currentOpenPopup = popup;
         if (categoryColors[store.type]) popup.getElement().style.setProperty('--category-color', categoryColors[store.type]);
       });
-      popup.on('close', () => { if (currentOpenPopup === popup) { currentOpenPopup = null; clearHighlightedBuildings(); } });
+      popup.on('close', () => { if (currentOpenPopup === popup) { currentOpenPopup = null; if (!suppressClearHighlight) clearHighlightedBuildings(); } });
       return popup;
     };
 
@@ -1252,6 +1360,8 @@
 
     // Navigate to a store: highlight building, fly to location, open popup
     const focusStore = (index, animationOptions = {}) => {
+      suppressClearHighlight = true;
+      setTimeout(() => { suppressClearHighlight = false; }, 0);
       highlightStoreBuilding(stores[index]);
       let lngLat = storeMarkers[index].marker.getLngLat();
       if (!lngLat) {

@@ -50,10 +50,10 @@ types:
     description: Bicycle parking available for visitors.
   bell-tower:
     title: Bell Tower
-    description: A visually striking, ivy-covered landmark rising from the Patio de las Campañas.
+    description: A visually striking, ivy-covered landmark rising from the Patio de las Campañas, the Bell Tower is one of Tlaquepaque's most recognizable architectural features and among the tallest structures in Sedona.
   wind-sculpture-garden:
     title: Wind Sculpture Garden
-    description: An outdoor garden featuring kinetic wind sculptures by Lyman Whitaker.
+    description: An outdoor garden featuring a rotating collection of kinetic wind sculptures by Lyman Whitaker, set among the sycamores in a peaceful, shaded space outside Vue Gallery.
 points:
   restroom-north:
     title: North Restrooms
@@ -103,6 +103,9 @@ points:
   wind-sculpture-garden:
     title: Wind Sculpture Garden
     description: An outdoor garden featuring a rotating collection of kinetic wind sculptures by Lyman Whitaker, set among the sycamores in a peaceful, shaded space outside Vue Gallery.
+  patio-de-las-rosas-fountain:
+    title: Patio de las Rosas Fountain
+    description: A lush, rose-scented courtyard entered through an elegant western archway, where gardens, sycamore shade, and surrounding galleries and shops invite visitors to take in the beauty of the village.
   el-pasillo-pequeno:
     title: El Pasillo Pequeño Fountain
     description: ""
@@ -111,18 +114,110 @@ points:
     description: ""
   handicap-bathroom:
     title: South Accessible Restroom
-    description: ""
+    description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
+  parking-del-norte:
+    title: Del Norte Parking
+    description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
+  parking-portal-lane:
+    title: Portal Lane Parking
+    description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
+  parking-creekside:
+    title: Creekside Parking
+    description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
+  parking-west:
+    title: West Parking
+    description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
+  parking-east:
+    title: East Parking
+    description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
+  parking-handicap-north:
+    title: Del Norte Accessible Parking
+    description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
+  parking-handicap-portal:
+    title: Portal Lane Accessible Parking
+    description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
+  parking-handicap-creekside:
+    title: Creekside Accessible Parking
+    description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
+  parking-handicap-east:
+    title: East Accessible Parking
+    description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
 areas:
-  wind-sculpture-garden: Wind Sculpture Garden
-  el-pasillo-pequeno: El Pasillo Pequeño
-  patio-de-las-campanas: Patio de las Campanas
-  patio-de-la-capila: Patio de la Capilla
-  patio-del-norte: Patio del Norte
-  avenida-de-la-constitution: Avenida de la Constitución
-  soldier-wash-walkway: Soldier Wash Walkway
-  calle-miller: Calle Miller
-  calle-independencia: Calle Independencia
-  patio-azul: Patio Azul
+  underpass:
+    title: "Underpass to\n Tlaquepaque North"
+    description: Completed in 2024, this pedestrian underpass offers a safe, accessible connection between Tlaquepaque North and South beneath State Route 179.
+  wind-sculpture-garden:
+    title: "Wind\n Sculpture\n Garden"
+    description: An outdoor garden featuring a rotating collection of kinetic wind sculptures by Lyman Whitaker, set among the sycamores in a peaceful, shaded space outside Vue Gallery.
+  el-pasillo-pequeno:
+    title: El Pasillo Pequeño
+    description: ""
+  patio-de-las-campanas:
+    title: Patio de las Campañas
+    description: A celebrated courtyard anchored by the iconic Bell Tower, where stone fountains, artful tilework, elegant sculptures, and an ivy-covered arched walkway create one of the village's most visually striking spaces.
+  patio-de-las-rosas:
+    title: Patio de las Rosas
+    description: A lush, rose-scented courtyard entered through an elegant western archway, where gardens, sycamore shade, and surrounding galleries and shops invite visitors to take in the beauty of the village.
+  patio-de-la-capilla:
+    title: "Patio\n de la Capilla"
+    description: The intimate courtyard surrounding the Tlaquepaque Chapel, it offers a peaceful, tucked-away space defined by its details and old-world character.
+  patio-del-norte:
+    title: Patio del Norte
+    description: The heart of the village, this lush, ground-level courtyard is defined by hand-carved wooden doors, tiled fountains, mature trees, and cobblestone paths that evoke an authentic Old World atmosphere.
+  avenida-de-la-constitution:
+    title: Avenida de la Constitución
+    description: ""
+  soldier-wash-walkway:
+    title: Soldier Wash Walkway
+    description: ""
+  calle-miller:
+    title: Calle Miller
+    description: Located at the south end of the village, this street is named in honor of founder Abe Miller, reflecting his lasting presence throughout Tlaquepaque.
+  calle-independencia:
+    title: Calle Independencia
+    description: The main calle of the village, where cobblestone paths, stucco walls, archways, ironwork, and fountains come together to form Tlaquepaque's primary spine and sense of movement.
+  patio-azul:
+    title: Patio Azul
+    description: A rare, cloistered courtyard tucked within the village, where elegant balconies, ironwork, and richly patterned tile create one of Tlaquepaque's most immersive spaces.
+  tlaquepaque-north:
+    title: Tlaquepaque North
+    description: Opened in 2015, this newer section of the village features inviting courtyards, galleries, shops, and dining spaces—designed in harmony with Tlaquepaque's signature architecture and spirit of discovery. Accessible via the crosswalk or underpass.
+  sycamore-grove:
+    title: Sycamore Grove
+    description: Located behind the pumphouse, the Sycamore Grove is a shaded, tranquil area defined by mature sycamore trees—preserved as part of Tlaquepaque founder Abe Miller's commitment to care for and protect them when the property was developed.
+  oak-creek:
+    title: Oak Creek
+    description: A natural creek running along the eastern edge of the village and contributing to the landscape that surrounds Tlaquepaque.
+  creekside-parking:
+    title: "Creekside\n Parking"
+    description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
+  az-179:
+    title: AZ-179
+    description: State Route 179 runs directly alongside the village, connecting Sedona to Interstate 17 to the south and the Village of Oak Creek beyond.
+  portal-lane:
+    title: Portal Lane
+    description: This roadway runs alongside the village, providing access to parking and continuing toward nearby hotels, including Los Abrigados and El Portal.
+  del-norte-parking:
+    title: "Del Norte\n Parking"
+    description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
+  to-89a:
+    title: "To HWY 89A & uptown Sedona"
+    description: This roadway provides access toward Uptown Sedona to the north and Cottonwood to the southwest.
+  west-parking:
+    title: West Parking
+    description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
+  portal-lane-parking:
+    title: "Portal Lane\n Parking"
+    description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
+  east-parking:
+    title: "East\n Parking"
+    description: Limited free parking is available onsite for village visitors only. For a convenient alternative, the Sedona Shuttle offers free service from the Sedona Municipal Parking Lot at Jordan and Schnebly Roads.
+  crosswalk-to-north:
+    title: "Crosswalk to\n Tlaquepaque North"
+    description: This marked crosswalk provides a pedestrian connection across State Route 179 at the main gates. Please cross with care.
+  to-i-17:
+    title: To I-17
+    description: A major interstate connecting Sedona with Phoenix to the south and Flagstaff to the north.
 ui:
   search_label: Search stores
   search_placeholder: Search
