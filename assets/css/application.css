@@ -609,7 +609,6 @@ nav#mobile {
       font-size: clamp(14px, 1.8vw, 22px);
       font-weight: 500;
       overflow: hidden;
-      line-clamp: 2;
     }
 
     &:hover,
