@@ -14,7 +14,7 @@ coordinates: ''
 image: /assets/images/shops/_37A8243.jpg
 interior_image: /assets/images/shops/_37A8245-Aura.jpg
 instagram: ''
-facebook: ''
+facebook: https://www.facebook.com/profile.php?id=61575406721339#
 full_location: 336 AZ-179 Suite A208, Sedona, AZ 86336
 store_hours:
   monday: 10:00 am–6:00 pm
