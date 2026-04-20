@@ -15,7 +15,9 @@ phone: (928) 426-9232
 website: https://sedonacakes.com
 coordinates: -111.7630343, 34.8630292
 image: /assets/images/foods/cream_ext.jpg
+interior_image: /assets/images/foods/cream_int.jpg
 instagram: https://www.instagram.com/creamandcakecouture/
+facebook: ''
 full_location: 313 AZ-179 Suite A11, Sedona, AZ 86336
 store_hours:
   monday: 10AM - 6PM
