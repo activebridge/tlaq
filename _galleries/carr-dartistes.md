@@ -15,7 +15,7 @@ phone: (928) 282-8704
 website: https://www.carredartistes.com
 coordinates: -111.7631983, 34.8620155
 image: assets/images/galleries/carr-dartistes.webp
-interior_image: /assets/images/galleries/175850318.Z1Hl0Ntm.2887W_DvonBriesen__37A3774.jpg
+interior_image: /assets/images/galleries/172943553.PviMS5T9.1521W_DvonBriesen__MG_0680.jpg
 instagram: ''
 facebook: https://www.facebook.com/CarredartistesSedona/
 full_location: 336 AZ-179 Suite B121, Sedona, AZ 86336
