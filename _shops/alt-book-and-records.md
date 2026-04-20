@@ -12,7 +12,7 @@ suite: c203
 phone: (928) 554-7840
 website: https://alt-books-and-records.business.site
 coordinates: -111.7631377, 34.8616415
-image: assets/images/shops/alt-book-and-records.webp
+image: /assets/images/shops/alt-book-and-records.webp
 interior_image: ''
 instagram: ''
 facebook: https://www.facebook.com/p/ALT-Books-Records-100054135466554/
