@@ -1,0 +1,11 @@
+{% assign lost_and_found = site.landing | where: "slug", "lost-and-found" | first %}
+<article id="{{ lost_and_found.slug }}">
+  <h5>
+    {% include {{ lost_and_found.icon }} %}
+    {{ lost_and_found.title | escape }}
+  </h5>
+  <h2>{{ lost_and_found.heading | escape }}</h2>
+  <section class="footer">
+    <h6>{{ lost_and_found.description | escape }}</h6>
+  </section>
+</article>

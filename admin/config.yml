@@ -232,6 +232,17 @@ collections:
             fields:
               - { label: "URL", name: "url", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
+      - name: "lost_and_found"
+        label: "Lost Something?"
+        file: "_landing/lost-and-found.md"
+        media_folder: "/assets/images/landing"
+        public_folder: "/assets/images/landing"
+        fields:
+          - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the articles section. Lower = appears first." }
+          - { label: "Section", name: "section", widget: "hidden", default: "articles" }
+          - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the section." }
+          - { label: "Title", name: "title", widget: "string", hint: "Section label shown in the header." }
+          - { label: "Description", name: "description", widget: "text", hint: "Informational text shown below the heading (location and contact details)." }
 
   - name: "map_content"
     label: "Map"
