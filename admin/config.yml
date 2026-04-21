@@ -44,6 +44,16 @@ collections:
           - { label: "Privacy Policy Label", name: "privacy_policy_label", widget: "string" }
           - { label: "Terms Label", name: "terms_label", widget: "string" }
           - { label: "Magazine Alt Text", name: "magazine_alt", widget: "string" }
+          - label: "Awards"
+            name: "awards"
+            widget: "list"
+            media_folder: "/assets/images/awards"
+            public_folder: "/assets/images/awards"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt", name: "alt", widget: "string" }
+              - { name: "width", widget: "hidden" }
+              - { name: "height", widget: "hidden" }
 
   - name: "landing_navigation"
     label: "Landing Navigation"
@@ -222,21 +232,6 @@ collections:
             fields:
               - { label: "URL", name: "url", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
-      - name: "awards"
-        label: "Awards"
-        file: "_landing/awards.md"
-        media_folder: "/assets/images/awards"
-        public_folder: "/assets/images/awards"
-        fields:
-          - { label: "Order", name: "order", widget: "number", value_type: "int", hint: "Display order within the footer section." }
-          - { label: "Section", name: "section", widget: "hidden", default: "footer" }
-          - label: "Items"
-            name: "items"
-            widget: "list"
-            hint: "Award badge/logo images shown in the footer strip."
-            fields:
-              - { label: "Image", name: "image", widget: "image" }
-              - { label: "Alt", name: "alt", widget: "string" }
 
   - name: "map_content"
     label: "Map"
