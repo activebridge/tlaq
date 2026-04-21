@@ -745,6 +745,16 @@
     <div id="mapSpinner">
       <span>{% include icons/loader.svg %}</span>
     </div>
+    <script>
+      function loadMapbox() {
+        if (window._mapboxLoading) return;
+        window._mapboxLoading = true;
+        const s = document.createElement('script');
+        s.src = 'https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.js';
+        s.onload = initMap;
+        document.head.appendChild(s);
+      }
+    </script>
     <img src="{{ '/assets/images/landing/map-placeholder.webp' | relative_url }}"
       style="display:none" aria-hidden="true"
       onload="loadMapbox()" onerror="loadMapbox()">
@@ -798,15 +808,6 @@
 </template>
 
 <script>
-  function loadMapbox() {
-    if (window._mapboxLoading) return;
-    window._mapboxLoading = true;
-    const s = document.createElement('script');
-    s.src = 'https://api.mapbox.com/mapbox-gl-js/v3.17.0/mapbox-gl.js';
-    s.onload = initMap;
-    document.head.appendChild(s);
-  }
-
   function initMap() {
     mapboxgl.accessToken = '{{ site.data.site.mapbox_token }}';
     const { mapSearch, mapSearchResults, mapNoResults, mapCategories, mapBack, mapSidebar, mapShowAll, mapLegend, mapContainer, mapSidebarToggle, mapLocateBtn, mapLocationToast } = window;
