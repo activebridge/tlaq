@@ -1,19 +1,41 @@
 <footer>
-  <h3>{{ site.data.footer.title }}</h3>
-  <a href="/newsletter" class="btn btn-primary">{{ site.data.footer.subscribe_button }}</a>
+  <section class="top">
+    <div>
+      <h4>{{ site.data.footer.title }}</h4>
+      <a class="btn btn-primary" href="/newsletter" class="btn btn-primary">{{ site.data.footer.subscribe_button }}</a>
+    </div>
+    <div class="awards">
+      {% for item in site.data.footer.awards %}
+      <img src="{{ item.image | relative_url }}" alt="{{ item.alt }}" loading="lazy" width="{{ item.width }}"
+        height="{{ item.height }}" onerror="imageError(this)">
+      {% endfor %}
+    </div>
+  </section>
+
   <hr>
-  <p style="text-transform: uppercase">{{ site.data.footer.name }}</p>
-  <address>
-    <span>
-      <a href="tel:{{ site.data.footer.phone }}">{{ site.data.footer.formatted_phone }}</a>
+
+  <section class="main">
+    <address>
+      <h6 style="text-transform: uppercase">{{ site.data.footer.name }}</h6>
+      <span>
+        <a href="tel:{{ site.data.footer.phone }}">{{ site.data.footer.formatted_phone }}</a>
         |
-      <a href="mailto:{{ site.data.footer.email }}">{{ site.data.footer.email }}</a>
-    </span>
-    <p>Street Address: {{ site.data.footer.street_address }}</p>
-    <p>{{ site.data.footer.mail_address }}</p>
-  </address>
-  <div>
-    <nav>
+        <a href="mailto:{{ site.data.footer.email }}">{{ site.data.footer.email }}</a>
+      </span>
+      <p>Street Address: {{ site.data.footer.street_address }}</p>
+      <p>{{ site.data.footer.mail_address }}</p>
+      <p>Follow Us</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/tlaqsedona/" target="_blank" title="Facebook">
+          {% include icons/socials/facebook.svg %}
+        </a>
+        <a href="https://www.instagram.com/tlaqsedona/" target="_blank" title="Instagram">
+          {% include icons/socials/instagram.svg %}
+        </a>
+      </div>
+    </address>
+
+    <nav class="links">
       <a href="/about">About</a>
       <a href="/village_map">Village Map</a>
       <a href="/contacts">Contact Us</a>
@@ -24,27 +46,31 @@
       <a href="/filming-photography">Filming & Photography</a>
       <a href="/call-for-submission">Call for Submission</a>
     </nav>
-    <nav>
+
+    <nav class="magazine">
       {% assign latest = site.data.magazines.issues | first %}
       <dialog id="magazineFooterPreview" onclick="this.close()">
-        <iframe data-src="https://player.flipsnack.com?hash=Qzg3QkNEOTlFOEMrdjdoaTF1Y3J6cA" width="100%" height="100%" scrolling="no" frameBorder="0" allowFullScreen allow="autoplay; clipboard-read; clipboard-write"></iframe>
+        <iframe data-src="https://player.flipsnack.com?hash=Qzg3QkNEOTlFOEMrdjdoaTF1Y3J6cA" width="100%" height="100%"
+          scrolling="no" frameBorder="0" allowFullScreen allow="autoplay; clipboard-read; clipboard-write"></iframe>
       </dialog>
       <a onclick="window.mainMagazine.click()">Read the Magazine</a>
-      <button command="show-modal" id="mainMagazine" commandfor="magazineFooterPreview" class="magazine-cover" aria-label="View latest magazine issue" onclick="var f=magazineFooterPreview.querySelector('iframe');if(!f.src)f.src=f.dataset.src;">
-        <img src="{{ latest.image }}" alt="{{ site.data.footer.magazine_alt }}" loading="lazy" onerror="imageError(this)">
+      <button command="show-modal" id="mainMagazine" commandfor="magazineFooterPreview" class="magazine-cover"
+        aria-label="View latest magazine issue"
+        onclick="var f=magazineFooterPreview.querySelector('iframe');if(!f.src)f.src=f.dataset.src;">
+        <img src="{{ latest.image }}" alt="{{ site.data.footer.magazine_alt }}" loading="lazy"
+          onerror="imageError(this)">
       </button>
-      <p>Follow Us</p>
-      <a class="social" href="https://www.facebook.com/tlaqsedona/" target="_blank" title="Facebook">
-        {% include icons/socials/facebook.svg %}
-      </a>
-      <a class="social" href="https://www.instagram.com/tlaqsedona/" target="_blank" title="Instagram">
-        {% include icons/socials/instagram.svg %}
-      </a>
     </nav>
-  </div>
-  <p>&copy; {{ 'now' | date: '%Y' }} {{ site.data.footer.name }}. {{ site.data.footer.rights }}
-    <a href="/privacy-policy/">{{ site.data.footer.privacy_policy_label }}</a>
-     |
-    <a href="/terms-and-conditions/">{{ site.data.footer.terms_label }}</a>
-  </p>
+  </section>
+
+  <hr>
+
+  <section class="sub">
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ site.data.footer.name }}. {{ site.data.footer.rights }}</p>
+    <p>
+      <a href="/privacy-policy/">{{ site.data.footer.privacy_policy_label }}</a>
+      |
+      <a href="/terms-and-conditions/">{{ site.data.footer.terms_label }}</a>
+    </p>
+  </section>
 </footer>

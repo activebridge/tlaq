@@ -55,7 +55,3 @@ layout: default
   {% endfor %}
 </div>
 
-{% comment %} Render the footer section {% endcomment %}
-{% assign footer = site.landing | where: "section", "footer" | first %}
-{% assign template = "landing/" | append: footer.slug | append: ".html" %}
-{% include {{ template }} %}
