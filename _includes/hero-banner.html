@@ -34,7 +34,7 @@
 </figure>
 
 <script>
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
   const loadHiRes = (img, src) => {
     const hiImg = new Image();
@@ -43,7 +43,7 @@
     const apply = () => {
       requestAnimationFrame(() => {
         img.src = src;
-        img.classList.add('loaded');
+        img.classList.add("loaded");
       });
     };
 
@@ -52,6 +52,9 @@
     } else {
       hiImg.onload = () => {
         hiImg.decode?.().then(apply).catch(apply);
+      };
+      hiImg.onerror = () => {
+        requestAnimationFrame(() => img.classList.add("loaded"));
       };
     }
   };
