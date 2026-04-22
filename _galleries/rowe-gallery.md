@@ -18,12 +18,12 @@ instagram: https://www.instagram.com/rowegallery4027/
 facebook: https://www.facebook.com/rowegallery/
 full_location: 336 AZ-179 Suite A102-3, Sedona, AZ 86336
 store_hours:
-  monday: 10AM - 5PM
-  tuesday: 10AM - 5PM
-  wednesday: 10AM - 5PM
-  thursday: 10AM - 5PM
-  friday: 10AM - 6PM
-  saturday: 10AM - 6PM
-  sunday: 10AM - 6PM
+monday: 10:00 am - 5:00 pm
+tuesday: 10:00 am - 5:00 pm
+wednesday: 10:00 am - 5:00 pm
+thursday: 10:00 am - 5:00 pm
+friday: 10:00 am - 6:00 pm
+saturday: 10:00 am - 6:00 pm
+sunday: 10:00 am - 6:00 pm
 ---
 When Ken and Monica Rowe opened the doors of Rowe Fine Art Gallery in March 2010, they had a strong vision of the gallery's theme and focus. Rowe Fine Art Gallery represents traditional and contemporary southwestern sculptors, painters and jewelers. Art lovers will also find handcrafted knives. The gallery quickly outgrew its original upstairs spot and relocated to its current suite under Tlaquepaque's iconic bell tower in 2011.

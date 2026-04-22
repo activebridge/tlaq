@@ -16,13 +16,13 @@ instagram: https://www.instagram.com/pinkjeeptours/
 facebook: https://www.facebook.com/pinkjeeptours/
 full_location: 336 AZ-179 Suite F103, Sedona, AZ 86336
 store_hours:
-  monday: 8:00 am–6:00 pm
-  tuesday: 8:00 am–6:00 pm
-  wednesday: 8:00 am–6:00 pm
-  thursday: 8:00 am–6:00 pm
-  friday: 8:00 am–6:00 pm
-  saturday: 8:00 am–6:00 pm
-  sunday: 8:00 am–6:00 pm
+monday: 10:00 am - 5:00 pm
+tuesday: 10:00 am - 5:00 pm
+wednesday: 10:00 am - 5:00 pm
+thursday: 10:00 am - 5:00 pm
+friday: 10:00 am - 6:00 pm
+saturday: 10:00 am - 6:00 pm
+sunday: 10:00 am - 6:00 pm
 
 ---
 <h6>Since 1960, our award-winning jeep excursions are known as the premier "must-do" tours in Sedona.</h6>

@@ -18,12 +18,12 @@ instagram: https://www.instagram.com/reneetaylorgallery/
 facebook: https://www.facebook.com/ReneeTaylorGallery/
 full_location: 336 AZ-179 Suite B124, Sedona, AZ 86336
 store_hours:
-  monday: 9AM - 6:30PM
-  tuesday: 9AM - 6:30PM
-  wednesday: 9AM - 6:30PM
-  thursday: 9AM - 6:30PM
-  friday: 9AM - 6:30PM
-  saturday: 9AM - 6:30PM
-  sunday: 9AM - 6:30PM
+monday: 10:00 am - 5:00 pm
+tuesday: 10:00 am - 5:00 pm
+wednesday: 10:00 am - 5:00 pm
+thursday: 10:00 am - 5:00 pm
+friday: 10:00 am - 6:00 pm
+saturday: 10:00 am - 6:00 pm
+sunday: 10:00 am - 6:00 pm
 ---
 We offer contemporary fine art in a spacious gallery located in the Patio del Norte at Tlaquepaque. Original artwork, jewelry and many other items await you at the Renee Taylor Gallery.
