@@ -6,6 +6,9 @@ backend:
 media_folder: "/assets/images"
 public_folder: "/assets/images"
 
+sveltia:
+  hide_announce_banner: true
+
 collections:
   - name: "settings"
     label: "Settings"
