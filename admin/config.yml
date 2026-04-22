@@ -1105,13 +1105,13 @@ collections:
     folder: "_shops"
     create: true
     slug: "{{slug}}"
-    sort_by: "date"
-    sort_direction: Descending
+    sort_by: "title"
+    sort_direction: Ascending
     media_folder: "/assets/images/shops"
     public_folder: "/assets/images/shops"
     summary: "{{title}} ({{suite}})"
     fields:
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., creative-gateways). Shorter than the full name is fine. DO NOT change after publishing — breaks the URL and any linked content." }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
@@ -1150,13 +1150,13 @@ collections:
     folder: "_foods"
     create: true
     slug: "{{slug}}"
-    sort_by: "date"
-    sort_direction: Descending
+    sort_by: "title"
+    sort_direction: Ascending
     media_folder: "/assets/images/foods"
     public_folder: "/assets/images/foods"
     summary: "{{title}} ({{suite}})"
     fields:
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., creative-gateways). Shorter than the full name is fine. DO NOT change after publishing — breaks the URL and any linked content." }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
@@ -1195,13 +1195,13 @@ collections:
     folder: "_galleries"
     create: true
     slug: "{{slug}}"
-    sort_by: "date"
-    sort_direction: Descending
+    sort_by: "title"
+    sort_direction: Ascending
     media_folder: "/assets/images/galleries"
     public_folder: "/assets/images/galleries"
     summary: "{{title}} ({{suite}})"
     fields:
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., creative-gateways). Shorter than the full name is fine. DO NOT change after publishing — breaks the URL and any linked content." }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Published", name: "published", widget: "boolean", default: true }
       - { label: "Title", name: "title", widget: "string" }
@@ -1245,7 +1245,7 @@ collections:
     media_folder: "/assets/images/weddings"
     public_folder: "/assets/images/weddings"
     fields:
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., creative-gateways). Shorter than the full name is fine. DO NOT change after publishing — breaks the URL and any linked content." }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
@@ -1292,7 +1292,7 @@ collections:
     public_folder: "/assets/images/events"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., creative-gateways). Shorter than the full name is fine. DO NOT change after publishing — breaks the URL and any linked content." }
       - { label: "Published", name: "published", widget: "boolean", default: true, hint: "If false, the event will not be shown on the calendar or website." }
       - { label: "Starts At", name: "starts_at", widget: "datetime" }
       - { label: "Ends At", name: "ends_at", widget: "datetime", required: false, hint: "Usually same date as Starts At with a later end time. For Schedule Type: 'range', this is required and defines the from-to span end." }

@@ -18,6 +18,7 @@
     /* Header */
     --header-height: 71px;
     --header-status-height: 33px;
+    --banner-top: 158px;
     --header-nav-height: 25px;
     --layout-max-width: 1440px;
     --font-montserrat: "Montserrat", "Montserrat Fallback", sans-serif;
@@ -67,11 +68,13 @@
     --bg: var(--secondary);
     --text: var(--primary);
     --secondary-text: var(--secondary);
+
+    @media (max-width: 770px) { --banner-top: 116px; }
   }
 
   html {
     background: var(--primary);
-    scroll-padding-top: calc(var(--header-height) + var(--header-status-height) + 4rem);
+    scroll-padding-top: calc(var(--header-height) + var(--header-status-height) + 7rem);
 
     @media (max-width: 770px) {
       scroll-padding-top: calc(var(--header-height) - var(--header-nav-height) + var(--header-status-height) + 1.5rem);
@@ -685,12 +688,10 @@ html, body {
     min-height: 427px;
     height: calc(100vh - var(--header-height) - var(--header-status-height));
     position: sticky;
-    top: 127px;
+    top: var(--banner-top, 147px);
     overflow: hidden;
     isolation: isolate;
     background-color: var(--navy-40);
-
-    @media (max-width: 770px) { top: 145px; }
 
     img.banner-bg {
       position: absolute;
@@ -910,7 +911,7 @@ html, body {
   .hero {
     height: calc(100vh - 210px);
     position: sticky;
-    top: 144px;
+    top: var(--banner-top, 147px);
     opacity: 1;
     overflow: hidden;
 
@@ -925,7 +926,6 @@ html, body {
       filter: blur(0);
       transform: scale(1);
     }
-    @media (max-width: 770px) { top: 145px; }
   }
 
   @keyframes hero-fade-out {

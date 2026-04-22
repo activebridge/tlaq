@@ -644,7 +644,7 @@ article {
 
 @media (max-width: 770px) {
   .header-jump {
-    top: calc(var(--header-height) - var(--header-nav-height) + var(--header-status-height) - 3rem);
+    top: calc(var(--header-height) - var(--header-nav-height) + var(--header-status-height));
   }
 
   .content-wrapper>article {
