@@ -1230,10 +1230,10 @@
         const legendGroups = [
           { label: pointLabels.ui?.legend_restrooms  || 'Restrooms',  types: ['restroom', 'handicap-restroom', 'handicap-bathroom'] },
           { label: pointLabels.ui?.legend_parking    || 'Parking',    types: ['parking', 'parking-handicap', 'bike-rack'] },
-          { label: pointLabels.ui?.legend_amenities  || 'Amenities',  types: ['atm', 'drinking-water', 'information', 'fountain'] },
+          { label: pointLabels.ui?.legend_amenities  || 'Amenities',  types: ['atm', 'drinking-water', 'information'] },
           { label: pointLabels.ui?.legend_transport  || 'Transport',  types: ['bus-stop', 'elevator'] },
           { label: pointLabels.ui?.legend_navigation || 'Entrances',  types: ['entrance'] },
-          { label: pointLabels.ui?.legend_landmarks  || 'Landmarks',  types: ['bell-tower', 'wind-sculpture-garden'] },
+          { label: pointLabels.ui?.legend_landmarks  || 'Landmarks',  types: ['bell-tower', 'wind-sculpture-garden', 'fountain'] },
         ];
         const typeMap = new Map(pointMarkers.map(p => [p.type, p]));
         legendGroups.forEach(({ label, types }) => {
