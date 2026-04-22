@@ -78,7 +78,6 @@ collections:
                   - { label: "Type", name: "type", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "string" }
-                  - { label: "URL", name: "url", widget: "string" }
                   - { label: "Image", name: "image", widget: "image" }
 
   - name: "landing"
@@ -99,7 +98,6 @@ collections:
             hint: "Primary CTA button shown on the banner."
             fields:
               - { label: "Text", name: "text", widget: "string" }
-              - { label: "URL", name: "url", widget: "string" }
       - name: "village_map"
         label: "Village Map"
         file: "_landing/village-map.md"
@@ -129,7 +127,6 @@ collections:
             widget: "object"
             hint: "Text link shown below the calendar (e.g. 'View All Events')."
             fields:
-              - { label: "URL", name: "url", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
       - name: "whats_new"
         label: "What's New"
@@ -147,7 +144,6 @@ collections:
             widget: "object"
             hint: "Text link shown below the news grid (e.g. 'View All News')."
             fields:
-              - { label: "URL", name: "url", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
           - label: "Featured"
             name: "featured"
@@ -185,7 +181,6 @@ collections:
             widget: "list"
             hint: "Buttons rendered below the description (e.g. 'View Latest Issue', 'Browse Previous Issues')."
             fields:
-              - { label: "URL", name: "url", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
       - name: "weddings"
         label: "Weddings & Private Events"
@@ -210,7 +205,6 @@ collections:
             widget: "object"
             hint: "Text link shown below the section (e.g. 'Explore Weddings & Events')."
             fields:
-              - { label: "URL", name: "url", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
       - name: "filming"
         label: "Filming & Photography Permits"
@@ -230,7 +224,6 @@ collections:
             widget: "object"
             hint: "Text link / CTA button shown below the description."
             fields:
-              - { label: "URL", name: "url", widget: "string" }
               - { label: "Text", name: "text", widget: "string" }
       - name: "lost_and_found"
         label: "Lost Something?"
@@ -793,7 +786,6 @@ collections:
             fields:
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Boarding", name: "boarding", widget: "string" }
-              - { label: "URL", name: "url", widget: "string" }
               - { label: "Link Text", name: "link_text", widget: "string" }
               - { label: "Image", name: "image", widget: "image" }
       - name: "village_map"
@@ -1333,7 +1325,6 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Button Label", name: "button_label", widget: "string" }
-          - { label: "URL", name: "url", widget: "string" }
       - { label: "Phone", name: "phone", widget: "string", required: false }
       - { label: "Website", name: "website", widget: "string", required: false }
       - { label: "Email", name: "email", widget: "string", required: false }
