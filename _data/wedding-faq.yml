@@ -1,7 +1,7 @@
 title: FAQ
-hero_banner: "assets/images/weddings/wedding_faq.webp"
+hero_banner: assets/images/weddings/wedding_faq.webp
 blocks:
-  - title: What kind of deposit do I need to secure a date? 
+  - title: What kind of deposit do I need to secure a date?
     content: We require payment in full in order to hold and secure your wedding date.
   - title: Can my pet be a part of the wedding?
     content: Absolutely.
@@ -10,7 +10,7 @@ blocks:
   - title: Are there vendor restrictions?
     content: Yes, there is a list of required vendors that need to be used - Caterer, Florist and Rental Company.
   - title: Can we bring in our own alcohol?
-    content: Yes, provided that you have a licensed and insured bartender serving all drinks, you will be charged a $300.00 corkage fee.
+    content: Yes, provided that you have a licensed and insured bartender serving all drinks, you will be charged a $400.00 corkage fee.
   - title: Are tables and chairs included in the rental fee?
     content: No, the rental fee includes the space rental, Portofino string lights , ceremony attendant and the wedding peal after the proclamation.
   - title: What happens in inclement weather?
