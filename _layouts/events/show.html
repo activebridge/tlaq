@@ -78,50 +78,54 @@ layout: default
         </p>
       {% endif %}
     </div>
-    
   </div>
-  
+
   <div class="content-wrapper">
     {{ content }}
-  
+
     {% if page.schedule_type == "yearly" %}
       {% include events/annual-details.html event=page %}
     {% endif %}
-  
-    {% if page.phone %}
+
+    {% assign _phone = page.phone | strip %}
+    {% if _phone.size > 0 %}
       <hr>
       <div>
         <label>PHONE</label>
-        <p><a href="tel:{{ page.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ page.phone }}</a></p>
+        <p><a href="tel:{{ _phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ _phone }}</a></p>
       </div>
     {% endif %}
-  
-    {% if page.website %}
+
+    {% assign _website = page.website | strip %}
+    {% if _website.size > 0 %}
       <hr>
       <div>
         <label>WEBSITE</label>
-        <p><a href="{{ page.website }}" target="_blank" rel="noopener noreferrer">{{ page.website }}</a></p>
+        <p><a href="{{ _website }}" target="_blank" rel="noopener noreferrer">{{ _website }}</a></p>
       </div>
     {% endif %}
-  
-    {% if page.email %}
+
+    {% assign _email = page.email | strip %}
+    {% if _email.size > 0 %}
       <hr>
       <div>
         <label>EMAIL</label>
-        <p><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>
+        <p><a href="mailto:{{ _email }}">{{ _email }}</a></p>
       </div>
     {% endif %}
-  
-    {% if page.facebook or page.instagram %}
+
+    {% assign _fb = page.facebook | strip %}
+    {% assign _ig = page.instagram | strip %}
+    {% if _fb.size > 0 or _ig.size > 0 %}
       <hr>
       <div>
-        {% if page.facebook %}
-          <a href="{{ page.facebook }}" target="_blank" rel="noopener noreferrer" class="social">
+        {% if _fb.size > 0 %}
+          <a href="{{ _fb }}" target="_blank" rel="noopener noreferrer" class="social">
             {% include icons/socials/facebook.svg %}
           </a>
         {% endif %}
-        {% if page.instagram %}
-          <a href="{{ page.instagram }}" target="_blank" rel="noopener noreferrer" class="social">
+        {% if _ig.size > 0 %}
+          <a href="{{ _ig }}" target="_blank" rel="noopener noreferrer" class="social">
             {% include icons/socials/instagram.svg %}
           </a>
         {% endif %}
