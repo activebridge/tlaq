@@ -127,31 +127,7 @@ p {
 /* HEADER */
 
 header {
-  position: sticky;
-  top: 0;
-  padding-top: max(30px, env(safe-area-inset-top, 0px));
-  text-align: center;
-  background: var(--navy);
-  color: var(--cream);
-  z-index: 10;
-  width: 100%;
   anchor-name: --header;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  a {
-    text-decoration: none;
-    color: inherit;
-
-  }
-
-  button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
 
   .nav-icon {
     width: 16px;
@@ -163,138 +139,29 @@ header {
     stroke: none;
   }
 
-  a.logo {
-    grid-column: 2;
-    grid-row: 1;
-    display: flex;
-    align-items: center;
-    justify-self: center;
-    margin: 2rem 1rem 1rem;
-    outline: none;
-    width: clamp(215px, 30vw, 347px);
-
-    img {
-      display: block;
-      width: 347px;
-      height: 72px;
-      min-width: 215px;
-      min-height: 45px;
-      margin-bottom: 10px;
-      object-fit: contain;
-    }
-  }
-
-
-  button.nav-toggle {
-    display: none;
-  }
-
   nav#desktop {
-    height: var(--header-nav-height);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    text-transform: uppercase;
+    a.nav-weddings {
+      color: var(--pink-light);
 
-    a,
-    button#visit-popover-anchor {
-      cursor: pointer;
-      color: var(--cream);
-      font-size: clamp(12px, 1.7vw, 20px);
-      background: transparent;
-      display: inline-flex;
-      gap: 0.35rem;
-      padding: 0 0.5rem;
-      align-items: center;
-      text-transform: uppercase;
-      flex-direction: row;
-      height: var(--header-nav-height);
-
-    }
-
-    a {
-      padding: 1rem .5rem;
-    }
-
-    button#visit-popover-anchor {
-      all: unset;
-      height: 100%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      font-size: clamp(12px, 1.7vw, 20px);
-
-      svg:first-of-type {
-        width: 16px;
-        height: 16px;
-      }
-
-      svg:last-of-type {
-        fill: var(--cream);
-        transition: transform 500ms ease;
-      }
-
-
-      anchor-name: --visit-popover-anchor;
-    }
-
-    div#visit-popover {
-      position: absolute;
-      border: none;
-      background: var(--navy);
-      color: var(--cream);
-      min-width: 220px;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transform: translate(-50%, -8px);
-      transition: opacity 300ms ease, transform 300ms ease, visibility 0s linear 300ms;
-
-      top: anchor(--visit-popover-anchor bottom);
-      left: anchor(--visit-popover-anchor center);
-
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        flex-direction: row;
-        width: 100%;
-        padding: 1.5rem 1rem;
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        font-weight: 400;
-        font-size: 15px;
-        color: var(--cream);
-        border-bottom: 1px solid var(--cream);
-        transition: background-color 180ms ease, color 180ms ease;
-
-        &:first-child {
-          border-top: none;
-        }
-
-        &:last-child {
-          border-bottom: none;
-        }
-
-        &:hover {
-          background: var(--cream);
-          color: var(--navy);
-        }
+      &::after {
+        background: var(--pink-light);
       }
     }
 
-    &:has(#visit-popover-anchor:hover),
-    &:has(#visit-popover:hover),
-    &:has(#visit-popover:focus-within),
-    &:has(#visit-popover-anchor:focus-visible) {
-      #visit-popover {
+    button#discover-popover-anchor {
+      anchor-name: --discover-popover-anchor;
+    }
+
+    div#discover-popover {
+      top: anchor(--discover-popover-anchor bottom);
+      left: anchor(--discover-popover-anchor center);
+    }
+
+    &:has(#discover-popover-anchor:hover),
+    &:has(#discover-popover:hover),
+    &:has(#discover-popover:focus-within),
+    &:has(#discover-popover-anchor:focus-visible) {
+      #discover-popover {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
@@ -302,44 +169,9 @@ header {
         transition: opacity 300ms ease, transform 300ms ease, visibility 0s linear 0s;
       }
 
-      #visit-popover-anchor svg:last-of-type {
+      #discover-popover-anchor svg:last-of-type {
         transform: rotate(180deg);
       }
-    }
-
-    > .search-toggle-btn {
-      cursor: pointer;
-    }
-  }
-
-  @media (max-width: 770px) {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    align-items: start;
-
-    a.logo {
-      min-width: 0;
-      grid-column: 2;
-      justify-self: center;
-      margin: 0 2rem;
-    }
-
-    button.nav-toggle {
-      position: relative;
-      display: inline;
-      cursor: pointer;
-      user-select: none;
-      height: 28px;
-      min-width: 28px;
-      margin-top: 1.3rem;
-      justify-self: end;
-      background: transparent;
-      border: none;
-      padding: 0;
-    }
-
-    nav#desktop {
-      display: none;
     }
   }
 }
@@ -1558,7 +1390,7 @@ a.read-more {
   }
 
   .landing-banner {
-    height: calc(100vh - 210px);
+    height: calc(100vh - 169px);
     &::after { display: none; }
     .hero { top: 0; }
   }
