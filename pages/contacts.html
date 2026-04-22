@@ -31,11 +31,11 @@ layout_type: contacts
   {% endfor %}
 
   <h3>{{ site.data.contacts.follow_us }}</h3>
-  <div>
-    <a href="{{ site.data.contacts.facebook }}" target="_blank" rel="noopener noreferrer" class="social">
+  <div class="social">
+    <a href="{{ site.data.contacts.facebook }}" target="_blank" rel="noopener noreferrer">
       {% include icons/socials/facebook.svg %}
     </a>
-    <a href="{{ site.data.contacts.instagram }}" target="_blank" rel="noopener noreferrer" class="social">
+    <a href="{{ site.data.contacts.instagram }}" target="_blank" rel="noopener noreferrer">
       {% include icons/socials/instagram.svg %}
     </a>
   </div>

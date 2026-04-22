@@ -118,14 +118,14 @@ layout: default
     {% assign _ig = page.instagram | strip %}
     {% if _fb.size > 0 or _ig.size > 0 %}
       <hr>
-      <div>
+      <div class="social">
         {% if _fb.size > 0 %}
-          <a href="{{ _fb }}" target="_blank" rel="noopener noreferrer" class="social">
+          <a href="{{ _fb }}" target="_blank" rel="noopener noreferrer">
             {% include icons/socials/facebook.svg %}
           </a>
         {% endif %}
         {% if _ig.size > 0 %}
-          <a href="{{ _ig }}" target="_blank" rel="noopener noreferrer" class="social">
+          <a href="{{ _ig }}" target="_blank" rel="noopener noreferrer">
             {% include icons/socials/instagram.svg %}
           </a>
         {% endif %}
