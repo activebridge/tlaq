@@ -11,6 +11,8 @@ tags:
   - custom hats
   - accessories
 suite: a204
+extra_suites:
+  - a205
 phone: (928) 549-0513
 website: https://truewesthats.com/
 coordinates: -111.762574, 34.862001

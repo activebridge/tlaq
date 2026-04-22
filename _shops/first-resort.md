@@ -1,12 +1,12 @@
 ---
-slug: first-resort
+slug: good-juju-lifestyle-boutique
 date: 2026-02-22
-published: false
+published: true
 tags:
   - gifts
   - clothing
   - shop
-title: First Resort
+title: Good Juju Lifestyle Boutique
 subtitle: Gifts and apparel for people on the go
 suite: a119
 phone: (928) 649-9511

@@ -740,7 +740,7 @@
   <div id="map" style="width:100%;height:100%;position:relative" data-focus-suite='{{ include.suite | escape }}'>
     <script type="application/json" id="mapPointLabels">{{ site.data.map_points | jsonify }}</script>
     <script type="application/json"
-      id="mapStoreData">[{% assign has_prev = false %}{% for store in all_stores %}{% if store.suite or store.coordinates %}{% if has_prev %},{% endif %}{"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"suite":{{ store.suite | default: "" | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | default: "" | jsonify }},"url":{{ store.url | jsonify }},"type":{{ store.layout_type | jsonify }},"hours":{{ store.store_hours | default: "" | jsonify }},"tags":{{ store.tags | default: "" | jsonify }}}{% assign has_prev = true %}{% endif %}{% endfor %}]</script>
+      id="mapStoreData">[{% assign has_prev = false %}{% for store in all_stores %}{% if store.suite or store.coordinates %}{% if has_prev %},{% endif %}{"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"suite":{{ store.suite | default: "" | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | default: "" | jsonify }},"url":{% if store.layout_type == "management" %}""{% else %}{{ store.url | jsonify }}{% endif %},"type":{{ store.layout_type | jsonify }},"hours":{{ store.store_hours | default: "" | jsonify }},"tags":{{ store.tags | default: "" | jsonify }},"extra_suites":{{ store.extra_suites | jsonify }}}{% assign has_prev = true %}{% endif %}{% endfor %}]</script>
     <div id="mapPlaceholder" style="--map-bg:url('{{ '/assets/images/landing/map-placeholder.webp' | relative_url }}')"></div>
     <div id="mapSpinner">
       <span>{% include icons/loader.svg %}</span>
@@ -835,10 +835,11 @@
 
     // Mapbox requires raw hex — colors mirrored from style.html CSS vars
     const categoryColors = {
-      shop: '#d41367',    // --pink
-      gallery: '#1b638a', // --blue
-      food: '#f88d2b',    // --orange
-      wedding: '#eea1c2'  // 40% pink mixed with white
+      shop: '#d41367',       // --pink
+      gallery: '#1b638a',    // --blue
+      food: '#f88d2b',       // --orange
+      wedding: '#eea1c2',    // 40% pink mixed with white
+      management: '#111c4e'  // --navy
     };
     const DEFAULT_HIGHLIGHT_COLOR = categoryColors.shop;
     const BUILDING_BASE_COLOR = '#111c4e';  // --navy
@@ -1120,6 +1121,12 @@
           });
         });
 
+        // Position extra-suite markers at their suite centroids
+        extraSuiteMarkers.forEach(({ marker, suite }) => {
+          const coords = suiteCentroid.get(suite);
+          if (coords) marker.setLngLat(coords).addTo(map);
+        });
+
         // SVG markers for special point/polygon features
         const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'bike-rack', 'bell-tower', 'wind-sculpture-garden']);
         const polygonSvgTypes = new Set(['parking']);
@@ -1359,6 +1366,32 @@
       }
     });
 
+    // Extra-suite markers: same popup/focusStore as primary, positioned after building data loads
+    const extraSuiteMarkers = []; // { marker, suite, storeIndex }
+    stores.forEach((store, index) => {
+      if (!Array.isArray(store.extra_suites)) return;
+      store.extra_suites.forEach(suite => {
+        storeIndexBySuite.set(suite, index);
+        const wrapper = Object.assign(document.createElement('div'), { className: 'map-marker-wrapper' });
+        const suiteLabel = Object.assign(document.createElement('span'), { className: 'map-marker-suite', textContent: suite });
+        if (categoryColors[store.type]) suiteLabel.style.setProperty('--suite-cat-color', categoryColors[store.type]);
+        wrapper.appendChild(suiteLabel);
+        const marker = new mapboxgl.Marker({ element: wrapper, anchor: 'center' }).setPopup(createPopup(store));
+        marker.getElement().addEventListener('click', (event) => {
+          event.stopPropagation();
+          suppressClearHighlight = true;
+          setTimeout(() => { suppressClearHighlight = false; }, 0);
+          highlightBuildings([suite], store.type);
+          map.easeTo({ center: marker.getLngLat(), padding: { top: 150 }, duration: 600 });
+          if (!marker.getPopup().isOpen()) marker.togglePopup();
+          activeListItem?.classList.remove('active');
+          activeListItem = mapSearchResults.querySelector(`[data-store-index="${index}"]`) || null;
+          activeListItem?.classList.add('active');
+        });
+        extraSuiteMarkers.push({ marker, suite, storeIndex: index });
+      });
+    });
+
     // Navigate to a store: highlight building, fly to location, open popup
     const focusStore = (index, animationOptions = {}) => {
       suppressClearHighlight = true;
@@ -1407,8 +1440,9 @@
       pointMarkers.forEach(({ marker }) => type ? marker.remove() : marker.addTo(map));
     };
 
-    const renderListItem = (storeIndex) => {
+    const renderListItem = (storeIndex, suiteOverride) => {
       const store = stores[storeIndex];
+      const suite = suiteOverride || store.suite;
       const listItem = document.createElement('li');
       listItem.className = 'sidebar-result';
       listItem.setAttribute('role', 'option');
@@ -1416,7 +1450,7 @@
       if (categoryColors[store.type]) listItem.style.setProperty('--cat-color', categoryColors[store.type]);
       listItem.appendChild(getIconByType(store.type));
       listItem.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-title', textContent: store.title }));
-      if (store.suite) listItem.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-suite', textContent: store.suite }));
+      if (suite) listItem.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-suite', textContent: suite }));
       listItem.addEventListener('click', () => {
         if (mobileQuery.matches && !mapSidebar.classList.contains('collapsed')) {
           mapSidebar.classList.add('collapsed');
@@ -1425,7 +1459,15 @@
         activeListItem?.classList.remove('active');
         listItem.classList.add('active');
         activeListItem = listItem;
-        focusStore(storeIndex);
+        if (suiteOverride) {
+          suppressClearHighlight = true;
+          setTimeout(() => { suppressClearHighlight = false; }, 0);
+          highlightBuildings([suiteOverride], store.type);
+          const em = extraSuiteMarkers.find(e => e.suite === suiteOverride);
+          if (em) { map.easeTo({ center: em.marker.getLngLat(), padding: { top: 150 }, duration: 600 }); if (!em.marker.getPopup().isOpen()) em.marker.togglePopup(); }
+        } else {
+          focusStore(storeIndex);
+        }
       });
       return listItem;
     };
@@ -1481,7 +1523,12 @@
       activeListItem = null;
       if (storeIndices.length) {
         mapNoResults.style.display = 'none';
-        storeIndices.sort((a, b) => stores[a].title.localeCompare(stores[b].title)).forEach(i => mapSearchResults.appendChild(renderListItem(i)));
+        storeIndices.sort((a, b) => stores[a].title.localeCompare(stores[b].title)).forEach(i => {
+          mapSearchResults.appendChild(renderListItem(i));
+          if (Array.isArray(stores[i].extra_suites)) {
+            stores[i].extra_suites.forEach(s => mapSearchResults.appendChild(renderListItem(i, s)));
+          }
+        });
         mapSearchResults.classList.add('visible');
       } else {
         mapSearchResults.classList.remove('visible');
@@ -1544,7 +1591,8 @@
       const matchingIndices = new Set();
       const matchingList = stores.reduce((indices, store, i) => {
         const tagMatch = Array.isArray(store.tags) && store.tags.some(t => t.toLowerCase().includes(query));
-        if (store.title.toLowerCase().includes(query) || (store.suite && store.suite.toLowerCase().includes(query)) || tagMatch) { matchingIndices.add(i); indices.push(i); }
+        const extraSuiteMatch = Array.isArray(store.extra_suites) && store.extra_suites.some(s => s.toLowerCase().includes(query));
+        if (store.title.toLowerCase().includes(query) || (store.suite && store.suite.toLowerCase().includes(query)) || extraSuiteMatch || tagMatch) { matchingIndices.add(i); indices.push(i); }
         return indices;
       }, []);
       showStoreList(matchingList);
