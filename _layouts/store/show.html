@@ -16,9 +16,10 @@ layout: default
   <table id="storeHours">
     {% assign days = "monday,tuesday,wednesday,thursday,friday,saturday,sunday" | split: "," %}
     {% for day in days %}
+      {% assign day_hours = page.store_hours[day] | default: page[day] %}
       <tr data-day="{{ day }}">
         <td>{{ day | capitalize }}</td>
-        <td>{{ page.store_hours[day] }}</td>
+        <td>{{ day_hours }}</td>
       </tr>
     {% endfor %}
   </table>

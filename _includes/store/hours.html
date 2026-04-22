@@ -18,14 +18,15 @@
     {% assign day_labels = "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" | split: "," %}
     {% for day in days %}
       {% assign idx = forloop.index0 %}
+      {% assign day_hours = hours[day] | default: include[day] %}
       <li class="store-hours-day" data-day="{{ day }}">
         <span class="day-name">{{ day_labels[idx] }}</span>
         <span class="day-hours">
-          {% if hours[day] %}
-            {% if hours[day].first %}
-              {{ hours[day][0] }} - {{ hours[day][1] }}
+          {% if day_hours %}
+            {% if day_hours.first %}
+              {{ day_hours[0] }} - {{ day_hours[1] }}
             {% else %}
-              {{ hours[day] }}
+              {{ day_hours }}
             {% endif %}
           {% else %}
             Closed
