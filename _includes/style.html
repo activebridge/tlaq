@@ -16,7 +16,7 @@
 
   :root {
     /* Header */
-    --header-height: 131px;
+    --header-height: 71px;
     --header-status-height: 33px;
     --header-nav-height: 25px;
     --layout-max-width: 1440px;
@@ -256,16 +256,15 @@ html, body {
   header {
     position: sticky;
     top: 0;
-    padding-top: max(30px, env(safe-area-inset-top, 0px));
-    text-align: center;
     background: var(--navy);
     color: var(--cream);
     z-index: 10;
     width: 100%;
-    display: flex;
+    anchor-name: --header;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto var(--header-status-height);
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
     view-transition-name: header;
   }
 
@@ -315,21 +314,23 @@ html, body {
     text-decoration: none;
     color: inherit;
 
-    svg:first-of-type {
+    /* svg:first-of-type {
       margin-right: 0.5rem;
-    }
+    } */
   }
 
   header a.logo {
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 1;
     display: flex;
     align-items: center;
-    justify-self: center;
-    margin: 2rem 1rem 1rem;
+    justify-self: start;
+    margin: 1rem 0 2rem 3rem;
     outline: none;
-    width: clamp(215px, 30vw, 347px);
+    width: clamp(180px, 18vw, 280px);
     view-transition-name: logo;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   ::view-transition-group(logo) {
@@ -340,117 +341,204 @@ html, body {
 
   header a.logo img {
     display: block;
-    width: 347px;
-    height: 72px;
-    min-width: 215px;
-    min-height: 45px;
-    margin-bottom: 10px;
+    width: 280px;
+    height: auto;
+    min-width: 180px;
     object-fit: contain;
   }
 
   header ul.header-actions {
-    display: none;
+    grid-column: 3;
+    grid-row: 1;
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0 1rem 1rem;
+    gap: 0.5rem;
+    align-items: center;
+    justify-self: end;
+    user-select: none;
+    -webkit-user-select: none;
+
+    li { display: inline-flex; }
+
+    a, button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--cream);
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    svg { width: 22px; height: 22px; }
   }
 
   header button.nav-toggle {
     display: none;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   header nav#desktop {
-    height: var(--header-nav-height);
+    grid-column: 2;
+    grid-row: 1;
     position: relative;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     align-items: center;
-    gap: 1rem;
+    column-gap: 1rem;
+    row-gap: 0;
     text-transform: uppercase;
+    margin: 1rem 0 2rem 3rem;
 
     a,
-    button#visit-popover-anchor {
+    button#visit-popover-anchor,
+    button#discover-popover-anchor {
+      cursor: pointer;
       color: var(--cream);
+      font-size: clamp(11px, 1.1vw, 15px);
+      font-weight: 600;
+      letter-spacing: 0.05em;
       background: transparent;
+      display: inline-flex;
+      gap: 0.6rem;
+      padding: 0 0.35rem;
+      align-items: center;
+      text-transform: uppercase;
+      flex-direction: row;
+      height: 100%;
+      white-space: nowrap;
     }
 
     a {
-      font-size: clamp(12px, 1.7vw, 20px);
-      display: inline-flex;
-      gap: 0.35rem;
-      padding: 1rem 0.5rem;
-      align-items: center;
-      flex-direction: row;
-      height: var(--header-nav-height);
-      text-transform: uppercase;
-      white-space: nowrap;
-
-      svg {
-        width: 16px;
-        height: 16px;
-        flex-shrink: 0;
-        margin-right: 0.5rem;
-      }
-    }
-
-    > a {
+      padding: 0.75rem 0.35rem;
       position: relative;
 
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0.5rem;
-        right: 0.5rem;
-        height: 0;
-        background: var(--cream);
-        transition: height 0.25s ease;
-      }
-
-      &:hover::after,
-      &[aria-current="page"]::after {
-        height: 4px;
+      svg:first-of-type {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
       }
     }
 
-    button#visit-popover-anchor {
+    button.nav-popover-anchor {
       all: unset;
       height: 100%;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      font-size: clamp(12px, 1.7vw, 20px);
+      gap: 0.5rem;
+      font-size: clamp(11px, 1.1vw, 15px);
+      font-weight: 600;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       white-space: nowrap;
-      anchor-name: --visit-popover-anchor;
       color: var(--cream);
 
-      svg {
-        width: 16px;
-        height: 16px;
+      svg:first-of-type {
+        width: 14px;
+        height: 14px;
         flex-shrink: 0;
+      }
+
+      svg:last-of-type {
+        fill: var(--cream);
+        transition: transform 500ms ease;
       }
     }
 
-    div#visit-popover {
+    button#visit-popover-anchor {
+      anchor-name: --visit-popover-anchor;
+    }
+
+    button#discover-popover-anchor {
+      anchor-name: --discover-popover-anchor;
+    }
+
+    div.nav-popover {
       position: absolute;
-      min-width: 220px;
-      padding: 0 0 10px 0;
+      border: none;
+      background: var(--navy);
+      color: var(--cream);
+      /* min-width: 220px; */
+      z-index: 10;
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      /* gap: 0.25rem; */
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
       transform: translate(-50%, -8px);
-      top: anchor(--visit-popover-anchor bottom);
-      left: anchor(--visit-popover-anchor center);
+      transition: opacity 300ms ease, transform 300ms ease, visibility 0s linear 300ms;
 
       a {
         display: flex;
         align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
         width: 100%;
-        padding: 1.5rem 1rem;
+        padding: 8px 5px;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 400;
         font-size: 15px;
+        color: var(--cream);
+        border-bottom: 1px solid var(--cream);
+        transition: background-color 180ms ease, color 180ms ease;
+        height: auto;
+        white-space: nowrap;
+
+        &::after { display: none; }
+        &:first-child { border-top: none; }
+        &:last-child { border-bottom: none; }
+
+        &:hover {
+          background: var(--cream);
+          color: var(--navy);
+        }
       }
+    }
+
+    div#visit-popover {
+      top: anchor(--visit-popover-anchor bottom);
+      left: anchor(--visit-popover-anchor center);
+    }
+
+    div#discover-popover {
+      top: anchor(--discover-popover-anchor bottom);
+      left: anchor(--discover-popover-anchor center);
+    }
+
+    .nav-popover-anchor:hover + .nav-popover,
+    .nav-popover-anchor:focus-visible + .nav-popover {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+      transition: opacity 300ms ease, transform 300ms ease, visibility 0s linear 0s;
+    }
+
+    .nav-popover:hover,
+    .nav-popover:focus-within {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+      transition: opacity 300ms ease, transform 300ms ease, visibility 0s linear 0s;
+    }
+
+    .nav-popover-anchor:hover svg:last-of-type,
+    .nav-popover-anchor:focus-visible svg:last-of-type {
+      transform: rotate(180deg);
+    }
+
+    &:has(.nav-popover:hover) .nav-popover-anchor:has(+ .nav-popover:hover) svg:last-of-type,
+    &:has(.nav-popover:focus-within) .nav-popover-anchor:has(+ .nav-popover:focus-within) svg:last-of-type {
+      transform: rotate(180deg);
     }
   }
 
@@ -467,8 +555,8 @@ html, body {
     font-size: clamp(12px, 1.7vw, 15px);
     font-weight: 500;
     width: 100%;
-    margin-top: auto;
     grid-column: 1 / -1;
+    grid-row: 2;
   }
 
   #weather {
@@ -485,84 +573,77 @@ html, body {
     header {
       display: grid;
       grid-template-columns: 1fr 2fr 1fr;
+      grid-template-rows: auto auto;
       align-items: start;
+      padding-top: max(0px, env(safe-area-inset-top, 0px));
+
+      a.logo {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: center;
+        margin: 0.75rem auto 0.5rem;
+        min-width: 0;
+      }
+
+      ul.header-actions {
+        grid-column: 3;
+        grid-row: 1;
+        display: flex;
+        list-style: none;
+        margin: 0.75rem 0 0 0.75rem;
+        padding: 0;
+        justify-self: start;
+        align-items: center;
+
+        li { display: inline-flex; }
+
+        a, button {
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          color: var(--cream);
+          padding: 0;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        svg { width: 24px; height: 24px; }
+      }
+
+      button.nav-toggle {
+        grid-column: 1;
+        grid-row: 1;
+        position: relative;
+        display: inline;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        height: 28px;
+        min-width: 28px;
+        margin-top: 0.8rem;
+        justify-self: end;
+        padding: 0;
+        margin-right: 0.75rem;
+
+        &::before, &::after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          width: 28px;
+          height: 1px;
+          background: var(--cream);
+          transition: transform 180ms ease, top 180ms ease;
+          transform: translateX(-50%);
+        }
+
+        &::before { top: 3px; }
+        &::after  { top: 15px; }
+      }
+
+      nav#desktop { display: none; }
     }
 
-    header a.logo {
-      margin: 0 2rem;
-      min-width: 0;
-    }
-
-    header ul.header-actions {
-      display: flex;
-      list-style: none;
-      margin-top: 1rem;
-      padding: 0;
-      justify-self: start;
-      align-items: center;
-    }
-
-    header ul.header-actions li {
-      display: inline-flex;
-    }
-
-    header ul.header-actions a,
-    header ul.header-actions button {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      color: var(--cream);
-      padding: 0;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    header ul.header-actions svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    header button.nav-toggle {
-      position: relative;
-      display: inline;
-      cursor: pointer;
-      background: transparent;
-      border: none;
-      height: 28px;
-      min-width: 28px;
-      margin-top: 1.3rem;
-      justify-self: end;
-      padding: 0;
-    }
-
-    header button.nav-toggle::before,
-    header button.nav-toggle::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      width: 28px;
-      height: 1px;
-      background: var(--cream);
-      transition: transform 180ms ease, top 180ms ease;
-      transform: translateX(-50%);
-    }
-
-    header button.nav-toggle::before { top: 3px; }
-    header button.nav-toggle::after  { top: 15px; }
-
-    header nav#desktop { display: none; }
-
-    #weather img {
-      height: 19px;
-    }
-
-  }
-
-  header a.logo,
-  header button.nav-toggle,
-  header ul.header-actions {
-    user-select: none;
-    -webkit-user-select: none;
+    #weather img { height: 19px; }
   }
 
   .search-dialog {
@@ -589,17 +670,7 @@ html, body {
     padding: 0.25rem;
   }
 
-  header nav#desktop > .search-toggle-btn {
-    all: unset;
-
-    svg {
-      width: 20px;
-      height: 20px;
-      margin-top: 5px;
-    }
-  }
-
-  .search-results {
+.search-results {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -614,7 +685,7 @@ html, body {
     min-height: 427px;
     height: calc(100vh - var(--header-height) - var(--header-status-height));
     position: sticky;
-    top: 206px;
+    top: 127px;
     overflow: hidden;
     isolation: isolate;
     background-color: var(--navy-40);
@@ -839,7 +910,7 @@ html, body {
   .hero {
     height: calc(100vh - 210px);
     position: sticky;
-    top: 206px;
+    top: 144px;
     opacity: 1;
     overflow: hidden;
 
