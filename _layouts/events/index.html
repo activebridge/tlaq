@@ -24,7 +24,9 @@ layout: default
     <div class="list-container" id="annual-events">
       <h3>{{ site.data.events.annual_calendar }}</h3>
 
-      {% assign annual_events = site.events | where: "schedule_type", "yearly" | sort: "starts_at" %}
+      {% assign yearly_events = site.events | where: "schedule_type", "yearly" %}
+      {% assign annual_flagged = site.events | where: "annual", true %}
+      {% assign annual_events = yearly_events | concat: annual_flagged | uniq | sort: "starts_at" %}
       {% for event in annual_events %}
         {% include events/card.html event=event %}
       {% endfor %}

@@ -1286,16 +1286,17 @@ collections:
     media_folder: "/assets/images/events"
     public_folder: "/assets/images/events"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., creative-gateways). Shorter than the full name is fine. DO NOT change after publishing — breaks the URL and any linked content." }
+      - { label: "Title", name: "title", widget: "string", hint: "For recurring annual events created as separate entries each year, include the year in the title (e.g., 'Day of the Dead 2027') to distinguish them." }
+      - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., creative-gateways). Shorter than the full name is fine. DO NOT change after publishing — breaks the URL and any linked content. For recurring annual events with a new entry each year, append the year (e.g., day-of-the-dead-2027)." }
       - { label: "Published", name: "published", widget: "boolean", default: true, hint: "If false, the event will not be shown on the calendar or website." }
       - { label: "Starts At", name: "starts_at", widget: "datetime" }
       - { label: "Ends At", name: "ends_at", widget: "datetime", required: false, hint: "Usually same date as Starts At with a later end time. For Schedule Type: 'range', this is required and defines the from-to span end." }
       - { label: "Location", name: "location", widget: "string" }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Video URL", name: "video_url", widget: "string", required: false, hint: "If set, the yearly event will display a video background instead of an image." }
-      - { label: "Subtitle", name: "subtitle", widget: "text" }
-      - { label: "Schedule Type", name: "schedule_type", widget: "select", options: ["single", "range", "weekly", "monthly", "yearly"], required: true, hint: "single: one date; range: daily from start to end; weekly: selected weekdays until Recurrence Until; monthly: first selected weekday(s) each month until Recurrence Until; yearly: same date each year, shown in Annual Events." }
+      - { label: "Intro", name: "subtitle", widget: "text" }
+      - { label: "Schedule Type", name: "schedule_type", widget: "select", options: ["single", "range", "weekly", "monthly", "yearly"], required: true, hint: "single: one date; range: daily from start to end; weekly: selected weekdays until Recurrence Until; monthly: first selected weekday(s) each month until Recurrence Until; yearly: repeats on the exact same calendar date every year — only use if the date never changes. For annual events with shifting dates (e.g. Day of the Dead), use 'single' and enable the Annual Event flag instead." }
+      - { label: "Annual Event", name: "annual", widget: "boolean", default: false, required: false, hint: "Show this event in the Annual Events section. Use this for events that happen once a year but with a date that changes each year (e.g. Day of the Dead) — set Schedule Type to 'single', enter the correct date, and enable this flag. Each year, update the date or create a new entry." }
       - { label: "Recurrence Until", name: "recurs_until", widget: "datetime", required: false, hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
       - { label: "Recurrence Weekdays", name: "recurrence_weekdays", widget: "select", multiple: true, required: false, options: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"], hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
       - label: "Schedule"
@@ -1325,4 +1326,4 @@ collections:
       - { label: "Email", name: "email", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
-      - { label: "Content", name: "body", widget: "markdown" }
+      - { label: "Description", name: "body", widget: "markdown" }
