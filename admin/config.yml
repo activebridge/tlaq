@@ -547,7 +547,6 @@ collections:
               - { label: "Description", name: "description", widget: "text", hint: "Paragraph shown below the history image, above the button." }
               - { label: "Image", name: "image", widget: "image", hint: "Feature image shown beside the history text on the About page." }
               - { label: "Button Text", name: "button_text", widget: "string" }
-              - { label: "Button URL", name: "button_url", widget: "string" }
           - label: "Village Map"
             name: "village_map"
             widget: "object"
@@ -578,7 +577,6 @@ collections:
                     widget: "object"
                     fields:
                       - { label: "Text", name: "text", widget: "string" }
-                      - { label: "URL", name: "url", widget: "string" }
                   - label: "Images"
                     name: "images"
                     widget: "list"
