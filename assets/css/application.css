@@ -176,6 +176,11 @@ header {
   }
 }
 
+h7 {
+  font-size: clamp(12px, 1.7vw, 20px);
+  text-wrap: pretty;
+}
+
 @media (max-width: 770px) {
   body:has(#mobile:popover-open) button.nav-toggle::before {
     top: 6px;
@@ -1386,7 +1391,30 @@ a.read-more {
   }
 }
 
-/* Store Hours Display Component */
+.two-col-30 {
+  display: flex;
+  gap: 5rem;
+  flex-wrap: wrap;
+
+  > :first-child { flex: 840px 1 1; }
+  > :last-child { flex: 320px 1 1; }
+
+  @media (max-width: 770px) {
+    gap: 1.5rem;
+  }
+}
+
+.hours-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  p {
+    font-size: 16px;
+  }
+}
+
+/* Hours Display Component */
 table {
   caption {
     background-color: var(--navy);

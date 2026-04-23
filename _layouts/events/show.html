@@ -52,8 +52,10 @@ layout: default
             EVERY {{ recurring_days_label }}
           {% elsif page.schedule_type == "monthly" and recurring_days and recurring_days.size > 0 %}
             FIRST {{ recurring_days_label }} OF EACH MONTH
-          {% elsif (page.schedule_type == "yearly" or page.annual == true) and page.ends_at and starts_on != ends_on %}
-            {{ page.starts_at | date: "%A, %B %-d" | upcase }} - {{ page.ends_at | date: "%A, %B %-d" | upcase }}
+          {% elsif page.ends_at and page.schedule_type == "yearly" %}
+            {% if starts_on == ends_on %}{{ page.starts_at | date: "%A, %B %-d" | upcase }}{% else %}{{ page.starts_at | date: "%A, %B %-d" | upcase }} - {{ page.ends_at | date: "%A, %B %-d" | upcase }}{% endif %}
+          {% elsif page.ends_at and page.annual == true %}
+            {% if starts_on == ends_on %}{{ page.starts_at | date: "%A, %B %-d" | upcase }}{% else %}{{ page.starts_at | date: "%A, %B %-d" | upcase }} - {{ page.ends_at | date: "%A, %B %-d" | upcase }}{% endif %}
           {% else %}
             {{ page.starts_at | date: "%A, %B %-d" | upcase }}
           {% endif %}

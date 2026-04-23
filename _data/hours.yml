@@ -15,15 +15,15 @@ jump_to_links:
     text: FAMILY AND PET FRIENDLY
     id: '#family-friendly'
 village_hours:
-  monday: 10:00 AM – 5:00 PM
-  tuesday: 10:00 AM – 5:00 PM
-  wednesday: 10:00 AM – 5:00 PM
-  thursday: 10:00 AM – 5:00 PM
-  friday: 10:00 AM – 5:00 PM
-  saturday: 10:00 AM – 6:00 PM
-  sunday: 10:00 AM – 6:00 PM
+  monday: 10:00 A.M. - 5:00 P.M.
+  tuesday: 10:00 A.M. - 5:00 P.M.
+  wednesday: 10:00 A.M. - 5:00 P.M.
+  thursday: 10:00 A.M. - 5:00 P.M.
+  friday: 10:00 A.M. - 6:00 P.M.
+  saturday: 10:00 A.M. - 6:00 P.M.
+  sunday: 10:00 A.M. - 6:00 P.M.
 notes:
-  restaurants: Onsite restaurants offer extended evening hours.
+  restaurants: "*Onsite restaurants offer extended evening hours."
   holidays: Please note the village is closed in observance of the holidays on Christmas and Thanksgiving Day.
   village_map: Our interactive village map provides easy navigation to all 50+ shops, galleries, and restaurants, helping you discover every corner of Tlaquepaque North and South during your visit.
 locations:
