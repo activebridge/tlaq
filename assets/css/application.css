@@ -1214,7 +1214,7 @@ input[type="search"] {
 .calendar-items {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(clamp(320px, 33vw, 450px), 1fr));
-  gap: 1.5rem;
+  gap: 4.5rem;
 
   a {
     display: flex;
@@ -1229,20 +1229,19 @@ input[type="search"] {
   }
 
   h3 {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 2vw, 2rem);
     margin: 0 0 0.25rem 0;
     font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   }
 
   p {
     font-size: clamp(0.875rem, 1vw, 1.25rem);
-    color: #666;
     margin: 0 0 0.25rem 0;
   }
 }
 
 .calendar-item-date {
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   display: flex;
@@ -1253,10 +1252,11 @@ input[type="search"] {
   display: flex;
   gap: 1rem;
   flex: 1;
+  height: 320px;
 }
 
 .calendar-item-image {
-  width: clamp(110px, 14vw, 170px);
+  width: clamp(110px, 20vw, 280px);
   flex-shrink: 0;
   overflow: hidden;
   border-radius: 4px;
@@ -1272,13 +1272,11 @@ input[type="search"] {
 .calendar-item-details {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 0.3rem;
+  gap: 1.5rem;
 }
 
 .calendar-item-time {
   font-size: clamp(0.875rem, 1vw, 1.25rem);
-  color: #888;
 }
 
 /* Color Themes for pages */
