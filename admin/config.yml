@@ -532,17 +532,87 @@ collections:
     files:
       - name: "about"
         label: "About"
-        file: "pages/about.html"
+        file: "_data/about.yml"
+        media_folder: "/assets/images/about"
+        public_folder: "/assets/images/about"
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
-          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "about" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/about" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the About page." }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large h2 heading shown at the top of the page." }
           - { label: "Subheading", name: "subheading", widget: "text", hint: "Smaller h6 text shown below the heading." }
-          - { label: "History Description", name: "history_description", widget: "text", hint: "Paragraph shown below the history image, above the 'Explore History' button." }
-          - { label: "History Button Text", name: "history_button_text", widget: "string" }
-          - { label: "History Button URL", name: "history_button_url", widget: "string" }
+          - label: "History"
+            name: "history"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", hint: "Paragraph shown below the history image, above the button." }
+              - { label: "Image", name: "image", widget: "image", hint: "Feature image shown beside the history text on the About page." }
+              - { label: "Button Text", name: "button_text", widget: "string" }
+              - { label: "Button URL", name: "button_url", widget: "string" }
+          - label: "Village Map"
+            name: "village_map"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text", hint: "Paragraph shown below the Village Map heading, above the embedded map." }
+          - label: "Sections"
+            name: "sections"
+            widget: "object"
+            fields:
+              - label: "Tlaquepaque North"
+                name: "tlaquepaque_north"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Images"
+                    name: "images"
+                    widget: "list"
+                    field: { label: "Image", name: "image", widget: "image" }
+              - label: "Outdoor Art"
+                name: "outdoor_art"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Button"
+                    name: "button"
+                    widget: "object"
+                    fields:
+                      - { label: "Text", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string" }
+                  - label: "Images"
+                    name: "images"
+                    widget: "list"
+                    field: { label: "Image", name: "image", widget: "image" }
+              - label: "Landscaping"
+                name: "landscaping"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Images"
+                    name: "images"
+                    widget: "list"
+                    field: { label: "Image", name: "image", widget: "image" }
+              - label: "Sycamore"
+                name: "sycamore"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Images"
+                    name: "images"
+                    widget: "list"
+                    field: { label: "Image", name: "image", widget: "image" }
+              - label: "Our People"
+                name: "our_people"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Images"
+                    name: "images"
+                    widget: "list"
+                    field: { label: "Image", name: "image", widget: "image" }
       - name: "call_for_submission"
         label: "Call for Submission"
         file: "_data/call-for-submission.yml"

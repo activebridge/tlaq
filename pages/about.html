@@ -3,29 +3,96 @@ layout: page
 title: About
 permalink: /about
 layout_type: about
-heading: "A celebrated arts and shopping village in the heart of Sedona."
-subheading: "A unique destination where curated outdoor art, seasonal landscaping, a rich heritage, and artisan culture can be experienced throughout the village."
-history_description: "From its architectural inspiration to artistic tradition, learn about the vision behind our village that continues today."
-history_button_text: "Explore Tlaquepaque History"
-history_button_url: "/history"
 ---
 
-<div class="content-wrapper">
-  <h5 title>About</h5>
-  <h2>{{ page.heading }}</h2>
-  <h6>{{ page.subheading }}</h6>
+{% assign image_path = site.data.about.hero_banner %}
+{% assign transition-name = "about" %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
-  <h3 id="map">Village Map</h3>
-  <iframe src="{{ '/map_embed' | relative_url }}" loading="lazy" title="Village Map"
-    style="width:100%;height:500px;border:none"></iframe>
+<div class="content-wrapper">
+  <hgroup style="view-transition-name: title-{{transition-name}};">
+    <h5 title>About</h5>
+    <h2>{{ site.data.about.heading }}</h2>
+    <h6>{{ site.data.about.subheading }}</h6>
+  </hgroup>
+
+  {% assign jump_nav_links = "village_map,tlaquepaque_north,outdoor_art,landscaping,sycamore,our_people" | split: "," %}
+  {% assign jump_nav_slugs = "about" %}
+  {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
+
+  <section class="about-feature">
+    <article>
+      <h3>{{ site.data.about.history.title }}</h3>
+      <p>{{ site.data.about.history.description }}</p>
+      <a class="btn btn-primary" href="{{ site.data.about.history.button_url }}">{{ site.data.about.history.button_text }}</a>
+    </article>
+    <figure>
+      {% assign img_src = site.data.about.history.image | prepend: '/cdn-cgi/image/width=1200,height=675,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
+      <img src="{{ img_src }}" alt="The History of Tlaquepaque" width="1200" height="675" loading="lazy" decoding="async" onerror="imageError(this)">
+    </figure>
+  </section>
 
   <hr>
 
-  <h3>The History of Tlaquepaque</h3>
-  {% assign img_src = "assets/images/history/hero.webp" | prepend: '/cdn-cgi/image/width=1200,height=675,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
-  <figure>
-    <img src="{{ img_src }}" alt="The History of Tlaquepaque" width="1200" height="675" loading="lazy" decoding="async">
-  </figure>
-  <p>{{ page.history_description }}</p>
-  <a class="btn btn-primary" href="{{ page.history_button_url }}">{{ page.history_button_text }}</a>
+  <h3 id="village-map">Village Map</h3>
+  <iframe src="{{ '/map_embed' | relative_url }}" loading="lazy" title="Village Map"
+  style="width:100%;height:500px;border:none"></iframe>
+  <p>{{ site.data.about.village_map.description }}</p>
+
+  {% assign row_keys = "tlaquepaque_north,outdoor_art" | split: "," %}
+  {% for key in row_keys %}
+    {% assign section = site.data.about.sections[key] %}
+    {% assign anchor = site.data.about.jump_to_links[key].id | remove: '#' %}
+    <hr>
+    <section class="about-feature" id="{{ anchor }}">
+      <article>
+        <h3>{{ section.heading }}</h3>
+        <p>{{ section.description }}</p>
+        {% if section.button %}
+          <a class="btn btn-primary" href="{{ section.button.url }}">{{ section.button.text }}</a>
+        {% endif %}
+      </article>
+      <figure>
+        {% for image in section.images %}
+          {% assign img_src = image | prepend: '/cdn-cgi/image/width=1200,height=675,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
+          <img src="{{ img_src }}" alt="{{ section.heading }}" width="1200" height="675" loading="lazy" decoding="async" onerror="imageError(this)">
+        {% endfor %}
+      </figure>
+    </section>
+  {% endfor %}
+
+  <hr>
+  {% assign pair_keys = "landscaping,sycamore" | split: "," %}
+  <div class="about-pair">
+    {% for key in pair_keys %}
+      {% assign section = site.data.about.sections[key] %}
+      {% assign anchor = site.data.about.jump_to_links[key].id | remove: '#' %}
+      <section id="{{ anchor }}">
+        <h3>{{ section.heading }}</h3>
+        <figure>
+          {% for image in section.images %}
+            {% assign img_src = image | prepend: '/cdn-cgi/image/width=800,height=600,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
+            <img src="{{ img_src }}" alt="{{ section.heading }}" width="800" height="600" loading="lazy" decoding="async" onerror="imageError(this)">
+          {% endfor %}
+        </figure>
+        <p>{{ section.description }}</p>
+      </section>
+    {% endfor %}
+  </div>
+
+  {% assign section = site.data.about.sections.our_people %}
+  {% assign anchor = site.data.about.jump_to_links.our_people.id | remove: '#' %}
+  <hr>
+  <section class="about-feature" id="{{ anchor }}">
+    <article>
+      <h3>{{ section.heading }}</h3>
+      <p>{{ section.description }}</p>
+    </article>
+    <figure>
+      {% for image in section.images %}
+        {% assign img_src = image | prepend: '/cdn-cgi/image/width=1200,height=675,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
+        <img src="{{ img_src }}" alt="{{ section.heading }}" width="1200" height="675" loading="lazy" decoding="async" onerror="imageError(this)">
+      {% endfor %}
+    </figure>
+  </section>
 </div>
