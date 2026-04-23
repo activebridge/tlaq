@@ -19,22 +19,30 @@ layout_type: hours
   {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
 
   <h3 id="hours">Hours</h3>
-  <table id="storeHours">
-    <caption>
-      <h7>
-        {% include icons/clock.svg %} The village is open today <span id="todayHours"></span>
-      </h7>
-    </caption>
-    {% assign days = "monday,tuesday,wednesday,thursday,friday,saturday,sunday" | split: "," %}
-    {% for day in days %}
-      <tr data-day="{{ day }}" data-hours="{{ site.data.hours.village_hours[day] }}">
-        <td>{{ day | capitalize }}</td>
-        <td>{{ site.data.hours.village_hours[day] }}</td>
-      </tr>
-    {% endfor %}
-  </table>
-  <p>{{ site.data.hours.notes.restaurants }}</p>
-  <p>{{ site.data.hours.notes.holidays }}</p>
+  <div class="two-col-30">
+    <table id="storeHours">
+      <caption>
+        <h7>
+          {% include icons/clock.svg %} The village is open today <span id="todayHours"></span>
+        </h7>
+      </caption>
+      {% assign days = "monday,tuesday,wednesday,thursday,friday,saturday,sunday" | split: "," %}
+      {% for day in days %}
+        <tr data-day="{{ day }}" data-hours="{{ site.data.hours.village_hours[day] }}">
+          <td>
+            <p>{{ day | capitalize }}</p>
+          </td>
+          <td>
+            <p>{{ site.data.hours.village_hours[day] }}</p>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    <div class="hours-notes">
+      <p>{{ site.data.hours.notes.restaurants }}</p>
+      <p>{{ site.data.hours.notes.holidays }}</p>
+    </div>
+  </div>
   <script src="{{ '/assets/js/store/hours.js' | relative_url }}"></script>
 
   <hr>
@@ -70,7 +78,7 @@ layout_type: hours
   <h3 id="parking">Parking & Shuttle</h3>
   <p>Limited free parking is available onsite for village visitors only.</p>
   <p>The Sedona Shuttle offers a convenient, free alternative means of transportation and can be boarded at the Sedona Municipal Parking lot at Jordan and Schnebly roads.</p>
-  <a href="/parking" class="read-more">Learn more</a>
+  <a href="/parking" class="btn btn-primary" style="width: 300px;">Learn more</a>
 
   <hr style="margin-bottom: 0.5rem">
 
