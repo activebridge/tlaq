@@ -1138,14 +1138,10 @@ collections:
         widget: "object"
         required: false
         collapsed: true
+        hint: "e.g. 10:00 am - 5:00 pm"
         fields:
-          - { label: "Monday", name: "monday", widget: "string", required: false }
-          - { label: "Tuesday", name: "tuesday", widget: "string", required: false }
-          - { label: "Wednesday", name: "wednesday", widget: "string", required: false }
-          - { label: "Thursday", name: "thursday", widget: "string", required: false }
-          - { label: "Friday", name: "friday", widget: "string", required: false }
-          - { label: "Saturday", name: "saturday", widget: "string", required: false }
-          - { label: "Sunday", name: "sunday", widget: "string", required: false }
+          - { label: "Monday - Thursday", name: "monday", widget: "string", required: false }
+          - { label: "Friday - Sunday", name: "friday", widget: "string", required: false }
       - { label: "Description", name: "body", widget: "markdown" }
 
   - name: "foods"
@@ -1184,13 +1180,13 @@ collections:
         required: false
         collapsed: true
         fields:
-          - { label: "Monday", name: "monday", widget: "string", required: false }
-          - { label: "Tuesday", name: "tuesday", widget: "string", required: false }
-          - { label: "Wednesday", name: "wednesday", widget: "string", required: false }
-          - { label: "Thursday", name: "thursday", widget: "string", required: false }
-          - { label: "Friday", name: "friday", widget: "string", required: false }
-          - { label: "Saturday", name: "saturday", widget: "string", required: false }
-          - { label: "Sunday", name: "sunday", widget: "string", required: false }
+          - { label: "Monday", name: "monday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
+          - { label: "Tuesday", name: "tuesday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
+          - { label: "Wednesday", name: "wednesday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
+          - { label: "Thursday", name: "thursday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
+          - { label: "Friday", name: "friday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
+          - { label: "Saturday", name: "saturday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
+          - { label: "Sunday", name: "sunday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
       - { label: "Description", name: "body", widget: "markdown" }
 
   - name: "galleries"
@@ -1228,14 +1224,10 @@ collections:
         widget: "object"
         required: false
         collapsed: true
+        hint: "e.g. 10:00 am - 5:00 pm"
         fields:
-          - { label: "Monday", name: "monday", widget: "string", required: false }
-          - { label: "Tuesday", name: "tuesday", widget: "string", required: false }
-          - { label: "Wednesday", name: "wednesday", widget: "string", required: false }
-          - { label: "Thursday", name: "thursday", widget: "string", required: false }
-          - { label: "Friday", name: "friday", widget: "string", required: false }
-          - { label: "Saturday", name: "saturday", widget: "string", required: false }
-          - { label: "Sunday", name: "sunday", widget: "string", required: false }
+          - { label: "Monday - Thursday", name: "monday", widget: "string", required: false }
+          - { label: "Friday - Sunday", name: "friday", widget: "string", required: false }
       - { label: "Description", name: "body", widget: "markdown" }
 
   - name: "weddings"

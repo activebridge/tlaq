@@ -17,12 +17,7 @@ image: assets/images/galleries/vue-gallery.webp
 facebook: https://www.facebook.com/VueGallery/
 full_location: 336 AZ-179 Suite E101, Sedona, AZ 86336
 store_hours:
-monday: 10:00 am - 5:00 pm
-tuesday: 10:00 am - 5:00 pm
-wednesday: 10:00 am - 5:00 pm
-thursday: 10:00 am - 5:00 pm
-friday: 10:00 am - 6:00 pm
-saturday: 10:00 am - 6:00 pm
-sunday: 10:00 am - 6:00 pm
+  monday: 10:00 am - 5:00 pm
+  friday: 10:00 am - 6:00 pm
 ---
 Vue Gallery is the latest addition to the Renee Taylor family of galleries. Vue Gallery features a beautiful sculpture garden alongside Oak Creek with a spacious indoor exhibition space displaying contemporary artwork from local and international artists. Mediums include bronze, adobe, steel, copper, and canvas artwork in a variety of format sizes. We also exhibit a variety of artistic jewelry in silver, gold, and steel.

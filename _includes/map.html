@@ -1295,11 +1295,20 @@
       const placeholderImage = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
       const isSafeUrl = (url) => url && (url[0] === '/' || url.lastIndexOf('http', 0) === 0);
       const todayName = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][new Date().getDay()];
+      const resolveHours = (hours) => {
+        if (!hours) return '';
+        if (hours[todayName]) return hours[todayName];
+        const monThru = ['monday', 'tuesday', 'wednesday', 'thursday'];
+        const friSun = ['friday', 'saturday', 'sunday'];
+        if (monThru.includes(todayName) && hours.monday) return hours.monday;
+        if (friSun.includes(todayName) && hours.friday) return hours.friday;
+        return '';
+      };
       const templateData = {
         image: cdnImage(store.image, 200, 120) || placeholderImage,
         title: store.title, subtitle: store.subtitle, icon: icon.outerHTML,
         url: isSafeUrl(store.url) ? store.url : '#',
-        todayHours: store.hours?.[todayName] || '',
+        todayHours: resolveHours(store.hours),
         suite: store.suite || ''
       };
       return window.mapPopup.innerHTML.replace(/\$(\w+)/g, (_, key) => templateData[key] ?? '');

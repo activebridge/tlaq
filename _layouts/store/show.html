@@ -14,14 +14,25 @@ layout: default
   <hr>
   <h6>STORE HOURS</h6>
   <table id="storeHours">
-    {% assign days = "monday,tuesday,wednesday,thursday,friday,saturday,sunday" | split: "," %}
-    {% for day in days %}
-      {% assign day_hours = page.store_hours[day] | default: page[day] %}
-      <tr data-day="{{ day }}">
-        <td>{{ day | capitalize }}</td>
-        <td>{{ day_hours }}</td>
+    {% if page.layout_type == "shop" or page.layout_type == "gallery" %}
+      <tr data-days="monday tuesday wednesday thursday">
+        <td>Monday - Thursday</td>
+        <td>{{ page.store_hours.monday | upcase }}</td>
       </tr>
-    {% endfor %}
+      <tr data-days="friday saturday sunday">
+        <td>Friday - Sunday</td>
+        <td>{{ page.store_hours.friday | upcase }}</td>
+      </tr>
+    {% else %}
+      {% assign days = "monday,tuesday,wednesday,thursday,friday,saturday,sunday" | split: "," %}
+      {% for day in days %}
+        {% assign day_hours = page.store_hours[day] | default: page[day] %}
+        <tr data-day="{{ day }}">
+          <td>{{ day | capitalize }}</td>
+          <td>{{ day_hours }}</td>
+        </tr>
+      {% endfor %}
+    {% endif %}
   </table>
   <h6>PHONE</h6>
   <h7><a href="tel:{{ page.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ page.phone }}</a></h7>
