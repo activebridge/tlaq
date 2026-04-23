@@ -1,0 +1,64 @@
+heading: "A celebrated arts and shopping village in the heart of Sedona."
+subheading: "A unique destination where curated outdoor art, seasonal landscaping, a rich heritage, and artisan culture can be experienced throughout the village."
+
+hero_banner: assets/images/about/hero.png
+
+history:
+  title: The History of Tlaquepaque
+  description: "From its architectural inspiration to artistic tradition, learn about the vision behind our village that continues today."
+  image: assets/images/about/history.png
+  button_text: "Learn More"
+  button_url: "/history"
+
+village_map:
+  description: "Our interactive village map provides easy navigation to all shops, galleries, and restaurants, helping you discover every corner of Tlaquepaque North and South during your visit."
+
+jump_to_links:
+  village_map:
+    text: VILLAGE MAP
+    id: '#village-map'
+  tlaquepaque_north:
+    text: TLAQUEPAQUE NORTH
+    id: '#tlaquepaque-north'
+  outdoor_art:
+    text: OUTDOOR ART
+    id: '#outdoor-art'
+  landscaping:
+    text: LANDSCAPING
+    id: '#landscaping'
+  sycamore:
+    text: SYCAMORE
+    id: '#sycamore'
+  our_people:
+    text: OUR PEOPLE
+    id: '#our-people'
+
+sections:
+  tlaquepaque_north:
+    heading: Tlaquepaque North
+    description: "Don't forget to visit Tlaquepaque North, across the street on the north side of Sedona's Highway 179. Since opening in 2016, this enchanting extension has captured the same timeless charm and elegance as the original village you are standing in now."
+    images:
+      - assets/images/about/tlaquepaque-north.png
+  outdoor_art:
+    heading: Outdoor Art
+    description: "Wander the village to discover the collection of outdoor sculptures and art installations. Permanent pieces like Kim Kori's beloved frog have become village landmarks, while rotating displays showcase new works. This outdoor gallery transforms your stroll through the village into an artistic journey of unexpected discoveries."
+    button:
+      text: Have You Seen These?
+      url: /outdoor-art
+    images:
+      - assets/images/about/outdoor-art.png
+  landscaping:
+    heading: Landscaping
+    description: "Don't miss Tlaquepaque's carefully curated seasonal landscaping, where vibrant gardens and thoughtful design create an enchanting atmosphere year-round for every visitor."
+    images:
+      - assets/images/about/landscaping.png
+  sycamore:
+    heading: Sycamore
+    description: "Tlaquepaque's majestic sycamores, originally preserved by Abe Miller, shade the village's cobblestone walkways and courtyards. These trees are integral to the property's identity. They are living landmarks that form the foundation of the landscape. A dedicated team maintains their beauty year-round."
+    images:
+      - assets/images/about/sycamore.png
+  our_people:
+    heading: Our People
+    description: "It takes a village to run a village. Our team of talented individuals comes together to make Tlaquepaque a special, unique destination to visit."
+    images:
+      - assets/images/about/our-people.png
