@@ -14,7 +14,7 @@ layout_type: hours
   <h2>Plan your visit to our vibrant village.</h2>
   <h6>Home to over 50 world-class shops, galleries, and dining experiences set amid distinctive architecture and beautifully landscaped grounds.</h6>
 
-  {% assign jump_nav_links = "hours,locations,village_map,accessibility" | split: "," %}
+  {% assign jump_nav_links = "locations,village_map,parking,accessibility,family_friendly" | split: "," %}
   {% assign jump_nav_slugs = "hours" %}
   {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
 
@@ -70,9 +70,9 @@ layout_type: hours
   <h3 id="parking">Parking & Shuttle</h3>
   <p>Limited free parking is available onsite for village visitors only.</p>
   <p>The Sedona Shuttle offers a convenient, free alternative means of transportation and can be boarded at the Sedona Municipal Parking lot at Jordan and Schnebly roads.</p>
-  <a href="/parking" class="read-more">Learn more</a>
+  <a href="/parking" class="btn btn-primary">Learn more</a>
 
-  <hr style="margin-bottom: 0.5rem">
+  <hr>
 
   <div id="accessibility" class="list-container">
     <div class="card">
@@ -82,8 +82,6 @@ layout_type: hours
       </figure>
       <p>Accessible parking, entrances, and restrooms are available throughout Tlaquepaque North and South. All accessible features can be easily located on the village map for convenient navigation during your visit. While wheelchair rentals are not available on property, guests are welcome to bring their own mobility devices.</p>
     </div>
-
-    <hr>
 
     <div class="card" id="family-friendly">
       <h3>Family and Dog Friendly</h3>

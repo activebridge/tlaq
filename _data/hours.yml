@@ -1,16 +1,19 @@
 jump_to_links:
-  hours:
-    text: HOURS
-    id: '#hours'
   locations:
     text: LOCATIONS
     id: '#locations'
   village_map:
     text: VILLAGE MAP
     id: '#village-map'
+  parking:
+    text: PARKING & SHUTTLE
+    id: '#parking'
   accessibility:
-    id: '#accessibility'
     text: ACCESSIBILITY
+    id: '#accessibility'
+  family_friendly:
+    text: FAMILY AND PET FRIENDLY
+    id: '#family-friendly'
 village_hours:
   monday: 10:00 AM – 5:00 PM
   tuesday: 10:00 AM – 5:00 PM
