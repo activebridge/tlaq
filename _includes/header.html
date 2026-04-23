@@ -16,12 +16,11 @@
       {% include icons/caret_down.svg %}
     </button>
     <div id="visit-popover" class="nav-popover" popover="auto">
-      <a href="{{ '/' | relative_url }}">{% include icons/windows/tlaq.svg %} Main</a>
       <a href="{{ '/hours' | relative_url }}">{% include icons/windows/tlaq.svg %} Hours</a>
-      <a href="{{ '/locations' | relative_url }}">{% include icons/windows/tlaq.svg %} Locations</a>
+      <a href="{{ '/hours#locations' | relative_url }}">{% include icons/windows/tlaq.svg %} Locations</a>
       <a href="{{ '/parking' | relative_url }}">{% include icons/windows/tlaq.svg %} Parking</a>
-      <a href="{{ '/accessibility' | relative_url }}">{% include icons/windows/tlaq.svg %} Accessibility</a>
-      <a href="{{ '/family_and_pet' | relative_url }}">{% include icons/windows/tlaq.svg %} Family &amp; Pet</a>
+      <a href="{{ '/hours#accessibility' | relative_url }}">{% include icons/windows/tlaq.svg %} Accessibility</a>
+      <a href="{{ '/hours#family-friendly' | relative_url }}">{% include icons/windows/tlaq.svg %} Family &amp; Pet</a>
       <a href="{{ '/gift-cards' | relative_url }}">{% include icons/windows/tlaq.svg %} Gift Cards</a>
       <a href="{{ '/history' | relative_url }}">{% include icons/windows/tlaq.svg %} History</a>
       <a href="{{ '/news/' | relative_url }}">{% include icons/windows/tlaq.svg %} News</a>
@@ -87,10 +86,10 @@
     </label>
     <nav id="mobile-submenu-content" aria-label="Visit pages">
       <a href="{{ '/hours' | relative_url }}">{% include icons/windows/tlaq.svg %} Hours</a>
-      <a href="{{ '/locations' | relative_url }}">{% include icons/windows/tlaq.svg %} Locations</a>
+      <a href="{{ '/hours#locations' | relative_url }}">{% include icons/windows/tlaq.svg %} Locations</a>
       <a href="{{ '/parking' | relative_url }}">{% include icons/windows/tlaq.svg %} Parking</a>
-      <a href="{{ '/accessibility' | relative_url }}">{% include icons/windows/tlaq.svg %} Accessibility</a>
-      <a href="{{ '/family_and_pet' | relative_url }}">{% include icons/windows/tlaq.svg %} Family &amp; Pet</a>
+      <a href="{{ '/hours#accessibility' | relative_url }}">{% include icons/windows/tlaq.svg %} Accessibility</a>
+      <a href="{{ '/hours#family-friendly' | relative_url }}">{% include icons/windows/tlaq.svg %} Family &amp; Pet</a>
       <a href="{{ '/gift-cards' | relative_url }}">{% include icons/windows/tlaq.svg %} Gift Cards</a>
       <a href="{{ '/history' | relative_url }}">{% include icons/windows/tlaq.svg %} History</a>
       <a href="{{ '/news/' | relative_url }}">{% include icons/windows/tlaq.svg %} News</a>
