@@ -740,7 +740,7 @@
   <div id="map" style="width:100%;height:100%;position:relative" data-focus-suite='{{ include.suite | escape }}'>
     <script type="application/json" id="mapPointLabels">{{ site.data.map_points | jsonify }}</script>
     <script type="application/json"
-      id="mapStoreData">[{% assign has_prev = false %}{% for store in all_stores %}{% if store.suite or store.coordinates %}{% if has_prev %},{% endif %}{"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"suite":{{ store.suite | default: "" | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | default: "" | jsonify }},"url":{% if store.layout_type == "management" %}""{% else %}{{ store.url | jsonify }}{% endif %},"type":{{ store.layout_type | jsonify }},"hours":{% if store.store_hours %}{{ store.store_hours | jsonify }}{% else %}{"monday":{{ store.monday | default: "" | jsonify }},"tuesday":{{ store.tuesday | default: "" | jsonify }},"wednesday":{{ store.wednesday | default: "" | jsonify }},"thursday":{{ store.thursday | default: "" | jsonify }},"friday":{{ store.friday | default: "" | jsonify }},"saturday":{{ store.saturday | default: "" | jsonify }},"sunday":{{ store.sunday | default: "" | jsonify }}}{% endif %},"tags":{{ store.tags | default: "" | jsonify }},"extra_suites":{{ store.extra_suites | jsonify }}}{% assign has_prev = true %}{% endif %}{% endfor %}]</script>
+      id="mapStoreData">[{% assign has_prev = false %}{% for store in all_stores %}{% if store.suite or store.coordinates %}{% if has_prev %},{% endif %}{"title":{{ store.title | jsonify }},"subtitle":{{ store.subtitle | jsonify }},"suite":{{ store.suite | default: "" | jsonify }},"coordinates":{{ store.coordinates | jsonify }},"image":{{ store.image | default: "" | jsonify }},"url":{% if store.layout_type == "management" %}""{% else %}{{ store.url | jsonify }}{% endif %},"type":{{ store.layout_type | jsonify }},"hours":{% if store.store_hours %}{{ store.store_hours | jsonify }}{% else %}{"monday":{{ store.monday | default: "" | jsonify }},"tuesday":{{ store.tuesday | default: "" | jsonify }},"wednesday":{{ store.wednesday | default: "" | jsonify }},"thursday":{{ store.thursday | default: "" | jsonify }},"friday":{{ store.friday | default: "" | jsonify }},"saturday":{{ store.saturday | default: "" | jsonify }},"sunday":{{ store.sunday | default: "" | jsonify }}}{% endif %},"tags":{{ store.tags | default: "" | jsonify }},"extra_suites":{{ store.extra_suites | jsonify }},"administrative":{{ store.administrative | default: false | jsonify }}}{% assign has_prev = true %}{% endif %}{% endfor %}]</script>
     <div id="mapPlaceholder" style="--map-bg:url('{{ '/assets/images/landing/map-placeholder.webp' | relative_url }}')"></div>
     <div id="mapSpinner">
       <span>{% include icons/loader.svg %}</span>
@@ -889,13 +889,19 @@
       highlightedBuildingIds = new Set();
     };
 
-    const highlightBuildings = (featureIds, storeType) => {
+    const resolveStoreColor = (store) => {
+      if (store?.administrative) return categoryColors.management;
+      return categoryColors[store?.type] || DEFAULT_HIGHLIGHT_COLOR;
+    };
+    const resolveStoreIconType = (store) => store?.administrative ? 'default' : store?.type;
+
+    const highlightBuildings = (featureIds, store) => {
       if (!buildingDataReady || !featureIds?.length) return;
       const validIds = featureIds.filter(isValidFeatureId);
       if (!validIds.length) return;
       clearHighlightedBuildings();
       highlightedBuildingIds = new Set(validIds);
-      const color = categoryColors[storeType] || DEFAULT_HIGHLIGHT_COLOR;
+      const color = resolveStoreColor(store);
       highlightedBuildingIds.forEach(id => map.setFeatureState(featureStateTarget(id), { active: true, color }));
     };
 
@@ -911,7 +917,7 @@
       if (!store) return;
       if (!buildingDataReady) { pendingStoreHighlight = store; return; }
       const ids = getBuildingIds(store);
-      if (ids.length) highlightBuildings(ids, store.type);
+      if (ids.length) highlightBuildings(ids, store);
     };
 
     const polyLongestEdgeLine = (coords) => {
@@ -1098,7 +1104,7 @@
         // Position suite markers at building centroids, spreading duplicates in a circle
         const suiteOccupants = new Map();
         stores.forEach((store, index) => {
-          if (!store.suite) return;
+          if (!store.suite || store.suite === 'chappel') return;
           const dash = store.suite.indexOf('-');
           const coords = suiteCentroid.get(store.suite) || (dash > 0 && suiteCentroid.get(store.suite.slice(0, dash)));
           if (!coords) return;
@@ -1268,7 +1274,7 @@
         const { id } = event.features?.[0]?.properties || {};
         if (!isValidFeatureId(id)) return;
         const storeIndex = storeIndexBySuite.get(id);
-        highlightBuildings([id], storeIndex !== undefined ? stores[storeIndex].type : undefined);
+        highlightBuildings([id], storeIndex !== undefined ? stores[storeIndex] : null);
         if (storeIndex !== undefined) focusStore(storeIndex);
       });
 
@@ -1290,7 +1296,7 @@
     const cdnImage = (path, width, height) => path ? `${CDN_URL}/cdn-cgi/image/width=${width},height=${height},fit=cover,quality=85,gravity=center/${path}` : '';
 
     const renderPopupHtml = (store) => {
-      const icon = getIconByType(store.type);
+      const icon = getIconByType(resolveStoreIconType(store));
       icon.className = 'popup-icon';
       const placeholderImage = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
       const isSafeUrl = (url) => url && (url[0] === '/' || url.lastIndexOf('http', 0) === 0);
@@ -1326,7 +1332,7 @@
           suppressClearHighlight = false;
         }
         currentOpenPopup = popup;
-        if (categoryColors[store.type]) popup.getElement().style.setProperty('--category-color', categoryColors[store.type]);
+        popup.getElement().style.setProperty('--category-color', resolveStoreColor(store));
       });
       popup.on('close', () => { if (currentOpenPopup === popup) { currentOpenPopup = null; if (!suppressClearHighlight) clearHighlightedBuildings(); } });
       return popup;
@@ -1357,21 +1363,24 @@
       const wrapper = Object.assign(document.createElement('div'), { className: 'map-marker-wrapper' });
       if (store.suite && store.suite !== 'chappel') {
         const suiteLabel = Object.assign(document.createElement('span'), { className: 'map-marker-suite', textContent: store.suite });
-        if (categoryColors[store.type]) suiteLabel.style.setProperty('--suite-cat-color', categoryColors[store.type]);
+        suiteLabel.style.setProperty('--suite-cat-color', resolveStoreColor(store));
         wrapper.appendChild(suiteLabel);
         const marker = new mapboxgl.Marker({ element: wrapper, anchor: 'center' }).setPopup(createPopup(store));
         marker.getElement().addEventListener('click', (event) => { event.stopPropagation(); focusStore(index); });
         storeMarkers.push({ marker, type: store.type, positioned: false });
       } else {
-        const markerElement = makeSvgMarker(store.type, 'with-bg');
-        markerElement.dataset.type = store.type;
+        const iconType = resolveStoreIconType(store);
+        const markerElement = makeSvgMarker(iconType, 'with-bg');
+        markerElement.dataset.type = iconType;
         wrapper.appendChild(markerElement);
+        if (store.suite === 'chappel') wrapper.style.visibility = 'hidden';
         const initialCoords = markerCoords(store);
         const marker = new mapboxgl.Marker({ element: wrapper, anchor: 'top' }).setPopup(createPopup(store));
         const hasCoords = !!(initialCoords && !isNaN(initialCoords[0]));
-        if (hasCoords) marker.setLngLat(initialCoords).addTo(map);
+        const renderOnLoad = store.suite !== 'chappel';
+        if (hasCoords && renderOnLoad) marker.setLngLat(initialCoords).addTo(map);
         marker.getElement().addEventListener('click', (event) => { event.stopPropagation(); focusStore(index); });
-        storeMarkers.push({ marker, type: store.type, positioned: hasCoords });
+        storeMarkers.push({ marker, type: store.type, positioned: hasCoords && renderOnLoad });
       }
     });
 
@@ -1383,14 +1392,14 @@
         storeIndexBySuite.set(suite, index);
         const wrapper = Object.assign(document.createElement('div'), { className: 'map-marker-wrapper' });
         const suiteLabel = Object.assign(document.createElement('span'), { className: 'map-marker-suite', textContent: suite });
-        if (categoryColors[store.type]) suiteLabel.style.setProperty('--suite-cat-color', categoryColors[store.type]);
+        suiteLabel.style.setProperty('--suite-cat-color', resolveStoreColor(store));
         wrapper.appendChild(suiteLabel);
         const marker = new mapboxgl.Marker({ element: wrapper, anchor: 'center' }).setPopup(createPopup(store));
         marker.getElement().addEventListener('click', (event) => {
           event.stopPropagation();
           suppressClearHighlight = true;
           setTimeout(() => { suppressClearHighlight = false; }, 0);
-          highlightBuildings([suite], store.type);
+          highlightBuildings([suite], store);
           map.easeTo({ center: marker.getLngLat(), padding: { top: 150 }, duration: 600 });
           if (!marker.getPopup().isOpen()) marker.togglePopup();
           activeListItem?.classList.remove('active');
@@ -1456,8 +1465,8 @@
       listItem.className = 'sidebar-result';
       listItem.setAttribute('role', 'option');
       listItem.dataset.storeIndex = storeIndex;
-      if (categoryColors[store.type]) listItem.style.setProperty('--cat-color', categoryColors[store.type]);
-      listItem.appendChild(getIconByType(store.type));
+      listItem.style.setProperty('--cat-color', resolveStoreColor(store));
+      listItem.appendChild(getIconByType(resolveStoreIconType(store)));
       listItem.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-title', textContent: store.title }));
       if (suite) listItem.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-suite', textContent: suite }));
       listItem.addEventListener('click', () => {
@@ -1471,7 +1480,7 @@
         if (suiteOverride) {
           suppressClearHighlight = true;
           setTimeout(() => { suppressClearHighlight = false; }, 0);
-          highlightBuildings([suiteOverride], store.type);
+          highlightBuildings([suiteOverride], store);
           const em = extraSuiteMarkers.find(e => e.suite === suiteOverride);
           if (em) { map.easeTo({ center: em.marker.getLngLat(), padding: { top: 150 }, duration: 600 }); if (!em.marker.getPopup().isOpen()) em.marker.togglePopup(); }
         } else {
