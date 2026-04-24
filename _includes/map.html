@@ -287,9 +287,12 @@
   }
 
   .sidebar-result-icon svg,
-  .sidebar-category-icon svg {
+  .sidebar-category-icon svg,
+  .sidebar-result-icon img,
+  .sidebar-category-icon img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
   }
 
   .sidebar-category-label {
@@ -374,7 +377,8 @@
     cursor: pointer;
   }
 
-  .map-marker:has(svg) {
+  .map-marker:has(svg),
+  .map-marker:has(img) {
     width: 14px;
     height: 14px;
   }
@@ -387,9 +391,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, .35);
   }
 
-  .map-marker svg {
+  .map-marker svg,
+  .map-marker img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
   }
 
   .map-marker-suite {
@@ -793,7 +799,7 @@
   <span class="sidebar-result-icon" data-type="restroom">{% include icons/map/restroom.svg %}</span>
   <span class="sidebar-result-icon" data-type="information">{% include icons/map/info.svg %}</span>
   <span class="sidebar-result-icon" data-type="drinking-water">{% include icons/map/water.svg %}</span>
-  <span class="sidebar-result-icon" data-type="fountain">{% include icons/map/fountain.svg %}</span>
+  <span class="sidebar-result-icon" data-type="fountain"><img src="{{ '/assets/icons/map/fountain.png' | relative_url }}" alt="" class="map-icon-png"></span>
   <span class="sidebar-result-icon" data-type="bell-tower">{% include icons/map/tower.svg %}</span>
   <span class="sidebar-result-icon" data-type="wind-sculpture-garden">{% include icons/map/garden.svg %}</span>
   <span class="sidebar-result-icon" data-type="atm">{% include icons/map/atm.svg %}</span>
@@ -1746,7 +1752,7 @@
       const applyMarkerScale = () => {
         const scale = 1 + (map.getZoom() - baseZoom) * 0.35; // 0.35 — growth rate per zoom level
         const svgSize = 14 * scale + 'px';     // 14px — marker base size
-        document.querySelectorAll('.map-marker:has(svg)').forEach(el => { el.style.width = svgSize; el.style.height = svgSize; });
+        document.querySelectorAll('.map-marker:has(svg), .map-marker:has(img)').forEach(el => { el.style.width = svgSize; el.style.height = svgSize; });
         const suiteFs = Math.min(12, 6 * scale);  // 6px base → max 12px
         const suitePad = Math.min(2, 1 * scale) + 'px ' + Math.min(5, 4 * scale) + 'px';
         document.querySelectorAll('.map-marker-suite').forEach(el => { el.style.fontSize = suiteFs + 'px'; el.style.padding = suitePad; });
