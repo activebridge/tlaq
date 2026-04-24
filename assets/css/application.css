@@ -2047,3 +2047,23 @@ main.about {
     .about-pair { grid-template-columns: 1fr; }
   }
 }
+
+@media (min-width: 770px) {
+  .food, .gallery, .shop {
+    .hero {
+      display: none;
+    }
+  }
+}
+
+.hero-desc {
+  height: 100%;
+
+  img { height: 100%; }
+}
+
+@media (max-width: 770px) {
+  .hero-desc {
+    display: none;
+  }
+}
