@@ -642,37 +642,53 @@ collections:
         media_folder: "/assets/images/history"
         public_folder: "/assets/images/history"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Subtitle", name: "subtitle", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Hero Image", name: "hero_banner", widget: "image" }
-          - { label: "Video Cover", name: "video_cover", widget: "image" }
+          - { label: "Title", name: "title", widget: "string", hint: "Small eyebrow text above the page subtitle (e.g. 'History')." }
+          - { label: "Subtitle", name: "subtitle", widget: "string", hint: "Main page headline shown below the hero banner." }
+          - { label: "Description", name: "description", widget: "text", hint: "Short intro paragraph below the subtitle." }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Full-width banner image at the top of the page." }
+          - { label: "Cover Image", name: "cover", widget: "image", hint: "Wide image shown under the page header, above the Vision block." }
+          - { label: "Cover Image Alt", name: "cover_alt", widget: "string", hint: "Short description of the cover image for screen readers." }
           - label: "Vision Section"
             name: "vision"
             widget: "object"
+            hint: "Intro block with rotated label, body text, image collage, and footnotes."
             fields:
-              - { label: "Label", name: "label", widget: "string" }
-              - { label: "Image", name: "image", widget: "image" }
-              - { label: "Text", name: "text", widget: "text" }
-          - label: "Collage Images"
-            name: "collage"
-            widget: "list"
-            fields:
-              - { label: "Image", name: "image", widget: "image" }
-              - { label: "Alt Text", name: "alt", widget: "string" }
-          - label: "Sections"
-            name: "sections"
-            widget: "list"
-            fields:
-              - { label: "ID", name: "id", widget: "string" }
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Image", name: "image", widget: "image" }
-              - { label: "Image Alt", name: "image_alt", widget: "string" }
-              - label: "Paragraphs"
-                name: "paragraphs"
+              - { label: "Label", name: "label", widget: "string", hint: "Rotated vertical label on the left of the text column (e.g. 'VISION'). Keep short, uppercase." }
+              - { label: "Decorative Image Behind Text", name: "background", widget: "image", hint: "Shown faded (≈25% opacity) behind the text column as a soft backdrop — not the main photo. Pick something atmospheric; fine details will not be readable." }
+              - { label: "Text", name: "text", widget: "text", hint: "Body copy. Separate paragraphs with a blank line — they render as distinct paragraphs." }
+              - label: "Images"
+                name: "images"
                 widget: "list"
-                field: { label: "Paragraph", name: "paragraph", widget: "text" }
-              - { label: "Quote", name: "quote", widget: "string", required: false }
+                hint: "Collage shown in the right column. First image renders wide on top, next two render side-by-side underneath. Use 3 images for the intended layout."
+                fields:
+                  - { label: "Image", name: "image", widget: "image", hint: "Photo for this collage slot." }
+                  - { label: "Alt Text", name: "alt", widget: "string", hint: "Short description for screen readers and SEO. Describe what's in the photo." }
+              - label: "Footnotes"
+                name: "footnotes"
+                widget: "list"
+                hint: "Numbered citations shown beneath the body text. Each item gets an automatic '1)', '2)', etc."
+                field: { label: "Footnote", name: "footnote", widget: "string", hint: "Caption or source note for one of the images / facts above." }
+          - label: "Stories"
+            name: "stories"
+            widget: "list"
+            hint: "Additional story blocks rendered after the Vision section. Odd-positioned blocks (1st, 3rd…) render with the collage on the left; even blocks render with the text on the left."
+            fields:
+              - { label: "ID", name: "id", widget: "string", hint: "URL anchor for this block (e.g. 'inspiration'). Lowercase, hyphenated, no spaces." }
+              - { label: "Label", name: "label", widget: "string", hint: "Rotated vertical label shown in the text column (e.g. 'INSPIRATION'). Keep short, uppercase." }
+              - { label: "Decorative Image Behind Text", name: "background", widget: "image", hint: "Shown faded (≈25% opacity) behind the text column as a soft backdrop — not the main photo. Pick something atmospheric; fine details will not be readable." }
+              - { label: "Text", name: "text", widget: "text", hint: "Body copy. Separate paragraphs with a blank line — they render as distinct paragraphs." }
+              - label: "Images"
+                name: "images"
+                widget: "list"
+                hint: "Collage for this block. First image renders wide on top, next two render side-by-side underneath. Use 3 images for the intended layout."
+                fields:
+                  - { label: "Image", name: "image", widget: "image", hint: "Photo for this collage slot." }
+                  - { label: "Alt Text", name: "alt", widget: "string", hint: "Short description for screen readers and SEO. Describe what's in the photo." }
+              - label: "Footnotes"
+                name: "footnotes"
+                widget: "list"
+                hint: "Numbered citations shown beneath the body text. Each item gets an automatic '1)', '2)', etc."
+                field: { label: "Footnote", name: "footnote", widget: "string", hint: "Caption or source note for one of the images / facts above." }
       - name: "hours"
         label: "Hours & Locations"
         file: "_data/hours.yml"

@@ -26,5 +26,5 @@
   <noscript>
     <link rel="stylesheet" href="{{ '/assets/css/application.css' | relative_url }}">
   </noscript>
-  <script>function imageError(img) { img.onerror = null; var p = img.parentElement; if (p && p.tagName === 'PICTURE') { p.querySelectorAll('source').forEach(function(s) { s.srcset = ''; }); } img.src = '/assets/images/placeholder.webp'; }</script>
+  <script>function imageError(img) { img.onerror = null; img.srcset = ''; var p = img.parentElement; if (p && p.tagName === 'PICTURE') { p.querySelectorAll('source').forEach(function(s) { s.srcset = ''; }); } img.src = '/assets/images/placeholder.webp'; }</script>
 </head>
