@@ -53,15 +53,13 @@ layout_type: parking
 
   <hr>
 
-  <h2 id="shuttle">Sedona Shuttle</h2>
-  <div class="list-container">
-    <div class="card">
-      <figure>
-        {% include responsive-card-image.html src=site.data.parking.shuttle.image alt='Sedona Shuttle' %}
-      </figure>
-      <p>{{ site.data.parking.shuttle.description }}</p>
-      <p>{{ site.data.parking.shuttle.boarding }}</p>
-    </div>
-  </div>
+  <article id="shuttle">
+    <h2>Sedona Shuttle</h2>
+    <figure>
+      {% include responsive-card-image.html src=site.data.parking.shuttle.image alt='Sedona Shuttle' %}
+    </figure>
+    <p>{{ site.data.parking.shuttle.description }}</p>
+    <p>{{ site.data.parking.shuttle.boarding }}</p>
+  </article>
 
 </div>
