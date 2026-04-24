@@ -316,10 +316,6 @@ html, body {
   header a {
     text-decoration: none;
     color: inherit;
-
-    /* svg:first-of-type {
-      margin-right: 0.5rem;
-    } */
   }
 
   header a.logo {
@@ -334,6 +330,10 @@ html, body {
     view-transition-name: logo;
     user-select: none;
     -webkit-user-select: none;
+
+    &:active, &:focus-visible {
+      outline: none;
+    }
   }
 
   ::view-transition-group(logo) {
@@ -666,11 +666,24 @@ html, body {
     }
   }
 
+  .search-toggle-btn {
+    all: unset;
+
+    &:active, &:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+
   .search-close-btn {
+    all: unset;
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
     padding: 0.25rem;
+
+    &:active, &:focus-visible { background: transparent; }
   }
 
 .search-results {

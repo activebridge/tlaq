@@ -1705,17 +1705,31 @@
       }
     };
 
+    const startLocationTracking = () => {
+      if (!navigator.geolocation) return;
+      if (mapLocateBtn.classList.contains('active')) return;
+      updateLocation(true);
+      mapLocateBtn.classList.add('active');
+      locationInterval = setInterval(() => updateLocation(true), 10000);
+      document.addEventListener('visibilitychange', onVisibility);
+    };
+
     mapLocateBtn.addEventListener('click', () => {
       if (mapLocateBtn.classList.contains('active')) {
         stopLocationTracking();
         return;
       }
-      if (!navigator.geolocation) return;
-      updateLocation(true);
-      mapLocateBtn.classList.add('active');
-      locationInterval = setInterval(() => updateLocation(true), 10000);
-      document.addEventListener('visibilitychange', onVisibility);
+      startLocationTracking();
     });
+
+    if (navigator.permissions?.query) {
+      navigator.permissions.query({ name: 'geolocation' }).then(status => {
+        if (status.state === 'granted') startLocationTracking();
+        status.onchange = () => {
+          if (status.state === 'granted') startLocationTracking();
+        };
+      }).catch(() => {});
+    }
 
     // Dynamic marker sizing based on zoom level
     map.once('idle', () => {
