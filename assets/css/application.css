@@ -586,21 +586,17 @@ article {
   }
 
   &#filming {
+    align-items: center;
+
+    .footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     img {
       width: 100%;
       height: auto;
       object-fit: cover;
-    }
-
-    div {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: center;
-      gap: 1.5rem;
-
-
-      a.btn { flex: 1; }
     }
   }
 
@@ -636,6 +632,7 @@ article {
     align-items: flex-start;
     gap: 1.25rem;
     padding: 0;
+    flex-wrap: wrap;
 
     a, div[role="group"] {
       flex-shrink: 0;
@@ -644,6 +641,25 @@ article {
       gap: 1rem;
       min-width: 30%;
     }
+  }
+}
+
+.grid-col-2 {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 1.5rem;
+  overflow: hidden;
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 770px) {
+  .grid-col-2 {
+    grid-template-columns: 100%;
   }
 }
 
@@ -673,12 +689,15 @@ article {
     }
 
     &#filming {
-      &>div {
-        flex-direction: column;
-        align-items: stretch;
+      grid-template-columns: 1fr;
 
-        .btn { width: 100%; }
+      &>div {
+        align-items: stretch;
       }
+
+      .footer { align-items: stretch; }
+
+      .btn { width: 100%; }
     }
 
     &#magazine {
@@ -1252,7 +1271,7 @@ input[type="search"] {
   display: flex;
   gap: 1rem;
   flex: 1;
-  height: 320px;
+  height: clamp(110px, 20vw, 320px);
 }
 
 .calendar-item-image {
@@ -1272,7 +1291,12 @@ input[type="search"] {
 .calendar-item-details {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+}
+
+@media (min-width: 771px) {
+  .calendar-item-details {
+    gap: 1.5rem;
+  }
 }
 
 .calendar-item-time {
