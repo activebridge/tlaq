@@ -54,6 +54,15 @@ types:
   wind-sculpture-garden:
     title: Wind Sculpture Garden
     description: An outdoor garden featuring a rotating collection of kinetic wind sculptures by Lyman Whitaker, set among the sycamores in a peaceful, shaded space outside Vue Gallery.
+  wind-sculpture-garden-1:
+    title: Wind Sculpture Garden
+    description: An outdoor garden featuring a rotating collection of kinetic wind sculptures by Lyman Whitaker, set among the sycamores in a peaceful, shaded space outside Vue Gallery.
+  wind-sculpture-garden-2:
+    title: Wind Sculpture Garden
+    description: An outdoor garden featuring a rotating collection of kinetic wind sculptures by Lyman Whitaker, set among the sycamores in a peaceful, shaded space outside Vue Gallery.
+  wind-sculpture-garden-3:
+    title: Wind Sculpture Garden
+    description: An outdoor garden featuring a rotating collection of kinetic wind sculptures by Lyman Whitaker, set among the sycamores in a peaceful, shaded space outside Vue Gallery.
 points:
   restroom-north:
     title: North Restrooms
