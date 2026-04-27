@@ -808,9 +808,9 @@
   <span class="sidebar-result-icon" data-type="el-pasillo-pequeno"><img src="{{ '/assets/icons/map/el-pasillo-pequeno.png' | relative_url }}" alt="" class="map-icon-png"></span>
   <span class="sidebar-result-icon" data-type="bell-tower"><img src="{{ '/assets/icons/map/tower.png' | relative_url }}" alt="" class="map-icon-png"></span>
   <span class="sidebar-result-icon" data-type="wind-sculpture-garden"><img src="{{ '/assets/icons/map/wind-sculpture-1.png' | relative_url }}" alt="" class="map-icon-png"></span>
-  <span class="sidebar-result-icon" data-type="wind-sculpture-1"><img src="{{ '/assets/icons/map/wind-sculpture-1.png' | relative_url }}" alt="" class="map-icon-png"></span>
-  <span class="sidebar-result-icon" data-type="wind-sculpture-2"><img src="{{ '/assets/icons/map/wind-sculpture-2.png' | relative_url }}" alt="" class="map-icon-png"></span>
-  <span class="sidebar-result-icon" data-type="wind-sculpture-3"><img src="{{ '/assets/icons/map/wind-sculpture-3.png' | relative_url }}" alt="" class="map-icon-png"></span>
+  <span class="sidebar-result-icon" data-type="wind-sculpture-garden-1"><img src="{{ '/assets/icons/map/wind-sculpture-1.png' | relative_url }}" alt="" class="map-icon-png"></span>
+  <span class="sidebar-result-icon" data-type="wind-sculpture-garden-2"><img src="{{ '/assets/icons/map/wind-sculpture-2.png' | relative_url }}" alt="" class="map-icon-png"></span>
+  <span class="sidebar-result-icon" data-type="wind-sculpture-garden-3"><img src="{{ '/assets/icons/map/wind-sculpture-3.png' | relative_url }}" alt="" class="map-icon-png"></span>
   <span class="sidebar-result-icon" data-type="atm"><img src="{{ '/assets/icons/map/atm.png' | relative_url }}" alt="" class="map-icon-png"></span>
   <span class="sidebar-result-icon" data-type="tree"><img src="{{ '/assets/icons/map/tree.png' | relative_url }}" alt="" class="map-icon-png"></span>
   <span class="sidebar-result-icon" data-type="bus-stop"><img src="{{ '/assets/icons/map/shuttle.png' | relative_url }}" alt="" class="map-icon-png"></span>
@@ -1151,7 +1151,7 @@
         });
 
         // SVG markers for special point/polygon features
-        const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'bike-rack', 'bell-tower', 'wind-sculpture-garden']);
+        const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'bike-rack', 'bell-tower', 'wind-sculpture-garden', 'wind-sculpture-garden-1', 'wind-sculpture-garden-2', 'wind-sculpture-garden-3']);
         const polygonSvgTypes = new Set(['parking']);
         geojson.features.forEach(feature => {
           const { type: featureType, id: featureId } = feature.properties || {};

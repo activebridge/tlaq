@@ -850,7 +850,20 @@ footer .socials-mobile { display: none; }
 
 @media (max-width: 770px) {
   footer {
-    section.top { display: none; }
+    section.top {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+
+      .btn { width: 100%; }
+
+      .awards {
+        order: -1;
+        justify-content: center;
+        gap: 2rem;
+        padding-bottom: 3rem;
+        border-bottom: 0.75px solid var(--cream);
+      }
+    }
 
     section.main {
       display: grid;

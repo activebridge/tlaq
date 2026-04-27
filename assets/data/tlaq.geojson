@@ -353,6 +353,21 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "null",
+        "type": "tree"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.762339,
+          34.862849
+        ],
+        "type": "Point"
+      },
+      "id": "0d3c0e436026990a697a8c20aec8f602"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "information",
         "type": "information"
       },
@@ -836,6 +851,21 @@
       },
       "geometry": {
         "coordinates": [
+          -111.762355,
+          34.8614
+        ],
+        "type": "Point"
+      },
+      "id": "25ebb76779f5802e9597a947d0af3abe"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "null",
+        "type": "tree"
+      },
+      "geometry": {
+        "coordinates": [
           -111.763678,
           34.862097
         ],
@@ -1024,6 +1054,21 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "null",
+        "type": "tree"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.762326,
+          34.861741
+        ],
+        "type": "Point"
+      },
+      "id": "30acd9f31d25abb5ee5a784a31f3c5ca"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "tlaque-paque-north",
         "type": "bus-stop"
       },
@@ -1035,6 +1080,18 @@
         "type": "Point"
       },
       "id": "31551ac65f125dfa21da536c8c233eb4"
+    },
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "coordinates": [
+          -111.761706,
+          34.863305
+        ],
+        "type": "Point"
+      },
+      "id": "33339433913e1d908ad16161051bf698"
     },
     {
       "type": "Feature",
@@ -1181,32 +1238,28 @@
         "coordinates": [
           [
             [
-              -111.763259,
-              34.86369
+              -111.762702,
+              34.863607
             ],
             [
-              -111.76324,
-              34.863468
+              -111.762696,
+              34.863268
             ],
             [
-              -111.762849,
-              34.863375
+              -111.761944,
+              34.863078
             ],
             [
-              -111.762457,
-              34.863177
+              -111.761965,
+              34.863273
             ],
             [
-              -111.762497,
-              34.863404
+              -111.762003,
+              34.863538
             ],
             [
-              -111.762663,
-              34.863606
-            ],
-            [
-              -111.763259,
-              34.86369
+              -111.762702,
+              34.863607
             ]
           ]
         ],
@@ -1228,6 +1281,36 @@
         "type": "Point"
       },
       "id": "4104f5cb2c98c669adefd432a883a6b1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "wind-sculpture-garden",
+        "type": "wind-sculpture-garden"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.763624,
+          34.863442
+        ],
+        "type": "Point"
+      },
+      "id": "41ec10d28e15ed9532d1a06a78c57861"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "null",
+        "type": "tree"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.762163,
+          34.863433
+        ],
+        "type": "Point"
+      },
+      "id": "4430801a170ecd7190e8c88861e249bd"
     },
     {
       "type": "Feature",
@@ -1286,12 +1369,16 @@
               34.863615
             ],
             [
-              -111.762484,
-              34.863411
+              -111.762299,
+              34.863575
             ],
             [
-              -111.761526,
-              34.863043
+              -111.761578,
+              34.86351
+            ],
+            [
+              -111.761514,
+              34.863088
             ],
             [
               -111.761692,
@@ -1552,6 +1639,21 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "wind-sculpture-garden-2",
+        "type": "wind-sculpture-garden-2"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.762381,
+          34.861129
+        ],
+        "type": "Point"
+      },
+      "id": "4b56fff4733e33292fd5faff9f7aae58"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "creekside-parking",
         "type": "area"
       },
@@ -1761,24 +1863,24 @@
         "coordinates": [
           [
             [
-              -111.76275,
-              34.862211
+              -111.762795,
+              34.862167
             ],
             [
-              -111.762756,
-              34.861868
+              -111.762799,
+              34.862056
             ],
             [
-              -111.762627,
-              34.861868
+              -111.762589,
+              34.862056
             ],
             [
-              -111.762636,
-              34.862211
+              -111.762589,
+              34.86217
             ],
             [
-              -111.76275,
-              34.862211
+              -111.762795,
+              34.862167
             ]
           ]
         ],
@@ -2121,6 +2223,21 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "null",
+        "type": "tree"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.761946,
+          34.863471
+        ],
+        "type": "Point"
+      },
+      "id": "66d06fb0e448d81fe243805e452bddd3"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "b219",
         "type": "building"
       },
@@ -2361,6 +2478,21 @@
         "type": "Point"
       },
       "id": "6be8b1819287a50187167999bdba15f4"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "null",
+        "type": "arcs"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.762687,
+          34.862037
+        ],
+        "type": "Point"
+      },
+      "id": "72a5417eff03124a61ae319a3755ec02"
     },
     {
       "type": "Feature",
@@ -2635,6 +2767,21 @@
       },
       "geometry": {
         "coordinates": [
+          -111.762321,
+          34.863507
+        ],
+        "type": "Point"
+      },
+      "id": "7b10295a62c5f1ec9dc8011ee34ef961"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "null",
+        "type": "tree"
+      },
+      "geometry": {
+        "coordinates": [
           -111.762847,
           34.863548
         ],
@@ -2676,6 +2823,49 @@
         "type": "Polygon"
       },
       "id": "7d2ab323ab325a56eb809ec2b6d04027"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "parking-mid",
+        "type": "parking"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -111.762623,
+              34.861645
+            ],
+            [
+              -111.762665,
+              34.861424
+            ],
+            [
+              -111.762804,
+              34.86122
+            ],
+            [
+              -111.762611,
+              34.861184
+            ],
+            [
+              -111.762462,
+              34.861418
+            ],
+            [
+              -111.762427,
+              34.861643
+            ],
+            [
+              -111.762623,
+              34.861645
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "8025e0c0195b81cbc56d637219e35bdc"
     },
     {
       "type": "Feature",
@@ -3241,6 +3431,21 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "wind-sculpture-garden-3",
+        "type": "wind-sculpture-garden-3"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.762234,
+          34.86117
+        ],
+        "type": "Point"
+      },
+      "id": "9fb559ff9ac35ec1e9beaaa5d4d9e903"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "null",
         "type": "tree"
       },
@@ -3762,6 +3967,21 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "null",
+        "type": "tree"
+      },
+      "geometry": {
+        "coordinates": [
+          -111.762574,
+          34.863537
+        ],
+        "type": "Point"
+      },
+      "id": "c2a47308037436ed34ab9f84059ec4f1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "a207",
         "type": "building"
       },
@@ -4012,6 +4232,21 @@
       },
       "geometry": {
         "coordinates": [
+          -111.762498,
+          34.860965
+        ],
+        "type": "Point"
+      },
+      "id": "d1f001d7a797d989ca95732198d5d070"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "null",
+        "type": "tree"
+      },
+      "geometry": {
+        "coordinates": [
           -111.76364,
           34.863374
         ],
@@ -4171,6 +4406,21 @@
       },
       "geometry": {
         "coordinates": [
+          -111.761707,
+          34.863304
+        ],
+        "type": "Point"
+      },
+      "id": "dc16fa923087c87e86096a6e2087c924"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "null",
+        "type": "tree"
+      },
+      "geometry": {
+        "coordinates": [
           -111.762429,
           34.86243
         ],
@@ -4186,8 +4436,8 @@
       },
       "geometry": {
         "coordinates": [
-          -111.762686,
-          34.861481
+          -111.762718,
+          34.861531
         ],
         "type": "Point"
       },
@@ -4385,47 +4635,12 @@
       },
       "geometry": {
         "coordinates": [
-          -111.762688,
-          34.862379
+          -111.762675,
+          34.8624
         ],
         "type": "Point"
       },
       "id": "ee5581dc4fb62143db8526a15b679012"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "null",
-        "type": "arcs"
-      },
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              -111.762757,
-              34.862057
-            ],
-            [
-              -111.762757,
-              34.862027
-            ],
-            [
-              -111.762599,
-              34.862028
-            ],
-            [
-              -111.762599,
-              34.862056
-            ],
-            [
-              -111.762757,
-              34.862057
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      },
-      "id": "f0247a7f968536e3750a21621747fc8c"
     },
     {
       "type": "Feature",
@@ -4456,6 +4671,41 @@
         "type": "Point"
       },
       "id": "f53a4093086c2da048b5a5d72eb2b7ac"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "parking",
+        "type": "area"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -111.762691,
+              34.861202
+            ],
+            [
+              -111.762612,
+              34.861657
+            ],
+            [
+              -111.762445,
+              34.861657
+            ],
+            [
+              -111.762528,
+              34.861182
+            ],
+            [
+              -111.762691,
+              34.861202
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": "f7ce1a22aa0db10e1c5c4fd443b6d3d7"
     },
     {
       "type": "Feature",
