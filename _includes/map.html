@@ -821,7 +821,7 @@
   <span class="sidebar-result-icon" data-type="handicap-bathroom"><img src="{{ '/assets/icons/map/accessible.png' | relative_url }}" alt="" class="map-icon-png"></span>
   <span class="sidebar-result-icon" data-type="parking-handicap"><img src="{{ '/assets/icons/map/accessible.png' | relative_url }}" alt="" class="map-icon-png"></span>
   <span class="sidebar-result-icon" data-type="bike-rack"><img src="{{ '/assets/icons/map/bike-rack.png' | relative_url }}" alt="" class="map-icon-png"></span>
-  <span class="sidebar-result-icon" data-type="patio-de-las-campanas"><img src="{{ '/assets/icons/map/patio-de-las-campanas.png' | relative_url }}" alt="" class="map-icon-png"></span>
+  <span class="sidebar-result-icon" data-type="arcs"><img src="{{ '/assets/icons/map/patio-de-las-campanas.png' | relative_url }}" alt="" class="map-icon-png"></span>
 </template>
 
 <script>
@@ -1151,7 +1151,7 @@
         });
 
         // SVG markers for special point/polygon features
-        const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'bike-rack', 'bell-tower', 'wind-sculpture-garden', 'wind-sculpture-garden-1', 'wind-sculpture-garden-2', 'wind-sculpture-garden-3']);
+        const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'bike-rack', 'bell-tower', 'wind-sculpture-garden', 'wind-sculpture-garden-1', 'wind-sculpture-garden-2', 'wind-sculpture-garden-3', 'arcs']);
         const polygonSvgTypes = new Set(['parking']);
         geojson.features.forEach(feature => {
           const { type: featureType, id: featureId } = feature.properties || {};
