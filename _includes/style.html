@@ -14,6 +14,8 @@
     .card { flex: 1 1 500px; }
   }
 
+  .btn { text-transform: uppercase; }
+
   :root {
     /* Header */
     --header-height: 71px;
@@ -228,7 +230,7 @@ html, body {
 
   h1 { font-size: clamp(45px, 6vw, 90px); }
   h2 { font-size: clamp(28px, 3vw, 45px); }
-  h3 { font-size: clamp(24px, 3vw, 40px); }
+  h3 { font-size: clamp(24px, 3vw, 35px); }
   h4 { font-size: clamp(18px, 3vw, 34px); }
 
   h5, h6 {
@@ -264,11 +266,16 @@ html, body {
     z-index: 10;
     width: 100%;
     anchor-name: --header;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto var(--header-status-height);
-    align-items: center;
     view-transition-name: header;
+
+    > .wrapper {
+      max-width: 1440px;
+      margin-inline: auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+    }
   }
 
   @media (min-width: 771px) {
@@ -558,8 +565,6 @@ html, body {
     font-size: clamp(12px, 1.7vw, 15px);
     font-weight: 500;
     width: 100%;
-    grid-column: 1 / -1;
-    grid-row: 2;
   }
 
   #weather {
@@ -574,11 +579,13 @@ html, body {
 
   @media (max-width: 770px) {
     header {
+      padding-top: max(0px, env(safe-area-inset-top, 0px));
+    }
+
+    header > .wrapper {
       display: grid;
       grid-template-columns: 1fr 2fr 1fr;
-      grid-template-rows: auto auto;
       align-items: start;
-      padding-top: max(0px, env(safe-area-inset-top, 0px));
 
       a.logo {
         grid-column: 2;
@@ -773,7 +780,6 @@ html, body {
       padding: 12px 24px;
       color: var(--cream);
       border: 1px solid var(--cream);
-      text-transform: uppercase;
       text-decoration: none;
       font-size: 1.333rem;
       letter-spacing: 0.03em;

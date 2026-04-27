@@ -9,49 +9,52 @@ layout_type: hours
 {% assign transition-name = page.layout_type %}
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
+{% assign hours = site.data.hours %}
+{% assign s = hours.sections %}
+
 <div class="content-wrapper">
-  <h5 title="visit">Visit</h5>
-  <h2>Plan your visit to our vibrant village.</h2>
-  <h6>Home to over 50 world-class shops, galleries, and dining experiences set amid distinctive architecture and beautifully landscaped grounds.</h6>
+  <h5 title="visit">{{ hours.intro.eyebrow }}</h5>
+  <h2>{{ hours.intro.heading }}</h2>
+  <h6>{{ hours.intro.subheading }}</h6>
 
   {% assign jump_nav_links = "locations,village_map,parking,accessibility,family_friendly" | split: "," %}
   {% assign jump_nav_slugs = "hours" %}
   {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
 
-  <h3 id="hours">Hours</h3>
+  <h3 id="hours">{{ s.hours.heading }}</h3>
   <div class="two-col-30">
     <table id="storeHours">
       <caption>
         <h7>
-          {% include icons/clock.svg %} The village is open today <span id="todayHours"></span>
+          {% include icons/clock.svg %} {{ s.hours.caption_prefix }} <span id="todayHours"></span>
         </h7>
       </caption>
       {% assign days = "monday,tuesday,wednesday,thursday,friday,saturday,sunday" | split: "," %}
       {% for day in days %}
-        <tr data-day="{{ day }}" data-hours="{{ site.data.hours.village_hours[day] }}">
+        <tr data-day="{{ day }}" data-hours="{{ hours.village_hours[day] }}">
           <td>
             <p>{{ day | capitalize }}</p>
           </td>
           <td>
-            <p>{{ site.data.hours.village_hours[day] }}</p>
+            <p>{{ hours.village_hours[day] }}</p>
           </td>
         </tr>
       {% endfor %}
     </table>
     <div class="hours-notes">
-      <p>{{ site.data.hours.notes.restaurants }}</p>
-      <p>{{ site.data.hours.notes.holidays }}</p>
+      <p>{{ hours.notes.restaurants }}</p>
+      <p>{{ hours.notes.holidays }}</p>
     </div>
   </div>
   <script src="{{ '/assets/js/store/hours.js' | relative_url }}"></script>
 
   <hr>
 
-  <h3 id="locations">Locations</h3>
-  <p>Located in the heart of Sedona on the North and South sides of scenic Highway 179, Tlaquepaque’s locations are easily accessible from all major Arizona destinations and airports.</p>
+  <h3 id="locations">{{ s.locations.heading }}</h3>
+  <p>{{ s.locations.description }}</p>
 
   <div class="list-container">
-    {% for location in site.data.hours.locations %}
+    {% for location in hours.locations %}
       <div class="card">
         <figure>
           {% include responsive-card-image.html src=location.image alt='location.name' %}
@@ -67,37 +70,37 @@ layout_type: hours
 
   <hr>
 
-  <h3 id="village-map">Village Map</h3>
+  <h3 id="village-map">{{ s.village_map.heading }}</h3>
 
-  <iframe src="{{ '/map_embed' | relative_url }}" loading="lazy" title="Village Map" style="width:100%;height:500px;border:none" allowfullscreen></iframe>
+  <iframe src="{{ '/map_embed' | relative_url }}" loading="lazy" title="{{ s.village_map.iframe_title }}" style="width:100%;height:500px;border:none" allowfullscreen></iframe>
 
-  <p>{{ site.data.hours.notes.village_map }}</p>
+  <p>{{ hours.notes.village_map }}</p>
 
   <hr>
 
-  <h3 id="parking">Parking & Shuttle</h3>
-  <p>Limited free parking is available onsite for village visitors only.</p>
-  <p>The Sedona Shuttle offers a convenient, free alternative means of transportation and can be boarded at the Sedona Municipal Parking lot at Jordan and Schnebly roads.</p>
-  <a href="/parking" class="btn btn-primary" style="width: 300px;">Learn more</a>
+  <h3 id="parking">{{ s.parking.heading }}</h3>
+  <p><strong>{{ s.parking.intro }}</strong></p>
+  <p>{{ s.parking.description }}</p>
+  <a href="{{ s.parking.cta_url }}" class="btn btn-primary" style="width: 300px;">{{ s.parking.cta_text }}</a>
 
   <hr>
 
   <div id="accessibility" class="list-container">
     <div class="card">
-      <h3>Accessibility</h3>
+      <h3>{{ s.accessibility.heading }}</h3>
       <figure>
-        {% include responsive-card-image.html src=site.data.hours.accessibility.image alt='Accessibility Icon' %}
+        {% include responsive-card-image.html src=hours.accessibility.image alt='Accessibility Icon' %}
       </figure>
-      <p>Accessible parking, entrances, and restrooms are available throughout Tlaquepaque North and South. All accessible features can be easily located on the village map for convenient navigation during your visit. While wheelchair rentals are not available on property, guests are welcome to bring their own mobility devices.</p>
+      <p>{{ s.accessibility.description }}</p>
     </div>
 
     <div class="card" id="family-friendly">
-      <h3>Family and Dog Friendly</h3>
+      <h3>{{ s.family_friendly.heading }}</h3>
       <figure>
-        {% include responsive-card-image.html src=site.data.hours.family_friendly.image alt='Family and Dog Friendly Icon' %}
+        {% include responsive-card-image.html src=hours.family_friendly.image alt='Family and Dog Friendly Icon' %}
       </figure>
-      <p>Tlaquepaque is a family-friendly destination with shops, dining, and events for visitors of all ages. We welcome leashed pets and offer water sources near the village restrooms.</p>
-      <p>Please never under any circumstances leave your pets unattended in your vehicle due to the potential dangers of Arizona's extreme heat.</p>
+      <p>{{ s.family_friendly.description }}</p>
+      <p>{{ s.family_friendly.warning }}</p>
     </div>
   </div>
 </div>

@@ -1,3 +1,32 @@
+intro:
+  eyebrow: Visit
+  heading: Plan your visit to our vibrant village.
+  subheading: Home to over 50 world-class shops, galleries, and dining experiences set amid distinctive architecture and beautifully landscaped grounds.
+
+sections:
+  hours:
+    heading: Hours
+    caption_prefix: The village is open today
+  locations:
+    heading: Locations
+    description: Located in the heart of Sedona on the North and South sides of scenic Highway 179, Tlaquepaque’s locations are easily accessible from all major Arizona destinations and airports.
+  village_map:
+    heading: Village Map
+    iframe_title: Village Map
+  parking:
+    heading: Parking & Shuttle
+    intro: Limited free parking is available onsite for village visitors only.
+    description: The Sedona Shuttle offers a convenient, free alternative means of transportation and can be boarded at the Sedona Municipal Parking lot at Jordan and Schnebly roads.
+    cta_text: Learn more
+    cta_url: /parking
+  accessibility:
+    heading: Accessibility
+    description: Accessible parking, entrances, and restrooms are available throughout Tlaquepaque North and South. All accessible features can be easily located on the village map for convenient navigation during your visit. While wheelchair rentals are not available on property, guests are welcome to bring their own mobility devices.
+  family_friendly:
+    heading: Family and Dog Friendly
+    description: Tlaquepaque is a family-friendly destination with shops, dining, and events for visitors of all ages. We welcome leashed pets and offer water sources near the village restrooms.
+    warning: Please never under any circumstances leave your pets unattended in your vehicle due to the potential dangers of Arizona's extreme heat.
+
 jump_to_links:
   locations:
     text: LOCATIONS

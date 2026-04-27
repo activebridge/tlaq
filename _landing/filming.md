@@ -9,5 +9,5 @@ alt: Tlaquepaque village setting
 description: "To help preserve the experience of our village guests and tenants, all professional photography and filming sessions require a permit."
 link:
   url: "/filming-photography"
-  text: "Filming & Photography Permits"
+  text: "Learn More"
 ---
