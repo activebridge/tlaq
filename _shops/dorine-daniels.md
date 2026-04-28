@@ -11,7 +11,7 @@ suite: b106
 phone: (928) 282-5838
 website: ''
 coordinates: -111.7630565, 34.8620697
-image: /assets/images/shops/172827266.Z7Q8OJ2a.1352_DvonBriesen__81A4562-Edit.jpg
+image: /assets/images/shops/Dorine_Ext.jpg
 interior_image: ''
 instagram: ''
 facebook: ''
