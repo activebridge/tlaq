@@ -12,8 +12,8 @@ suite: a107
 phone: (928) 282-4256
 website: https://houseoftheshalako.com
 coordinates: -111.7625608, 34.8621455
-image: /assets/images/shops/37A8112-Edit.jpg
-interior_image: /assets/images/shops/172826477.zoJOs2ic.1297_DvonBriesen_BU__81A3761.jpg
+image: /assets/images/shops/Ninibah_Ext.jpg
+interior_image: /assets/images/shops/Ninibah_Int.jpg
 instagram: ''
 facebook: ''
 full_location: 336 AZ-179 Suite A107, Sedona, AZ 86336
