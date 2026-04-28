@@ -11,7 +11,7 @@ suite: a120
 phone: (928) 282-2030
 website: https://redcanyoncollections.com
 coordinates: -111.762827, 34.8621095
-image: /assets/images/shops/_37A8111-HDR.jpg
+image: /assets/images/shops/37A8111-HDR.jpg
 interior_image: /assets/images/shops/173705340.lcpT1QOG.1969W_DvonBriesen__P4A2164Edit.jpg
 instagram: ''
 facebook: ''

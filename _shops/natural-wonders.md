@@ -12,7 +12,7 @@ suite: a210
 phone: (928) 282-1334
 website: https://naturalwonders-sedona.com
 coordinates: -111.7627983, 34.8621982
-image: /assets/images/shops/_37A7967.jpg
+image: /assets/images/shops/37A7967.jpg
 interior_image: /assets/images/shops/173677178.gWTUnyuh.1949W_DvonBriesen__P4A1831.jpg
 instagram: ''
 facebook: ''

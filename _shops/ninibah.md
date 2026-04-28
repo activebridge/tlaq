@@ -12,7 +12,7 @@ suite: a107
 phone: (928) 282-4256
 website: https://houseoftheshalako.com
 coordinates: -111.7625608, 34.8621455
-image: /assets/images/shops/_37A8112-Edit.jpg
+image: /assets/images/shops/37A8112-Edit.jpg
 interior_image: /assets/images/shops/172826477.zoJOs2ic.1297_DvonBriesen_BU__81A3761.jpg
 instagram: ''
 facebook: ''
