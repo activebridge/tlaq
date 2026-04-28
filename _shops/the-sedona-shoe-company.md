@@ -14,8 +14,8 @@ suite: b107
 phone: (928) 282-2223
 website: https://www.sedonashoeco.com
 coordinates: -111.763056, 34.8621263
-image: /assets/images/shops/172827275.xDf5rTT6.1361_DvonBriesen__81A4646-Edit.jpg
-interior_image: /assets/images/shops/172827274.JTqrfTIw.1360_DvonBriesen__81A4618.jpg
+image: /assets/images/shops/Sedona_Shoe_Ext.jpg
+interior_image: /assets/images/shops/Sedona_Shoe_Int.jpg
 instagram: https://www.instagram.com/sedonashoeco/
 facebook: https://www.facebook.com/sedonashoeco/
 full_location: 336 AZ-179 Suite B107, Sedona, AZ 86336
