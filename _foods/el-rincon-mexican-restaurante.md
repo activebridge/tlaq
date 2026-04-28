@@ -16,7 +16,7 @@ phone: (928) 282-4648
 website: https://www.elrinconrestaurant.com
 coordinates: -111.7626513, 34.8617978
 image: /assets/images/foods/El_Rincon_Ext.jpg
-interior_image: /assets/images/foods/172823914.v9ZSd5aO.0672_DvonBriesen__81A6344-Edit.jpg
+interior_image: /assets/images/foods/El_Rincon_Int.jpg
 instagram: https://www.instagram.com/elrinconrestaurantemexicano/
 facebook: https://www.facebook.com/ElRinconSedona/
 full_location: 336 AZ-179 Suite A112, Sedona, AZ 86336
