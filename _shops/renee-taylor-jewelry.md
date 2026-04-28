@@ -11,8 +11,8 @@ suite: b14
 phone: (928) 282-1506
 website: https://www.reneetaylorgallery.com
 coordinates: -111.7633365, 34.8632160
-image: /assets/images/shops/172827291.rTOp5ujx.1377_DvonBriesen__81A5321-HDR.jpg
-interior_image: /assets/images/shops/176005264.aQlCDTka.3049W_DvonBriesen__37A6039.jpg
+image: /assets/images/shops/Renee_Taylor_Jewelry_Ext.jpg
+interior_image: /assets/images/shops/Renee_Taylor_Jewlery_Int.jpg
 instagram: https://www.instagram.com/reneetaylorgallery/
 facebook: https://www.facebook.com/ReneeTaylorJewelry/
 full_location: 313 AZ-179 Suite B14, Sedona, AZ 86336
