@@ -2,19 +2,20 @@
 slug: creative-gateways
 date: 2026-02-24
 published: true
+title: Creative Gateways Gallery
+subtitle: Contemporary art glass, interior accessories & wearable art
 tags:
   - gallery
   - glass art
   - art gallery
   - wearable art
   - home decor
-title: Creative Gateways Gallery
-subtitle: Contemporary art glass, interior accessories & wearable art
 suite: b125
 phone: (928) 282-1212
 website: https://creativegateways.com
-coordinates: "-111.7631764, 34.862281"
-image: "assets/images/galleries/creative-gateways.webp"
+coordinates: -111.7631764, 34.862281
+image: /assets/images/galleries/Creative_Gateways_Ext.jpg
+interior_image: /assets/images/galleries/Creative_Gateways_Int.jpg
 instagram: https://www.instagram.com/creativegatewaysgalleries/
 facebook: https://www.facebook.com/creativegatewaysgallery/
 full_location: 336 AZ-179 Suite B125, Sedona, AZ 86336
@@ -22,4 +23,5 @@ store_hours:
   monday: 10:00 am - 5:00 pm
   friday: 10:00 am - 6:00 pm
 ---
+
 Creative Gateways art gallery is one of the most visually exciting galleries in the country. Exhibiting approximately 35 local, national, and international artists. The exceptional collection includes art glass, wall art, metal sculpture, along with every day and unique fine jewelry. Since its beginning, Creative Gateways has been representing some of the most prominent glass artists in the country. It was among the first three shops to open in Tlaquepaque and was started in Sedona by Will Hardwick and Deanne Sabeck in 1973.
