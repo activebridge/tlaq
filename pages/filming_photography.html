@@ -13,18 +13,26 @@ layout_type: filming-photography
   <hgroup style="view-transition-name: title-{{transition-name}};">
     <h5 title>{{ site.data.filming-photography.title }}</h5>
     <h2>{{ site.data.filming-photography.subtitle }}</h2>
-    <h6>{{ site.data.filming-photography.description }}</h6>
+    <p>{{ site.data.filming-photography.intro }}</p>
   </hgroup>
+  <hr>
 
-  <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.filming-photography.buttons.request_a_permit }}</a>
-
-  {% for section in site.data.filming-photography.sections %}
-    <h3>{{ section.title }}</h3>
-    <ul>
-      {% for item in section.items %}
-        <li>{{ item }}</li>
+  <section>
+    <article>
+      {% for p in site.data.filming-photography.left_column %}
+        <p>{{ p }}</p>
       {% endfor %}
-    </ul>
-  {% endfor %}
-  <h6>{{ site.data.filming-photography.wedding_exemption_note }}</h6>
+      <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.filming-photography.buttons.request_a_permit }}</a>
+    </article>
+
+    <article>
+      {% for section in site.data.filming-photography.sections %}
+        <h3>{{ section.title }}</h3>
+        <ul>
+          {% for item in section.items %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+      {% endfor %}
+      <p>{{ site.data.filming-photography.wedding_exemption_note }}</p>
+    </article>
+  </section>
 </div>
