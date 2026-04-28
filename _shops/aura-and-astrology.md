@@ -11,7 +11,7 @@ suite: a208
 phone: (623) 341-8608
 website: ''
 coordinates: ''
-image: /assets/images/shops/172824980.OUUOKX1Z.0932_DvonBriesen__81A3524.jpg
+image: /assets/images/shops/_37A8243.jpg
 interior_image: /assets/images/shops/_37A8245-Aura.jpg
 instagram: ''
 facebook: https://www.facebook.com/profile.php?id=61575406721339#
