@@ -139,14 +139,6 @@ header {
   }
 
   nav#desktop {
-    a.nav-weddings {
-      color: var(--pink-light);
-
-      &::after {
-        background: var(--pink-light);
-      }
-    }
-
     button#discover-popover-anchor {
       anchor-name: --discover-popover-anchor;
     }
@@ -1184,7 +1176,11 @@ form {
 
     cursor: pointer;
 
-    span.btn { margin-top: 0.75rem; }
+    span.btn {
+      margin-top: 0.75rem;
+      width: fit-content;
+      min-width: 0;
+    }
 
     input[type="file"] {
       position: absolute;
@@ -1839,6 +1835,32 @@ dialog {
     p { margin: 0 0 1rem; }
     ul { margin-bottom: 1rem; }
     article:first-of-type::after { display: none; }
+  }
+}
+
+.call-for-submission {
+  @media (max-width: 770px) {
+    .content-wrapper > hr { display: none; }
+  }
+
+  .content-wrapper > section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+
+    @media (max-width: 770px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    > article:first-of-type {
+      display: grid;
+      gap: 3rem;
+      align-content: start;
+      h6 { margin: 0; }
+      &::after { display: none; }
+    }
   }
 }
 
