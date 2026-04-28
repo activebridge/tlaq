@@ -15,8 +15,8 @@ suite: c11
 phone: (928) 862-4140
 website: https://theartistskitchenshop.myshoplocal.com/
 coordinates: -111.7628307, 34.8632704
-image: assets/images/shops/the-artists-kitchen-shop.webp
-interior_image: /assets/images/shops/172949575.x7FLh7c5.1531W_Dvon_d-Edit.jpg
+image: /assets/images/shops/Artist_Kitchen_Ext.jpg
+interior_image: /assets/images/shops/Artist_Kitchen_Int.jpg
 instagram: https://www.instagram.com/theartistskitchenshop/
 facebook: https://www.facebook.com/theartistskitchenshop/
 full_location: 336 AZ-179 Suite C11, Sedona, AZ 86336
