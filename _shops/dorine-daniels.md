@@ -12,6 +12,7 @@ phone: (928) 282-5838
 website: ''
 coordinates: -111.7630565, 34.8620697
 image: /assets/images/shops/172827266.Z7Q8OJ2a.1352_DvonBriesen__81A4562-Edit.jpg
+interior_image: ''
 instagram: ''
 facebook: ''
 full_location: 336 AZ-179 Suite B106, Sedona, AZ 86336
