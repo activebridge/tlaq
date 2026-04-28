@@ -1,4 +1,8 @@
 title: Contacts
+heading: Let us know how we can help
+intro: You'll discover much of what you need to know here on the site, but if you have a question or need more information, we're just a call or message away.
+lost_title: Lost something?
+lost_content: Visit the Pink Jeep Information Kiosk in Patio de las Rosas or email visitorsinfo@tlaq.com for assistance.
 hero_banner: "assets/images/landing/contacts.webp"
 items:
   - title: Address
@@ -11,7 +15,7 @@ items:
     content: (928) 282-4805
   - title: Email
     content: visitorinfo@tlaq.com
-follow_us: Follow Us
+follow_us: Follow us
 facebook: "https://www.facebook.com/tlaqsedona/"
 instagram: "https://www.instagram.com/tlaqsedona/"
 buttons:
