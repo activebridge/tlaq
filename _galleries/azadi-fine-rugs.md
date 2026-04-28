@@ -15,7 +15,7 @@ phone: (928) 203-0400
 website: https://www.azadifinerugs.com
 coordinates: -111.7635189, 34.8622013
 image: /assets/images/galleries/Azadi_Ext.jpg
-interior_image: /assets/images/galleries/Azadi_Int.jpg
+interior_image: ''
 instagram: https://www.instagram.com/azadifinerugs/
 facebook: https://www.facebook.com/azadifinerugsaz/
 full_location: 336 AZ-179 Suite B219, Sedona, AZ 86336
