@@ -16,6 +16,7 @@ phone: (928) 862-4141
 website: https://www.pumphousestation.com
 coordinates: -111.7625313, 34.8630006
 image: /assets/images/foods/Pumphouse_Ext.jpg
+interior_image: /assets/images/foods/Pumphouse_Int.jpg
 instagram: https://www.instagram.com/sedonapumphouse/
 facebook: https://www.facebook.com/pumphousestationsedona/
 full_location: 313 AZ-179 Suite D10, Sedona, AZ 86336
