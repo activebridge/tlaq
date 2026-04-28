@@ -97,7 +97,7 @@ h1 { z-index: 1 }
 
 hgroup {
   display: grid;
-  gap: 1.25rem;
+  gap: 2rem;
 }
 
 h5 {
@@ -1671,6 +1671,23 @@ dialog {
     margin-bottom: 0.75rem;
 
     &:last-of-type + hr { display: none; }
+  }
+}
+
+.filming-photography {
+  .content-wrapper > section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 5rem);
+
+    @media (max-width: 770px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    p { margin: 0 0 1rem; }
+    ul { margin-bottom: 1rem; }
+    article:first-of-type::after { display: none; }
   }
 }
 
