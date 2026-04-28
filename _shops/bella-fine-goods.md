@@ -7,11 +7,13 @@ subtitle: Specialty goods from around the world
 tags:
   - gifts
   - shop
+  - furniture
 suite: b122
 phone: (928) 282-0255
 website: https://bellafinegoods.com
 coordinates: -111.7632, 34.8620793
 image: /assets/images/shops/_37A8073-HDR.jpg
+interior_image: /assets/images/shops/_37A8075-Bella.jpg
 instagram: https://www.instagram.com/bellafinegoodssedona/
 facebook: https://www.facebook.com/bellafinegoods/
 full_location: 336 AZ-179 Suite B122, Sedona, AZ 86336
