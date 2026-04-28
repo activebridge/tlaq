@@ -11,8 +11,8 @@ suite: a208
 phone: (623) 341-8608
 website: ''
 coordinates: ''
-image: /assets/images/shops/_37A8243.jpg
-interior_image: /assets/images/shops/_37A8245-Aura.jpg
+image: /assets/images/shops/37A8243.jpg
+interior_image: /assets/images/shops/37A8245-Aura.jpg
 instagram: ''
 facebook: https://www.facebook.com/profile.php?id=61575406721339#
 full_location: 336 AZ-179 Suite A208, Sedona, AZ 86336

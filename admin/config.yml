@@ -53,7 +53,7 @@ collections:
             media_folder: "/assets/images/awards"
             public_folder: "/assets/images/awards"
             fields:
-              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - { label: "Alt", name: "alt", widget: "string" }
               - { name: "width", widget: "hidden" }
               - { name: "height", widget: "hidden" }
@@ -81,7 +81,7 @@ collections:
                   - { label: "Type", name: "type", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "string" }
-                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
 
   - name: "landing"
     label: "Landing Sections"
@@ -94,7 +94,7 @@ collections:
         fields:
           - { label: "Section", name: "section", widget: "hidden", default: "banner" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large hero heading displayed over the banner image/video." }
-          - { label: "Image", name: "image", widget: "image", hint: "Fallback image shown when the background video cannot autoplay (e.g. low-power mode, slow connection). Also used for social sharing previews." }
+          - { label: "Image", name: "image", widget: "image", hint: "Fallback image shown when the background video cannot autoplay (e.g. low-power mode, slow connection). Also used for social sharing previews. Filename must not start with an underscore" }
           - label: "Button"
             name: "button"
             widget: "object"
@@ -153,7 +153,7 @@ collections:
             widget: "object"
             hint: "Main spotlight story shown at the top of the section."
             fields:
-              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - { label: "Alt", name: "alt", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
@@ -162,7 +162,7 @@ collections:
             widget: "list"
             hint: "Secondary news cards shown in a grid below the featured story."
             fields:
-              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - { label: "Alt", name: "alt", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
@@ -176,7 +176,7 @@ collections:
           - { label: "Section", name: "section", widget: "hidden", default: "articles" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the magazine content." }
           - { label: "Title", name: "title", widget: "string", hint: "Section label shown in the header." }
-          - { label: "Image", name: "image", widget: "image", hint: "Magazine cover photo displayed in the section." }
+          - { label: "Image", name: "image", widget: "image", hint: "Magazine cover photo displayed in the section. Filename must not start with an underscore" }
           - { label: "Alt Text", name: "alt", widget: "string", hint: "Alt text for the magazine cover image." }
           - { label: "Description", name: "description", widget: "text", hint: "Body text shown beside the magazine cover." }
           - label: "Links"
@@ -201,7 +201,7 @@ collections:
             widget: "list"
             hint: "3-photo collage layout."
             fields:
-              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - { label: "Alt", name: "alt", widget: "string" }
           - label: "Link"
             name: "link"
@@ -219,7 +219,7 @@ collections:
           - { label: "Section", name: "section", widget: "hidden", default: "articles" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the filming content." }
           - { label: "Title", name: "title", widget: "string", hint: "Section label shown in the header." }
-          - { label: "Image", name: "image", widget: "image", hint: "Feature image displayed in the section." }
+          - { label: "Image", name: "image", widget: "image", hint: "Feature image displayed in the section. Filename must not start with an underscore" }
           - { label: "Alt Text", name: "alt", widget: "string", hint: "Alt text for the feature image." }
           - { label: "Description", name: "description", widget: "text", hint: "Body text shown beside or below the image." }
           - label: "Link"
@@ -536,7 +536,7 @@ collections:
         media_folder: "/assets/images/about"
         public_folder: "/assets/images/about"
         fields:
-          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the About page." }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the About page. Filename must not start with an underscore" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large h2 heading shown at the top of the page." }
           - { label: "Subheading", name: "subheading", widget: "text", hint: "Smaller h6 text shown below the heading." }
           - label: "History"
@@ -545,7 +545,7 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text", hint: "Paragraph shown below the history image, above the button." }
-              - { label: "Image", name: "image", widget: "image", hint: "Feature image shown beside the history text on the About page." }
+              - { label: "Image", name: "image", widget: "image", hint: "Feature image shown beside the history text on the About page. Filename must not start with an underscore" }
               - { label: "Button Text", name: "button_text", widget: "string" }
           - label: "Village Map"
             name: "village_map"
@@ -565,7 +565,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image" }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - label: "Outdoor Art"
                 name: "outdoor_art"
                 widget: "object"
@@ -580,7 +580,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image" }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - label: "Landscaping"
                 name: "landscaping"
                 widget: "object"
@@ -590,7 +590,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image" }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - label: "Sycamore"
                 name: "sycamore"
                 widget: "object"
@@ -600,7 +600,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image" }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - label: "Our People"
                 name: "our_people"
                 widget: "object"
@@ -610,14 +610,14 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image" }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
       - name: "call_for_submission"
         label: "Call for Submission"
         file: "_data/call-for-submission.yml"
         media_folder: "/assets/images/call-for-submission"
         public_folder: "/assets/images/call-for-submission"
         fields:
-          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the page." }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the page. Filename must not start with an underscore" }
           - { label: "Eyebrow", name: "eyebrow", widget: "string" }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Intro", name: "intro", widget: "text" }
@@ -645,8 +645,8 @@ collections:
           - { label: "Title", name: "title", widget: "string", hint: "Small eyebrow text above the page subtitle (e.g. 'History')." }
           - { label: "Subtitle", name: "subtitle", widget: "string", hint: "Main page headline shown below the hero banner." }
           - { label: "Description", name: "description", widget: "text", hint: "Short intro paragraph below the subtitle." }
-          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Full-width banner image at the top of the page." }
-          - { label: "Cover Image", name: "cover", widget: "image", hint: "Wide image shown under the page header, above the Vision block." }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Full-width banner image at the top of the page. Filename must not start with an underscore" }
+          - { label: "Cover Image", name: "cover", widget: "image", hint: "Wide image shown under the page header, above the Vision block. Filename must not start with an underscore" }
           - { label: "Cover Image Alt", name: "cover_alt", widget: "string", hint: "Short description of the cover image for screen readers." }
           - label: "Vision Section"
             name: "vision"
@@ -654,14 +654,14 @@ collections:
             hint: "Intro block with rotated label, body text, image collage, and footnotes."
             fields:
               - { label: "Label", name: "label", widget: "string", hint: "Rotated vertical label on the left of the text column (e.g. 'VISION'). Keep short, uppercase." }
-              - { label: "Decorative Image Behind Text", name: "background", widget: "image", hint: "Shown faded (≈25% opacity) behind the text column as a soft backdrop — not the main photo. Pick something atmospheric; fine details will not be readable." }
+              - { label: "Decorative Image Behind Text", name: "background", widget: "image", hint: "Shown faded (≈25% opacity) behind the text column as a soft backdrop — not the main photo. Pick something atmospheric; fine details will not be readable. Filename must not start with an underscore" }
               - { label: "Text", name: "text", widget: "text", hint: "Body copy. Separate paragraphs with a blank line — they render as distinct paragraphs." }
               - label: "Images"
                 name: "images"
                 widget: "list"
                 hint: "Collage shown in the right column. First image renders wide on top, next two render side-by-side underneath. Use 3 images for the intended layout."
                 fields:
-                  - { label: "Image", name: "image", widget: "image", hint: "Photo for this collage slot." }
+                  - { label: "Image", name: "image", widget: "image", hint: "Photo for this collage slot. Filename must not start with an underscore" }
                   - { label: "Alt Text", name: "alt", widget: "string", hint: "Short description for screen readers and SEO. Describe what's in the photo." }
               - label: "Footnotes"
                 name: "footnotes"
@@ -675,14 +675,14 @@ collections:
             fields:
               - { label: "ID", name: "id", widget: "string", hint: "URL anchor for this block (e.g. 'inspiration'). Lowercase, hyphenated, no spaces." }
               - { label: "Label", name: "label", widget: "string", hint: "Rotated vertical label shown in the text column (e.g. 'INSPIRATION'). Keep short, uppercase." }
-              - { label: "Decorative Image Behind Text", name: "background", widget: "image", hint: "Shown faded (≈25% opacity) behind the text column as a soft backdrop — not the main photo. Pick something atmospheric; fine details will not be readable." }
+              - { label: "Decorative Image Behind Text", name: "background", widget: "image", hint: "Shown faded (≈25% opacity) behind the text column as a soft backdrop — not the main photo. Pick something atmospheric; fine details will not be readable. Filename must not start with an underscore" }
               - { label: "Text", name: "text", widget: "text", hint: "Body copy. Separate paragraphs with a blank line — they render as distinct paragraphs." }
               - label: "Images"
                 name: "images"
                 widget: "list"
                 hint: "Collage for this block. First image renders wide on top, next two render side-by-side underneath. Use 3 images for the intended layout."
                 fields:
-                  - { label: "Image", name: "image", widget: "image", hint: "Photo for this collage slot." }
+                  - { label: "Image", name: "image", widget: "image", hint: "Photo for this collage slot. Filename must not start with an underscore" }
                   - { label: "Alt Text", name: "alt", widget: "string", hint: "Short description for screen readers and SEO. Describe what's in the photo." }
               - label: "Footnotes"
                 name: "footnotes"
@@ -742,17 +742,17 @@ collections:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Address", name: "address", widget: "string" }
               - { label: "Google Maps URL", name: "maps_url", widget: "string" }
-              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Accessibility"
             name: "accessibility"
             widget: "object"
             fields:
-              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Family Friendly"
             name: "family_friendly"
             widget: "object"
             fields:
-              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
       - name: "hours_defaults"
         label: "Default Store Hours"
         file: "_data/store/hours_defaults.yml"
@@ -791,7 +791,7 @@ collections:
         media_folder: "/assets/images/parking"
         public_folder: "/assets/images/parking"
         fields:
-          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Notes"
             name: "notes"
             widget: "object"
@@ -822,7 +822,7 @@ collections:
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Boarding", name: "boarding", widget: "string" }
               - { label: "Link Text", name: "link_text", widget: "string" }
-              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
       - name: "village_map"
         label: "Village Map"
         file: "pages/village_map.html"
@@ -842,7 +842,7 @@ collections:
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Weddings Label", name: "weddings", widget: "string" }
           - { label: "Venues Label", name: "venues", widget: "string" }
-          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Gallery"
             name: "gallery"
             widget: "object"
@@ -860,14 +860,14 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Brochure URL", name: "brochure_url", widget: "string" }
-              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Corporate & Private Events"
             name: "events"
             widget: "object"
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
-              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - { label: "Brochure URL", name: "brochure_url", widget: "string" }
           - label: "Buttons"
             name: "buttons"
@@ -906,7 +906,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Title", name: "title", widget: "string" }
-              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - { label: "Plan URL", name: "plan_url", widget: "string" }
       - name: "leasing"
         label: "Leasing"
@@ -916,7 +916,7 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
-          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Guidelines Intro", name: "guidelines_intro", widget: "text" }
           - label: "Sections"
@@ -941,7 +941,7 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
-          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - { label: "Description", name: "description", widget: "text" }
           - label: "Sections"
             name: "sections"
@@ -965,7 +965,7 @@ collections:
         public_folder: "/assets/images/privacy-policy"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Hero Image", name: "hero_banner", widget: "image" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - { label: "Copyright", name: "copyright", widget: "string" }
           - label: "Sections"
             name: "sections"
@@ -1040,14 +1040,14 @@ collections:
           - { label: "Submit Button", name: "submit", widget: "string" }
           - { label: "Success Message", name: "success", widget: "string" }
           - { label: "Error Message", name: "error", widget: "string" }
-          - { label: "Hero Image", name: "hero_image", widget: "image" }
+          - { label: "Hero Image", name: "hero_image", widget: "image", hint: "Filename must not start with an underscore" }
       - name: "gift_cards"
         label: "Gift Cards"
         file: "_data/gift_cards.yml"
         media_folder: "/assets/images"
         public_folder: "/assets/images"
         fields:
-          - { label: "Hero Banner", name: "hero_banner", widget: "image" }
+          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - { label: "Page Heading", name: "heading", widget: "string" }
           - { label: "Intro Paragraph", name: "intro", widget: "text" }
           - label: "Purchase Button"
@@ -1074,7 +1074,7 @@ collections:
         public_folder: "/assets/images"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Hero Banner", name: "hero_banner", widget: "image" }
+          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Contact Items"
             name: "items"
             widget: "list"
@@ -1099,7 +1099,7 @@ collections:
         public_folder: "/assets/images/weddings"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Hero Banner", name: "hero_banner", widget: "image" }
+          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "FAQ Items"
             name: "blocks"
             widget: "list"
@@ -1132,7 +1132,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false, hint: "Filename must not start with an underscore" }
       - { label: "Content", name: "body", widget: "markdown" }
 
   - name: "shops"
@@ -1160,8 +1160,8 @@ collections:
       - { label: "Phone", name: "phone", widget: "string" }
       - { label: "Website", name: "website", widget: "string", required: false }
       - { label: "Coordinates", name: "coordinates", widget: "string", required: false, hint: "Format: -111.76260, 34.86350. Optional if Suite is set." }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Interior Image", name: "interior_image", widget: "image", required: false, hint: "Optional interior photo shown as hero on the detail page." }
+      - { label: "Image", name: "image", widget: "image", required: false, hint: "Filename must not start with an underscore" }
+      - { label: "Interior Image", name: "interior_image", widget: "image", required: false, hint: "Optional interior photo shown as hero on the detail page. Filename must not start with an underscore" }
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
       - { label: "Full Location", name: "full_location", widget: "string", required: false }
@@ -1201,8 +1201,8 @@ collections:
       - { label: "Phone", name: "phone", widget: "string" }
       - { label: "Website", name: "website", widget: "string", required: false }
       - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350. Optional if Suite is set.", required: false }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Interior Image", name: "interior_image", widget: "image", required: false, hint: "Optional interior photo shown as hero on the detail page." }
+      - { label: "Image", name: "image", widget: "image", required: false, hint: "Filename must not start with an underscore" }
+      - { label: "Interior Image", name: "interior_image", widget: "image", required: false, hint: "Optional interior photo shown as hero on the detail page. Filename must not start with an underscore" }
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
       - { label: "Full Location", name: "full_location", widget: "string", required: false }
@@ -1246,8 +1246,8 @@ collections:
       - { label: "Phone", name: "phone", widget: "string" }
       - { label: "Website", name: "website", widget: "string", required: false }
       - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350. Optional if Suite is set.", required: false }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Interior Image", name: "interior_image", widget: "image", required: false, hint: "Optional interior photo shown as hero on the detail page." }
+      - { label: "Image", name: "image", widget: "image", required: false, hint: "Filename must not start with an underscore" }
+      - { label: "Interior Image", name: "interior_image", widget: "image", required: false, hint: "Optional interior photo shown as hero on the detail page. Filename must not start with an underscore" }
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
       - { label: "Full Location", name: "full_location", widget: "string", required: false }
@@ -1276,7 +1276,7 @@ collections:
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
-      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false, hint: "Filename must not start with an underscore" }
       - { label: "Suite", name: "suite", widget: "string", required: false }
       - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350", required: false }
       - label: "Intro"
@@ -1287,7 +1287,7 @@ collections:
         fields:
           - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
           - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Site Plan", name: "site_plan", widget: "image", required: false }
+      - { label: "Site Plan", name: "site_plan", widget: "image", required: false, hint: "Filename must not start with an underscore" }
       - { label: "Description", name: "body", widget: "markdown" }
 
   - name: "wedding-articles"
@@ -1305,7 +1305,7 @@ collections:
       - label: "Images"
         name: "images"
         widget: "list"
-        field: { label: "Image", name: "image", widget: "image" }
+        field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
       - { label: "Content", name: "body", widget: "markdown", required: false }
 
   - name: "events"
@@ -1324,7 +1324,7 @@ collections:
       - { label: "Starts At", name: "starts_at", widget: "datetime" }
       - { label: "Ends At", name: "ends_at", widget: "datetime", required: false, hint: "Usually same date as Starts At with a later end time. For Schedule Type: 'range', this is required and defines the from-to span end." }
       - { label: "Location", name: "location", widget: "string" }
-      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false, hint: "Filename must not start with an underscore" }
       - { label: "Video URL", name: "video_url", widget: "string", required: false, hint: "If set, the yearly event will display a video background instead of an image." }
       - { label: "Intro", name: "subtitle", widget: "text" }
       - { label: "Schedule Type", name: "schedule_type", widget: "select", options: ["single", "range", "weekly", "monthly", "yearly"], required: true, hint: "single: one date; range: daily from start to end; weekly: selected weekdays until Recurrence Until; monthly: first selected weekday(s) each month until Recurrence Until; yearly: repeats on the exact same calendar date every year — only use if the date never changes. For annual events with shifting dates (e.g. Day of the Dead), use 'single' and enable the Annual Event flag instead." }
