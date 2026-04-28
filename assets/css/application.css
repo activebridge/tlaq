@@ -1689,6 +1689,56 @@ dialog {
   @starting-style { &[open]::backdrop { opacity: 0; } }
 }
 
+/* Newsletter Page */
+
+.newsletter {
+  .content-wrapper {
+    display: grid;
+    gap: 1.5rem;
+
+    @media (max-width: 770px) {
+      > hr { display: none; }
+    }
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(2rem, 6vw, 6rem);
+    row-gap: 0;
+
+    .required-note {
+      grid-column: 1 / -1;
+      margin: 0 0 1rem;
+    }
+
+    .form-fields,
+    .form-consents {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .form-consents {
+      gap: 2rem;
+
+      fieldset { margin-top: 0; }
+
+      .btn.btn-primary { margin-top: auto; align-self: start; }
+    }
+
+    @media (max-width: 770px) {
+      grid-template-columns: 1fr;
+
+      .form-consents {
+        margin-top: 3rem;
+
+        .btn.btn-primary { width: 100%; }
+      }
+    }
+  }
+}
+
 /* Contacts Page */
 
 .contacts {

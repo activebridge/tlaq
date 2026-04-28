@@ -10,35 +10,46 @@ layout_type: page
 {% assign transition-name = "newsletter" %}
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
-<div class="content-wrapper">
-  <h5 title>{{ nl.eyebrow }}</h5>
-  <h2>{{ nl.title }}</h2>
-  <h6>{{ nl.description }}</h6>
-  <p><small>{{ nl.required_note }}</small></p>
+<article class="newsletter">
+  <div class="content-wrapper">
+    <hgroup style="view-transition-name: title-{{transition-name}};">
+      <h5 title>{{ nl.eyebrow }}</h5>
+      <h2>{{ nl.title }}</h2>
+      <p>{{ nl.description }}</p>
+    </hgroup>
 
-  <form id="subscribeForm"
-    data-success="{{ nl.success }}"
-    data-error="{{ nl.error }}">
+    <hr>
 
-    <input type="text" name="first_name" placeholder="{{ nl.first_name }} *" required>
-    <input type="text" name="last_name" placeholder="{{ nl.last_name }} *" required>
-    <input type="email" name="email" placeholder="{{ nl.email }} *" required>
-    <input type="text" name="country" placeholder="{{ nl.country }} *" required>
+    <form id="subscribeForm"
+      data-success="{{ nl.success }}"
+      data-error="{{ nl.error }}">
 
-    <fieldset>
-      <legend>{{ nl.consent_privacy | raw }}</legend>
-      <label><input type="checkbox" name="consent_privacy" required> YES</label>
-    </fieldset>
+      <p class="required-note"><small>{{ nl.required_note }}</small></p>
 
-    <fieldset>
-      <legend>{{ nl.consent_emails | raw }}</legend>
-      <label><input type="checkbox" name="consent_emails" required> YES</label>
-    </fieldset>
+      <div class="form-fields">
+        <input type="text" name="first_name" placeholder="{{ nl.first_name }} *" required>
+        <input type="text" name="last_name" placeholder="{{ nl.last_name }} *" required>
+        <input type="email" name="email" placeholder="{{ nl.email }} *" required>
+        <input type="text" name="country" placeholder="{{ nl.country }} *" required>
+      </div>
 
-    <p id="subscribeMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
-    <button id="subscribeBtn" class="btn btn-primary" type="submit">{{ nl.submit }}</button>
-  </form>
-</div>
+      <div class="form-consents">
+        <fieldset>
+          <legend>{{ nl.consent_privacy | raw }}</legend>
+          <label><input type="checkbox" name="consent_privacy" required> YES</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>{{ nl.consent_emails | raw }}</legend>
+          <label><input type="checkbox" name="consent_emails" required> YES</label>
+        </fieldset>
+
+        <p id="subscribeMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
+        <button id="subscribeBtn" class="btn btn-primary" type="submit">{{ nl.submit }}</button>
+      </div>
+    </form>
+  </div>
+</article>
 
 <script>
   function show(ok){subscribeMsg.textContent=subscribeForm.dataset[ok?"success":"error"];if(!ok){subscribeMsg.setAttribute("data-error","");}subscribeBtn.disabled=false;subscribeMsg.removeAttribute("aria-hidden");}
