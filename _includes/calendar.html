@@ -9,8 +9,8 @@
   [
     {% assign calendar_events = site.events | sort: "starts_at" %}
     {% for event in calendar_events %}
-      {% assign desktop_image_path = event.image | prepend: '/cdn-cgi/image/width=600,height=400,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
-      {% assign mobile_image_path = event.image | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
+      {% assign desktop_image_path = event.image | prepend: '/cdn-cgi/image/width=540,height=720,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
+      {% assign mobile_image_path = event.image | prepend: '/cdn-cgi/image/width=300,height=400,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
       {
         "title": {{ event.title | jsonify }},
         "url": {{ event.url | relative_url | jsonify }},
