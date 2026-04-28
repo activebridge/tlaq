@@ -12,7 +12,8 @@ suite: a119
 phone: (928) 649-9511
 website: ''
 coordinates: -111.7628117, 34.8622485
-image: /assets/images/shops/37A8238.jpg
+image: /assets/images/shops/Good_Juju_Ext.jpg
+interior_image: /assets/images/shops/Good_Juju_Int.jpg
 instagram: ''
 facebook: ''
 full_location: 336 AZ-179 Suite A119, Sedona, AZ 86336
