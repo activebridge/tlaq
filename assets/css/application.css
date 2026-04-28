@@ -1431,7 +1431,7 @@ a.read-more {
 }
 
 .gallery {
-  h5 { color: var(--blue); }
+  h5 { color: var(--blue) }
 
   .btn-primary { --btn-color: var(--blue); }
 
@@ -1442,7 +1442,7 @@ a.read-more {
 }
 
 .food {
-  h5 { color: var(--orange); }
+  h5 { color: var(--orange) }
 
   .btn-primary { --btn-color: var(--orange); }
 
@@ -1454,7 +1454,7 @@ a.read-more {
 
 .events,
 .event {
-  h5 { color: var(--purple); }
+  h5 { color: var(--purple) }
 
   .btn-primary {
     --btn-color: var(--purple);
@@ -1466,6 +1466,14 @@ a.read-more {
     &::after { display: none; }
     .hero { top: 0; }
   }
+}
+
+.store {
+  h5 { margin-bottom: 3rem }
+
+  h6, h7 { display: block; margin: 1.75rem 0 }
+
+  .social { margin: 1.75rem 0 }
 }
 
 .two-col-30 {
