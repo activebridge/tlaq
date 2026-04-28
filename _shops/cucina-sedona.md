@@ -13,7 +13,7 @@ phone: (928) 282-3905
 website: https://cucinasedona.com
 coordinates: -111.763737, 34.8624427
 image: /assets/images/shops/Cucina_Ext.jpg
-interior_image: /assets/images/shops/172826220.KIzY0Pgo.1119_DvonB_t-Edit.jpg
+interior_image: /assets/images/shops/Cucina_Int.jpg
 instagram: ''
 facebook: ''
 full_location: 336 AZ-179 Suite D101, Sedona, AZ 86336
