@@ -9,24 +9,37 @@ layout_type: leasing
 {% assign transition-name = "leasing" %}
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
-<div class="content-wrapper">
-  <hgroup style="view-transition-name: title-{{transition-name}};">
-    <h5 title>{{ site.data.leasing.title }}</h5>
-    <h2>{{ site.data.leasing.subtitle }}</h2>
-    <h6>{{ site.data.leasing.description }}</h6>
-  </hgroup>
+{% assign description_parts = site.data.leasing.description | split: "<br><br>" %}
 
-  <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.leasing.buttons.inquire_about_space }}</a>
-  <h6>{{ site.data.leasing.guidelines_intro }}</h6>
+<article class="content-wrapper">
+  <section>
+    <hgroup style="view-transition-name: title-{{transition-name}};">
+      <h5 title>{{ site.data.leasing.title }}</h5>
+      <h2>{{ site.data.leasing.subtitle }}</h2>
+    </hgroup>
+    <p>{{ description_parts[0] }}</p>
+  </section>
+
   <hr>
 
-  {% for section in site.data.leasing.sections %}
-    <h3>{{ section.title }}</h3>
-    <ul>
-      {% for item in section.items %}
-        <li>{{ item }}</li>
-      {% endfor %}
-    </ul>
+  <section class="leasing-intro">
+    <p>{{ description_parts[1] }}</p>
+    <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.leasing.buttons.inquire_about_space }}</a>
+    <p>{{ site.data.leasing.guidelines_intro }}</p>
     <hr>
-  {% endfor %}
-</div>
+  </section>
+
+  <section class="leasing-sections">
+    {% for section in site.data.leasing.sections %}
+      <section>
+        <h3>{{ section.title }}</h3>
+        <ul>
+          {% for item in section.items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        <hr>
+      </section>
+    {% endfor %}
+  </section>
+</article>
