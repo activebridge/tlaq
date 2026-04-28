@@ -993,12 +993,22 @@
         filter: ['all', polygonFilter, underpassFilter],
         paint: { 'line-color': BUILDING_BASE_COLOR, 'line-width': 1.5, 'line-dasharray': [4, 3], 'line-opacity': 0.7 }
       });
+      map.addLayer({
+        id: 'underpass-fill', type: 'fill', source: 'map-data',
+        filter: ['all', polygonFilter, underpassFilter],
+        paint: { 'fill-opacity': 0 }
+      });
 
       const crosswalkFilter = ['==', ['get', 'type'], 'crosswalk'];
       map.addLayer({
         id: 'crosswalk-outline', type: 'line', source: 'map-data',
         filter: ['all', polygonFilter, crosswalkFilter],
         paint: { 'line-color': '#ffffff', 'line-width': 1, 'line-opacity': 0.6 }
+      });
+      map.addLayer({
+        id: 'crosswalk-fill', type: 'fill', source: 'map-data',
+        filter: ['all', polygonFilter, crosswalkFilter],
+        paint: { 'fill-opacity': 0 }
       });
 
       const areaFilter = ['==', ['get', 'type'], 'area'];
@@ -1073,22 +1083,26 @@
         });
 
         // Area label click → popup
-        map.on('click', 'area-labels', e => {
-          if (!e.features?.length || !e.features[0]?.properties?.id) return;
-          const { id } = e.features[0].properties;
-          const areaData = pointLabels.areas?.[id];
-          if (!areaData?.title) return;
-          const title = areaData.title;
-          const description = areaData.description || '';
+        const openAreaPopup = (lngLat, areaKey) => {
+          const data = pointLabels.areas?.[areaKey];
+          if (!data?.title) return;
           if (currentOpenPopup) { currentOpenPopup.remove(); currentOpenPopup = null; }
           currentOpenPopup = new mapboxgl.Popup({ closeButton: true, maxWidth: '240px' })
-            .setLngLat(e.lngLat)
-            .setHTML(`<section class="point-popup"><h3 class="point-popup-title">${title}</h3>${description ? `<p class="point-popup-description">${description}</p>` : ''}</section>`)
+            .setLngLat(lngLat)
+            .setHTML(`<section class="point-popup"><h3 class="point-popup-title">${data.title}</h3>${data.description ? `<p class="point-popup-description">${data.description}</p>` : ''}</section>`)
             .addTo(map);
           currentOpenPopup.on('close', () => { currentOpenPopup = null; });
+        };
+        map.on('click', 'area-labels', e => {
+          if (!e.features?.length || !e.features[0]?.properties?.id) return;
+          openAreaPopup(e.lngLat, e.features[0].properties.id);
         });
-        map.on('mouseenter', 'area-labels', () => { map.getCanvas().style.cursor = 'pointer'; });
-        map.on('mouseleave', 'area-labels', () => { map.getCanvas().style.cursor = ''; });
+        map.on('click', 'underpass-fill', e => openAreaPopup(e.lngLat, 'underpass'));
+        map.on('click', 'crosswalk-fill', e => openAreaPopup(e.lngLat, 'crosswalk-to-north'));
+        ['area-labels', 'underpass-fill', 'crosswalk-fill'].forEach(layer => {
+          map.on('mouseenter', layer, () => { map.getCanvas().style.cursor = 'pointer'; });
+          map.on('mouseleave', layer, () => { map.getCanvas().style.cursor = ''; });
+        });
 
         // Feature lookup tables
         geojson.features.forEach(feature => {
