@@ -15,6 +15,7 @@ phone: (928) 549-0513
 website: https://truewesthats.com/
 coordinates: -111.762574, 34.862001
 image: /assets/images/shops/EXT_37A8058-Edit.jpg
+interior_image: /assets/images/shops/176217188.Ib9fQ0aE.3217W_DvonBriesen__37A7949.jpg
 instagram: https://www.instagram.com/truewesthats/
 facebook: https://www.facebook.com/truewesthats
 full_location: 336 AZ-179 Suite A204, Sedona, AZ 86336
