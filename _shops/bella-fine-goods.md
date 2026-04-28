@@ -12,7 +12,7 @@ suite: b122
 phone: (928) 282-0255
 website: https://bellafinegoods.com
 coordinates: -111.7632, 34.8620793
-image: /assets/images/shops/37A8073-HDR.jpg
+image: /assets/images/shops/Bella_Ext.jpg
 interior_image: /assets/images/shops/37A8075-Bella.jpg
 instagram: https://www.instagram.com/bellafinegoodssedona/
 facebook: https://www.facebook.com/bellafinegoods/
