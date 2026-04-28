@@ -12,8 +12,8 @@ suite: c203
 phone: (928) 554-7840
 website: https://alt-books-and-records.business.site
 coordinates: -111.7631377, 34.8616415
-image: /assets/images/shops/alt-book-and-records.webp
-interior_image: /assets/images/shops/172824980.OUUOKX1Z.0932_DvonBriesen__81A3524.jpg
+image: /assets/images/shops/Alt_Books_Ext.jpg
+interior_image: /assets/images/shops/Alt_Books_Int.jpg
 instagram: ''
 facebook: https://www.facebook.com/p/ALT-Books-Records-100054135466554/
 full_location: 336 AZ-179 Suite C203, Sedona, AZ 86336
