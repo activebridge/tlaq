@@ -11,8 +11,8 @@ suite: a206
 phone: (928) 282-1173
 website: https://www.elpicaflor.com
 coordinates: -111.7627996, 34.8618546
-image: /assets/images/shops/37A8217-HDR.jpg
-interior_image: /assets/images/shops/173160977.B9er7BTr.1723W_DvonBriesen__81A8033-HDR.jpg
+image: /assets/images/shops/El_Picaflor_Ext.jpg
+interior_image: /assets/images/shops/El_Picaflor_Int.jpg
 instagram: https://www.instagram.com/elpicaflorsanisidro/
 facebook: ''
 full_location: 336 AZ-179 Suite A206, Sedona, AZ 86336
