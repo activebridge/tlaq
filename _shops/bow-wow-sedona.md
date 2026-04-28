@@ -12,7 +12,7 @@ phone: (928) 203-9002
 website: https://www.loc8nearme.com/arizona/sedona/bowwow-sedona/6653749/
 coordinates: -111.763149, 34.86308
 image: /assets/images/shops/BowWow_Ext.jpg
-interior_image: /assets/images/shops/37A8177-BowWow.jpg
+interior_image: /assets/images/shops/BowWow_Int.jpg
 instagram: https://www.instagram.com/bowwowpetboutique/
 facebook: https://www.facebook.com/p/Bowwow-Pet-Boutique-100063606792214/
 full_location: 336 AZ-179 Suite A14, Sedona, AZ 86336
