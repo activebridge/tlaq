@@ -15,7 +15,7 @@ suite: a114
 phone: (928) 204-2887
 website: https://www.sedonacakes.com
 coordinates: -111.7628120, 34.8619472
-image: /assets/images/foods/Sedona_Cake_Couture_INT_173160972.sl0cwNPD.1718W_DvonBriesen__81A7869.jpg
+image: /assets/images/foods/Sedona_Cake_Couture_INT2.jpg
 interior_image: /assets/images/foods/Sedona_Cake_Couture_int.jpg
 instagram: https://www.instagram.com/sedonacakecouture/
 facebook: https://www.facebook.com/sedonacakecouture/
