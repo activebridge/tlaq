@@ -12,6 +12,7 @@ recurrence_weekdays:
 image: "assets/images/events/playing-with-knives.webp"
 subtitle: First Saturday knife demo + in-store specials — compare top brands, learn care tips, and find your perfect blade.
 phone: '928-862-4140'
+website: https://theartistskitchenshop.myshoplocal.com
 facebook: https://www.facebook.com/tlaqsedona/
 instagram: https://www.instagram.com/tlaqsedona/
 ---
