@@ -24,4 +24,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Stylish women's shoes "from cobblestones to cocktails".</h6>
+A carefully curated selection of quality footwear designed for comfort, style, and everyday wear. Featuring trusted brands and versatile designs, it’s a destination for finding the perfect pair for both adventure and ease.
