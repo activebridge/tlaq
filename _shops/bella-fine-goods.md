@@ -22,4 +22,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Specialty goods from around the world.</h6>
+A refined collection of furnishings, jewelry, and gifts, thoughtfully selected to bring beauty and elegance into everyday living, blending timeless design with pieces that feel both personal and distinctive.
