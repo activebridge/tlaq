@@ -3,7 +3,7 @@ slug: caravana-jewelry
 date: 2026-02-22
 published: true
 title: Caravana Jewelry
-subtitle: Silver & gemstone jewelry by Arizona artists
+subtitle: Silver and gemstone jewelry by artisans
 tags:
   - jewelry
   - shop
