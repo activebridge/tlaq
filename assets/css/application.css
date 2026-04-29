@@ -460,7 +460,14 @@ nav#mobile {
       text-align: center;
       h5 { text-align: left; }
     }
-    a { margin-top: auto; }
+
+    a {
+      margin-top: auto;
+      min-width: 0;
+      width: 50%;
+
+      @media (max-width: 770px) { width: 100%; }
+     }
   }
 
   &:not(:has(.card:not(.hidden)))::after {
