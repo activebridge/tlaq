@@ -956,14 +956,7 @@ footer .socials-mobile { display: none; }
 }
 
 .weddings {
-  .list-container {
-    column-gap: 1rem;
-    row-gap: 2rem;
-  }
-
-  .list-container .card {
-    justify-content: space-between;
-  }
+  .list-container .card { justify-content: space-between; }
 
   .weddings-connect-brochure {
     display: contents;
