@@ -3,7 +3,7 @@ slug: vue-gallery
 date: 2026-02-22
 published: true
 title: Vue
-subtitle: Local & international contemporary fine art & sculpture garden alongside Oak Creek
+subtitle: Contemporary art gallery with outdoor sculpture garden
 tags:
   - gallery
   - contemporary art
