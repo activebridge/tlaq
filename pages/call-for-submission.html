@@ -17,49 +17,57 @@ layout_type: call-for-submission
     <h2>{{ cfs.title }}</h2>
   </hgroup>
 
-  <h6>{{ cfs.intro }}</h6>
-  <h6>{{ cfs.submission_info }}</h6>
-  <h6>{{ cfs.selection_notice }} <strong>{{ cfs.credit_notice }}</strong></h6>
+  <p>{{ cfs.intro }}</p>
+  <hr>
 
-  <form id="submissionForm" onsubmit="sendEmail(event)">
+  <section>
+    <article>
+      <p>{{ cfs.submission_info }}</p>
+      <p>{{ cfs.selection_notice }} <strong>{{ cfs.credit_notice }}</strong></p>
+    </article>
 
-    <label id="fileUploadArea" ondragenter="onDragEnter(event)" ondragleave="onDragLeave(event)" ondragover="onDragOver(event)" ondrop="onDrop(event)">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-        <polyline points="17 8 12 3 7 8"/>
-        <line x1="12" y1="3" x2="12" y2="15"/>
-      </svg>
-      <p class="file-upload-label">{{ cfs.upload_label }} *</p>
-      <p class="file-upload-hint">{{ cfs.upload_hint }}</p>
-      <span class="btn btn-primary">{{ cfs.upload_button }}</span>
-      <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.tiff,.tif" onchange="if(this.files.length) validateFile(this.files[0])" required>
-      <p class="file-name" id="fileName" aria-live="polite"></p>
-    </label>
+    <article>
+      <form id="submissionForm" onsubmit="sendEmail(event)">
 
-    <input type="text" name="first_name" aria-label="{{ cfs.first_name }}" placeholder="{{ cfs.first_name }} *" required>
-    <input type="text" name="last_name" aria-label="{{ cfs.last_name }}" placeholder="{{ cfs.last_name }} *" required>
-    <input type="email" name="email" aria-label="{{ cfs.email }}" placeholder="{{ cfs.email }} *" required>
-    <input type="tel" name="phone" aria-label="{{ cfs.phone }}" placeholder="{{ cfs.phone }} *" required>
-    <input type="text" name="instagram" aria-label="{{ cfs.instagram }}" placeholder="{{ cfs.instagram }}">
-    <input type="text" name="caption" aria-label="{{ cfs.caption }}" placeholder="{{ cfs.caption }} *" required>
-    <label class="date-field" for="photoDate">
-      {{ cfs.photo_date }}
-      <input type="date" id="photoDate" name="photo_date" min="1960-01-01">
-    </label>
+        <label id="fileUploadArea" ondragenter="onDragEnter(event)" ondragleave="onDragLeave(event)" ondragover="onDragOver(event)" ondrop="onDrop(event)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <p class="file-upload-label">{{ cfs.upload_label }} *</p>
+          <p class="file-upload-hint">{{ cfs.upload_hint }}</p>
+          <span class="btn btn-primary">{{ cfs.upload_button }}</span>
+          <input type="file" id="photo" name="photo" accept=".jpg,.jpeg,.png,.tiff,.tif" onchange="if(this.files.length) validateFile(this.files[0])" required>
+          <p class="file-name" id="fileName" aria-live="polite"></p>
+        </label>
 
-    <fieldset>
-      <label>
-        <input type="checkbox" name="consent" required>
-        {{ cfs.consent }}
-      </label>
-    </fieldset>
+        <input type="text" name="first_name" aria-label="{{ cfs.first_name }}" placeholder="{{ cfs.first_name }} *" required>
+        <input type="text" name="last_name" aria-label="{{ cfs.last_name }}" placeholder="{{ cfs.last_name }} *" required>
+        <input type="email" name="email" aria-label="{{ cfs.email }}" placeholder="{{ cfs.email }} *" required>
+        <input type="tel" name="phone" aria-label="{{ cfs.phone }}" placeholder="{{ cfs.phone }} *" required>
+        <input type="text" name="instagram" aria-label="{{ cfs.instagram }}" placeholder="{{ cfs.instagram }}">
+        <input type="text" name="caption" aria-label="{{ cfs.caption }}" placeholder="{{ cfs.caption }} *" required>
+        <label class="date-field" for="photoDate">
+          {{ cfs.photo_date }}
+          <input type="date" id="photoDate" name="photo_date" min="1960-01-01">
+        </label>
 
-    <button id="submitBtn" class="btn btn-primary" type="submit">{{ cfs.submit }}</button>
-    <p id="submissionMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
-  </form>
-  <button id="resetBtn" class="btn btn-primary" style="display:none" onclick="onReset()">{{ cfs.reset }}</button>
-  <span id="uploadTypeError" hidden>{{ cfs.upload_type_error }}</span>
-  <span id="uploadSizeError" hidden>{{ cfs.upload_size_error }}</span>
+        <fieldset>
+          <label>
+            <input type="checkbox" name="consent" required>
+            {{ cfs.consent }}
+          </label>
+        </fieldset>
+
+        <button id="submitBtn" class="btn btn-primary" type="submit">{{ cfs.submit }}</button>
+        <p id="submissionMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
+      </form>
+      <button id="resetBtn" class="btn btn-primary" style="display:none" onclick="onReset()">{{ cfs.reset }}</button>
+      <span id="uploadTypeError" hidden>{{ cfs.upload_type_error }}</span>
+      <span id="uploadSizeError" hidden>{{ cfs.upload_size_error }}</span>
+    </article>
+  </section>
 </div>
 
 <script src="/assets/js/call-for-submission.js"></script>
