@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Bed & bath products.</h6>
+A small, curated beauty and wellness shop offering all-natural soaps, body care, candles, stones, jewelry, and unique gifts. Filled with distinctive finds, it’s a place to slow down and discover something truly personal.
