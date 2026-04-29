@@ -3,7 +3,7 @@ slug: carr-dartistes
 date: 2026-02-22
 published: true
 title: Carré d'Artistes
-subtitle: Original, contemporary small format artwork from around the world
+subtitle: Original artwork from international contemporary artists
 tags:
   - gallery
   - art gallery
