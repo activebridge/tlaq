@@ -3,7 +3,7 @@ slug: bennali-outdoor-gear
 date: 2026-02-22
 published: true
 title: Bennali Outdoor Gear
-subtitle: Sedona's largest selection of hats, fashion to function footwear & outdoor accessories
+subtitle: Quality apparel, footwear, and leather goods
 tags:
   - outdoor
   - clothing
