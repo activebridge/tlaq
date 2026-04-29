@@ -24,4 +24,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-Elaine and Duane Morgan, Fine art photographers, a husband and wife team who have dedicated their lives to creating and capturing images that depict the awesome power and unequaled beauty of nature. Professional photographers since 1973, they are masters of their craft. They offer distinctly different styles of photography including; exquisite color images, fine art black and white photography, hand tinted black and white images, and a myriad of impressionistic images.
+A photography and fine art gallery inviting exploration and reflection, where inspiring works surround you with beauty, offering a moment to pause and engage with creativity across mediums.
