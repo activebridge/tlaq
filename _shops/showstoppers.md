@@ -25,4 +25,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Floral & event decorating, home decor, furnishings & gifts.</h6>
+A vibrant collection of Native American jewelry and home décor, offering bold, expressive pieces that celebrate craftsmanship, culture, and individuality in every detail.
