@@ -461,12 +461,17 @@ nav#mobile {
       h5 { text-align: left; }
     }
 
-    a {
+    a:not(.btn) {
       margin-top: auto;
       min-width: 0;
       width: 50%;
 
       @media (max-width: 770px) { width: 100%; }
+     }
+
+    .btn {
+      margin-top: auto;
+      align-self: flex-start;
      }
   }
 
@@ -482,6 +487,58 @@ nav#mobile {
 
   @media only screen and (min-width: 1024px) {
     .card { width: 678px; }
+  }
+}
+
+main.parking {
+  hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid currentColor;
+
+    @media (max-width: 770px) { display: none; }
+  }
+
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem 5rem;
+
+      @media (max-width: 770px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      width: 100%;
+      max-width: none;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 2rem;
+
+      figure {
+        margin: 0;
+        width: 100%;
+        aspect-ratio: 1440 / 1080;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          margin: 0;
+        }
+      }
+
+      h4 { margin: 0; }
+      p { margin: 0; }
+    }
   }
 }
 

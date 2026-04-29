@@ -1,33 +1,24 @@
 hero_banner: "assets/images/landing/contacts.webp"
 
-notes:
-  general: "Parking is free for all Tlaquepaque visitors. Multiple lots surround the main property on all sides, providing convenient access from any direction."
-  visitors_only: "Parking facilities are intended for village visitors only."
+intro:
+  eyebrow: "PARKING AT TLAQUEPAQUE"
+  title: "Free parking is available for all visitors across multiple lots surrounding the village"
+  subtitle: "Parking is free for all Tlaquepaque visitors. Multiple lots surround the main property on all sides, providing convenient access from any direction. Parking facilities are intended for village visitors only."
 
-lots:
-  - name: Tlaquepaque South Lots
-    description: "Multiple free parking lots surround Tlaquepaque South, located at 336 AZ-179, providing easy access to all shops, galleries, and restaurants."
-    note: ""
-    map_image: "assets/images/stores-map/parking-south.webp"
-  - name: Tlaquepaque North Lot
-    description: "Tlaquepaque North at 313 AZ-179 has an additional dedicated parking lot across the street from the main entrance."
-    note: ""
-    map_image: "assets/images/stores-map/parking-north.webp"
-
-oversized:
-  description: "The Portal Lane lot, located to the northwest of the main village, is designed to accommodate oversized and large vehicles."
-  vehicles:
-    - RVs
-    - Fifth-wheel trailers
-    - Tour buses
-
-accessibility:
-  description: "Accessible parking spaces are available at both Tlaquepaque North and South locations. All accessible features can be located on the village map for easy navigation during your visit."
-  image: "assets/images/hours/accessibility.webp"
-
-shuttle:
-  description: "The Sedona Shuttle offers a free and convenient alternative means of transportation to the village."
-  boarding: "Board at the Sedona Municipal Parking lot at Jordan and Schnebly roads."
-  url: "https://www.sedonashuttle.com/"
-  link_text: "More shuttle information"
-  image: "assets/images/parking/shuttle.webp"
+lot_rows:
+  - - name: Tlaquepaque South Lots
+      description: "Multiple free parking lots surround Tlaquepaque South, located at 336 AZ-179, providing easy access to all shops, galleries, and restaurants."
+      map_image: "assets/images/stores-map/parking-south.webp"
+    - name: Tlaquepaque North Lot
+      description: "Tlaquepaque North at 313 AZ-179 has an additional dedicated parking lot across the street from the main entrance."
+      map_image: "assets/images/stores-map/parking-north.webp"
+  - - name: Sedona Shuttle
+      description: "The Sedona Shuttle provides free, convenient service to Tlaquepaque, offering an easy alternative to driving."
+      extra: "Board at the Sedona Municipal Parking Lot (Jordan Road and Schnebly Road)."
+      map_image: "assets/images/parking/shuttle.webp"
+      cta:
+        url: "https://www.sedonashuttle.com/"
+        label: "Visit Sedona Shuttle"
+    - name: Oversized Vehicles
+      description: "The Portal Lane lot, located to the northwest of the main village, is designed to accommodate oversized and large vehicles."
+      map_image: ""
