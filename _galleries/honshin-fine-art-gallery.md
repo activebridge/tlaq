@@ -14,7 +14,7 @@ phone: (928) 282-0709
 website: https://honshinfineart.com
 coordinates: -111.7630168, 34.8615215
 image: /assets/images/galleries/Honshin_Ext.jpg
-interior_image: /assets/images/galleries/Honshin_Int.jpg
+interior_image: /assets/images/galleries/Honshin_C205_Int.jpg
 instagram: https://www.instagram.com/honshin_fine_art/
 facebook: ''
 full_location: 336 AZ-179 Suite C205, Sedona, AZ 86336
