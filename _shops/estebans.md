@@ -3,7 +3,7 @@ slug: estebans
 date: 2026-02-22
 published: true
 title: Esteban's
-subtitle: Handcrafted functional & decorative pottery by Southwestern artists
+subtitle: Handmade functional and decorative pottery
 tags:
   - pottery
   - shop
