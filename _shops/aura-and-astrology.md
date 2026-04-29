@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>A curated space for aura readings, Vedic astrology, and sacred goods.</h6>
+A soulful destination for intuitive insight and self-discovery, offering aura readings, astrology guidance, and spiritual tools. A place to explore energy, gain perspective, and connect more deeply with your inner landscape.
