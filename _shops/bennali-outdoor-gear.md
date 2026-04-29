@@ -22,4 +22,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Sedona's largest selection of hats, fashion to function footwear & outdoor accessories.</h6>
+A curated boutique offering quality men’s and women’s footwear, apparel, hats, and leather jackets—combining craftsmanship and style in a selection that feels both elevated and effortlessly wearable.
