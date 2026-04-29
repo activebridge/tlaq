@@ -25,4 +25,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-Andrea Smith, world peace artist has created a gallery that magnifies the message of her colorful, light uplifting images of peace. You can sense the serenity and uplifting feeling the moment you enter the Andrea Smith Gallery. It is an eclectic and unique mix of spirituality infused art comprised of paintings, sculpture and jewelry from different geographical regions of the planet. Each piece in the gallery collection has been selected with the intention of offering peace and healing to all that enter.
+A serene gallery devoted to peace and global perspective, featuring paintings by Andrea Smith and David Fiscel, alongside sculpture and curated antiquities gathered through Smith’s travels around the world.
