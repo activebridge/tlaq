@@ -22,4 +22,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Southwestern salsas, gadgets, linens, pottery & tableware.</h6>
+A thoughtfully curated collection of Southwest-inspired kitchen goods, from ceramics and glassware to linens and cookbooks—bringing warmth, functionality, and regional character into the home.
