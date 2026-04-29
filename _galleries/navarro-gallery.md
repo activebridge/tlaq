@@ -22,4 +22,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-The Navarro Gallery is owned by renowned sculptor Chris Navarro whose career spans 20 years. Specializing in western art, wildlife and landscapes, Navarro Gallery represents an outstanding array of artists.
+A dynamic gallery featuring over 90 bronze sculptures by acclaimed artist Chris Navarro, set within an engaging indoor and outdoor space that celebrates scale, movement, and artistic mastery.
