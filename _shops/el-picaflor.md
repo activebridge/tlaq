@@ -3,7 +3,7 @@ slug: el-picaflor
 date: 2026-02-22
 published: true
 title: El Picaflor
-subtitle: Folk art & crafts
+subtitle: South American folk arts and crafts
 tags:
   - folk art
   - shop
