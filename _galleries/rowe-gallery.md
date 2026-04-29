@@ -23,4 +23,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-When Ken and Monica Rowe opened the doors of Rowe Fine Art Gallery in March 2010, they had a strong vision of the gallery's theme and focus. Rowe Fine Art Gallery represents traditional and contemporary southwestern sculptors, painters and jewelers. Art lovers will also find handcrafted knives. The gallery quickly outgrew its original upstairs spot and relocated to its current suite under Tlaquepaque's iconic bell tower in 2011.
+A gallery devoted to wildlife and nature-inspired bronze sculpture, where finely detailed works capture movement, spirit, and presence. Each piece reflects a deep reverence for the natural world, inviting a closer, more contemplative connection.
