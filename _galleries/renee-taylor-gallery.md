@@ -23,4 +23,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-A contemporary gallery featuring original paintings by Renee Taylor, known for expressive color and layered texture. Each work reflects movement and emotion, inviting viewers into a dynamic, deeply personal visual experience.
+A dynamic Sedona gallery showcasing internationally renowned artists across painting, sculpture, fine jewelry, and collectible knives. Its curated collection brings together distinctive voices and master craftsmanship in a vibrant, multi-dimensional experience.
