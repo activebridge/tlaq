@@ -3,7 +3,7 @@ slug: pump-house-station
 date: 2026-02-22
 published: true
 title: Pump House Station & Urban Eatery
-subtitle: Farm-to-table & artisanal foods including Organic coffee, artisan pastries, local crafted beers, signature cocktails
+subtitle: Breakfast, lunch, dinner, and drinks at Tlaquepaque North
 tags:
   - food
   - coffee
