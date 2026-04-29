@@ -23,4 +23,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-Vue Gallery is the latest addition to the Renee Taylor family of galleries. Vue Gallery features a beautiful sculpture garden alongside Oak Creek with a spacious indoor exhibition space displaying contemporary artwork from local and international artists. Mediums include bronze, adobe, steel, copper, and canvas artwork in a variety of format sizes. We also exhibit a variety of artistic jewelry in silver, gold, and steel.
+A contemporary gallery featuring thoughtfully curated works across mediums, complemented by an outdoor sculpture garden. With a focus on visual impact and refined presentation, the space invites exploration, discovery, and deeper engagement with art.
