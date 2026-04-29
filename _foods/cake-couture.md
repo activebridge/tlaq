@@ -3,7 +3,7 @@ slug: cake-couture
 date: 2026-02-22
 published: true
 title: Cake Couture Coffee & Dessert
-subtitle: Fine dessert and coffee
+subtitle: Handcrafted desserts and specialty coffee drinks
 tags:
   - food
   - desserts
