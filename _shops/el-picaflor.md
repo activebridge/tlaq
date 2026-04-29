@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Folk art & crafts.</h6>
+A unique upstairs retreat featuring handcrafted folk art and crafts from South America. Rich in color and cultural detail, the collection invites discovery, offering unique pieces that reflect heritage, artistry, and a sense of place.
