@@ -30,4 +30,4 @@ store_hours:
   sunday: 10AM - 6PM
 ---
 
-Experience the colors of South Asia. Shop from handcrafted home goods, enjoy a traditional cup of spicy chai, and relax on our terrace.
+A cozy, inviting café centered around handcrafted chai and warm, comforting flavors. Blending tradition with a modern sensibility, it offers a place to pause, connect, and savor thoughtfully prepared drinks and light bites—rooted in purpose, with 50% of profits supporting women and children in Pakistan.
