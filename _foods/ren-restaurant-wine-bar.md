@@ -3,7 +3,7 @@ slug: ren-restaurant-wine-bar
 date: 2026-02-22
 published: true
 title: René at Tlaquepaque
-subtitle: Classical cuisine, picturesque patio & intimate bar
+subtitle: Elevated French Mediterranean fine dining and picturesque patio
 tags:
   - food
   - restaurant
