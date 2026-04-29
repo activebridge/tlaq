@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Women's contemporary clothing & accessories.</h6>
+A boutique offering women’s clothing and accessories, thoughtfully curated to feel both stylish and approachable, with pieces that support self-expression and confidence.
