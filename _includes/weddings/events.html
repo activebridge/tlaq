@@ -1,5 +1,6 @@
 <article id="events" class="private-events">
   <h5>{{ site.data.weddings.events.title }}</h5>
+  <h6>{{ site.data.weddings.events.description }}</h6>
 
   {% assign slides = site.data.weddings.events.images %}
   {% assign slide_count = slides.size %}
@@ -64,11 +65,11 @@
     const track = window.eventsTrack;
     const n = +track.style.getPropertyValue('--count');
     if (n < 2) return;
-  
+
     const seg = 100 / n;
     const hold = seg * 0.6;
     const step = 50 / n;
-  
+
     const rules = Array.from({ length: n }, (_, i) => {
       const start = i * seg;
       const mid = start + hold;

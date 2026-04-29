@@ -14,6 +14,11 @@ brochure:
   title: WEDDING BROCHURE
   brochure_url: "https://irp.cdn-website.com/164890e9/files/uploaded/Tlaq_Wedding_Brochure_062625_R.pdf"
   image: "/assets/images/weddings/brochure.webp"
+  awards:
+    - image: "/assets/images/weddings/awards/here-comes-the-guide.webp"
+      alt: "Here Comes the Guide - Most #Instaworthy Wedding Venue"
+    - image: "/assets/images/weddings/awards/weddingwire-couples-choice-2020.webp"
+      alt: "WeddingWire Couples' Choice Awards 2020"
 events:
   title: CORPORATE & PRIVATE EVENTS
   description: Host memorable gatherings—from awards dinners and executive retreats to milestone birthdays, anniversaries, and private celebrations—set within our iconic courtyards and other venues beneath the sycamore trees.

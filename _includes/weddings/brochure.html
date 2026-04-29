@@ -21,4 +21,11 @@
   </picture>
   <a href="{{ site.data.weddings.brochure.brochure_url }}" target="_blank" class="btn btn-primary">{{ site.data.weddings.buttons.download_brochure }}</a>
   <a href="/wedding_faq/" class="btn btn-primary">{{ site.data.weddings.buttons.faq }}</a>
+  {% if site.data.weddings.brochure.awards %}
+    <div class="brochure-awards">
+      {% for award in site.data.weddings.brochure.awards %}
+        <img src="{{ award.image | relative_url }}" alt="{{ award.alt }}" loading="lazy" onerror="imageError(this)">
+      {% endfor %}
+    </div>
+  {% endif %}
 </article>

@@ -861,6 +861,13 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Brochure URL", name: "brochure_url", widget: "string" }
               - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+              - label: "Awards"
+                name: "awards"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
           - label: "Corporate & Private Events"
             name: "events"
             widget: "object"
