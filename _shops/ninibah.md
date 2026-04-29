@@ -3,7 +3,7 @@ slug: ninibah
 date: 2026-02-22
 published: true
 title: Ninibah
-subtitle: Authentic indian jewelry, baskets & kachinas
+subtitle: Native American handcrafted jewelry and artifacts
 tags:
   - native american art
   - jewelry
