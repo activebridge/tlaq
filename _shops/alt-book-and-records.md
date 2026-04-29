@@ -22,4 +22,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Used, rare & out of print books and vintage vinyl records.</h6>
+A thoughtfully curated haven for music and literature lovers, offering vinyl records, books, and cultural discoveries. A place to browse slowly, uncover hidden gems, and reconnect with the tactile joy of storytelling and sound.
