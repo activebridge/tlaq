@@ -3,7 +3,7 @@ slug: good-juju-lifestyle-boutique
 date: 2026-02-22
 published: true
 title: Good Juju Lifestyle Boutique
-subtitle: Gifts and apparel for people on the go
+subtitle: Clothing, gifts, and feel-good lifestyle pieces
 tags:
   - gifts
   - clothing
