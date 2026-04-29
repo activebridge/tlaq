@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Offering the finest in fashion accessories, health & nutrition for the quad pet set.</h6>
+A playful and welcoming shop devoted to dogs and their humans, offering treats, toys, and essentials—thoughtfully chosen to delight your best friend and make every visit feel like a special occasion.
