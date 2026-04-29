@@ -22,4 +22,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Gem, minerals & fossils from around the world.</h6>
+A captivating shop filled with crystals, fossils, and minerals from around the world, inviting curiosity and discovery through natural forms shaped over time by the earth itself.
