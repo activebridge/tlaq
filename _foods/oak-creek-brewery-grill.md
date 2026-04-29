@@ -30,4 +30,4 @@ store_hours:
   sunday: 11:30am - 8:30pm
 ---
 
-American grill cuisine with European flair and premium beers brewed on site and stored in the attractive serving tanks behind our beautiful oak bar. The display kitchen houses the rotisserie and wood-fired oven used to prepare the house specialties. 'Creating the New Good Old Days.'
+A relaxed dining destination offering American favorites with European influence, including burgers, wood-fired pizzas, and house-brewed beer—perfect for gathering and unwinding in a lively, casual setting.
