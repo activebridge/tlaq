@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Fine contemporary jewelry & southwestern art.</h6>
+A curated destination for distinctive jewelry, art, and gifts inspired by the Southwest. Featuring handcrafted pieces with natural materials and bold design, the collection reflects the color, spirit, and energy of the region.
