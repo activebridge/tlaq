@@ -3,7 +3,7 @@ slug: azadi-navajo-rugs
 date: 2026-02-22
 published: true
 title: Azadi Navajo Rugs
-subtitle: Exquisite array of handwoven Navajo textiles
+subtitle: Navajo rugs and handcrafted textiles
 tags:
   - gallery
   - navajo rugs
