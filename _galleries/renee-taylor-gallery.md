@@ -3,7 +3,7 @@ slug: renee-taylor-gallery
 date: 2026-02-22
 published: true
 title: Renee Taylor Gallery
-subtitle: Original contemporary fine art & jewelry
+subtitle: International artists, fine art, jewelry, knives
 tags:
   - gallery
   - contemporary art
