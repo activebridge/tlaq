@@ -3,7 +3,7 @@ slug: cocopah
 date: 2026-03-06
 published: true
 title: Cocopah
-subtitle: Arizona's oldest bead store
+subtitle: Beads, antiques, and Native American jewelry
 tags:
   - beads
   - jewelry
