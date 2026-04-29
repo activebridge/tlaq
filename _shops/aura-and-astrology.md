@@ -3,7 +3,7 @@ slug: aura-and-astrology
 date: 2026-02-22
 published: true
 title: Aura & Astrology
-subtitle: A curated space for aura readings, Vedic astrology, and sacred goods
+subtitle: Intuitive readings, astrology, and spiritual tools
 tags:
   - spiritual
   - shop
