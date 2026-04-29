@@ -3,7 +3,7 @@ slug: cream-handmade-ice-cream
 date: 2026-02-22
 published: true
 title: Cream Handmade Ice Cream
-subtitle: Ice Cream, shakes, artisan waffle cones, sundaes and splits
+subtitle: House-made ice cream and baked treats
 tags:
   - food
   - ice cream
