@@ -22,4 +22,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Arizona's oldest bead store.</h6>
+Arizona's oldest bead store with an eclectic collection of beads, seashells, antiques, estate pieces, and Native American jewelry, offering a sense of discovery where each item carries its own story, texture, and connection to place.
