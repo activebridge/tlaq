@@ -23,4 +23,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-Honshin Fine Art Gallery represents a variety of local artists, including Nicholas Kirsten Honshin, Duly, Lou Adams, Kevin Petrilli and Paul Wisdom.
+An immersive gallery where art comes to life through live creation each Sunday, inviting visitors to witness the creative process and experience the interconnectedness of original art and human expression.
