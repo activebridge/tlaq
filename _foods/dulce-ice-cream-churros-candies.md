@@ -13,7 +13,7 @@ tags:
   - sweets
 suite: f104
 phone: (928) 301-2666
-website: https://dulce-icecream.com
+website: https://dulcesedona.com
 coordinates: -111.7637071, 34.8624058
 image: /assets/images/foods/Dulce_ext.jpg
 interior_image: /assets/images/foods/Dulce_int.jpg
