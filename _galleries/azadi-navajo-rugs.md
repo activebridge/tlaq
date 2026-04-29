@@ -23,4 +23,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-AZADI Navajo Rugs is the most recent addition to the AZADI Fine Rugs family. The oldest purveyor of fine rugs in the world, AZADI Fine Rugs is known as the most trusted authority and resource on fine rugs. A passion for the unique history of the Navajo people, combined with a motivation to cultivate and preserve the dying art of the Navajo culture led to the creation of AZADI Navajo Rugs.
+A gallery dedicated to Navajo rugs and handcrafted works, celebrating generations of artistry and tradition. Featuring finely woven textiles and select pieces that honor cultural heritage, each work reflects skill, story, and enduring craftsmanship.
