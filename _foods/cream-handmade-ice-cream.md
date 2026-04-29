@@ -2,7 +2,7 @@
 slug: cream-handmade-ice-cream
 date: 2026-02-22
 published: true
-title: CREAM Handmade Ice Cream
+title: Cream Handmade Ice Cream
 subtitle: Ice Cream, shakes, artisan waffle cones, sundaes and splits
 tags:
   - food
@@ -29,4 +29,4 @@ store_hours:
   sunday: 10AM - 6PM
 ---
 
-Ice Cream, shakes, artisan waffle cones, sundaes and splits..even cake by the slice.
+A delightful destination for house-made ice cream and baked goods, where classic favorites and seasonal creations are crafted from scratch, inviting moments of simple pleasure and shared enjoyment.
