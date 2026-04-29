@@ -3,7 +3,7 @@ slug: dorine-daniels
 date: 2026-02-22
 published: true
 title: Dorine Daniels
-subtitle: Bed & bath products
+subtitle: Bath, body, and wellness gifts
 tags:
   - home decor
   - shop
