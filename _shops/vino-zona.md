@@ -2,7 +2,7 @@
 slug: vino-zona
 date: 2026-02-22
 published: true
-title: Vino Zona Sedona
+title: Vino Zona
 subtitle: A curated wine tasting of the best 100% Arizona grown and made wine!
 tags:
   - shop
