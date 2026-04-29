@@ -3,7 +3,7 @@ slug: dulce-ice-cream-churros-candies
 date: 2026-02-22
 published: true
 title: 'Dulce: Ice Cream, Churros, & Candies'
-subtitle: A joy-filled destination to savor a snack, sip a refreshing drink, or enjoy a new or old favorite treat
+subtitle: Sweet treats, churros, and nostalgic confections
 tags:
   - food
   - ice cream
