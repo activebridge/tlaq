@@ -3,7 +3,7 @@ slug: bow-wow-sedona
 date: 2026-03-08
 published: true
 title: Bow Wow Sedona
-subtitle: Offering the finest in fashion accessories, health & nutrition for the quad pet set
+subtitle: A shop devoted to your furry best friends
 tags:
   - pet
   - shop
