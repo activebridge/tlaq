@@ -23,4 +23,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-The original paintings, sculpture, and jewelry of Nicholas Kirsten-Honshin are created with joy. It is the artist's desire to express a moment of peace and beauty that will enrich the life and environment of your home, office, or body. His art is inspired and flows from the sacred meditational space of the transcendental archetypal symbols of Christianity, Zen, and Tibetan Buddhism as well as the shamanistic practices of the world's perennial philosophies.
+Featuring nine Arizona master artisans, this gallery explores themes of peace and connection through poetry, painting, ceramics, and symbolic works, offering a deeply reflective and meditative art experience. Honshin’s Zen Cats are available here.
