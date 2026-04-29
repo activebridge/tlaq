@@ -3,7 +3,7 @@ slug: bella-fine-goods
 date: 2026-02-22
 published: true
 title: Bella Fine Goods
-subtitle: Specialty goods from around the world
+subtitle: Furnishings, jewelry, and distinctive gifts
 tags:
   - gifts
   - shop
