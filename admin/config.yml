@@ -792,37 +792,40 @@ collections:
         public_folder: "/assets/images/parking"
         fields:
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
+          - label: "Intro"
+            name: "intro"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
           - label: "Notes"
             name: "notes"
             widget: "object"
             fields:
               - { label: "General", name: "general", widget: "text" }
               - { label: "Visitors Only", name: "visitors_only", widget: "string" }
-          - label: "Parking Lots"
-            name: "lots"
+          - label: "Parking Lot Rows"
+            name: "lot_rows"
             widget: "list"
-            fields:
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Note", name: "note", widget: "string", required: false }
-              - { label: "Map URL", name: "map_url", widget: "string", required: false }
-          - label: "Oversized Vehicles"
-            name: "oversized"
-            widget: "object"
-            fields:
-              - { label: "Description", name: "description", widget: "text" }
-              - label: "Vehicles"
-                name: "vehicles"
-                widget: "list"
-                field: { label: "Vehicle", name: "vehicle", widget: "string" }
-          - label: "Shuttle"
-            name: "shuttle"
-            widget: "object"
-            fields:
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Boarding", name: "boarding", widget: "string" }
-              - { label: "Link Text", name: "link_text", widget: "string" }
-              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+            hint: "Each row holds up to 2 lots; rows are separated by a horizontal divider on desktop."
+            field:
+              label: "Row"
+              name: "row"
+              widget: "list"
+              fields:
+                - { label: "Name", name: "name", widget: "string" }
+                - { label: "Description", name: "description", widget: "text" }
+                - { label: "Extra Info", name: "extra", widget: "string", required: false, hint: "Optional secondary line (e.g. boarding location)" }
+                - { label: "Image", name: "map_image", widget: "image", required: false, hint: "1440x1080 recommended. Leave empty to show placeholder." }
+                - label: "Call-to-action"
+                  name: "cta"
+                  widget: "object"
+                  required: false
+                  collapsed: true
+                  fields:
+                    - { label: "URL", name: "url", widget: "string" }
+                    - { label: "Label", name: "label", widget: "string" }
       - name: "village_map"
         label: "Village Map"
         file: "pages/village_map.html"
