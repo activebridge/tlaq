@@ -3,7 +3,7 @@ slug: renee-taylor-jewelry
 date: 2026-02-22
 published: true
 title: Renee Taylor Jewelry
-subtitle: Contemporary, fashion forward jewelry
+subtitle: Handcrafted jewelry with sculptural, artistic forms
 tags:
   - jewelry
   - shop
