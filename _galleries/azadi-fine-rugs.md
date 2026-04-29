@@ -24,4 +24,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-AZADI Fine Rugs brings you over two centuries of providing exquisite rugs with exceptional service and a commitment to bringing you the finest quality antique, contemporary and custom designs. AZADI is steeped in family tradition, authenticity and personalization. We prize our client relationships, and share with you our passion for transforming each idea and vision into a foundation for fine living.
+Established over two centuries ago, this distinguished gallery offers handcrafted contemporary and antique rugs, including Persian and Navajo pieces, alongside expert cleaning and restoration services rooted in generations of craftsmanship.
