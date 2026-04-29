@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Contemporary, fashion forward jewelry.</h6>
+An artful collection of handcrafted jewelry designed by Renee Taylor, where bold forms and refined details come together. Each piece feels sculptural and distinctive, offering a wearable expression of creativity and individuality.
