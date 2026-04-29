@@ -30,4 +30,4 @@ store_hours:
   sunday: 8am - 8pm
 ---
 
-Specializing in gourmet salads and sandwiches, pastries, espresso and rich, delicious ice cream. Catering available. Be sure to check out our premium wines, handcrafted beers and top shelf spirits. Head to the bar for Happy Hour, Monday through Friday, 4 to 6 pm, and relish boutique wines by the bottle (high tech dual cooled for optimum flavor) or on tap with organic options. Enjoy specialty beers by the bottle and 10 on tap, including gluten free options, and regional favorites that alternate seasonally.
+A beloved, tucked-away café offering fresh, thoughtfully prepared breakfast and lunch in a lush garden setting. Known for its relaxed charm and seasonal ingredients, it’s a place to linger, unwind, and savor simple, satisfying meals.
