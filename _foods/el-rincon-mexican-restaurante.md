@@ -30,4 +30,4 @@ store_hours:
   sunday: 11am - 8pm
 ---
 
-Nestled in the splendor of Tlaquepaque, El Rincon offers Sedona's finest 'Arizona Style' Mexican cuisine. A blending of traditional Mexican with Native American Navajo influences provides the basis for 'Arizona Style' Mexican cuisine. Created by Gloria, Demetri, Candyce and Cindy in 1976, El Rincon is Sedona's most recommended and visited restaurant. Serving over 3 million guests, El Rincon is a landmark within a landmark. Features: 'Arizona Style' Mexican Cuisine, World Famous Margaritas, Cuisine made fresh daily with no preservatives, no lard ever! Chocolate Cherry Dessert Chimichangas, Indoor and patio seating.
+A warm and inviting restaurant serving Southwestern-style Mexican cuisine with Native American influences, blending bold flavors and cultural traditions into a dining experience rooted in comfort and authenticity.
