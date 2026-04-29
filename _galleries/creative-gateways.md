@@ -3,7 +3,7 @@ slug: creative-gateways
 date: 2026-02-24
 published: true
 title: Creative Gateways Gallery
-subtitle: Contemporary art glass, interior accessories & wearable art
+subtitle: Contemporary glass sculpture and colorful wall art
 tags:
   - gallery
   - glass art
