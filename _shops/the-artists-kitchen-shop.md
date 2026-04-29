@@ -3,7 +3,7 @@ slug: the-artists-kitchen-shop
 date: 2026-03-07
 published: true
 title: The Artist's Kitchen Shop
-subtitle: Creative cookware, elegant entertaining, gourmet gifts
+subtitle: Exceptional kitchenware and tableware destination
 tags:
   - shop
   - kitchen
