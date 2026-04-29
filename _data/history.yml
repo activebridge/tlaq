@@ -4,11 +4,10 @@ description: From its architectural inspiration to artistic tradition, learn abo
 hero_banner: assets/images/history/hero.webp
 cover: assets/images/history/video-cover.webp
 cover_alt: Aerial view of Tlaquepaque Arts & Shopping Village
-
 vision:
   label: VISION
   background: assets/images/history/arch.webp
-  text: |
+  text: |-
     In the 1970s, when Sedona had just one stoplight, Nevada businessman and philanthropist Abe Miller discovered a grove of century-old sycamores along Oak Creek. A lover of Mexico and the arts, he envisioned creating a village inspired by San Pedro Tlaquepaque near Guadalajara—an artisanal community where makers create in full view, and where craft, culture, and daily life are shared.
 
     He brought that spirit to Sedona and named it Tlaquepaque, meaning "the best of everything" in the ancient Aztec language.
@@ -20,15 +19,14 @@ vision:
     - image: assets/images/history/fountain.webp
       alt: Plaza de la Fuente fountain
   footnotes:
-    - "Abe Miller and Bob McIntyre, the Architect, reviewing blueprints."
-    - "Patio de las Campañas from a 1970's issue of Arizona Highways."
-    - "A view of Plaza de la Fuente from the 1970s."
-
+    - Abe Miller and Bob McIntyre, the Architect, reviewing blueprints.
+    - Patio de las Campañas from a 1970's issue of Arizona Highways.
+    - A view of Plaza de la Fuente from the 1970s.
 stories:
   - id: inspiration
     label: INSPIRATION
     background: assets/images/history/patio.webp
-    text: |
+    text: |-
       Together, they traveled throughout Mexico—studying architecture, gathering materials, and immersing themselves in the rhythms of village life. They were drawn not only to the craftsmanship but to the way spaces foster connection: courtyards with fountains and flowers, pathways that invite wandering, and buildings shaped by the presence of daily life.
 
       They returned to Sedona with hand-forged ironwork, carved wooden doors, tiles, clay vessels, and other artisan-made elements—each chosen to help create an environment rooted in authenticity.
@@ -40,14 +38,13 @@ stories:
       - image: assets/images/history/wooden-door.png
         alt: Carved wooden door with iron knocker and Talavera tiles
     footnotes:
-      - "Abe Miller and Bob McIntyre, the Architect, reviewing blueprints."
-      - "Patio de las Campañas from a 1970's issue of Arizona Highways."
-      - "A view of Plaza de la Fuente from the 1970s."
-
+      - Abe Miller and Bob McIntyre, the Architect, reviewing blueprints.
+      - Patio de las Campañas from a 1970's issue of Arizona Highways.
+      - A view of Plaza de la Fuente from the 1970s.
   - id: creation
     label: CREATION
     background: assets/images/history/landscaping.webp
-    text: |
+    text: |-
       Tlaquepaque was shaped with a commitment to feeling as much as form. Rather than rigid precision, its creation embraced craftsmanship and intuition—allowing the village to emerge organically over time.
 
       Materials and architectural elements were thoughtfully composed to reflect the spirit of a traditional Mexican village, while remaining deeply connected to the landscape of Sedona. The preserved sycamore grove became central to the experience, offering shade, stillness, and continuity with the land.
@@ -63,25 +60,24 @@ stories:
       - image: assets/images/history/sycamore-branch.png
         alt: Preserved sycamore branch arching above the village
     footnotes:
-      - "Abe Miller and Bob McIntyre, the Architect, reviewing blueprints."
-      - "Patio de las Campañas from a 1970's issue of Arizona Highways."
-      - "A view of Plaza de la Fuente from the 1970s."
-
+      - Abe Miller and Bob McIntyre, the Architect, reviewing blueprints.
+      - Patio de las Campañas from a 1970's issue of Arizona Highways.
+      - A view of Plaza de la Fuente from the 1970s.
   - id: today
     label: TODAY
     background: assets/images/history/abe-miller-portrait.webp
-    text: |
+    text: |-
       Today, Tlaquepaque Arts & Shopping Village remains the creative heart of Sedona. With more than 50 specialty shops, galleries, and eateries, it continues to celebrate artistry and craftsmanship across every medium. Throughout the year, events, music, and gatherings bring the village to life—creating a sense of connection that extends beyond any single visit.
 
       Tlaquepaque endures as a place of discovery—where art, community, and environment come together in a way that feels both timeless and alive, and where the original vision continues to unfold.
     images:
-      - image: assets/images/history/tlaquepaque-sign.png
+      - image: /assets/images/history/Tile_Wall_History.jpg
         alt: TLAQUEPAQUE tile sign on stucco wall
       - image: assets/images/history/frog-statue.png
         alt: Bronze frog sculpture at Tlaquepaque
       - image: assets/images/history/folklorico-dancers.png
         alt: Folklorico dancers performing in the courtyard
     footnotes:
-      - "Abe Miller and Bob McIntyre, the Architect, reviewing blueprints."
-      - "Patio de las Campañas from a 1970's issue of Arizona Highways."
-      - "A view of Plaza de la Fuente from the 1970s."
+      - Abe Miller and Bob McIntyre, the Architect, reviewing blueprints.
+      - Patio de las Campañas from a 1970's issue of Arizona Highways.
+      - A view of Plaza de la Fuente from the 1970s.
