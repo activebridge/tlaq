@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Silver & gemstone jewelry by Arizona artists.</h6>
+A vibrant collection of silver and gemstone jewelry by nationally recognized artisans, each piece reflecting exceptional craftsmanship and individuality. Bold yet wearable, the collection offers expressive designs rich in color, texture, and distinctive character.
