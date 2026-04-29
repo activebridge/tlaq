@@ -24,4 +24,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-Carré d'artistes offers a permanent collection of 600 talented artists in 26 galleries throughout the world. Be dazzled by the creativity and variety of selected works. Wander through open exhibition and meeting spaces. Throughout the year, educational and artistic events, dedications and studio visits are full of emotions for artists and art lovers. A real alternative in the art world, making contemporary art accessible, Carré d'artistes is ambitious, generous and respectful of artists.
+An international gallery concept showcasing original works in both small and large formats by over 25 artists, making collecting accessible while celebrating diverse styles, perspectives, and creative voices.
