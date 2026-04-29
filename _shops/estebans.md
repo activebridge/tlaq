@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Handcrafted functional & decorative pottery by Southwestern artists.</h6>
+Handmade pottery that balances function and artistry, offering both decorative and everyday pieces crafted with care, bringing texture, warmth, and authenticity into the spaces they inhabit.
