@@ -975,6 +975,7 @@ footer .socials-mobile { display: none; }
       align-items: center;
 
       img {
+        width: 48%;
         max-width: 250px;
         max-height: 250px;
         object-fit: contain;
