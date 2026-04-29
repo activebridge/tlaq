@@ -1,7 +1,3 @@
-{% comment %}
-  Annual event details. Expects page.schedule to be defined in event front matter.
-{% endcomment %}
-
 {% if include.event.schedule %}
   <h3>Schedule</h3>
   <hr>
@@ -15,10 +11,4 @@
     {% endfor %}
     <hr>
   {% endfor %}
-{% endif %}
-
-{% if include.event.map %}
-  <h3>{{ include.event.map.title }}</h3>
-  <h6>{{ include.event.map.description }}</h6>
-  <a href="{{ include.event.map.url }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">{{ include.event.map.button_label }}</a>
 {% endif %}

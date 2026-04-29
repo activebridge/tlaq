@@ -1,0 +1,15 @@
+{% if include.video_url %}
+  <video class="videobgframe" src="{{ include.video_url }}" autoplay loop muted playsinline preload="metadata"></video>
+  <script>
+    (function() {
+      const v = document.currentScript.previousElementSibling;
+      const removeIfNotPlaying = () => { removeIfNotPlaying.ok || v.remove(); };
+      v.addEventListener('playing', () => {
+        removeIfNotPlaying.ok = true;
+        setTimeout(() => v.classList.add('loaded'), 1000);
+      }, { once: true });
+      v.play().catch(removeIfNotPlaying);
+      setTimeout(removeIfNotPlaying, 1000);
+    })();
+  </script>
+{% endif %}
