@@ -2,7 +2,7 @@
 slug: cake-couture
 date: 2026-02-22
 published: true
-title: Sedona Cake Couture
+title: Cake Couture Coffee & Dessert
 subtitle: Fine dessert and coffee
 tags:
   - food
@@ -30,4 +30,4 @@ store_hours:
   sunday: 10am - 6pm
 ---
 
-Fine desserts and Coffee.
+A charming stop for handcrafted desserts and coffee drinks, featuring made-from-scratch baked goods that invite you to pause, indulge, and savor something sweet in a welcoming setting.
