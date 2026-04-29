@@ -23,4 +23,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Unique & custom candles created with patented candle making process.</h6>
+A distinctive shop offering intricately carved candles and gifts, where craftsmanship transforms everyday objects into decorative pieces that add warmth, artistry, and a sense of occasion.
