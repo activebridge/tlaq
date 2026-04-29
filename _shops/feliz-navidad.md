@@ -3,7 +3,7 @@ slug: feliz-navidad
 date: 2026-02-22
 published: true
 title: Feliz Navidad
-subtitle: Christmas art & ornaments
+subtitle: Handmade ornaments and Southwestern holiday décor
 tags:
   - christmas
   - shop
