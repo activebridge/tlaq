@@ -30,4 +30,4 @@ store_hours:
   sunday: 10:00 am–6:00 pm
 ---
 
-A joy-filled destination where guests can savor a snack, sip a refreshing drink, find the perfect gift, discover a new favorite treat or rediscover those that they've always loved.
+A joy-filled destination for sweet indulgence, offering ice cream, churros, candies, and gifts—where guests can savor nostalgic favorites and discover new treats in a vibrant, welcoming atmosphere.
