@@ -3,7 +3,7 @@ slug: mountain-trails-gallery
 date: 2026-02-24
 published: true
 title: Mountain Trails Gallery
-subtitle: Wildlife & western bronzes, paintings & contemporary art
+subtitle: Fine art of the New American West
 tags:
   - gallery
   - western art
