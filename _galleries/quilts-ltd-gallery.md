@@ -23,4 +23,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-Arizona premier fiber gallery featuring collectible, Wearable Art and Quilts by Arizona Artists.
+A celebrated gallery dedicated to fine art quilts and textile works, showcasing innovative craftsmanship from artists around the world. Blending tradition and contemporary design, each piece reveals texture, color, and intricate detail.
