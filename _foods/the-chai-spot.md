@@ -30,4 +30,4 @@ store_hours:
   sunday: 10AM - 6PM
 ---
 
-A cozy, inviting café centered around handcrafted chai and warm, comforting flavors. Blending tradition with a modern sensibility, it offers a place to pause, connect, and savor thoughtfully prepared drinks and light bites—rooted in purpose, with 50% of profits supporting women and children in Pakistan.
+A cozy café centered around handcrafted chai, warm flavors, and a curated selection of South Asian clothing and home goods. Blending tradition with a modern sensibility, it’s a place to pause, connect, and savor thoughtfully prepared drinks, rooted in purpose, with 50% of profits supporting women and children in Pakistan.
