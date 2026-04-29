@@ -1640,7 +1640,10 @@ img.village-map {
 
     .top-title {
       margin: auto 0 0;
-      padding: 2rem clamp(1.5rem, 4vw, 3rem);
+      
+      @media (min-width: 770px) {
+        padding: 2rem clamp(1.5rem, 4vw, 3rem);
+      }
     }
 
     .content-wrapper {

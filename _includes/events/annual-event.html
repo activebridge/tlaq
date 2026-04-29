@@ -10,6 +10,7 @@
     <div class="top-title">
       <h5 style="view-transition-name: {{ page_title_transition_name }};" data-event-title>{{ page.title }}</h5>
       {% include events/meta.html event=page %}
+      {% include events/contact.html event=page %}
     </div>
     <div>
       <div class="hero-desc" style="view-transition-name: {{ page_image_transition_name }};">
@@ -17,8 +18,6 @@
         {% include video-bg.html video_url=video_url media="(min-width: 770px)" %}
       </div>
     </div>
-
-    {% include events/contact.html event=page %}
   </div>
 </div>
 
