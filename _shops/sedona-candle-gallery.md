@@ -15,6 +15,7 @@ phone: (928) 204-0688
 website: https://globalcandlegallery.com
 coordinates: -111.7630895, 34.8616017
 image: /assets/images/shops/Sedona_Candle_Co_Ext.jpg
+interior_image: /assets/images/shops/Sedona_Candle_Gallery_Int.jpg
 instagram: ''
 facebook: https://www.facebook.com/p/Sedona-Candle-Gallery-100063520300187/
 full_location: 336 AZ-179 Suite C104, Sedona, AZ 86336
