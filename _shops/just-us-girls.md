@@ -3,7 +3,7 @@ slug: just-us-girls
 date: 2026-02-22
 published: true
 title: Just Us Girls
-subtitle: Women's contemporary clothing & accessories
+subtitle: Women’s clothing and everyday accessories
 tags:
   - clothing
   - shop
