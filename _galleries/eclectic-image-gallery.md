@@ -3,7 +3,7 @@ slug: eclectic-image-gallery
 date: 2026-02-22
 published: true
 title: Eclectic Image Gallery
-subtitle: Original impressionistic, fine art photography & mixed media artwork
+subtitle: Photography and fine art in harmony
 tags:
   - gallery
   - photography
