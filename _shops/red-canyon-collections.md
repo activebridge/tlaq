@@ -3,7 +3,7 @@ slug: red-canyon-collections
 date: 2026-02-22
 published: true
 title: Red Canyon Collections
-subtitle: Fine contemporary jewelry & southwestern art
+subtitle: Southwest-inspired jewelry, art, and gifts
 tags:
   - jewelry
   - shop
