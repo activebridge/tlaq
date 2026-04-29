@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Christmas art & ornaments.</h6>
+A festive shop dedicated to Southwestern-inspired holiday décor, specializing in handmade ornaments and nativity scenes that celebrate tradition, craftsmanship, and the spirit of Christmas year-round.
