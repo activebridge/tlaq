@@ -2,7 +2,7 @@
 slug: pump-house-station
 date: 2026-02-22
 published: true
-title: Pump House Station
+title: Pump House Station & Urban Eatery
 subtitle: Farm-to-table & artisanal foods including Organic coffee, artisan pastries, local crafted beers, signature cocktails
 tags:
   - food
@@ -30,4 +30,4 @@ store_hours:
   sunday: 8am - 2:30pm
 ---
 
-Pump House Station offers an urban eclectic indoor setting with patios shaded by giant Sycamore Trees creating a peaceful dining experience. We invite you to join us for Breakfast, Lunch and Weekend Dinners on Friday and Saturday. Our menu and daily specials focus on fresh, organic, sustainable foods whenever possible. Our passion and commitment in supporting American Farms and local Artisans help us to ensure great flavors, textures and presentations. Stimulate your palate and delight your senses in our casual eatery offering fine dining techniques and quality ingredients. Espresso Bar with Organic Coffees, Full Bar, Specialty Cocktails, Wines and Local Draft Beers.
+A lively gathering place offering thoughtfully prepared breakfast, lunch, and coffee, set within the original homestead house at Tlaquepaque North beneath the sycamores. Blending casual comfort with quality ingredients, it’s a place to meet, linger, and enjoy everyday favorites.
