@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Mixed metal jewelry, handcrafted knives & wood accessories.</h6>
+A collection of artisanal gifts, including mixed metal jewelry, handcrafted knives, and wood accessories. Each piece reflects thoughtful craftsmanship, sustainable practices, and a deep connection to the natural world.
