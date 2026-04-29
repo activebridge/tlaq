@@ -3,7 +3,7 @@ slug: showstoppers
 date: 2026-02-22
 published: true
 title: Showstoppers
-subtitle: Floral & event decorating, home decor, furnishings & gifts
+subtitle: Native American jewelry and bold home décor
 tags:
   - shop
   - home decor
