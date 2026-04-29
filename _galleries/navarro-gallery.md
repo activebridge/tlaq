@@ -3,7 +3,7 @@ slug: navarro-gallery
 date: 2026-02-22
 published: true
 title: Navarro Gallery
-subtitle: Bronze sculpture gallery and outdoor garden
+subtitle: Bronze sculpture gallery and garden
 tags:
   - gallery
   - western art
