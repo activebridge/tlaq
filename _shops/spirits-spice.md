@@ -3,7 +3,7 @@ slug: spirits-spice
 date: 2026-02-22
 published: true
 title: Spirits & Spice
-subtitle: High-quality spirits, custom spice blends, oils, vinegar & wine
+subtitle: Taste, explore, and discover bold flavors
 tags:
   - shop
   - spices
