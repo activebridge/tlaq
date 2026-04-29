@@ -3,7 +3,7 @@ slug: rowe-gallery
 date: 2026-02-22
 published: true
 title: Rowe Gallery
-subtitle: Traditional & contemporary western & wildlife paintings & sculptures
+subtitle: Fine bronze wildlife sculpture, rich in detail
 tags:
   - gallery
   - western art
