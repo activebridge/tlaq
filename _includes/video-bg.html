@@ -1,0 +1,21 @@
+{% if include.video_url %}
+  <video class="videobgframe" src="{{ include.video_url }}" autoplay loop muted playsinline preload="metadata"{% if include.media %} data-media="{{ include.media }}"{% endif %}></video>
+  <script>
+    (function() {
+      const v = document.currentScript.previousElementSibling;
+      const media = v.dataset.media;
+      if (media && !window.matchMedia(media).matches) {
+        v.remove();
+        return;
+      }
+      let played = false;
+      const removeIfNotPlaying = () => { if (!played) v.remove(); };
+      v.addEventListener('playing', () => {
+        played = true;
+        setTimeout(() => v.classList.add('loaded'), 1000);
+      }, { once: true });
+      v.play().catch(removeIfNotPlaying);
+      setTimeout(removeIfNotPlaying, 1000);
+    })();
+  </script>
+{% endif %}

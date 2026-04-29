@@ -6,7 +6,7 @@ starts_at: 2026-11-01 11:00:00
 ends_at: 2026-11-01 17:00:00
 location: THROUGHOUT TLAQUEPAQUE
 image: assets/images/events/day-of-dead.webp
-video_url: https://vid.cdn-website.com/164890e9/videos/PsNbS5M0Tx6imKwuz1GU_SS22-v.mp4
+video_url:
 subtitle: Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
 schedule_type: yearly
 annual: true

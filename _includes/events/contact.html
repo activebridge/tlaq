@@ -1,0 +1,44 @@
+{% assign _phone = include.event.phone | strip %}
+{% if _phone.size > 0 %}
+  <hr>
+  <div>
+    <h6>PHONE</h6>
+    <h7><a href="tel:{{ _phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ _phone }}</a></h7>
+  </div>
+{% endif %}
+
+{% assign _website = include.event.website | strip %}
+{% if _website.size > 0 %}
+  <hr>
+  <div>
+    <h6>WEBSITE</h6>
+    <h7><a href="{{ _website }}" target="_blank" rel="noopener noreferrer">{{ _website }}</a></h7>
+  </div>
+{% endif %}
+
+{% assign _email = include.event.email | strip %}
+{% if _email.size > 0 %}
+  <hr>
+  <div>
+    <h6>EMAIL</h6>
+    <h7><a href="mailto:{{ _email }}">{{ _email }}</a></h7>
+  </div>
+{% endif %}
+
+{% assign _fb = include.event.facebook | strip %}
+{% assign _ig = include.event.instagram | strip %}
+{% if _fb.size > 0 or _ig.size > 0 %}
+  <hr>
+  <div class="social">
+    {% if _fb.size > 0 %}
+      <a href="{{ _fb }}" target="_blank" rel="noopener noreferrer">
+        {% include icons/socials/facebook.svg %}
+      </a>
+    {% endif %}
+    {% if _ig.size > 0 %}
+      <a href="{{ _ig }}" target="_blank" rel="noopener noreferrer">
+        {% include icons/socials/instagram.svg %}
+      </a>
+    {% endif %}
+  </div>
+{% endif %}

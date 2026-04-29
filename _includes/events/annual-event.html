@@ -1,0 +1,40 @@
+{% assign video_url = page.video_url %}
+
+<section id="landing-banner" class="landing-banner annual-mobile-banner">
+  {% include hero-banner.html image_path=image_path transition-name=page_image_transition_name data_event_image=true %}
+  {% include video-bg.html video_url=video_url media="(max-width: 769.98px)" %}
+</section>
+
+<div class="top-section">
+  <div class="content-wrapper grid-col-2">
+    <div class="top-title">
+      <h5 style="view-transition-name: {{ page_title_transition_name }};" data-event-title>{{ page.title }}</h5>
+      {% include events/meta.html event=page %}
+      {% include events/contact.html event=page %}
+    </div>
+    <div>
+      <div class="hero-desc" style="view-transition-name: {{ page_image_transition_name }};">
+        <img src="{{ image_path | relative_url }}" alt="{{ page.title }} Image">
+        {% include video-bg.html video_url=video_url media="(min-width: 770px)" %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-wrapper grid-col-2">
+  <div>
+    {{ content }}
+  </div>
+
+  <div>
+    {% include events/annual-details.html event=page %}
+  </div>
+</div>
+
+{% if page.map %}
+  <div class="content-wrapper">
+    <h3>{{ page.map.title }}</h3>
+    <h6>{{ page.map.description }}</h6>
+    <a href="{{ page.map.url }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">{{ page.map.button_label }}</a>
+  </div>
+{% endif %}
