@@ -24,4 +24,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-Mountain Trails Gallery, located upstairs on the second floor in the Patio de las Companas, is known for its dedication to fine American Western art and has been a destination gallery for collectors and aficionados of sculpture and painting for more than 30 years. Mountain Trails Gallery continues in the footsteps of founder Ken Payne (1938-2012), a life-long student of American history who shared his passion for the stories of pioneers, cowboys, and native peoples of the Southwest and the Great Plains.
+An iconic fine art gallery showcasing award-winning artists whose work is rooted in landscape, light, and heritage—contemporary expressions that reflect evolving perspectives while continuing to capture the majesty of the New American West.
