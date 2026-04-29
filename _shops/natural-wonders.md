@@ -3,7 +3,7 @@ slug: natural-wonders
 date: 2026-02-22
 published: true
 title: Natural Wonders
-subtitle: Gem, minerals & fossils from around the world
+subtitle: Crystals, fossils, and natural mineral treasures
 tags:
   - minerals
   - gems
