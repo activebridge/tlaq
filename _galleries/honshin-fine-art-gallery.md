@@ -3,7 +3,7 @@ slug: honshin-fine-art-gallery
 date: 2026-02-24
 published: true
 title: Honshin Fine Art Gallery
-subtitle: Local artists fine art gallery
+subtitle: Live art and immersive creative experience
 tags:
   - gallery
   - art gallery
