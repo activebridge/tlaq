@@ -3,7 +3,7 @@ slug: azadi-fine-rugs
 date: 2026-02-22
 published: true
 title: Azadi Fine Rugs
-subtitle: Decorative rugs in semi-antique, antique & fine contemporary styles
+subtitle: Fine contemporary and antique rug gallery
 tags:
   - gallery
   - rugs
