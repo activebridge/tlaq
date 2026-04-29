@@ -3,7 +3,7 @@ slug: quilts-ltd-gallery
 date: 2026-02-22
 published: true
 title: Quilts Ltd. Gallery
-subtitle: Premier fiber gallery featuring collectible wearable art & quilts by Arizona artists
+subtitle: Fine art quilts and textile works
 tags:
   - gallery
   - quilts
