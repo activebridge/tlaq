@@ -3,7 +3,7 @@ slug: sedona-candle-gallery
 date: 2026-02-22
 published: true
 title: Sedona Candle Gallery
-subtitle: Unique & custom candles created with patented candle making process
+subtitle: Hand-carved candles and artisan gift pieces
 tags:
   - shop
   - candles
