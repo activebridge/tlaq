@@ -3,7 +3,7 @@ slug: true-west-hats
 date: 2026-03-05
 published: true
 title: True West Hats
-subtitle: A custom hat experience with heirloom craftsmanship and handmade goods
+subtitle: Custom hats and premium Western accessories
 tags:
   - shop
   - hats
