@@ -25,4 +25,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Music boxes & other musical gift & collectible items.</h6>
+A nostalgic collection of music boxes, instruments, and unique gifts, offering pieces that evoke memory and melody, blending sentiment with charm across a variety of keepsakes.
