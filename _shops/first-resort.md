@@ -22,4 +22,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Gifts and apparel for people on the go.</h6>
+A thoughtfully curated boutique offering clothing, accessories, and gifts that inspire positivity and personal expression. Rooted in a sense of ease and intention, each piece brings a little more joy into everyday life.
