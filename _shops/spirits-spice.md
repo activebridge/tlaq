@@ -26,4 +26,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>High-quality spirits, custom spice blends, oils, vinegar & wine.</h6>
+A sensory-driven shop offering small-batch spirits, oils, vinegars, and spices, with a “try before you buy” experience that invites exploration, discovery, and a deeper appreciation of flavor.
