@@ -3,7 +3,7 @@ slug: cucina-sedona
 date: 2026-02-22
 published: true
 title: Cucina Sedona
-subtitle: Southwestern salsas, gadgets, linens, pottery & tableware
+subtitle: Southwest-inspired kitchen goods and home essentials
 tags:
   - kitchen
   - home decor
