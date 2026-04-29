@@ -26,4 +26,4 @@ extra_suites:
   - a205
 ---
 
-<h6>A custom hat experience with heirloom craftsmanship and handmade goods.</h6>
+A high-end studio specializing in custom, heirloom-quality hats, designed one-on-one with each guest, alongside a curated selection of premium boots, bags, and accessories rooted in Western craftsmanship.
