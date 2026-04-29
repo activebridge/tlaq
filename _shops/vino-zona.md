@@ -24,4 +24,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>A curated wine tasting of the best 100% Arizona grown and made wine!</h6>
+A welcoming wine destination featuring small-batch local wines curated by sommeliers, offering a relaxed atmosphere where thoughtful selection, great taste, and an easygoing vibe come together.
