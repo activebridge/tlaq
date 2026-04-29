@@ -22,4 +22,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-<h6>Authentic indian jewelry, baskets & kachinas.</h6>
+A meaningful collection of handcrafted works by Native American artists, offering jewelry and artifacts that honor cultural heritage, tradition, and the enduring connection between art and identity.
