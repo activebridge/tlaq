@@ -3,7 +3,7 @@ slug: alt-book-and-records
 date: 2026-02-22
 published: true
 title: Alt Books and Records
-subtitle: Used, rare & out of print books and vintage vinyl records
+subtitle: Used, rare and out of print books and vintage vinyl records
 tags:
   - books
   - music
