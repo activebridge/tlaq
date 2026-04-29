@@ -23,4 +23,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-We offer contemporary fine art in a spacious gallery located in the Patio del Norte at Tlaquepaque. Original artwork, jewelry and many other items await you at the Renee Taylor Gallery.
+A contemporary gallery featuring original paintings by Renee Taylor, known for expressive color and layered texture. Each work reflects movement and emotion, inviting viewers into a dynamic, deeply personal visual experience.
