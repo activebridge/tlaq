@@ -2558,3 +2558,21 @@ main.about {
 }
 
 .gift-cards .btn { margin-top: 2rem; }
+
+.magazines .list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+
+  .card {
+    gap: 0;
+    width: fit-content;
+    align-items: center;
+
+    a { width: auto; }
+
+    img { aspect-ratio: 3 / 4; }
+  }
+
+  @media (max-width: 770px) { grid-template-columns: 1fr; }
+}
