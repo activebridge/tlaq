@@ -1,14 +1,14 @@
 ---
 order: 4
 section: articles
-heading: "The acclaimed village magazine, Discover Tlaquepaque, published biannually."
+heading: The acclaimed village magazine, Discover Tlaquepaque
 title: Our Magazine
-icon: icons/windows/default.svg
 image: /assets/images/landing/magazine.webp
 alt: Discover Tlaquepaque Magazine
-description: "Featuring seasonal events and new art, emerging artists, distinctive shops, and must-have products, be sure to read it cover to cover."
+description: Featuring seasonal events and new art, emerging artists, distinctive shops, and must-have products, be sure to read it cover to cover.
 links:
   - text: View Latest Issue
-  - url: "/magazines"
-    text: Browse Previous Issues
+  - text: Browse Previous Issues
+    url: /magazines
+icon: icons/windows/default.svg
 ---
