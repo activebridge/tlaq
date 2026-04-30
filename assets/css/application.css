@@ -1888,6 +1888,7 @@ dialog {
     }
 
     .form-consents {
+      margin-top: 2rem;
       gap: 2rem;
 
       fieldset { margin-top: 0; }
