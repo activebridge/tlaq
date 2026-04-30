@@ -12,7 +12,7 @@ phone: (928) 282-5838
 website: ''
 coordinates: -111.7630565, 34.8620697
 image: /assets/images/shops/Dorine_Ext.jpg
-interior_image: /assets/images/shops/Dorine_Int.jpg
+interior_image: /assets/images/shops/Dorien-Daniels_Int2.jpg
 instagram: ''
 facebook: ''
 full_location: 336 AZ-179 Suite B106, Sedona, AZ 86336
