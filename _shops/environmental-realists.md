@@ -3,7 +3,7 @@ slug: environmental-realists
 date: 2026-02-22
 published: true
 title: Environmental Realists
-subtitle: Mixed metal jewelry, handcrafted knives & wood accessories
+subtitle: Mixed metal jewelry, handcrafted knives and accessories
 tags:
   - jewelry
   - shop
