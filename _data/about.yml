@@ -29,7 +29,7 @@ sections:
     images:
       - assets/images/about/landscaping.png
   sycamore:
-    heading: Sycamore
+    heading: Sycamores
     description: Tlaquepaque's majestic sycamores, originally preserved by Abe Miller, shade the village's cobblestone walkways and courtyards. These trees are integral to the property's identity. They are living landmarks that form the foundation of the landscape. A dedicated team maintains their beauty year-round.
     images:
       - assets/images/about/sycamore.png
@@ -39,21 +39,21 @@ sections:
     images:
       - assets/images/about/our-people.png
 jump_to_links:
-  our_people:
-    id: '#our-people'
-    text: OUR PEOPLE
-  sycamore:
-    id: '#sycamore'
-    text: SYCAMORE
-  landscaping:
-    id: '#landscaping'
-    text: LANDSCAPING
-  outdoor_art:
-    id: '#outdoor-art'
-    text: OUTDOOR ART
-  tlaquepaque_north:
-    id: '#tlaquepaque-north'
-    text: TLAQUEPAQUE NORTH
   village_map:
-    id: '#village-map'
     text: VILLAGE MAP
+    id: '#village-map'
+  tlaquepaque_north:
+    text: TLAQUEPAQUE NORTH
+    id: '#tlaquepaque-north'
+  outdoor_art:
+    text: OUTDOOR ART
+    id: '#outdoor-art'
+  landscaping:
+    text: LANDSCAPING
+    id: '#landscaping'
+  sycamore:
+    text: SYCAMORE
+    id: '#sycamore'
+  our_people:
+    text: OUR PEOPLE
+    id: '#our-people'
