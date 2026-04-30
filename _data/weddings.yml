@@ -1,4 +1,4 @@
-title: Tlaquepaque, one of Sedona's premier weddings and event destinations
+title: Tlaquepaque, one of Sedona's premier wedding and event destinations
 description: Specialized in intimate weddings and events, Tlaquepaque offers beauty and old world charm in the heart of Sedona. Vine covered stucco walls, cobblestone walkways, arched entryways and elegant plazas, provide you with a magical place to design the wedding of your dreams.
 weddings: WEDDINGS & PRIVATE EVENTS
 venues: VENUES
@@ -48,21 +48,21 @@ jump_to_links:
   private_events:
     text: PRIVATE EVENTS
     id: '#events'
-  chapel-at-tlaquepaque:
-    id: chapel-at-tlaquepaque
-    text: CHAPEL
-  patio-de-las-campanas:
-    id: patio-de-las-campanas
-    text: PATIO DE LAS CAMPAÑAS
-  terrace-at-patio-del-norte:
-    id: terrace-at-patio-del-norte
-    text: TERRACE AT PATIO DEL NORTE
-  calle-independencia:
-    id: calle-independencia
-    text: CALLE INDEPENDENCIA
   connect:
-    id: '#connect'
     text: CONNECT
+    id: '#connect'
+  calle-independencia:
+    text: CALLE INDEPENDENCIA
+    id: calle-independencia
+  terrace-at-patio-del-norte:
+    text: TERRACE AT PATIO DEL NORTE
+    id: terrace-at-patio-del-norte
+  patio-de-las-campanas:
+    text: PATIO DE LAS CAMPAÑAS
+    id: patio-de-las-campanas
+  chapel-at-tlaquepaque:
+    text: CHAPEL
+    id: chapel-at-tlaquepaque
 site_plan:
   title: SITE PLAN
   image: /assets/images/weddings/site-plan.webp
