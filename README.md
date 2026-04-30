@@ -195,7 +195,7 @@ If two stores share the same suite (e.g. both set `a208`), their pins will be pl
 
 - **Homepage** — Navigation structure and site settings (`index.md`)
 - **Site Configuration** — Global settings (`_data/site.yml`): app name, description, footer, directions/weather links
-- **Default Store Hours** — Weekly hour templates (`_data/store/hours_defaults.yml`)
+- **Default Hours** — Weekly hour templates (`_data/store/hours_defaults.yml`)
 
 ### Media
 

@@ -1,0 +1,7 @@
+detail_page:
+  labels:
+    location: Location
+    hours: Hours
+    phone: Phone
+    website: Website
+    village_map: Locate Us in the Village

@@ -695,96 +695,192 @@ collections:
         media_folder: "/assets/images/hours"
         public_folder: "/assets/images/hours"
         fields:
-          - label: "Jump To Links"
-            name: "jump_to_links"
+          - label: "Intro"
+            name: "intro"
             widget: "object"
+            hint: "Top copy block on the Hours page."
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small label above the main heading, e.g. Visit." }
+              - { label: "Heading", name: "heading", widget: "string", hint: "Main headline for the page hero." }
+              - { label: "Subheading", name: "subheading", widget: "text", hint: "Short introductory paragraph beneath the main heading." }
+          - label: "Sections"
+            name: "sections"
+            widget: "object"
+            hint: "Headings and section copy used throughout the Hours page."
             fields:
               - label: "Hours"
                 name: "hours"
                 widget: "object"
+                hint: "Copy for the village hours table."
                 fields:
-                  - { label: "Text", name: "text", widget: "string" }
-                  - { label: "ID", name: "id", widget: "string" }
+                  - { label: "Heading", name: "heading", widget: "string", hint: "Section heading shown above the hours table." }
+                  - { label: "Caption Prefix", name: "caption_prefix", widget: "string", hint: "Text shown before today's hours, e.g. The village is open today." }
+              - label: "Locations"
+                name: "locations"
+                widget: "object"
+                hint: "Copy for the locations section."
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string", hint: "Section heading shown above the location cards." }
+                  - { label: "Description", name: "description", widget: "text", hint: "Introductory text above the location cards." }
+              - label: "Village Map"
+                name: "village_map"
+                widget: "object"
+                hint: "Copy for the embedded village map section."
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string", hint: "Section heading shown above the embedded map." }
+                  - { label: "Iframe Title", name: "iframe_title", widget: "string", hint: "Accessibility title for the embedded map iframe." }
+              - label: "Parking"
+                name: "parking"
+                widget: "object"
+                hint: "Copy for the parking and shuttle section."
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string", hint: "Section heading shown above the parking copy." }
+                  - { label: "Intro", name: "intro", widget: "string", hint: "Short bold introductory line." }
+                  - { label: "Description", name: "description", widget: "text", hint: "Supporting paragraph below the intro line." }
+                  - { label: "CTA Text", name: "cta_text", widget: "string", hint: "Button label, e.g. Learn more." }
+                  - { label: "CTA URL", name: "cta_url", widget: "string", hint: "Internal or external URL opened by the button." }
+              - label: "Accessibility"
+                name: "accessibility"
+                widget: "object"
+                hint: "Copy for the accessibility card."
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string", hint: "Card heading." }
+                  - { label: "Description", name: "description", widget: "text", hint: "Body copy shown below the accessibility image." }
+              - label: "Family Friendly"
+                name: "family_friendly"
+                widget: "object"
+                hint: "Copy for the family and pet friendly card."
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string", hint: "Card heading." }
+                  - { label: "Description", name: "description", widget: "text", hint: "Main descriptive paragraph." }
+                  - { label: "Warning", name: "warning", widget: "text", hint: "Secondary cautionary note shown beneath the description." }
+          - label: "Jump To Links"
+            name: "jump_to_links"
+            widget: "object"
+            hint: "Navigation labels and anchor targets for the Hours page jump menu."
+            fields:
               - label: "Locations"
                 name: "locations"
                 widget: "object"
                 fields:
-                  - { label: "Text", name: "text", widget: "string" }
-                  - { label: "ID", name: "id", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string", hint: "Link label shown in the jump menu." }
+                  - { label: "ID", name: "id", widget: "string", hint: "Anchor target including #, e.g. #locations." }
               - label: "Village Map"
                 name: "village_map"
                 widget: "object"
                 fields:
-                  - { label: "Text", name: "text", widget: "string" }
-                  - { label: "ID", name: "id", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string", hint: "Link label shown in the jump menu." }
+                  - { label: "ID", name: "id", widget: "string", hint: "Anchor target including #, e.g. #village-map." }
+              - label: "Parking"
+                name: "parking"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string", hint: "Link label shown in the jump menu." }
+                  - { label: "ID", name: "id", widget: "string", hint: "Anchor target including #, e.g. #parking." }
+              - label: "Accessibility"
+                name: "accessibility"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string", hint: "Link label shown in the jump menu." }
+                  - { label: "ID", name: "id", widget: "string", hint: "Anchor target including #, e.g. #accessibility." }
+              - label: "Family Friendly"
+                name: "family_friendly"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string", hint: "Link label shown in the jump menu." }
+                  - { label: "ID", name: "id", widget: "string", hint: "Anchor target including #, e.g. #family-friendly." }
           - label: "Village Hours"
             name: "village_hours"
             widget: "object"
+            hint: "Daily hours shown on the main Hours page."
             fields:
-              - { label: "Monday", name: "monday", widget: "string" }
-              - { label: "Tuesday", name: "tuesday", widget: "string" }
-              - { label: "Wednesday", name: "wednesday", widget: "string" }
-              - { label: "Thursday", name: "thursday", widget: "string" }
-              - { label: "Friday", name: "friday", widget: "string" }
-              - { label: "Saturday", name: "saturday", widget: "string" }
-              - { label: "Sunday", name: "sunday", widget: "string" }
+              - { label: "Monday", name: "monday", widget: "string", hint: "e.g. 10:00 A.M. - 5:00 P.M." }
+              - { label: "Tuesday", name: "tuesday", widget: "string", hint: "e.g. 10:00 A.M. - 5:00 P.M." }
+              - { label: "Wednesday", name: "wednesday", widget: "string", hint: "e.g. 10:00 A.M. - 5:00 P.M." }
+              - { label: "Thursday", name: "thursday", widget: "string", hint: "e.g. 10:00 A.M. - 5:00 P.M." }
+              - { label: "Friday", name: "friday", widget: "string", hint: "e.g. 10:00 A.M. - 6:00 P.M." }
+              - { label: "Saturday", name: "saturday", widget: "string", hint: "e.g. 10:00 A.M. - 6:00 P.M." }
+              - { label: "Sunday", name: "sunday", widget: "string", hint: "e.g. 10:00 A.M. - 6:00 P.M." }
           - label: "Notes"
             name: "notes"
             widget: "object"
+            hint: "Supporting notes shown around the Hours page."
             fields:
-              - { label: "Restaurants", name: "restaurants", widget: "string" }
-              - { label: "Holidays", name: "holidays", widget: "string" }
-              - { label: "Village Map", name: "village_map", widget: "text" }
+              - { label: "Restaurants", name: "restaurants", widget: "string", hint: "Short note shown beside the hours table." }
+              - { label: "Holidays", name: "holidays", widget: "string", hint: "Holiday closure notice shown beside the hours table." }
+              - { label: "Village Map", name: "village_map", widget: "text", hint: "Paragraph shown below the embedded village map." }
           - label: "Locations"
             name: "locations"
             widget: "list"
+            hint: "Cards shown in the locations section."
             fields:
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Address", name: "address", widget: "string" }
-              - { label: "Google Maps URL", name: "maps_url", widget: "string" }
+              - { label: "Name", name: "name", widget: "string", hint: "Location name shown as the card heading." }
+              - { label: "Address", name: "address", widget: "string", hint: "Full street address shown on the card." }
+              - { label: "Google Maps URL", name: "maps_url", widget: "string", hint: "Full Google Maps directions URL for this location." }
               - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Accessibility"
             name: "accessibility"
             widget: "object"
+            hint: "Media used in the accessibility card."
             fields:
               - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Family Friendly"
             name: "family_friendly"
             widget: "object"
+            hint: "Media used in the family and pet friendly card."
             fields:
               - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
       - name: "hours_defaults"
-        label: "Default Store Hours"
+        label: "Default Hours"
         file: "_data/store/hours_defaults.yml"
         fields:
           - label: "Monday"
             name: "monday"
             widget: "list"
-            field: { label: "Time", name: "time", widget: "string" }
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
           - label: "Tuesday"
             name: "tuesday"
             widget: "list"
-            field: { label: "Time", name: "time", widget: "string" }
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
           - label: "Wednesday"
             name: "wednesday"
             widget: "list"
-            field: { label: "Time", name: "time", widget: "string" }
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
           - label: "Thursday"
             name: "thursday"
             widget: "list"
-            field: { label: "Time", name: "time", widget: "string" }
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
           - label: "Friday"
             name: "friday"
             widget: "list"
-            field: { label: "Time", name: "time", widget: "string" }
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 6:00 PM." }
           - label: "Saturday"
             name: "saturday"
             widget: "list"
-            field: { label: "Time", name: "time", widget: "string" }
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 6:00 PM." }
           - label: "Sunday"
             name: "sunday"
             widget: "list"
-            field: { label: "Time", name: "time", widget: "string" }
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 6:00 PM." }
+      - name: "store_page"
+        label: "Store Page Labels"
+        file: "_data/store_page.yml"
+        fields:
+          - label: "Detail Page"
+            name: "detail_page"
+            widget: "object"
+            hint: "Shared labels used on every store, food, and gallery detail page."
+            fields:
+              - label: "Labels"
+                name: "labels"
+                widget: "object"
+                hint: "Short section headings shown in uppercase on the page."
+                fields:
+                  - { label: "Location", name: "location", widget: "string", hint: "Section label above the address block." }
+                  - { label: "Hours", name: "hours", widget: "string", hint: "Section label above the hours table." }
+                  - { label: "Phone", name: "phone", widget: "string", hint: "Section label above the phone number." }
+                  - { label: "Website", name: "website", widget: "string", hint: "Section label above the website link." }
+                  - { label: "Village Map", name: "village_map", widget: "string", hint: "Heading shown above the embedded map." }
       - name: "parking"
         label: "Parking"
         file: "_data/parking.yml"
@@ -1175,15 +1271,15 @@ collections:
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
       - { label: "Full Location", name: "full_location", widget: "string", required: false }
-      - label: "Store Hours"
+      - label: "Hours"
         name: "store_hours"
         widget: "object"
         required: false
         collapsed: true
         hint: "e.g. 10:00 am - 5:00 pm"
         fields:
-          - { label: "Monday - Thursday", name: "monday", widget: "string", required: false }
-          - { label: "Friday - Sunday", name: "friday", widget: "string", required: false }
+          - { label: "Monday - Thursday", name: "monday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
+          - { label: "Friday - Sunday", name: "friday", widget: "string", required: false, hint: "e.g. 10:00 am - 6:00 pm" }
       - { label: "Description", name: "body", widget: "markdown" }
 
   - name: "foods"
@@ -1216,10 +1312,11 @@ collections:
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
       - { label: "Full Location", name: "full_location", widget: "string", required: false }
-      - label: "Store Hours"
+      - label: "Hours"
         name: "store_hours"
         widget: "object"
         required: false
+        hint: "Daily schedule used on food detail pages."
         collapsed: true
         fields:
           - { label: "Monday", name: "monday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
@@ -1261,22 +1358,21 @@ collections:
       - { label: "Instagram", name: "instagram", widget: "string", required: false }
       - { label: "Facebook", name: "facebook", widget: "string", required: false }
       - { label: "Full Location", name: "full_location", widget: "string", required: false }
-      - label: "Store Hours"
+      - label: "Hours"
         name: "store_hours"
         widget: "object"
         required: false
         collapsed: true
-        hint: "e.g. 10:00 am - 5:00 pm"
+        hint: "Compact schedule used for gallery pages. Leave blank to fall back to default hours where applicable."
         fields:
-          - { label: "Monday - Thursday", name: "monday", widget: "string", required: false }
-          - { label: "Friday - Sunday", name: "friday", widget: "string", required: false }
+          - { label: "Monday - Thursday", name: "monday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
+          - { label: "Friday - Sunday", name: "friday", widget: "string", required: false, hint: "e.g. 10:00 am - 6:00 pm" }
       - { label: "Description", name: "body", widget: "markdown" }
 
   - name: "weddings"
     label: "Weddings"
     folder: "_weddings"
     extension: "html"
-    format: "frontmatter"
     create: true
     slug: "{{slug}}"
     sort_by: "date"
