@@ -1,4 +1,4 @@
-hero_banner: assets/images/about/hero.png
+hero_banner: /assets/images/about/about-hero-image2.jpg
 heading: A celebrated arts and shopping village in the heart of Sedona
 subheading: A unique destination where curated outdoor art, seasonal landscaping, a rich heritage, and artisan culture can be experienced throughout the village.
 history:
@@ -39,21 +39,21 @@ sections:
     images:
       - assets/images/about/our-people.png
 jump_to_links:
-  village_map:
-    text: VILLAGE MAP
-    id: '#village-map'
-  tlaquepaque_north:
-    text: TLAQUEPAQUE NORTH
-    id: '#tlaquepaque-north'
-  outdoor_art:
-    text: OUTDOOR ART
-    id: '#outdoor-art'
-  landscaping:
-    text: LANDSCAPING
-    id: '#landscaping'
-  sycamore:
-    text: SYCAMORE
-    id: '#sycamore'
   our_people:
-    text: OUR PEOPLE
     id: '#our-people'
+    text: OUR PEOPLE
+  sycamore:
+    id: '#sycamore'
+    text: SYCAMORE
+  landscaping:
+    id: '#landscaping'
+    text: LANDSCAPING
+  outdoor_art:
+    id: '#outdoor-art'
+    text: OUTDOOR ART
+  tlaquepaque_north:
+    id: '#tlaquepaque-north'
+    text: TLAQUEPAQUE NORTH
+  village_map:
+    id: '#village-map'
+    text: VILLAGE MAP
