@@ -19,6 +19,22 @@ layout: default
   </div>
 </div>
 
-<div class="content-wrapper">
-  {{ content }}
+<div class="content-wrapper blog-show">
+  <div class="blog-show__main">
+    {{ content }}
+    {% include blog-post-nav.html %}
+  </div>
+
+  {% assign current_url = page.url %}
+  {% assign other_posts = site.blogs | where_exp: "p", "p.url != current_url" | sort: "date" | reverse %}
+  {% if other_posts.size > 0 %}
+    <aside class="blog-show__sidebar">
+      <h6>BROWSE OTHER ARTICLES</h6>
+      <ul>
+        {% for post in other_posts limit: 10 %}
+          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </aside>
+  {% endif %}
 </div>
