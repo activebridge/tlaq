@@ -22,7 +22,7 @@ sections:
       text: Have You Seen These?
       url: /outdoor-art
     images:
-      - assets/images/about/outdoor-art.png
+      - /assets/images/about/outdoor-art.png
   landscaping:
     heading: Landscaping
     description: Don't miss Tlaquepaque's carefully curated seasonal landscaping, where vibrant gardens and thoughtful design create an enchanting atmosphere year-round for every visitor.
@@ -39,21 +39,21 @@ sections:
     images:
       - assets/images/about/our-people.png
 jump_to_links:
-  village_map:
-    text: VILLAGE MAP
-    id: '#village-map'
-  tlaquepaque_north:
-    text: TLAQUEPAQUE NORTH
-    id: '#tlaquepaque-north'
-  outdoor_art:
-    text: OUTDOOR ART
-    id: '#outdoor-art'
-  landscaping:
-    text: LANDSCAPING
-    id: '#landscaping'
-  sycamore:
-    text: SYCAMORE
-    id: '#sycamore'
   our_people:
-    text: OUR PEOPLE
     id: '#our-people'
+    text: OUR PEOPLE
+  sycamore:
+    id: '#sycamore'
+    text: SYCAMORE
+  landscaping:
+    id: '#landscaping'
+    text: LANDSCAPING
+  outdoor_art:
+    id: '#outdoor-art'
+    text: OUTDOOR ART
+  tlaquepaque_north:
+    id: '#tlaquepaque-north'
+    text: TLAQUEPAQUE NORTH
+  village_map:
+    id: '#village-map'
+    text: VILLAGE MAP
