@@ -14,7 +14,7 @@ sections:
     heading: Tlaquepaque North
     description: Don't forget to visit Tlaquepaque North, across the street on the north side of Sedona's Highway 179. Since opening in 2016, this enchanting extension has captured the same timeless charm and elegance as the original village.
     images:
-      - assets/images/about/tlaquepaque-north.png
+      - /assets/images/about/tlaquepaque-north.png
   outdoor_art:
     heading: Outdoor Art
     description: Wander the village to discover the collection of outdoor sculptures and art installations. Permanent pieces like Kim Kori's beloved frog have become village landmarks, while rotating displays showcase new works. This outdoor gallery transforms your stroll through the village into an artistic journey of unexpected discoveries.
