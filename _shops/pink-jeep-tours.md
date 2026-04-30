@@ -3,7 +3,7 @@ slug: pink-jeep-tours
 date: 2026-02-22
 published: true
 title: Pink Jeep Tours
-subtitle: Award-winning jeep excursions known as the "must-do" tour in Sedona
+subtitle: Award-winning jeep excursions the "must-do" Sedona tour
 tags:
   - tours
   - shop
