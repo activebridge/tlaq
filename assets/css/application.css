@@ -692,6 +692,18 @@ article {
   }
 }
 
+@media (min-width: 770px) {
+  .annual-event-grid {
+    grid-auto-flow: column;
+    grid-template-rows: auto auto;
+  }
+
+  .annual-event-grid > .annual-event-grid__details {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+  }
+}
+
 @media (max-width: 770px) {
   .grid-col-2 {
     grid-template-columns: 100%;
@@ -1853,7 +1865,7 @@ img.village-map {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding-left: 2rem;
+    padding-left: 1rem;
     font-size: clamp(12px, 1.7vw, 20px);
     line-height: clamp(20px, 2.5vw, 40px);
     font-weight: bold;

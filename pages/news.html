@@ -10,10 +10,18 @@ pagination:
   sort_field: date
   sort_reverse: true
 ---
-<div class="content-wrapper">
-  <h5 title="news">WHAT'S NEW</h5>
 
-  <h2>New moments of discovery are always taking shape across Tlaquepaque village.</h2>
+{% assign image_path = "assets/images/landing/whats-new-hero.png" %}
+{% assign transition-name = "news" %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+<div class="content-wrapper">
+  <hgroup style="view-transition-name: title-{{transition-name}};">
+    <h5 title="news">WHAT'S NEW</h5>
+    <h2>New moments of discovery are always taking shape across Tlaquepaque village.</h2>
+  </hgroup>
+
+  <hr>
 
   <div class="list-container">
     {% for blog in paginator.posts %}
