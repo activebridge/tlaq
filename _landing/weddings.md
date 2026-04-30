@@ -1,7 +1,7 @@
 ---
 order: 5
 section: articles
-heading: Tlaquepaque, one of Sedona's premier event destinations.
+heading: Tlaquepaque, one of Sedona's premier event destinations
 title: Weddings & Private Events
 description: From intimate weddings to corporate gatherings, our enchanting village creates unforgettable moments. Let us host your perfect event.
 images:
