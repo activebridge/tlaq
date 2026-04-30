@@ -16,7 +16,7 @@ phone: (928) 282-3300
 website: https://oakcreekbreweryandgrill.com
 coordinates: -111.7638377, 34.8626048
 image: /assets/images/foods/Oak_Creek_Ext.jpg
-interior_image: /assets/images/foods/Oak_Creek_Int.jpg
+interior_image: /assets/images/foods/Oak_Creek_Brewery_Int2.jpg
 instagram: https://www.instagram.com/oakcreekbreweryandgrill/
 facebook: https://www.facebook.com/oakcreekbreweryandgrill/
 full_location: 336 AZ-179 Suite D201, Sedona, AZ 86336
