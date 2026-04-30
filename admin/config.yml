@@ -1065,7 +1065,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Button Label", name: "label", widget: "string" }
-              - { label: "Button URL", name: "url", widget: "string", hint: "Yiftee purchase page URL. Leave empty until account is set up." }
+              - { label: "Button URL", name: "url", widget: "string", hint: "Purchase page URL. Leave empty until account is set up." }
           - label: "Here's How It Works"
             name: "how_it_works"
             widget: "object"
