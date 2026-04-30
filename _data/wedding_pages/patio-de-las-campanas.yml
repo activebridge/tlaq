@@ -1,0 +1,23 @@
+slug: patio-de-las-campanas
+sections:
+  - slug: "ceremony"
+    title: "Ceremony"
+    image: "assets/images/weddings/patio-de-las-campanas/ceremony.webp"
+    subtitle: "This otherworldly courtyard provides a lush, romantic setting for your wedding ceremony."
+    details:
+      - "6-7:30 P.M. (Setup 5:30-6:00 P.M.)"
+      - "100 Guests"
+  - slug: "welcome-event"
+    title: "Welcome Event"
+    image: "assets/images/weddings/patio-de-las-campanas/event.webp"
+    subtitle: "Patio del las Campañas provides a uniquely beautiful and distinguished setting to welcome guests to your wedding event or weekend festivities."
+    details:
+      - "After 6:30 P.M. / 60 minutes"
+      - "Up to 80 Standing Guests"
+  - slug: "reception"
+    title: "Reception"
+    image: "assets/images/weddings/patio-de-las-campanas/reception.webp"
+    subtitle: "Enjoy an intimate post-wedding reception with family and friends inside our elegant courtyard."
+    details:
+      - "7-11 P.M. (Setup 5:30-7 P.M.)"
+      - "Up to 60 Seated Guests"

@@ -1275,6 +1275,8 @@ collections:
   - name: "weddings"
     label: "Weddings"
     folder: "_weddings"
+    extension: "html"
+    format: "frontmatter"
     create: true
     slug: "{{slug}}"
     sort_by: "date"
@@ -1283,22 +1285,58 @@ collections:
     public_folder: "/assets/images/weddings"
     fields:
       - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., creative-gateways). Shorter than the full name is fine. DO NOT change after publishing — breaks the URL and any linked content." }
-      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Subtitle", name: "subtitle", widget: "string" }
-      - { label: "Image", name: "image", widget: "image", required: false, hint: "Filename must not start with an underscore" }
-      - { label: "Suite", name: "suite", widget: "string", required: false }
-      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Format: -111.76260, 34.86350", required: false }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, hint: "Publish/order date for this venue entry. The venue list is sorted by this value in descending order." }
+      - { label: "Title", name: "title", widget: "string", hint: "Venue name shown in cards, page headings, and navigation." }
+      - { label: "Subtitle", name: "subtitle", widget: "string", required: false, hint: "Legacy summary line in front matter. The page hero currently uses Intro fields below, so keep this aligned or leave blank if unused." }
+      - { label: "Image", name: "image", widget: "image", required: false, hint: "Main hero image for the venue page and venue card. Filename must not start with an underscore." }
+      - { label: "Suite", name: "suite", widget: "string", required: false, hint: "Optional map suite identifier used by the embedded village map on this page." }
+      - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Optional map coordinates in `longitude, latitude` format, for example `-111.76260, 34.86350`.", required: false }
       - label: "Intro"
         name: "intro"
         widget: "object"
         collapsed: true
         required: false
+        hint: "Primary hero copy shown under the venue title."
         fields:
-          - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
-          - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Site Plan", name: "site_plan", widget: "image", required: false, hint: "Filename must not start with an underscore" }
-      - { label: "Description", name: "body", widget: "markdown" }
+          - { label: "Subtitle", name: "subtitle", widget: "string", required: false, hint: "Main headline shown below the venue title." }
+          - { label: "Description", name: "description", widget: "text", required: false, hint: "Supporting paragraph shown below the intro subtitle." }
+      - label: "Site Plan"
+        name: "site_plan"
+        widget: "object"
+        collapsed: true
+        required: false
+        hint: "Venue-specific site plan content shown below the brochure section."
+        fields:
+          - { label: "Image", name: "image", widget: "image", required: false, hint: "Site plan image shown for this venue. Filename must not start with an underscore." }
+          - { label: "Description", name: "description", widget: "text", required: false, hint: "Optional descriptive copy shown alongside the site plan image." }
+
+  - name: "wedding-pages"
+    label: "Wedding Page Data"
+    label_singular: "Wedding Page Data Entry"
+    folder: "_data/wedding_pages"
+    extension: "yml"
+    format: "yml"
+    create: true
+    identifier_field: "slug"
+    slug: "{{slug}}"
+    media_folder: "/assets/images/weddings"
+    public_folder: "/assets/images/weddings"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string", hint: "Must exactly match the corresponding Wedding entry slug so the venue page can load these sections." }
+      - label: "Sections"
+        name: "sections"
+        widget: "list"
+        hint: "Venue detail blocks rendered lower on the wedding page, such as ceremony, reception, or welcome event."
+        fields:
+          - { label: "Slug", name: "slug", widget: "string", hint: "Section identifier used for styling and anchors. Use lowercase words with hyphens, for example `ceremony` or `welcome-event`." }
+          - { label: "Title", name: "title", widget: "string", hint: "Short section heading shown above this venue detail card." }
+          - { label: "Image", name: "image", widget: "image", hint: "Photo shown for this section. Filename must not start with an underscore." }
+          - { label: "Subtitle", name: "subtitle", widget: "text", required: false, hint: "Optional descriptive copy shown under the section title." }
+          - label: "Details"
+            name: "details"
+            widget: "list"
+            hint: "Short bullet-style facts, such as time, capacity, or included amenities."
+            field: { label: "Item", name: "item", widget: "string", hint: "One fact line for this section." }
 
   - name: "wedding-articles"
     label: "Wedding Articles"

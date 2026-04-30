@@ -1,0 +1,24 @@
+slug: terrace-at-patio-del-norte
+sections:
+  - slug: "ceremony"
+    title: "Ceremony"
+    image: "assets/images/weddings/terrace-at-patio-del-norte/ceremony.webp"
+    subtitle: "The perfect private location, the Terrace is ideal for an outdoor wedding ceremony overlooking the village."
+    details:
+      - "5:30-7 P.M. (Setup 4-5:30 P.M.)"
+      - "Up to 100 Seated Guests"
+      - "Venue space and overhead portofino string lights"
+  - slug: "welcome-event"
+    title: "Welcome Event"
+    image: "assets/images/weddings/terrace-at-patio-del-norte/event.webp"
+    subtitle: "The Terrace is a private, elegant location to welcome guests to your wedding event or weekend festivities."
+    details:
+      - "After 6 P.M. / 60 minutes"
+      - "Up to 80 Standing Guests"
+  - slug: "reception"
+    title: "Reception"
+    image: "assets/images/weddings/terrace-at-patio-del-norte/reception.webp"
+    subtitle: "Plan an intimate, post-wedding reception on the Terrace."
+    details:
+      - "7-11 P.M. (Setup 4-7 P.M.)"
+      - "Up to 60 Seated Guests"

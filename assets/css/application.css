@@ -578,14 +578,7 @@ article {
     background: transparent;
   }
 
-  &:last-of-type {
-    margin-bottom: 2rem;
-
-    &::after {
-      display: none;
-    }
-  }
-
+  &:last-of-type { &::after { display: none; } }
 
   &#whats-new {
     flex-direction: row;
@@ -1002,6 +995,8 @@ footer .socials-mobile { display: none; }
 }
 
 .weddings, .wedding {
+  > .content-wrapper > article::after { display: none; }
+
   h5 {
     color: var(--pink-40);
     background: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2084%2084%22%20fill=%22%23f4afbe%22%3E%3Cpath%20d=%22M41%2019c5.437%204.53%2010.465%209.343%2015.438%2014.375l2.217%202.23L64%2041c-1.514%203.568-3.605%205.837-6.352%208.547l-2.578%202.559-2.695%202.645-2.719%202.691L43%2064c-3.668-1.539-5.986-3.755-8.766-6.57l-2.695-2.715-2.789-2.84-2.836-2.863L19%2042c4.53-5.437%209.343-10.465%2014.375-15.437l2.23-2.217L41%2019zm23.938-7.375C68%2012%2068%2012%2069.938%2013.688%2071%2016%2071%2016%2071.188%2018.438%2069.303%2022.504%2065.942%2024.092%2062%2026c-2.336.849-4.57%201.443-7%202%20.608-6.083%202.974-15.486%209.938-16.375zM55%2056l5.25%201.813%202.953%201.02C65.891%2059.954%2067.833%2061.067%2070%2063c.938%202.438.938%202.438%201%205-1.062%202.313-1.062%202.313-3%204-2.875.688-2.875.688-6%200-3.344-3.271-5.673-7.537-7-12v-4zM17.875%2011.563C21%2012%2021%2012%2023.125%2013.813%2025.769%2018.307%2027.374%2023.06%2029%2028c-6.412-1.559-11.544-2.958-16-8-.5-3.187-.5-3.187%200-6%202-2%202-2%204.875-2.437zM29%2057l-2.312%205.813-1.301%203.27C24.136%2068.715%2023.315%2070.279%2021%2072c-3.062.313-3.062.313-6%200-2-2-2-2-2.5-4.812.574-3.658%201.686-4.908%204.641-7.082C25.395%2055.198%2025.395%2055.198%2029%2057zm6%204c5.685%203.663%205.685%203.663%206.495%207.1.095%202.428.029%204.788-.12%207.212l-.082%202.533L41%2084c-4.875-1.875-4.875-1.875-6-3l-.098-4.473.01-2.725.025-2.865.014-2.877L35%2061zm26-26l9.813-.25%202.814-.102%202.705-.039%202.491-.063C81%2035%2081%2035%2082.792%2036.899%2084%2039%2084%2039%2084%2041l-8.687.375-2.475.152c-5.999.146-5.999.146-8.536-1.89-1.384-1.66-1.384-1.66-3.302-4.637zm-53.648-.098l2.578.01%202.695.025%202.719.014L22%2035c-3.723%205.685-3.723%205.685-7.006%206.495-2.294.095-4.516.03-6.806-.12l-2.389-.082L0%2041l1-5c2.349-1.174%203.738-1.115%206.352-1.098zM37%200h4l.375%208.188.152%202.33c.146%205.659.146%205.659-1.89%208.149-1.66%201.384-1.66%201.384-4.637%203.333l-.125-9.312-.051-2.67-.02-2.568-.032-2.365C35%203%2035%203%2037%200zm11%2061l.313%209.813.127%202.814c.046%202.552.048%204.867-.439%207.373-2.52%202.137-2.52%202.137-5%203l-.25-9.25-.102-2.645c-.099-6.503-.099-6.503%202.305-9.715C47%2061%2047%2061%2048%2061zm21.547-18.488l5.203.176%202.691.068L84%2043c-.863%202.48-.863%202.48-3%205-3.401.661-6.739.468-10.187.313l-2.85-.068L61%2048c2.293-4.089%203.975-5.346%208.547-5.488zM0%2043l8.75-.312%202.5-.127c2.352-.047%204.444-.032%206.75.439%202.578%202.52%202.578%202.52%204%205l-9.875.125-2.84.051-2.715.02-2.507.032C2%2048%202%2048%200%2046v-3zM43%200c3.875.875%203.875.875%205%202l.098%204.473-.01%202.725-.025%202.865-.014%202.877L48%2022c-2.48-1.422-2.48-1.422-5-4-.634-3.1-.472-6.102-.312-9.25l.068-2.547L43%200z%22/%3E%3C/svg%3E") no-repeat left / 1em;
@@ -1010,26 +1005,62 @@ footer .socials-mobile { display: none; }
 
   .btn-primary { --btn-color: var(--pink-40); }
   .site-plan { img { mix-blend-mode: multiply; } }
-}
 
-.weddings {
-  .list-container .card { justify-content: space-between; }
+  > .content-wrapper > article > section, .site-plan, .wedding-article {
+    &::after {
+      content: "";
+      display: block;
+      height: 1px;
+      background: var(--navy);
+      margin: 2rem 0;
+    }
+
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    > h3, > h5 { order: -3; }
+    > h6, > .description { order: -1; }
+    > img, > picture, > .image-split { order: -3; }
+
+    .text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      @media (max-width: 769px) {
+        > h5 { display: none; }
+      }
+    }
+
+    @media (min-width: 770px) {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: 5rem;
+      align-items: start;
+
+      > h3, > h5, > h6, > .description, > .text-block { grid-column: 1; }
+      > img, > picture, > .image-split { grid-column: 2; grid-row: 1 / span 2; }
+      > img, > picture img { width: 100%; height: auto; display: block; }
+      .btn-primary { width: fit-content; }
+
+      &::after { grid-column: 1 / -1; }
+
+      > h5 { display: none; }
+    }
+  }
 
   .weddings-connect-brochure {
     display: contents;
 
-    > article:last-of-type {
-      margin-bottom: 0;
-
-      @media (max-width: 770px) {
-        &::after { display: block; }
-      }
-    }
+    > article:last-of-type { margin-bottom: 0; }
 
     .brochure-awards {
       display: flex;
       gap: clamp(1rem, 3vw, 2rem);
       align-items: center;
+      justify-content: space-between;
 
       img {
         width: 48%;
@@ -1046,7 +1077,7 @@ footer .socials-mobile { display: none; }
 
       > article::after { display: none; }
 
-      &::after {
+      &:not(:last-child)::after {
         content: "";
         display: block;
         grid-column: 1 / -1;
@@ -1056,6 +1087,44 @@ footer .socials-mobile { display: none; }
       }
     }
   }
+
+  .wedding-faq-grid {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+
+    > article {
+      display: grid;
+      align-content: space-around;
+      gap: 2rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--navy);
+      &::after { display: none; }
+
+      h3, h6 { margin: 0; }
+    }
+
+    @media (min-width: 770px) {
+      grid-template-columns: 1fr 1fr;
+      column-gap: clamp(2rem, 6vw, 6rem);
+      row-gap: 2.5rem;
+
+      > article:nth-last-child(-n + 2) { border-bottom: none; }
+
+      &::after {
+        content: "";
+        display: block;
+        grid-column: 1 / -1;
+        height: 1px;
+        background: var(--navy);
+      }
+    }
+  }
+}
+
+.weddings {
+  .list-container .card { justify-content: space-between; }
 
   .private-events {
     > h6 { margin: 0; order: 2; }
@@ -1132,9 +1201,7 @@ footer .socials-mobile { display: none; }
       }
     }
   }
-}
 
-.wedding {
   ul {
     list-style: none;
     padding-left: 0;
@@ -1372,9 +1439,7 @@ input[type="search"] {
 /* TODO: cleanup redurant styles */
 
 /* Calendar Styles */
-.calendar {
-  padding-top: 1.3rem;
-}
+.calendar { padding-top: 1.3rem; }
 
 .calendar-filter {
   margin-bottom: 1.5rem;
@@ -1749,7 +1814,7 @@ img.village-map {
 
     .top-title {
       margin: auto 0 0;
-      
+
       @media (min-width: 770px) {
         padding: 2rem clamp(1.5rem, 4vw, 3rem);
       }
