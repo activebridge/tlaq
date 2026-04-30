@@ -1087,6 +1087,40 @@ footer .socials-mobile { display: none; }
       }
     }
   }
+
+  .wedding-faq-grid {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+
+    > article {
+      display: grid;
+      align-content: space-around;
+      gap: 2rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--navy);
+      &::after { display: none; }
+
+      h3, h6 { margin: 0; }
+    }
+
+    @media (min-width: 770px) {
+      grid-template-columns: 1fr 1fr;
+      column-gap: clamp(2rem, 6vw, 6rem);
+      row-gap: 2.5rem;
+
+      > article:nth-last-child(-n + 2) { border-bottom: none; }
+
+      &::after {
+        content: "";
+        display: block;
+        grid-column: 1 / -1;
+        height: 1px;
+        background: var(--navy);
+      }
+    }
+  }
 }
 
 .weddings {
@@ -1167,9 +1201,7 @@ footer .socials-mobile { display: none; }
       }
     }
   }
-}
 
-.wedding {
   ul {
     list-style: none;
     padding-left: 0;
@@ -1782,7 +1814,7 @@ img.village-map {
 
     .top-title {
       margin: auto 0 0;
-      
+
       @media (min-width: 770px) {
         padding: 2rem clamp(1.5rem, 4vw, 3rem);
       }

@@ -14,12 +14,16 @@ layout_type: wedding
     <h5>{{ site.data.wedding-faq.title }}</h5>
   </hgroup>
 
-  {% for block in site.data.wedding-faq.blocks %}
-    <article>
+  <section class="wedding-faq-grid" aria-label="{{ site.data.wedding-faq.title }}">
+    {% for block in site.data.wedding-faq.blocks %}
+    <article class="wedding-faq-item">
       <h3>{{ block.title }}</h3>
       <h6>{{ block.content }}</h6>
     </article>
-  {% endfor %}
-  {% include connect-us.html %}
-  {% include weddings/brochure.html %}
+    {% endfor %}
+  </section>
+  <div class="weddings-connect-brochure">
+    {% include connect-us.html %}
+    {% include weddings/brochure.html %}
+  </div>
 </div>
