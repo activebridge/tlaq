@@ -2556,3 +2556,5 @@ main.about {
     display: none;
   }
 }
+
+.gift-cards .btn { margin-top: 2rem; }

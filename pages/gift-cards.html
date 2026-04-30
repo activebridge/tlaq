@@ -14,34 +14,13 @@ layout_type: gift-cards
   <h2>{{ site.data.gift_cards.heading }}</h2>
   <p>{{ site.data.gift_cards.intro }}</p>
 
-  <a href="{{ site.data.gift_cards.purchase_button.url }}" class="btn btn-primary" target="_blank" rel="noopener">
-    {{ site.data.gift_cards.purchase_button.label }}
-  </a>
-
   <hr>
 
   <h3>{{ site.data.gift_cards.how_it_works.heading }}</h3>
   <ul>
     {% for item in site.data.gift_cards.how_it_works.items %}
-      <li><strong>{{ item.label }}</strong> — {{ item.description }}</li>
+    <li><strong>{{ item.label }}</strong> — {{ item.description }}</li>
     {% endfor %}
   </ul>
-
-  <hr>
-
-  <h3>View All Participating Businesses</h3>
-  <ul>
-    {% assign all_shops = site.shops | sort: "title" %}
-    {% for shop in all_shops %}
-      <li>{{ shop.title }}</li>
-    {% endfor %}
-    {% assign all_galleries = site.galleries | sort: "title" %}
-    {% for gallery in all_galleries %}
-      <li>{{ gallery.title }}</li>
-    {% endfor %}
-    {% assign all_foods = site.foods | sort: "title" %}
-    {% for food in all_foods %}
-      <li>{{ food.title }}</li>
-    {% endfor %}
-  </ul>
+  <a href="{{ site.data.gift_cards.purchase_button.url }}" class="btn btn-primary" target="_blank" rel="noopener">{{ site.data.gift_cards.purchase_button.label }}</a>
 </div>
