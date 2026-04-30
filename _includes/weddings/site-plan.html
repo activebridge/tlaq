@@ -1,23 +1,18 @@
+{% assign image_path = include.page.site_plan.image %}
+{% assign description = include.page.site_plan.description %}
+
 <article class="site-plan">
   <h5>{{ site.data.weddings.site_plan.title }}</h5>
+  <div class="text-block">
+    <h5>{{ site.data.weddings.site_plan.title }}</h5>
+    {% if description %}<p class="description">{{ description }}</p>{% endif %}
+    <a href="{{ site.data.weddings.site_plan.plan_url }}" target="_blank" class="btn btn-primary">{{ site.data.weddings.buttons.download_site_plan }}</a>
+  </div>
   <picture>
-    <source
-      media="(max-width: 480px)"
-      srcset="{{ include.image_path | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-    >
-    <source
-      media="(max-width: 768px)"
-      srcset="{{ include.image_path | prepend: '/cdn-cgi/image/width=600,height=500,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-    >
-    <source
-      media="(min-width: 768px)"
-      srcset="{{ include.image_path | prepend: '/cdn-cgi/image/width=1200,height=1000,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-    >
-    <img
-      src="{{ include.image_path | prepend: '/cdn-cgi/image/width=1200,height=1000,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-      alt="{{ site.data.weddings.site_plan.title }}"
-      onerror="imageError(this)"
-    >
+    <source media="(max-width: 480px)" srcset="{{ image_path | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(max-width: 768px)" srcset="{{ image_path | prepend: '/cdn-cgi/image/width=600,height=500,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(min-width: 768px)" srcset="{{ image_path | prepend: '/cdn-cgi/image/width=1200,height=1000,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <img src="{{ image_path | prepend: '/cdn-cgi/image/width=1200,height=1000,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+         alt="{{ site.data.weddings.site_plan.title }}" onerror="imageError(this)">
   </picture>
-  <a href="{{ site.data.weddings.site_plan.plan_url }}" target="_blank" class="btn btn-primary">{{ site.data.weddings.buttons.download_site_plan }}</a>
 </article>

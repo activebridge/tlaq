@@ -1,0 +1,21 @@
+{% assign sections = site.data.wedding_pages[page.slug].sections %}
+{% for section in sections %}
+<section class="{{ section.slug }}">
+  {% assign section_image = section.image %}
+  <picture>
+    <source media="(max-width: 480px)" srcset="{{ section_image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(max-width: 768px)" srcset="{{ section_image | prepend: '/cdn-cgi/image/width=600,height=420,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(min-width: 768px)" srcset="{{ section_image | prepend: '/cdn-cgi/image/width=1000,height=700,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <img src="{{ section_image | prepend: '/cdn-cgi/image/width=1000,height=700,fit=cover,format=webp/' | prepend: site.cdn_url }}" alt="{{ section.title }}" onerror="imageError(this)">
+  </picture>
+  <div class="text-block">
+    <h3>{{ section.title }}</h3>
+    {% if section.subtitle %}<h6>{{ section.subtitle }}</h6>{% endif %}
+    <ul>
+      {% for item in section.details %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endfor %}

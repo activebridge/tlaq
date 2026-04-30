@@ -11,46 +11,20 @@
       <div class="events-track" id="eventsTrack" style="--count: {{ slide_count }}; --slides: {{ total_slides }}; --duration-per-slide: 4s;">
 
         {% for image in slides %}
-          <picture class="events-slide">
-            <source
-              media="(max-width: 480px)"
-              srcset="{{ image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-            >
-            <source
-              media="(max-width: 768px)"
-              srcset="{{ image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-            >
-            <source
-              media="(min-width: 768px)"
-              srcset="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-            >
-            <img
-              src="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-              alt="{{ site.data.weddings.events.title }}"
-              onerror="imageError(this)"
-            >
-          </picture>
+        <picture class="events-slide">
+          <source media="(max-width: 480px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+          <source media="(max-width: 768px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+          <source media="(min-width: 768px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+          <img src="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}" alt="{{ site.data.weddings.events.title }}" onerror="imageError(this)">
+        </picture>
         {% endfor %}
         {% for image in slides %}
-          <picture class="events-slide" aria-hidden="true">
-            <source
-              media="(max-width: 480px)"
-              srcset="{{ image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-            >
-            <source
-              media="(max-width: 768px)"
-              srcset="{{ image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-            >
-            <source
-              media="(min-width: 768px)"
-              srcset="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-            >
-            <img
-              src="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-              alt=""
-              onerror="imageError(this)"
-            >
-          </picture>
+        <picture class="events-slide" aria-hidden="true">
+          <source media="(max-width: 480px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+          <source media="(max-width: 768px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+          <source media="(min-width: 768px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+          <img src="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}" alt="" onerror="imageError(this)">
+        </picture>
         {% endfor %}
       </div>
     </div>
@@ -89,4 +63,4 @@
     const duration = n * (parseFloat(track.style.getPropertyValue('--duration-per-slide')) || 4);
     track.style.animation = `events-dynamic ${duration}s linear infinite`;
   })();
-  </script>
+</script>

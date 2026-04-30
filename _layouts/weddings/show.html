@@ -19,10 +19,12 @@ layout: default
   {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs base_url=jump_nav_base_url %}
 
   <article>
-    {{ content }}
+    {% include weddings/sections.html %}
   </article>
+  {% include weddings/site-plan.html page=page %}
   {% include weddings/article.html %}
-  {% include weddings/site-plan.html image_path=page.site_plan %}
-  {% include connect-us.html %}
-  {% include weddings/brochure.html %}
+  <div class="weddings-connect-brochure">
+    {% include connect-us.html %}
+    {% include weddings/brochure.html %}
+  </div>
 </div>
