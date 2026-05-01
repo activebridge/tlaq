@@ -8,5 +8,15 @@
     </div>
     {% endfor %}
   </div>
-  <a href="/galleries/" class="btn btn-primary">{{ site.data.weddings.buttons.explore_more }}</a>
+  <div class="gallery-more-extra list-container">
+    {% for item in site.data.weddings.gallery.extra_items %}
+    <div class="card">
+      <h3>{{ item.title }}</h3>
+      <video src="{{ item.video_url }}" controls></video>
+    </div>
+    {% endfor %}
+  </div>
+  <details class="gallery-more">
+    <summary class="btn btn-primary">{{ site.data.weddings.buttons.explore_more }}</summary>
+  </details>
 </article>

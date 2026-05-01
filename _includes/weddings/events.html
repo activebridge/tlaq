@@ -29,8 +29,10 @@
       </div>
     </div>
   </div>
-  <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.weddings.buttons.inquiry_submit }}</a>
-  <a href="{{ site.data.weddings.events.brochure_url }}" target="_blank" class="btn btn-primary">{{ site.data.weddings.buttons.download_brochure }}</a>
+  <div class="events-buttons">
+    <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.weddings.buttons.inquiry_submit }}</a>
+    <a href="{{ site.data.weddings.events.brochure_url }}" target="_blank" class="btn btn-primary">{{ site.data.weddings.buttons.download_brochure }}</a>
+  </div>
 </article>
 
 <!-- Small script to dynamically calculate the animation keyframes for the events slideshow -->
