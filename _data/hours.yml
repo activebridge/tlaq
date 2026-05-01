@@ -1,8 +1,7 @@
 intro:
   eyebrow: Visit
-  heading: Plan your visit to our vibrant village.
+  heading: Plan your visit to our vibrant village
   subheading: Home to over 50 world-class shops, galleries, and dining experiences set amid distinctive architecture and beautifully landscaped grounds.
-
 sections:
   hours:
     heading: Hours
@@ -26,7 +25,6 @@ sections:
     heading: Family and Dog Friendly
     description: Tlaquepaque is a family-friendly destination with shops, dining, and events for visitors of all ages. We welcome leashed pets and offer water sources near the village restrooms.
     warning: Please never under any circumstances leave your pets unattended in your vehicle due to the potential dangers of Arizona's extreme heat.
-
 jump_to_links:
   locations:
     text: LOCATIONS
@@ -52,18 +50,18 @@ village_hours:
   saturday: 10:00 A.M. - 6:00 P.M.
   sunday: 10:00 A.M. - 6:00 P.M.
 notes:
-  restaurants: "*Onsite restaurants offer extended evening hours."
+  restaurants: '*Onsite restaurants offer extended evening hours.'
   holidays: Please note the village is closed in observance of the holidays on Christmas and Thanksgiving Day.
   village_map: Our interactive village map provides easy navigation to all 50+ shops, galleries, and restaurants, helping you discover every corner of Tlaquepaque North and South during your visit.
 locations:
   - name: Tlaquepaque South
     address: 336 AZ-179 Sedona, AZ 86336
     maps_url: https://www.google.com/maps/dir/?api=1&destination=336+AZ-179+Sedona+AZ+86336&travelmode=driving
-    image: assets/images/locations/south.webp
+    image: /assets/images/locations-tlaq-south.jpg
   - name: Tlaquepaque North
     address: 313 AZ-179 Sedona, AZ 86336
     maps_url: https://www.google.com/maps/dir/?api=1&destination=313+AZ-179+Sedona+AZ+86336&travelmode=driving
-    image: assets/images/locations/north.webp
+    image: /assets/images/locations/south.webp
 accessibility:
   image: assets/images/hours/accessibility.webp
 family_friendly:

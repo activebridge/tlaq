@@ -3,7 +3,7 @@ slug: the-chai-spot
 date: 2026-02-22
 published: true
 title: The Chai Spot
-subtitle: Handcrafted chai and South Asian home goods
+subtitle: Handcrafted chai and South Asian goods
 tags:
   - food
   - chai

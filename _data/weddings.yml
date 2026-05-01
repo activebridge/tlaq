@@ -1,15 +1,15 @@
-title: Tlaquepaque, one of Sedona's premier weddings and event destinations.
+title: Tlaquepaque, one of Sedona's premier wedding and event destinations
 description: Specialized in intimate weddings and events, Tlaquepaque offers beauty and old world charm in the heart of Sedona. Vine covered stucco walls, cobblestone walkways, arched entryways and elegant plazas, provide you with a magical place to design the wedding of your dreams.
 weddings: WEDDINGS & PRIVATE EVENTS
 venues: VENUES
-hero_banner: "assets/images/weddings/weddings.webp"
+hero_banner: assets/images/weddings/weddings.webp
 gallery:
   title: GALLERY
   items:
     - title: Lauren & Owen
-      video_url: "https://vid.cdn-website.com/164890e9/videos/Bs3nN1QQQMGVhonZiS2A_SS23-v.mp4"
+      video_url: https://vid.cdn-website.com/164890e9/videos/Bs3nN1QQQMGVhonZiS2A_SS23-v.mp4
     - title: Kelsie & Xavier
-      video_url: "https://vid.cdn-website.com/164890e9/videos/PsNbS5M0Tx6imKwuz1GU_SS22-v.mp4"
+      video_url: https://vid.cdn-website.com/164890e9/videos/PsNbS5M0Tx6imKwuz1GU_SS22-v.mp4
   extra_items:
     - title: Video 3
       video_url: ""
@@ -21,27 +21,25 @@ gallery:
       video_url: ""
 brochure:
   title: WEDDING BROCHURE
-  brochure_url: "https://irp.cdn-website.com/164890e9/files/uploaded/Tlaq_Wedding_Brochure_062625_R.pdf"
-  image: "/assets/images/weddings/brochure.webp"
+  brochure_url: https://irp.cdn-website.com/164890e9/files/uploaded/Tlaq_Wedding_Brochure_062625_R.pdf
+  image: /assets/images/weddings/brochure.webp
   awards:
-    - image: "/assets/images/weddings/awards/here-comes-the-guide.webp"
-      alt: "Here Comes the Guide - Most #Instaworthy Wedding Venue"
-    - image: "/assets/images/weddings/awards/weddingwire-couples-choice-2020.webp"
-      alt: "WeddingWire Couples' Choice Awards 2020"
+    - image: /assets/images/weddings/awards/here-comes-the-guide.webp
+      alt: 'Here Comes the Guide - Most #Instaworthy Wedding Venue'
+    - image: /assets/images/weddings/awards/weddingwire-couples-choice-2020.webp
+      alt: WeddingWire Couples' Choice Awards 2020
 events:
   title: CORPORATE & PRIVATE EVENTS
   description: Host memorable gatherings—from awards dinners and executive retreats to milestone birthdays, anniversaries, and private celebrations—set within our iconic courtyards and other venues beneath the sycamore trees.
+  brochure_url: https://irp.cdn-website.com/164890e9/files/uploaded/Tlaq_Wedding_Brochure_062625_R.pdf
   images:
-    - "/assets/images/weddings/event_1.webp"
-    - "/assets/images/weddings/event_2.webp"
-    - "/assets/images/weddings/event_3.webp"
-    - "/assets/images/weddings/event_4.webp"
-    - "/assets/images/weddings/event_5.webp"
-    - "/assets/images/weddings/event_6.webp"
-    - "/assets/images/weddings/event_7.webp"
-  brochure_url: "https://irp.cdn-website.com/164890e9/files/uploaded/Tlaq_Wedding_Brochure_062625_R.pdf"
-
-# Buttons
+    - /assets/images/weddings/event_1.webp
+    - /assets/images/weddings/event_2.webp
+    - /assets/images/weddings/event_3.webp
+    - /assets/images/weddings/event_4.webp
+    - /assets/images/weddings/event_5.webp
+    - /assets/images/weddings/event_6.webp
+    - /assets/images/weddings/event_7.webp
 buttons:
   learn_more: LEARN MORE
   explore_more: EXPLORE MORE
@@ -49,36 +47,32 @@ buttons:
   download_brochure: DOWNLOAD WEDDING BROCHURE
   inquiry_submit: SUBMIT AN INQUIRY
   download_site_plan: DOWNLOAD SITE PLAN
-
-# Jump to links
 jump_to_links:
   venues:
     text: BROCHURE
-    id: "#venues"
+    id: '#venues'
   gallery:
     text: INSPIRATION
-    id: "#gallery"
+    id: '#gallery'
   private_events:
     text: PRIVATE EVENTS
-    id: "#events"
+    id: '#events'
   connect:
     text: CONNECT
-    id: "#connect"
+    id: '#connect'
   calle-independencia:
     text: CALLE INDEPENDENCIA
-    id: "calle-independencia"
+    id: calle-independencia
   terrace-at-patio-del-norte:
     text: TERRACE AT PATIO DEL NORTE
-    id: "terrace-at-patio-del-norte"
+    id: terrace-at-patio-del-norte
   patio-de-las-campanas:
     text: PATIO DE LAS CAMPAÑAS
-    id: "patio-de-las-campanas"
+    id: patio-de-las-campanas
   chapel-at-tlaquepaque:
     text: CHAPEL
-    id: "chapel-at-tlaquepaque"
-
-# Site Plan
+    id: chapel-at-tlaquepaque
 site_plan:
   title: SITE PLAN
-  image: "/assets/images/weddings/site-plan.webp"
-  plan_url: "https://irp.cdn-website.com/164890e9/files/uploaded/TLAQ%20wedding%20plans%20(2).pdf"
+  image: /assets/images/weddings/site-plan.webp
+  plan_url: https://irp.cdn-website.com/164890e9/files/uploaded/TLAQ%20wedding%20plans%20(2).pdf
