@@ -849,10 +849,6 @@ footer > .wrapper {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
 
-      h6 {
-        margin-bottom: 1rem;
-      }
-
       nav {
         &.links {
           display: flex;
