@@ -1,0 +1,28 @@
+{% assign posts = site.blogs | sort: "date" | reverse %}
+{% for post in posts %}
+  {% if post.url == page.url %}
+    {% assign idx = forloop.index0 %}
+    {% assign last = forloop.length | minus: 1 %}
+    {% if idx > 0 %}{% assign newer_idx = idx | minus: 1 %}{% assign newer = posts[newer_idx] %}{% endif %}
+    {% if idx < last %}{% assign older_idx = idx | plus: 1 %}{% assign older = posts[older_idx] %}{% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if newer or older %}
+<nav class="blog-post-nav">
+  <hr>
+  <div class="blog-post-nav__row">
+    {% if newer %}
+      <a href="{{ newer.url | relative_url }}" class="blog-post-nav__prev">&lsaquo; PREVIOUS</a>
+    {% else %}
+      <span></span>
+    {% endif %}
+    {% if older %}
+      <a href="{{ older.url | relative_url }}" class="blog-post-nav__next">NEXT &rsaquo;</a>
+    {% else %}
+      <span></span>
+    {% endif %}
+  </div>
+  <hr>
+</nav>
+{% endif %}
