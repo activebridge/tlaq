@@ -21,8 +21,8 @@ layout: default
   {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
 
   <article>
+    <h3>{{ site.data.events.annual_calendar }}</h3>
     <div class="list-container" id="annual-events">
-      <h3>{{ site.data.events.annual_calendar }}</h3>
 
       {% assign yearly_events = site.events | where: "schedule_type", "yearly" %}
       {% assign annual_flagged = site.events | where: "annual", true %}

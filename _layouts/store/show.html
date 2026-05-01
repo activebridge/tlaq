@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{% assign store_page = site.data.store_page %}
+{% assign store_page = site.data.store_page.detail_page %}
 {% assign image_path = page.image %}
 {% assign transition-name = page.image | downcase | replace: '/', '-' | replace: '.', '-' %}
 {% include hero-banner.html image_path=image_path transition-name=transition-name interior_image=page.interior_image %}
