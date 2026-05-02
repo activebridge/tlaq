@@ -11,14 +11,14 @@ pagination:
   sort_reverse: true
 ---
 
-{% assign image_path = "assets/images/landing/whats-new-hero.png" %}
+{% assign image_path = site.data.news.hero_banner %}
 {% assign transition-name = "news" %}
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
   <hgroup style="view-transition-name: title-{{transition-name}};">
-    <h5 title="news">WHAT'S NEW</h5>
-    <h2>New moments of discovery are always taking shape across Tlaquepaque village.</h2>
+    <h5 title="news">{{ site.data.news.eyebrow }}</h5>
+    <h2>{{ site.data.news.title }}</h2>
   </hgroup>
 
   <hr>
