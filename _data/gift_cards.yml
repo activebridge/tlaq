@@ -1,21 +1,17 @@
-hero_banner: "assets/images/shops/shops.webp"
-
-heading: "Give the Gift of Discovery"
-
-intro: "A Tlaquepaque Arts & Shopping Village gift card is an invitation to wander, discover, and enjoy the village's distinctive mix of art, dining, and independent shops—usable at locations throughout the village. Whether celebrating a milestone or simply sharing something special, it offers the freedom to explore at one's own pace and a thoughtful way to give the experience of Tlaquepaque."
-
+hero_banner: assets/images/shops/shops.webp
+heading: Give the Gift of Discovery
+intro: A Tlaquepaque Arts & Shopping Village gift card is an invitation to wander, discover, and enjoy the village's distinctive mix of art, dining, and independent shops—usable at locations throughout the village. Whether celebrating a milestone or simply sharing something special, it offers the freedom to explore at one's own pace and a thoughtful way to give the experience of Tlaquepaque..
 purchase_button:
-  label: "Purchase a Gift Card"
-  url: ""
-
+  label: Purchase a Gift Card
+  url: ''
 how_it_works:
-  heading: "Here's How It Works"
+  heading: Here's How It Works
   items:
-    - label: "Digital Delivery"
-      description: "Send instantly by email or print to share in person"
-    - label: "Easy to Use"
-      description: "Save to your digital wallet for simple, seamless payment"
-    - label: "A Gift of Choice"
-      description: "Enjoy at participating shops, galleries, and restaurants throughout Tlaquepaque"
-    - label: "Helpful Reminders"
-      description: "Receive gentle nudges to ensure your gift is enjoyed"
+    - label: Digital Delivery
+      description: Send instantly by email or print to share in person
+    - label: Easy to Use
+      description: Save to your digital wallet for simple, seamless payment
+    - label: A Gift of Choice
+      description: Enjoy at participating shops, galleries, and restaurants throughout Tlaquepaque
+    - label: Helpful Reminders
+      description: Receive gentle nudges to ensure your gift is enjoyed
