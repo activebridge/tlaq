@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const MAX_MONTHS = 24;
   const getVisibleRange = () => {
     const now = new Date();
-    const start = new Date(now.getFullYear(), now.getMonth(), 1);
+    const start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const end = new Date(now.getFullYear(), now.getMonth() + 13, 1);
     return { start: start, end: end };
   };
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const allOccurrences = sourceEvents
     .flatMap(buildOccurrences)
     .filter((item) => (
-      item.start >= VISIBLE_RANGE.start &&
+      item.end >= VISIBLE_RANGE.start &&
       item.start < VISIBLE_RANGE.end
     ))
     .sort((a, b) => a.start.getTime() - b.start.getTime());
