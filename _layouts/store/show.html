@@ -56,7 +56,7 @@ layout: default
     </div>
     <div>
       <div class="hero-desc" style="view-transition-name: {{ page.image | downcase | replace: '/', '-' | replace: '.', '-'}};">
-        <img src="{{ page.interior_image | default: page.image }}" alt="{{ page.title }} Interior">
+        <img src="{{ page.vertical_image | default: page.interior_image | default: page.image }}" alt="{{ page.title }} Interior">
       </div>
     </div>
   </div>
