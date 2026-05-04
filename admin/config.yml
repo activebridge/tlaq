@@ -536,7 +536,7 @@ collections:
         media_folder: "/assets/images/about"
         public_folder: "/assets/images/about"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the About page content. Edit the hero image, main heading, history section text/image, village map description, and the photo sections (Tlaquepaque North, Outdoor Art, Landscaping, Sycamore, Our People)." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the About page content. Edit the hero image, main heading, history section text/image, village map description, and the photo sections (Tlaquepaque North, Outdoor Art, Landscaping, Sycamore, Our People)." }
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the About page. Filename must not start with an underscore" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large h2 heading shown at the top of the page." }
           - { label: "Subheading", name: "subheading", widget: "text", hint: "Smaller h6 text shown below the heading." }
@@ -618,7 +618,7 @@ collections:
         media_folder: "/assets/images/call-for-submission"
         public_folder: "/assets/images/call-for-submission"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Call for Submission page. Edit hero image, intro text, upload instructions, consent text, button labels, and error/success messages shown to applicants." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Call for Submission page. Edit hero image, intro text, upload instructions, consent text, button labels, and error/success messages shown to applicants." }
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the page. Filename must not start with an underscore" }
           - { label: "Eyebrow", name: "eyebrow", widget: "string" }
           - { label: "Title", name: "title", widget: "string" }
@@ -642,7 +642,7 @@ collections:
         label: "Connect With Us"
         file: "_data/connect-us.yml"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Connect With Us contact form page. Edit the page title, description, form field placeholder labels, and the submit button text." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Connect With Us contact form page. Edit the page title, description, form field placeholder labels, and the submit button text." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
           - label: "Form Placeholders"
@@ -663,7 +663,7 @@ collections:
         media_folder: "/assets/images"
         public_folder: "/assets/images"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Contacts page. Edit the page title, hero banner, contact info rows (address, phone, email etc.), social media URLs, and the leasing/filming/weddings button labels." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Contacts page. Edit the page title, hero banner, contact info rows (address, phone, email etc.), social media URLs, and the leasing/filming/weddings button labels." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Contact Items"
@@ -687,7 +687,7 @@ collections:
         label: "Default Hours"
         file: "_data/store/hours_defaults.yml"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Sets the default opening/closing times used as fallback for store listings that have no custom hours. Edit the open and close times for each day of the week." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Sets the default opening/closing times used as fallback for store listings that have no custom hours. Edit the open and close times for each day of the week." }
           - label: "Monday"
             name: "monday"
             widget: "list"
@@ -722,7 +722,7 @@ collections:
         media_folder: "/assets/images/events"
         public_folder: "/assets/images/events"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Events page header and labels. Edit the hero banner, page heading, description, calendar section headings, jump-to navigation links, and the event details button label." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Events page header and labels. Edit the hero banner, page heading, description, calendar section headings, jump-to navigation links, and the event details button label." }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - { label: "Events Label", name: "events", widget: "string", hint: "Eyebrow label, e.g. EVENTS" }
           - { label: "Heading", name: "title", widget: "string" }
@@ -756,7 +756,7 @@ collections:
         media_folder: "/assets/images/filming"
         public_folder: "/assets/images/filming"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Filming & Photography page. Edit the title, hero image, description, policy sections, the wedding exemption note, and the permit request button label." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Filming & Photography page. Edit the title, hero image, description, policy sections, the wedding exemption note, and the permit request button label." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
@@ -782,7 +782,7 @@ collections:
         media_folder: "/assets/images/foods"
         public_folder: "/assets/images/foods"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Food & Dining index page (foods/index.html). Edit the page title (browser tab), hero header image, main heading shown over the header, and the intro description." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Food & Dining index page (foods/index.html). Edit the page title (browser tab), hero header image, main heading shown over the header, and the intro description." }
           - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
           - { label: "Permalink", name: "permalink", widget: "hidden", default: "/foods/" }
           - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "foods" }
@@ -797,7 +797,7 @@ collections:
         media_folder: "/assets/images/galleries"
         public_folder: "/assets/images/galleries"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Galleries index page (galleries/index.html). Edit the page title (browser tab), hero header image, main heading, and the intro description." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Galleries index page (galleries/index.html). Edit the page title (browser tab), hero header image, main heading, and the intro description." }
           - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
           - { label: "Permalink", name: "permalink", widget: "hidden", default: "/galleries/" }
           - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "galleries" }
@@ -812,7 +812,7 @@ collections:
         media_folder: "/assets/images"
         public_folder: "/assets/images"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Gift Cards page. Edit the hero banner, page heading, intro paragraph, purchase button label and URL, and the \"How It Works\" section heading and steps." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Gift Cards page. Edit the hero banner, page heading, intro paragraph, purchase button label and URL, and the \"How It Works\" section heading and steps." }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - { label: "Page Heading", name: "heading", widget: "string" }
           - { label: "Intro Paragraph", name: "intro", widget: "text" }
@@ -839,7 +839,7 @@ collections:
         media_folder: "/assets/images/history"
         public_folder: "/assets/images/history"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the History page. Edit the hero banner, cover image, page subtitle, intro text, the Vision section (label, background image, body text, collage images, footnotes), and additional story blocks." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the History page. Edit the hero banner, cover image, page subtitle, intro text, the Vision section (label, background image, body text, collage images, footnotes), and additional story blocks." }
           - { label: "Title", name: "title", widget: "string", hint: "Small eyebrow text above the page subtitle (e.g. 'History')." }
           - { label: "Subtitle", name: "subtitle", widget: "string", hint: "Main page headline shown below the hero banner." }
           - { label: "Description", name: "description", widget: "text", hint: "Short intro paragraph below the subtitle." }
@@ -893,7 +893,7 @@ collections:
         media_folder: "/assets/images/hours"
         public_folder: "/assets/images/hours"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Hours & Locations page. Edit the hero copy, section headings, daily village hours, location cards (name, address, map URL, image), parking copy, accessibility and family-friendly card content, and jump-to navigation links." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Hours & Locations page. Edit the hero copy, section headings, daily village hours, location cards (name, address, map URL, image), parking copy, accessibility and family-friendly card content, and jump-to navigation links." }
           - label: "Intro"
             name: "intro"
             widget: "object"
@@ -1035,7 +1035,7 @@ collections:
         media_folder: "/assets/images/leasing"
         public_folder: "/assets/images/leasing"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Leasing page. Edit the title, hero image, description, guidelines intro, policy sections with bullet items, and the inquiry button label." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Leasing page. Edit the title, hero image, description, guidelines intro, policy sections with bullet items, and the inquiry button label." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
@@ -1059,7 +1059,7 @@ collections:
         label: "Magazines"
         file: "_data/magazines.yml"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Magazines archive page. Edit the eyebrow heading and the list of magazine issues (title, cover image URL, and optional link)." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Magazines archive page. Edit the eyebrow heading and the list of magazine issues (title, cover image URL, and optional link)." }
           - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Heading shown above the issue list, e.g. MAGAZINE ARCHIVE." }
           - label: "Issues"
             name: "issues"
@@ -1074,7 +1074,7 @@ collections:
         media_folder: "/assets/images/landing"
         public_folder: "/assets/images/landing"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the News page header. Edit the hero banner, eyebrow label, and main heading shown at the top of the news listing page." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the News page header. Edit the hero banner, eyebrow label, and main heading shown at the top of the news listing page." }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Hero image at top of /news/. Filename must not start with an underscore." }
           - { label: "Eyebrow", name: "eyebrow", widget: "string" }
           - { label: "Heading", name: "title", widget: "text" }
@@ -1082,7 +1082,7 @@ collections:
         label: "Newsletter"
         file: "_data/newsletter.yml"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Newsletter signup page. Edit the eyebrow, title, description, form field placeholder labels, consent checkbox labels, submit button, success/error messages, and the hero image." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Newsletter signup page. Edit the eyebrow, title, description, form field placeholder labels, consent checkbox labels, submit button, success/error messages, and the hero image." }
           - { label: "Eyebrow", name: "eyebrow", widget: "string" }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
@@ -1103,7 +1103,7 @@ collections:
         media_folder: "/assets/images/parking"
         public_folder: "/assets/images/parking"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Parking page. Edit the hero image, intro text, general notes, and the parking lot rows (name, description, map image, optional CTA button per lot)." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Parking page. Edit the hero image, intro text, general notes, and the parking lot rows (name, description, map image, optional CTA button per lot)." }
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Intro"
             name: "intro"
@@ -1145,7 +1145,7 @@ collections:
         media_folder: "/assets/images/privacy-policy"
         public_folder: "/assets/images/privacy-policy"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Privacy Policy page. Edit the title, hero image, copyright line, and the policy sections (each with a title, optional intro, bullet items, paragraphs, and contact block)." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Privacy Policy page. Edit the title, hero image, copyright line, and the policy sections (each with a title, optional intro, bullet items, paragraphs, and contact block)." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - { label: "Copyright", name: "copyright", widget: "string" }
@@ -1182,7 +1182,7 @@ collections:
         media_folder: "/assets/images/shops"
         public_folder: "/assets/images/shops"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Shops index page (shops/index.html). Edit the page title (browser tab), hero header image, main heading shown over the header, and the intro description." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Shops index page (shops/index.html). Edit the page title (browser tab), hero header image, main heading shown over the header, and the intro description." }
           - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
           - { label: "Permalink", name: "permalink", widget: "hidden", default: "/shops/" }
           - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "shops" }
@@ -1195,7 +1195,7 @@ collections:
         label: "Store Page Labels"
         file: "_data/store_page.yml"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls shared labels used on every store, food, and gallery detail page. Edit the section label headings: Location, Hours, Phone, Website, and Village Map." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls shared labels used on every store, food, and gallery detail page. Edit the section label headings: Location, Hours, Phone, Website, and Village Map." }
           - label: "Detail Page"
             name: "detail_page"
             widget: "object"
@@ -1215,7 +1215,7 @@ collections:
         label: "Terms & Conditions"
         file: "_data/terms-and-conditions.yml"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Terms & Conditions page. Edit the page title and the individual sections (each with a title and content text)." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Terms & Conditions page. Edit the page title and the individual sections (each with a title and content text)." }
           - { label: "Title", name: "title", widget: "string" }
           - label: "Sections"
             name: "sections"
@@ -1227,7 +1227,7 @@ collections:
         label: "Village Map Page"
         file: "_data/village_map_page.yml"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Village Map page overlay text. Edit the eyebrow label shown above the map and the description text shown beneath it." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Village Map page overlay text. Edit the eyebrow label shown above the map and the description text shown beneath it." }
           - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small label shown above the map." }
           - { label: "Description", name: "description", widget: "text", hint: "Sub-text shown under the eyebrow." }
       - name: "wedding_faq"
@@ -1236,7 +1236,7 @@ collections:
         media_folder: "/assets/images/weddings"
         public_folder: "/assets/images/weddings"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Wedding FAQ page. Edit the page title, hero banner, and the list of FAQ items (question and answer pairs)." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Wedding FAQ page. Edit the page title, hero banner, and the list of FAQ items (question and answer pairs)." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "FAQ Items"
@@ -1252,7 +1252,7 @@ collections:
         media_folder: "/assets/images/weddings"
         public_folder: "/assets/images/weddings"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "text", required: false, hint: "Controls the Weddings page. Edit the hero image, page title, description, gallery video items, brochure link, awards images, corporate events section, site plan image, button labels, and jump-to navigation links." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Weddings page. Edit the hero image, page title, description, gallery video items, brochure link, awards images, corporate events section, site plan image, button labels, and jump-to navigation links." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Weddings Label", name: "weddings", widget: "string" }
