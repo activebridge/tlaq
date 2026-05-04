@@ -1264,6 +1264,48 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Link", name: "link", widget: "string", required: false, hint: "Leave empty if issue is not yet available." }
               - { label: "Cover Image", name: "image", widget: "string", hint: "URL of the cover image." }
+      - name: "shops_index"
+        label: "Shops"
+        file: "shops/index.html"
+        media_folder: "/assets/images/shops"
+        public_folder: "/assets/images/shops"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/shops/" }
+          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "shops" }
+          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "shops" }
+          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
+          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
+          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
+          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
+      - name: "foods_index"
+        label: "Food"
+        file: "foods/index.html"
+        media_folder: "/assets/images/foods"
+        public_folder: "/assets/images/foods"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/foods/" }
+          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "foods" }
+          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "foods" }
+          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
+          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
+          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
+          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
+      - name: "galleries_index"
+        label: "Galleries"
+        file: "galleries/index.html"
+        media_folder: "/assets/images/galleries"
+        public_folder: "/assets/images/galleries"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/galleries/" }
+          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "galleries" }
+          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "galleries" }
+          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
+          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
+          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
+          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
 
   - name: "blogs"
     label: "News"
@@ -1280,52 +1322,6 @@ collections:
       - { label: "Description", name: "description", widget: "text", required: false }
       - { label: "Image", name: "image", widget: "image", required: false, hint: "Filename must not start with an underscore" }
       - { label: "Content", name: "body", widget: "markdown" }
-
-  - name: "section_indexes"
-    label: "Section Index Pages"
-    files:
-      - name: "shops_index"
-        label: "Shops Index Page"
-        file: "shops/index.html"
-        media_folder: "/assets/images/shops"
-        public_folder: "/assets/images/shops"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/shops/" }
-          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "shops" }
-          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "shops" }
-          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
-          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
-          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
-          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
-      - name: "foods_index"
-        label: "Foods Index Page"
-        file: "foods/index.html"
-        media_folder: "/assets/images/foods"
-        public_folder: "/assets/images/foods"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/foods/" }
-          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "foods" }
-          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "foods" }
-          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
-          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
-          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
-          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
-      - name: "galleries_index"
-        label: "Galleries Index Page"
-        file: "galleries/index.html"
-        media_folder: "/assets/images/galleries"
-        public_folder: "/assets/images/galleries"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/galleries/" }
-          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "galleries" }
-          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "galleries" }
-          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
-          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
-          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
-          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
 
   - name: "shops"
     label: "Shops"
