@@ -10,7 +10,7 @@ video_url: ''
 subtitle: A tribute to mothers everywhere, Sedona Dance Project will curate an evocative journey along the Waddell Sculpture path, weaving through Tlaquepaque.
 schedule_type: range
 annual: false
-recurs_until: 2026-05-10T16:00:00
+recurs_until: ''
 recurrence_weekdays: []
 display_dates:
   - month: may
