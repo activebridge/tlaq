@@ -3,7 +3,7 @@ title: Dance Into Beauty
 slug: dance-into-beauty
 published: true
 starts_at: 2026-05-09T13:00:00
-ends_at: 2026-05-09T16:00:00
+ends_at: 2026-05-10T16:00:00
 location: Throughout Tlaquepaque
 image: /assets/images/events/dance-into-beauty-hero.JPG
 video_url: ''
