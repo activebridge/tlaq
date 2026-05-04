@@ -22,7 +22,8 @@
         "annual": {{ event.annual | jsonify }},
         "schedule_type": {{ event.schedule_type | jsonify }},
         "recurs_until": {{ event.recurs_until | date: "%Y-%m-%d %H:%M:%S" | jsonify }},
-        "recurrence_weekdays": {{ event.recurrence_weekdays | jsonify }}
+        "recurrence_weekdays": {{ event.recurrence_weekdays | jsonify }},
+        "display_dates": {{ event.display_dates | jsonify }}
       }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ]

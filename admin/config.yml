@@ -1551,41 +1551,54 @@ collections:
       - { label: "Title", name: "title", widget: "string", hint: "For recurring annual events created as separate entries each year, include the year in the title (e.g., 'Day of the Dead 2027') to distinguish them." }
       - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., creative-gateways). Shorter than the full name is fine. DO NOT change after publishing — breaks the URL and any linked content. For recurring annual events with a new entry each year, append the year (e.g., day-of-the-dead-2027)." }
       - { label: "Published", name: "published", widget: "boolean", default: true, hint: "If false, the event will not be shown on the calendar or website." }
-      - { label: "Starts At", name: "starts_at", widget: "datetime" }
+      - { label: "Starts At", name: "starts_at", widget: "datetime", hint: "Date and time the event begins. For recurring events (weekly/monthly), this is the FIRST occurrence — recurrence runs forward from here until Recurrence Until." }
       - { label: "Ends At", name: "ends_at", widget: "datetime", required: false, hint: "Usually same date as Starts At with a later end time. For Schedule Type: 'range', this is required and defines the from-to span end." }
-      - { label: "Location", name: "location", widget: "string" }
-      - { label: "Image", name: "image", widget: "image", required: false, hint: "Filename must not start with an underscore" }
+      - { label: "Location", name: "location", widget: "string", hint: "Where the event takes place (e.g. 'Tlaquepaque Village', 'Patio De Las Campanas'). Shown on the event detail page." }
+      - { label: "Image", name: "image", widget: "image", required: false, hint: "Hero image for the event card and detail page. Filename must not start with an underscore." }
       - { label: "Video URL", name: "video_url", widget: "string", required: false, hint: "If set, the yearly event will display a video background instead of an image." }
-      - { label: "Intro", name: "subtitle", widget: "text" }
+      - { label: "Intro", name: "subtitle", widget: "text", hint: "Short teaser shown under the title on the calendar card and event page. One or two sentences. No HTML." }
       - { label: "Schedule Type", name: "schedule_type", widget: "select", options: ["single", "range", "weekly", "monthly", "yearly"], required: true, hint: "single: one date; range: daily from start to end; weekly: selected weekdays until Recurrence Until; monthly: first selected weekday(s) each month until Recurrence Until; yearly: repeats on the exact same calendar date every year — only use if the date never changes. For annual events with shifting dates (e.g. Day of the Dead), use 'single' and enable the Annual Event flag instead." }
       - { label: "Annual Event", name: "annual", widget: "boolean", default: false, required: false, hint: "Show this event in the Annual Events section. Use this for events that happen once a year but with a date that changes each year (e.g. Day of the Dead) — set Schedule Type to 'single', enter the correct date, and enable this flag. Each year, update the date or create a new entry." }
-      - { label: "Recurrence Until", name: "recurs_until", widget: "datetime", required: false, hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
-      - { label: "Recurrence Weekdays", name: "recurrence_weekdays", widget: "select", multiple: true, required: false, options: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"], hint: "Use for weekly/monthly only. Leave empty for single/range/yearly." }
+      - { label: "Recurrence Until", name: "recurs_until", widget: "datetime", required: false, hint: "REQUIRED for weekly/monthly schedules — recurrence stops after this date. Leave empty for single/range/yearly." }
+      - { label: "Recurrence Weekdays", name: "recurrence_weekdays", widget: "select", multiple: true, required: false, options: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"], hint: "REQUIRED for weekly/monthly schedules — at least one weekday. Weekly uses only the first selected weekday for occurrences; monthly emits each selected weekday's first occurrence per month. Leave empty for single/range/yearly." }
+      - label: "Display Dates Override"
+        name: "display_dates"
+        widget: "list"
+        required: false
+        collapsed: true
+        summary: "{{fields.month}}: {{fields.text}}"
+        hint: "Optional per-month label that replaces the auto-generated date row in the calendar (e.g. 'Every Sunday', 'May 2, May 9, May 16'). When set for a month, only ONE card is shown for this event in that month and the weekly range hint is hidden. Add at most one entry per month — duplicates are ignored, only the first match wins. Leave empty to keep default behavior."
+        fields:
+          - { label: "Month", name: "month", widget: "select", options: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], hint: "Three-letter month code. Applies to every year." }
+          - { label: "Text", name: "text", widget: "string", hint: "Free text shown in place of the date row, e.g. 'Every Thursday' or 'May 2, May 9, May 16'." }
       - label: "Schedule"
         name: "schedule"
         widget: "list"
         required: false
         collapsed: true
+        hint: "Optional multi-stage program (e.g. festival with several stages or rooms). Each entry groups performances under a single location. Leave empty for simple events."
         fields:
-          - { label: "Location", name: "location", widget: "string" }
+          - { label: "Location", name: "location", widget: "string", hint: "Stage / room / area name within the venue (e.g. 'Main Stage', 'Patio')." }
           - label: "Performances"
             name: "performances"
             widget: "list"
+            hint: "Acts performing at this location, in chronological order."
             fields:
-              - { label: "Name", name: "name", widget: "string" }
-              - { label: "Time", name: "time", widget: "string" }
+              - { label: "Name", name: "name", widget: "string", hint: "Performer or act name." }
+              - { label: "Time", name: "time", widget: "string", hint: "Free-form time slot, e.g. '4:00 PM' or '4:00 – 5:30 PM'." }
       - label: "Map"
         name: "map"
         widget: "object"
         required: false
         collapsed: true
+        hint: "Optional CTA block linking to a map / parking info on the event page. Leave empty to hide the block."
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Button Label", name: "button_label", widget: "string" }
-      - { label: "Phone", name: "phone", widget: "string", required: false }
-      - { label: "Website", name: "website", widget: "string", required: false }
-      - { label: "Email", name: "email", widget: "string", required: false }
-      - { label: "Facebook", name: "facebook", widget: "string", required: false }
-      - { label: "Instagram", name: "instagram", widget: "string", required: false }
-      - { label: "Description", name: "body", widget: "markdown" }
+          - { label: "Title", name: "title", widget: "string", hint: "Heading for the map block, e.g. 'Find Your Way' or 'Parking & Directions'." }
+          - { label: "Description", name: "description", widget: "text", hint: "Short paragraph above the button." }
+          - { label: "Button Label", name: "button_label", widget: "string", hint: "Call-to-action text on the button, e.g. 'View Map'." }
+      - { label: "Phone", name: "phone", widget: "string", required: false, hint: "Contact phone number for the event organizer or venue. Format freely (e.g. '928-862-4140')." }
+      - { label: "Website", name: "website", widget: "string", required: false, hint: "Full URL including https://. Used for the 'Website' link on the event page." }
+      - { label: "Email", name: "email", widget: "string", required: false, hint: "Contact email for the event. Rendered as a mailto link." }
+      - { label: "Facebook", name: "facebook", widget: "string", required: false, hint: "Full URL to the Facebook page or event (https://www.facebook.com/...)." }
+      - { label: "Instagram", name: "instagram", widget: "string", required: false, hint: "Full URL to the Instagram profile or post (https://www.instagram.com/...)." }
+      - { label: "Description", name: "body", widget: "markdown", hint: "Full event description shown on the detail page. Markdown supported — use headings, lists, links as needed." }
