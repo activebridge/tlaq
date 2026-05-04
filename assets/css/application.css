@@ -2033,7 +2033,21 @@ dialog {
 
       fieldset { margin-top: 0; }
 
-      .btn.btn-primary { margin-top: auto; align-self: start; }
+      .btn.btn-primary { margin-top: auto; align-self: stretch; margin-bottom: 0; }
+    }
+
+    .response {
+      grid-column: 1 / -1;
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      font-size: 1.25rem;
+      line-height: 1.4;
+
+      &[hidden] { display: none; }
+      &[data-state="success"] { background: #e6f4ea; color: #1e7e34; }
+      &[data-state="error"] { background: #fce8e6; color: #b00020; }
+      a { text-decoration: underline; color: inherit; }
     }
 
     @media (max-width: 770px) {

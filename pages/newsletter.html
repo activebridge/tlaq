@@ -20,17 +20,14 @@ layout_type: page
 
     <hr>
 
-    <form id="subscribeForm"
-      data-success="{{ nl.success }}"
-      data-error="{{ nl.error }}">
-
+    <form action="https://tlaq.us17.list-manage.com/subscribe/post-json?u=3c3b2aa45650a5c570fd34914&amp;id=babc58a21c&amp;f_id=0019fce2f0&amp;c=?" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate data-success="{{ nl.success }}" data-error="{{ nl.error }}" onsubmit="return submitNewsletter(event, this)">
       <p class="required-note"><small>{{ nl.required_note }}</small></p>
 
       <div class="form-fields">
-        <input type="text" name="first_name" placeholder="{{ nl.first_name }} *" required>
-        <input type="text" name="last_name" placeholder="{{ nl.last_name }} *" required>
-        <input type="email" name="email" placeholder="{{ nl.email }} *" required>
-        <input type="text" name="country" placeholder="{{ nl.country }} *" required>
+        <input type="text" name="FNAME" id="mce-FNAME" class="required text" placeholder="{{ nl.first_name }} *" required>
+        <input type="text" name="LNAME" id="mce-LNAME" class="required text" placeholder="{{ nl.last_name }} *" required>
+        <input type="email" name="EMAIL" id="mce-EMAIL" class="required email" placeholder="{{ nl.email }} *" required>
+        <input type="text" name="MMERGE5" id="mce-MMERGE5" class="required text" placeholder="{{ nl.country }} *" required>
       </div>
 
       <div class="form-consents">
@@ -44,20 +41,49 @@ layout_type: page
           <label><input type="checkbox" name="consent_emails" required> YES</label>
         </fieldset>
 
-        <p id="subscribeMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
-        <button id="subscribeBtn" class="btn btn-primary" type="submit">{{ nl.submit }}</button>
+        <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">{{ nl.submit }}</button>
       </div>
+
+      <p class="response" id="subscribeMsg" role="status" aria-live="polite" hidden></p>
     </form>
   </div>
 </article>
 
 <script>
-  function show(ok){subscribeMsg.textContent=subscribeForm.dataset[ok?"success":"error"];if(!ok){subscribeMsg.setAttribute("data-error","");}subscribeBtn.disabled=false;subscribeMsg.removeAttribute("aria-hidden");}
-  subscribeForm.addEventListener("submit",function(e){
+  function setResponse(msg, state) {
+    subscribeMsg.hidden = !msg;
+    subscribeMsg.dataset.state = state || '';
+    if (state === 'error') subscribeMsg.innerHTML = msg || '';
+    else subscribeMsg.textContent = msg || '';
+  }
+
+  function submitNewsletter(e, form) {
     e.preventDefault();
-    subscribeBtn.disabled=true;subscribeMsg.setAttribute("aria-hidden","true");subscribeMsg.removeAttribute("data-error");
-    fetch({{ site.data.site.newsletter_worker_url | jsonify }},{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(subscribeForm)))})
-      .then(function(r){if(r.ok)subscribeForm.reset();show(r.ok);})
-      .catch(function(){show(false);});
-  });
+    if (!form.checkValidity()) { form.reportValidity(); return false; }
+
+    window['mc-embedded-subscribe'].disabled = true;
+    setResponse('', '');
+
+    var params = [];
+    new FormData(form).forEach(function (v, k) {
+      if (k === 'consent_privacy' || k === 'consent_emails') return;
+      params.push(encodeURIComponent(k) + '=' + encodeURIComponent(v));
+    });
+    var cb = 'mcCb_' + Date.now();
+    params.push('c=' + cb);
+
+    var s = document.createElement('script');
+    window[cb] = function (res) {
+      window['mc-embedded-subscribe'].disabled = false;
+      if (res.result === 'success') { setResponse(form.dataset.success, 'success'); form.reset(); }
+      else { setResponse(res.msg || form.dataset.error, 'error'); }
+      delete window[cb];
+      s.remove();
+    };
+
+    s.src = form.action.replace(/&c=\?$/, '') + '&' + params.join('&');
+    s.onerror = function () { window['mc-embedded-subscribe'].disabled = false; setResponse(form.dataset.error, 'error'); delete window[cb]; s.remove(); };
+    document.body.appendChild(s);
+    return false;
+  }
 </script>

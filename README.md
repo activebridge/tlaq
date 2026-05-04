@@ -256,12 +256,11 @@ Images are transformed via Cloudflare's `/cdn-cgi/image/...` URLs served from `t
 
 #### 2b. Cloudflare Workers
 
-Three Workers are referenced in `_data/site.yml`:
+Two Workers are referenced in `_data/site.yml`:
 
 | Key | Current URL | Purpose |
 |-----|------------|---------|
 | `submission_worker_url` | `https://sweet-salad-9b35.alexsstorchak.workers.dev` | Call-for-submission photo uploads |
-| `newsletter_worker_url` | `https://tlaq-contacts.pwt.workers.dev/` | Email newsletter subscriptions |
 | `weather_widget_url` | `https://weather.pwt.workers.dev/widget.svg` | Weather widget SVG |
 
 > **Note:** Worker source code is **not** in this repository. Request it from the current developer before proceeding.
@@ -269,23 +268,11 @@ Three Workers are referenced in `_data/site.yml`:
 **Steps:**
 1. Create a Cloudflare account and set up Workers
 2. Deploy each Worker from source
-3. Update all three URLs in `_data/site.yml`
+3. Update both URLs in `_data/site.yml`
 
 ---
 
-### 3. SendGrid
-
-**What it does:** Sends newsletter subscription confirmation emails. Used inside the `tlaq-contacts` Cloudflare Worker — not referenced directly in this repo.
-
-**Steps:**
-1. Create account at [sendgrid.com](https://sendgrid.com)
-2. Verify your sender domain
-3. Generate an API key with `Mail Send` permission
-4. Add the key to the new newsletter Worker's environment variables in the Cloudflare dashboard
-
----
-
-### 4. Flipsnack
+### 3. Flipsnack
 
 **What it does:** Embeds the digital magazine viewer on the homepage and in the footer.
 
@@ -303,7 +290,7 @@ Three Workers are referenced in `_data/site.yml`:
 
 ---
 
-### 5. GitHub Repository & CMS Access
+### 4. GitHub Repository & CMS Access
 
 **What it does:** Hosts source code and serves as the CMS backend (Sveltia CMS authenticates via GitHub write access).
 
@@ -317,7 +304,7 @@ Three Workers are referenced in `_data/site.yml`:
 
 ---
 
-### 6. External Media (cdn-website.com)
+### 5. External Media (cdn-website.com)
 
 **What it does:** Hosts wedding brochure PDFs and video files referenced by the site.
 
@@ -340,8 +327,7 @@ Three Workers are referenced in `_data/site.yml`:
 |---------|----------------|-----------------|
 | Mapbox | `_config.yml` (`mapbox_token`, `mapbox_style`) | New account → new token + new style URL |
 | Cloudflare CDN | `_config.yml` (`cdn_url`) | Transfer domain or recreate Cloudflare zone |
-| Cloudflare Workers (×3) | `_data/site.yml` | Redeploy workers from source, update 3 URLs |
-| SendGrid | Inside Cloudflare Worker env vars | New API key |
+| Cloudflare Workers (×2) | `_data/site.yml` | Redeploy workers from source, update 2 URLs |
 | Flipsnack | `_includes/footer.html`, `_includes/landing/magazine.html` | Transfer account or replace embed hash |
 | GitHub repo | `admin/config.yml` (`repo`) | Transfer repo + grant write access |
 | cdn-website.com | `_data/weddings.yml`, `_data/magazines.yml` | Transfer account or re-host all files |
