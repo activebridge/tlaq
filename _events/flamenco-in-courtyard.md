@@ -2,7 +2,7 @@
 title: Flamenco in the Courtyard
 slug: flamenco-in-courtyard
 published: true
-starts_at: 2026-03-29 15:30:00
+starts_at: 2026-03-29T17:30:00
 ends_at: 2026-03-29 19:30:00
 location: Tlaquepaque Village
 image: /assets/images/events/flamenco-in-courtyard.webp
