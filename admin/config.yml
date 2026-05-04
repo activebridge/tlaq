@@ -636,6 +636,193 @@ collections:
           - { label: "Upload Size Error", name: "upload_size_error", widget: "string" }
           - { label: "Reset Button", name: "reset", widget: "string" }
           - { label: "Max File Size (MB)", name: "max_file_size_mb", widget: "number", value_type: "int" }
+      - name: "connect_us"
+        label: "Connect With Us"
+        file: "_data/connect-us.yml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Form Placeholders"
+            name: "form_placeholders"
+            widget: "object"
+            fields:
+              - { label: "First Name", name: "first_name", widget: "string" }
+              - { label: "Last Name", name: "last_name", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Event Date", name: "event_date", widget: "string" }
+              - { label: "Guests", name: "guests", widget: "string" }
+              - { label: "Budget", name: "budget", widget: "string" }
+          - { label: "Submit Button", name: "submit_button", widget: "string" }
+      - name: "contacts"
+        label: "Contacts"
+        file: "_data/contacts.yml"
+        media_folder: "/assets/images"
+        public_folder: "/assets/images"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
+          - label: "Contact Items"
+            name: "items"
+            widget: "list"
+            hint: "Each item is a contact info row (Address, Phone, Email, etc.)."
+            fields:
+              - { label: "Label", name: "title", widget: "string" }
+              - { label: "Value", name: "content", widget: "string" }
+          - { label: "Follow Us Label", name: "follow_us", widget: "string" }
+          - { label: "Facebook URL", name: "facebook", widget: "string" }
+          - { label: "Instagram URL", name: "instagram", widget: "string" }
+          - label: "Buttons"
+            name: "buttons"
+            widget: "object"
+            fields:
+              - { label: "Leasing Button", name: "leasing", widget: "string" }
+              - { label: "Filming Button", name: "filming", widget: "string" }
+              - { label: "Weddings Button", name: "weddings", widget: "string" }
+      - name: "hours_defaults"
+        label: "Default Hours"
+        file: "_data/store/hours_defaults.yml"
+        fields:
+          - label: "Monday"
+            name: "monday"
+            widget: "list"
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
+          - label: "Tuesday"
+            name: "tuesday"
+            widget: "list"
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
+          - label: "Wednesday"
+            name: "wednesday"
+            widget: "list"
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
+          - label: "Thursday"
+            name: "thursday"
+            widget: "list"
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
+          - label: "Friday"
+            name: "friday"
+            widget: "list"
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 6:00 PM." }
+          - label: "Saturday"
+            name: "saturday"
+            widget: "list"
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 6:00 PM." }
+          - label: "Sunday"
+            name: "sunday"
+            widget: "list"
+            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 6:00 PM." }
+      - name: "events_page"
+        label: "Events Page"
+        file: "_data/events.yml"
+        media_folder: "/assets/images/events"
+        public_folder: "/assets/images/events"
+        fields:
+          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
+          - { label: "Events Label", name: "events", widget: "string", hint: "Eyebrow label, e.g. EVENTS" }
+          - { label: "Heading", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Annual Calendar Heading", name: "annual_calendar", widget: "string" }
+          - { label: "Monthly Calendar Heading", name: "monthly_calendar", widget: "string" }
+          - label: "Jump To Links"
+            name: "jump_to_links"
+            widget: "object"
+            fields:
+              - label: "Calendar"
+                name: "calendar"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string", hint: "Anchor target including #, e.g. #calendar" }
+              - label: "Annual Events"
+                name: "annual_events"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string", hint: "Anchor target including #, e.g. #annual-events" }
+          - label: "Buttons"
+            name: "buttons"
+            widget: "object"
+            fields:
+              - { label: "Details Label", name: "details", widget: "string" }
+      - name: "filming_photography"
+        label: "Filming & Photography"
+        file: "_data/filming-photography.yml"
+        media_folder: "/assets/images/filming"
+        public_folder: "/assets/images/filming"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                field: { label: "Item", name: "item", widget: "string" }
+          - { label: "Wedding Exemption Note", name: "wedding_exemption_note", widget: "text" }
+          - label: "Buttons"
+            name: "buttons"
+            widget: "object"
+            fields:
+              - { label: "Request a Permit", name: "request_a_permit", widget: "string" }
+      - name: "foods_index"
+        label: "Food"
+        file: "foods/index.html"
+        media_folder: "/assets/images/foods"
+        public_folder: "/assets/images/foods"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/foods/" }
+          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "foods" }
+          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "foods" }
+          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
+          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
+          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
+          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
+      - name: "galleries_index"
+        label: "Galleries"
+        file: "galleries/index.html"
+        media_folder: "/assets/images/galleries"
+        public_folder: "/assets/images/galleries"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/galleries/" }
+          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "galleries" }
+          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "galleries" }
+          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
+          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
+          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
+          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
+      - name: "gift_cards"
+        label: "Gift Cards"
+        file: "_data/gift_cards.yml"
+        media_folder: "/assets/images"
+        public_folder: "/assets/images"
+        fields:
+          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
+          - { label: "Page Heading", name: "heading", widget: "string" }
+          - { label: "Intro Paragraph", name: "intro", widget: "text" }
+          - label: "Purchase Button"
+            name: "purchase_button"
+            widget: "object"
+            fields:
+              - { label: "Button Label", name: "label", widget: "string" }
+              - { label: "Button URL", name: "url", widget: "string", required: false, hint: "Purchase page URL. Leave empty until account is set up." }
+          - label: "Here's How It Works"
+            name: "how_it_works"
+            widget: "object"
+            fields:
+              - { label: "Section Heading", name: "heading", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
       - name: "history"
         label: "History"
         file: "_data/history.yml"
@@ -830,57 +1017,70 @@ collections:
             hint: "Media used in the family and pet friendly card."
             fields:
               - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
-      - name: "hours_defaults"
-        label: "Default Hours"
-        file: "_data/store/hours_defaults.yml"
+      - name: "leasing"
+        label: "Leasing"
+        file: "_data/leasing.yml"
+        media_folder: "/assets/images/leasing"
+        public_folder: "/assets/images/leasing"
         fields:
-          - label: "Monday"
-            name: "monday"
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Guidelines Intro", name: "guidelines_intro", widget: "text" }
+          - label: "Sections"
+            name: "sections"
             widget: "list"
-            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
-          - label: "Tuesday"
-            name: "tuesday"
-            widget: "list"
-            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
-          - label: "Wednesday"
-            name: "wednesday"
-            widget: "list"
-            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
-          - label: "Thursday"
-            name: "thursday"
-            widget: "list"
-            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 5:00 PM." }
-          - label: "Friday"
-            name: "friday"
-            widget: "list"
-            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 6:00 PM." }
-          - label: "Saturday"
-            name: "saturday"
-            widget: "list"
-            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 6:00 PM." }
-          - label: "Sunday"
-            name: "sunday"
-            widget: "list"
-            field: { label: "Time", name: "time", widget: "string", hint: "One time value. Use two items for open and close times, e.g. 10:00 AM and 6:00 PM." }
-      - name: "store_page"
-        label: "Store Page Labels"
-        file: "_data/store_page.yml"
-        fields:
-          - label: "Detail Page"
-            name: "detail_page"
-            widget: "object"
-            hint: "Shared labels used on every store, food, and gallery detail page."
             fields:
-              - label: "Labels"
-                name: "labels"
-                widget: "object"
-                hint: "Short section headings shown in uppercase on the page."
-                fields:
-                  - { label: "Location", name: "location", widget: "string", hint: "Section label above the address block." }
-                  - { label: "Hours", name: "hours", widget: "string", hint: "Section label above the hours table." }
-                  - { label: "Phone", name: "phone", widget: "string", hint: "Section label above the phone number." }
-                  - { label: "Website", name: "website", widget: "string", hint: "Section label above the website link." }
-                  - { label: "Village Map", name: "village_map", widget: "string", hint: "Heading shown above the embedded map." }
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                field: { label: "Item", name: "item", widget: "string" }
+          - label: "Buttons"
+            name: "buttons"
+            widget: "object"
+            fields:
+              - { label: "Inquire About Space", name: "inquire_about_space", widget: "string" }
+      - name: "magazines"
+        label: "Magazines"
+        file: "_data/magazines.yml"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Heading shown above the issue list, e.g. MAGAZINE ARCHIVE." }
+          - label: "Issues"
+            name: "issues"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Link", name: "link", widget: "string", required: false, hint: "Leave empty if issue is not yet available." }
+              - { label: "Cover Image", name: "image", widget: "string", hint: "URL of the cover image." }
+      - name: "news"
+        label: "News Page"
+        file: "_data/news.yml"
+        media_folder: "/assets/images/landing"
+        public_folder: "/assets/images/landing"
+        fields:
+          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Hero image at top of /news/. Filename must not start with an underscore." }
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Heading", name: "title", widget: "text" }
+      - name: "newsletter"
+        label: "Newsletter"
+        file: "_data/newsletter.yml"
+        fields:
+          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Required Note", name: "required_note", widget: "string" }
+          - { label: "First Name Placeholder", name: "first_name", widget: "string" }
+          - { label: "Last Name Placeholder", name: "last_name", widget: "string" }
+          - { label: "Email Placeholder", name: "email", widget: "string" }
+          - { label: "Country Placeholder", name: "country", widget: "string" }
+          - { label: "Privacy Consent Label", name: "consent_privacy", widget: "string" }
+          - { label: "Email Consent Label", name: "consent_emails", widget: "string" }
+          - { label: "Submit Button", name: "submit", widget: "string" }
+          - { label: "Success Message", name: "success", widget: "string" }
+          - { label: "Error Message", name: "error", widget: "string" }
+          - { label: "Hero Image", name: "hero_image", widget: "image", hint: "Filename must not start with an underscore" }
       - name: "parking"
         label: "Parking"
         file: "_data/parking.yml"
@@ -922,54 +1122,107 @@ collections:
                   fields:
                     - { label: "URL", name: "url", widget: "string" }
                     - { label: "Label", name: "label", widget: "string" }
+      - name: "privacy_policy"
+        label: "Privacy Policy"
+        file: "_data/privacy-policy.yml"
+        media_folder: "/assets/images/privacy-policy"
+        public_folder: "/assets/images/privacy-policy"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
+          - { label: "Copyright", name: "copyright", widget: "string" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text", required: false, hint: "Sentence shown before the bullet list." }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                required: false
+                hint: "Bullet-point list items."
+                field: { label: "Item", name: "item", widget: "string" }
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                required: false
+                hint: "Text paragraphs shown after the list."
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
+              - label: "Contact"
+                name: "contact"
+                widget: "object"
+                required: false
+                hint: "Optional contact block (used for Contact Us section)."
+                fields:
+                  - { label: "Name", name: "name", widget: "string", required: false }
+                  - { label: "Phone", name: "phone", widget: "string", required: false }
+                  - { label: "Email", name: "email", widget: "string", required: false }
+      - name: "shops_index"
+        label: "Shops"
+        file: "shops/index.html"
+        media_folder: "/assets/images/shops"
+        public_folder: "/assets/images/shops"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
+          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/shops/" }
+          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "shops" }
+          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "shops" }
+          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
+          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
+          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
+          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
+      - name: "store_page"
+        label: "Store Page Labels"
+        file: "_data/store_page.yml"
+        fields:
+          - label: "Detail Page"
+            name: "detail_page"
+            widget: "object"
+            hint: "Shared labels used on every store, food, and gallery detail page."
+            fields:
+              - label: "Labels"
+                name: "labels"
+                widget: "object"
+                hint: "Short section headings shown in uppercase on the page."
+                fields:
+                  - { label: "Location", name: "location", widget: "string", hint: "Section label above the address block." }
+                  - { label: "Hours", name: "hours", widget: "string", hint: "Section label above the hours table." }
+                  - { label: "Phone", name: "phone", widget: "string", hint: "Section label above the phone number." }
+                  - { label: "Website", name: "website", widget: "string", hint: "Section label above the website link." }
+                  - { label: "Village Map", name: "village_map", widget: "string", hint: "Heading shown above the embedded map." }
+      - name: "terms_and_conditions"
+        label: "Terms & Conditions"
+        file: "_data/terms-and-conditions.yml"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Content", name: "content", widget: "text" }
       - name: "village_map"
         label: "Village Map Page"
         file: "_data/village_map_page.yml"
         fields:
           - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small label shown above the map." }
           - { label: "Description", name: "description", widget: "text", hint: "Sub-text shown under the eyebrow." }
-      - name: "news"
-        label: "News Page"
-        file: "_data/news.yml"
-        media_folder: "/assets/images/landing"
-        public_folder: "/assets/images/landing"
+      - name: "wedding_faq"
+        label: "Wedding FAQ"
+        file: "_data/wedding-faq.yml"
+        media_folder: "/assets/images/weddings"
+        public_folder: "/assets/images/weddings"
         fields:
-          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Hero image at top of /news/. Filename must not start with an underscore." }
-          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
-          - { label: "Heading", name: "title", widget: "text" }
-      - name: "events_page"
-        label: "Events Page"
-        file: "_data/events.yml"
-        media_folder: "/assets/images/events"
-        public_folder: "/assets/images/events"
-        fields:
+          - { label: "Title", name: "title", widget: "string" }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
-          - { label: "Events Label", name: "events", widget: "string", hint: "Eyebrow label, e.g. EVENTS" }
-          - { label: "Heading", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Annual Calendar Heading", name: "annual_calendar", widget: "string" }
-          - { label: "Monthly Calendar Heading", name: "monthly_calendar", widget: "string" }
-          - label: "Jump To Links"
-            name: "jump_to_links"
-            widget: "object"
+          - label: "FAQ Items"
+            name: "blocks"
+            widget: "list"
+            hint: "Each item is one question and answer."
             fields:
-              - label: "Calendar"
-                name: "calendar"
-                widget: "object"
-                fields:
-                  - { label: "Text", name: "text", widget: "string" }
-                  - { label: "ID", name: "id", widget: "string", hint: "Anchor target including #, e.g. #calendar" }
-              - label: "Annual Events"
-                name: "annual_events"
-                widget: "object"
-                fields:
-                  - { label: "Text", name: "text", widget: "string" }
-                  - { label: "ID", name: "id", widget: "string", hint: "Anchor target including #, e.g. #annual-events" }
-          - label: "Buttons"
-            name: "buttons"
-            widget: "object"
-            fields:
-              - { label: "Details Label", name: "details", widget: "string" }
+              - { label: "Question", name: "title", widget: "string" }
+              - { label: "Answer", name: "content", widget: "text" }
       - name: "weddings"
         label: "Weddings"
         file: "_data/weddings.yml"
@@ -1053,259 +1306,6 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - { label: "Plan URL", name: "plan_url", widget: "string" }
-      - name: "leasing"
-        label: "Leasing"
-        file: "_data/leasing.yml"
-        media_folder: "/assets/images/leasing"
-        public_folder: "/assets/images/leasing"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Subtitle", name: "subtitle", widget: "string" }
-          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Guidelines Intro", name: "guidelines_intro", widget: "text" }
-          - label: "Sections"
-            name: "sections"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - label: "Items"
-                name: "items"
-                widget: "list"
-                field: { label: "Item", name: "item", widget: "string" }
-          - label: "Buttons"
-            name: "buttons"
-            widget: "object"
-            fields:
-              - { label: "Inquire About Space", name: "inquire_about_space", widget: "string" }
-      - name: "filming_photography"
-        label: "Filming & Photography"
-        file: "_data/filming-photography.yml"
-        media_folder: "/assets/images/filming"
-        public_folder: "/assets/images/filming"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Subtitle", name: "subtitle", widget: "string" }
-          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
-          - { label: "Description", name: "description", widget: "text" }
-          - label: "Sections"
-            name: "sections"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - label: "Items"
-                name: "items"
-                widget: "list"
-                field: { label: "Item", name: "item", widget: "string" }
-          - { label: "Wedding Exemption Note", name: "wedding_exemption_note", widget: "text" }
-          - label: "Buttons"
-            name: "buttons"
-            widget: "object"
-            fields:
-              - { label: "Request a Permit", name: "request_a_permit", widget: "string" }
-      - name: "privacy_policy"
-        label: "Privacy Policy"
-        file: "_data/privacy-policy.yml"
-        media_folder: "/assets/images/privacy-policy"
-        public_folder: "/assets/images/privacy-policy"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
-          - { label: "Copyright", name: "copyright", widget: "string" }
-          - label: "Sections"
-            name: "sections"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Intro", name: "intro", widget: "text", required: false, hint: "Sentence shown before the bullet list." }
-              - label: "Items"
-                name: "items"
-                widget: "list"
-                required: false
-                hint: "Bullet-point list items."
-                field: { label: "Item", name: "item", widget: "string" }
-              - label: "Paragraphs"
-                name: "paragraphs"
-                widget: "list"
-                required: false
-                hint: "Text paragraphs shown after the list."
-                field: { label: "Paragraph", name: "paragraph", widget: "text" }
-              - label: "Contact"
-                name: "contact"
-                widget: "object"
-                required: false
-                hint: "Optional contact block (used for Contact Us section)."
-                fields:
-                  - { label: "Name", name: "name", widget: "string", required: false }
-                  - { label: "Phone", name: "phone", widget: "string", required: false }
-                  - { label: "Email", name: "email", widget: "string", required: false }
-      - name: "terms_and_conditions"
-        label: "Terms & Conditions"
-        file: "_data/terms-and-conditions.yml"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - label: "Sections"
-            name: "sections"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Content", name: "content", widget: "text" }
-      - name: "connect_us"
-        label: "Connect With Us"
-        file: "_data/connect-us.yml"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - label: "Form Placeholders"
-            name: "form_placeholders"
-            widget: "object"
-            fields:
-              - { label: "First Name", name: "first_name", widget: "string" }
-              - { label: "Last Name", name: "last_name", widget: "string" }
-              - { label: "Phone", name: "phone", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Event Date", name: "event_date", widget: "string" }
-              - { label: "Guests", name: "guests", widget: "string" }
-              - { label: "Budget", name: "budget", widget: "string" }
-          - { label: "Submit Button", name: "submit_button", widget: "string" }
-      - name: "newsletter"
-        label: "Newsletter"
-        file: "_data/newsletter.yml"
-        fields:
-          - { label: "Eyebrow", name: "eyebrow", widget: "string" }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Required Note", name: "required_note", widget: "string" }
-          - { label: "First Name Placeholder", name: "first_name", widget: "string" }
-          - { label: "Last Name Placeholder", name: "last_name", widget: "string" }
-          - { label: "Email Placeholder", name: "email", widget: "string" }
-          - { label: "Country Placeholder", name: "country", widget: "string" }
-          - { label: "Privacy Consent Label", name: "consent_privacy", widget: "string" }
-          - { label: "Email Consent Label", name: "consent_emails", widget: "string" }
-          - { label: "Submit Button", name: "submit", widget: "string" }
-          - { label: "Success Message", name: "success", widget: "string" }
-          - { label: "Error Message", name: "error", widget: "string" }
-          - { label: "Hero Image", name: "hero_image", widget: "image", hint: "Filename must not start with an underscore" }
-      - name: "gift_cards"
-        label: "Gift Cards"
-        file: "_data/gift_cards.yml"
-        media_folder: "/assets/images"
-        public_folder: "/assets/images"
-        fields:
-          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
-          - { label: "Page Heading", name: "heading", widget: "string" }
-          - { label: "Intro Paragraph", name: "intro", widget: "text" }
-          - label: "Purchase Button"
-            name: "purchase_button"
-            widget: "object"
-            fields:
-              - { label: "Button Label", name: "label", widget: "string" }
-              - { label: "Button URL", name: "url", widget: "string", required: false, hint: "Purchase page URL. Leave empty until account is set up." }
-          - label: "Here's How It Works"
-            name: "how_it_works"
-            widget: "object"
-            fields:
-              - { label: "Section Heading", name: "heading", widget: "string" }
-              - label: "Items"
-                name: "items"
-                widget: "list"
-                fields:
-                  - { label: "Label", name: "label", widget: "string" }
-                  - { label: "Description", name: "description", widget: "string" }
-      - name: "contacts"
-        label: "Contacts"
-        file: "_data/contacts.yml"
-        media_folder: "/assets/images"
-        public_folder: "/assets/images"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
-          - label: "Contact Items"
-            name: "items"
-            widget: "list"
-            hint: "Each item is a contact info row (Address, Phone, Email, etc.)."
-            fields:
-              - { label: "Label", name: "title", widget: "string" }
-              - { label: "Value", name: "content", widget: "string" }
-          - { label: "Follow Us Label", name: "follow_us", widget: "string" }
-          - { label: "Facebook URL", name: "facebook", widget: "string" }
-          - { label: "Instagram URL", name: "instagram", widget: "string" }
-          - label: "Buttons"
-            name: "buttons"
-            widget: "object"
-            fields:
-              - { label: "Leasing Button", name: "leasing", widget: "string" }
-              - { label: "Filming Button", name: "filming", widget: "string" }
-              - { label: "Weddings Button", name: "weddings", widget: "string" }
-      - name: "wedding_faq"
-        label: "Wedding FAQ"
-        file: "_data/wedding-faq.yml"
-        media_folder: "/assets/images/weddings"
-        public_folder: "/assets/images/weddings"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
-          - label: "FAQ Items"
-            name: "blocks"
-            widget: "list"
-            hint: "Each item is one question and answer."
-            fields:
-              - { label: "Question", name: "title", widget: "string" }
-              - { label: "Answer", name: "content", widget: "text" }
-      - name: "magazines"
-        label: "Magazines"
-        file: "_data/magazines.yml"
-        fields:
-          - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Heading shown above the issue list, e.g. MAGAZINE ARCHIVE." }
-          - label: "Issues"
-            name: "issues"
-            widget: "list"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Link", name: "link", widget: "string", required: false, hint: "Leave empty if issue is not yet available." }
-              - { label: "Cover Image", name: "image", widget: "string", hint: "URL of the cover image." }
-      - name: "shops_index"
-        label: "Shops"
-        file: "shops/index.html"
-        media_folder: "/assets/images/shops"
-        public_folder: "/assets/images/shops"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/shops/" }
-          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "shops" }
-          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "shops" }
-          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
-          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
-          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
-          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
-      - name: "foods_index"
-        label: "Food"
-        file: "foods/index.html"
-        media_folder: "/assets/images/foods"
-        public_folder: "/assets/images/foods"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/foods/" }
-          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "foods" }
-          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "foods" }
-          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
-          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
-          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
-          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
-      - name: "galleries_index"
-        label: "Galleries"
-        file: "galleries/index.html"
-        media_folder: "/assets/images/galleries"
-        public_folder: "/assets/images/galleries"
-        fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/galleries/" }
-          - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "galleries" }
-          - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "galleries" }
-          - { label: "Page Title (browser tab)", name: "title", widget: "string" }
-          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
-          - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
-          - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
 
   - name: "blogs"
     label: "News"
