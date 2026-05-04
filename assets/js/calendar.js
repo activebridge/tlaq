@@ -177,6 +177,21 @@ document.addEventListener('DOMContentLoaded', function() {
     return [{ event: event, start: startDate, end: endDate }];
   }
 
+  const MONTH_NAME_INDEX = {
+    jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+    jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+  };
+  function resolveDisplayDates(event, date) {
+    const value = event.display_dates;
+    if (!Array.isArray(value)) return '';
+    const monthIdx = date.getMonth();
+    for (const entry of value) {
+      if (!entry || !entry.month || !entry.text) continue;
+      if (MONTH_NAME_INDEX[String(entry.month).toLowerCase()] === monthIdx) return entry.text;
+    }
+    return '';
+  }
+
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
   function renderOccurrence(item) {
@@ -185,10 +200,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const transitionBase = buildTransitionBase(event, item.start);
     const href = appendTransitionParam(event.url, transitionBase);
     const subtitle = event.subtitle ? '<p>' + event.subtitle + '</p>' : '';
-    const weeklyRangeText = event.schedule_type === 'weekly' ? getWeeklyRangeText(event) : '';
+    const displayText = resolveDisplayDates(event, item.start);
+    const weeklyRangeText = event.schedule_type === 'weekly' && !displayText ? getWeeklyRangeText(event) : '';
     const timeText = event.ends_at
       ? formatTime(item.start) + ' - ' + formatTime(item.end)
       : formatTime(item.start);
+    const dateBlock = displayText
+      ? '<span>' + displayText + '</span>'
+      : '<span>' + formatDay(item.start) + '</span>' +
+        '<span>,&nbsp;</span>' +
+        '<span>' + formatMonthDay(item.start) + '</span>';
     return '' +
       '<a href="' + href + '" data-month="' + toMonthKey(item.start) + '">' +
         '<div class="calendar-item-content">' +
@@ -197,9 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
           '</div>' +
           '<div class="calendar-item-details">' +
             '<div class="calendar-item-date">' +
-              '<span>' + formatDay(item.start) + '</span>' +
-              '<span>,&nbsp;</span>' +
-              '<span>' + formatMonthDay(item.start) + '</span>' +
+              dateBlock +
             '</div>' +
             '<h3 data-event-title style="view-transition-name: ' + transitionBase + '-title;">' + event.title + '</h3>' +
             subtitle +
@@ -235,13 +254,21 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   const sourceEvents = JSON.parse(dataNode.textContent || '[]');
+  const seenDisplayKeys = new Set();
   const allOccurrences = sourceEvents
     .flatMap(buildOccurrences)
     .filter((item) => (
       item.end >= VISIBLE_RANGE.start &&
       item.start < VISIBLE_RANGE.end
     ))
-    .sort((a, b) => a.start.getTime() - b.start.getTime());
+    .sort((a, b) => a.start.getTime() - b.start.getTime())
+    .filter((item) => {
+      if (!resolveDisplayDates(item.event, item.start)) return true;
+      const key = (item.event.url || item.event.title) + '|' + toMonthKey(item.start);
+      if (seenDisplayKeys.has(key)) return false;
+      seenDisplayKeys.add(key);
+      return true;
+    });
 
   const months = buildMonths(allOccurrences);
   if (!months.length) return;

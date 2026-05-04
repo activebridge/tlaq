@@ -14,6 +14,9 @@ recurrence_weekdays:
   - sun
   - mon
   - tue
+display_dates:
+  - month: may
+    text: Every Sunday through Tuesday
 schedule: []
 map: null
 phone: ''
