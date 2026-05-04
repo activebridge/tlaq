@@ -7,7 +7,7 @@ nav:
     - type: shops
       title: Shop
       description: For curious,<br>refined shoppers
-      image: /assets/images/shops/shops.webp
+      image: /assets/images/landing/Artist_Kitchen_Ext.jpg
       url: /shops/
     - type: foods
       title: Food
