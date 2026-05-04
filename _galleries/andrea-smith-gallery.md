@@ -17,7 +17,7 @@ website: https://www.andreasmithgallery.com
 coordinates: -111.7637677, 34.8624763
 image: /assets/images/galleries/Andrea_Smith_Ext.jpg
 interior_image: /assets/images/galleries/Andrea_Smith_Int.jpg
-vertical_image: /assets/images/galleries/playing-with-knives.png
+vertical_image: ''
 instagram: https://www.instagram.com/andreasmithgallery/
 facebook: https://www.facebook.com/andreasmithgallery/
 full_location: 336 AZ-179 Suite D102, Sedona, AZ 86336
