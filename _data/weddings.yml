@@ -10,15 +10,6 @@ gallery:
       video_url: https://vid.cdn-website.com/164890e9/videos/Bs3nN1QQQMGVhonZiS2A_SS23-v.mp4
     - title: Kelsie & Xavier
       video_url: https://vid.cdn-website.com/164890e9/videos/PsNbS5M0Tx6imKwuz1GU_SS22-v.mp4
-  extra_items:
-    - title: Video 3
-      video_url: ""
-    - title: Video 4
-      video_url: ""
-    - title: Video 5
-      video_url: ""
-    - title: Video 6
-      video_url: ""
 brochure:
   title: WEDDING BROCHURE
   brochure_url: https://irp.cdn-website.com/164890e9/files/uploaded/Tlaq_Wedding_Brochure_062625_R.pdf
@@ -26,7 +17,7 @@ brochure:
   awards:
     - image: /assets/images/weddings/awards/here-comes-the-guide.webp
       alt: 'Here Comes the Guide - Most #Instaworthy Wedding Venue'
-    - image: /assets/images/weddings/awards/weddingwire-couples-choice-2020.webp
+    - image: /assets/images/weddings/badge-weddingawards_en_US.png
       alt: WeddingWire Couples' Choice Awards 2020
 events:
   title: CORPORATE & PRIVATE EVENTS
