@@ -17,7 +17,7 @@ nav:
     - type: galleries
       title: Galleries
       description: For art lovers<br>and enthusiasts
-      image: /assets/images/galleries/galleries.webp
+      image: /assets/images/landing/Galleries-Hero.jpeg
       url: /galleries/
     - type: events
       title: Events
