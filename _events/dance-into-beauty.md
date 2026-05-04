@@ -24,9 +24,7 @@ facebook: ''
 instagram: ''
 ---
 
-Join Renee Taylor Gallery & Tlaquepaque in a tribute to mothers everywhere through art and dance. Sedona Dance Project will curate an evocative journey into sculptor John Henry Waddell’s vision, The Beauty of Individual Differences. 
-
-Dancers guide us along the newly unveiled Waddell Sculpture Path, weaving through Tlaquepaque’s flower-lined walkways, past fountains, and beneath graceful archways. Along the way, stopping to partner with Waddell’s lyrical bronze dancers.
+Join Renee Taylor Gallery & Tlaquepaque in a tribute to mothers everywhere through art and dance. Sedona Dance Project will curate an evocative journey into sculptor John Henry Waddell’s vision, The Beauty of Individual Differences.
 
 Performances
 
@@ -35,3 +33,5 @@ Performances
 • Sunday, May 10 — 1 PM & 3 PM
 
 Sedona Dance Project dancers will perform the full circuit twice daily. Each performance begins at Vue Gallery in Tlaquepaque.
+
+Dancers guide visitors along the newly unveiled Waddell Sculpture Path, weaving through Tlaquepaque’s flower-lined walkways, past fountains, and beneath graceful archways. Along the way, stopping to partner with Waddell’s lyrical bronze dancers.
