@@ -712,7 +712,7 @@ article {
       align-items: stretch;
       padding: 0;
 
-      .btn { width: 100%; }
+      .btn { width: 100%; min-width: 0; }
     }
 
     &#whats-new {
