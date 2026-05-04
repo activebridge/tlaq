@@ -4,6 +4,9 @@ title: Village Map
 permalink: /village_map/
 layout_type: village_map
 ---
+{% assign image_path = site.data.village_map_page.hero_banner %}
+{% include hero-banner.html image_path=image_path transition-name="village-map" %}
+
 <div class="content-wrapper">
   <h5 title="visit">{{ site.data.village_map_page.eyebrow }}</h5>
   <h6>{{ site.data.village_map_page.description | escape_once }}</h6>

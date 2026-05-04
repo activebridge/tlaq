@@ -34,7 +34,26 @@ layout: default
 
 <nav id="landing-nav" class="landing-nav" aria-label="{{ page.nav.label }}">
   {% for item in page.nav.items %}
-  {% assign image = item.image | prepend:
+  {% case item.type %}
+    {% when 'shops' %}
+      {% assign src = site.pages | where: "permalink", "/shops/" | first %}
+      {% assign raw_image = src.header_image %}
+    {% when 'foods' %}
+      {% assign src = site.pages | where: "permalink", "/foods/" | first %}
+      {% assign raw_image = src.header_image %}
+    {% when 'galleries' %}
+      {% assign src = site.pages | where: "permalink", "/galleries/" | first %}
+      {% assign raw_image = src.header_image %}
+    {% when 'events' %}
+      {% assign raw_image = site.data.events.hero_banner %}
+    {% when 'weddings' %}
+      {% assign raw_image = site.data.weddings.hero_banner %}
+    {% when 'village-map' %}
+      {% assign raw_image = site.data.village_map_page.hero_banner %}
+    {% else %}
+      {% assign raw_image = item.image %}
+  {% endcase %}
+  {% assign image = raw_image | prepend:
   '/cdn-cgi/image/width=320,height=160,fit=cover,format=webp,quality=2,gravity=center/' | prepend: site.cdn_url %}
   <a href="{{ item.url }}" class="{{ item.type }}-link" style="view-transition-name: {{ item.type }};">
     <img src="{{ image }}" alt="" loading="lazy" fetchpriority="low" width="320" height="160" onload="this.classList.add('loaded')">
