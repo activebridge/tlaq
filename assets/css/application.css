@@ -385,6 +385,8 @@ nav#mobile {
   z-index: 3;
   container-name: header-jump;
   container-type: inline-size;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+  margin: 0 clamp(-3rem, -4vw, -1.5rem);
 
   div {
     display: flex;
@@ -439,6 +441,11 @@ nav#mobile {
       margin: 1.5rem 0;
       height: auto;
       object-fit: cover;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
 
     &.hidden { display: none; }
