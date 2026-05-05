@@ -14,7 +14,8 @@ suite: a117
 phone: (928) 451-4739
 website: https://honshin.com
 coordinates: -111.7628265, 34.8620697
-image: /assets/images/galleries/Honshin_Gallery_Wholen ess_Int.jpg
+image: ''
+interior_image: /assets/images/galleries/Honshin_Gallery_Wholen ess_Int.jpg
 instagram: https://www.instagram.com/honshin_fine_art/
 facebook: ''
 full_location: 336 AZ-179 Suite A117, Sedona, AZ 86336
