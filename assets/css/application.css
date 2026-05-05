@@ -898,9 +898,7 @@ footer > .wrapper {
     overflow: hidden;
     transition: max-height 0.5s ease;
 
-    :has(> details.gallery-more[open]) > & {
-      max-height: 800px;
-    }
+    :has(> details.gallery-more[open]) > & { max-height: 100%; }
   }
 
   h5 {
@@ -1324,8 +1322,8 @@ input[type="search"] {
   border: none;
   border-bottom: 1px solid var(--navy);
   border-top: 1px solid var(--navy);
-  padding: 12px 40px 12px 0;
-  font-size: 1.2rem;
+  padding: clamp(1rem, 3.5vw, 1.5rem) 40px clamp(1rem, 3.5vw, 1.5rem) 0;
+  font-size: clamp(12px, 2.2vw, 20px);
   font-weight: 400;
   letter-spacing: 0.08em;
   color: var(--navy);
