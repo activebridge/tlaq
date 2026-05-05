@@ -76,11 +76,11 @@ collections:
               - label: "Items"
                 name: "items"
                 widget: "list"
+                hint: "Each tile's image is taken automatically from the destination page's banner — edit it on that page, not here."
                 fields:
                   - { label: "Type", name: "type", widget: "string" }
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Description", name: "description", widget: "string" }
-                  - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
 
   - name: "landing"
     label: "Landing Sections"
@@ -722,7 +722,7 @@ collections:
         public_folder: "/assets/images/events"
         fields:
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Events page header and labels. Edit the hero banner, page heading, description, calendar section headings, jump-to navigation links, and the event details button label." }
-          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
+          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Also used as the Events tile image in the home page navigation. Filename must not start with an underscore." }
           - { label: "Events Label", name: "events", widget: "string", hint: "Eyebrow label, e.g. EVENTS" }
           - { label: "Heading", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
@@ -787,7 +787,7 @@ collections:
           - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "foods" }
           - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "foods" }
           - { label: "Page Title (browser tab)", name: "title", widget: "string" }
-          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
+          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Also used as the Food tile image in the home page navigation. Filename must not start with an underscore." }
           - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
           - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
       - name: "galleries_index"
@@ -802,7 +802,7 @@ collections:
           - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "galleries" }
           - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "galleries" }
           - { label: "Page Title (browser tab)", name: "title", widget: "string" }
-          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
+          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Also used as the Galleries tile image in the home page navigation. Filename must not start with an underscore." }
           - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
           - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
       - name: "gift_cards"
@@ -1187,7 +1187,7 @@ collections:
           - { label: "Collection Name", name: "collection_name", widget: "hidden", default: "shops" }
           - { label: "Layout Type", name: "layout_type", widget: "hidden", default: "shops" }
           - { label: "Page Title (browser tab)", name: "title", widget: "string" }
-          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Filename must not start with an underscore." }
+          - { label: "Header Image", name: "header_image", widget: "image", hint: "Hero banner shown at top of the page. Also used as the Shop tile image in the home page navigation. Filename must not start with an underscore." }
           - { label: "Heading", name: "store_title", widget: "string", hint: "Main intro line shown over the header." }
           - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
       - name: "store_page"
@@ -1225,8 +1225,11 @@ collections:
       - name: "village_map"
         label: "Village Map Page"
         file: "_data/village_map_page.yml"
+        media_folder: "/assets/images/landing"
+        public_folder: "/assets/images/landing"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Village Map page overlay text. Edit the eyebrow label shown above the map and the description text shown beneath it." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Village Map page. Edit the hero banner, the eyebrow label shown above the map, and the description text shown beneath it." }
+          - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Hero banner shown at top of the page. Also used as the Village Map tile image in the home page navigation. Filename must not start with an underscore." }
           - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small label shown above the map." }
           - { label: "Description", name: "description", widget: "text", hint: "Sub-text shown under the eyebrow." }
       - name: "wedding_faq"
@@ -1256,7 +1259,7 @@ collections:
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Weddings Label", name: "weddings", widget: "string" }
           - { label: "Venues Label", name: "venues", widget: "string" }
-          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
+          - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Also used as the Weddings tile image in the home page navigation. Filename must not start with an underscore." }
           - label: "Gallery"
             name: "gallery"
             widget: "object"
