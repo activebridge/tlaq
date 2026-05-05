@@ -181,16 +181,6 @@ html, body {
     text-decoration-color: inherit;
   }
 
-  footer {
-    background: var(--primary);
-    color: var(--secondary);
-    padding: 32px 20px 10rem 23px;
-    line-height: 2rem;
-    font-size: 10px;
-    font-weight: 500;
-    margin-bottom: -20px;
-  }
-
   /* Critical CSS – CSS reset, typography sizes, header layout, container, landing banner.
      Prevents layout shifts while application.css loads async. */
 
@@ -265,9 +255,9 @@ html, body {
     view-transition-name: header;
 
     > .wrapper {
+      width: 100%;
       max-width: 1440px;
       margin-inline: auto;
-      width: 100%;
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
@@ -327,7 +317,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-self: start;
-    margin: 1rem 0 2rem 3rem;
+    margin: 1rem 0 2rem 1rem;
     outline: none;
     width: clamp(180px, 18vw, 280px);
     view-transition-name: logo;
@@ -359,7 +349,7 @@ html, body {
     display: flex;
     list-style: none;
     padding: 0;
-    margin: 0 1rem 1rem;
+    margin: -15px 2rem 1rem 0;
     gap: 0.5rem;
     align-items: center;
     justify-self: end;
@@ -405,7 +395,7 @@ html, body {
     column-gap: 1rem;
     row-gap: 0;
     text-transform: uppercase;
-    margin: 1rem 0 2rem 3rem;
+    margin: -5px 0 2rem 3rem;
 
     a,
     button#visit-popover-anchor,
@@ -915,9 +905,9 @@ html, body {
 
   .content-wrapper {
     display: grid;
-    max-width: 1396px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 2rem clamp(1.5rem, 4vw, 3rem);
+    padding: 2rem 2rem;
     position: relative;
     background: var(--cream);
     box-shadow: 0 0 0 100vmax var(--cream);
@@ -1033,5 +1023,178 @@ html, body {
   @supports not (animation-timeline: scroll()) {
     .hero { opacity: 1; }
     .landing-banner::before { opacity: 0; }
+  }
+
+  footer {
+    background: var(--primary);
+    color: var(--secondary);
+    line-height: 2rem;
+    font-size: 10px;
+    font-weight: 500;
+
+    .socials-mobile { display: none; }
+
+    > .wrapper {
+      width: 100%;
+      max-width: 1440px;
+      margin-inline: auto;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      address {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        font-style: normal;
+        font-size: clamp(12px, 1.7vw, 20px);
+
+        p { margin: 0; }
+      }
+
+      section {
+        &.top {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+
+          .awards {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: clamp(0.5rem, 2vw, 2rem);
+            justify-content: flex-end;
+            align-items: center;
+
+            img {
+              flex: 1 1 0;
+              min-width: 0;
+              max-width: 110px;
+              height: auto;
+              max-height: 110px;
+              object-fit: contain;
+            }
+          }
+        }
+
+        &.main {
+          display: grid;
+          grid-template-columns: 2fr 1fr 1fr;
+
+          nav {
+            &.links {
+              display: flex;
+              gap: 1.5rem;
+              flex-direction: column;
+              justify-content: space-between;
+            }
+
+            &.magazine {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              gap: 1rem;
+
+              .magazine-cover {
+                margin-top: 1rem;
+                padding: 0;
+                width: 70%;
+                border: 0;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+
+        &.sub {
+          display: flex;
+          flex-direction: row;
+          font-size: 12px;
+          justify-content: space-between;
+        }
+      }
+
+      @media (max-width: 770px) {
+        section.top {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+
+          .btn { width: 100%; }
+
+          .awards {
+            order: -1;
+            justify-content: center;
+            gap: 2rem;
+          }
+        }
+
+        section.main {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          column-gap: 2rem;
+          row-gap: 2rem;
+
+          address {
+            grid-column: 1 / -1;
+            gap: 1rem;
+            padding-bottom: 2rem;
+
+            .social { display: none; }
+          }
+
+          nav.links {
+            gap: 1.25rem;
+            padding-right: 1rem;
+          }
+
+          nav.magazine {
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding-left: 1rem;
+
+            .magazine-cover {
+              width: 100%;
+              max-width: 200px;
+              height: auto;
+              margin-top: 1rem;
+
+              img {
+                width: 100%;
+                height: auto;
+              }
+            }
+          }
+        }
+
+        .socials-mobile {
+          display: block;
+          margin-top: 1.5rem;
+
+          p { margin: 0 0 0.75rem; }
+
+          .socials {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+
+            a {
+              width: 3rem;
+              height: 3rem;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+        }
+
+        section.sub {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.25rem;
+
+          p { margin: 0; }
+        }
+      }
+    }
   }
 </style>

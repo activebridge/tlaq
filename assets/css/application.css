@@ -380,7 +380,7 @@ nav#mobile {
 /* PAGE JUMP NAV */
 .header-jump {
   position: sticky;
-  top: calc(var(--header-height) + var(--header-status-height) + 1rem);
+  top: calc(var(--header-height) + var(--header-status-height));
   background: var(--bg);
   z-index: 3;
   container-name: header-jump;
@@ -769,24 +769,7 @@ article {
 /* FOOTER */
 
 footer > .wrapper {
-  width: 100%;
-  max-width: 1440px;
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-
   address {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    font-style: normal;
-    font-size: clamp(12px, 1.7vw, 20px);
-
-    p {
-      margin: 0;
-    }
-
     .social {
       margin-top: 2rem;
       gap: 1rem;
@@ -828,163 +811,37 @@ footer > .wrapper {
     }
   }
 
-  section {
-    &.top {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+  section.main {
+    nav.magazine {
+      .magazine-cover { background-color: transparent; }
 
-      .awards {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: clamp(0.5rem, 2vw, 2rem);
-        justify-content: flex-end;
-        align-items: center;
-
-        img {
-          flex: 1 1 0;
-          min-width: 0;
-          max-width: 110px;
-          height: auto;
-          max-height: 110px;
-          object-fit: contain;
-        }
+      a {
+        color: var(--secondary);
+        cursor: pointer;
       }
-    }
-
-    &.main {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-
-      nav {
-        &.links {
-          display: flex;
-          gap: 1.5rem;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-
-        &.magazine {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          gap: 1rem;
-
-          .magazine-cover {
-            margin-top: 1rem;
-            padding: 0;
-            width: 70%;
-            background-color: transparent;
-            border: 0;
-            cursor: pointer;
-          }
-
-          a {
-            color: var(--secondary);
-            cursor: pointer;
-          }
-        }
-      }
-    }
-
-    &.sub {
-      display: flex;
-      flex-direction: row;
-      font-size: 12px;
-      justify-content: space-between;
     }
   }
-
 }
-
-footer .socials-mobile { display: none; }
 
 @media (max-width: 770px) {
   footer > .wrapper {
-    section.top {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-
-      .btn { width: 100%; }
-
-      .awards {
-        order: -1;
-        justify-content: center;
-        gap: 2rem;
-      }
-    }
-
     section.main {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 2rem;
-      row-gap: 2rem;
-
       address {
-        grid-column: 1 / -1;
-        gap: 1rem;
         border-bottom: 0.75px solid var(--cream);
-        padding-bottom: 2rem;
-
-        .social { display: none; }
       }
 
       nav.links {
-        gap: 1.25rem;
         border-right: 0.75px solid var(--cream);
-        padding-right: 1rem;
-      }
-
-      nav.magazine {
-        align-items: flex-start;
-        gap: 0.5rem;
-        padding-left: 1rem;
-
-        .magazine-cover {
-          width: 100%;
-          max-width: 200px;
-          height: auto;
-          margin-top: 1rem;
-
-          img {
-            width: 100%;
-            height: auto;
-          }
-        }
       }
     }
 
     .socials-mobile {
-      display: block;
-      margin-top: 1.5rem;
+      .socials a {
+        background: var(--cream);
+        border-radius: 50%;
 
-      p { margin: 0 0 0.75rem; }
-
-      .socials {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-
-        a {
-          background: var(--cream);
-          width: 3rem;
-          height: 3rem;
-          border-radius: 50%;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-
-          svg { fill: var(--navy); }
-        }
+        svg { fill: var(--navy); }
       }
-    }
-
-    section.sub {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.25rem;
-
-      p { margin: 0; }
     }
   }
 }
