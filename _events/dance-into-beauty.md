@@ -14,7 +14,7 @@ recurs_until: ''
 recurrence_weekdays: []
 display_dates:
   - month: may
-    text: May 9, May 10 | 1 PM & 3 PM Daily
+    text: May 9, May 10 | 1 PM & 3 PM Performance Times
 schedule: []
 map: null
 phone: 928-282-7130
