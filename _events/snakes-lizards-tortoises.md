@@ -2,15 +2,19 @@
 title: Snakes! Lizards! Tortoises!
 slug: snakes-lizards-tortoises
 published: true
-starts_at: '2026-04-07 11:00:00'
-ends_at: '2026-04-07 14:00:00'
+starts_at: 2026-04-07 11:00:00
+ends_at: 2026-04-07 14:00:00
 location: Tlaquepaque Village
+image: /assets/images/events/Snakes-images-tortoise.jpg
+video_url: ''
+subtitle: 'Free first-Tuesday reptile encounters at Tlaquepaque (through November): hands-on learning with lizards, snakes, and tortoises in a stunning courtyard setting.'
 schedule_type: monthly
 recurs_until: 2026-11-07 11:00:00
 recurrence_weekdays:
   - thu
-image: "assets/images/events/snakes-lizards-tortoises.webp"
-subtitle: "Free first-Tuesday reptile encounters at Tlaquepaque (through November): hands-on learning with lizards, snakes, and tortoises in a stunning courtyard setting."
+phone: ''
+website: ''
+email: ''
 facebook: https://www.facebook.com/tlaqsedona/
 instagram: https://www.instagram.com/tlaqsedona/
 ---
