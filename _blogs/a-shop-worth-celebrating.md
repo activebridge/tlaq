@@ -21,7 +21,7 @@ Beyond his own land, Chef Cord knows the surrounding Sedona area intimately, fro
 
 At home, his garden is just as abundant, with fig, peach, apple, pear, and jujube trees. “Did you know fig leaves are edible?” he asks. “They make a beautiful oil with a subtle vanilla-like flavor.” It’s these kinds of details—unexpected, generous, and deeply informed—that define his approach.
 
-![](/assets/images/blogs/pumphouse_plate.png)
+![](/assets/images/blogs/pumphouse_plate-1.png)
 
 This way of working reflects more than a cooking style—it speaks to how Chef Cord thinks about hospitality. Care for ingredients naturally extends to care for people: the team in the kitchen, longtime regulars, and first-time guests alike. In practice, that means thoughtful sourcing, a no-waste mindset, and a willingness to share knowledge openly—whether with staff, diners, or members of the community who bring their own foraged finds to the table.
 
