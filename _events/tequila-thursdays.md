@@ -5,7 +5,8 @@ published: true
 starts_at: 2026-03-26 16:00:00
 ends_at: 2026-03-26 16:45:00
 location: Tlaquepaque Village
-image: assets/images/events/tequila-thursdays.webp
+image: /assets/images/events/spirits-spice-122020-24 copy.jpg
+video_url: ''
 subtitle: Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
 schedule_type: weekly
 recurs_until: 2027-03-26 23:59:00
