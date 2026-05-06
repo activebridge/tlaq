@@ -1,6 +1,6 @@
 ---
 title: A Shop Worth Celebrating
-date: 2026-02-17
+date: 2026-02-19
 description: The Artist’s Kitchen wins Global International Award for retail excellence.
 image: /assets/images/blogs/shop-worth.webp
 ---

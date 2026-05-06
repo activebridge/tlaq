@@ -1,6 +1,6 @@
 ---
 title: Walk Into Beauty
-date: 2026-02-17
+date: 2026-02-20
 description: John Henry Waddell’s bronze dancers have returned to Tlaquepaque.
 image: assets/images/blogs/walk-into-beauty.webp
 ---

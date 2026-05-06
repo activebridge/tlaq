@@ -1,6 +1,6 @@
 ---
 title: Culinary Experience
-date: 2026-02-17
+date: 2026-02-18
 description: The Secret Garden Cafe is celebrating 15 years of serving.
 image: /assets/images/blogs/culinary-experience.webp
 ---
