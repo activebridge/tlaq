@@ -15,7 +15,7 @@ That philosophy is evident in the materials and methods they choose. True West H
 
 The customization process is intentionally guided. Customers begin by considering how and where their hat will be worn— whether during everyday adventures, meaningful gatherings, or milestone moments. From there, Charlie and April guide each individual through selecting foundational elements such as material, color, crown shape, and brim style. The final layer is personalization: leather bands, gemstones, silks, feathers, subtle distressing, or custom-burned initials that transform each hat into a deeply personal expression.
 
-![Store Interior](/assets/images/blogs/DSC_0803.JPG "Hats")
+![](/assets/images/blogs/DSC_0803.JPG)
 
 Opening a shop within Tlaquepaque Arts & Shopping Village marks a meaningful milestone for True West Hats. Tlaquepaque’s devotion to artistry, artisanship, and creative expression mirrors the brand’s own values, offering a fitting home for a studio rooted in old-world techniques and experiential retail.
 
