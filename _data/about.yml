@@ -1,5 +1,5 @@
 _info: ''
-hero_banner: /assets/images/about/About-Hero3.jpg
+hero_banner: /assets/images/about/Patio_azul_about.png
 heading: A celebrated arts and shopping village in the heart of Sedona
 subheading: A unique destination where curated outdoor art, seasonal landscaping, a rich heritage, and artisan culture can be experienced throughout the village.
 history:
@@ -23,7 +23,7 @@ sections:
       text: Have You Seen These?
       url: /outdoor-art
     images:
-      - /assets/images/about/Outdoor-Art-Main.jpg
+      - /assets/images/about/outdoor-art.png
   landscaping:
     heading: Landscaping
     description: Don't miss Tlaquepaque's carefully curated seasonal landscaping, where vibrant gardens and thoughtful design create an enchanting atmosphere year-round for every visitor.
