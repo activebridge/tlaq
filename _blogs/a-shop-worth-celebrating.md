@@ -5,7 +5,7 @@ description: Executive Chef Cord Chatham returns home
 image: /assets/images/blogs/Pumphouse_chef_2.png
 ---
 
-After four years away, Executive Chef Cord Chatham has returned to [The Pumphouse Urban Kitchen & Eatery](https://pumphousestation.com/)—and for him, the feeling is deeply familiar.
+After four years away, Executive Chef Cord Chatham has returned to [**The Pumphouse Urban Kitchen & Eatery**](https://pumphousestation.com/)—and for him, the feeling is deeply familiar.
 
 “Pumphouse is a family,” he says. “Coming back really does feel like coming home.”
 
