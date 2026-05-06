@@ -881,6 +881,8 @@
     let knownFeatureIds = new Set();
     const suiteCentroid = new Map();
     const pointMarkers = []; // { type, title, marker } for non-store POI markers
+    const entrance3dLayers = new Map(); // featureId → entranceLayer object
+    let arch3dLayerRef = null;
     const polygonCentroid = (ring) => {
       const n = ring.length - 1;
       const sum = ring.slice(0, n).reduce((acc, c) => [acc[0] + c[0], acc[1] + c[1]], [0, 0]);
@@ -937,6 +939,23 @@
       if (ids.length) highlightBuildings(ids, store);
     };
 
+    const polyLongestEdgeAngle = (coords) => {
+      const cosLat = Math.cos(coords[0][1] * Math.PI / 180);
+      let maxLen = -1, bestI = 0;
+      for (let i = 0; i < coords.length - 1; i++) {
+        const dx = (coords[i + 1][0] - coords[i][0]) * cosLat;
+        const dy = coords[i + 1][1] - coords[i][1];
+        const l = dx * dx + dy * dy;
+        if (l > maxLen) { maxLen = l; bestI = i; }
+      }
+      const dx = (coords[bestI + 1][0] - coords[bestI][0]) * cosLat;
+      const dy = coords[bestI + 1][1] - coords[bestI][1];
+      let angle = Math.atan2(dx, dy) * 180 / Math.PI + 90;
+      if (angle > 90) angle -= 180;
+      if (angle < -90) angle += 180;
+      return angle;
+    };
+
     const polyLongestEdgeLine = (coords) => {
       // Return a 2-point LineString along the longest edge of the polygon exterior ring,
       // centered on the polygon centroid so the label sits in the middle of the poly.
@@ -967,8 +986,10 @@
 
     // --- Map layers and interactions ---
     map.on('load', () => {
-      const geojsonPath = '{{ "/assets/data/tlaq.geojson" | relative_url }}';
+      const geojsonPath = '{{ "/assets/data/tlaq.geojson" | relative_url }}?v={{ site.time | date: "%s" }}';
       map.addSource('map-data', { type: 'geojson', data: geojsonPath, promoteId: 'id' });
+      map.addLayer({ id: 'main-gate-fill', type: 'fill', source: 'map-data', filter: ['==', ['get', 'id'], 'main-gate'], paint: { 'fill-color': '#000', 'fill-opacity': 0 } });
+      map.addLayer({ id: 'arch-fill', type: 'fill-extrusion', source: 'map-data', filter: ['==', ['get', 'id'], 'arch'], paint: { 'fill-extrusion-color': '#000', 'fill-extrusion-opacity': 0, 'fill-extrusion-height': 8, 'fill-extrusion-base': 0 } });
 
 
 
@@ -997,6 +1018,13 @@
         id: 'underpass-fill', type: 'fill', source: 'map-data',
         filter: ['all', polygonFilter, underpassFilter],
         paint: { 'fill-opacity': 0 }
+      });
+
+      const underpathFilter = ['==', ['get', 'type'], 'underpass'];
+      map.addLayer({
+        id: 'underpath-fill', type: 'fill', source: 'map-data',
+        filter: ['all', polygonFilter, underpathFilter],
+        paint: { 'fill-color': BUILDING_BASE_COLOR, 'fill-opacity': 0.5 }
       });
 
       const crosswalkFilter = ['==', ['get', 'type'], 'crosswalk'];
@@ -1032,48 +1060,100 @@
         filter: ['all', polygonFilter, ['==', ['get', 'type'], 'wall']],
         paint: {
           'fill-extrusion-color': BUILDING_BASE_COLOR,
-          'fill-extrusion-height': 4,
+          'fill-extrusion-height': 2,
           'fill-extrusion-base': 0, 'fill-extrusion-opacity': 0.95
         }
       });
 
       // Build lookup tables, area labels, and place markers from GeoJSON
       fetch(geojsonPath).then(r => r.json()).then(geojson => {
+        // Buffer LineString wall features into thin polygons for extrusion
+        const bufferLineString = (coords, width) => {
+          const segNormals = [];
+          for (let i = 0; i < coords.length - 1; i++) {
+            const [x1, y1] = coords[i], [x2, y2] = coords[i + 1];
+            const dx = x2 - x1, dy = y2 - y1;
+            const len = Math.sqrt(dx * dx + dy * dy);
+            segNormals.push([-dy / len, dx / len]);
+          }
+          const offsetSide = (sign) => coords.map((pt, i) => {
+            const n = i < segNormals.length ? segNormals[i] : segNormals[i - 1];
+            const p = i > 0 ? segNormals[i - 1] : segNormals[0];
+            const nx = (n[0] + p[0]) / 2, ny = (n[1] + p[1]) / 2;
+            const d = Math.sqrt(nx * nx + ny * ny) || 1;
+            return [pt[0] + sign * nx / d * width, pt[1] + sign * ny / d * width];
+          });
+          const left = offsetSide(1), right = offsetSide(-1).slice().reverse();
+          const ring = [...left, ...right, left[0]];
+          return [ring];
+        };
+        const wallLineFeatures = geojson.features
+          .filter(f => f.properties.type === 'wall' && f.geometry.type === 'LineString')
+          .map(f => ({ ...f, geometry: { type: 'Polygon', coordinates: bufferLineString(f.geometry.coordinates, 0.000003) } }));
+        if (map.getSource('wall-line-data')) {
+          map.getSource('wall-line-data').setData({ type: 'FeatureCollection', features: wallLineFeatures });
+        } else {
+          map.addSource('wall-line-data', { type: 'geojson', data: { type: 'FeatureCollection', features: wallLineFeatures } });
+          map.addLayer({
+            id: 'wall-line-extrusions', type: 'fill-extrusion', source: 'wall-line-data',
+            paint: { 'fill-extrusion-color': BUILDING_BASE_COLOR, 'fill-extrusion-height': 0.1, 'fill-extrusion-base': 0, 'fill-extrusion-opacity': 0.95 }
+          });
+        }
         // Area label source/layer
-        const areaFeatures = geojson.features.filter(f =>
-          f.properties.type === 'area' &&
+        const areaBaseFeatures = geojson.features.filter(f =>
+          (f.properties.type === 'area' || f.properties.type === 'text') &&
           f.properties.id &&
           f.properties.id !== 'null' &&
+          f.properties.id !== 'main-gate' &&
+          f.properties.id !== 'underpass' &&
           pointLabels.areas?.[f.properties.id] &&
           f.geometry.type === 'Polygon'
         ).map(f => ({
           ...f,
           properties: {
             ...f.properties,
-            name: pointLabels.areas[f.properties.id]?.title
+            name: pointLabels.areas[f.properties.id]?.title,
+            geoAngle: polyLongestEdgeAngle(f.geometry.coordinates[0])
           },
-          geometry: { type: 'LineString', coordinates: polyLongestEdgeLine(f.geometry.coordinates[0]) }
+          geometry: { type: 'Point', coordinates: polygonCentroid(f.geometry.coordinates[0]) }
         }));
+
+        const uprightAngle = (geoAngle, bearing) => {
+          // text-rotate with map alignment is relative to north.
+          // When bearing makes text appear upside-down, flip 180°.
+          let a = geoAngle;
+          const screen = ((a - bearing) % 360 + 360) % 360;
+          if (screen > 90 && screen < 270) a = a + 180;
+          return a;
+        };
+        const buildAreaFC = (bearing) => ({
+          type: 'FeatureCollection',
+          features: areaBaseFeatures.map(f => ({
+            ...f,
+            properties: { ...f.properties, angle: uprightAngle(f.properties.geoAngle, bearing) }
+          }))
+        });
+
         map.getLayer('area-labels') && map.removeLayer('area-labels');
         if (map.getSource('area-label-data')) {
-          map.getSource('area-label-data').setData({ type: 'FeatureCollection', features: areaFeatures });
+          map.getSource('area-label-data').setData(buildAreaFC(map.getBearing()));
         } else {
-          map.addSource('area-label-data', { type: 'geojson', data: { type: 'FeatureCollection', features: areaFeatures } });
+          map.addSource('area-label-data', { type: 'geojson', data: buildAreaFC(map.getBearing()) });
         }
         map.addLayer({
           id: 'area-labels', type: 'symbol', source: 'area-label-data',
           layout: {
-            'symbol-placement': 'line-center',
+            'symbol-placement': 'point',
             'text-field': ['get', 'name'],
             'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'],
             'text-size': 11,
-            'text-max-width': 8,
+            'text-max-width': 80,
             'text-anchor': 'center',
-            'text-allow-overlap': false,
-            'text-ignore-placement': false,
+            'text-rotate': ['get', 'angle'],
             'text-rotation-alignment': 'map',
-            'text-pitch-alignment': 'map',
-            'text-padding': 6,
+            'text-allow-overlap': true,
+            'text-ignore-placement': true,
+            'text-padding': 0,
           },
           paint: {
             'text-color': BUILDING_BASE_COLOR,
@@ -1081,7 +1161,9 @@
             'text-halo-width': 2,
           }
         });
-
+        map.on('rotate', () => {
+          map.getSource('area-label-data')?.setData(buildAreaFC(map.getBearing()));
+        });
         // Area label click → popup
         const openAreaPopup = (lngLat, areaKey) => {
           const data = pointLabels.areas?.[areaKey];
@@ -1098,8 +1180,11 @@
           openAreaPopup(e.lngLat, e.features[0].properties.id);
         });
         map.on('click', 'underpass-fill', e => openAreaPopup(e.lngLat, 'underpass'));
+        map.on('click', 'underpath-fill', e => openAreaPopup(e.lngLat, 'underpass'));
         map.on('click', 'crosswalk-fill', e => openAreaPopup(e.lngLat, 'crosswalk-to-north'));
-        ['area-labels', 'underpass-fill', 'crosswalk-fill'].forEach(layer => {
+        map.on('click', 'main-gate-fill', e => openAreaPopup(e.lngLat, 'main-gate'));
+        map.on('click', 'arch-fill', e => { arch3dLayerRef?.setHighlight(1); openAreaPopup(e.lngLat, 'arcs'); });
+        ['area-labels', 'underpass-fill', 'underpath-fill', 'crosswalk-fill', 'main-gate-fill', 'arch-fill'].forEach(layer => {
           map.on('mouseenter', layer, () => { map.getCanvas().style.cursor = 'pointer'; });
           map.on('mouseleave', layer, () => { map.getCanvas().style.cursor = ''; });
         });
@@ -1165,13 +1250,15 @@
         });
 
         // SVG markers for special point/polygon features
-        const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'bike-rack', 'bell-tower', 'wind-sculpture-garden', 'wind-sculpture-garden-1', 'wind-sculpture-garden-2', 'wind-sculpture-garden-3', 'arcs']);
+        const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'parking', 'bike-rack', 'bell-tower', 'wind-sculpture-garden', 'wind-sculpture-garden-1', 'wind-sculpture-garden-2', 'wind-sculpture-garden-3', 'arcs']);
         const polygonSvgTypes = new Set(['parking']);
+        const iconRotation = { 'main-gate': 18, 'entrance-south': -40, 'entrance-west': -50, 'entrance-north': 30 };
         geojson.features.forEach(feature => {
           const { type: featureType, id: featureId } = feature.properties || {};
           if (!featureType) return;
 
           if (feature.geometry.type === 'Point' && pointSvgTypes.has(featureType)) {
+            if (featureId === 'entrance-main-gate') return;
             const iconKey = (featureId && iconsTemplate.querySelector(`[data-type="${featureId}"]`)) ? featureId : featureType;
             const marker = new mapboxgl.Marker({ element: makeSvgMarker(iconKey) }).setLngLat(feature.geometry.coordinates);
             if (featureType !== 'tree') marker.setPopup(createPointPopup(featureType, featureId));
@@ -1229,6 +1316,543 @@
               });
             };
             img.src = "{{ '/assets/icons/map/compass-north.png' | relative_url }}";
+          } else if (feature.geometry.type === 'Polygon' && featureId === 'main-gate') {
+            const ring = feature.geometry.coordinates[0];
+            const centroid = polygonCentroid(ring);
+            // Register main-gate as an entrance in pointMarkers for sidebar list
+            { const { title = 'Main Gate' } = pointLabels.points?.['entrance-main-gate'] || {};
+              const lngLat = new mapboxgl.LngLat(centroid[0], centroid[1]);
+              pointMarkers.push({ type: 'entrance', id: 'entrance-main-gate', iconKey: 'entrance-main-gate', title,
+                marker: { getLngLat: () => lngLat, addTo: () => {}, remove: () => {},
+                  getPopup: () => ({ isOpen: () => false }),
+                  togglePopup() { createPointPopup('entrance', 'entrance-main-gate').setLngLat(lngLat).addTo(map); } } }); }
+            const toRad = d => d * Math.PI / 180;
+            const haversine = ([lng1, lat1], [lng2, lat2]) => {
+              const R = 6371000, dLat = toRad(lat2 - lat1), dLng = toRad(lng2 - lng1);
+              const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng/2)**2;
+              return 2 * R * Math.asin(Math.sqrt(a));
+            };
+            const verts = ring.slice(0, -1);
+            let maxDist = 0;
+            for (let i = 0; i < verts.length; i++)
+              for (let j = i+1; j < verts.length; j++)
+                maxDist = Math.max(maxDist, haversine(verts[i], verts[j]));
+            const iconSizeAtZoom = z => {
+              const metersPerPx = 156543.03392 * Math.cos(toRad(centroid[1])) / Math.pow(2, z);
+              return maxDist / (metersPerPx * 256);
+            };
+            const gateImg = new Image();
+            gateImg.onload = () => {
+              if (!map.hasImage('main-gate-icon')) map.addImage('main-gate-icon', gateImg, { sdf: false });
+              if (!map.getSource('main-gate-source')) map.addSource('main-gate-source', {
+                type: 'geojson',
+                data: { type: 'Feature', geometry: { type: 'Point', coordinates: centroid }, properties: {} }
+              });
+              if (!map.getLayer('main-gate-layer')) map.addLayer({
+                id: 'main-gate-layer',
+                type: 'symbol',
+                source: 'main-gate-source',
+                layout: {
+                  'icon-image': 'main-gate-icon',
+                  'icon-rotate': iconRotation['main-gate'] ?? 0,
+                  'icon-rotation-alignment': 'map',
+                  'icon-pitch-alignment': 'map',
+                  'icon-allow-overlap': true,
+                  'icon-ignore-placement': true,
+                  'icon-size': ['interpolate', ['exponential', 2], ['zoom'],
+                    14, iconSizeAtZoom(14) * 8,
+                    17, iconSizeAtZoom(17) * 2,
+                    20, iconSizeAtZoom(20) * 1
+                  ]
+                }
+              });
+            };
+            gateImg.src = "{{ '/assets/icons/map/entrance-main-gate.png' | relative_url }}";
+          } else if (feature.geometry.type === 'Polygon' && featureId === 'arch') {
+            // 3D arch arcade via Mapbox CustomLayerInterface + raw WebGL
+            // Geometry: 3 arches × 2 rows matching the patio-de-las-campanas icon
+            if (map.getLayer('arch-3d-layer')) return;
+
+            const ring = feature.geometry.coordinates[0];
+
+            // Mercator helpers
+            const toRad = d => d * Math.PI / 180;
+            const lngLatToMerc = ([lng, lat]) => {
+              const x = (lng + 180) / 360;
+              const sinLat = Math.sin(toRad(lat));
+              const y = 0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI);
+              return [x, y];
+            };
+
+            // Polygon bounds → local origin at SW corner
+            const lngs = ring.map(c => c[0]), lats = ring.map(c => c[1]);
+            const minLng = Math.min(...lngs), maxLng = Math.max(...lngs);
+            const minLat = Math.min(...lats), maxLat = Math.max(...lats);
+            const originLngLat = [minLng, minLat];
+            const originMerc = lngLatToMerc(originLngLat);
+            const neMerc = lngLatToMerc([maxLng, maxLat]);
+
+            // Mercator tile scale at zoom 0 = 1 tile = 256px = 1 merc unit
+            // We work in merc units and pass model matrix to convert to clip space
+            const mercW = neMerc[0] - originMerc[0];   // width in merc units
+            const mercD = originMerc[1] - neMerc[1];   // depth  in merc units (y inverted)
+
+            // Arch geometry in local coords [0..1 × 0..1] scaled to merc dims
+            // 3 arches along X, 2 rows along Y (depth), height in merc units
+            // Real polygon ≈ 11m wide, 6m deep → height ≈ 4m → merc height proportional
+            const toRad2 = d => d * Math.PI / 180;
+            const haversineM = ([lng1, lat1], [lng2, lat2]) => {
+              const R = 6371000, dLat = toRad2(lat2-lat1), dLng = toRad2(lng2-lng1);
+              const a = Math.sin(dLat/2)**2 + Math.cos(toRad2(lat1))*Math.cos(toRad2(lat2))*Math.sin(dLng/2)**2;
+              return 2*R*Math.asin(Math.sqrt(a));
+            };
+            const polyWidthM = haversineM([minLng, minLat], [maxLng, minLat]);
+            const polyDepthM = haversineM([minLng, minLat], [minLng, maxLat]);
+            const archHeightM = Math.min(polyWidthM / 3, 5.0); // cap at 5m
+            const mercPerMeter = mercW / polyWidthM;
+            const mercH = archHeightM * mercPerMeter;
+
+            // Single thin wall with 3 semicircular arch openings
+            // Wall depth = ~0.6m (slender arcade, visible from any angle)
+            const wallDepthM = 2.0;
+            const wallD = wallDepthM * mercPerMeter;
+            // Center wall on polygon centroid Y
+            // Merc Y increases southward. Origin = SW corner (south = large Y).
+            // Polygon spans from Y=0 (south edge) to Y=-mercD (north edge) in local space.
+            // Center of polygon = Y = -mercD/2
+            const yFront = -mercD / 2 - wallD / 2;
+            const yBack  = -mercD / 2 + wallD / 2;
+
+            const ARCH_SEGS = 20;
+            const verts = [];
+            const indices = [];
+
+            const pushQuad = (x0,y0,z0, x1,y1,z1, x2,y2,z2, x3,y3,z3) => {
+              const b = verts.length / 3;
+              verts.push(x0,y0,z0, x1,y1,z1, x2,y2,z2, x3,y3,z3);
+              indices.push(b,b+1,b+2, b,b+2,b+3);
+            };
+
+            // Icon proportions (measured):
+            //   4 piers + 3 openings across width
+            //   pier : opening = 1 : 4.5
+            //   wallH = openW * 0.58  (height slightly over half of opening width)
+            //   legH  = wallH * 0.22  (short column stub below semicircle springer)
+            //   archR = openW / 2
+            //   parapet = wallH - legH - archR
+            const COLS   = 3;
+            const pierU  = 1, openU = 4.5;
+            const totalU = (COLS + 1) * pierU + COLS * openU;
+            const unit   = mercW / totalU;
+            const pierW  = pierU * unit;
+            const openW  = openU * unit;
+            const archR  = openW / 2;
+            const legH   = archR * 0.38;          // springer height above ground
+            const wallH  = legH + archR + archR * 0.18; // leg + semicircle + parapet
+
+            // emit face at constant Y (y=yVal), front winding
+            const faceF = (y, x0,z0, x1,z1, x2,z2, x3,z3) => {
+              const b = verts.length/3;
+              verts.push(x0,y,z0, x1,y,z1, x2,y,z2, x3,y,z3);
+              indices.push(b,b+1,b+2, b,b+2,b+3);
+            };
+            // same but reversed winding (back face)
+            const faceB = (y, x0,z0, x1,z1, x2,z2, x3,z3) => {
+              const b = verts.length/3;
+              verts.push(x0,y,z0, x1,y,z1, x2,y,z2, x3,y,z3);
+              indices.push(b,b+2,b+1, b,b+3,b+2);
+            };
+            // triangle at constant Y, front winding
+            const triF = (y, ax,az, bx,bz, cx,cz) => {
+              const b = verts.length/3;
+              verts.push(ax,y,az, bx,y,bz, cx,y,cz);
+              indices.push(b,b+1,b+2);
+            };
+            const triB = (y, ax,az, bx,bz, cx,cz) => {
+              const b = verts.length/3;
+              verts.push(ax,y,az, bx,y,bz, cx,y,cz);
+              indices.push(b,b+2,b+1);
+            };
+
+            // Precompute arch curve points (angle 0=right foot → π=left foot)
+            const arcPts = [];
+            for (let s = 0; s <= ARCH_SEGS; s++) {
+              const a = Math.PI * s / ARCH_SEGS;
+              arcPts.push({ da: a, cos: Math.cos(a), sin: Math.sin(a) });
+            }
+
+            const buildFloor = (zBase) => {
+              const zT = z => zBase + z; // offset all heights by floor base
+
+              for (let col = 0; col < COLS; col++) {
+                const px0 = col * (pierW + openW);
+                const ox0 = px0 + pierW;
+                const ox1 = ox0 + openW;
+                const px1 = ox1 + pierW;
+                const cx  = ox0 + archR;
+                const archTop = legH + archR;
+
+                // ── FRONT FACE ──────────────────────────────────────────────
+                faceF(yFront,  px0,zT(0),  ox0,zT(0),  ox0,zT(wallH),  px0,zT(wallH));
+                faceF(yFront,  ox1,zT(0),  px1,zT(0),  px1,zT(wallH),  ox1,zT(wallH));
+                faceF(yFront,  ox0,zT(archTop),  ox1,zT(archTop),  ox1,zT(wallH),  ox0,zT(wallH));
+                for (let s = 0; s < ARCH_SEGS; s++) {
+                  const vx0 = cx - archR * arcPts[s].cos,   vz0 = legH + archR * arcPts[s].sin;
+                  const vx1 = cx - archR * arcPts[s+1].cos, vz1 = legH + archR * arcPts[s+1].sin;
+                  triF(yFront,  vx0,zT(vz0),  vx1,zT(vz1),  vx1,zT(archTop));
+                  triF(yFront,  vx0,zT(vz0),  vx1,zT(archTop),  vx0,zT(archTop));
+                }
+
+                // ── BACK FACE ───────────────────────────────────────────────
+                faceB(yBack,  px0,zT(0),  ox0,zT(0),  ox0,zT(wallH),  px0,zT(wallH));
+                faceB(yBack,  ox1,zT(0),  px1,zT(0),  px1,zT(wallH),  ox1,zT(wallH));
+                faceB(yBack,  ox0,zT(archTop),  ox1,zT(archTop),  ox1,zT(wallH),  ox0,zT(wallH));
+                for (let s = 0; s < ARCH_SEGS; s++) {
+                  const vx0 = cx - archR * arcPts[s].cos,   vz0 = legH + archR * arcPts[s].sin;
+                  const vx1 = cx - archR * arcPts[s+1].cos, vz1 = legH + archR * arcPts[s+1].sin;
+                  triB(yBack,  vx0,zT(vz0),  vx1,zT(vz1),  vx1,zT(archTop));
+                  triB(yBack,  vx0,zT(vz0),  vx1,zT(archTop),  vx0,zT(archTop));
+                }
+
+                // ── TOP CAP ─────────────────────────────────────────────────
+                { const b = verts.length/3;
+                  verts.push(px0,yFront,zT(wallH), px1,yFront,zT(wallH), px1,yBack,zT(wallH), px0,yBack,zT(wallH));
+                  indices.push(b,b+1,b+2, b,b+2,b+3); }
+
+                // ── OUTER SIDE FACES ─────────────────────────────────────────
+                if (col === 0) {
+                  const b = verts.length/3;
+                  verts.push(px0,yBack,zT(0), px0,yFront,zT(0), px0,yFront,zT(wallH), px0,yBack,zT(wallH));
+                  indices.push(b,b+1,b+2, b,b+2,b+3);
+                }
+                if (col === COLS-1) {
+                  const b = verts.length/3;
+                  verts.push(px1,yFront,zT(0), px1,yBack,zT(0), px1,yBack,zT(wallH), px1,yFront,zT(wallH));
+                  indices.push(b,b+1,b+2, b,b+2,b+3);
+                }
+
+                // ── ARCH SOFFIT ──────────────────────────────────────────────
+                for (let s = 0; s < ARCH_SEGS; s++) {
+                  const vx0 = cx - archR * arcPts[s].cos,   vz0 = legH + archR * arcPts[s].sin;
+                  const vx1 = cx - archR * arcPts[s+1].cos, vz1 = legH + archR * arcPts[s+1].sin;
+                  const b = verts.length/3;
+                  verts.push(vx1,yFront,zT(vz1), vx0,yFront,zT(vz0), vx0,yBack,zT(vz0), vx1,yBack,zT(vz1));
+                  indices.push(b,b+1,b+2, b,b+2,b+3);
+                }
+
+                // ── PIER INNER SIDE FACES ────────────────────────────────────
+                { const b = verts.length/3;
+                  verts.push(ox0,yFront,zT(0), ox0,yBack,zT(0), ox0,yBack,zT(legH), ox0,yFront,zT(legH));
+                  indices.push(b,b+1,b+2, b,b+2,b+3); }
+                { const b = verts.length/3;
+                  verts.push(ox1,yBack,zT(0), ox1,yFront,zT(0), ox1,yFront,zT(legH), ox1,yBack,zT(legH));
+                  indices.push(b,b+1,b+2, b,b+2,b+3); }
+              }
+            };
+
+            buildFloor(0);         // ground floor
+            buildFloor(wallH);     // second floor directly on top
+
+            const posArr  = new Float32Array(verts);
+            const idxArr  = new Uint16Array(indices);
+
+            // CustomLayerInterface
+            const archLayer = {
+              id: 'arch-3d-layer',
+              type: 'custom',
+              renderingMode: '3d',
+              highlighted: 0,
+              setHighlight(v) { this.highlighted = v; map.triggerRepaint(); },
+
+              onAdd(map, gl) {
+                const vs = `
+                  precision highp float;
+                  attribute vec3 a_pos;
+                  uniform mat4 u_matrix;
+                  varying float v_z;
+                  void main() {
+                    gl_Position = u_matrix * vec4(a_pos, 1.0);
+                    v_z = a_pos.z;
+                  }`;
+                const fs = `
+                  precision mediump float;
+                  varying float v_z;
+                  uniform float u_maxZ;
+                  uniform float u_hl;
+                  void main() {
+                    float t = v_z / u_maxZ;
+                    vec3 base = mix(vec3(0.067, 0.11, 0.306), vec3(0.831, 0.075, 0.404), u_hl);
+                    vec3 top  = mix(vec3(0.12,  0.18, 0.42),  vec3(0.95,  0.20, 0.52),  u_hl);
+                    gl_FragColor = vec4(mix(base, top, t * 0.5), 0.97);
+                  }`;
+
+                const compile = (type, src) => {
+                  const sh = gl.createShader(type);
+                  gl.shaderSource(sh, src); gl.compileShader(sh);
+                  return sh;
+                };
+                this.prog = gl.createProgram();
+                gl.attachShader(this.prog, compile(gl.VERTEX_SHADER, vs));
+                gl.attachShader(this.prog, compile(gl.FRAGMENT_SHADER, fs));
+                gl.linkProgram(this.prog);
+
+                this.aBuf = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.aBuf);
+                gl.bufferData(gl.ARRAY_BUFFER, posArr, gl.STATIC_DRAW);
+
+                this.iBuf = gl.createBuffer();
+                gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.iBuf);
+                gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, idxArr, gl.STATIC_DRAW);
+
+                this.aPos   = gl.getAttribLocation(this.prog, 'a_pos');
+                this.uMat   = gl.getUniformLocation(this.prog, 'u_matrix');
+                this.uMaxZ  = gl.getUniformLocation(this.prog, 'u_maxZ');
+                this.uHl    = gl.getUniformLocation(this.prog, 'u_hl');
+                this.idxCount = idxArr.length;
+              },
+
+              render(gl, matrix) {
+                // matrix is Mapbox mercator → clip, column-major Float64 → cast to Float32
+                // We need to prepend a model matrix that offsets by origin merc coords
+                // Mapbox matrix expects coords in [0..1] merc space (tile coords)
+                // Build model mat: translate by origin, scale Z by merc units per real metre
+                // matrix is already Float64Array; pass as Float32Array
+                const mat = new Float32Array(matrix);
+
+                // Translate origin: insert translation into model matrix
+                // Simple approach: adjust mat column 3 (translation) by originMerc
+                // mat is column-major 4×4. Translation is col3: mat[12],mat[13],mat[14]
+                // We add originMerc[0], originMerc[1] to the X,Y position
+                // But Mapbox uses mercatorX, mercatorY and Z in mercator units
+                // Correct: create offset matrix and multiply
+                const ox = originMerc[0], oy = originMerc[1];
+
+                // Offset matrix (col-major): translate by (ox, oy, 0)
+                const offset = new Float64Array([
+                  1,0,0,0,
+                  0,1,0,0,
+                  0,0,1,0,
+                  ox, oy, 0, 1
+                ]);
+                // matrix * offset → final MVP; matrix is already Float64
+                const m64 = new Float64Array(matrix);
+                const r = new Float64Array(16);
+                for (let i = 0; i < 4; i++)
+                  for (let j = 0; j < 4; j++)
+                    r[i*4+j] = m64[0*4+j]*offset[i*4+0] + m64[1*4+j]*offset[i*4+1] +
+                                m64[2*4+j]*offset[i*4+2] + m64[3*4+j]*offset[i*4+3];
+
+                gl.useProgram(this.prog);
+                gl.uniformMatrix4fv(this.uMat, false, new Float32Array(r));
+                gl.uniform1f(this.uMaxZ, wallH * 2);
+                gl.uniform1f(this.uHl, this.highlighted || 0);
+
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.aBuf);
+                gl.enableVertexAttribArray(this.aPos);
+                gl.vertexAttribPointer(this.aPos, 3, gl.FLOAT, false, 0, 0);
+
+                gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.iBuf);
+                gl.enable(gl.DEPTH_TEST);
+                gl.depthMask(true);
+                gl.drawElements(gl.TRIANGLES, this.idxCount, gl.UNSIGNED_SHORT, 0);
+              }
+            };
+
+            map.addLayer(archLayer, DATA_LAYER); // insert below buildings so depth sorting works
+            arch3dLayerRef = archLayer;
+          } else if (feature.geometry.type === 'Polygon' && featureType === 'entrance') {
+            const e3dId = `${featureId}-3d-layer`;
+            if (map.getLayer(e3dId)) return;
+
+            const eToRad = d => d * Math.PI / 180;
+            const eLngLatToMerc = ([lng, lat]) => {
+              const x = (lng + 180) / 360;
+              const sinLat = Math.sin(eToRad(lat));
+              const y = 0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI);
+              return [x, y];
+            };
+
+            // Convert polygon verts to merc
+            const ering = feature.geometry.coordinates[0].slice(0, -1); // drop closing vert
+            const eMPts = ering.map(eLngLatToMerc); // [[mx,my], ...]
+
+            // Find longest edge — that becomes the wall's local X axis
+            let eLongestLen = 0, eLongestI = 0;
+            for (let i = 0; i < eMPts.length; i++) {
+              const a = eMPts[i], b = eMPts[(i+1) % eMPts.length];
+              const d = Math.hypot(b[0]-a[0], b[1]-a[1]);
+              if (d > eLongestLen) { eLongestLen = d; eLongestI = i; }
+            }
+            const eEdgeA = eMPts[eLongestI];
+            const eEdgeB = eMPts[(eLongestI+1) % eMPts.length];
+
+            // Local X axis along longest edge (unit vector)
+            const eEdgeDx = eEdgeB[0] - eEdgeA[0], eEdgeDy = eEdgeB[1] - eEdgeA[1];
+            const eEdgeLen = Math.hypot(eEdgeDx, eEdgeDy);
+            const eXx = eEdgeDx / eEdgeLen, eXy = eEdgeDy / eEdgeLen;
+            // Local Y axis = perpendicular (rotated 90° CCW)
+            const eYx = -eXy, eYy = eXx;
+
+            // Polygon centroid in merc
+            const eCentMx = eMPts.reduce((s,p) => s+p[0], 0) / eMPts.length;
+            const eCentMy = eMPts.reduce((s,p) => s+p[1], 0) / eMPts.length;
+
+            // Wall width = longest edge length, depth from short edge
+            const eShortA = eMPts[(eLongestI+1) % eMPts.length];
+            const eShortB = eMPts[(eLongestI+2) % eMPts.length];
+            const eShortLen = Math.hypot(eShortB[0]-eShortA[0], eShortB[1]-eShortA[1]);
+
+            // Merc per metre (use longest edge as reference)
+            const eLng0 = ering[eLongestI][0], eLat0 = ering[eLongestI][1];
+            const eLng1 = ering[(eLongestI+1)%ering.length][0], eLat1 = ering[(eLongestI+1)%ering.length][1];
+            const eHavM = (lng1,lat1,lng2,lat2) => {
+              const R=6371000, dLat=eToRad(lat2-lat1), dLng=eToRad(lng2-lng1);
+              const a=Math.sin(dLat/2)**2+Math.cos(eToRad(lat1))*Math.cos(eToRad(lat2))*Math.sin(dLng/2)**2;
+              return 2*R*Math.asin(Math.sqrt(a));
+            };
+            const eEdgeLenM = eHavM(eLng0,eLat0,eLng1,eLat1);
+            const eMercPerM = eEdgeLen / eEdgeLenM;
+            const eWallDepth = 1.2 * eMercPerM; // ~1.2m
+
+            // Wall spans full longest-edge length, centred on polygon centroid
+            const eHalfW = eEdgeLen / 2;
+            const eHalfD = eWallDepth / 2;
+
+            // Proportions from entrance icon: single arch, tall piers
+            const ePierU = 1, eOpenU = 2.2, eTotalU = 2*ePierU + eOpenU;
+            const ePierW = (eEdgeLen / eTotalU) * ePierU;
+            const eOpenW = (eEdgeLen / eTotalU) * eOpenU;
+            const eArchR  = eOpenW / 2;
+            // Fix wall height to match building height: 4 metres in merc units
+            const eWallH  = 4 * eMercPerM;
+            const eLegH   = eWallH * 0.15;   // short stub, scaled to fixed height
+            const eArchTop = eLegH + eArchR;
+            const eLedgeZ  = eLegH * 0.6;
+            const eLedgeH  = eWallH * 0.04;
+
+            // Geometry in local space: X ∈ [-halfW, +halfW], Y ∈ [-halfD, +halfD], Z up
+            // Local X=0 = left end of wall, shift so arch is centred
+            const eVerts = [], eIdx = [];
+            const eArchPts = [];
+            for (let s = 0; s <= 20; s++) {
+              const a = Math.PI * s / 20;
+              eArchPts.push([Math.cos(a), Math.sin(a)]);
+            }
+
+            const px0 = -eHalfW, ox0 = px0 + ePierW;
+            const ox1 = ox0 + eOpenW, px1 = ox1 + ePierW;
+            const eCx  = ox0 + eArchR;
+            const eYF  = -eHalfD, eYBk = eHalfD; // front/back in local Y
+
+            const eFF = (y,x0,z0,x1,z1,x2,z2,x3,z3) => {
+              const b=eVerts.length/3; eVerts.push(x0,y,z0,x1,y,z1,x2,y,z2,x3,y,z3); eIdx.push(b,b+1,b+2,b,b+2,b+3);
+            };
+            const eFB = (y,x0,z0,x1,z1,x2,z2,x3,z3) => {
+              const b=eVerts.length/3; eVerts.push(x0,y,z0,x1,y,z1,x2,y,z2,x3,y,z3); eIdx.push(b,b+2,b+1,b,b+3,b+2);
+            };
+            const eTF = (y,ax,az,bx,bz,cx,cz) => { const b=eVerts.length/3; eVerts.push(ax,y,az,bx,y,bz,cx,y,cz); eIdx.push(b,b+1,b+2); };
+            const eTB = (y,ax,az,bx,bz,cx,cz) => { const b=eVerts.length/3; eVerts.push(ax,y,az,bx,y,bz,cx,y,cz); eIdx.push(b,b+2,b+1); };
+
+            const eBuildFace = (y, w) => {
+              const q = w>0 ? eFF : eFB, t = w>0 ? eTF : eTB;
+              q(y, px0,0,ox0,0,ox0,eWallH,px0,eWallH);
+              q(y, ox1,0,px1,0,px1,eWallH,ox1,eWallH);
+              q(y, ox0,eArchTop,ox1,eArchTop,ox1,eWallH,ox0,eWallH);
+              for (let s=0;s<20;s++) {
+                const vx0=eCx-eArchR*eArchPts[s][0],   vz0=eLegH+eArchR*eArchPts[s][1];
+                const vx1=eCx-eArchR*eArchPts[s+1][0], vz1=eLegH+eArchR*eArchPts[s+1][1];
+                t(y,vx0,vz0,vx1,vz1,vx1,eArchTop); t(y,vx0,vz0,vx1,eArchTop,vx0,eArchTop);
+              }
+              q(y, px0,eLedgeZ,ox0,eLedgeZ,ox0,eLedgeZ+eLedgeH,px0,eLedgeZ+eLedgeH);
+              q(y, ox1,eLedgeZ,px1,eLedgeZ,px1,eLedgeZ+eLedgeH,ox1,eLedgeZ+eLedgeH);
+            };
+            eBuildFace(eYF, 1); eBuildFace(eYBk, -1);
+            { const b=eVerts.length/3; eVerts.push(px0,eYF,eWallH,px1,eYF,eWallH,px1,eYBk,eWallH,px0,eYBk,eWallH); eIdx.push(b,b+1,b+2,b,b+2,b+3); }
+            { const b=eVerts.length/3; eVerts.push(px0,eYBk,0,px0,eYF,0,px0,eYF,eWallH,px0,eYBk,eWallH); eIdx.push(b,b+1,b+2,b,b+2,b+3); }
+            { const b=eVerts.length/3; eVerts.push(px1,eYF,0,px1,eYBk,0,px1,eYBk,eWallH,px1,eYF,eWallH); eIdx.push(b,b+1,b+2,b,b+2,b+3); }
+            for (let s=0;s<20;s++) {
+              const vx0=eCx-eArchR*eArchPts[s][0],vz0=eLegH+eArchR*eArchPts[s][1];
+              const vx1=eCx-eArchR*eArchPts[s+1][0],vz1=eLegH+eArchR*eArchPts[s+1][1];
+              const b=eVerts.length/3; eVerts.push(vx1,eYF,vz1,vx0,eYF,vz0,vx0,eYBk,vz0,vx1,eYBk,vz1); eIdx.push(b,b+1,b+2,b,b+2,b+3);
+            }
+            { const b=eVerts.length/3; eVerts.push(ox0,eYF,0,ox0,eYBk,0,ox0,eYBk,eLegH,ox0,eYF,eLegH); eIdx.push(b,b+1,b+2,b,b+2,b+3); }
+            { const b=eVerts.length/3; eVerts.push(ox1,eYBk,0,ox1,eYF,0,ox1,eYF,eLegH,ox1,eYBk,eLegH); eIdx.push(b,b+1,b+2,b,b+2,b+3); }
+
+            const ePosArr = new Float32Array(eVerts);
+            const eIdxArr = new Uint16Array(eIdx);
+
+            // Model matrix: rotate local (X,Y) axes to merc space, translate to centroid
+            // col-major: [eXx, eXy, 0, 0,  eYx, eYy, 0, 0,  0,0,1,0,  eCentMx,eCentMy,0,1]
+            const eModel = new Float64Array([
+              eXx,  eXy,  0, 0,
+              eYx,  eYy,  0, 0,
+              0,    0,    1, 0,
+              eCentMx, eCentMy, 0, 1
+            ]);
+
+            const entranceLayer = {
+              id: e3dId, type: 'custom', renderingMode: '3d',
+              highlighted: 0,
+              setHighlight(v) { this.highlighted = v; map.triggerRepaint(); },
+              onAdd(map, gl) {
+                const vs = `precision highp float; attribute vec3 a_pos; uniform mat4 u_matrix; varying float v_z;
+                  void main(){ gl_Position=u_matrix*vec4(a_pos,1.0); v_z=a_pos.z; }`;
+                const fs = `precision mediump float; varying float v_z; uniform float u_maxZ; uniform float u_hl;
+                  void main(){
+                    float t=v_z/u_maxZ;
+                    vec3 base=mix(vec3(0.067,0.11,0.306), vec3(0.831,0.075,0.404), u_hl);
+                    vec3 top =mix(vec3(0.12,0.18,0.42),   vec3(0.95,0.20,0.52),  u_hl);
+                    gl_FragColor=vec4(mix(base,top,t*0.5),0.97); }`;
+                const sh = (type,src) => { const s=gl.createShader(type); gl.shaderSource(s,src); gl.compileShader(s); return s; };
+                this.prog=gl.createProgram();
+                gl.attachShader(this.prog,sh(gl.VERTEX_SHADER,vs)); gl.attachShader(this.prog,sh(gl.FRAGMENT_SHADER,fs));
+                gl.linkProgram(this.prog);
+                this.aBuf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,this.aBuf); gl.bufferData(gl.ARRAY_BUFFER,ePosArr,gl.STATIC_DRAW);
+                this.iBuf=gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,this.iBuf); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,eIdxArr,gl.STATIC_DRAW);
+                this.aPos=gl.getAttribLocation(this.prog,'a_pos');
+                this.uMat=gl.getUniformLocation(this.prog,'u_matrix');
+                this.uMaxZ=gl.getUniformLocation(this.prog,'u_maxZ');
+                this.uHl=gl.getUniformLocation(this.prog,'u_hl');
+                this.idxCount=eIdxArr.length;
+              },
+              render(gl, matrix) {
+                const m=new Float64Array(matrix), r=new Float64Array(16);
+                for(let i=0;i<4;i++) for(let j=0;j<4;j++)
+                  r[i*4+j]=m[0*4+j]*eModel[i*4+0]+m[1*4+j]*eModel[i*4+1]+m[2*4+j]*eModel[i*4+2]+m[3*4+j]*eModel[i*4+3];
+                gl.useProgram(this.prog);
+                gl.uniformMatrix4fv(this.uMat,false,new Float32Array(r));
+                gl.uniform1f(this.uMaxZ,eWallH);
+                gl.uniform1f(this.uHl, this.highlighted);
+                gl.bindBuffer(gl.ARRAY_BUFFER,this.aBuf); gl.enableVertexAttribArray(this.aPos);
+                gl.vertexAttribPointer(this.aPos,3,gl.FLOAT,false,0,0);
+                gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,this.iBuf);
+                gl.enable(gl.DEPTH_TEST); gl.depthMask(true);
+                gl.drawElements(gl.TRIANGLES,this.idxCount,gl.UNSIGNED_SHORT,0);
+              }
+            };
+            map.addLayer(entranceLayer, DATA_LAYER);
+            entrance3dLayers.set(featureId, entranceLayer);
+
+            // Click via fill-extrusion hit layer for 3D raycasting
+            const eHitId = `${featureId}-hit`;
+            if (!map.getLayer(eHitId)) {
+              map.addLayer({ id: eHitId, type: 'fill-extrusion', source: 'map-data',
+                filter: ['==', ['get', 'id'], featureId],
+                paint: { 'fill-extrusion-color': '#000', 'fill-extrusion-opacity': 0, 'fill-extrusion-height': 8, 'fill-extrusion-base': 0 }
+              });
+              map.on('click', eHitId, e => { setEntranceHighlights(featureId); createPointPopup(featureType, featureId).setLngLat(e.lngLat).addTo(map); });
+              map.on('mouseenter', eHitId, () => { map.getCanvas().style.cursor = 'pointer'; });
+              map.on('mouseleave', eHitId, () => { map.getCanvas().style.cursor = ''; });
+            }
+            // Register 3D entrance in pointMarkers for sidebar Entrances list
+            { const { title = featureId } = pointLabels.points?.[featureId] || {};
+              const eLng = ering.reduce((s,c)=>s+c[0],0)/ering.length;
+              const eLat = ering.reduce((s,c)=>s+c[1],0)/ering.length;
+              const eLngLat = new mapboxgl.LngLat(eLng, eLat);
+              pointMarkers.push({ type: 'entrance', id: featureId, iconKey: 'entrance', title,
+                marker: { getLngLat: () => eLngLat, addTo: () => {}, remove: () => {},
+                  getPopup: () => ({ isOpen: () => false }),
+                  togglePopup() { createPointPopup('entrance', featureId).setLngLat(eLngLat).addTo(map); } } }); }
           } else if (feature.geometry.type === 'Polygon' && polygonSvgTypes.has(featureType)) {
             const ring = feature.geometry.coordinates[0];
             const marker = new mapboxgl.Marker({ element: makeSvgMarker(featureType) }).setLngLat(polygonCentroid(ring));
@@ -1247,11 +1871,11 @@
           { label: pointLabels.ui?.legend_parking    || 'Parking',    types: ['parking', 'parking-handicap', 'bike-rack'] },
           { label: pointLabels.ui?.legend_amenities  || 'Amenities',  types: ['atm', 'drinking-water', 'information'] },
           { label: pointLabels.ui?.legend_transport  || 'Transport',  types: ['bus-stop', 'elevator'] },
-          { label: pointLabels.ui?.legend_navigation || 'Entrances',  types: ['entrance'] },
+          { label: pointLabels.ui?.legend_navigation || 'Entrances',  types: ['entrance'], iconKey: 'entrance-main-gate' },
           { label: pointLabels.ui?.legend_landmarks  || 'Landmarks',  types: ['bell-tower', 'wind-sculpture-garden', 'fountain'] },
         ];
         const typeMap = new Map(pointMarkers.map(p => [p.type, p]));
-        legendGroups.forEach(({ label, types }) => {
+        legendGroups.forEach(({ label, types, iconKey: groupIconKey }) => {
           const present = types.filter(t => typeMap.has(t));
           if (!present.length) return;
           const group = document.createElement('div');
@@ -1264,7 +1888,7 @@
             const btn = document.createElement('button');
             btn.className = 'sidebar-legend-item';
             btn.dataset.type = type;
-            const icon = getIconByType(type);
+            const icon = getIconByType(groupIconKey || type);
             icon.className = 'sidebar-category-icon';
             btn.appendChild(icon);
             btn.appendChild(Object.assign(document.createElement('span'), { textContent: title }));
@@ -1291,6 +1915,8 @@
       map.on('click', (event) => {
         if (!map.queryRenderedFeatures(event.point, { layers: [DATA_LAYER] }).length) {
           if (activePOIType) { resetSidebar(); return; }
+          setEntranceHighlights(null);
+          arch3dLayerRef?.setHighlight(0);
           if (suppressClearHighlight) return;
           if (highlightedBuildingIds.size) clearHighlightedBuildings();
         }
@@ -1500,11 +2126,19 @@
     };
 
     // Show list of point markers for a given type
+    // activeId=null → all off, 'all' → all on, '<id>' → only that one on
+    const setEntranceHighlights = (activeId) => {
+      entrance3dLayers.forEach((layer, id) =>
+        layer.setHighlight(activeId === null ? 0 : (activeId === 'all' || activeId === id) ? 1 : 0));
+    };
+
     const showPointTypeList = (type) => {
       const targets = pointMarkers.filter(p => p.type === type)
         .sort((a, b) => (a.id === 'entrance-main-gate' ? -1 : b.id === 'entrance-main-gate' ? 1 : 0));
       if (!targets.length) return;
       activePOIType = type;
+      // Highlight all entrances pink when entering submenu
+      if (type === 'entrance') setEntranceHighlights('all');
       // Hide all store markers, show only matching POI type
       filterMarkers(() => false);
       pointMarkers.forEach(({ type: t, marker }) => t === type ? marker.addTo(map) : marker.remove());
@@ -1521,7 +2155,7 @@
       }
       showStoreList([]);
       mapNoResults.style.display = 'none';
-      targets.forEach(({ title, marker, iconKey }) => {
+      targets.forEach(({ title, marker, iconKey, id }) => {
         const li = document.createElement('li');
         li.className = 'sidebar-result';
         li.setAttribute('role', 'option');
@@ -1529,6 +2163,8 @@
         li.appendChild(icon);
         li.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-title', textContent: title }));
         li.addEventListener('click', () => {
+          // Highlight only the clicked entrance
+          if (type === 'entrance') setEntranceHighlights(id);
           map.easeTo({ center: marker.getLngLat(), duration: 600 });
           if (!marker.getPopup().isOpen()) marker.togglePopup();
           if (mobileQuery.matches) {
@@ -1579,6 +2215,7 @@
       mapSearch.value = '';
       activeFilterType = null;
       activePOIType = null;
+      setEntranceHighlights(null); // clear all entrance highlights
       categoryButtons.forEach(button => button.setAttribute('aria-pressed', 'false'));
       applyTypeFilter(null);
       showCategoryView();

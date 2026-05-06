@@ -152,8 +152,14 @@ points:
     title: East Accessible Parking
     description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
 areas:
+  main-gate:
+    title: Main Gate
+    description: The iconic Spanish Colonial-style entrance to the village, where a distinctive stucco arch and old-world wooden doors mark the threshold into Tlaquepaque.
   underpass:
-    title: "Underpass to\n Tlaquepaque North"
+    title: "Underpass to\n Tlaquepaque\n North"
+    description: Completed in 2024, this pedestrian underpass offers a safe, accessible connection between Tlaquepaque North and South beneath State Route 179.
+  underpath-to-tlaquepaque-north:
+    title: "Underpass to\n Tlaquepaque\n North"
     description: Completed in 2024, this pedestrian underpass offers a safe, accessible connection between Tlaquepaque North and South beneath State Route 179.
   wind-sculpture-garden:
     title: "Wind\n Sculpture\n Garden"
@@ -161,6 +167,9 @@ areas:
   el-pasillo-pequeno:
     title: El Pasillo Pequeño
     description: ""
+  arcs:
+    title: Arched Walkway
+    description: The ivy-covered arched walkway of Patio de las Campanas — a signature architectural feature of Tlaquepaque, blending Spanish Colonial stonework with the village's lush courtyard atmosphere.
   patio-de-las-campanas:
     title: "Patio de las \nCampanas"
     description: A celebrated courtyard anchored by the iconic Bell Tower, where stone fountains, artful tilework, elegant sculptures, and an ivy-covered arched walkway create one of the village's most visually striking spaces.
