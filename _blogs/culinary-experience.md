@@ -5,7 +5,7 @@ description: The Art of Custom Hatmaking
 image: /assets/images/blogs/Charlie-Steaming.jpg
 ---
 
-True West Hats, a new addition to Tlaquepaque, was founded by Charlie and April Seaman, a husband-and-wife team whose work is rooted in a shared search for true north—both creatively and personally.
+[True West Hats,](https://truewesthats.com/) a new addition to Tlaquepaque, was founded by Charlie and April Seaman, a husband-and-wife team whose work is rooted in a shared search for true north—both creatively and personally.
 
 After years living in South America, they returned to the U.S. deeply influenced by cultures that value slower making, honor handmade processes, and prize objects for their stories and the hands that created them—a philosophy that now forms the foundation of True West Hats.
 
@@ -15,7 +15,7 @@ That philosophy is evident in the materials and methods they choose. True West H
 
 The customization process is intentionally guided. Customers begin by considering how and where their hat will be worn— whether during everyday adventures, meaningful gatherings, or milestone moments. From there, Charlie and April guide each individual through selecting foundational elements such as material, color, crown shape, and brim style. The final layer is personalization: leather bands, gemstones, silks, feathers, subtle distressing, or custom-burned initials that transform each hat into a deeply personal expression.
 
-[![Store Interior](/assets/images/blogs/DSC_0803.JPG "Hats")](https://truewesthats.com/)
+![Store Interior](/assets/images/blogs/DSC_0803.JPG "Hats")
 
 Opening a shop within Tlaquepaque Arts & Shopping Village marks a meaningful milestone for True West Hats. Tlaquepaque’s devotion to artistry, artisanship, and creative expression mirrors the brand’s own values, offering a fitting home for a studio rooted in old-world techniques and experiential retail.
 
