@@ -35,7 +35,7 @@ Community remains at the heart of The Pumphouse—not just in its ingredients, b
 
 **What’s Growing & Foraging in Northern Arizona**
 
-**SPRING** 
+**SPRING**
 
 Sugar snap peas, English peas
 
@@ -45,7 +45,7 @@ Ramps, miner’s lettuce, sorrel
 
 Green strawberries, rhubarb
 
-**SUMMER / FALL** 
+**SUMMER / FALL**
 
 Zucchini and squash
 
