@@ -2,7 +2,7 @@
 title: 'Dulce: Ice Cream, Churros, Candies'
 date: 2026-05-06
 description: Making Life Sweeter, One Dulce at a Time
-image: /assets/images/blogs/Dulce-05.jpg
+image: /assets/images/blogs/Dulce-News1.jpg
 ---
 
 There’s a certain joy that comes with stepping into a candy shop—the kind that instantly sparks curiosity and brings out a sense of play. At Dulce: Ice Cream, Churros, Candies, newly opened at Tlaquepaque Arts & Shopping Village, that feeling is very much by design. Bright, colorful, and filled with irresistible aromas, Dulce invites guests to slow down, smile, and indulge—making life sweeter, one Dulce at a time.
