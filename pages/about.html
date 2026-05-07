@@ -16,7 +16,7 @@ layout_type: about
   </hgroup>
   <p>{{ site.data.about.subheading }}</p>
 
-  {% assign jump_nav_links = "village_map,tlaquepaque_north,outdoor_art,landscaping,sycamore,our_people" | split: "," %}
+  {% assign jump_nav_links = "village_map,tlaquepaque_north,historic_landmark,outdoor_art,landscaping,sycamore,our_people" | split: "," %}
   {% assign jump_nav_slugs = "about" %}
   {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
 
@@ -39,7 +39,7 @@ layout_type: about
   style="width:100%;height:500px;border:none"></iframe>
   <p>{{ site.data.about.village_map.description }}</p>
 
-  {% assign row_keys = "tlaquepaque_north,outdoor_art" | split: "," %}
+  {% assign row_keys = "tlaquepaque_north,historic_landmark,outdoor_art" | split: "," %}
   {% for key in row_keys %}
     {% assign section = site.data.about.sections[key] %}
     {% assign anchor = site.data.about.jump_to_links[key].id | remove: '#' %}
