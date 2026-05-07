@@ -1567,6 +1567,13 @@ collections:
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - label: "Link Button"
+        name: "link"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "URL", name: "url", widget: "string", required: false, hint: "External URL the button should open. Leave empty to hide the button." }
+          - { label: "Text", name: "text", widget: "string", required: false, default: "Read the Article" }
       - label: "Images"
         name: "images"
         widget: "list"
