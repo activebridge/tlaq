@@ -24,16 +24,14 @@
 <div class="content-wrapper grid-col-2 annual-event-grid">
   <div>
     {{ content }}
-  </div>
-  <div class="annual-event-grid__details">
-    {% include events/annual-details.html event=page %}
-  </div>
-  <div>
     {% if page.map %}
       <hr>
       <h3>{{ page.map.title }}</h3>
       <h6>{{ page.map.description }}</h6>
       <a href="{{ page.map.url }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">{{ page.map.button_label }}</a>
     {% endif %}
+  </div>
+  <div>
+    {% include events/annual-details.html event=page %}
   </div>
 </div>

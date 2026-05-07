@@ -688,16 +688,12 @@ article {
   }
 }
 
-@media (min-width: 770px) {
-  .annual-event-grid {
-    grid-auto-flow: column;
-    grid-template-rows: auto auto;
-  }
+:is(.store, .event, .shop, .food) .grid-col-2 {
+  column-gap: clamp(2rem, 6vw, 6rem);
+}
 
-  .annual-event-grid > .annual-event-grid__details {
-    grid-row: 1 / span 2;
-    grid-column: 2;
-  }
+@media (min-width: 770px) {
+  .annual-event-grid { align-items: start; }
 }
 
 @media (max-width: 770px) {
@@ -1660,7 +1656,7 @@ main.news .list-container {
 
   h6, h7 { display: block; margin: 1.75rem 0 }
 
-  table td { font-size: clamp(12px, 1.7vw, 20px); }
+  table#storeHours td { font-size: clamp(12px, 1.7vw, 20px); }
 
   .social { margin: 1.75rem 0 }
 

@@ -26,7 +26,7 @@ sections:
     description: Wander the village to discover the collection of outdoor sculptures and art installations. Permanent pieces like Kim Kori's beloved frog have become village landmarks, while rotating displays showcase new works. This outdoor gallery transforms your stroll through the village into an artistic journey of unexpected discoveries.
     button:
       text: Have You Seen These?
-      url: /outdoor-art
+      url: https://discover.tlaq.com/have_you_seen
     images:
       - /assets/images/about/outdoor-art.png
   landscaping:

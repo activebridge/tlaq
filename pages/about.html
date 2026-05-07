@@ -49,7 +49,8 @@ layout_type: about
         <h3>{{ section.heading }}</h3>
         <p>{{ section.description }}</p>
         {% if section.button %}
-          <a class="btn btn-primary" href="{{ section.button.url }}">{{ section.button.text }}</a>
+          {% assign is_external = section.button.url | slice: 0, 4 %}
+          <a class="btn btn-primary" href="{{ section.button.url }}"{% if is_external == "http" %} target="_blank" rel="noopener"{% endif %}>{{ section.button.text }}</a>
         {% endif %}
       </article>
       <figure>
