@@ -1261,6 +1261,7 @@
 
           if (feature.geometry.type === 'Point' && pointSvgTypes.has(featureType)) {
             if (featureId === 'entrance-main-gate') return;
+            if (featureType === 'bell-tower') return;
             const iconKey = (featureId && iconsTemplate.querySelector(`[data-type="${featureId}"]`)) ? featureId : featureType;
             const marker = new mapboxgl.Marker({ element: makeSvgMarker(iconKey) }).setLngLat(feature.geometry.coordinates);
             if (featureType !== 'tree') marker.setPopup(createPointPopup(featureType, featureId));
@@ -1647,14 +1648,15 @@
               let scheduled = false;
               const update = () => {
                 scheduled = false;
-                if (!map.getLayer('main-gate-hit')) return;
+                const layers = ['main-gate-hit', 'bell-tower-hit'].filter(id => map.getLayer(id));
+                if (!layers.length) return;
                 const markers = (map._markers && Array.isArray(map._markers)) ? map._markers : null;
                 if (!markers) return;
                 for (const m of markers) {
                   const ll = m.getLngLat(); if (!ll) continue;
                   const el = m.getElement(); if (!el) continue;
                   const sp = map.project(ll);
-                  const hit = map.queryRenderedFeatures([sp.x, sp.y], { layers: ['main-gate-hit'] });
+                  const hit = map.queryRenderedFeatures([sp.x, sp.y], { layers });
                   el.style.visibility = hit.length ? 'hidden' : '';
                 }
               };
@@ -1686,6 +1688,327 @@
                 marker: { getLngLat: () => mgLngLat, addTo: () => {}, remove: () => {},
                   getPopup: () => ({ isOpen: () => false }),
                   togglePopup() { window.openMainGatePopup(); } } }); }
+          } else if (feature.geometry.type === 'Polygon' && featureId === 'bell-tower') {
+            const bt3dId = 'bell-tower-3d-layer';
+            if (map.getLayer(bt3dId)) return;
+
+            const btRing = feature.geometry.coordinates[0].slice(0, -1);
+            const btToRad = d => d * Math.PI / 180;
+            const btLngLatToMerc = ([lng, lat]) => {
+              const x = (lng + 180) / 360;
+              const sinLat = Math.sin(btToRad(lat));
+              const y = 0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI);
+              return [x, y];
+            };
+            const btMPts = btRing.map(btLngLatToMerc);
+
+            // Longest edge → local X axis
+            let btLongestLen = 0, btLongestI = 0;
+            for (let i = 0; i < btMPts.length; i++) {
+              const a = btMPts[i], b = btMPts[(i+1) % btMPts.length];
+              const d = Math.hypot(b[0]-a[0], b[1]-a[1]);
+              if (d > btLongestLen) { btLongestLen = d; btLongestI = i; }
+            }
+            const btEA = btMPts[btLongestI], btEB = btMPts[(btLongestI+1) % btMPts.length];
+            const btEdgeDx = btEB[0]-btEA[0], btEdgeDy = btEB[1]-btEA[1];
+            const btEdgeLen = Math.hypot(btEdgeDx, btEdgeDy);
+            const btXx = btEdgeDx/btEdgeLen, btXy = btEdgeDy/btEdgeLen;
+            const btYx = -btXy, btYy = btXx;
+
+            const btCentMx = btMPts.reduce((s,p)=>s+p[0],0)/btMPts.length;
+            const btCentMy = btMPts.reduce((s,p)=>s+p[1],0)/btMPts.length;
+
+            // Mercator-per-metre scale from longest edge
+            const btLng0 = btRing[btLongestI][0], btLat0 = btRing[btLongestI][1];
+            const btLng1 = btRing[(btLongestI+1)%btRing.length][0], btLat1 = btRing[(btLongestI+1)%btRing.length][1];
+            const btHav = (ln1,la1,ln2,la2) => {
+              const R=6371000, dLat=btToRad(la2-la1), dLng=btToRad(ln2-ln1);
+              const a=Math.sin(dLat/2)**2+Math.cos(btToRad(la1))*Math.cos(btToRad(la2))*Math.sin(dLng/2)**2;
+              return 2*R*Math.asin(Math.sqrt(a));
+            };
+            const btEdgeLenM = btHav(btLng0,btLat0,btLng1,btLat1);
+            const btMPM = btEdgeLen / btEdgeLenM;
+
+            // --- Geometry: stepped base + shaft + crown + spire + arrow tip ---
+            // Footprint square ~ btEdgeLen × btEdgeLen. Centered at origin.
+            const bW = btEdgeLen;       // base full width
+            const bH = bW * 1.1;         // total height
+            const halfBW = bW / 2;
+
+            const btVerts = [], btIdx = [], btCream = [];
+            const pushTri = (a,b,c, cr=0) => { const i=btVerts.length/3; btVerts.push(...a,...b,...c); btCream.push(cr,cr,cr); btIdx.push(i,i+1,i+2); };
+            const pushQuad = (a,b,c,d, cr=0) => { const i=btVerts.length/3; btVerts.push(...a,...b,...c,...d); btCream.push(cr,cr,cr,cr); btIdx.push(i,i+1,i+2,i,i+2,i+3); };
+            // Add an axis-aligned box [x0..x1] × [y0..y1] × [z0..z1] (outward-facing)
+            const pushBox = (x0,x1,y0,y1,z0,z1, cr=0, skipBottom=true) => {
+              if (!skipBottom) pushQuad([x0,y1,z0],[x1,y1,z0],[x1,y0,z0],[x0,y0,z0], cr);
+              pushQuad([x0,y0,z1],[x1,y0,z1],[x1,y1,z1],[x0,y1,z1], cr); // top
+              pushQuad([x0,y0,z0],[x1,y0,z0],[x1,y0,z1],[x0,y0,z1], cr); // front -Y
+              pushQuad([x1,y1,z0],[x0,y1,z0],[x0,y1,z1],[x1,y1,z1], cr); // back +Y
+              pushQuad([x0,y1,z0],[x0,y0,z0],[x0,y0,z1],[x0,y1,z1], cr); // left -X
+              pushQuad([x1,y0,z0],[x1,y1,z0],[x1,y1,z1],[x1,y0,z1], cr); // right +X
+            };
+
+            // Vertical layout (slim profile)
+            const z0a = 0.00 * bH, z0b = 0.08 * bH;   // plinth
+            const z1a = z0b,        z1b = 0.11 * bH;   // cream trim band
+            const z2a = z1b,        z2b = 0.16 * bH;   // chamfer step
+
+            const archHalf = bW * 0.06;
+            const archR = archHalf;
+            const archLegH = bH * 0.04;
+            const archCx = 0;
+
+            // Plinth halfwidth slightly less than full polygon (avoids z-fight with hit layer edges)
+            const halfL0 = halfBW * 0.45;
+            const yF0 = -halfL0, yB0 = halfL0;
+            pushBox(-halfL0, archCx-archHalf, yF0, yB0, z0a, z0b);
+            pushBox(archCx+archHalf, halfL0, yF0, yB0, z0a, z0b);
+            // Above-arch front/back strips + soffit
+            {
+              const segs = 16;
+              for (let s = 0; s < segs; s++) {
+                const a0 = Math.PI - Math.PI * s / segs;
+                const a1 = Math.PI - Math.PI * (s+1) / segs;
+                const x0 = archCx + archR * Math.cos(a0);
+                const x1 = archCx + archR * Math.cos(a1);
+                const zb0 = archLegH + archR * Math.sin(a0);
+                const zb1 = archLegH + archR * Math.sin(a1);
+                pushQuad([x0,yF0,zb0],[x1,yF0,zb1],[x1,yF0,z0b],[x0,yF0,z0b]);          // front face above arch
+                pushQuad([x1,yB0,zb1],[x0,yB0,zb0],[x0,yB0,z0b],[x1,yB0,z0b]);          // back face
+                pushQuad([x1,yF0,zb1],[x0,yF0,zb0],[x0,yB0,zb0],[x1,yB0,zb1]);          // soffit
+              }
+              pushQuad([archCx-archHalf,yF0,z0a],[archCx-archHalf,yB0,z0a],[archCx-archHalf,yB0,archLegH],[archCx-archHalf,yF0,archLegH]);
+              pushQuad([archCx+archHalf,yB0,z0a],[archCx+archHalf,yF0,z0a],[archCx+archHalf,yF0,archLegH],[archCx+archHalf,yB0,archLegH]);
+              // Plinth top above doorway (small bridge cap)
+              pushQuad([archCx-archHalf,yF0,z0b],[archCx+archHalf,yF0,z0b],[archCx+archHalf,yB0,z0b],[archCx-archHalf,yB0,z0b]);
+            }
+
+            // Trim band
+            const halfL1 = halfBW * 0.38;
+            pushBox(-halfL1, halfL1, -halfL1, halfL1, z1a, z1b);
+            // Chamfer step
+            const halfL2 = halfBW * 0.32;
+            pushBox(-halfL2, halfL2, -halfL2, halfL2, z2a, z2b);
+
+            // Shaft (slim)
+            const zSa = 0.16 * bH, zSb = 0.74 * bH;
+            const halfS = halfBW * 0.22;
+
+            const ts = bW * 0.010;
+            const tl = bW * 0.030;
+            const crossZs = [0.30 * bH, 0.42 * bH, 0.54 * bH];
+
+            // Build shaft as four side walls with cutouts on -X and +X faces only (visible from sides too).
+            // For simplicity: faces are -Y, +Y, -X, +X. Cross holes pierce -Y to +Y (most visible).
+            // Build each face with rectangular cutouts.
+
+            const buildFaceWithRectHoles = (face, holes) => {
+              // Grid decomposition: cut face by every u and v boundary from holes,
+              // emit a quad for each cell whose center is NOT inside any hole.
+              const usSet = new Set([-halfS, halfS]);
+              const vsSet = new Set([zSa, zSb]);
+              holes.forEach(h => { usSet.add(h.u0); usSet.add(h.u1); vsSet.add(h.v0); vsSet.add(h.v1); });
+              const us = [...usSet].sort((a,b)=>a-b);
+              const vs = [...vsSet].sort((a,b)=>a-b);
+              for (let i = 0; i < us.length - 1; i++) {
+                const u0 = us[i], u1 = us[i+1]; if (u1<=u0) continue;
+                const um = (u0+u1)/2;
+                for (let j = 0; j < vs.length - 1; j++) {
+                  const v0 = vs[j], v1 = vs[j+1]; if (v1<=v0) continue;
+                  const vm = (v0+v1)/2;
+                  let inHole = false;
+                  for (const h of holes) {
+                    if (um>h.u0 && um<h.u1 && vm>h.v0 && vm<h.v1) { inHole = true; break; }
+                  }
+                  if (inHole) continue;
+                  if (face === 'front') {
+                    pushQuad([u0,-halfS,v0],[u1,-halfS,v0],[u1,-halfS,v1],[u0,-halfS,v1]);
+                  } else if (face === 'back') {
+                    pushQuad([u1,halfS,v0],[u0,halfS,v0],[u0,halfS,v1],[u1,halfS,v1]);
+                  } else if (face === 'left') {
+                    pushQuad([-halfS,u1,v0],[-halfS,u0,v0],[-halfS,u0,v1],[-halfS,u1,v1]);
+                  } else if (face === 'right') {
+                    pushQuad([halfS,u0,v0],[halfS,u1,v0],[halfS,u1,v1],[halfS,u0,v1]);
+                  }
+                }
+              }
+            };
+
+            // Cross holes only on front (-Y) and back (+Y) — pierced through
+            const frontBackHoles = [];
+            crossZs.forEach(cz => {
+              // vertical bar
+              frontBackHoles.push({ u0:-ts, u1:ts, v0:cz-tl, v1:cz+tl });
+              // horizontal bar
+              frontBackHoles.push({ u0:-tl, u1:tl, v0:cz-ts, v1:cz+ts });
+            });
+            buildFaceWithRectHoles('front', frontBackHoles);
+            buildFaceWithRectHoles('back', frontBackHoles);
+            buildFaceWithRectHoles('left', []);
+            buildFaceWithRectHoles('right', []);
+
+            // Inner walls of cross holes (Y-direction tunnels) — cream
+            const pushHoleTunnel = (u0,u1,v0,v1) => {
+              pushQuad([u0,-halfS,v0],[u0,halfS,v0],[u1,halfS,v0],[u1,-halfS,v0], 1);
+              pushQuad([u1,-halfS,v1],[u1,halfS,v1],[u0,halfS,v1],[u0,-halfS,v1], 1);
+              pushQuad([u0,halfS,v0],[u0,-halfS,v0],[u0,-halfS,v1],[u0,halfS,v1], 1);
+              pushQuad([u1,-halfS,v0],[u1,halfS,v0],[u1,halfS,v1],[u1,-halfS,v1], 1);
+            };
+            frontBackHoles.forEach(h => pushHoleTunnel(h.u0,h.u1,h.v0,h.v1));
+
+            // Shaft top cap
+            pushQuad([-halfS,-halfS,zSb],[halfS,-halfS,zSb],[halfS,halfS,zSb],[-halfS,halfS,zSb]);
+
+            // Crown cornice
+            const zCa = 0.74 * bH, zCb = 0.80 * bH;
+            const halfC = halfBW * 0.32;
+            pushBox(-halfC, halfC, -halfC, halfC, zCa, zCb);
+
+            // Spire frustum (slim, tapered)
+            const zPa = 0.80 * bH, zPb = 0.94 * bH;
+            const halfPa = halfBW * 0.22;
+            const halfPb = halfBW * 0.06;
+            pushQuad([-halfPa,-halfPa,zPa],[ halfPa,-halfPa,zPa],[ halfPb,-halfPb,zPb],[-halfPb,-halfPb,zPb]);
+            pushQuad([ halfPa, halfPa,zPa],[-halfPa, halfPa,zPa],[-halfPb, halfPb,zPb],[ halfPb, halfPb,zPb]);
+            pushQuad([-halfPa, halfPa,zPa],[-halfPa,-halfPa,zPa],[-halfPb,-halfPb,zPb],[-halfPb, halfPb,zPb]);
+            pushQuad([ halfPa,-halfPa,zPa],[ halfPa, halfPa,zPa],[ halfPb, halfPb,zPb],[ halfPb,-halfPb,zPb]);
+
+            // Arrow tip — pyramid + barb undersides (cream undersides)
+            const zAa = 0.94 * bH, zAb = 1.00 * bH;
+            const halfAa = halfBW * 0.12;
+            const apex = [0,0,zAb];
+            pushTri([-halfAa,-halfAa,zAa],[ halfAa,-halfAa,zAa], apex);
+            pushTri([ halfAa, halfAa,zAa],[-halfAa, halfAa,zAa], apex);
+            pushTri([-halfAa, halfAa,zAa],[-halfAa,-halfAa,zAa], apex);
+            pushTri([ halfAa,-halfAa,zAa],[ halfAa, halfAa,zAa], apex);
+            pushQuad([-halfAa,-halfAa,zAa],[-halfPb,-halfPb,zAa],[ halfPb,-halfPb,zAa],[ halfAa,-halfAa,zAa]);
+            pushQuad([ halfAa, halfAa,zAa],[ halfPb, halfPb,zAa],[-halfPb, halfPb,zAa],[-halfAa, halfAa,zAa]);
+            pushQuad([-halfAa, halfAa,zAa],[-halfPb, halfPb,zAa],[-halfPb,-halfPb,zAa],[-halfAa,-halfAa,zAa]);
+            pushQuad([ halfAa,-halfAa,zAa],[ halfPb,-halfPb,zAa],[ halfPb, halfPb,zAa],[ halfAa, halfAa,zAa]);
+
+            const btDomeH = bH;
+
+            const btPosArr = new Float32Array(btVerts);
+            const btIdxArr = new Uint16Array(btIdx);
+            const btCreamArr = new Float32Array(btCream);
+
+            const btModel = new Float64Array([
+              btXx, btXy, 0, 0,
+              btYx, btYy, 0, 0,
+              0,    0,    1, 0,
+              btCentMx, btCentMy, 0, 1
+            ]);
+
+            const btLayer = {
+              id: bt3dId, type: 'custom', renderingMode: '3d',
+              highlighted: 0,
+              setHighlight(v) { this.highlighted = v; map.triggerRepaint(); },
+              onAdd(map, gl) {
+                const vs = `precision highp float; attribute vec3 a_pos; attribute float a_cream; uniform mat4 u_matrix; varying float v_z; varying float v_cream;
+                  void main(){ gl_Position=u_matrix*vec4(a_pos,1.0); v_z=a_pos.z; v_cream=a_cream; }`;
+                const fs = `precision mediump float; varying float v_z; varying float v_cream; uniform float u_maxZ; uniform float u_hl;
+                  void main(){
+                    float t=v_z/u_maxZ;
+                    vec3 base=mix(vec3(0.067,0.11,0.306), vec3(0.831,0.075,0.404), u_hl);
+                    vec3 top =mix(vec3(0.12,0.18,0.42),   vec3(0.95,0.20,0.52),  u_hl);
+                    vec3 dark=mix(base,top,t*0.5);
+                    vec3 cream=vec3(0.953,0.918,0.831);
+                    gl_FragColor=vec4(mix(dark,cream,v_cream),0.97); }`;
+                const sh=(type,src)=>{ const s=gl.createShader(type); gl.shaderSource(s,src); gl.compileShader(s); return s; };
+                this.prog=gl.createProgram();
+                gl.attachShader(this.prog,sh(gl.VERTEX_SHADER,vs)); gl.attachShader(this.prog,sh(gl.FRAGMENT_SHADER,fs));
+                gl.linkProgram(this.prog);
+                this.aBuf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,this.aBuf); gl.bufferData(gl.ARRAY_BUFFER,btPosArr,gl.STATIC_DRAW);
+                this.cBuf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,this.cBuf); gl.bufferData(gl.ARRAY_BUFFER,btCreamArr,gl.STATIC_DRAW);
+                this.iBuf=gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,this.iBuf); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,btIdxArr,gl.STATIC_DRAW);
+                this.aPos=gl.getAttribLocation(this.prog,'a_pos');
+                this.aCream=gl.getAttribLocation(this.prog,'a_cream');
+                this.uMat=gl.getUniformLocation(this.prog,'u_matrix');
+                this.uMaxZ=gl.getUniformLocation(this.prog,'u_maxZ');
+                this.uHl=gl.getUniformLocation(this.prog,'u_hl');
+                this.idxCount=btIdxArr.length;
+              },
+              render(gl, matrix) {
+                const m=new Float64Array(matrix), r=new Float64Array(16);
+                for(let i=0;i<4;i++) for(let j=0;j<4;j++)
+                  r[i*4+j]=m[0*4+j]*btModel[i*4+0]+m[1*4+j]*btModel[i*4+1]+m[2*4+j]*btModel[i*4+2]+m[3*4+j]*btModel[i*4+3];
+                gl.useProgram(this.prog);
+                gl.uniformMatrix4fv(this.uMat,false,new Float32Array(r));
+                gl.uniform1f(this.uMaxZ,btDomeH);
+                gl.uniform1f(this.uHl, this.highlighted);
+                gl.bindBuffer(gl.ARRAY_BUFFER,this.aBuf); gl.enableVertexAttribArray(this.aPos);
+                gl.vertexAttribPointer(this.aPos,3,gl.FLOAT,false,0,0);
+                if (this.aCream>=0) { gl.bindBuffer(gl.ARRAY_BUFFER,this.cBuf); gl.enableVertexAttribArray(this.aCream); gl.vertexAttribPointer(this.aCream,1,gl.FLOAT,false,0,0); }
+                gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,this.iBuf);
+                gl.clear(gl.DEPTH_BUFFER_BIT);
+                gl.enable(gl.DEPTH_TEST); gl.depthMask(true);
+                gl.drawElements(gl.TRIANGLES,this.idxCount,gl.UNSIGNED_SHORT,0);
+              }
+            };
+            map.addLayer(btLayer, DATA_LAYER);
+            entrance3dLayers.set('bell-tower', btLayer);
+
+            // Popup pinned to spire tip
+            const btGateLng = btRing.reduce((s,c)=>s+c[0],0)/btRing.length;
+            const btGateLat = btRing.reduce((s,c)=>s+c[1],0)/btRing.length;
+            const btGateLngLat = [btGateLng, btGateLat];
+            const btPeakHeightM = bH / btMPM;
+            const computeBtLiftPx = () => {
+              const p = map.project(btGateLngLat);
+              const a = map.unproject([p.x, p.y]);
+              const b = map.unproject([p.x + 1, p.y]);
+              const mPerPx = btHav(a.lng, a.lat, b.lng, b.lat);
+              if (!mPerPx || !isFinite(mPerPx)) return 0;
+              const pitchRad = map.getPitch() * Math.PI / 180;
+              return (btPeakHeightM / mPerPx) * Math.sin(pitchRad);
+            };
+            const btPopupOpts = { offset: 0, maxWidth: '200px', focusAfterOpen: false, anchor: 'bottom' };
+            let btPopup = null;
+            const updateBtPopupOffset = () => {
+              if (!btPopup) return;
+              const lift = computeBtLiftPx();
+              btPopup.setOffset([0, -lift - 8]);
+            };
+            window.openBellTowerPopup = () => {
+              const { title = 'Bell Tower', description = '' } = (pointLabels.points && pointLabels.points['bell-tower']) || {};
+              const html = window.mapPointPopup.innerHTML.replace(/\$(\w+)/g, (_, k) => ({ title, description })[k] ?? '');
+              if (currentOpenPopup) { currentOpenPopup.remove(); currentOpenPopup = null; }
+              btPopup = new mapboxgl.Popup(btPopupOpts).setLngLat(btGateLngLat).setHTML(html).addTo(map);
+              currentOpenPopup = btPopup;
+              btPopup.on('close', () => { if (currentOpenPopup === btPopup) currentOpenPopup = null; btPopup = null; });
+              updateBtPopupOffset();
+            };
+            map.on('move', updateBtPopupOffset);
+            map.on('zoom', updateBtPopupOffset);
+            map.on('pitch', updateBtPopupOffset);
+            map.on('rotate', updateBtPopupOffset);
+            map.on('resize', updateBtPopupOffset);
+
+            const btKeepOnTop = () => { if (map.getLayer(bt3dId)) map.moveLayer(bt3dId); };
+            btKeepOnTop();
+            map.on('idle', btKeepOnTop);
+            map.on('styledata', btKeepOnTop);
+            map.on('sourcedata', btKeepOnTop);
+
+            // Hit layer
+            const btHitId = 'bell-tower-hit';
+            if (!map.getLayer(btHitId)) {
+              map.addLayer({ id: btHitId, type: 'fill-extrusion', source: 'map-data',
+                filter: ['==', ['get', 'id'], 'bell-tower'],
+                paint: { 'fill-extrusion-color': '#000', 'fill-extrusion-opacity': 0, 'fill-extrusion-height': bH / btMPM, 'fill-extrusion-base': 0 }
+              });
+              map.on('click', btHitId, () => { setEntranceHighlights('bell-tower'); window.openBellTowerPopup(); });
+              map.on('mouseenter', btHitId, () => { map.getCanvas().style.cursor = 'pointer'; });
+              map.on('mouseleave', btHitId, () => { map.getCanvas().style.cursor = ''; });
+            }
+
+            // Register in pointMarkers for sidebar
+            { const { title = 'Bell Tower' } = pointLabels.points?.['bell-tower'] || {};
+              const btLngLat = new mapboxgl.LngLat(btGateLng, btGateLat);
+              pointMarkers.push({ type: 'bell-tower', id: 'bell-tower', iconKey: 'bell-tower', title,
+                marker: { getLngLat: () => btLngLat, addTo: () => {}, remove: () => {},
+                  getPopup: () => ({ isOpen: () => false }),
+                  togglePopup() { setEntranceHighlights('bell-tower'); window.openBellTowerPopup(); } } }); }
           } else if (feature.geometry.type === 'Polygon' && featureId === 'arch') {
             // 3D arch arcade via Mapbox CustomLayerInterface + raw WebGL
             // Geometry: 3 arches × 2 rows matching the patio-de-las-campanas icon
