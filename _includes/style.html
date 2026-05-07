@@ -399,6 +399,7 @@ html, body {
 
     a,
     button#visit-popover-anchor,
+    button#about-popover-anchor,
     button#discover-popover-anchor {
       cursor: pointer;
       color: var(--cream);
@@ -457,6 +458,10 @@ html, body {
       anchor-name: --visit-popover-anchor;
     }
 
+    button#about-popover-anchor {
+      anchor-name: --about-popover-anchor;
+    }
+
     button#discover-popover-anchor {
       anchor-name: --discover-popover-anchor;
     }
@@ -507,6 +512,11 @@ html, body {
     div#visit-popover {
       top: anchor(--visit-popover-anchor bottom);
       left: anchor(--visit-popover-anchor center);
+    }
+
+    div#about-popover {
+      top: anchor(--about-popover-anchor bottom);
+      left: anchor(--about-popover-anchor center);
     }
 
     div#discover-popover {

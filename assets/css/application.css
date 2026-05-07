@@ -148,9 +148,18 @@ header {
       anchor-name: --discover-popover-anchor;
     }
 
+    button#about-popover-anchor {
+      anchor-name: --about-popover-anchor;
+    }
+
     div#discover-popover {
       top: anchor(--discover-popover-anchor bottom);
       left: anchor(--discover-popover-anchor center);
+    }
+
+    div#about-popover {
+      top: anchor(--about-popover-anchor bottom);
+      left: anchor(--about-popover-anchor center);
     }
 
     &:has(#discover-popover-anchor:hover),
@@ -166,6 +175,23 @@ header {
       }
 
       #discover-popover-anchor svg:last-of-type {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:has(#about-popover-anchor:hover),
+    &:has(#about-popover:hover),
+    &:has(#about-popover:focus-within),
+    &:has(#about-popover-anchor:focus-visible) {
+      #about-popover {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translate(-50%, 0);
+        transition: opacity 300ms ease, transform 300ms ease, visibility 0s linear 0s;
+      }
+
+      #about-popover-anchor svg:last-of-type {
         transform: rotate(180deg);
       }
     }
@@ -242,7 +268,7 @@ nav#mobile {
 }
 
 nav#mobile {
-  input#visit-toggle {
+  .mobile-submenu-input {
     position: fixed;
     opacity: 0;
     pointer-events: none;
@@ -250,7 +276,7 @@ nav#mobile {
     width: 0;
   }
 
-  label#mobile-submenu-toggle,
+  .mobile-submenu-toggle,
   a {
     color: var(--cream);
     display: flex;
@@ -273,7 +299,7 @@ nav#mobile {
     }
   }
 
-  label#mobile-submenu-toggle {
+  .mobile-submenu-toggle {
     font-weight: 600;
     cursor: pointer;
     position: relative;
@@ -304,7 +330,7 @@ nav#mobile {
     transition: background-color 180ms ease, color 180ms ease;
   }
 
-  nav#mobile-submenu-content {
+  .mobile-submenu-content {
     display: flex;
     flex-direction: column;
     max-height: 0;
@@ -313,12 +339,12 @@ nav#mobile {
     transition: max-height 300ms ease, opacity 300ms ease;
   }
 
-  input#visit-toggle:checked + label#mobile-submenu-toggle + nav#mobile-submenu-content {
+  .mobile-submenu-input:checked + .mobile-submenu-toggle + .mobile-submenu-content {
     max-height: 500px;
     opacity: 1;
   }
 
-  input#visit-toggle:checked + label#mobile-submenu-toggle > svg:last-of-type {
+  .mobile-submenu-input:checked + .mobile-submenu-toggle > svg:last-of-type {
     transform: rotate(180deg);
   }
 
@@ -338,13 +364,13 @@ nav#mobile {
     margin-right: 0;
   }
 
-  nav#mobile-submenu-content a {
+  .mobile-submenu-content a {
     font-weight: 500;
     padding-left: 3.5rem;
     border-image: linear-gradient(to right, transparent 3.5rem, var(--cream-60) 3.5rem, var(--cream-60) calc(100% - 2.5rem), transparent calc(100% - 2.5rem)) 1;
   }
 
-  nav#mobile-submenu-content a:last-child {
+  .mobile-submenu-content a:last-child {
     border-bottom: none;
   }
 
