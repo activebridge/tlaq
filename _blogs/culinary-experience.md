@@ -5,7 +5,7 @@ description: The Art of Custom Hatmaking
 image: /assets/images/blogs/Charlie-Steaming.jpg
 ---
 
-[True West Hats,](https://truewesthats.com/) a new addition to Tlaquepaque, was founded by Charlie and April Seaman, a husband-and-wife team whose work is rooted in a shared search for true north—both creatively and personally.
+[**True West Hats**,](https://truewesthats.com/) a new addition to Tlaquepaque, was founded by Charlie and April Seaman, a husband-and-wife team whose work is rooted in a shared search for true north—both creatively and personally.
 
 After years living in South America, they returned to the U.S. deeply influenced by cultures that value slower making, honor handmade processes, and prize objects for their stories and the hands that created them—a philosophy that now forms the foundation of True West Hats.
 
