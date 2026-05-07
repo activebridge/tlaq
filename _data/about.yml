@@ -9,7 +9,7 @@ history:
   button_text: Learn More
   button_url: /history
 village_map:
-  description: Our interactive village map provides easy navigation to all shops, galleries, and restaurants, helping you discover every corner of Tlaquepaque North and South during your visit.
+  description: Our interactive village map provides easy navigation to all shops, galleries, and restaurants, helping you discover every corner of Tlaquepaque North and South.
 sections:
   tlaquepaque_north:
     heading: Tlaquepaque North
@@ -26,7 +26,7 @@ sections:
     description: Wander the village to discover the collection of outdoor sculptures and art installations. Permanent pieces like Kim Kori's beloved frog have become village landmarks, while rotating displays showcase new works. This outdoor gallery transforms your stroll through the village into an artistic journey of unexpected discoveries.
     button:
       text: Have You Seen These?
-      url: https://discover.tlaq.com/have_you_seen
+      url: /outdoor-art
     images:
       - /assets/images/about/outdoor-art.png
   landscaping:
@@ -46,24 +46,24 @@ sections:
     images:
       - assets/images/about/our-people.png
 jump_to_links:
-  our_people:
-    id: '#our-people'
-    text: OUR PEOPLE
-  sycamore:
-    id: '#sycamore'
-    text: SYCAMORE
-  landscaping:
-    id: '#landscaping'
-    text: LANDSCAPING
-  outdoor_art:
-    id: '#outdoor-art'
-    text: OUTDOOR ART
-  tlaquepaque_north:
-    id: '#tlaquepaque-north'
-    text: TLAQUEPAQUE NORTH
-  historic_landmark:
-    id: '#historic-landmark'
-    text: HISTORIC LANDMARK
   village_map:
-    id: '#village-map'
     text: VILLAGE MAP
+    id: '#village-map'
+  historic_landmark:
+    text: HISTORIC LANDMARK
+    id: '#historic-landmark'
+  tlaquepaque_north:
+    text: TLAQUEPAQUE NORTH
+    id: '#tlaquepaque-north'
+  outdoor_art:
+    text: OUTDOOR ART
+    id: '#outdoor-art'
+  landscaping:
+    text: LANDSCAPING
+    id: '#landscaping'
+  sycamore:
+    text: SYCAMORE
+    id: '#sycamore'
+  our_people:
+    text: OUR PEOPLE
+    id: '#our-people'
