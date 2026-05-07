@@ -6,12 +6,12 @@
   {% assign slide_count = slides.size %}
   {% assign total_slides = slide_count | times: 2 %}
 
-  <div class="events-slideshow">
-    <div class="events-barrier">
-      <div class="events-track" id="eventsTrack" style="--count: {{ slide_count }}; --slides: {{ total_slides }}; --duration-per-slide: 4s;">
+  <div class="slideshow events-slideshow">
+    <div class="slideshow-barrier">
+      <div class="slideshow-track" id="eventsTrack" data-slideshow="events" style="--count: {{ slide_count }}; --slides: {{ total_slides }}; --duration-per-slide: 4s;">
 
         {% for image in slides %}
-        <picture class="events-slide">
+        <picture class="slideshow-slide">
           <source media="(max-width: 480px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}">
           <source media="(max-width: 768px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}">
           <source media="(min-width: 768px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}">
@@ -19,7 +19,7 @@
         </picture>
         {% endfor %}
         {% for image in slides %}
-        <picture class="events-slide" aria-hidden="true">
+        <picture class="slideshow-slide" aria-hidden="true">
           <source media="(max-width: 480px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}">
           <source media="(max-width: 768px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=600,height=428,fit=cover,format=webp/' | prepend: site.cdn_url }}">
           <source media="(min-width: 768px)" srcset="{{ image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,format=webp/' | prepend: site.cdn_url }}">
@@ -35,34 +35,5 @@
   </div>
 </article>
 
-<!-- Small script to dynamically calculate the animation keyframes for the events slideshow -->
-<script>
-  (() => {
-    const track = window.eventsTrack;
-    const n = +track.style.getPropertyValue('--count');
-    if (n < 2) return;
+{% include slideshow-script.html %}
 
-    const seg = 100 / n;
-    const hold = seg * 0.6;
-    const step = 50 / n;
-
-    const rules = Array.from({ length: n }, (_, i) => {
-      const start = i * seg;
-      const mid = start + hold;
-      const end = (i + 1) * seg;
-      const shift = i * step;
-      const next = (i + 1) * step;
-
-      return `
-        ${start}%, ${mid}% { transform: translateX(-${shift}%); }
-        ${end}% { transform: translateX(-${next}%); }
-      `;
-    }).join('');
-
-    const style = document.createElement('style');
-    style.textContent = `@keyframes events-dynamic { ${rules} }`;
-    document.head.appendChild(style);
-    const duration = n * (parseFloat(track.style.getPropertyValue('--duration-per-slide')) || 4);
-    track.style.animation = `events-dynamic ${duration}s linear infinite`;
-  })();
-</script>

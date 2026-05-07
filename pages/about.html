@@ -53,12 +53,7 @@ layout_type: about
           <a class="btn btn-primary" href="{{ section.button.url }}"{% if is_external == "http" %} target="_blank" rel="noopener"{% endif %}>{{ section.button.text }}</a>
         {% endif %}
       </article>
-      <figure>
-        {% for image in section.images %}
-          {% assign img_src = image | prepend: '/cdn-cgi/image/width=1200,height=675,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
-          <img src="{{ img_src }}" alt="{{ section.heading }}" width="1200" height="675" loading="lazy" decoding="async" onerror="imageError(this)">
-        {% endfor %}
-      </figure>
+      {% include slideshow.html images=section.images alt=section.heading width=1200 height=675 id=anchor %}
     </section>
   {% endfor %}
 
@@ -70,12 +65,7 @@ layout_type: about
       {% assign anchor = site.data.about.jump_to_links[key].id | remove: '#' %}
       <section id="{{ anchor }}">
         <h3>{{ section.heading }}</h3>
-        <figure>
-          {% for image in section.images %}
-            {% assign img_src = image | prepend: '/cdn-cgi/image/width=800,height=600,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
-            <img src="{{ img_src }}" alt="{{ section.heading }}" width="800" height="600" loading="lazy" decoding="async" onerror="imageError(this)">
-          {% endfor %}
-        </figure>
+        {% include slideshow.html images=section.images alt=section.heading width=800 height=600 id=anchor %}
         <p>{{ section.description }}</p>
       </section>
     {% endfor %}
@@ -89,11 +79,8 @@ layout_type: about
       <h3>{{ section.heading }}</h3>
       <p>{{ section.description }}</p>
     </article>
-    <figure>
-      {% for image in section.images %}
-        {% assign img_src = image | prepend: '/cdn-cgi/image/width=1200,height=675,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
-        <img src="{{ img_src }}" alt="{{ section.heading }}" width="1200" height="675" loading="lazy" decoding="async" onerror="imageError(this)">
-      {% endfor %}
-    </figure>
+    {% include slideshow.html images=section.images alt=section.heading width=1200 height=675 id=anchor %}
   </section>
 </div>
+
+{% include slideshow-script.html %}

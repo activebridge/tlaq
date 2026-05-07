@@ -565,7 +565,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
               - label: "Historic Landmark"
                 name: "historic_landmark"
                 widget: "object"
@@ -575,7 +575,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
               - label: "Outdoor Art"
                 name: "outdoor_art"
                 widget: "object"
@@ -590,7 +590,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
               - label: "Landscaping"
                 name: "landscaping"
                 widget: "object"
@@ -600,7 +600,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
               - label: "Sycamore"
                 name: "sycamore"
                 widget: "object"
@@ -610,7 +610,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
               - label: "Our People"
                 name: "our_people"
                 widget: "object"
@@ -620,7 +620,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
       - name: "call_for_submission"
         label: "Call for Submission"
         file: "_data/call-for-submission.yml"

@@ -1,0 +1,37 @@
+<script>
+  (() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const tracks = document.querySelectorAll('.slideshow-track[data-slideshow]');
+    if (!tracks.length) return;
+
+    const rules = [];
+    const assignments = [];
+
+    tracks.forEach((track) => {
+      const n = +track.style.getPropertyValue('--count');
+      if (n < 2) return;
+      const sid = track.dataset.slideshow;
+      const seg = 100 / n;
+      const hold = seg * 0.6;
+      const step = 50 / n;
+      const frames = Array.from({ length: n }, (_, i) => {
+        const start = i * seg;
+        const mid = start + hold;
+        const end = (i + 1) * seg;
+        const shift = i * step;
+        const next = (i + 1) * step;
+        return `${start}%, ${mid}% { transform: translateX(-${shift}%); } ${end}% { transform: translateX(-${next}%); }`;
+      }).join('');
+      const animName = `slideshow-${sid}-anim`;
+      rules.push(`@keyframes ${animName} { ${frames} }`);
+      const duration = n * (parseFloat(track.style.getPropertyValue('--duration-per-slide')) || 4);
+      assignments.push([track, `${animName} ${duration}s linear infinite`]);
+    });
+
+    if (!rules.length) return;
+    const style = document.createElement('style');
+    style.textContent = rules.join('\n');
+    document.head.appendChild(style);
+    assignments.forEach(([track, anim]) => { track.style.animation = anim; });
+  })();
+</script>

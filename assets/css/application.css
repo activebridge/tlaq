@@ -1071,6 +1071,52 @@ footer > .wrapper {
   }
 }
 
+.slideshow {
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+
+.slideshow-barrier {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slideshow-track {
+  display: flex;
+  width: calc(100% * var(--slides));
+  height: 100%;
+  animation: slideshow-autoplay calc(var(--count) * var(--duration-per-slide)) linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.slideshow-slide {
+  height: 100%;
+  width: calc(100% / var(--slides));
+  flex: 0 0 calc(100% / var(--slides));
+}
+
+.slideshow-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes slideshow-autoplay {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slideshow-track {
+    animation: none;
+  }
+}
+
 .weddings {
   .list-container .card { justify-content: space-between; }
 
@@ -1093,52 +1139,7 @@ footer > .wrapper {
 
     .btn-primary { --btn-color: var(--navy); }
 
-    /* Slideshow */
-    .events-slideshow {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3 / 2;
-    }
-
-    .events-barrier {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .events-track {
-      display: flex;
-      width: calc(100% * var(--slides));
-      height: 100%;
-      animation: events-autoplay calc(var(--count) * var(--duration-per-slide)) linear infinite;
-      will-change: transform;
-      transform: translateZ(0);
-    }
-
-    .events-slide {
-      height: 100%;
-      width: calc(100% / var(--slides));
-      flex: 0 0 calc(100% / var(--slides));
-    }
-
-    .events-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    @keyframes events-autoplay {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .events-track {
-        animation: none;
-      }
-    }
+    .events-slideshow { aspect-ratio: 3 / 2; }
 
     @media (min-width: 770px) {
       display: grid;
