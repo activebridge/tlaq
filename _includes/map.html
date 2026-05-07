@@ -918,6 +918,8 @@
       if (!buildingDataReady || !featureIds?.length) return;
       const validIds = featureIds.filter(isValidFeatureId);
       if (!validIds.length) return;
+      setEntranceHighlights(null);
+      arch3dLayerRef?.setHighlight(0);
       clearHighlightedBuildings();
       highlightedBuildingIds = new Set(validIds);
       const color = resolveStoreColor(store);
@@ -1043,7 +1045,7 @@
       // 3D extruded buildings
       map.addLayer({
         id: DATA_LAYER, type: 'fill-extrusion', source: 'map-data',
-        filter: ['all', polygonFilter, ['==', ['get', 'type'], 'building']],
+        filter: ['all', polygonFilter, ['==', ['get', 'type'], 'building'], ['!=', ['get', 'id'], 'chappel']],
         paint: {
           'fill-extrusion-color': ['case',
             ['boolean', ['feature-state', 'active'], false], ['coalesce', ['feature-state', 'color'], DEFAULT_HIGHLIGHT_COLOR],
@@ -1183,7 +1185,7 @@
         map.on('click', 'underpath-fill', e => openAreaPopup(e.lngLat, 'underpass'));
         map.on('click', 'crosswalk-fill', e => openAreaPopup(e.lngLat, 'crosswalk-to-north'));
         map.on('click', 'main-gate-fill', () => { if (window.openMainGatePopup) window.openMainGatePopup(); });
-        map.on('click', 'arch-fill', e => { arch3dLayerRef?.setHighlight(1); openAreaPopup(e.lngLat, 'arcs'); });
+        map.on('click', 'arch-fill', e => { setEntranceHighlights(null); clearHighlightedBuildings(); arch3dLayerRef?.setHighlight(1); openAreaPopup(e.lngLat, 'arcs'); });
         ['area-labels', 'underpass-fill', 'underpath-fill', 'crosswalk-fill', 'main-gate-fill', 'arch-fill'].forEach(layer => {
           map.on('mouseenter', layer, () => { map.getCanvas().style.cursor = 'pointer'; });
           map.on('mouseleave', layer, () => { map.getCanvas().style.cursor = ''; });
@@ -1648,7 +1650,7 @@
               let scheduled = false;
               const update = () => {
                 scheduled = false;
-                const layers = ['main-gate-hit', 'bell-tower-hit'].filter(id => map.getLayer(id));
+                const layers = ['main-gate-hit', 'bell-tower-hit', 'chapel-hit'].filter(id => map.getLayer(id));
                 if (!layers.length) return;
                 const markers = (map._markers && Array.isArray(map._markers)) ? map._markers : null;
                 if (!markers) return;
@@ -2009,6 +2011,329 @@
                 marker: { getLngLat: () => btLngLat, addTo: () => {}, remove: () => {},
                   getPopup: () => ({ isOpen: () => false }),
                   togglePopup() { setEntranceHighlights('bell-tower'); window.openBellTowerPopup(); } } }); }
+          } else if (feature.geometry.type === 'Polygon' && featureId === 'chappel') {
+            const ch3dId = 'chapel-3d-layer';
+            if (map.getLayer(ch3dId)) return;
+
+            const chRing = feature.geometry.coordinates[0].slice(0, -1);
+            const chToRad = d => d * Math.PI / 180;
+            const chLngLatToMerc = ([lng, lat]) => {
+              const x = (lng + 180) / 360;
+              const sinLat = Math.sin(chToRad(lat));
+              const y = 0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI);
+              return [x, y];
+            };
+            const chMPts = chRing.map(chLngLatToMerc);
+
+            // Longest edge → local X
+            let chLongestLen = 0, chLongestI = 0;
+            for (let i = 0; i < chMPts.length; i++) {
+              const a = chMPts[i], b = chMPts[(i+1) % chMPts.length];
+              const d = Math.hypot(b[0]-a[0], b[1]-a[1]);
+              if (d > chLongestLen) { chLongestLen = d; chLongestI = i; }
+            }
+            const chEA = chMPts[chLongestI], chEB = chMPts[(chLongestI+1) % chMPts.length];
+            const chXx = (chEB[0]-chEA[0])/chLongestLen, chXy = (chEB[1]-chEA[1])/chLongestLen;
+            const chYx = -chXy, chYy = chXx;
+
+            const chCentMx = chMPts.reduce((s,p)=>s+p[0],0)/chMPts.length;
+            const chCentMy = chMPts.reduce((s,p)=>s+p[1],0)/chMPts.length;
+
+            const chHav = (ln1,la1,ln2,la2) => {
+              const R=6371000, dLat=chToRad(la2-la1), dLng=chToRad(ln2-ln1);
+              const a=Math.sin(dLat/2)**2+Math.cos(chToRad(la1))*Math.cos(chToRad(la2))*Math.sin(dLng/2)**2;
+              return 2*R*Math.asin(Math.sqrt(a));
+            };
+            const chLng0 = chRing[chLongestI][0], chLat0 = chRing[chLongestI][1];
+            const chLng1 = chRing[(chLongestI+1)%chRing.length][0], chLat1 = chRing[(chLongestI+1)%chRing.length][1];
+            const chEdgeLenM = chHav(chLng0,chLat0,chLng1,chLat1);
+            const chMPM = chLongestLen / chEdgeLenM;
+
+            // Project polygon points into local frame (centroid origin)
+            const chLocal = chMPts.map(([mx,my]) => {
+              const dx = mx - chCentMx, dy = my - chCentMy;
+              return [dx*chXx + dy*chXy, dx*chYx + dy*chYy];
+            });
+            // Polygon orientation: ensure CCW for ear clipping (negative signed area in our frame is CW)
+            let chArea = 0;
+            for (let i = 0; i < chLocal.length; i++) {
+              const a = chLocal[i], b = chLocal[(i+1)%chLocal.length];
+              chArea += a[0]*b[1] - b[0]*a[1];
+            }
+            const chPoly = chArea < 0 ? chLocal.slice().reverse() : chLocal;
+
+            const bW = chLongestLen;
+            const bH = bW * 0.5;
+
+            const chVerts = [], chIdx = [], chCream = [];
+            const pushTri = (a,b,c, cr=0) => { const i=chVerts.length/3; chVerts.push(...a,...b,...c); chCream.push(cr,cr,cr); chIdx.push(i,i+1,i+2); };
+            const pushQuad = (a,b,c,d, cr=0) => { const i=chVerts.length/3; chVerts.push(...a,...b,...c,...d); chCream.push(cr,cr,cr,cr); chIdx.push(i,i+1,i+2,i,i+2,i+3); };
+            const pushBox = (x0,x1,y0,y1,z0,z1, cr=0) => {
+              pushQuad([x0,y0,z1],[x1,y0,z1],[x1,y1,z1],[x0,y1,z1], cr);
+              pushQuad([x0,y0,z0],[x1,y0,z0],[x1,y0,z1],[x0,y0,z1], cr);
+              pushQuad([x1,y1,z0],[x0,y1,z0],[x0,y1,z1],[x1,y1,z1], cr);
+              pushQuad([x0,y1,z0],[x0,y0,z0],[x0,y0,z1],[x0,y1,z1], cr);
+              pushQuad([x1,y0,z0],[x1,y1,z0],[x1,y1,z1],[x1,y0,z1], cr);
+            };
+
+            // Body walls — extrude polygon edges from 0 to bodyTop
+            const bodyTop = bH * 0.50;
+            for (let i = 0; i < chPoly.length; i++) {
+              const a = chPoly[i], b = chPoly[(i+1)%chPoly.length];
+              pushQuad([a[0],a[1],0],[b[0],b[1],0],[b[0],b[1],bodyTop],[a[0],a[1],bodyTop]);
+            }
+            // Flat roof = top cap of walls (triangle fan from centroid)
+            const peakZ = bodyTop;
+            for (let i = 0; i < chPoly.length; i++) {
+              const a = chPoly[i], b = chPoly[(i+1)%chPoly.length];
+              pushTri([0,0,bodyTop],[a[0],a[1],bodyTop],[b[0],b[1],bodyTop]);
+            }
+            const ys = chPoly.map(p=>p[1]);
+            const minY = Math.min(...ys), maxY = Math.max(...ys);
+            const halfDepth = (maxY - minY) / 2;
+            const belOffsetY = -halfDepth * 0.5;
+            // Bottom cap (triangle fan from centroid) — closes underside if visible
+            for (let i = 0; i < chPoly.length; i++) {
+              const a = chPoly[i], b = chPoly[(i+1)%chPoly.length];
+              pushTri([0,0,0],[b[0],b[1],0],[a[0],a[1],0]);
+            }
+
+            // Belfry block — sits centered above peak. Belfry belongs on the front gable
+            // (face perpendicular to Y axis). For chevron polygon, place at centroid x=0,
+            // y = front edge mid in local Y. Pick the polygon's most-positive-Y edge midpoint
+            // shifted slightly inward, OR just centered at x=0,y=0.
+            const belHalfW = bW * 0.10;
+            const belHalfD = bW * 0.10;
+            const belZ0 = peakZ;                 // sits on flat roof
+            const belZ1 = bH * 1.05;
+            const belCx = 0;
+            const belCy = belOffsetY;
+            pushBox(belCx-belHalfW, belCx+belHalfW, belCy-belHalfD, belCy+belHalfD, belZ0, belZ1);
+            // Gable cap on belfry: ridge runs along Y at x=belCx
+            const gableH = belHalfW;
+            const ridgeZ = belZ1 + gableH;
+            // Front gable triangle (-Y face)
+            pushTri([belCx-belHalfW, belCy-belHalfD, belZ1],[belCx+belHalfW, belCy-belHalfD, belZ1],[belCx, belCy-belHalfD, ridgeZ]);
+            // Back gable triangle (+Y face)
+            pushTri([belCx+belHalfW, belCy+belHalfD, belZ1],[belCx-belHalfW, belCy+belHalfD, belZ1],[belCx, belCy+belHalfD, ridgeZ]);
+            // -X roof slope
+            pushQuad([belCx-belHalfW, belCy+belHalfD, belZ1],[belCx-belHalfW, belCy-belHalfD, belZ1],[belCx, belCy-belHalfD, ridgeZ],[belCx, belCy+belHalfD, ridgeZ]);
+            // +X roof slope
+            pushQuad([belCx+belHalfW, belCy-belHalfD, belZ1],[belCx+belHalfW, belCy+belHalfD, belZ1],[belCx, belCy+belHalfD, ridgeZ],[belCx, belCy-belHalfD, ridgeZ]);
+
+            // House-shaped window on belfry front face (-Y) — cream patch slightly outside
+            // Body: half-width wHw, body height wBh; peak adds wPk
+            const wHw = belHalfW * 0.55;
+            const wBh = (belZ1-belZ0) * 0.30;
+            const wPh = (belZ1-belZ0) * 0.13;
+            const wBz0 = belZ0 + (belZ1-belZ0) * 0.50;
+            const wBz1 = wBz0 + wBh;
+            const wPkZ = wBz1 + wPh;
+            const wY = belCy - belHalfD - 1e-4 * bW;
+            pushQuad([belCx-wHw,wY,wBz0],[belCx+wHw,wY,wBz0],[belCx+wHw,wY,wBz1],[belCx-wHw,wY,wBz1], 1);
+            pushTri([belCx-wHw,wY,wBz1],[belCx+wHw,wY,wBz1],[belCx,wY,wPkZ], 1);
+            const wYB = belCy + belHalfD + 1e-4 * bW;
+            pushQuad([belCx+wHw,wYB,wBz0],[belCx-wHw,wYB,wBz0],[belCx-wHw,wYB,wBz1],[belCx+wHw,wYB,wBz1], 1);
+            pushTri([belCx+wHw,wYB,wBz1],[belCx-wHw,wYB,wBz1],[belCx,wYB,wPkZ], 1);
+
+            // Cream silhouette contour wires (thin square-section tube along each silhouette edge)
+            const wireR = bW * 0.0005;
+            const pushWire = (p0, p1) => {
+              const dx = p1[0]-p0[0], dy = p1[1]-p0[1], dz = p1[2]-p0[2];
+              const L = Math.hypot(dx,dy,dz); if (L < 1e-9) return;
+              const tx = dx/L, ty = dy/L, tz = dz/L;
+              // Pick a vector not parallel to t
+              let ux, uy, uz;
+              if (Math.abs(tz) < 0.9) { ux = -ty; uy = tx; uz = 0; }
+              else { ux = 1; uy = 0; uz = 0; }
+              const ul = Math.hypot(ux,uy,uz); ux/=ul; uy/=ul; uz/=ul;
+              // n = t × u (perpendicular to both)
+              const nx = ty*uz - tz*uy, ny = tz*ux - tx*uz, nz = tx*uy - ty*ux;
+              const corner = (p, su, sn) => [p[0]+su*ux*wireR+sn*nx*wireR, p[1]+su*uy*wireR+sn*ny*wireR, p[2]+su*uz*wireR+sn*nz*wireR];
+              const a0 = corner(p0,-1,-1), b0 = corner(p0, 1,-1), c0 = corner(p0, 1, 1), d0 = corner(p0,-1, 1);
+              const a1 = corner(p1,-1,-1), b1 = corner(p1, 1,-1), c1 = corner(p1, 1, 1), d1 = corner(p1,-1, 1);
+              pushQuad(a0,b0,b1,a1, 1);
+              pushQuad(b0,c0,c1,b1, 1);
+              pushQuad(c0,d0,d1,c1, 1);
+              pushQuad(d0,a0,a1,d1, 1);
+              pushQuad(d0,c0,b0,a0, 1); // start cap
+              pushQuad(a1,b1,c1,d1, 1); // end cap
+            };
+            // Belfry top edge perimeter
+            const belCorners = [
+              [belCx-belHalfW,belCy-belHalfD,belZ1],[ belCx+belHalfW,belCy-belHalfD,belZ1],
+              [ belCx+belHalfW, belCy+belHalfD,belZ1],[belCx-belHalfW, belCy+belHalfD,belZ1]
+            ];
+            for (let i = 0; i < 4; i++) pushWire(belCorners[i], belCorners[(i+1)%4]);
+            // Belfry vertical corner edges
+            for (let i = 0; i < 4; i++) {
+              const c = belCorners[i];
+              pushWire([c[0],c[1],belZ0],[c[0],c[1],belZ1]);
+            }
+            // Gable edges + ridge
+            const ridgeF = [belCx, belCy-belHalfD, ridgeZ];
+            const ridgeB = [belCx, belCy+belHalfD, ridgeZ];
+            pushWire([belCx-belHalfW, belCy-belHalfD, belZ1], ridgeF);
+            pushWire([belCx+belHalfW, belCy-belHalfD, belZ1], ridgeF);
+            pushWire([belCx-belHalfW, belCy+belHalfD, belZ1], ridgeB);
+            pushWire([belCx+belHalfW, belCy+belHalfD, belZ1], ridgeB);
+            pushWire(ridgeF, ridgeB);
+
+            // Cross spire above belfry
+            const postHalf = bW * 0.012;
+            const postZ0 = ridgeZ;
+            const postZ1 = ridgeZ + (belZ1 - belZ0) * 0.55;
+            pushBox(belCx-postHalf, belCx+postHalf, belCy-postHalf, belCy+postHalf, postZ0, postZ1);
+            const barHalfW = bW * 0.06;
+            const barHalfThk = bW * 0.012;
+            const barCz = ridgeZ + (postZ1 - ridgeZ) * 0.55;
+            pushBox(belCx-barHalfW, belCx+barHalfW, belCy-barHalfThk, belCy+barHalfThk, barCz - barHalfThk, barCz + barHalfThk);
+
+            // Cross silhouette outline (12-vertex plus shape, front face -Y)
+            {
+              const yF = belCy - barHalfThk - 1e-5*bW;
+              const bzL = barCz - barHalfThk, bzU = barCz + barHalfThk;
+              const crossPts = [
+                [belCx-postHalf, yF, postZ0],
+                [belCx+postHalf, yF, postZ0],
+                [belCx+postHalf, yF, bzL],
+                [belCx+barHalfW, yF, bzL],
+                [belCx+barHalfW, yF, bzU],
+                [belCx+postHalf, yF, bzU],
+                [belCx+postHalf, yF, postZ1],
+                [belCx-postHalf, yF, postZ1],
+                [belCx-postHalf, yF, bzU],
+                [belCx-barHalfW, yF, bzU],
+                [belCx-barHalfW, yF, bzL],
+                [belCx-postHalf, yF, bzL]
+              ];
+              for (let i = 0; i < crossPts.length; i++) pushWire(crossPts[i], crossPts[(i+1)%crossPts.length]);
+              const yB = belCy + barHalfThk + 1e-5*bW;
+              const crossPtsB = crossPts.map(p => [p[0], yB, p[2]]);
+              for (let i = 0; i < crossPtsB.length; i++) pushWire(crossPtsB[i], crossPtsB[(i+1)%crossPtsB.length]);
+            }
+
+            const chDomeH = postZ1;
+
+            const chPosArr = new Float32Array(chVerts);
+            const chIdxArr = new Uint16Array(chIdx);
+            const chCreamArr = new Float32Array(chCream);
+
+            const chModel = new Float64Array([
+              chXx, chXy, 0, 0,
+              chYx, chYy, 0, 0,
+              0,    0,    1, 0,
+              chCentMx, chCentMy, 0, 1
+            ]);
+
+            const chLayer = {
+              id: ch3dId, type: 'custom', renderingMode: '3d',
+              highlighted: 0,
+              setHighlight(v) { this.highlighted = v; map.triggerRepaint(); },
+              onAdd(map, gl) {
+                const vs = `precision highp float; attribute vec3 a_pos; attribute float a_cream; uniform mat4 u_matrix; varying float v_z; varying float v_cream;
+                  void main(){ gl_Position=u_matrix*vec4(a_pos,1.0); v_z=a_pos.z; v_cream=a_cream; }`;
+                const fs = `precision mediump float; varying float v_z; varying float v_cream; uniform float u_maxZ; uniform float u_hl;
+                  void main(){
+                    float t=v_z/u_maxZ;
+                    vec3 base=mix(vec3(0.067,0.11,0.306), vec3(0.831,0.075,0.404), u_hl);
+                    vec3 top =mix(vec3(0.12,0.18,0.42),   vec3(0.95,0.20,0.52),  u_hl);
+                    vec3 dark=mix(base,top,t*0.5);
+                    vec3 cream=vec3(0.953,0.918,0.831);
+                    gl_FragColor=vec4(mix(dark,cream,v_cream),0.97); }`;
+                const sh=(type,src)=>{ const s=gl.createShader(type); gl.shaderSource(s,src); gl.compileShader(s); return s; };
+                this.prog=gl.createProgram();
+                gl.attachShader(this.prog,sh(gl.VERTEX_SHADER,vs)); gl.attachShader(this.prog,sh(gl.FRAGMENT_SHADER,fs));
+                gl.linkProgram(this.prog);
+                this.aBuf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,this.aBuf); gl.bufferData(gl.ARRAY_BUFFER,chPosArr,gl.STATIC_DRAW);
+                this.cBuf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,this.cBuf); gl.bufferData(gl.ARRAY_BUFFER,chCreamArr,gl.STATIC_DRAW);
+                this.iBuf=gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,this.iBuf); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,chIdxArr,gl.STATIC_DRAW);
+                this.aPos=gl.getAttribLocation(this.prog,'a_pos');
+                this.aCream=gl.getAttribLocation(this.prog,'a_cream');
+                this.uMat=gl.getUniformLocation(this.prog,'u_matrix');
+                this.uMaxZ=gl.getUniformLocation(this.prog,'u_maxZ');
+                this.uHl=gl.getUniformLocation(this.prog,'u_hl');
+                this.idxCount=chIdxArr.length;
+              },
+              render(gl, matrix) {
+                const m=new Float64Array(matrix), r=new Float64Array(16);
+                for(let i=0;i<4;i++) for(let j=0;j<4;j++)
+                  r[i*4+j]=m[0*4+j]*chModel[i*4+0]+m[1*4+j]*chModel[i*4+1]+m[2*4+j]*chModel[i*4+2]+m[3*4+j]*chModel[i*4+3];
+                gl.useProgram(this.prog);
+                gl.uniformMatrix4fv(this.uMat,false,new Float32Array(r));
+                gl.uniform1f(this.uMaxZ,chDomeH);
+                gl.uniform1f(this.uHl, this.highlighted);
+                gl.bindBuffer(gl.ARRAY_BUFFER,this.aBuf); gl.enableVertexAttribArray(this.aPos);
+                gl.vertexAttribPointer(this.aPos,3,gl.FLOAT,false,0,0);
+                if (this.aCream>=0) { gl.bindBuffer(gl.ARRAY_BUFFER,this.cBuf); gl.enableVertexAttribArray(this.aCream); gl.vertexAttribPointer(this.aCream,1,gl.FLOAT,false,0,0); }
+                gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,this.iBuf);
+                gl.clear(gl.DEPTH_BUFFER_BIT);
+                gl.enable(gl.DEPTH_TEST); gl.depthMask(true);
+                gl.drawElements(gl.TRIANGLES,this.idxCount,gl.UNSIGNED_SHORT,0);
+              }
+            };
+            map.addLayer(chLayer, DATA_LAYER);
+            entrance3dLayers.set('chappel', chLayer);
+
+            // Popup pinned to top of cross
+            const chGateLng = chRing.reduce((s,c)=>s+c[0],0)/chRing.length;
+            const chGateLat = chRing.reduce((s,c)=>s+c[1],0)/chRing.length;
+            const chGateLngLat = [chGateLng, chGateLat];
+            const chPeakHeightM = chDomeH / chMPM;
+            const computeChLiftPx = () => {
+              const p = map.project(chGateLngLat);
+              const a = map.unproject([p.x, p.y]);
+              const b = map.unproject([p.x + 1, p.y]);
+              const mPerPx = chHav(a.lng, a.lat, b.lng, b.lat);
+              if (!mPerPx || !isFinite(mPerPx)) return 0;
+              const pitchRad = map.getPitch() * Math.PI / 180;
+              return (chPeakHeightM / mPerPx) * Math.sin(pitchRad);
+            };
+            const chPopupOpts = { offset: 0, maxWidth: '200px', focusAfterOpen: false, anchor: 'bottom' };
+            let chPopup = null;
+            const updateChPopupOffset = () => {
+              if (!chPopup) return;
+              chPopup.setOffset([0, -computeChLiftPx() - 8]);
+            };
+            window.openChapelPopup = () => {
+              const { title = 'Chapel', description = '' } = (pointLabels.points && pointLabels.points['chappel']) || {};
+              const html = window.mapPointPopup.innerHTML.replace(/\$(\w+)/g, (_, k) => ({ title, description })[k] ?? '');
+              if (currentOpenPopup) { currentOpenPopup.remove(); currentOpenPopup = null; }
+              chPopup = new mapboxgl.Popup(chPopupOpts).setLngLat(chGateLngLat).setHTML(html).addTo(map);
+              currentOpenPopup = chPopup;
+              chPopup.on('close', () => { if (currentOpenPopup === chPopup) currentOpenPopup = null; chPopup = null; });
+              updateChPopupOffset();
+            };
+            map.on('move', updateChPopupOffset);
+            map.on('zoom', updateChPopupOffset);
+            map.on('pitch', updateChPopupOffset);
+            map.on('rotate', updateChPopupOffset);
+            map.on('resize', updateChPopupOffset);
+
+            const chKeepOnTop = () => { if (map.getLayer(ch3dId)) map.moveLayer(ch3dId); };
+            chKeepOnTop();
+            map.on('idle', chKeepOnTop);
+            map.on('styledata', chKeepOnTop);
+            map.on('sourcedata', chKeepOnTop);
+
+            // Hit layer
+            const chHitId = 'chapel-hit';
+            if (!map.getLayer(chHitId)) {
+              map.addLayer({ id: chHitId, type: 'fill-extrusion', source: 'map-data',
+                filter: ['==', ['get', 'id'], 'chappel'],
+                paint: { 'fill-extrusion-color': '#000', 'fill-extrusion-opacity': 0, 'fill-extrusion-height': chDomeH / chMPM, 'fill-extrusion-base': 0 }
+              });
+              map.on('click', chHitId, () => { setEntranceHighlights('chappel'); window.openChapelPopup(); });
+              map.on('mouseenter', chHitId, () => { map.getCanvas().style.cursor = 'pointer'; });
+              map.on('mouseleave', chHitId, () => { map.getCanvas().style.cursor = ''; });
+            }
+
+            { const { title = 'Chapel' } = pointLabels.points?.['chappel'] || {};
+              const chLngLat = new mapboxgl.LngLat(chGateLng, chGateLat);
+              pointMarkers.push({ type: 'chapel', id: 'chappel', iconKey: 'chappel', title,
+                marker: { getLngLat: () => chLngLat, addTo: () => {}, remove: () => {},
+                  getPopup: () => ({ isOpen: () => false }),
+                  togglePopup() { setEntranceHighlights('chappel'); window.openChapelPopup(); } } }); }
           } else if (feature.geometry.type === 'Polygon' && featureId === 'arch') {
             // 3D arch arcade via Mapbox CustomLayerInterface + raw WebGL
             // Geometry: 3 arches × 2 rows matching the patio-de-las-campanas icon
@@ -2771,6 +3096,7 @@
     const setEntranceHighlights = (activeId) => {
       entrance3dLayers.forEach((layer, id) =>
         layer.setHighlight(activeId === null ? 0 : (activeId === 'all' || activeId === id) ? 1 : 0));
+      if (activeId && activeId !== 'all' && highlightedBuildingIds.size) clearHighlightedBuildings();
     };
 
     const showPointTypeList = (type) => {
