@@ -954,7 +954,6 @@ footer > .wrapper {
       > h3, > h5, > h6, > .description, > .text-block { grid-column: 1; }
       > img, > picture, > .image-split { grid-column: 2; grid-row: 1 / span 2; }
       > img, > picture img { width: 100%; height: auto; display: block; }
-      .btn-primary { width: fit-content; }
 
       &::after { grid-column: 1 / -1; }
 
