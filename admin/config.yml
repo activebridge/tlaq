@@ -294,6 +294,8 @@ collections:
               - { label: "Soldier Wash Walkway", name: "soldier-wash-walkway", widget: "string" }
               - { label: "Calle Miller", name: "calle-miller", widget: "string" }
               - { label: "Calle Independencia", name: "calle-independencia", widget: "string" }
+              - { label: "Ranger Road", name: "ranger-road", widget: "string" }
+              - { label: "Plaza de la Fuente", name: "plaza-de-la-fuente", widget: "string" }
               - { label: "Patio Azul", name: "patio-azul", widget: "string" }
 
           # ── Point Types — default titles & descriptions ──────────────────────

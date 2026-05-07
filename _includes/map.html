@@ -326,6 +326,36 @@
     color: var(--navy-60);
   }
 
+  button.sidebar-legend-heading {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+    text-transform: uppercase;
+  }
+
+  .sidebar-legend-caret {
+    display: inline-block;
+    transition: transform 0.15s ease;
+  }
+
+  button.sidebar-legend-heading[aria-expanded="true"] .sidebar-legend-caret {
+    transform: rotate(90deg);
+  }
+
+  .sidebar-legend-collapse {
+    display: none;
+  }
+
+  .sidebar-legend-collapse.open {
+    display: block;
+  }
+
   .sidebar-legend-item.active {
     font-weight: 700;
   }
@@ -498,10 +528,14 @@
     font-size: 18px;
     font-weight: 600;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 4px;
     padding: 5px 5px 0;
     color: var(--category-color, var(--navy));
+  }
+
+  .mapboxgl-popup-content h3 .popup-icon {
+    margin-top: 0.25em;
   }
 
   .mapboxgl-popup-content .popup-icon {
@@ -540,7 +574,7 @@
     margin: 0;
     font-size: 12px;
     font-weight: 500;
-    color: var(--green);
+    color: var(--blue);
     text-transform: uppercase;
   }
 
@@ -822,6 +856,8 @@
   <span class="sidebar-result-icon" data-type="parking-handicap"><img src="{{ '/assets/icons/map/accessible.png' | relative_url }}" alt="" class="map-icon-png"></span>
   <span class="sidebar-result-icon" data-type="bike-rack"><img src="{{ '/assets/icons/map/bike-rack.png' | relative_url }}" alt="" class="map-icon-png"></span>
   <span class="sidebar-result-icon" data-type="arcs"><img src="{{ '/assets/icons/map/patio-de-las-campanas.png' | relative_url }}" alt="" class="map-icon-png"></span>
+  <span class="sidebar-result-icon" data-type="crossing"><img src="{{ '/assets/icons/map/pedestrian.svg' | relative_url }}" alt="" class="map-icon-png"></span>
+  <span class="sidebar-result-icon" data-type="chapel"><img src="{{ '/assets/icons/map/chapel.png' | relative_url }}" alt="" class="map-icon-png"></span>
 </template>
 
 <script>
@@ -831,7 +867,7 @@
     const DATA_LAYER = 'building-outlines';
     const map = new mapboxgl.Map({
       container: 'map', style: '{{ site.data.site.mapbox_style }}',
-      center: [-111.763242, 34.862363], zoom: 17.5, pitch: 20, bearing: -8,
+      center: [-111.762973, 34.862370], zoom: 18.36, pitch: 64.5, bearing: 0.0,
       minZoom: 14, maxZoom: 20, maxBounds: [[-111.7659, 34.8606], [-111.7611, 34.8642]],
       cooperativeGestures: true
     });
@@ -881,7 +917,9 @@
     let knownFeatureIds = new Set();
     const suiteCentroid = new Map();
     const pointMarkers = []; // { type, title, marker } for non-store POI markers
+    const decorMarkers = []; // decorative markers (trees, etc.) tracked for show/hide
     const entrance3dLayers = new Map(); // featureId → entranceLayer object
+    const entranceLayerIds = new Set(); // ids treated as actual entrances (for 'all' highlight)
     let arch3dLayerRef = null;
     const polygonCentroid = (ring) => {
       const n = ring.length - 1;
@@ -1091,14 +1129,14 @@
         };
         const wallLineFeatures = geojson.features
           .filter(f => f.properties.type === 'wall' && f.geometry.type === 'LineString')
-          .map(f => ({ ...f, geometry: { type: 'Polygon', coordinates: bufferLineString(f.geometry.coordinates, 0.000003) } }));
+          .map(f => ({ ...f, geometry: { type: 'Polygon', coordinates: bufferLineString(f.geometry.coordinates, 0.0000007) } }));
         if (map.getSource('wall-line-data')) {
           map.getSource('wall-line-data').setData({ type: 'FeatureCollection', features: wallLineFeatures });
         } else {
           map.addSource('wall-line-data', { type: 'geojson', data: { type: 'FeatureCollection', features: wallLineFeatures } });
           map.addLayer({
             id: 'wall-line-extrusions', type: 'fill-extrusion', source: 'wall-line-data',
-            paint: { 'fill-extrusion-color': BUILDING_BASE_COLOR, 'fill-extrusion-height': 0.1, 'fill-extrusion-base': 0, 'fill-extrusion-opacity': 0.95 }
+            paint: { 'fill-extrusion-color': BUILDING_BASE_COLOR, 'fill-extrusion-height': 1, 'fill-extrusion-base': 0, 'fill-extrusion-opacity': 0.95 }
           });
         }
         // Area label source/layer
@@ -1167,7 +1205,7 @@
           map.getSource('area-label-data')?.setData(buildAreaFC(map.getBearing()));
         });
         // Area label click → popup
-        const openAreaPopup = (lngLat, areaKey) => {
+        const openAreaPopup = window.openAreaPopup = (lngLat, areaKey) => {
           const data = pointLabels.areas?.[areaKey];
           if (!data?.title) return;
           if (currentOpenPopup) { currentOpenPopup.remove(); currentOpenPopup = null; }
@@ -1271,6 +1309,8 @@
             if (featureType !== 'tree') {
               const { title = featureType } = pointLabels.points?.[featureId] || pointLabels.types?.[featureType] || {};
               pointMarkers.push({ type: featureType, id: featureId, iconKey, title, marker });
+            } else {
+              decorMarkers.push(marker);
             }
           } else if (feature.geometry.type === 'Polygon' && featureType === 'compass') {
             const ring = feature.geometry.coordinates[0];
@@ -1669,6 +1709,7 @@
             }
 
             entrance3dLayers.set('entrance-main-gate', mgLayer);
+            entranceLayerIds.add('entrance-main-gate');
 
             // Hit layer for click/hover
             const mgHitId = 'main-gate-hit';
@@ -2798,6 +2839,7 @@
             };
             map.addLayer(entranceLayer, DATA_LAYER);
             entrance3dLayers.set(featureId, entranceLayer);
+            entranceLayerIds.add(featureId);
 
             // Click via fill-extrusion hit layer for 3D raycasting
             const eHitId = `${featureId}-hit`;
@@ -2838,7 +2880,7 @@
           { label: pointLabels.ui?.legend_amenities  || 'Amenities',  types: ['atm', 'drinking-water', 'information'] },
           { label: pointLabels.ui?.legend_transport  || 'Transport',  types: ['bus-stop', 'elevator'] },
           { label: pointLabels.ui?.legend_navigation || 'Entrances',  types: ['entrance'], iconKey: 'entrance-main-gate' },
-          { label: pointLabels.ui?.legend_landmarks  || 'Landmarks',  types: ['bell-tower', 'wind-sculpture-garden', 'fountain'] },
+          { label: pointLabels.ui?.legend_landmarks  || 'Landmarks',  types: ['bell-tower', 'chapel', 'wind-sculpture-garden', 'fountain'] },
         ];
         const typeMap = new Map(pointMarkers.map(p => [p.type, p]));
         legendGroups.forEach(({ label, types, iconKey: groupIconKey }) => {
@@ -2866,6 +2908,35 @@
           });
           mapLegend.appendChild(group);
         });
+
+        // Crossings group (polygon-based, not point markers)
+        const crossingsRows = [
+          { id: 'crosswalk-to-north', areaKey: 'crosswalk-to-north', defaultTitle: 'Crosswalk to Tlaquepaque North' },
+          { id: 'underpath-to-tlaquepaque-north', areaKey: 'underpass', defaultTitle: 'Underpass to Tlaquepaque North' }
+        ];
+        const crossingFeatures = crossingsRows
+          .map(row => ({ row, feature: geojson.features.find(f => f.geometry.type === 'Polygon' && f.properties.id === row.id) }))
+          .filter(({ feature }) => feature);
+        if (crossingFeatures.length) {
+          window._crossingFeatures = crossingFeatures;
+          const group = document.createElement('div');
+          group.className = 'sidebar-legend-group';
+          group.appendChild(Object.assign(document.createElement('div'),
+            { className: 'sidebar-legend-heading', textContent: pointLabels.ui?.legend_crossings || 'Crossings' }));
+          const btn = document.createElement('button');
+          btn.className = 'sidebar-legend-item';
+          btn.dataset.type = 'crossing';
+          const icon = getIconByType('crossing');
+          icon.className = 'sidebar-category-icon';
+          btn.appendChild(icon);
+          btn.appendChild(Object.assign(document.createElement('span'), { textContent: pointLabels.ui?.legend_crossings || 'Crossings' }));
+          btn.addEventListener('click', () => {
+            mapSearch.value = '';
+            showCrossingsList();
+          });
+          group.appendChild(btn);
+          mapLegend.appendChild(group);
+        }
       });
 
       // Click building to highlight and focus its store
@@ -3045,18 +3116,30 @@
     const categoryButtons = mapCategories.querySelectorAll('.sidebar-category');
 
     // Show/hide markers based on filter; close popup before removing
-    const filterMarkers = (predicate) => storeMarkers.forEach((entry, index) => {
-      if (predicate(entry, index)) {
-        if (entry.positioned) entry.marker.addTo(map);
-      } else {
-        if (entry.marker.getPopup().isOpen()) entry.marker.togglePopup();
-        entry.marker.remove();
-      }
-    });
+    const filterMarkers = (predicate) => {
+      storeMarkers.forEach((entry, index) => {
+        if (predicate(entry, index)) {
+          if (entry.positioned) entry.marker.addTo(map);
+        } else {
+          if (entry.marker.getPopup().isOpen()) entry.marker.togglePopup();
+          entry.marker.remove();
+        }
+      });
+      extraSuiteMarkers.forEach(({ marker, storeIndex }) => {
+        const entry = storeMarkers[storeIndex];
+        if (entry && predicate(entry, storeIndex)) {
+          if (marker.getLngLat()) marker.addTo(map);
+        } else {
+          if (marker.getPopup()?.isOpen()) marker.togglePopup();
+          marker.remove();
+        }
+      });
+    };
     const applyTypeFilter = (type) => {
       filterMarkers((entry) => !type || entry.type === type);
       // Hide all POI markers when a store type filter is active
       pointMarkers.forEach(({ marker }) => type ? marker.remove() : marker.addTo(map));
+      decorMarkers.forEach(m => type ? m.remove() : m.addTo(map));
     };
 
     const renderListItem = (storeIndex, suiteOverride) => {
@@ -3094,8 +3177,13 @@
     // Show list of point markers for a given type
     // activeId=null → all off, 'all' → all on, '<id>' → only that one on
     const setEntranceHighlights = (activeId) => {
-      entrance3dLayers.forEach((layer, id) =>
-        layer.setHighlight(activeId === null ? 0 : (activeId === 'all' || activeId === id) ? 1 : 0));
+      entrance3dLayers.forEach((layer, id) => {
+        let on;
+        if (activeId === null) on = 0;
+        else if (activeId === 'all') on = entranceLayerIds.has(id) ? 1 : 0;
+        else on = activeId === id ? 1 : 0;
+        layer.setHighlight(on);
+      });
       if (activeId && activeId !== 'all' && highlightedBuildingIds.size) clearHighlightedBuildings();
     };
 
@@ -3104,11 +3192,15 @@
         .sort((a, b) => (a.id === 'entrance-main-gate' ? -1 : b.id === 'entrance-main-gate' ? 1 : 0));
       if (!targets.length) return;
       activePOIType = type;
+      if (currentOpenPopup) { currentOpenPopup.remove(); currentOpenPopup = null; }
+      if (type !== 'entrance') setEntranceHighlights(null);
+      arch3dLayerRef?.setHighlight(0);
       // Highlight all entrances pink when entering submenu
       if (type === 'entrance') setEntranceHighlights('all');
       // Hide all store markers, show only matching POI type
       filterMarkers(() => false);
       pointMarkers.forEach(({ type: t, marker }) => t === type ? marker.addTo(map) : marker.remove());
+      decorMarkers.forEach(m => m.remove());
       // Single result: focus directly without showing a subcategory list
       if (targets.length === 1) {
         const { marker } = targets[0];
@@ -3134,6 +3226,40 @@
           if (type === 'entrance') setEntranceHighlights(id);
           map.easeTo({ center: marker.getLngLat(), duration: 600 });
           if (!marker.getPopup().isOpen()) marker.togglePopup();
+          if (mobileQuery.matches) {
+            mapSidebar.classList.add('collapsed');
+            mapContainer.classList.add('sidebar-collapsed');
+          }
+        });
+        mapSearchResults.appendChild(li);
+      });
+      mapSearchResults.classList.add('visible');
+    };
+
+    const showCrossingsList = () => {
+      const targets = window._crossingFeatures || [];
+      if (!targets.length) return;
+      activePOIType = 'crossing';
+      if (currentOpenPopup) { currentOpenPopup.remove(); currentOpenPopup = null; }
+      setEntranceHighlights(null);
+      arch3dLayerRef?.setHighlight(0);
+      filterMarkers(() => false);
+      pointMarkers.forEach(({ marker }) => marker.remove());
+      decorMarkers.forEach(m => m.remove());
+      showStoreList([]);
+      mapNoResults.style.display = 'none';
+      targets.forEach(({ row, feature }) => {
+        const title = (pointLabels.areas?.[row.areaKey]?.title || row.defaultTitle).replace(/\n/g, ' ').trim();
+        const li = document.createElement('li');
+        li.className = 'sidebar-result';
+        li.setAttribute('role', 'option');
+        const icon = getIconByType('crossing');
+        li.appendChild(icon);
+        li.appendChild(Object.assign(document.createElement('span'), { className: 'sidebar-result-title', textContent: title }));
+        li.addEventListener('click', () => {
+          const centroid = polygonCentroid(feature.geometry.coordinates[0]);
+          map.flyTo({ center: centroid, zoom: 19, duration: 800 });
+          window.openAreaPopup?.(centroid, row.areaKey);
           if (mobileQuery.matches) {
             mapSidebar.classList.add('collapsed');
             mapContainer.classList.add('sidebar-collapsed');
@@ -3176,6 +3302,7 @@
       mapLegend.style.display = '';
       mapCategories.style.display = '';
       mapShowAll.style.display = '';
+      decorMarkers.forEach(m => m.addTo(map));
     };
 
     const resetSidebar = () => {

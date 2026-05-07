@@ -18,8 +18,8 @@ types:
     title: Drinking Water
     description: Public drinking water station.
   information:
-    title: Information
-    description: Village information and maps available here.
+    title: Information/Lost & Found
+    description: Village information and maps available here. Found items will be left at this location for visitors to retrieve.
   parking:
     title: Parking
     title_plural: Parking Areas
@@ -120,7 +120,7 @@ points:
     description: ""
   handicap-bathroom-1:
     title: North Accessible Restroom
-    description: ""
+    description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
   handicap-bathroom:
     title: South Accessible Restroom
     description: This accessible facility is available for village visitors. Please help keep this space clear and available for those who need it.
@@ -194,6 +194,12 @@ areas:
   calle-independencia:
     title: Calle Independencia
     description: The main calle of the village, where cobblestone paths, stucco walls, archways, ironwork, and fountains come together to form Tlaquepaque's primary spine and sense of movement.
+  ranger-road:
+    title: Ranger Road
+    description: ""
+  plaza-de-la-fuente:
+    title: Plaza de la Fuente
+    description: ""
   patio-azul:
     title: Patio Azul
     description: A rare, cloistered courtyard tucked within the village, where elegant balconies, ironwork, and richly patterned tile create one of Tlaquepaque's most immersive spaces.
