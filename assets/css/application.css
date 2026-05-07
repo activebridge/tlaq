@@ -792,6 +792,8 @@ article {
 footer > .wrapper {
   address {
     .social {
+      display: flex;
+      align-items: center;
       margin-top: 2rem;
       gap: 1rem;
 

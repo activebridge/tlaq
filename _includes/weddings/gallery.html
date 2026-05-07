@@ -4,7 +4,7 @@
     {% for item in site.data.weddings.gallery.items %}
     <div class="card">
       <h3>{{ item.title }}</h3>
-      <video src="{{ item.video_url }}" controls></video>
+      <video src="{{ item.video_url }}#t=0.1" controls preload="metadata" playsinline></video>
     </div>
     {% endfor %}
   </div>
@@ -12,7 +12,7 @@
     {% for item in site.data.weddings.gallery.extra_items %}
     <div class="card">
       <h3>{{ item.title }}</h3>
-      <video src="{{ item.video_url }}" controls></video>
+      <video src="{{ item.video_url }}#t=0.1" controls preload="metadata" playsinline></video>
     </div>
     {% endfor %}
   </div>
