@@ -1906,7 +1906,7 @@ dialog {
 
       fieldset { margin-top: 0; }
 
-      .btn.btn-primary { margin-top: auto; align-self: stretch; margin-bottom: 0; }
+      .btn.btn-primary { align-self: stretch; margin: 0; }
     }
 
     .response {
