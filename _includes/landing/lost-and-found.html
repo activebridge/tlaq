@@ -6,6 +6,6 @@
   </h5>
   <h2>{{ lost_and_found.heading | escape }}</h2>
   <section class="footer">
-    <p>{{ lost_and_found.description | escape }}</p>
+    <p>{{ lost_and_found.description | escape | replace: "visitorsinfo@tlaq.com", '<a href="mailto:visitorsinfo@tlaq.com">visitorsinfo@tlaq.com</a>' }}</p>
   </section>
 </article>

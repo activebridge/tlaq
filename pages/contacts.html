@@ -41,7 +41,7 @@ layout_type: contacts
   <aside>
     <section>
       <h3>{{ site.data.contacts.lost_title }}</h3>
-      <p>{{ site.data.contacts.lost_content }}</p>
+      <p>{{ site.data.contacts.lost_content | replace: "visitorsinfo@tlaq.com", '<a href="mailto:visitorsinfo@tlaq.com">visitorsinfo@tlaq.com</a>' }}</p>
       <hr>
     </section>
 

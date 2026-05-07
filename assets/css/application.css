@@ -661,7 +661,7 @@ article {
     padding: 0;
     flex-wrap: wrap;
 
-    a, div[role="group"] {
+    > a, > div[role="group"] {
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
@@ -716,6 +716,7 @@ article {
 
     > h5, > h2, > .footer { grid-column: 1; }
     > img, > figure { grid-column: 2; grid-row: 1 / span 3; align-self: start; }
+    &::after { grid-column: 1 / -1; }
   }
 }
 
