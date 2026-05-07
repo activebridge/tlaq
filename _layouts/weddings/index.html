@@ -10,8 +10,8 @@ layout: default
   <hgroup style="view-transition-name: title-{{transition-name}};">
     <h5>{{ site.data.weddings.weddings }}</h5>
     <h2>{{ site.data.weddings.title }}</h2>
-    <h6>{{ site.data.weddings.description }}</h6>
   </hgroup>
+  <p>{{ site.data.weddings.description }}</p>
 
   {% assign jump_nav_links = "venues,gallery,private_events,connect" | split: "," %}
   {% assign jump_nav_slugs = "weddings" %}

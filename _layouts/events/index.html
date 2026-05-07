@@ -13,8 +13,8 @@ layout: default
       {{ site.data.events.events }}
     </h5>
     <h2>{{ site.data.events.title }}</h2>
-    <h6>{{ site.data.events.description }}</h6>
   </hgroup>
+  <p>{{ site.data.events.description }}</p>
 
   {% assign jump_nav_links = "annual_events,calendar" | split: "," %}
   {% assign jump_nav_slugs = "events" %}

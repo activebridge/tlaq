@@ -12,8 +12,8 @@ layout: default
   <hgroup>
     <h5>{{ page.title }}</h5>
     <h2>{{ page.title }}</h2>
-    <h6>{{ page.description | default: page.subtitle }}</h6>
   </hgroup>
+  <p>{{ page.description | default: page.subtitle }}</p>
   {% if page.images %}
     <div class="image-split">
       {% for image in page.images %}

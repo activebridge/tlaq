@@ -9,7 +9,7 @@
   {% include calendar.html limit=4 %}
 
   <section class="footer">
-    <h6>{{ calendar.description | escape }}</h6>
+    <p>{{ calendar.description | escape }}</p>
     {% if calendar.link %}
       <a href="{{ calendar.link.url }}" class="btn btn-primary">{{ calendar.link.text | escape }}</a>
     {% endif %}

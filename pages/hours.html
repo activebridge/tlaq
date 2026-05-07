@@ -13,9 +13,11 @@ layout_type: hours
 {% assign s = hours.sections %}
 
 <div class="content-wrapper">
-  <h5 title="visit">{{ hours.intro.eyebrow }}</h5>
-  <h2>{{ hours.intro.heading }}</h2>
-  <h6>{{ hours.intro.subheading }}</h6>
+  <hgroup style="view-transition-name: title-{{transition-name}};">
+    <h5 title="visit">{{ hours.intro.eyebrow }}</h5>
+    <h2>{{ hours.intro.heading }}</h2>
+  </hgroup>
+  <p>{{ hours.intro.subheading }}</p>
 
   {% assign jump_nav_links = "locations,village_map,parking,accessibility,family_friendly" | split: "," %}
   {% assign jump_nav_slugs = "hours" %}

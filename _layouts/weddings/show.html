@@ -10,8 +10,8 @@ layout: default
   <hgroup>
     <h5 style="view-transition-name: {{ page.title | downcase | replace: ' ', '-' }};">{{ page.title }}</h5>
     <h2>{{ page.intro.subtitle }}</h2>
-    <h6>{{ page.intro.description }}</h6>
   </hgroup>
+  <p>{{ page.intro.description }}</p>
 
   {% assign jump_nav_links = site.weddings | where_exp: "item", "item.slug != page.slug" | map: "slug" %}
   {% assign jump_nav_slugs = "weddings" %}

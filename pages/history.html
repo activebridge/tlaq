@@ -15,8 +15,8 @@ layout_type: history
   <hgroup style="view-transition-name: title-{{transition-name}};">
     <h5 title>{{ data.title }}</h5>
     <h2>{{ data.subtitle }}</h2>
-    <h6>{{ data.description }}</h6>
   </hgroup>
+  <p>{{ data.description }}</p>
 
   {% if data.cover %}
   {% assign cover_mobile = data.cover | prepend: '/cdn-cgi/image/width=900,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
