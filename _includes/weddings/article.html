@@ -6,7 +6,10 @@
   <div class="text-block">
     <h5>{{ wedding_article.title }}</h5>
     {% if wedding_article.subtitle %}
-    <p>{{ wedding_article.subtitle }}</p>
+      <p>{{ wedding_article.subtitle }}</p>
+    {% endif %}
+    {% if wedding_article.link.url %}
+      <a href="{{ wedding_article.link.url }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">{{ wedding_article.link.text | default: "Read the Article" }}</a>
     {% endif %}
   </div>
 
