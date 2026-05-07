@@ -707,8 +707,7 @@ article {
 }
 
 @media (min-width: 770px) {
-  .content-wrapper > article#filming,
-  .content-wrapper > article#magazine {
+  .content-wrapper > article {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     column-gap: 5rem;
