@@ -566,6 +566,16 @@ collections:
                     name: "images"
                     widget: "list"
                     field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+              - label: "Historic Landmark"
+                name: "historic_landmark"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Images"
+                    name: "images"
+                    widget: "list"
+                    field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - label: "Outdoor Art"
                 name: "outdoor_art"
                 widget: "object"
