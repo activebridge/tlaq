@@ -2,10 +2,10 @@
 title: 'Dulce: Ice Cream, Churros, Candies'
 date: 2026-05-06
 description: Making Life Sweeter, One Dulce at a Time
-image: /assets/images/blogs/Dulce-News1.jpg
+image: /assets/images/blogs/Dulce-05.jpg
 ---
 
-There’s a certain joy that comes with stepping into a candy shop—the kind that instantly sparks curiosity and brings out a sense of play. At Dulce: Ice Cream, Churros, Candies, newly opened at Tlaquepaque Arts & Shopping Village, that feeling is very much by design. Bright, colorful, and filled with irresistible aromas, Dulce invites guests to slow down, smile, and indulge—making life sweeter, one Dulce at a time.
+There’s a certain joy that comes with stepping into a candy shop—the kind that instantly sparks curiosity and brings out a sense of play. At [**Dulce: Ice Cream, Churros, Candies**](https://dulcesedona.com/), newly opened at Tlaquepaque Arts & Shopping Village, that feeling is very much by design. Bright, colorful, and filled with irresistible aromas, Dulce invites guests to slow down, smile, and indulge—making life sweeter, one Dulce at a time.
 
 Dulce is the creation of founder Liz Moler, who previously served as Events Manager at Tlaquepaque Arts & Shopping Village, overseeing weddings and special events. After years of helping others celebrate life’s meaningful moments, Liz felt drawn to create something of her own—an inviting place centered on delight, connection, and everyday joy, rooted in simple pleasures and shared experiences that feel approachable and personal.
 
