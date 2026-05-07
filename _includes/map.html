@@ -1182,7 +1182,7 @@
         map.on('click', 'underpass-fill', e => openAreaPopup(e.lngLat, 'underpass'));
         map.on('click', 'underpath-fill', e => openAreaPopup(e.lngLat, 'underpass'));
         map.on('click', 'crosswalk-fill', e => openAreaPopup(e.lngLat, 'crosswalk-to-north'));
-        map.on('click', 'main-gate-fill', e => openAreaPopup(e.lngLat, 'main-gate'));
+        map.on('click', 'main-gate-fill', () => { if (window.openMainGatePopup) window.openMainGatePopup(); });
         map.on('click', 'arch-fill', e => { arch3dLayerRef?.setHighlight(1); openAreaPopup(e.lngLat, 'arcs'); });
         ['area-labels', 'underpass-fill', 'underpath-fill', 'crosswalk-fill', 'main-gate-fill', 'arch-fill'].forEach(layer => {
           map.on('mouseenter', layer, () => { map.getCanvas().style.cursor = 'pointer'; });
@@ -1208,6 +1208,8 @@
           map.addLayer({ id: 'crosswalk-stripes', type: 'line', source: 'crosswalk-stripes', beforeId: 'area-labels',
             paint: { 'line-color': '#ffffff', 'line-opacity': 0.85, 'line-width': ['interpolate', ['exponential', 2], ['zoom'], 14, 0.5, 20, 24] }
           });
+          // Keep 3D main gate above crosswalk decorations (move to top of stack)
+          if (map.getLayer('main-gate-3d-layer')) map.moveLayer('main-gate-3d-layer');
         }
 
         buildingDataReady = true;
@@ -1252,7 +1254,7 @@
         // SVG markers for special point/polygon features
         const pointSvgTypes = new Set(['restroom', 'information', 'drinking-water', 'fountain', 'atm', 'tree', 'bus-stop', 'elevator', 'entrance', 'handicap-restroom', 'handicap-bathroom', 'parking-handicap', 'parking', 'bike-rack', 'bell-tower', 'wind-sculpture-garden', 'wind-sculpture-garden-1', 'wind-sculpture-garden-2', 'wind-sculpture-garden-3', 'arcs']);
         const polygonSvgTypes = new Set(['parking']);
-        const iconRotation = { 'main-gate': 18, 'entrance-south': -40, 'entrance-west': -50, 'entrance-north': 30 };
+        const iconRotation = { 'entrance-south': -40, 'entrance-west': -50, 'entrance-north': 30 };
         geojson.features.forEach(feature => {
           const { type: featureType, id: featureId } = feature.properties || {};
           if (!featureType) return;
@@ -1317,57 +1319,373 @@
             };
             img.src = "{{ '/assets/icons/map/compass-north.png' | relative_url }}";
           } else if (feature.geometry.type === 'Polygon' && featureId === 'main-gate') {
-            const ring = feature.geometry.coordinates[0];
-            const centroid = polygonCentroid(ring);
-            // Register main-gate as an entrance in pointMarkers for sidebar list
-            { const { title = 'Main Gate' } = pointLabels.points?.['entrance-main-gate'] || {};
-              const lngLat = new mapboxgl.LngLat(centroid[0], centroid[1]);
-              pointMarkers.push({ type: 'entrance', id: 'entrance-main-gate', iconKey: 'entrance-main-gate', title,
-                marker: { getLngLat: () => lngLat, addTo: () => {}, remove: () => {},
-                  getPopup: () => ({ isOpen: () => false }),
-                  togglePopup() { createPointPopup('entrance', 'entrance-main-gate').setLngLat(lngLat).addTo(map); } } }); }
-            const toRad = d => d * Math.PI / 180;
-            const haversine = ([lng1, lat1], [lng2, lat2]) => {
-              const R = 6371000, dLat = toRad(lat2 - lat1), dLng = toRad(lng2 - lng1);
-              const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng/2)**2;
-              return 2 * R * Math.asin(Math.sqrt(a));
+            const mg3dId = 'main-gate-3d-layer';
+            if (map.getLayer(mg3dId)) return;
+
+            const mgRing = feature.geometry.coordinates[0].slice(0, -1);
+
+            const mgToRad = d => d * Math.PI / 180;
+            const mgLngLatToMerc = ([lng, lat]) => {
+              const x = (lng + 180) / 360;
+              const sinLat = Math.sin(mgToRad(lat));
+              const y = 0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI);
+              return [x, y];
             };
-            const verts = ring.slice(0, -1);
-            let maxDist = 0;
-            for (let i = 0; i < verts.length; i++)
-              for (let j = i+1; j < verts.length; j++)
-                maxDist = Math.max(maxDist, haversine(verts[i], verts[j]));
-            const iconSizeAtZoom = z => {
-              const metersPerPx = 156543.03392 * Math.cos(toRad(centroid[1])) / Math.pow(2, z);
-              return maxDist / (metersPerPx * 256);
+            const mgMPts = mgRing.map(mgLngLatToMerc);
+
+            // Longest edge → local X axis
+            let mgLongestLen = 0, mgLongestI = 0;
+            for (let i = 0; i < mgMPts.length; i++) {
+              const a = mgMPts[i], b = mgMPts[(i+1) % mgMPts.length];
+              const d = Math.hypot(b[0]-a[0], b[1]-a[1]);
+              if (d > mgLongestLen) { mgLongestLen = d; mgLongestI = i; }
+            }
+            const mgEA = mgMPts[mgLongestI], mgEB = mgMPts[(mgLongestI+1) % mgMPts.length];
+            const mgEdgeDx = mgEB[0]-mgEA[0], mgEdgeDy = mgEB[1]-mgEA[1];
+            const mgEdgeLen = Math.hypot(mgEdgeDx, mgEdgeDy);
+            const mgXx = mgEdgeDx/mgEdgeLen, mgXy = mgEdgeDy/mgEdgeLen;
+            const mgYx = -mgXy, mgYy = mgXx;
+
+            const mgCentMx = mgMPts.reduce((s,p)=>s+p[0],0)/mgMPts.length;
+            const mgCentMy = mgMPts.reduce((s,p)=>s+p[1],0)/mgMPts.length;
+
+            // Merc-per-metre scale
+            const mgLng0 = mgRing[mgLongestI][0], mgLat0 = mgRing[mgLongestI][1];
+            const mgLng1 = mgRing[(mgLongestI+1)%mgRing.length][0], mgLat1 = mgRing[(mgLongestI+1)%mgRing.length][1];
+            const mgHav = (ln1,la1,ln2,la2) => {
+              const R=6371000, dLat=mgToRad(la2-la1), dLng=mgToRad(ln2-ln1);
+              const a=Math.sin(dLat/2)**2+Math.cos(mgToRad(la1))*Math.cos(mgToRad(la2))*Math.sin(dLng/2)**2;
+              return 2*R*Math.asin(Math.sqrt(a));
             };
-            const gateImg = new Image();
-            gateImg.onload = () => {
-              if (!map.hasImage('main-gate-icon')) map.addImage('main-gate-icon', gateImg, { sdf: false });
-              if (!map.getSource('main-gate-source')) map.addSource('main-gate-source', {
-                type: 'geojson',
-                data: { type: 'Feature', geometry: { type: 'Point', coordinates: centroid }, properties: {} }
-              });
-              if (!map.getLayer('main-gate-layer')) map.addLayer({
-                id: 'main-gate-layer',
-                type: 'symbol',
-                source: 'main-gate-source',
-                layout: {
-                  'icon-image': 'main-gate-icon',
-                  'icon-rotate': iconRotation['main-gate'] ?? 0,
-                  'icon-rotation-alignment': 'map',
-                  'icon-pitch-alignment': 'map',
-                  'icon-allow-overlap': true,
-                  'icon-ignore-placement': true,
-                  'icon-size': ['interpolate', ['exponential', 2], ['zoom'],
-                    14, iconSizeAtZoom(14) * 8,
-                    17, iconSizeAtZoom(17) * 2,
-                    20, iconSizeAtZoom(20) * 1
-                  ]
+            const mgEdgeLenM = mgHav(mgLng0,mgLat0,mgLng1,mgLat1);
+            const mgMPM = mgEdgeLen / mgEdgeLenM; // merc per metre
+
+            // --- Geometry from entrance-main-gate.png profile ---
+            // Strategy: define top profile as parametric height function topZ(u), u∈[-1,1] across width.
+            // Build front+back face as triangle strip from (x,0) to (x,topZ(x)), arch opening punched out.
+            // Sides extruded with Y-thick walls. Top capped by quads connecting front/back along profile.
+            const mgW = mgEdgeLen;
+            const mgHalfW = mgW / 2;
+            const mgDepth = 1.2 * mgMPM;
+            const mgHalfD = mgDepth / 2;
+            const mgYF = -mgHalfD, mgYBk = mgHalfD;
+
+            // Aspect ratio from pixel-traced icon: height/width = 0.608
+            const mgTotalH = mgW * 0.608;
+            const mgPeakH  = mgTotalH;
+
+            // Arch opening: 38% wide with tall rectangular legs + semicircle (measured from icon)
+            const mgOpenW = mgW * 0.38;
+            const mgArchR = mgOpenW / 2;
+            const mgCx = 0;
+            const mgLegH = mgTotalH * 0.28;
+            const mgArchTop = mgLegH + mgArchR;
+
+            // Profile keypoints from pixel-traced icon (u = x / halfW)
+            // Shoulder rises gradually from u=±0.84 then jumps sharply at u=±0.76 → ±0.68
+            const mgKeys = [
+              [-1.00, mgTotalH * 0.48],
+              [-0.78, mgTotalH * 0.50],
+              [-0.74, mgTotalH * 0.55],
+              [-0.70, mgTotalH * 0.68],
+              [-0.60, mgTotalH * 0.70],
+              [-0.52, mgTotalH * 0.73],
+              [-0.44, mgTotalH * 0.79],
+              [-0.36, mgTotalH * 0.88],
+              [-0.28, mgTotalH * 0.93],
+              [-0.20, mgTotalH * 0.97],
+              [-0.12, mgTotalH * 0.99],
+              [-0.04, mgTotalH * 1.00],
+              [ 0.04, mgTotalH * 1.00],
+              [ 0.12, mgTotalH * 0.99],
+              [ 0.20, mgTotalH * 0.97],
+              [ 0.28, mgTotalH * 0.93],
+              [ 0.36, mgTotalH * 0.88],
+              [ 0.44, mgTotalH * 0.79],
+              [ 0.52, mgTotalH * 0.73],
+              [ 0.60, mgTotalH * 0.70],
+              [ 0.70, mgTotalH * 0.68],
+              [ 0.74, mgTotalH * 0.55],
+              [ 0.78, mgTotalH * 0.50],
+              [ 1.00, mgTotalH * 0.48]
+            ];
+            const mgTopZ = (x) => {
+              const u = x / mgHalfW;
+              for (let i = 0; i < mgKeys.length - 1; i++) {
+                const [u0, z0] = mgKeys[i], [u1, z1] = mgKeys[i+1];
+                if (u >= u0 && u <= u1) {
+                  const t = (u - u0) / (u1 - u0);
+                  return z0 + (z1 - z0) * t;
                 }
-              });
+              }
+              return mgKeys[mgKeys.length - 1][1];
             };
-            gateImg.src = "{{ '/assets/icons/map/entrance-main-gate.png' | relative_url }}";
+
+            // Sample profile densely
+            const mgProfileSegs = 200;
+            const mgProfile = []; // [x, z] list along top edge
+            for (let s = 0; s <= mgProfileSegs; s++) {
+              const x = -mgHalfW + (mgW * s / mgProfileSegs);
+              mgProfile.push([x, mgTopZ(x)]);
+            }
+
+            // Arch semicircle points (for opening cutout in front face)
+            const mgArchSegs = 24;
+            const mgArchPts = []; // along arch curve, x decreasing from right to left
+            for (let s = 0; s <= mgArchSegs; s++) {
+              const a = Math.PI * s / mgArchSegs; // 0→π
+              mgArchPts.push([mgCx + mgArchR * Math.cos(a), mgLegH + mgArchR * Math.sin(a)]);
+            }
+
+            // Oculus: round top hole
+            const mgOcX = mgCx, mgOcZ = mgTotalH * 0.78;
+            const mgOcRx = mgW * 0.025, mgOcRz = mgOcRx;
+            const mgOcPts = [];
+            for (let s = 0; s < 16; s++) {
+              const a = 2*Math.PI*s/16;
+              mgOcPts.push([mgOcX + mgOcRx * Math.cos(a), mgOcZ + mgOcRz * Math.sin(a)]);
+            }
+
+            const mgVerts = [], mgIdx = [];
+            const mgTF = (y,ax,az,bx,bz,cx,cz) => { const b=mgVerts.length/3; mgVerts.push(ax,y,az,bx,y,bz,cx,y,cz); mgIdx.push(b,b+1,b+2); };
+            const mgTB = (y,ax,az,bx,bz,cx,cz) => { const b=mgVerts.length/3; mgVerts.push(ax,y,az,bx,y,bz,cx,y,cz); mgIdx.push(b,b+2,b+1); };
+
+            const mgBuildFace = (y, front) => {
+              const tF = front ? mgTF : mgTB;
+              const archBottom = (x) => {
+                if (x <= mgCx - mgArchR || x >= mgCx + mgArchR) return 0;
+                const dx = x - mgCx;
+                return mgLegH + Math.sqrt(Math.max(0, mgArchR*mgArchR - dx*dx));
+              };
+              // Oculus ellipse top/bottom z given x (returns null if outside x-range)
+              const ocBounds = (x) => {
+                const dx = x - mgOcX;
+                if (Math.abs(dx) >= mgOcRx) return null;
+                const dz = mgOcRz * Math.sqrt(1 - (dx*dx)/(mgOcRx*mgOcRx));
+                return [mgOcZ - dz, mgOcZ + dz];
+              };
+              // Draw a quad strip between (x0,a0)→(x1,a1) bottom and (x0,b0)→(x1,b1) top, only if a<b
+              const drawStrip = (x0, a0, x1, a1, b0, b1) => {
+                if (b0 <= a0 + 1e-9 && b1 <= a1 + 1e-9) return;
+                tF(y, x0,a0, x1,a1, x1,b1);
+                tF(y, x0,a0, x1,b1, x0,b0);
+              };
+              for (let s = 0; s < mgProfileSegs; s++) {
+                const x0 = mgProfile[s][0], z0 = mgProfile[s][1];
+                const x1 = mgProfile[s+1][0], z1 = mgProfile[s+1][1];
+                // bottom of solid wall (above arch, or 0)
+                const wallBot0 = archBottom(x0), wallBot1 = archBottom(x1);
+                // Check oculus
+                const oc0 = ocBounds(x0), oc1 = ocBounds(x1);
+                if (oc0 && oc1) {
+                  // Strip below oculus: wallBot → oculus bottom
+                  drawStrip(x0, wallBot0, x1, wallBot1, oc0[0], oc1[0]);
+                  // Strip above oculus: oculus top → profile top
+                  drawStrip(x0, oc0[1], x1, oc1[1], z0, z1);
+                } else {
+                  drawStrip(x0, wallBot0, x1, wallBot1, z0, z1);
+                }
+              }
+            };
+
+            mgBuildFace(mgYF, true);
+            mgBuildFace(mgYBk, false);
+
+            // ---- Oculus inner walls (through-hole sides) ----
+            for (let s = 0; s < 16; s++) {
+              const s1 = (s+1) % 16;
+              const p0 = mgOcPts[s], p1 = mgOcPts[s1];
+              // Inward-facing quad: from front (mgYF) to back (mgYBk)
+              // Winding so normal points INTO hole (visible from outside through hole)
+              const b = mgVerts.length/3;
+              mgVerts.push(p0[0],mgYF,p0[1], p1[0],mgYF,p1[1], p1[0],mgYBk,p1[1], p0[0],mgYBk,p0[1]);
+              mgIdx.push(b,b+2,b+1, b,b+3,b+2);
+            }
+
+            // ---- Top surface (extruded along profile) ----
+            for (let s = 0; s < mgProfileSegs; s++) {
+              const x0 = mgProfile[s][0], z0 = mgProfile[s][1];
+              const x1 = mgProfile[s+1][0], z1 = mgProfile[s+1][1];
+              const b = mgVerts.length/3;
+              mgVerts.push(x0,mgYF,z0, x1,mgYF,z1, x1,mgYBk,z1, x0,mgYBk,z0);
+              mgIdx.push(b,b+1,b+2, b,b+2,b+3);
+            }
+            // ---- End walls (left, right) ----
+            { const b=mgVerts.length/3; const z=mgProfile[0][1];
+              mgVerts.push(-mgHalfW,mgYBk,0, -mgHalfW,mgYF,0, -mgHalfW,mgYF,z, -mgHalfW,mgYBk,z);
+              mgIdx.push(b,b+1,b+2,b,b+2,b+3); }
+            { const b=mgVerts.length/3; const z=mgProfile[mgProfileSegs][1];
+              mgVerts.push(mgHalfW,mgYF,0, mgHalfW,mgYBk,0, mgHalfW,mgYBk,z, mgHalfW,mgYF,z);
+              mgIdx.push(b,b+1,b+2,b,b+2,b+3); }
+            // ---- Bottom faces around arch opening ----
+            // Left ground strip: from -halfW to mgCx-mgArchR, z=0
+            // Right ground strip: from mgCx+mgArchR to halfW, z=0
+            // (these are bottom of model; only matter for under-views, can skip)
+            // ---- Arch soffit (inner tunnel) ----
+            for (let s = 0; s < mgArchSegs; s++) {
+              const p0 = mgArchPts[s], p1 = mgArchPts[s+1];
+              const b = mgVerts.length/3;
+              mgVerts.push(p1[0],mgYF,p1[1], p0[0],mgYF,p0[1], p0[0],mgYBk,p0[1], p1[0],mgYBk,p1[1]);
+              mgIdx.push(b,b+1,b+2,b,b+2,b+3);
+            }
+            // ---- Arch leg walls (inner pier faces inside opening) ----
+            const mgArchL = mgCx - mgArchR, mgArchRX = mgCx + mgArchR;
+            { const b=mgVerts.length/3;
+              mgVerts.push(mgArchL,mgYF,0,mgArchL,mgYBk,0,mgArchL,mgYBk,mgLegH,mgArchL,mgYF,mgLegH);
+              mgIdx.push(b,b+1,b+2,b,b+2,b+3); }
+            { const b=mgVerts.length/3;
+              mgVerts.push(mgArchRX,mgYBk,0,mgArchRX,mgYF,0,mgArchRX,mgYF,mgLegH,mgArchRX,mgYBk,mgLegH);
+              mgIdx.push(b,b+1,b+2,b,b+2,b+3); }
+            // alias for shader uniform
+            const mgDomeH = mgPeakH;
+
+            const mgPosArr = new Float32Array(mgVerts);
+            const mgIdxArr = new Uint16Array(mgIdx);
+
+            const mgModel = new Float64Array([
+              mgXx, mgXy, 0, 0,
+              mgYx, mgYy, 0, 0,
+              0,    0,    1, 0,
+              mgCentMx, mgCentMy, 0, 1
+            ]);
+
+            const mgLayer = {
+              id: mg3dId, type: 'custom', renderingMode: '3d',
+              highlighted: 0,
+              setHighlight(v) { this.highlighted = v; map.triggerRepaint(); },
+              onAdd(map, gl) {
+                const vs = `precision highp float; attribute vec3 a_pos; uniform mat4 u_matrix; varying float v_z;
+                  void main(){ gl_Position=u_matrix*vec4(a_pos,1.0); v_z=a_pos.z; }`;
+                const fs = `precision mediump float; varying float v_z; uniform float u_maxZ; uniform float u_hl;
+                  void main(){
+                    float t=v_z/u_maxZ;
+                    vec3 base=mix(vec3(0.067,0.11,0.306), vec3(0.831,0.075,0.404), u_hl);
+                    vec3 top =mix(vec3(0.12,0.18,0.42),   vec3(0.95,0.20,0.52),  u_hl);
+                    gl_FragColor=vec4(mix(base,top,t*0.5),0.97); }`;
+                const sh=(type,src)=>{ const s=gl.createShader(type); gl.shaderSource(s,src); gl.compileShader(s); return s; };
+                this.prog=gl.createProgram();
+                gl.attachShader(this.prog,sh(gl.VERTEX_SHADER,vs)); gl.attachShader(this.prog,sh(gl.FRAGMENT_SHADER,fs));
+                gl.linkProgram(this.prog);
+                this.aBuf=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,this.aBuf); gl.bufferData(gl.ARRAY_BUFFER,mgPosArr,gl.STATIC_DRAW);
+                this.iBuf=gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,this.iBuf); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,mgIdxArr,gl.STATIC_DRAW);
+                this.aPos=gl.getAttribLocation(this.prog,'a_pos');
+                this.uMat=gl.getUniformLocation(this.prog,'u_matrix');
+                this.uMaxZ=gl.getUniformLocation(this.prog,'u_maxZ');
+                this.uHl=gl.getUniformLocation(this.prog,'u_hl');
+                this.idxCount=mgIdxArr.length;
+              },
+              render(gl, matrix) {
+                const m=new Float64Array(matrix), r=new Float64Array(16);
+                for(let i=0;i<4;i++) for(let j=0;j<4;j++)
+                  r[i*4+j]=m[0*4+j]*mgModel[i*4+0]+m[1*4+j]*mgModel[i*4+1]+m[2*4+j]*mgModel[i*4+2]+m[3*4+j]*mgModel[i*4+3];
+                gl.useProgram(this.prog);
+                gl.uniformMatrix4fv(this.uMat,false,new Float32Array(r));
+                gl.uniform1f(this.uMaxZ,mgDomeH);
+                gl.uniform1f(this.uHl, this.highlighted);
+                gl.bindBuffer(gl.ARRAY_BUFFER,this.aBuf); gl.enableVertexAttribArray(this.aPos);
+                gl.vertexAttribPointer(this.aPos,3,gl.FLOAT,false,0,0);
+                gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,this.iBuf);
+                gl.clear(gl.DEPTH_BUFFER_BIT);
+                gl.enable(gl.DEPTH_TEST); gl.depthMask(true);
+                gl.drawElements(gl.TRIANGLES,this.idxCount,gl.UNSIGNED_SHORT,0);
+              }
+            };
+            map.addLayer(mgLayer, DATA_LAYER);
+
+            // --- Popup pinned to top of 3D arch ---
+            // Mapbox Popup has no altitude. Use a real Popup at gate centroid (ground) and add a
+            // dynamic Y offset = how many CSS pixels Z=mgTotalH lifts in the current camera, so the
+            // tail tip lands on the arch peak. Offset recomputed on every move/zoom/pitch.
+            const mgGateLng = mgRing.reduce((s,c)=>s+c[0],0)/mgRing.length;
+            const mgGateLat = mgRing.reduce((s,c)=>s+c[1],0)/mgRing.length;
+            const mgGateLngLat = [mgGateLng, mgGateLat];
+            const mgPeakHeightM = mgTotalH / mgMPM; // mercator → metres
+            const computeMgLiftPx = () => {
+              // metres-per-pixel at gate location: project two CSS-pixels apart, unproject, haversine.
+              const p = map.project(mgGateLngLat);
+              const a = map.unproject([p.x, p.y]);
+              const b = map.unproject([p.x + 1, p.y]);
+              const mPerPx = mgHav(a.lng, a.lat, b.lng, b.lat);
+              if (!mPerPx || !isFinite(mPerPx)) return 0;
+              const pitchRad = map.getPitch() * Math.PI / 180;
+              return (mgPeakHeightM / mPerPx) * Math.sin(pitchRad);
+            };
+            const mgPopupOpts = { offset: 0, maxWidth: '200px', focusAfterOpen: false, anchor: 'bottom' };
+            let mgPopup = null;
+            const updateMgPopupOffset = () => {
+              if (!mgPopup) return;
+              const lift = computeMgLiftPx();
+              mgPopup.setOffset([0, -lift - 8]);
+            };
+            window.openMainGatePopup = () => {
+              const { title = 'Main Gate', description = '' } = (pointLabels.points && pointLabels.points['entrance-main-gate']) || {};
+              const html = window.mapPointPopup.innerHTML.replace(/\$(\w+)/g, (_, k) => ({ title, description })[k] ?? '');
+              if (currentOpenPopup) { currentOpenPopup.remove(); currentOpenPopup = null; }
+              mgPopup = new mapboxgl.Popup(mgPopupOpts).setLngLat(mgGateLngLat).setHTML(html).addTo(map);
+              currentOpenPopup = mgPopup;
+              mgPopup.on('close', () => { if (currentOpenPopup === mgPopup) currentOpenPopup = null; mgPopup = null; });
+              updateMgPopupOffset();
+            };
+            map.on('move', updateMgPopupOffset);
+            map.on('zoom', updateMgPopupOffset);
+            map.on('pitch', updateMgPopupOffset);
+            map.on('rotate', updateMgPopupOffset);
+            map.on('resize', updateMgPopupOffset);
+
+            // Always keep main-gate 3D on top of every Mapbox layer.
+            // Re-top on each idle so dynamically-added layers (markers/symbols/stripes) stay below.
+            const mgKeepOnTop = () => { if (map.getLayer('main-gate-3d-layer')) map.moveLayer('main-gate-3d-layer'); };
+            mgKeepOnTop();
+            map.on('idle', mgKeepOnTop);
+            map.on('styledata', mgKeepOnTop);
+            map.on('sourcedata', mgKeepOnTop);
+
+            // Hide DOM markers visually overlapping the 3D main gate.
+            // Use the existing main-gate-hit fill-extrusion layer for true 3D raycast occlusion.
+            if (!map._mainGateOcclusionAttached) {
+              map._mainGateOcclusionAttached = true;
+              let scheduled = false;
+              const update = () => {
+                scheduled = false;
+                if (!map.getLayer('main-gate-hit')) return;
+                const markers = (map._markers && Array.isArray(map._markers)) ? map._markers : null;
+                if (!markers) return;
+                for (const m of markers) {
+                  const ll = m.getLngLat(); if (!ll) continue;
+                  const el = m.getElement(); if (!el) continue;
+                  const sp = map.project(ll);
+                  const hit = map.queryRenderedFeatures([sp.x, sp.y], { layers: ['main-gate-hit'] });
+                  el.style.visibility = hit.length ? 'hidden' : '';
+                }
+              };
+              const schedule = () => { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } };
+              map.on('move', schedule);
+              map.on('idle', schedule);
+              requestAnimationFrame(update);
+            }
+
+            entrance3dLayers.set('entrance-main-gate', mgLayer);
+
+            // Hit layer for click/hover
+            const mgHitId = 'main-gate-hit';
+            if (!map.getLayer(mgHitId)) {
+              map.addLayer({ id: mgHitId, type: 'fill-extrusion', source: 'map-data',
+                filter: ['==', ['get', 'id'], 'main-gate'],
+                paint: { 'fill-extrusion-color': '#000', 'fill-extrusion-opacity': 0, 'fill-extrusion-height': 10, 'fill-extrusion-base': 0 }
+              });
+              map.on('click', mgHitId, () => { setEntranceHighlights('entrance-main-gate'); window.openMainGatePopup(); });
+              map.on('mouseenter', mgHitId, () => { map.getCanvas().style.cursor = 'pointer'; });
+              map.on('mouseleave', mgHitId, () => { map.getCanvas().style.cursor = ''; });
+            }
+            // Register in pointMarkers for sidebar
+            { const { title = 'Main Gate' } = pointLabels.points?.['entrance-main-gate'] || {};
+              const mgLng = mgRing.reduce((s,c)=>s+c[0],0)/mgRing.length;
+              const mgLat = mgRing.reduce((s,c)=>s+c[1],0)/mgRing.length;
+              const mgLngLat = new mapboxgl.LngLat(mgLng, mgLat);
+              pointMarkers.push({ type: 'entrance', id: 'entrance-main-gate', iconKey: 'entrance-main-gate', title,
+                marker: { getLngLat: () => mgLngLat, addTo: () => {}, remove: () => {},
+                  getPopup: () => ({ isOpen: () => false }),
+                  togglePopup() { window.openMainGatePopup(); } } }); }
           } else if (feature.geometry.type === 'Polygon' && featureId === 'arch') {
             // 3D arch arcade via Mapbox CustomLayerInterface + raw WebGL
             // Geometry: 3 arches × 2 rows matching the patio-de-las-campanas icon
