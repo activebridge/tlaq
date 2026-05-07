@@ -13,8 +13,8 @@ layout_type: about
   <hgroup style="view-transition-name: title-{{transition-name}};">
     <h5 title>About</h5>
     <h2>{{ site.data.about.heading }}</h2>
-    <h6>{{ site.data.about.subheading }}</h6>
   </hgroup>
+  <p>{{ site.data.about.subheading }}</p>
 
   {% assign jump_nav_links = "village_map,tlaquepaque_north,outdoor_art,landscaping,sycamore,our_people" | split: "," %}
   {% assign jump_nav_slugs = "about" %}

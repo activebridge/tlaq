@@ -31,7 +31,7 @@ layout: default
     <aside class="blog-show__sidebar">
       <h6>BROWSE OTHER ARTICLES</h6>
       <ul>
-        {% for post in other_posts limit: 10 %}
+        {% for post in other_posts %}
           <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
         {% endfor %}
       </ul>
