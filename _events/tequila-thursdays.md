@@ -7,7 +7,7 @@ ends_at: 2026-03-26 16:45:00
 location: Tlaquepaque Village
 image: /assets/images/events/Tequila-Thursday.jpg
 video_url: ''
-subtitle: Enjoy a tasting tour of Spirits & Spice's unique tequilas.
+subtitle: Stop by the Spirits & Spice shop every Thursday afternoon to enjoy a tasting tour of our unique small-batch tequilas.
 schedule_type: weekly
 recurs_until: 2027-03-26 23:59:00
 recurrence_weekdays:
