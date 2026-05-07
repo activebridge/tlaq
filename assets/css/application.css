@@ -1642,6 +1642,13 @@ a.read-more {
   }
 }
 
+@media (max-width: 770px) {
+  #accessibility > #family-friendly {
+    border-top: 1px solid var(--navy);
+    padding-top: 2rem;
+  }
+}
+
 main.news .list-container {
   grid-template-columns: repeat(2, 1fr);
 
@@ -1813,8 +1820,11 @@ img.village-map {
 
   .schedule-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+    gap: 1rem;
+
+    span:last-child { white-space: nowrap; flex-shrink: 0; }
   }
 }
 
@@ -1975,6 +1985,10 @@ dialog {
     }
 
     section:last-of-type hr { display: none; }
+
+    @media (max-width: 770px) {
+      section:last-of-type hr { display: block; }
+    }
   }
 
   aside {
