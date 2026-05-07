@@ -706,6 +706,19 @@ article {
   }
 }
 
+@media (min-width: 770px) {
+  .content-wrapper > article#filming,
+  .content-wrapper > article#magazine {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 5rem;
+    align-items: start;
+
+    > h5, > h2, > .footer { grid-column: 1; }
+    > img, > figure { grid-column: 2; grid-row: 1 / span 3; align-self: start; }
+  }
+}
+
 @media (max-width: 770px) {
   .header-jump {
     top: calc(var(--header-height) - var(--header-nav-height) + var(--header-status-height));
