@@ -41,6 +41,14 @@ registerRoute(
   new CacheFirst({ cacheName: 'fonts', plugins: [cacheable200, new ExpirationPlugin({ maxEntries: 10, maxAgeSeconds: ONE_YEAR })] })
 );
 
+registerRoute(
+  ({ request }) => request.destination === 'image',
+  new StaleWhileRevalidate({
+    cacheName: 'images',
+    plugins: [cacheable200, new ExpirationPlugin({ maxEntries: 100, maxAgeSeconds: 30 * 24 * 60 * 60 })]
+  })
+);
+
 // Runtime caching is intentionally disabled for now.
 // Keep the service worker registration to preserve PWA support.
 //
