@@ -19,16 +19,37 @@ Open http://localhost:4000
 
 ## Structure
 
+Content collections:
+
 | Directory | Description |
 |-----------|-------------|
-| `_shops/` | Retail shop pages (31) |
-| `_galleries/` | Art gallery pages (15) |
+| `_shops/` | Retail shop pages (28) |
+| `_galleries/` | Art gallery pages (14) |
 | `_foods/` | Dining & food pages (9) |
-| `_events/` | Event pages |
+| `_events/` | Event pages (21) — see [Events Management](#events-management) |
 | `_weddings/` | Wedding venue/service pages |
-| `_layouts/` | Page templates |
-| `_data/` | Site config, form settings |
+| `_wedding-articles/` | Wedding-related articles |
+| `_blogs/` | Blog / news posts |
+| `_landing/` | Homepage section content (banner, calendar, what's new, etc.); `output: false` |
+| `pages/` | Static HTML pages (About, Hours, History, etc.) |
+
+Templates and assets:
+
+| Directory | Description |
+|-----------|-------------|
+| `_layouts/`, `_includes/` | Page templates and partials |
+| `_data/` | Site config, defaults, form settings |
 | `assets/` | CSS, JS, images |
+| `admin/` | Sveltia CMS interface (`/admin/`) |
+
+Infrastructure:
+
+| Directory | Description |
+|-----------|-------------|
+| `_plugins/` | Custom Jekyll plugins (currently empty; supported because the site builds via GitHub Actions, not Pages' built-in Jekyll) |
+| `scripts/` | One-off Ruby export utilities used to migrate data from the previous Rails site |
+| `cloudflare-worker/` | Placeholder; Worker source code is not stored in this repo |
+| `.github/workflows/` | CI/CD — Jekyll build + GitHub Pages deploy |
 
 ## Content
 
@@ -141,10 +162,13 @@ schedule_type: yearly
 
 ## Tech
 
-- Jekyll ~4.3
-- `jekyll-seo-tag`, `jekyll-sitemap`
-- Vanilla JS (search, calendar, hours, contact form)
+- Jekyll ~4.3 on Ruby 3.3
+- Plugins: `jekyll-seo-tag`, `jekyll-sitemap`, `jekyll-paginate-v2`
+- Vanilla JS — client-side search (`assets/js/search.js`), calendar, hours, contact form
 - Custom CSS with CSS variables (no framework)
+- PWA: `manifest.json` + Workbox-based service worker (`sw.js`) with offline fallback (`offline.html`)
+- View Transitions API for cross-page animations
+- Custom `404.html` / `500.html`
 
 ## Admin / CMS
 
@@ -203,11 +227,38 @@ Images are uploaded through the CMS to `assets/images/` and referenced automatic
 
 ## Deployment
 
-Hosted on GitHub Pages via the built-in Jekyll deployment.
+Hosted on GitHub Pages, but **not** via Pages' built-in Jekyll. Build runs in GitHub Actions (`.github/workflows/jekyll.yml`):
 
-Push to `main` to trigger an automatic build and deploy.
+1. `actions/checkout@v4`
+2. `ruby/setup-ruby@v1` with Ruby 3.3 and `bundler-cache: true`
+3. `bundle exec jekyll build` with `JEKYLL_ENV=production`
+4. `actions/upload-pages-artifact@v3`
+5. `actions/deploy-pages@v4`
 
-The site is live at: https://activebridge.github.io/tlaq/
+Push to `main` (or run the workflow manually) to trigger an automatic build and deploy.
+
+Custom domain: **tlaq.com** (configured via the `CNAME` file). HTTPS is provisioned by GitHub Pages.
+
+## GitHub Pages — limitations & implications
+
+This repo deploys via a **custom Actions workflow**, which lifts most of the constraints of Pages' default Jekyll runner but still leaves the platform constraints of GitHub Pages itself.
+
+Lifted by using a custom Actions build:
+
+- Custom Jekyll plugins in `_plugins/` are allowed (Pages' built-in Jekyll restricts plugins to a small safelist).
+- Any gem in `Gemfile` is usable; no `github-pages` gem version pin.
+- Ruby version is pinned by the workflow (3.3), not whatever Pages happens to provide.
+
+Still in force on GitHub Pages hosting (per [GitHub Pages docs](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages#usage-limits)):
+
+- **Static only** — no server runtime. Anything dynamic (form submissions, image transforms, weather widget) is offloaded to Cloudflare Workers and the `tlaq.com` Cloudflare CDN. See [Site Handover / Migration Guide](#site-handover--migration-guide).
+- **Soft repo size limit ~1 GB**, recommended published-site size ~1 GB. Heavy media is hosted on Cloudflare CDN / `cdn-website.com`, not committed to the repo, to stay under this.
+- **Soft bandwidth limit ~100 GB/month** for the Pages site itself; offloading images to the CDN keeps Pages bandwidth low.
+- **Build timeout ~10 minutes** per deploy; current build completes well under this.
+- **One site per repository**; custom domain is set via the root `CNAME` file (already configured: `tlaq.com`).
+- The build artifact must land in `_site/` (Jekyll's default) — `actions/upload-pages-artifact` uploads from there.
+
+The site is live at: <https://tlaq.com>
 
 ---
 
