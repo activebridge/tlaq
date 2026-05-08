@@ -1,4 +1,16 @@
-{% if include.event.starts_at %}
+{% assign override_text = "" %}
+{% if include.event.display_dates and include.event.display_dates.size > 0 %}
+  {% for entry in include.event.display_dates %}
+    {% if entry.text and entry.text != "" %}
+      {% if override_text != "" %}{% assign override_text = override_text | append: " · " %}{% endif %}
+      {% assign override_text = override_text | append: entry.text %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if override_text != "" %}
+  <p class="event-meta event-meta--date">{{ override_text | upcase }}</p>
+{% elsif include.event.starts_at %}
   {% assign starts_on = include.event.starts_at | date: "%Y-%m-%d" %}
   {% assign ends_on = include.event.ends_at | date: "%Y-%m-%d" %}
   {% assign recurring_days = include.event.weekdays | default: include.event.recurrence_weekdays %}
