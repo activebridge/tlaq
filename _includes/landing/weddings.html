@@ -9,7 +9,13 @@
     {% for wedding_image in weddings.images %}
       {% capture cdn_prefix %}/cdn-cgi/image/width={{ wedding_image.width }},height={{ wedding_image.height }},fit=cover,quality=85,gravity=center,format=webp/{% endcapture %}
       {% assign wedding_image_cdn = wedding_image.image | prepend: cdn_prefix | prepend: site.cdn_url %}
-      <img src="{{ wedding_image_cdn }}" alt="{{ wedding_image.alt }}" loading="lazy" width="{{ wedding_image.width }}" height="{{ wedding_image.height }}" onerror="imageError(this)">
+      {% if forloop.first %}
+        <img src="{{ wedding_image_cdn }}" alt="{{ wedding_image.alt }}" loading="lazy" width="{{ wedding_image.width }}" height="{{ wedding_image.height }}" onerror="imageError(this)">
+        <div class="weddings-gallery-stack">
+      {% else %}
+        <img src="{{ wedding_image_cdn }}" alt="{{ wedding_image.alt }}" loading="lazy" width="{{ wedding_image.width }}" height="{{ wedding_image.height }}" onerror="imageError(this)">
+      {% endif %}
+      {% if forloop.last %}</div>{% endif %}
     {% endfor %}
   </section>
   <section class="footer">
