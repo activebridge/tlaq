@@ -3977,7 +3977,8 @@
     {
       "type": "Feature",
       "properties": {
-        "type": "parking"
+        "type": "parking",
+        "id": "parking-west"
       },
       "geometry": {
         "coordinates": [
@@ -3991,7 +3992,8 @@
     {
       "type": "Feature",
       "properties": {
-        "type": "parking"
+        "type": "parking",
+        "id": "parking-east"
       },
       "geometry": {
         "coordinates": [
@@ -4303,7 +4305,8 @@
     {
       "type": "Feature",
       "properties": {
-        "type": "parking"
+        "type": "parking",
+        "id": "parking-portal-lane"
       },
       "geometry": {
         "coordinates": [
@@ -5537,6 +5540,20 @@
         "type": "Point"
       },
       "id": "fe7e57647c9166e85c8b30e9e01c5963"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "parking",
+        "id": "parking-creekside"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.7623544,
+          34.8620246
+        ]
+      }
     }
   ],
   "type": "FeatureCollection"
