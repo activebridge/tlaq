@@ -4,6 +4,8 @@ layout: default
 {% assign store_page = site.data.store_page.detail_page %}
 {% assign image_path = page.image %}
 {% assign transition-name = page.image | downcase | replace: '/', '-' | replace: '.', '-' %}
+{% assign desc_image = page.vertical_image | default: page.interior_image | default: page.image %}
+{% assign desc_image_cdn = desc_image | prepend: '/cdn-cgi/image/width=800,height=1000,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
 {% include hero-banner.html image_path=image_path transition-name=transition-name interior_image=page.interior_image %}
 
 <div class="content-wrapper store">
@@ -56,7 +58,7 @@ layout: default
     </div>
     <div>
       <div class="hero-desc" style="view-transition-name: {{ page.image | downcase | replace: '/', '-' | replace: '.', '-'}};">
-        <img src="{{ page.vertical_image | default: page.interior_image | default: page.image }}" alt="{{ page.title }} Interior">
+        <img src="{{ desc_image_cdn }}" alt="{{ page.title }} Interior" loading="lazy" decoding="async" onerror="imageError(this)">
       </div>
     </div>
   </div>

@@ -6,9 +6,11 @@
   </h5>
   <h2>{{ weddings.heading }}</h2>
   <section class="weddings-gallery">
-    <img src="{{ weddings.images[0].image | relative_url }}" alt="{{ weddings.images[0].alt }}" loading="lazy" width="{{ weddings.images[0].width }}" height="{{ weddings.images[0].height }}" onerror="imageError(this)">
-    <img src="{{ weddings.images[1].image | relative_url }}" alt="{{ weddings.images[1].alt }}" loading="lazy" width="{{ weddings.images[1].width }}" height="{{ weddings.images[1].height }}" onerror="imageError(this)">
-    <img src="{{ weddings.images[2].image | relative_url }}" alt="{{ weddings.images[2].alt }}" loading="lazy" width="{{ weddings.images[2].width }}" height="{{ weddings.images[2].height }}" onerror="imageError(this)">
+    {% for wedding_image in weddings.images %}
+      {% capture cdn_prefix %}/cdn-cgi/image/width={{ wedding_image.width }},height={{ wedding_image.height }},fit=cover,quality=85,gravity=center,format=webp/{% endcapture %}
+      {% assign wedding_image_cdn = wedding_image.image | prepend: cdn_prefix | prepend: site.cdn_url %}
+      <img src="{{ wedding_image_cdn }}" alt="{{ wedding_image.alt }}" loading="lazy" width="{{ wedding_image.width }}" height="{{ wedding_image.height }}" onerror="imageError(this)">
+    {% endfor %}
   </section>
   <section class="footer">
     <p>{{ weddings.description | escape }}</p>

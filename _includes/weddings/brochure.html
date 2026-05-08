@@ -11,7 +11,8 @@
   {% if site.data.weddings.brochure.awards %}
   <div class="brochure-awards">
     {% for award in site.data.weddings.brochure.awards %}
-    <img src="{{ award.image | relative_url }}" alt="{{ award.alt }}" loading="lazy" onerror="imageError(this)">
+    {% assign award_image_cdn = award.image | prepend: '/cdn-cgi/image/width=300,height=300,fit=contain,quality=85,format=webp/' | prepend: site.cdn_url %}
+    <img src="{{ award_image_cdn }}" alt="{{ award.alt }}" loading="lazy" onerror="imageError(this)">
     {% endfor %}
   </div>
   {% endif %}

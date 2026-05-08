@@ -6,7 +6,8 @@
   </h5>
   <h2>{{ magazine.heading }}</h2>
   <figure>
-    <img src="{{ magazine.image | relative_url }}" alt="{{ magazine.alt }}" loading="lazy" width="900" height="600" onerror="imageError(this)">
+    {% assign magazine_image_cdn = magazine.image | prepend: '/cdn-cgi/image/width=900,height=600,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
+    <img src="{{ magazine_image_cdn }}" alt="{{ magazine.alt }}" loading="lazy" width="900" height="600" onerror="imageError(this)">
   </figure>
   <section class="footer">
     <p>{{ magazine.description | escape }}</p>

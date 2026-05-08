@@ -9,7 +9,8 @@
   {% for post in latest_posts limit: 2 %}
   <section>
     <a href="{{ post.url | relative_url }}">
-      <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy" width="592" height="385" onerror="imageError(this)">
+      {% assign post_image_cdn = post.image | prepend: '/cdn-cgi/image/width=600,height=400,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
+      <img src="{{ post_image_cdn }}" alt="{{ post.title }}" loading="lazy" width="592" height="385" onerror="imageError(this)">
     </a>
     <h3>{{ post.title }}</h3>
     <p>{{ post.description }}</p>

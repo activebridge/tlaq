@@ -17,7 +17,8 @@ layout: default
   {% if page.images %}
     <div class="image-split">
       {% for image in page.images %}
-        <img src="{{ image }}" alt="{{ page.title }}" onerror="imageError(this)">
+        {% assign image_cdn = image | prepend: '/cdn-cgi/image/width=1200,height=800,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
+        <img src="{{ image_cdn }}" alt="{{ page.title }}" loading="lazy" decoding="async" onerror="imageError(this)">
       {% endfor %}
     </div>
   {% endif %}

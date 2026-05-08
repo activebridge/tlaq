@@ -13,8 +13,9 @@
       {% include events/contact.html event=page %}
     </div>
     <div>
+      {% assign event_desc_image_cdn = image_path | prepend: '/cdn-cgi/image/width=800,height=1000,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
       <div class="hero-desc" style="view-transition-name: {{ page_image_transition_name }};">
-        <img src="{{ image_path | relative_url }}" alt="{{ page.title }} Image">
+        <img src="{{ event_desc_image_cdn }}" alt="{{ page.title }} Image">
         {% include video-bg.html video_url=video_url media="(min-width: 770px)" %}
       </div>
     </div>

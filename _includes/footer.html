@@ -7,7 +7,9 @@
     </div>
     <div class="awards">
       {% for item in site.data.footer.awards %}
-      <img src="{{ item.image | relative_url }}" alt="{{ item.alt }}" loading="lazy" width="{{ item.width }}"
+      {% capture award_cdn_prefix %}/cdn-cgi/image/width={{ item.width }},height={{ item.height }},fit=cover,quality=85,gravity=center,format=webp/{% endcapture %}
+      {% assign award_image_cdn = item.image | prepend: award_cdn_prefix | prepend: site.cdn_url %}
+      <img src="{{ award_image_cdn }}" alt="{{ item.alt }}" loading="lazy" width="{{ item.width }}"
         height="{{ item.height }}" onerror="imageError(this)">
       {% endfor %}
     </div>
