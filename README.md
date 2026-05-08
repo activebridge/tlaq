@@ -239,11 +239,11 @@ When transferring site management to a new person, the following third-party acc
 
 ### 2. Cloudflare
 
-**What it does:** CDN image optimization (via `tlaq.ab.team`) and three serverless Workers.
+**What it does:** CDN image optimization (via `tlaq.com`) and three serverless Workers.
 
 #### 2a. CDN / Image Optimization
 
-Images are transformed via Cloudflare's `/cdn-cgi/image/...` URLs served from `tlaq.ab.team`.
+Images are transformed via Cloudflare's `/cdn-cgi/image/...` URLs served from `tlaq.com`.
 
 | Value | Location |
 |-------|----------|

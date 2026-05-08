@@ -1,9 +1,9 @@
 title: Tlaquepaque
 description: Arts & Shopping Village
-url: "https://tlaq.ab.team"
+url: "https://tlaq.com"
 baseurl: ""
 email: "visitorinfo@tlaq.com"
-cdn_url: "https://tlaq.ab.team"
+cdn_url: "https://tlaq.com"
 
 collections:
   blogs:
