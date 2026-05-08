@@ -608,6 +608,7 @@ html, body {
       width: 100cqw;
       overflow: scroll;
       gap: 5rem;
+      scroll-snap-type: x proximity;
     }
 
     .jump-to {
@@ -616,9 +617,10 @@ html, body {
       left: 0;
       z-index: 1;
       background: var(--bg);
+      scroll-snap-align: none;
     }
 
-    a { white-space: nowrap }
+    a { white-space: nowrap; scroll-snap-align: start; }
     hr { margin: 0 }
   }
 
