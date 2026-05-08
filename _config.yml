@@ -81,6 +81,10 @@ defaults:
     values:
       layout: "weddings/show"
       layout_type: "wedding"
+  - scope:
+      path: "admin"
+    values:
+      sitemap: false
 
 plugins:
   - jekyll-seo-tag
