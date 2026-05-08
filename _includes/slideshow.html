@@ -1,0 +1,38 @@
+{% assign images = include.images %}
+{% assign count = images | size %}
+{% if count > 0 %}
+  {% assign alt = include.alt | default: "" %}
+  {% assign width = include.width | default: 1200 %}
+  {% assign height = include.height | default: 675 %}
+  {% assign fit = include.fit | default: "cover" %}
+  {% assign sid = include.id | default: "slideshow" %}
+  {% assign duration = include.duration | default: 4 %}
+  {% capture cdn_prefix %}{{ site.cdn_url }}/cdn-cgi/image/width={{ width }},height={{ height }},fit={{ fit }},quality=85,format=webp/{% endcapture %}
+
+  {% if count == 1 %}
+    {% assign img_src = images | first | prepend: cdn_prefix %}
+    <figure>
+      <img src="{{ img_src }}" alt="{{ alt }}" width="{{ width }}" height="{{ height }}" loading="lazy" decoding="async" onerror="imageError(this)">
+    </figure>
+  {% else %}
+    {% assign total_slides = count | times: 2 %}
+    <figure class="slideshow">
+      <div class="slideshow-barrier">
+        <div class="slideshow-track" data-slideshow="{{ sid }}" style="--count: {{ count }}; --slides: {{ total_slides }}; --duration-per-slide: {{ duration }}s;">
+          {% for image in images %}
+            {% assign img_src = image | prepend: cdn_prefix %}
+            <div class="slideshow-slide">
+              <img src="{{ img_src }}" alt="{{ alt }}" width="{{ width }}" height="{{ height }}" loading="lazy" decoding="async" onerror="imageError(this)">
+            </div>
+          {% endfor %}
+          {% for image in images %}
+            {% assign img_src = image | prepend: cdn_prefix %}
+            <div class="slideshow-slide" aria-hidden="true">
+              <img src="{{ img_src }}" alt="" width="{{ width }}" height="{{ height }}" loading="lazy" decoding="async" onerror="imageError(this)">
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </figure>
+  {% endif %}
+{% endif %}
