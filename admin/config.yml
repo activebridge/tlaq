@@ -1605,7 +1605,7 @@ collections:
         required: false
         collapsed: true
         summary: "{{fields.month}}: {{fields.text}}"
-        hint: "Optional per-month label that replaces the auto-generated date row in the calendar (e.g. 'Every Sunday', 'May 2, May 9, May 16'). When set for a month, only ONE card is shown for this event in that month and the weekly range hint is hidden. Add at most one entry per month — duplicates are ignored, only the first match wins. Leave empty to keep default behavior."
+        hint: "Optional per-month label that replaces the auto-generated date row in the calendar (e.g. 'Every Sunday', 'May 2, May 9, May 16'). When set for a month, only ONE card is shown for this event in that month and the weekly range hint is hidden. Add at most one entry per month — duplicates are ignored, only the first match wins. Also overrides the date row on the event detail page: all entries are joined with ' · ' and the time row is hidden. Leave empty to keep default behavior."
         fields:
           - { label: "Month", name: "month", widget: "select", options: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], hint: "Three-letter month code. Applies to every year." }
           - { label: "Text", name: "text", widget: "string", hint: "Free text shown in place of the date row, e.g. 'Every Thursday' or 'May 2, May 9, May 16'." }
