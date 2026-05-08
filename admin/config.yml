@@ -1123,12 +1123,6 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Subtitle", name: "subtitle", widget: "string" }
-          - label: "Notes"
-            name: "notes"
-            widget: "object"
-            fields:
-              - { label: "General", name: "general", widget: "text" }
-              - { label: "Visitors Only", name: "visitors_only", widget: "string" }
           - label: "Parking Lot Rows"
             name: "lot_rows"
             widget: "list"
