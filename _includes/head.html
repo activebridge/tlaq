@@ -33,5 +33,13 @@
   <noscript>
     <link rel="stylesheet" href="{{ '/assets/css/application.css' | relative_url }}">
   </noscript>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5B8EH7YDPN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5B8EH7YDPN');
+  </script>
   <script>function imageError(img) { img.onerror = null; img.srcset = ''; var p = img.parentElement; if (p && p.tagName === 'PICTURE') { p.querySelectorAll('source').forEach(function(s) { s.srcset = ''; }); } img.src = '/assets/images/placeholder.webp'; }</script>
 </head>
