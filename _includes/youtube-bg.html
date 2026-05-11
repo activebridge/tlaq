@@ -1,0 +1,11 @@
+{% if include.video_id %}
+  <iframe class="videobgframe yt" src="https://www.youtube-nocookie.com/embed/{{ include.video_id }}?autoplay=1&mute=1&loop=1&playlist={{ include.video_id }}&playsinline=1&rel=0" title="{{ include.title | default: 'Video' }}" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" loading="lazy"{% if include.media %} data-media="{{ include.media }}"{% endif %}></iframe>
+  <script>
+    (function() {
+      const f = document.currentScript.previousElementSibling;
+      const media = f.dataset.media;
+      if (media && !window.matchMedia(media).matches) { f.remove(); return; }
+      f.addEventListener('load', () => setTimeout(() => f.classList.add('loaded'), 1000), { once: true });
+    })();
+  </script>
+{% endif %}

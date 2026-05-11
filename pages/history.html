@@ -21,7 +21,12 @@ layout_type: history
   {% if data.cover %}
   {% assign cover_mobile = data.cover | prepend: '/cdn-cgi/image/width=900,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
   {% assign cover_desktop = data.cover | prepend: '/cdn-cgi/image/width=1800,fit=cover,quality=85,format=webp/' | prepend: site.cdn_url %}
-  <img class="cover" src="{{ cover_desktop }}" srcset="{{ cover_mobile }} 900w, {{ cover_desktop }} 1800w" sizes="100vw" alt="{{ data.cover_alt }}" loading="lazy" decoding="async" onerror="imageError(this)">
+  <div class="cover-media">
+    <img class="cover" src="{{ cover_desktop }}" srcset="{{ cover_mobile }} 900w, {{ cover_desktop }} 1800w" sizes="100vw" alt="{{ data.cover_alt }}" loading="lazy" decoding="async" onerror="imageError(this)">
+    {% if data.cover_video_youtube %}
+    {% include youtube-bg.html video_id=data.cover_video_youtube %}
+    {% endif %}
+  </div>
   <hr>
   {% endif %}
 

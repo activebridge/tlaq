@@ -857,6 +857,7 @@ collections:
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Full-width banner image at the top of the page. Filename must not start with an underscore" }
           - { label: "Cover Image", name: "cover", widget: "image", hint: "Wide image shown under the page header, above the Vision block. Filename must not start with an underscore" }
           - { label: "Cover Image Alt", name: "cover_alt", widget: "string", hint: "Short description of the cover image for screen readers." }
+          - { label: "Cover Video (YouTube)", name: "cover_video_youtube", widget: "string", required: false, hint: "Optional. Paste only the YouTube video ID (the 11-character code), not the full URL. Example: for https://youtu.be/bHKKCyGXxLM the ID is bHKKCyGXxLM. Leave empty to show only the cover image." }
           - label: "Vision Section"
             name: "vision"
             widget: "object"
