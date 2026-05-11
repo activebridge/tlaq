@@ -18,7 +18,8 @@
           <hr />
           <p>{{ popup.description }}</p>
         </div>
-        <img src="{{ popup.image }}" alt="{{ popup.title | escape }}" loading="lazy" />
+        {% assign popup_image = popup.image | prepend: '/cdn-cgi/image/width=600,quality=85,format=webp/' | prepend: site.cdn_url %}
+        <img src="{{ popup_image }}" alt="{{ popup.title | escape }}" loading="lazy" />
         {% if popup.button.text and popup.button.text != "" %}
           <a href="{{ popup.button.url }}" class="btn btn-primary" style="margin: 3px">{{ popup.button.text }}</a>
         {% endif %}
