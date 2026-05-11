@@ -1,4 +1,5 @@
-enabled: true
+_info: ''
+enabled: false
 delay_seconds: 3
 icon: flower
 call_to_action: JOIN US
@@ -12,4 +13,4 @@ button:
 pages:
   - home
   - about
-updated_at: 2026-05-11T00:00:00.000Z
+updated_at: 2026-05-11T15:11:00
