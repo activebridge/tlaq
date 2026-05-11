@@ -1,0 +1,15 @@
+enabled: true
+delay_seconds: 3
+icon: flower
+call_to_action: JOIN US
+title: Day of the Dead
+subtitle: Saturday, Oct 31st, 3:00 - 6:00 PM
+description: A FREE event with entertainment and activities for adults and kids of all ages. Limited parking onsite. Shuttle Available.
+image: /assets/images/popup/image.png
+button:
+  text: MORE INFO
+  url: https://tlaq.com/events/day-of-the-dead/
+pages:
+  - home
+  - about
+updated_at: 2026-05-11T00:00:00.000Z

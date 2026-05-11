@@ -1,0 +1,31 @@
+{% assign popup = site.data.popup %}
+{% if popup.enabled and page.popup_key and popup.pages %}
+  {% if popup.pages contains page.popup_key %}
+    <dialog class="popup" id="sitePopup" data-delay="{{ popup.delay_seconds | default: 3 }}" data-version="{{ popup.updated_at | date: '%s' | default: '0' }}" aria-labelledby="popup-title">
+      <hr />
+      <div class="grid-col-2">
+        <div>
+          {% if popup.call_to_action and popup.call_to_action != "" %}
+            <h5>
+              {% include icons/windows/tlaq.svg %}
+              {{ popup.call_to_action }}
+            </h5>
+          {% endif %}
+          <h2>{{ popup.title }}</h2>
+          {% if popup.subtitle and popup.subtitle != "" %}
+            <p>{{ popup.subtitle }}</p>
+          {% endif %}
+          <hr />
+          <p>{{ popup.description }}</p>
+        </div>
+        {% assign popup_image = popup.image | prepend: '/cdn-cgi/image/width=600,quality=85,format=webp/' | prepend: site.cdn_url %}
+        <img src="{{ popup_image }}" alt="{{ popup.title | escape }}" loading="lazy" />
+        {% if popup.button.text and popup.button.text != "" %}
+          <a href="{{ popup.button.url }}" class="btn btn-primary" style="margin: 3px">{{ popup.button.text }}</a>
+        {% endif %}
+      </div>
+      <hr />
+    </dialog>
+    <script src="{{ '/assets/js/popup.js' | relative_url }}" defer></script>
+  {% endif %}
+{% endif %}

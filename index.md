@@ -1,6 +1,7 @@
 ---
 layout: home
 title: Tlaquepaque
+popup_key: home
 nav:
   label: Explore the village
   items:
