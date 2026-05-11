@@ -1602,11 +1602,11 @@ collections:
         options: ["single", "range", "weekly", "monthly", "yearly"]
         required: true
         hint: |
-          **single** — one date.
-          **range** — daily from start to end.
-          **weekly** — selected weekdays until Recurrence Until.
-          **monthly** — first selected weekday(s) each month until Recurrence Until.
-          **yearly** — repeats on the exact same calendar date every year. Only use if the date never changes.
+          - **single** — one date.
+          - **range** — daily from start to end.
+          - **weekly** — selected weekdays until Recurrence Until.
+          - **monthly** — first selected weekday(s) each month until Recurrence Until.
+          - **yearly** — repeats on the exact same calendar date every year. Only use if the date never changes.
 
           For annual events with shifting dates (e.g. Day of the Dead), use 'single' and enable the Annual Event flag instead.
       - { label: "Annual Event", name: "annual", widget: "boolean", default: false, required: false, hint: "Show this event in the Annual Events section. Use this for events that happen once a year but with a date that changes each year (e.g. Day of the Dead) — set Schedule Type to 'single', enter the correct date, and enable this flag. Each year, update the date or create a new entry." }
