@@ -528,6 +528,33 @@ collections:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Popup description", name: "description", widget: "string" }
 
+  - name: "popup"
+    label: "Popup Modal"
+    files:
+      - name: "popup_settings"
+        label: "Popup Modal"
+        file: "_data/popup.yml"
+        media_folder: "/assets/images/popup"
+        public_folder: "/assets/images/popup"
+        fields:
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ Controls the site-wide popup that appears after a short delay on selected pages.", hint: "Toggle Enabled to turn the popup on/off. Pick which pages it shows on at the bottom." }
+          - { label: "Enabled", name: "enabled", widget: "boolean", default: false, hint: "Master switch. When off, the popup never shows on any page." }
+          - { label: "Delay (seconds)", name: "delay_seconds", widget: "number", value_type: "int", default: 3, min: 0, max: 30, hint: "How long after page load before the popup appears." }
+          - { label: "Icon", name: "icon", widget: "select", options: ["flower", "star", "heart", "bell", "calendar", "gift"], default: "flower", hint: "Small decorative icon shown next to the call-to-action text." }
+          - { label: "Call-to-Action Text", name: "call_to_action", widget: "string", required: false, hint: "Short label above the title, e.g. JOIN US." }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string", hint: "Date/time line shown above the divider." }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Image", name: "image", widget: "image", hint: "Photo shown on the right side of the popup. Filename must not start with an underscore." }
+          - label: "Button"
+            name: "button"
+            widget: "object"
+            fields:
+              - { label: "Text", name: "text", widget: "string", required: false }
+              - { label: "URL", name: "url", widget: "string", required: false, hint: "Internal path like /events/foo/ or full external URL." }
+          - { label: "Display on Pages", name: "pages", widget: "select", multiple: true, required: false, options: ["home", "about", "news", "contacts", "history", "parking", "hours", "leasing", "filming-photography", "gift-cards", "magazines", "village-map", "wedding-faq"], hint: "Pick one or more pages where the popup should appear." }
+          - { label: "Updated At", name: "updated_at", widget: "datetime", required: true, hint: "Click 'Now' whenever you change popup content. This resets dismissals so returning visitors see the new popup." }
+
   - name: "pages"
     label: "Pages"
     files:
