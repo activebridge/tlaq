@@ -14,7 +14,7 @@ website: ''
 coordinates: -111.7632148, 34.8617285
 image: /assets/images/shops/Cocopah_Ext.jpg
 interior_image: /assets/images/shops/Cocopah_Int.jpg
-instagram: cocopah_tlaq
+instagram: '@cocopah_tlaq'
 facebook: ''
 full_location: 336 AZ-179 Suite C101, Sedona, AZ 86336
 store_hours:
