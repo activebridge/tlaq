@@ -3,7 +3,7 @@ slug: bella-fine-goods
 date: 2026-02-22
 published: true
 title: Bella Fine Goods
-subtitle: Furnishings, jewelry, and distinctive gifts
+subtitle: Furnishings, jewelry, fine art, and distinctive gifts
 tags:
   - gifts
   - shop
@@ -22,4 +22,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-A refined collection of furnishings, jewelry, and gifts, thoughtfully selected to bring beauty and elegance into everyday living, blending timeless design with pieces that feel both personal and distinctive.
+A refined collection of furnishings, jewelry, fine arts, and gifts, thoughtfully selected to bring beauty and elegance into everyday living, blending timeless design with pieces that feel both personal and distinctive.
