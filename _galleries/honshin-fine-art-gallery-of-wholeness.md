@@ -14,7 +14,7 @@ suite: a117
 phone: (928) 451-4739
 website: https://honshin.com
 coordinates: -111.7628265, 34.8620697
-image: ''
+image: /assets/images/galleries/Honshin_Int.jpg
 interior_image: /assets/images/galleries/Honshin_Gallery_Wholen ess_Int.jpg
 instagram: https://www.instagram.com/honshin_fine_art/
 facebook: ''
