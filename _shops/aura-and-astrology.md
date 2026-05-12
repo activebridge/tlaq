@@ -3,7 +3,7 @@ slug: aura-and-astrology
 date: 2026-02-22
 published: true
 title: Aura & Astrology
-subtitle: Intuitive readings, astrology, and spiritual tools
+subtitle: Aura readings, palmistry, vedic astrology, and sacred goods
 tags:
   - spiritual
   - shop
@@ -21,4 +21,4 @@ store_hours:
   friday: 10:00 am - 6:00 pm
 ---
 
-A soulful destination for intuitive insight and self-discovery, offering aura readings, astrology guidance, and spiritual tools. A place to explore energy, gain perspective, and connect more deeply with your inner landscape.
+A soulful destination for insight and self-discovery, offering aura readings, palmistry, astrology guidance, and sacred goods. A place to explore energy, gain perspective, and connect more deeply with your inner landscape.
