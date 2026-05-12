@@ -1,7 +1,6 @@
 ---
 layout: home
 title: Tlaquepaque
-popup_key: home
 nav:
   label: Explore the village
   items:
@@ -23,10 +22,11 @@ nav:
       url: /events/
     - type: weddings
       title: Weddings
-      description: From the bride and<br>groom to be
+      description: For the bride and<br>groom to be
       url: /weddings/
     - type: village-map
       title: Village Map
       description: For explorers and<br>wanderers
       url: /village_map/
+popup_key: home
 ---
