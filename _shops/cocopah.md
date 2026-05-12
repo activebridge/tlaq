@@ -3,18 +3,18 @@ slug: cocopah
 date: 2026-03-06
 published: true
 title: Cocopah
-subtitle: Beads, antiques, and Native American jewelry
+subtitle: Beads, estate, and Native American jewelry
 tags:
   - beads
   - jewelry
   - shop
 suite: c101
 phone: (928) 282-4928
-website: https://www.scenicsedona.com/cocopah/
+website: ''
 coordinates: -111.7632148, 34.8617285
 image: /assets/images/shops/Cocopah_Ext.jpg
 interior_image: /assets/images/shops/Cocopah_Int.jpg
-instagram: ''
+instagram: cocopah_tlaq
 facebook: ''
 full_location: 336 AZ-179 Suite C101, Sedona, AZ 86336
 store_hours:
