@@ -311,7 +311,7 @@ Two Workers are referenced in `_data/site.yml`:
 
 | Key | Current URL | Purpose |
 |-----|------------|---------|
-| `submission_worker_url` | `https://sweet-salad-9b35.alexsstorchak.workers.dev` | Call-for-submission photo uploads |
+| `submission_worker_url` | `https://cfs.tlaq.workers.dev` | Call-for-submission photo uploads |
 | `weather_widget_url` | `https://weather.pwt.workers.dev/widget.svg` | Weather widget SVG |
 
 > **Note:** Worker source code is **not** in this repository. Request it from the current developer before proceeding.
