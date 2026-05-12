@@ -16,6 +16,7 @@ website: https://www.carredartistes.com
 coordinates: -111.7631983, 34.8620155
 image: /assets/images/galleries/Carre_Dartistes_Ext.jpg
 interior_image: /assets/images/galleries/Carre_Dartistes_Int.jpg
+vertical_image: /assets/images/galleries/Carre_Int_desktop.jpg
 instagram: ''
 facebook: https://www.facebook.com/CarredartistesSedona/
 full_location: 336 AZ-179 Suite B121, Sedona, AZ 86336
