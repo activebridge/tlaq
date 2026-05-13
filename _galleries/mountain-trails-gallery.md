@@ -16,6 +16,7 @@ website: https://mountaintrailssedona.com
 coordinates: -111.7625608, 34.862085
 image: /assets/images/galleries/Mtn_Trail_Ext.jpg
 interior_image: /assets/images/galleries/Mtn_Trail_Int.jpg
+vertical_image: /assets/images/galleries/Mtn_trails_int_desktop.jpg
 instagram: https://www.instagram.com/mountaintrailssedona/
 facebook: https://www.facebook.com/MTGSedona/
 full_location: 336 AZ-179 Suite A201, Sedona, AZ 86336
