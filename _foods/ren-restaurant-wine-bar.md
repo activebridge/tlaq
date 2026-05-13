@@ -20,13 +20,13 @@ instagram: https://www.instagram.com/renetlaquepaque/
 facebook: https://www.facebook.com/ReneAtTlaquepaque/
 full_location: 336 AZ-179 Suite B118, Sedona, AZ 86336
 store_hours:
-  monday: 12pm - 8:30pm
-  tuesday: 12pm - 8:30pm
-  wednesday: 12pm - 8:30pm
-  thursday: 12pm - 8:30pm
-  friday: 12pm - 8:30pm
-  saturday: 12pm - 8:30pm
-  sunday: 12pm - 8:30pm
+  monday: 12pm - 9:00pm
+  tuesday: 12pm - 9:00pm
+  wednesday: 12pm - 9:00pm
+  thursday: 12pm - 9:00pm
+  friday: 12pm - 9:00pm
+  saturday: 12pm - 9:00pm
+  sunday: 12pm - 9:00pm
 ---
 
 An award-winning fine dining experience offering French Mediterranean cuisine in an intimate, romantic setting. Where thoughtful preparation, ambiance, and service come together to create a memorable evening.
