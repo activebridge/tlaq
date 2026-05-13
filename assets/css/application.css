@@ -1552,8 +1552,7 @@ table {
     }
   }
 
-  .today {
-    color: var(--navy);
+  .today p {
     font-weight: 700;
   }
 }

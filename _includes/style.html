@@ -316,6 +316,19 @@ html, body {
     animation: header-vt-pos-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
+  ::view-transition-group(visit-popover),
+  ::view-transition-group(about-popover),
+  ::view-transition-group(discover-popover),
+  ::view-transition-old(visit-popover),
+  ::view-transition-old(about-popover),
+  ::view-transition-old(discover-popover),
+  ::view-transition-new(visit-popover),
+  ::view-transition-new(about-popover),
+  ::view-transition-new(discover-popover) {
+    animation: none;
+    display: none;
+  }
+
   header a {
     text-decoration: none;
     color: inherit;
@@ -524,16 +537,19 @@ html, body {
     div#visit-popover {
       top: anchor(--visit-popover-anchor bottom);
       left: anchor(--visit-popover-anchor center);
+      view-transition-name: visit-popover;
     }
 
     div#about-popover {
       top: anchor(--about-popover-anchor bottom);
       left: anchor(--about-popover-anchor center);
+      view-transition-name: about-popover;
     }
 
     div#discover-popover {
       top: anchor(--discover-popover-anchor bottom);
       left: anchor(--discover-popover-anchor center);
+      view-transition-name: discover-popover;
     }
 
     .nav-popover-anchor:hover + .nav-popover,
