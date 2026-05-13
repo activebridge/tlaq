@@ -1,6 +1,7 @@
 ---
 layout: home
 title: Tlaquepaque
+image: /assets/images/landing/banner.webp
 nav:
   label: Explore the village
   items:

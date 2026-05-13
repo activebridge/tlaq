@@ -1,0 +1,42 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Tlaquepaque Arts & Shopping Village",
+  "url": "{{ site.url }}",
+  "image": "{{ site.url }}{{ site.image }}",
+  "description": {{ site.description | jsonify }},
+  "telephone": "+1-928-282-4838",
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "336 AZ-179",
+      "addressLocality": "Sedona",
+      "addressRegion": "AZ",
+      "postalCode": "86336",
+      "addressCountry": "US"
+    },
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "313 AZ-179",
+      "addressLocality": "Sedona",
+      "addressRegion": "AZ",
+      "postalCode": "86336",
+      "addressCountry": "US"
+    }
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 34.8479,
+    "longitude": -111.7637
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "10:00", "closes": "17:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday","Sunday"], "opens": "10:00", "closes": "18:00" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/Tlaquepaque",
+    "https://www.instagram.com/tlaquepaquevillage/"
+  ]
+}
+</script>

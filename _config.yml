@@ -1,9 +1,14 @@
 title: Tlaquepaque
-description: Arts & Shopping Village
+tagline: "Arts & Shopping Village in Sedona, AZ"
+description: "Tlaquepaque Arts & Shopping Village in Sedona, AZ — 50+ shops, galleries, and restaurants set in historic Spanish-colonial architecture along Oak Creek."
 url: "https://tlaq.com"
 baseurl: ""
 email: "visitorinfo@tlaq.com"
 cdn_url: "https://tlaq.com"
+image: /assets/images/landing/banner.webp
+twitter:
+  card: summary_large_image
+  username: tlaquepaque
 
 collections:
   blogs:

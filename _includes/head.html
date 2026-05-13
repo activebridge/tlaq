@@ -1,5 +1,4 @@
 <head>
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.data.site.app_name }}</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="application-name" content="{{ site.data.site.app_name }}">
@@ -10,6 +9,7 @@
   {% include style.html %}
 
   {% seo %}
+  {% if page.url == "/" %}{% include schema-local-business.html %}{% endif %}
 
   <link rel="icon" href="{{ '/favicon-v2.ico' | relative_url }}" sizes="any">
   <link rel="icon" href="{{ '/favicon-32x32.png' | relative_url }}" sizes="32x32" type="image/png">
