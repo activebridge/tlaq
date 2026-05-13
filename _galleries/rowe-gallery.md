@@ -15,6 +15,7 @@ website: https://rowegallery.com
 coordinates: -111.7626800, 34.8623355
 image: /assets/images/galleries/Rowe_Gallery_Ext2.jpg
 interior_image: /assets/images/galleries/Rowe_Gallery_Int.jpg
+vertical_image: /assets/images/galleries/Rowe_int_desktop.jpg
 instagram: https://www.instagram.com/rowegallery4027/
 facebook: https://www.facebook.com/rowegallery/
 full_location: 336 AZ-179 Suite A102-3, Sedona, AZ 86336
