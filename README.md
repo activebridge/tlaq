@@ -316,6 +316,33 @@ Two Workers are referenced in `_data/site.yml`:
 
 > **Note:** Worker source code is **not** in this repository. Request it from the current developer before proceeding.
 
+#### Call-for-submission flow
+
+Form on `pages/call-for-submission.html` (JS: `assets/js/call-for-submission.js`) posts `multipart/form-data` (text fields + photo file) to the `cfs` Worker. The Worker:
+
+1. Validates `Origin` (allowlist: `tlaq.com`, `tlaq.ab.team`).
+2. Parses form fields, base64-encodes the photo.
+3. Calls Resend API (`api.resend.com`) using a stored `RESEND_API_KEY` secret and the verified `tlaq.com` sender domain.
+
+Email delivered to:
+
+- **To:** `visitorinfo@tlaq.com` (Google Workspace inbox)
+- **Reply-To:** submitter's email
+- **From:** `tlaq.com Contact Form <noreply@tlaq.com>`
+- **Subject:** `Call for Submission — <First> <Last>`
+- Body: all form fields (name, email, phone, Instagram, caption, photo date, consent)
+- Attachment: original photo
+
+Stack:
+
+| Layer | Service | Notes |
+|-------|---------|-------|
+| Form handler | Cloudflare Workers | Free tier (100k req/day) |
+| Email send | Resend | Free tier (3,000/mo, 100/day); DKIM-verified `tlaq.com` |
+| Inbox | Google Workspace on `tlaq.com` | Existing |
+
+Security: CORS restricted to `tlaq.com` / `tlaq.ab.team`; `RESEND_API_KEY` stored as encrypted Worker secret; file type + size validated client-side before upload.
+
 **Steps:**
 1. Create a Cloudflare account and set up Workers
 2. Deploy each Worker from source
