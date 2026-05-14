@@ -42,13 +42,31 @@ layout_type: call-for-submission
           <p class="file-name" id="fileName" aria-live="polite"></p>
         </label>
 
-        <input type="text" name="first_name" aria-label="{{ cfs.first_name }}" placeholder="{{ cfs.first_name }} *" required>
-        <input type="text" name="last_name" aria-label="{{ cfs.last_name }}" placeholder="{{ cfs.last_name }} *" required>
-        <input type="email" name="email" aria-label="{{ cfs.email }}" placeholder="{{ cfs.email }} *" required>
-        <input type="tel" name="phone" aria-label="{{ cfs.phone }}" placeholder="{{ cfs.phone }} *" required>
-        <input type="text" name="instagram" aria-label="{{ cfs.instagram }}" placeholder="{{ cfs.instagram }}">
-        <input type="text" name="caption" aria-label="{{ cfs.caption }}" placeholder="{{ cfs.caption }} *" required>
-        <label class="date-field" for="photoDate">
+        <label>
+          {{ cfs.first_name }} *
+          <input type="text" name="first_name" required>
+        </label>
+        <label>
+          {{ cfs.last_name }} *
+          <input type="text" name="last_name" required>
+        </label>
+        <label>
+          {{ cfs.email }} *
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          {{ cfs.phone }} *
+          <input type="tel" name="phone" required>
+        </label>
+        <label>
+          {{ cfs.instagram }}
+          <input type="text" name="instagram">
+        </label>
+        <label>
+          {{ cfs.caption }} *
+          <input type="text" name="caption" required>
+        </label>
+        <label for="photoDate">
           {{ cfs.photo_date }}
           <input type="date" id="photoDate" name="photo_date" min="1960-01-01">
         </label>

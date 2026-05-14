@@ -24,10 +24,22 @@ layout_type: page
       <p class="required-note"><small>{{ nl.required_note }}</small></p>
 
       <div class="form-fields">
-        <input type="text" name="FNAME" id="mce-FNAME" class="required text" placeholder="{{ nl.first_name }} *" required>
-        <input type="text" name="LNAME" id="mce-LNAME" class="required text" placeholder="{{ nl.last_name }} *" required>
-        <input type="email" name="EMAIL" id="mce-EMAIL" class="required email" placeholder="{{ nl.email }} *" required>
-        <input type="text" name="MMERGE5" id="mce-MMERGE5" class="required text" placeholder="{{ nl.country }} *" required>
+        <label for="mce-FNAME">
+          {{ nl.first_name }} *
+          <input type="text" name="FNAME" id="mce-FNAME" class="required text" required>
+        </label>
+        <label for="mce-LNAME">
+          {{ nl.last_name }} *
+          <input type="text" name="LNAME" id="mce-LNAME" class="required text" required>
+        </label>
+        <label for="mce-EMAIL">
+          {{ nl.email }} *
+          <input type="email" name="EMAIL" id="mce-EMAIL" class="required email" required>
+        </label>
+        <label for="mce-MMERGE5">
+          {{ nl.country }} *
+          <input type="text" name="MMERGE5" id="mce-MMERGE5" class="required text" required>
+        </label>
       </div>
 
       <div class="form-consents">

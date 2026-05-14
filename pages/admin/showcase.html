@@ -574,19 +574,19 @@ sitemap: false
   <div class="showcase-section" id="forms">
     <h2>Forms</h2>
 
-    <p class="showcase-label" id="form-inputs">Text Inputs <span class="showcase-tag">input[type="text|email|tel|number|password|url"]</span></p>
+    <p class="showcase-label" id="form-inputs">Text Inputs <span class="showcase-tag">label > input[type="text|email|tel|number|password|url"]</span></p>
     <form>
-      <input type="text" placeholder="TEXT *">
-      <input type="email" placeholder="EMAIL *">
-      <input type="tel" placeholder="PHONE *">
-      <input type="number" placeholder="NUMBER *">
-      <input type="password" placeholder="PASSWORD *">
-      <input type="url" placeholder="URL *">
+      <label>TEXT *<input type="text"></label>
+      <label>EMAIL *<input type="email"></label>
+      <label>PHONE *<input type="tel"></label>
+      <label>NUMBER *<input type="number"></label>
+      <label>PASSWORD *<input type="password"></label>
+      <label>URL *<input type="url"></label>
     </form>
 
-    <p class="showcase-label" id="form-date">Date Input <span class="showcase-tag">input[type="date"]</span></p>
+    <p class="showcase-label" id="form-date">Date Input <span class="showcase-tag">label > input[type="date"]</span></p>
     <form>
-      <input type="date" aria-label="Date">
+      <label>DATE<input type="date"></label>
     </form>
 
     <p class="showcase-label" id="form-checkbox">Checkbox Fieldset <span class="showcase-tag">fieldset + legend + label</span></p>
@@ -612,9 +612,9 @@ sitemap: false
       </fieldset>
     </form>
 
-    <p class="showcase-label" id="form-upload">File Upload Area <span class="showcase-tag">.file-upload-area</span></p>
+    <p class="showcase-label" id="form-upload">File Upload Area <span class="showcase-tag">label:has(input[type="file"])</span></p>
     <form>
-      <div class="file-upload-area">
+      <label>
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="17 8 12 3 7 8"/>
@@ -622,10 +622,10 @@ sitemap: false
         </svg>
         <p class="file-upload-label">SELECT PHOTO TO UPLOAD *</p>
         <p class="file-upload-hint">Supported Format: JPG, PNG, TIFF (10MB MAX)</p>
-        <label class="btn btn-primary" for="showcase-file">SELECT FILE</label>
+        <span class="btn btn-primary">SELECT FILE</span>
         <input type="file" id="showcase-file" accept=".jpg,.jpeg,.png,.tiff,.tif">
         <p class="file-name" id="showcaseFileName" aria-live="polite"></p>
-      </div>
+      </label>
     </form>
   </div>
 
