@@ -9,3 +9,6 @@ form_placeholders:
   guests: Numbers of Guests
   budget: Budget for Venue
 submit_button: SUBMIT
+success: "Thank you! We'll be in touch shortly."
+error: "Something went wrong. Please try again."
+reset: "Reset form"

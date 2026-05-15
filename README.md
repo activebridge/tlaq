@@ -307,12 +307,13 @@ Images are transformed via Cloudflare's `/cdn-cgi/image/...` URLs served from `t
 
 #### 2b. Cloudflare Workers
 
-Two Workers are referenced in `_data/site.yml`:
+Three Workers power the site:
 
-| Key | Current URL | Purpose |
-|-----|------------|---------|
-| `submission_worker_url` | `https://cfs.tlaq.workers.dev` | Call-for-submission photo uploads |
-| `weather_widget_url` | `https://weather.pwt.workers.dev/widget.svg` | Weather widget SVG |
+| Reference | Current URL | Purpose |
+|-----------|-------------|---------|
+| Hardcoded in `assets/js/call-for-submission.js` | `https://cfs.tlaq.workers.dev` | Call-for-submission photo uploads |
+| `weather_widget` in `_data/site.yml` | `https://weather.pwt.workers.dev/widget.svg` | Weather widget SVG |
+| Hardcoded in `assets/js/connect-us-form.js` | `https://weddings.tlaq.workers.dev` | Connect-with-us contact form (Resend HTTP API → `weddings@tlaq.com`) |
 
 > **Note:** Worker source code is **not** in this repository. Request it from the current developer before proceeding.
 
@@ -346,7 +347,38 @@ Security: CORS restricted to `tlaq.com` / `tlaq.ab.team`; `RESEND_API_KEY` store
 **Steps:**
 1. Create a Cloudflare account and set up Workers
 2. Deploy each Worker from source
-3. Update both URLs in `_data/site.yml`
+3. Update the hardcoded `WORKER_URL` constants in `assets/js/call-for-submission.js` and `assets/js/connect-us-form.js`, and the `weather_widget` URL in `_data/site.yml`
+
+#### Connect-with-us flow
+
+Form in `_includes/connect-us.html` (JS: `assets/js/connect-us-form.js`) posts JSON (7 form fields) to the `weddings-mailer` Worker at `https://weddings.tlaq.workers.dev`. The Worker:
+
+1. Validates `Origin` (allowlist: `tlaq.com`, `tlaq.ab.team`, `localhost:4000` for dev).
+2. Validates the 7 required fields.
+3. Calls Resend API (`api.resend.com`) using the encrypted `RESEND_API_KEY` Worker secret and the same DKIM-verified `tlaq.com` sender as the CFS Worker.
+
+Email delivered to:
+
+- **To:** `weddings@tlaq.com` (Google Workspace inbox)
+- **Reply-To:** submitter's email (`email` form field)
+- **From:** `tlaq.com Contact Form <noreply@tlaq.com>`
+- **Subject:** `New Connect With Us Inquiry`
+- **Body:** plain-text list of all 7 form fields
+
+Recipients, allowed origins, and the From address are configured as constants in the deployed Worker source. Request the source from the current developer to change them, then redeploy via the Cloudflare dashboard.
+
+Stack: same as CFS (Cloudflare Workers + Resend + Google Workspace inbox). No separate accounts.
+
+Smoke-test from terminal:
+
+```bash
+curl -i -X POST https://weddings.tlaq.workers.dev \
+  -H "Origin: https://tlaq.com" \
+  -H "Content-Type: application/json" \
+  -d '{"first-name":"DIAG","last-name":"Test","phone":"555-0100","email":"diag-'"$(date +%s)"'@example.com","event_date":"06-15-2026","guests":"50","budget":"10000"}'
+```
+
+Expect `200 {"ok":true}` and mail at both addresses within ~10s.
 
 ---
 
