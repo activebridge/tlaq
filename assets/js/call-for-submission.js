@@ -4,7 +4,7 @@
 {% assign cfs = site.data['call-for-submission'] %}
 
 const ALLOWED_TYPES = {{ cfs.allowed_types | split: ',' | jsonify }};
-const WORKER_URL = {{ site.data.site.submission_worker_url | jsonify }};
+const WORKER_URL = "https://cfs.tlaq.workers.dev";
 const MAX_SIZE = {{ cfs.max_file_size_mb }} * 1024 * 1024;
 
 photoDate.max = new Date().toISOString().slice(0, 10);

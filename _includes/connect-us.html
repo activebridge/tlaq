@@ -1,8 +1,7 @@
 <article class="connect-us" id="connect">
   <h5>{{ site.data.connect-us.title }}</h5>
   <h6>{{ site.data.connect-us.description }}</h6>
-  <form id="connectUsForm">
-    <input type="hidden" id="contact-email" name="contactEmail" value="{{ site.email }}">
+  <form id="connectUsForm" onsubmit="sendEmail(event)">
     <label for="first-name">
       {{ site.data.connect-us.form_placeholders.first_name }} *
       <input type="name" name="first-name" id="first-name" required>
@@ -19,10 +18,9 @@
       {{ site.data.connect-us.form_placeholders.email }} *
       <input type="email" name="email" id="email" required>
     </label>
-    <label for="event-date">
+    <label for="eventDate">
       {{ site.data.connect-us.form_placeholders.event_date }} *
-      <input type="text" name="event_date" id="event-date" pattern="(0[1-9]|1[0-2])-[0-3][0-9]-[0-9]{4}" title="Please enter date as mm-dd-yyyy" required>
-    </label>
+      <input type="date" name="event_date" id="eventDate" required>
     <label for="guests">
       {{ site.data.connect-us.form_placeholders.guests }} *
       <input type="number" name="guests" id="guests" min="1" title="Please enter a valid number of guests" required>
@@ -31,10 +29,12 @@
       {{ site.data.connect-us.form_placeholders.budget }} *
       <input type="number" name="budget" id="budget" min="0" title="Please enter a valid budget number" required>
     </label>
-    <button class="btn btn-primary" type="submit" id="send" >
+    <button id="submitBtn" class="btn btn-primary" type="submit">
       {{ site.data.connect-us.submit_button }}
     </button>
+    <p id="connectMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
   </form>
+  <button id="resetBtn" class="btn btn-primary" style="display:none" onclick="onReset()">{{ site.data.connect-us.reset }}</button>
 </article>
 
 <script src="{{ '/assets/js/connect-us-form.js' | relative_url }}"></script>

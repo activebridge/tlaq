@@ -4,6 +4,5 @@ app_description: Arts & Shopping Village
 directions_url: "https://www.google.com/maps/dir/?api=1&destination=Tlaquepaque%2C%20Sedona%2C%20AZ%2086336%2C%20USA&origin=Current%20Location&travelmode=driving"
 weather_url: "https://weather.com/weather/today/l/USAZ0209%3A1%3AUS"
 weather_widget: "https://weather.pwt.workers.dev/widget.svg"
-submission_worker_url: "https://cfs.tlaq.workers.dev"
 mapbox_token: "pk.eyJ1Ijoic3RvcmNoYWsiLCJhIjoiY21tZDZsMGdmMDAydDJwczhqbGhhOTNtciJ9.gPoufGUfsywbXf1wN8D0yw"
 mapbox_style: "mapbox://styles/storchak/cmmew5gbs000l01sbb2mld1pq"

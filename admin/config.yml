@@ -27,7 +27,6 @@ collections:
             }
           - { label: "Weather URL", name: "weather_url", widget: "string" }
           - { label: "Weather Widget URL", name: "weather_widget", widget: "string" }
-          - { label: "Submission Worker URL", name: "submission_worker_url", widget: "string" }
           - { label: "Mapbox Token", name: "mapbox_token", widget: "string" }
           - { label: "Mapbox Style URL", name: "mapbox_style", widget: "string" }
       - name: "footer_config"
@@ -695,6 +694,9 @@ collections:
               - { label: "Guests", name: "guests", widget: "string" }
               - { label: "Budget", name: "budget", widget: "string" }
           - { label: "Submit Button", name: "submit_button", widget: "string" }
+          - { label: "Success Message", name: "success", widget: "string" }
+          - { label: "Error Message", name: "error", widget: "string" }
+          - { label: "Reset Button", name: "reset", widget: "string" }
       - name: "contacts"
         label: "Contacts"
         file: "_data/contacts.yml"
