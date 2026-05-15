@@ -21,6 +21,7 @@
     <label for="eventDate">
       {{ site.data.connect-us.form_placeholders.event_date }} *
       <input type="date" name="event_date" id="eventDate" required>
+    </label>
     <label for="guests">
       {{ site.data.connect-us.form_placeholders.guests }} *
       <input type="number" name="guests" id="guests" min="1" title="Please enter a valid number of guests" required>
@@ -37,4 +38,4 @@
   <button id="resetBtn" class="btn btn-primary" style="display:none" onclick="onReset()">{{ site.data.connect-us.reset }}</button>
 </article>
 
-<script src="{{ '/assets/js/connect-us-form.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/connect-us-form.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
