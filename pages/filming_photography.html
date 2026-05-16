@@ -23,7 +23,7 @@ popup_key: filming-photography
       {% for p in site.data.filming-photography.left_column %}
         <p>{{ p }}</p>
       {% endfor %}
-      <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.filming-photography.buttons.request_a_permit }}</a>
+      <button type="button" id="filmingPermitTrigger" class="btn btn-primary">{{ site.data.filming-photography.buttons.request_a_permit }}</button>
     </article>
 
     <article>
@@ -37,3 +37,5 @@ popup_key: filming-photography
     </article>
   </section>
 </div>
+
+{% include filming-permit-inquiry.html %}

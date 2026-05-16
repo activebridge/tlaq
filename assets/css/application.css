@@ -1828,6 +1828,55 @@ dialog.popup {
   }
 }
 
+dialog.inquiry-form {
+  &::before { content: none; }
+  background-color: var(--cream);
+  border: none;
+  color: var(--navy);
+  width: min(560px, calc(100% - 2rem));
+  height: fit-content;
+  max-height: calc(100dvh - 2rem);
+  padding: 30px 30px 40px;
+  overflow: auto;
+
+  button.dialog-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    color: grey;
+    font-size: 1.75rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    z-index: 10;
+    &:focus { outline: none; }
+    &:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; border-radius: 2px; }
+  }
+
+  h5 {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--navy);
+    background: none;
+    padding-left: 0;
+  }
+
+  h6 {
+    margin: 0 0 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  form .btn.btn-primary {
+    margin-top: 2rem;
+    --btn-color: var(--navy);
+  }
+}
+
 /* Newsletter Page */
 
 .newsletter {

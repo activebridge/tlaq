@@ -1,0 +1,15 @@
+title: Filming Permit Contact Form
+description: Share your shoot details and our team will follow up about availability and permit requirements.
+form_placeholders:
+  first_name: First Name
+  last_name: Last Name
+  company: Company Name
+  role: Role/Title
+  phone: Phone Number
+  email: Email
+  desired_dates: Desired Dates
+  number_of_people: Number of People
+submit_button: REQUEST A PERMIT
+success: "Thank you! We'll be in touch shortly."
+error: "Something went wrong. Please try again."
+reset: "Reset form"
