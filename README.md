@@ -48,7 +48,7 @@ Infrastructure:
 |-----------|-------------|
 | `_plugins/` | Custom Jekyll plugins (currently empty; supported because the site builds via GitHub Actions, not Pages' built-in Jekyll) |
 | `scripts/` | One-off Ruby export utilities used to migrate data from the previous Rails site |
-| `cloudflare-worker/` | Placeholder; Worker source code is not stored in this repo |
+| `cloudflare-worker/` | Source for the `inquiries` Worker (paste into Cloudflare console). Other Workers (`cfs`, `weddings-mailer`) live outside the repo |
 | `.github/workflows/` | CI/CD — Jekyll build + GitHub Pages deploy |
 
 ## Content
@@ -307,15 +307,16 @@ Images are transformed via Cloudflare's `/cdn-cgi/image/...` URLs served from `t
 
 #### 2b. Cloudflare Workers
 
-Three Workers power the site:
+Four Workers power the site:
 
 | Reference | Current URL | Purpose |
 |-----------|-------------|---------|
 | Hardcoded in `assets/js/call-for-submission.js` | `https://cfs.tlaq.workers.dev` | Call-for-submission photo uploads |
 | `weather_widget` in `_data/site.yml` | `https://weather.pwt.workers.dev/widget.svg` | Weather widget SVG |
-| Hardcoded in `assets/js/connect-us-form.js` | `https://weddings.tlaq.workers.dev` | Connect-with-us contact form (Resend HTTP API → `weddings@tlaq.com`) |
+| Hardcoded in `assets/js/connect-us-form.js` | `https://weddings.tlaq.workers.dev` | Connect-with-us wedding form (Resend HTTP API → `weddings@tlaq.com`) |
+| Hardcoded in `assets/js/inquiry-form.js` (source: `cloudflare-worker/inquiries-worker.js`) | `https://inquiries.tlaq.workers.dev` | Corporate / filming permit / leasing inquiry forms (Resend HTTP API → `visitorinfo@tlaq.com`) |
 
-> **Note:** Worker source code is **not** in this repository. Request it from the current developer before proceeding.
+> **Note:** Source for the `cfs` and `weddings-mailer` Workers is **not** in this repository — request from the current developer. The `inquiries` Worker source is checked in at `cloudflare-worker/inquiries-worker.js`; edit there and paste into the Cloudflare dashboard to redeploy.
 
 #### Call-for-submission flow
 
@@ -347,7 +348,7 @@ Security: CORS restricted to `tlaq.com` / `tlaq.ab.team`; `RESEND_API_KEY` store
 **Steps:**
 1. Create a Cloudflare account and set up Workers
 2. Deploy each Worker from source
-3. Update the hardcoded `WORKER_URL` constants in `assets/js/call-for-submission.js` and `assets/js/connect-us-form.js`, and the `weather_widget` URL in `_data/site.yml`
+3. Update the hardcoded worker URLs in `assets/js/call-for-submission.js`, `assets/js/connect-us-form.js`, `assets/js/inquiry-form.js`, and the `weather_widget` URL in `_data/site.yml`
 
 #### Connect-with-us flow
 
@@ -379,6 +380,55 @@ curl -i -X POST https://weddings.tlaq.workers.dev \
 ```
 
 Expect `200 {"ok":true}` and mail at both addresses within ~10s.
+
+#### Inquiries flow (corporate / filming permit / leasing)
+
+Three popup forms share one dialog component, one shared JS, and one Worker:
+
+| Form | Host page | Trigger button id | `type` value |
+|------|-----------|-------------------|--------------|
+| Corporate Events | `/weddings/#events` (`_includes/weddings/events.html`) | `corporateInquiryTrigger` | `corporate` |
+| Filming Permit | `/filming-photography/` (`pages/filming_photography.html`) | `filmingPermitTrigger` | `filming-permit` |
+| Leasing | `/leasing/` (`pages/leasing.html`) | `leasingInquiryTrigger` | `leasing` |
+
+**Frontend.** Each include (`_includes/corporate-inquiry.html`, `_includes/filming-permit-inquiry.html`, `_includes/leasing-inquiry.html`) renders a `<dialog class="inquiry-form">` with config encoded as `data-*` attrs:
+
+- `data-type` — discriminator the worker routes on
+- `data-trigger` — id of the button that opens the dialog
+- `data-date-input` — optional id of a date input that gets `min`/`max` set (today → +5y)
+- `data-success` / `data-error` — status messages from `_data/<form>-inquiry.yml`
+
+Shared script `assets/js/inquiry-form.js` (one file, no per-form scripts) runs `document.querySelectorAll('dialog.inquiry-form').forEach(initInquiryDialog)`, wires submit/reset/close, and POSTs JSON to `https://inquiries.tlaq.workers.dev`.
+
+**Worker** (`cloudflare-worker/inquiries-worker.js` — checked into this repo). Routes on `data.type` via a `TYPES` map containing `subject` + `fields[[key, label], …]` per type. Validates every listed field is non-empty, renders body as `Label: value` lines, calls Resend.
+
+Email delivered to:
+
+- **To:** `visitorinfo@tlaq.com`
+- **BCC:** `alexst@activebridge.org`
+- **Reply-To:** submitter's `email`
+- **From:** `tlaq.com Contact Form <noreply@tlaq.com>`
+- **Subject:** `New Corporate Events Inquiry` / `New Filming Permit Request` / `New Leasing Inquiry`
+
+CORS allowlist: `tlaq.com`, `tlaq.ab.team`, `localhost:4000`. Same Resend `RESEND_API_KEY` secret as the other Workers.
+
+Smoke-test:
+
+```bash
+curl -i -X POST https://inquiries.tlaq.workers.dev \
+  -H "Origin: https://tlaq.com" \
+  -H "Content-Type: application/json" \
+  -d '{"type":"corporate","first-name":"DIAG","last-name":"Test","company":"Acme","role":"PM","phone":"555-0100","email":"diag-'"$(date +%s)"'@example.com","event_date":"2026-06-15","guests":"50","budget":"10000"}'
+```
+
+Expect `200 {"ok":true}`.
+
+**Adding a new inquiry form:**
+
+1. Create `_data/<name>-inquiry.yml` with `title`, `description`, `form_placeholders`, `submit_button`, `success`, `error`, `reset` (copy an existing one).
+2. Create `_includes/<name>-inquiry.html` — clone an existing include, swap ids/data-attrs/fields. Load shared script at the bottom: `<script src="{{ '/assets/js/inquiry-form.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>`.
+3. Add a `TYPES["<name>"] = { subject, fields }` entry in `cloudflare-worker/inquiries-worker.js`; paste into the CF dashboard.
+4. Add a trigger `<button id="<…>Trigger">` on the host page, then `{% include <name>-inquiry.html %}` somewhere in the same document.
 
 ---
 
@@ -437,7 +487,7 @@ Expect `200 {"ok":true}` and mail at both addresses within ~10s.
 |---------|----------------|-----------------|
 | Mapbox | `_config.yml` (`mapbox_token`, `mapbox_style`) | New account → new token + new style URL |
 | Cloudflare CDN | `_config.yml` (`cdn_url`) | Transfer domain or recreate Cloudflare zone |
-| Cloudflare Workers (×2) | `_data/site.yml` | Redeploy workers from source, update 2 URLs |
+| Cloudflare Workers (×3) | `_data/site.yml`, `assets/js/call-for-submission.js`, `assets/js/connect-us-form.js`, `assets/js/inquiry-form.js` | Redeploy workers (source for `inquiries` is in `cloudflare-worker/`; `cfs` and `weddings-mailer` source is external), update 3 URLs |
 | Flipsnack | `_includes/footer.html`, `_includes/landing/magazine.html` | Transfer account or replace embed hash |
 | GitHub repo | `admin/config.yml` (`repo`) | Transfer repo + grant write access |
 | cdn-website.com | `_data/weddings.yml`, `_data/magazines.yml` | Transfer account or re-host all files |
