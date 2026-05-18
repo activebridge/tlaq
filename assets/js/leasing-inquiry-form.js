@@ -3,7 +3,7 @@
 
 {% assign li = site.data.leasing-inquiry %}
 
-const LEASE_WORKER_URL = "https://weddings.tlaq.workers.dev";
+const LEASE_WORKER_URL = "https://inquiries.tlaq.workers.dev";
 
 leaseMoveInDate.min = new Date().toISOString().slice(0, 10);
 leaseMoveInDate.max = new Date(new Date().setFullYear(new Date().getFullYear() + 5)).toISOString().slice(0, 10);

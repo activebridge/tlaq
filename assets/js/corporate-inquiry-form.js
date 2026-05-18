@@ -3,7 +3,7 @@
 
 {% assign ci = site.data.corporate-inquiry %}
 
-const CORP_WORKER_URL = "https://weddings.tlaq.workers.dev";
+const CORP_WORKER_URL = "https://inquiries.tlaq.workers.dev";
 
 corpEventDate.min = new Date().toISOString().slice(0, 10);
 corpEventDate.max = new Date(new Date().setFullYear(new Date().getFullYear() + 5)).toISOString().slice(0, 10);

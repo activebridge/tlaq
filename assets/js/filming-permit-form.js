@@ -3,7 +3,7 @@
 
 {% assign fp = site.data.filming-permit-inquiry %}
 
-const FILM_WORKER_URL = "https://weddings.tlaq.workers.dev";
+const FILM_WORKER_URL = "https://inquiries.tlaq.workers.dev";
 
 function setFilmMsg(el, text, isError) {
   el.textContent = text;
