@@ -1,0 +1,58 @@
+{% assign ci = site.data.corporate-inquiry %}
+<dialog id="corporateInquiryDialog" class="inquiry-form" aria-labelledby="corporateInquiryTitle"
+  data-type="corporate"
+  data-trigger="corporateInquiryTrigger"
+  data-date-input="corpEventDate"
+  data-success="{{ ci.success | escape }}"
+  data-error="{{ ci.error | escape }}">
+  <button type="button" class="dialog-close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
+  <article>
+    <h5 id="corporateInquiryTitle">{{ ci.title }}</h5>
+    <h6>{{ ci.description }}</h6>
+    <form id="corporateInquiryForm">
+      <label for="corp-first-name">
+        {{ ci.form_placeholders.first_name }} *
+        <input type="text" name="first-name" id="corp-first-name" required>
+      </label>
+      <label for="corp-last-name">
+        {{ ci.form_placeholders.last_name }} *
+        <input type="text" name="last-name" id="corp-last-name" required>
+      </label>
+      <label for="corp-company">
+        {{ ci.form_placeholders.company }} *
+        <input type="text" name="company" id="corp-company" required>
+      </label>
+      <label for="corp-role">
+        {{ ci.form_placeholders.role }} *
+        <input type="text" name="role" id="corp-role" required>
+      </label>
+      <label for="corp-phone">
+        {{ ci.form_placeholders.phone }} *
+        <input type="tel" name="phone" id="corp-phone" pattern="[0-9+\-\s()]{7,}" title="Please enter a valid phone number" inputmode="tel" required>
+      </label>
+      <label for="corp-email">
+        {{ ci.form_placeholders.email }} *
+        <input type="email" name="email" id="corp-email" required>
+      </label>
+      <label for="corp-eventDate">
+        {{ ci.form_placeholders.event_date }} *
+        <input type="date" name="event_date" id="corpEventDate" required>
+      </label>
+      <label for="corp-guests">
+        {{ ci.form_placeholders.guests }} *
+        <input type="number" name="guests" id="corp-guests" min="1" title="Please enter a valid number of guests" required>
+      </label>
+      <label for="corp-budget">
+        {{ ci.form_placeholders.budget }} *
+        <input type="number" name="budget" id="corp-budget" min="0" title="Please enter a valid budget number" required>
+      </label>
+      <button id="corpSubmitBtn" class="btn btn-primary" type="submit">
+        {{ ci.submit_button }}
+      </button>
+      <p id="corpConnectMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
+    </form>
+    <button data-reset type="button" class="btn btn-primary" style="display:none">{{ ci.reset }}</button>
+  </article>
+</dialog>
+
+<script src="{{ '/assets/js/inquiry-form.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

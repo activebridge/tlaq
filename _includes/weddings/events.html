@@ -30,10 +30,12 @@
     </div>
   </div>
   <div class="events-buttons">
-    <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.weddings.buttons.inquiry_submit }}</a>
+    <button type="button" id="corporateInquiryTrigger" class="btn btn-primary">{{ site.data.weddings.buttons.inquiry_submit }}</button>
     <a href="{{ site.data.weddings.events.brochure_url }}" target="_blank" class="btn btn-primary">{{ site.data.weddings.buttons.download_brochure }}</a>
   </div>
 </article>
+
+{% include corporate-inquiry.html %}
 
 {% include slideshow-script.html %}
 

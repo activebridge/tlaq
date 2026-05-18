@@ -1,0 +1,16 @@
+title: Corporate Events Contact Form
+description: Tell us about your corporate event and our team will be in touch to plan the details.
+form_placeholders:
+  first_name: First Name
+  last_name: Last Name
+  company: Company Name
+  role: Role/Title
+  phone: Phone Number
+  email: Email
+  event_date: Desired Date
+  guests: Numbers of Guests
+  budget: Budget for Venue
+submit_button: SUBMIT AN INQUIRY
+success: "Thank you! We'll be in touch shortly."
+error: "Something went wrong. Please try again."
+reset: "Reset form"

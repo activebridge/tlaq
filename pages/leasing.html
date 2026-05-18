@@ -25,7 +25,7 @@ popup_key: leasing
 
   <section class="leasing-intro">
     <p>{{ description_parts[1] }}</p>
-    <a href="mailto:{{ site.email }}" class="btn btn-primary">{{ site.data.leasing.buttons.inquire_about_space }}</a>
+    <button type="button" id="leasingInquiryTrigger" class="btn btn-primary">{{ site.data.leasing.buttons.inquire_about_space }}</button>
     <p>{{ site.data.leasing.guidelines_intro }}</p>
     <hr>
   </section>
@@ -44,3 +44,5 @@ popup_key: leasing
     {% endfor %}
   </section>
 </article>
+
+{% include leasing-inquiry.html %}

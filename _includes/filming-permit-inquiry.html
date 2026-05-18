@@ -1,0 +1,53 @@
+{% assign fp = site.data.filming-permit-inquiry %}
+<dialog id="filmingPermitDialog" class="inquiry-form" aria-labelledby="filmingPermitTitle"
+  data-type="filming-permit"
+  data-trigger="filmingPermitTrigger"
+  data-success="{{ fp.success | escape }}"
+  data-error="{{ fp.error | escape }}">
+  <button type="button" class="dialog-close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
+  <article>
+    <h5 id="filmingPermitTitle">{{ fp.title }}</h5>
+    <h6>{{ fp.description }}</h6>
+    <form id="filmingPermitForm">
+      <label for="film-first-name">
+        {{ fp.form_placeholders.first_name }} *
+        <input type="text" name="first-name" id="film-first-name" required>
+      </label>
+      <label for="film-last-name">
+        {{ fp.form_placeholders.last_name }} *
+        <input type="text" name="last-name" id="film-last-name" required>
+      </label>
+      <label for="film-company">
+        {{ fp.form_placeholders.company }} *
+        <input type="text" name="company" id="film-company" required>
+      </label>
+      <label for="film-role">
+        {{ fp.form_placeholders.role }} *
+        <input type="text" name="role" id="film-role" required>
+      </label>
+      <label for="film-phone">
+        {{ fp.form_placeholders.phone }} *
+        <input type="tel" name="phone" id="film-phone" pattern="[0-9+\-\s()]{7,}" title="Please enter a valid phone number" inputmode="tel" required>
+      </label>
+      <label for="film-email">
+        {{ fp.form_placeholders.email }} *
+        <input type="email" name="email" id="film-email" required>
+      </label>
+      <label for="film-desired-dates">
+        {{ fp.form_placeholders.desired_dates }} *
+        <input type="text" name="desired_dates" id="film-desired-dates" required>
+      </label>
+      <label for="film-people">
+        {{ fp.form_placeholders.number_of_people }} *
+        <input type="number" name="number_of_people" id="film-people" min="1" title="Please enter a valid number of people" required>
+      </label>
+      <button id="filmSubmitBtn" class="btn btn-primary" type="submit">
+        {{ fp.submit_button }}
+      </button>
+      <p id="filmConnectMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
+    </form>
+    <button data-reset type="button" class="btn btn-primary" style="display:none">{{ fp.reset }}</button>
+  </article>
+</dialog>
+
+<script src="{{ '/assets/js/inquiry-form.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>

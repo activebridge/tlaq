@@ -1,0 +1,15 @@
+title: Leasing Inquiry Contact Form
+description: Tell us about your concept and our team will follow up to start the conversation.
+form_placeholders:
+  first_name: First Name
+  last_name: Last Name
+  company: Company Name
+  role: Role/Title
+  phone: Phone Number
+  email: Email
+  size_sqft: Size of Needed (sq ft)
+  move_in_date: Desired Move In Date
+submit_button: LEASING INQUIRY
+success: "Thank you! We'll be in touch shortly."
+error: "Something went wrong. Please try again."
+reset: "Reset form"
