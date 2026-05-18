@@ -4,15 +4,15 @@
   <form id="connectUsForm" onsubmit="sendEmail(event)">
     <label for="first-name">
       {{ site.data.connect-us.form_placeholders.first_name }} *
-      <input type="name" name="first-name" id="first-name" required>
+      <input type="text" name="first-name" id="first-name" required>
     </label>
     <label for="last-name">
       {{ site.data.connect-us.form_placeholders.last_name }} *
-      <input type="name" name="last-name" id="last-name" required>
+      <input type="text" name="last-name" id="last-name" required>
     </label>
     <label for="phone">
       {{ site.data.connect-us.form_placeholders.phone }} *
-      <input type="tel" name="phone" id="phone" pattern="[0-9\-]+" title="Please enter a valid phone number" inputmode="numeric" required>
+      <input type="tel" name="phone" id="phone" pattern="[0-9+\-\s()]{7,}" title="Please enter a valid phone number" inputmode="tel" required>
     </label>
     <label for="email">
       {{ site.data.connect-us.form_placeholders.email }} *

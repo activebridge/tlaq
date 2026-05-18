@@ -1,17 +1,22 @@
 {% assign li = site.data.leasing-inquiry %}
-<dialog id="leasingInquiryDialog" class="inquiry-form" aria-labelledby="leasingInquiryTitle">
-  <button type="button" class="dialog-close" aria-label="Close" onclick="leasingInquiryDialog.close()">✕</button>
+<dialog id="leasingInquiryDialog" class="inquiry-form" aria-labelledby="leasingInquiryTitle"
+  data-type="leasing"
+  data-trigger="leasingInquiryTrigger"
+  data-date-input="leaseMoveInDate"
+  data-success="{{ li.success | escape }}"
+  data-error="{{ li.error | escape }}">
+  <button type="button" class="dialog-close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
   <article>
     <h5 id="leasingInquiryTitle">{{ li.title }}</h5>
     <h6>{{ li.description }}</h6>
-    <form id="leasingInquiryForm" onsubmit="sendLeasingInquiry(event)">
+    <form id="leasingInquiryForm">
       <label for="lease-first-name">
         {{ li.form_placeholders.first_name }} *
-        <input type="name" name="first-name" id="lease-first-name" required>
+        <input type="text" name="first-name" id="lease-first-name" required>
       </label>
       <label for="lease-last-name">
         {{ li.form_placeholders.last_name }} *
-        <input type="name" name="last-name" id="lease-last-name" required>
+        <input type="text" name="last-name" id="lease-last-name" required>
       </label>
       <label for="lease-company">
         {{ li.form_placeholders.company }} *
@@ -23,7 +28,7 @@
       </label>
       <label for="lease-phone">
         {{ li.form_placeholders.phone }} *
-        <input type="tel" name="phone" id="lease-phone" pattern="[0-9\-]+" title="Please enter a valid phone number" inputmode="numeric" required>
+        <input type="tel" name="phone" id="lease-phone" pattern="[0-9+\-\s()]{7,}" title="Please enter a valid phone number" inputmode="tel" required>
       </label>
       <label for="lease-email">
         {{ li.form_placeholders.email }} *
@@ -42,8 +47,8 @@
       </button>
       <p id="leaseConnectMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
     </form>
-    <button id="leaseResetBtn" class="btn btn-primary" style="display:none" onclick="onLeaseReset()">{{ li.reset }}</button>
+    <button data-reset type="button" class="btn btn-primary" style="display:none">{{ li.reset }}</button>
   </article>
 </dialog>
 
-<script src="{{ '/assets/js/leasing-inquiry-form.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ '/assets/js/inquiry-form.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
