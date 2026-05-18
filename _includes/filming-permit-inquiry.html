@@ -2,6 +2,7 @@
 <dialog id="filmingPermitDialog" class="inquiry-form" aria-labelledby="filmingPermitTitle"
   data-type="filming-permit"
   data-trigger="filmingPermitTrigger"
+  data-date-input="filmDesiredDate"
   data-success="{{ fp.success | escape }}"
   data-error="{{ fp.error | escape }}">
   <button type="button" class="dialog-close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
@@ -33,9 +34,9 @@
         {{ fp.form_placeholders.email }} *
         <input type="email" name="email" id="film-email" required>
       </label>
-      <label for="film-desired-dates">
-        {{ fp.form_placeholders.desired_dates }} *
-        <input type="text" name="desired_dates" id="film-desired-dates" required>
+      <label for="filmDesiredDate">
+        {{ fp.form_placeholders.desired_date }} *
+        <input type="date" name="desired_date" id="filmDesiredDate" required>
       </label>
       <label for="film-people">
         {{ fp.form_placeholders.number_of_people }} *

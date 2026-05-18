@@ -7,7 +7,7 @@ form_placeholders:
   role: Role/Title
   phone: Phone Number
   email: Email
-  desired_dates: Desired Dates
+  desired_date: Desired Date
   number_of_people: Number of People
 submit_button: REQUEST A PERMIT
 success: "Thank you! We'll be in touch shortly."
