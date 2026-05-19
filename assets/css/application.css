@@ -535,6 +535,7 @@ article {
 
 :is(.store, .event, .shop, .food) .grid-col-2 {
   column-gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
 }
 
 @media (min-width: 770px) {
@@ -2668,15 +2669,32 @@ main.about {
 }
 
 .hero-desc {
-  height: 100%;
   position: relative;
   overflow: hidden;
   isolation: isolate;
 
-  img {
-    height: 100%;
+  picture {
+    display: block;
     width: 100%;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
     object-fit: cover;
+  }
+
+  picture + picture {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      animation: hero-desc-card-out 500ms ease 600ms forwards;
+    }
   }
 
   video.videobgframe {
@@ -2694,6 +2712,8 @@ main.about {
     &.loaded { opacity: 1; }
   }
 }
+
+@keyframes hero-desc-card-out { to { opacity: 0; } }
 
 @media (max-width: 770px) {
   .hero-desc {

@@ -213,8 +213,8 @@ document.addEventListener('DOMContentLoaded', function() {
     return '' +
       '<a href="' + href + '" data-month="' + toMonthKey(item.start) + '">' +
         '<div class="calendar-item-content">' +
-          '<div class="calendar-item-image">' +
-            '<img src="' + image + '" alt="' + event.title + '" data-event-image style="view-transition-name: ' + transitionBase + '-image;">' +
+          '<div class="calendar-item-image" data-event-image style="view-transition-name: ' + transitionBase + '-image;">' +
+            '<img src="' + image + '" alt="' + event.title + '">' +
           '</div>' +
           '<div class="calendar-item-details">' +
             '<div class="calendar-item-date">' +

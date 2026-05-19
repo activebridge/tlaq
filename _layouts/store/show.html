@@ -4,8 +4,13 @@ layout: default
 {% assign store_page = site.data.store_page.detail_page %}
 {% assign image_path = page.image %}
 {% assign transition-name = page.image | downcase | replace: '/', '-' | replace: '.', '-' %}
-{% assign desc_image = page.vertical_image | default: page.interior_image | default: page.image %}
-{% assign desc_image_cdn = desc_image | prepend: '/cdn-cgi/image/width=800,height=1000,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
+{% assign hi_image  = page.vertical_image | default: page.interior_image %}
+{% assign card_mob  = page.image | prepend: '/cdn-cgi/image/width=400,height=300,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
+{% assign card_desk = page.image | prepend: '/cdn-cgi/image/width=600,height=450,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
+{% if hi_image %}
+  {% assign hi_mob  = hi_image | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
+  {% assign hi_desk = hi_image | prepend: '/cdn-cgi/image/width=800,height=1000,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
+{% endif %}
 {% include hero-banner.html image_path=image_path transition-name=transition-name interior_image=page.interior_image %}
 
 <div class="content-wrapper store">
@@ -58,7 +63,18 @@ layout: default
     </div>
     <div>
       <div class="hero-desc" style="view-transition-name: {{ page.image | downcase | replace: '/', '-' | replace: '.', '-'}};">
-        <img src="{{ desc_image_cdn }}" alt="{{ page.title }} Interior" loading="lazy" decoding="async" onerror="imageError(this)">
+        {% if hi_image %}
+          <picture>
+            <source media="(max-width: 480px)" srcset="{{ hi_mob }}">
+            <source media="(min-width: 768px)" srcset="{{ hi_desk }}">
+            <img src="{{ hi_desk }}" alt="{{ page.title }} Interior" width="800" height="1000" loading="eager" decoding="async" onerror="imageError(this)">
+          </picture>
+        {% endif %}
+        <picture>
+          <source media="(max-width: 480px)" srcset="{{ card_mob }}">
+          <source media="(min-width: 768px)" srcset="{{ card_desk }}">
+          <img src="{{ card_desk }}" alt="{{ page.title }}" width="600" height="750" loading="eager" fetchpriority="high" decoding="async" onerror="imageError(this)">
+        </picture>
       </div>
     </div>
   </div>
