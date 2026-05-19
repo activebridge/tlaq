@@ -274,13 +274,21 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!months.length) return;
 
   renderMonthOptions(months);
-  const currentMonth = toMonthKey(new Date());
-  const hasCurrentMonth = months.some((entry) => entry[0] === currentMonth);
-  if (hasCurrentMonth) {
-    select.value = currentMonth;
-  }
+  const stored = localStorage.getItem('eventsMonth');
+  const fallback = toMonthKey(new Date());
+  select.value = months.some(([k]) => k === stored) ? stored
+               : months.some(([k]) => k === fallback) ? fallback
+               : select.value;
 
-  const handleFilter = () => renderByMonth(allOccurrences, select.value);
+  const handleFilter = () => {
+    localStorage.setItem('eventsMonth', select.value);
+    renderByMonth(allOccurrences, select.value);
+  };
   select.addEventListener('change', handleFilter);
+  window.addEventListener('pageshow', () => {
+    const s = localStorage.getItem('eventsMonth');
+    if (s && months.some(([k]) => k === s)) select.value = s;
+    renderByMonth(allOccurrences, select.value);
+  });
   handleFilter();
 });
