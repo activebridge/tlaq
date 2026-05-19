@@ -14,7 +14,7 @@ suite: b121
 phone: (928) 282-8704
 website: https://www.carredartistes.com
 coordinates: -111.7631983, 34.8620155
-image: /assets/images/galleries/Carre_Dartistes_Ext.jpg
+image: /assets/images/galleries/Carre_Dartistes_ext2.jpg
 interior_image: /assets/images/galleries/Carre_Dartistes_Int.jpg
 vertical_image: /assets/images/galleries/Carre_Int_desktop.jpg
 instagram: ''
