@@ -538,6 +538,12 @@ article {
   align-items: start;
 }
 
+.content-wrapper.store > .grid-col-2 {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: clamp(2rem, 6vw, 6rem);
+  width: 100%;
+}
+
 @media (min-width: 770px) {
   .annual-event-grid { align-items: start; }
 }
@@ -2719,6 +2725,32 @@ main.about {
   .hero-desc {
     display: none;
   }
+}
+
+.content-wrapper.store .hero-desc {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+.content-wrapper.store .hero-desc > picture,
+.content-wrapper.store .hero-desc > picture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card[data="store-item"] > a > picture {
+  aspect-ratio: 600 / 450;
+  display: block;
+  width: 100%;
+}
+.card[data="store-item"] > a > picture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 770px) {
+  .hero:has(+ .content-wrapper.store) { display: none; }
 }
 
 .gift-cards .btn {
