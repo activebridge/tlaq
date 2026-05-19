@@ -3,7 +3,7 @@ title: Verses In The Village
 slug: verses-in-the-village
 published: true
 starts_at: 2026-05-20T17:00:00
-ends_at: 2026-05-20T19:00:00
+ends_at: 2026-05-20T18:00:00
 location: Patio De Las Campañas
 image: assets/images/events/verses-in-the-village.webp
 video_url: ''
