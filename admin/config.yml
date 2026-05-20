@@ -1290,7 +1290,7 @@ collections:
         media_folder: "/assets/images/weddings"
         public_folder: "/assets/images/weddings"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Weddings page. Edit the hero image, page title, description, gallery video items, brochure link, awards images, corporate events section, site plan image, button labels, and jump-to navigation links." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Weddings page. Edit the hero image, page title, description, gallery video items, brochure PDF upload, awards images, corporate events section, site plan PDF upload, button labels, and jump-to navigation links." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Weddings Label", name: "weddings", widget: "string" }
@@ -1312,7 +1312,7 @@ collections:
             widget: "object"
             fields:
               - { label: "Title", name: "title", widget: "string" }
-              - { label: "Brochure URL", name: "brochure_url", widget: "string" }
+              - { label: "Brochure PDF", name: "brochure_url", widget: "file", media_folder: "/assets/files/weddings", public_folder: "/assets/files/weddings", hint: "Upload the wedding brochure PDF. Filename must not start with an underscore." }
               - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
               - label: "Awards"
                 name: "awards"
@@ -1328,7 +1328,7 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
-              - { label: "Brochure URL", name: "brochure_url", widget: "string" }
+              - { label: "Brochure PDF", name: "brochure_url", widget: "file", media_folder: "/assets/files/weddings", public_folder: "/assets/files/weddings", hint: "Upload the events brochure PDF. Filename must not start with an underscore." }
           - label: "Buttons"
             name: "buttons"
             widget: "object"
@@ -1367,7 +1367,7 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
-              - { label: "Plan URL", name: "plan_url", widget: "string" }
+              - { label: "Plan PDF", name: "plan_url", widget: "file", media_folder: "/assets/files/weddings", public_folder: "/assets/files/weddings", hint: "Upload the site plan PDF. Filename must not start with an underscore." }
 
   - name: "blogs"
     label: "News"
