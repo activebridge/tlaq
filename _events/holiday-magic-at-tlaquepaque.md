@@ -8,7 +8,7 @@ location: Patio de las Campañas
 image: /assets/images/events/Holiday-magic.png
 video_url: ''
 subtitle: Spend an afternoon with Santa and friends.
-schedule_type: yearly
+schedule_type: single
 annual: false
 recurs_until: ''
 recurrence_weekdays: []
