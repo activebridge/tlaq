@@ -8,6 +8,8 @@ tags:
   - books
   - music
   - shop
+  - records
+  - vinyl
 suite: c203
 phone: (928) 554-7840
 website: https://alt-books-and-records.business.site
