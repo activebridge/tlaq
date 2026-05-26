@@ -2,8 +2,8 @@
 title: Cinco De Mayo
 slug: cinco-de-mayo
 published: true
-starts_at: 2026-05-02 13:00:00
-ends_at: 2026-05-02 16:00:00
+starts_at: 2027-05-01T13:00:00
+ends_at: 2027-05-01T16:00:00
 location: THROUGHOUT TLAQUEPAQUE
 image: assets/images/events/the-cinco-de-mayo.webp
 video_url: ''
