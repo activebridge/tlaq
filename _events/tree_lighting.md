@@ -1,10 +1,10 @@
 ---
-title: TREE LIGHTING
+title: Tree Lighting
 slug: tree-lighting
 published: true
 starts_at: 2026-12-04 17:00:00
 ends_at: 2026-12-04 18:30:00
-location: THROUGHOUT TLAQUEPAQUE
+location: Tlaquepaque North
 image: assets/images/events/tree-lighting.webp
 video_url: ''
 subtitle: The beloved holiday tradition returns as families and friends gather at Tlaquepaque North. Enjoy festive entertainment, children’s activities, and complimentary hot chocolate while awaiting Santa’s arrival. A 26-foot Christmas tree sparkles, filling the night with joy and wonder.
