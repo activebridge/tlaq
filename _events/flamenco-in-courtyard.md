@@ -9,7 +9,7 @@ image: /assets/images/events/flamenco-in-courtyard.webp
 video_url: ''
 subtitle: Master guitarist Gaetano and fellow artists light up Patio De Las Campanas with spirited live music, plus drinks from El Rincon’s outdoor bar.
 schedule_type: weekly
-recurs_until: ''
+recurs_until: 2026-11-03T19:30:00
 recurrence_weekdays:
   - sun
   - mon
