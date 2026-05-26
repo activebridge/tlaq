@@ -16,6 +16,7 @@ website: https://alt-books-and-records.business.site
 coordinates: -111.7631377, 34.8616415
 image: /assets/images/shops/Alt_Books_Ext.jpg
 interior_image: /assets/images/shops/Alt_Books_Int.jpg
+vertical_image: /assets/images/shops/Alt_Books_Int2.jpg
 instagram: ''
 facebook: https://www.facebook.com/p/ALT-Books-Records-100054135466554/
 full_location: 336 AZ-179 Suite C203, Sedona, AZ 86336
