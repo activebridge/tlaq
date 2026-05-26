@@ -1,10 +1,10 @@
 ---
 title: Holiday Magic at Tlaquepaque
 slug: holiday-magic-2026
-published: false
+published: true
 starts_at: 2026-12-19T13:00:00
 ends_at: 2026-12-19T15:00:00
-location: Patio de las Campañas and Patio del Norte
+location: Patio de las Campañas
 image: /assets/images/events/Holiday-magic.png
 video_url: ''
 subtitle: Spend an afternoon with Santa and friends.
