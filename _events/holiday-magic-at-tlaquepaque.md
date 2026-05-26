@@ -4,7 +4,7 @@ slug: holiday-magic-2026
 published: false
 starts_at: 2026-12-19T13:00:00
 ends_at: 2026-12-19T15:00:00
-location: Patio de las Campañas
+location: Patio de las Campañas and Patio del Norte
 image: /assets/images/events/Holiday-magic.png
 video_url: ''
 subtitle: Spend an afternoon with Santa and friends.
