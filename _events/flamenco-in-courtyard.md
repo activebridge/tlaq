@@ -15,7 +15,7 @@ recurrence_weekdays:
   - mon
   - tue
 display_dates:
-  - month: may
+  - month: jun
     text: Every Sunday through Tuesday
 schedule: []
 map: null
