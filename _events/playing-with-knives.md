@@ -13,10 +13,11 @@ recurs_until: 2027-03-26 23:59:00
 recurrence_weekdays:
   - sat
 display_dates:
-  - month: may
-    text: May 2, May 9, May 16
+  - month: jun
+    text: Saturday, June 6
 phone: 928-862-4140
 website: https://theartistskitchenshop.myshoplocal.com
+email: ''
 facebook: https://www.facebook.com/tlaqsedona/
 instagram: https://www.instagram.com/tlaqsedona/
 ---
