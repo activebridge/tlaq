@@ -11,7 +11,7 @@ subtitle: 'Free first-Tuesday reptile encounters at Tlaquepaque (through Novembe
 schedule_type: monthly
 recurs_until: 2026-11-07 11:00:00
 recurrence_weekdays:
-  - thu
+  - tue
 phone: ''
 website: ''
 email: ''
