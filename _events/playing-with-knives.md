@@ -1,7 +1,7 @@
 ---
 title: Playing With Knives
 slug: playing-with-knives
-published: false
+published: true
 starts_at: 2026-06-06T11:00:00
 ends_at: 2026-06-06T13:00:00
 location: Tlaquepaque Village
