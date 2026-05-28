@@ -93,6 +93,7 @@ collections:
           - { label: "Section", name: "section", widget: "hidden", default: "banner" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large hero heading displayed over the banner image/video." }
           - { label: "Image", name: "image", widget: "image", hint: "Fallback image shown when the background video cannot autoplay (e.g. low-power mode, slow connection). Also used for social sharing previews. Filename must not start with an underscore" }
+          - { label: "Background Video", name: "video", widget: "file", required: false, media_folder: "/assets/video", public_folder: "/assets/video", hint: "Optional looping background video (MP4). Leave empty to show only the fallback image. Filename must not start with an underscore." }
           - label: "Button"
             name: "button"
             widget: "object"
