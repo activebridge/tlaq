@@ -12,11 +12,13 @@ popup_key: village-map
 <div class="content-wrapper">
   <hgroup style="view-transition-name: title-village-map;">
     <h5 title="visit">{{ site.data.village_map_page.eyebrow }}</h5>
-    <h6>{{ site.data.village_map_page.description | escape_once }}</h6>
+    <h2>{{ site.data.village_map_page.heading | escape_once }}</h2>
   </hgroup>
 
   <iframe id="villageMapFrame" src="{{ '/map_embed' | relative_url }}" loading="lazy" title="Village Map"
     style="width:100%;height:500px;border:none"></iframe>
+
+  <p>{{ site.data.village_map_page.description | escape_once }}</p>
 </div>
 <script>
   var suite = new URLSearchParams(window.location.search).get('suite');

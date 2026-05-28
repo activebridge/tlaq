@@ -593,17 +593,24 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Animated GIFs are supported. Filename must not start with an underscore." }
               - label: "Historic Landmark"
                 name: "historic_landmark"
                 widget: "object"
                 fields:
                   - { label: "Heading", name: "heading", widget: "string" }
                   - { label: "Description", name: "description", widget: "text" }
+                  - label: "Button"
+                    name: "button"
+                    widget: "object"
+                    required: false
+                    fields:
+                      - { label: "Text", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string", hint: "Internal or external URL opened by the button." }
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Animated GIFs are supported. Filename must not start with an underscore." }
               - label: "Outdoor Art"
                 name: "outdoor_art"
                 widget: "object"
@@ -615,10 +622,11 @@ collections:
                     widget: "object"
                     fields:
                       - { label: "Text", name: "text", widget: "string" }
+                      - { label: "URL", name: "url", widget: "string", hint: "Internal or external URL opened by the button." }
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Animated GIFs are supported. Filename must not start with an underscore." }
               - label: "Landscaping"
                 name: "landscaping"
                 widget: "object"
@@ -628,7 +636,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Animated GIFs are supported. Filename must not start with an underscore." }
               - label: "Sycamore"
                 name: "sycamore"
                 widget: "object"
@@ -638,7 +646,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Animated GIFs are supported. Filename must not start with an underscore." }
               - label: "Our People"
                 name: "our_people"
                 widget: "object"
@@ -648,7 +656,7 @@ collections:
                   - label: "Images"
                     name: "images"
                     widget: "list"
-                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Filename must not start with an underscore." }
+                    field: { label: "Image", name: "image", widget: "image", hint: "Add one image to display as a static photo, or multiple images to display as a slideshow. Animated GIFs are supported. Filename must not start with an underscore." }
       - name: "call_for_submission"
         label: "Call for Submission"
         file: "_data/call-for-submission.yml"
@@ -1108,7 +1116,8 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Link", name: "link", widget: "string", required: false, hint: "Leave empty if issue is not yet available." }
-              - { label: "Cover Image", name: "image", widget: "string", hint: "URL of the cover image." }
+              - { label: "Cover Image (Upload)", name: "image_upload", widget: "image", required: false, media_folder: "/assets/images/magazines", public_folder: "/assets/images/magazines", hint: "Upload a cover image. Overrides the URL below when set. Filename must not start with an underscore." }
+              - { label: "Cover Image (URL)", name: "image", widget: "string", required: false, hint: "Fallback cover image URL, used when no upload is set." }
       - name: "news"
         label: "News Page"
         file: "_data/news.yml"
@@ -1264,10 +1273,11 @@ collections:
         media_folder: "/assets/images/landing"
         public_folder: "/assets/images/landing"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Village Map page. Edit the hero banner, the eyebrow label shown above the map, and the description text shown beneath it." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Village Map page. Edit the hero banner, the eyebrow label, the heading shown above the map, and the description paragraph shown below the map." }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Hero banner shown at top of the page. Also used as the Village Map tile image in the home page navigation. Filename must not start with an underscore." }
-          - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small label shown above the map." }
-          - { label: "Description", name: "description", widget: "text", hint: "Sub-text shown under the eyebrow." }
+          - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small label shown above the heading." }
+          - { label: "Heading", name: "heading", widget: "string", hint: "Large heading shown above the map." }
+          - { label: "Description", name: "description", widget: "text", hint: "Paragraph shown below the map." }
       - name: "wedding_faq"
         label: "Wedding FAQ"
         file: "_data/wedding-faq.yml"
@@ -1531,7 +1541,7 @@ collections:
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, hint: "Publish/order date for this venue entry. The venue list is sorted by this value in descending order." }
       - { label: "Title", name: "title", widget: "string", hint: "Venue name shown in cards, page headings, and navigation." }
       - { label: "Subtitle", name: "subtitle", widget: "string", required: false, hint: "Legacy summary line in front matter. The page hero currently uses Intro fields below, so keep this aligned or leave blank if unused." }
-      - { label: "Image", name: "image", widget: "image", required: false, hint: "Main hero image for the venue page and venue card. Filename must not start with an underscore." }
+      - { label: "Image", name: "image", widget: "image", required: false, hint: "Main hero image for the venue page and venue card. Animated GIFs are supported. Filename must not start with an underscore." }
       - { label: "Suite", name: "suite", widget: "string", required: false, hint: "Optional map suite identifier used by the embedded village map on this page." }
       - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Optional map coordinates in `longitude, latitude` format, for example `-111.76260, 34.86350`.", required: false }
       - label: "Intro"

@@ -10,13 +10,14 @@ popup_key: magazines
 
     <div class="list-container">
       {% for magazine in site.data.magazines.issues %}
+      {% assign cover = magazine.image_upload | default: magazine.image %}
       <div class="card">
         {% if magazine.link != "" %}
         <a href="{{ magazine.link }}" target="_blank" rel="noopener">
-          <img src="{{ magazine.image }}" alt="{{ magazine.title }}">
+          <img src="{{ cover }}" alt="{{ magazine.title }}" onerror="this.onerror=null;this.src='{{ '/assets/images/placeholder.webp' | relative_url }}'">
         </a>
         {% else %}
-        <img src="{{ magazine.image }}" alt="{{ magazine.title }}">
+        <img src="{{ cover }}" alt="{{ magazine.title }}" onerror="this.onerror=null;this.src='{{ '/assets/images/placeholder.webp' | relative_url }}'">
         {% endif %}
         <h6>{{ magazine.title }}</h6>
       </div>

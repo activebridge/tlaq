@@ -11,6 +11,7 @@
   </a>
 
   <nav id="desktop">
+    <div class="nav-popover-group">
     <button type="button" id="visit-popover-anchor" class="nav-popover-anchor" aria-haspopup="true" aria-controls="visit-popover">
       {% include icons/windows/tlaq.svg %}
       Visit
@@ -23,7 +24,9 @@
       <a href="{{ '/hours#accessibility' | relative_url }}">{% include icons/windows/tlaq.svg %} Accessibility</a>
       <a href="{{ '/hours#family-friendly' | relative_url }}">{% include icons/windows/tlaq.svg %} Family &amp; Pet</a>
     </div>
+    </div>
     <a href="{{ '/village_map' | relative_url }}"{% if page.url contains '/village_map' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} Village Map</a>
+    <div class="nav-popover-group">
     <button type="button" id="about-popover-anchor" class="nav-popover-anchor" aria-haspopup="true" aria-controls="about-popover">
       {% include icons/windows/tlaq.svg %}
       About
@@ -33,7 +36,10 @@
       <a href="{{ '/about' | relative_url }}"{% if page.url == '/about' or page.url == '/about/' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} Overview</a>
       <a href="{{ '/history' | relative_url }}"{% if page.url contains '/history' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} History</a>
       <a href="{{ '/news/' | relative_url }}"{% if page.url contains '/news' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} News</a>
+      <a href="{{ '/magazines' | relative_url }}"{% if page.url contains '/magazines' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} Magazine</a>
     </div>
+    </div>
+    <div class="nav-popover-group">
     <button type="button" id="discover-popover-anchor" class="nav-popover-anchor" aria-haspopup="true" aria-controls="discover-popover">
       {% include icons/windows/tlaq.svg %}
       Discover
@@ -44,6 +50,7 @@
       <a href="/shops/"{% if page.url contains '/shops/' %} aria-current="page"{% endif %}>{% include icons/windows/shops.svg %} Shops</a>
       <a href="/galleries/"{% if page.url contains '/galleries/' %} aria-current="page"{% endif %}>{% include icons/windows/galleries.svg %} Galleries</a>
       <a href="/foods/"{% if page.url contains '/foods/' %} aria-current="page"{% endif %}>{% include icons/windows/foods.svg %} Food</a>
+    </div>
     </div>
     <a href="{{ '/contacts' | relative_url }}"{% if page.url contains '/contacts' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} Contact</a>
     <a href="/weddings"{% if page.url contains '/weddings' %} aria-current="page"{% endif %} class="nav-weddings">{% include icons/windows/weddings.svg %} Weddings &amp; Private Events</a>
@@ -114,6 +121,7 @@
       <a href="{{ '/about' | relative_url }}"{% if page.url == '/about' or page.url == '/about/' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} Overview</a>
       <a href="{{ '/history' | relative_url }}"{% if page.url contains '/history' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} History</a>
       <a href="{{ '/news/' | relative_url }}"{% if page.url contains '/news' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} News</a>
+      <a href="{{ '/magazines' | relative_url }}"{% if page.url contains '/magazines' %} aria-current="page"{% endif %}>{% include icons/windows/tlaq.svg %} Magazine</a>
     </nav>
     <a href="{{ '/contacts' | relative_url }}">{% include icons/windows/tlaq.svg %} Contact Us</a>
     <a href="/weddings" class="weddings-private"{% if page.url contains '/weddings' %} aria-current="page"{% endif %}>{% include icons/windows/weddings.svg %} Weddings &amp; Private Events</a>
