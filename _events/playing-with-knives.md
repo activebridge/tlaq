@@ -2,13 +2,13 @@
 title: Playing With Knives
 slug: playing-with-knives
 published: false
-starts_at: 2026-03-07 11:00:00
-ends_at: 2026-03-07 13:00:00
+starts_at: 2026-06-06T11:00:00
+ends_at: 2026-06-06T13:00:00
 location: Tlaquepaque Village
 image: /assets/images/events/playing-with-knives.webp
 video_url: ''
 subtitle: First Saturday of every month, knife demo and in-store specials. Compare top brands, learn care tips, and find your perfect blade.
-schedule_type: weekly
+schedule_type: monthly
 recurs_until: 2027-03-26 23:59:00
 recurrence_weekdays:
   - sat
