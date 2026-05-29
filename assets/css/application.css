@@ -2818,7 +2818,8 @@ main.about {
   aspect-ratio: 4 / 5;
   width: 100%;
 }
-.hero-desc[data-event-image] > img {
+.hero-desc[data-event-image] > picture,
+.hero-desc[data-event-image] > picture > img {
   width: 100%;
   height: 100%;
   object-fit: cover;

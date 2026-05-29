@@ -73,6 +73,7 @@ Common fields:
   - for `single`, `weekly`, `monthly`, `yearly`: optional, used as the end time for the event instance (usually same date as `starts_at`, different time)
   - for `range`: required, because it defines the final day/time of the date span
 - `schedule_type` (required): `single`, `range`, `weekly`, `monthly`, `yearly`
+- `date_override` (optional): free-text label that replaces the auto date row on **every** calendar month and on the event detail page; when set, only one card per month is shown. Leave empty for automatic dates. See [Date override](#date-override).
 
 Recurrence fields:
 
@@ -98,6 +99,21 @@ Recurrence fields:
 - `yearly`
   Repeats on the same month/day/time each year. Weekday fields are ignored for yearly logic.
   `recurs_until` is not required for yearly events.
+
+### Date override
+
+`date_override` is a single string applied to **all** visible calendar months — there are no per-month entries to maintain.
+
+When set:
+
+- Calendar shows the text in place of the day/date row, collapses the event to **one card per month**, and hides the weekly-range hint.
+- The event detail page shows the text in place of the date row and hides the time row.
+
+```yaml
+date_override: Every Thursday
+```
+
+Keep the text month-agnostic for recurring events (e.g. `Every Thursday`, not `Saturday, June 6`), since it appears in every month the event recurs.
 
 ### Examples
 
@@ -152,6 +168,7 @@ schedule_type: yearly
 - `assets/js/calendar.js` reads that payload, generates occurrences, sorts by day, and renders cards.
 - Calendar output is limited to the current month through 12 months ahead.
 - Month filter options are generated in JS from occurrences and default to current month when available.
+- Occurrences are de-duplicated by their view-transition base (event slug + start time) before rendering, so duplicate events or overlapping schedules can't produce duplicate `view-transition-name`s (which would abort the View Transition).
 
 ### Notes for editors
 
@@ -159,6 +176,7 @@ schedule_type: yearly
 - Use `monthly` only when you want the first matching weekday(s) each month.
 - Use `yearly` for same date each year (no weekday setup needed, no `recurs_until` required).
 - Keep `recurs_until` filled for `weekly` and `monthly`, or those recurrences will not generate instances.
+- Use `date_override` for a custom recurring label (e.g. `Every Thursday`); one field covers all 12 calendar months — no need to update it monthly or create duplicate event entries.
 
 ## Tech
 

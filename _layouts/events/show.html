@@ -16,6 +16,7 @@ layout: default
 <script>
   (function() {
     const vt = new URLSearchParams(window.location.search).get('vt');
+    if (!vt) return;
     const safeVt = vt.toLowerCase().replace(/[^a-z0-9_-]/g, '');
     const transitionBase = /^\d+$/.test(safeVt) ? 'vt-' + safeVt : safeVt;
     const apply = function() {

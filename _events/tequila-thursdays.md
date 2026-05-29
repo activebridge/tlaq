@@ -12,9 +12,7 @@ schedule_type: weekly
 recurs_until: 2027-03-26 23:59:00
 recurrence_weekdays:
   - thu
-display_dates:
-  - month: jun
-    text: Every Thursday
+date_override: Every Thursday
 phone: ''
 website: ''
 email: ''

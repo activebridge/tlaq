@@ -14,9 +14,7 @@ recurrence_weekdays:
   - sun
   - mon
   - tue
-display_dates:
-  - month: jun
-    text: Every Sunday through Tuesday
+date_override: Every Sunday through Tuesday
 schedule: []
 map: null
 phone: ''

@@ -12,9 +12,21 @@
     {% include events/contact.html event=page %}
   </div>
   <div>
-    {% assign event_desc_image_cdn = image_path | prepend: '/cdn-cgi/image/width=800,height=1000,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
+    {% assign hi_desk   = image_path | prepend: '/cdn-cgi/image/width=800,height=1000,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
+    {% assign hi_mob    = image_path | prepend: '/cdn-cgi/image/width=600,height=800,fit=cover,quality=85,gravity=center,format=webp/' | prepend: site.cdn_url %}
+    {% assign card_desk = image_path | prepend: '/cdn-cgi/image/width=600,height=750,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
+    {% assign card_mob  = image_path | prepend: '/cdn-cgi/image/width=400,height=500,fit=cover,gravity=center,format=webp/' | prepend: site.cdn_url %}
     <div class="hero-desc" style="view-transition-name: {{ page_image_transition_name }};" data-event-image>
-      <img src="{{ event_desc_image_cdn }}" alt="{{ page.title }} Image">
+      <picture>
+        <source media="(max-width: 480px)" srcset="{{ hi_mob }}">
+        <source media="(min-width: 768px)" srcset="{{ hi_desk }}">
+        <img src="{{ hi_desk }}" alt="{{ page.title }} Image" width="800" height="1000" loading="eager" decoding="async" onerror="imageError(this)">
+      </picture>
+      <picture>
+        <source media="(max-width: 480px)" srcset="{{ card_mob }}">
+        <source media="(min-width: 768px)" srcset="{{ card_desk }}">
+        <img src="{{ card_desk }}" alt="{{ page.title }} Image" width="600" height="750" loading="eager" fetchpriority="high" decoding="async" onerror="imageError(this)">
+      </picture>
       {% include video-bg.html video_url=video_url %}
     </div>
   </div>

@@ -1640,16 +1640,7 @@ collections:
       - { label: "Annual Event", name: "annual", widget: "boolean", default: false, required: false, hint: "Show this event in the Annual Events section. Use this for events that happen once a year but with a date that changes each year (e.g. Day of the Dead) — set Schedule Type to 'single', enter the correct date, and enable this flag. Each year, update the date or create a new entry." }
       - { label: "Recurrence Until", name: "recurs_until", widget: "datetime", required: false, hint: "REQUIRED for weekly/monthly schedules — recurrence stops after this date. Leave empty for single/range/yearly." }
       - { label: "Recurrence Weekdays", name: "recurrence_weekdays", widget: "select", multiple: true, required: false, options: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"], hint: "REQUIRED for weekly/monthly schedules — at least one weekday. Weekly uses only the first selected weekday for occurrences; monthly emits each selected weekday's first occurrence per month. Leave empty for single/range/yearly." }
-      - label: "Display Dates Override"
-        name: "display_dates"
-        widget: "list"
-        required: false
-        collapsed: true
-        summary: "{{fields.month}}: {{fields.text}}"
-        hint: "Optional per-month label that replaces the auto-generated date row in the calendar (e.g. 'Every Sunday', 'May 2, May 9, May 16'). When set for a month, only ONE card is shown for this event in that month and the weekly range hint is hidden. Add at most one entry per month — duplicates are ignored, only the first match wins. Also overrides the date row on the event detail page: all entries are joined with ' · ' and the time row is hidden. Leave empty to keep default behavior."
-        fields:
-          - { label: "Month", name: "month", widget: "select", options: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"], hint: "Three-letter month code. Applies to every year." }
-          - { label: "Text", name: "text", widget: "string", hint: "Free text shown in place of the date row, e.g. 'Every Thursday' or 'May 2, May 9, May 16'." }
+      - { label: "Date Override", name: "date_override", widget: "string", required: false, hint: "Optional label shown in place of the auto date row, applied to EVERY calendar month for this event (e.g. 'Every Thursday'). One card per month is shown and the weekly-range hint is hidden. Also replaces the date row on the event detail page (time row hidden). Leave empty to keep automatic dates." }
       - label: "Schedule"
         name: "schedule"
         widget: "list"

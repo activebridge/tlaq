@@ -12,7 +12,7 @@ schedule_type: single
 annual: false
 recurs_until: ''
 recurrence_weekdays: []
-display_dates: []
+date_override: ''
 schedule: []
 map: null
 phone: 928-282-3225

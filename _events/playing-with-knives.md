@@ -12,9 +12,7 @@ schedule_type: monthly
 recurs_until: 2027-03-26 23:59:00
 recurrence_weekdays:
   - sat
-display_dates:
-  - month: jun
-    text: Saturday, June 6
+date_override: Saturday, June 6
 phone: 928-862-4140
 website: https://theartistskitchenshop.myshoplocal.com
 email: ''

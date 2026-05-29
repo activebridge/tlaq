@@ -1,12 +1,4 @@
-{% assign override_text = "" %}
-{% if include.event.display_dates and include.event.display_dates.size > 0 %}
-  {% for entry in include.event.display_dates %}
-    {% if entry.text and entry.text != "" %}
-      {% if override_text != "" %}{% assign override_text = override_text | append: " · " %}{% endif %}
-      {% assign override_text = override_text | append: entry.text %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
+{% assign override_text = include.event.date_override | default: "" %}
 
 {% if override_text != "" %}
   <p class="event-meta event-meta--date">{{ override_text | upcase }}</p>

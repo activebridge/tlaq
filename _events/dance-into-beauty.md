@@ -12,9 +12,7 @@ schedule_type: range
 annual: false
 recurs_until: ''
 recurrence_weekdays: []
-display_dates:
-  - month: may
-    text: May 9, May 10 | 1 PM & 3 PM Performance Times
+date_override: 'May 9, May 10 | 1 PM & 3 PM Performance Times'
 schedule: []
 map: null
 phone: 928-282-7130

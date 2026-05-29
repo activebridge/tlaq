@@ -177,19 +177,9 @@ document.addEventListener('DOMContentLoaded', function() {
     return [{ event: event, start: startDate, end: endDate }];
   }
 
-  const MONTH_NAME_INDEX = {
-    jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
-    jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
-  };
-  function resolveDisplayDates(event, date) {
-    const value = event.display_dates;
-    if (!Array.isArray(value)) return '';
-    const monthIdx = date.getMonth();
-    for (const entry of value) {
-      if (!entry || !entry.month || !entry.text) continue;
-      if (MONTH_NAME_INDEX[String(entry.month).toLowerCase()] === monthIdx) return entry.text;
-    }
-    return '';
+  function resolveDisplayDates(event) {
+    const v = event.date_override;
+    return typeof v === 'string' ? v.trim() : '';
   }
 
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
@@ -200,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const transitionBase = buildTransitionBase(event, item.start);
     const href = appendTransitionParam(event.url, transitionBase);
     const subtitle = event.subtitle ? '<p>' + event.subtitle + '</p>' : '';
-    const displayText = resolveDisplayDates(event, item.start);
+    const displayText = resolveDisplayDates(event);
     const weeklyRangeText = event.schedule_type === 'weekly' && !displayText ? getWeeklyRangeText(event) : '';
     const timeText = event.ends_at
       ? formatTime(item.start) + ' - ' + formatTime(item.end)
@@ -255,6 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const sourceEvents = JSON.parse(dataNode.textContent || '[]');
   const seenDisplayKeys = new Set();
+  const seenTransitionBases = new Set();
   const allOccurrences = sourceEvents
     .flatMap(buildOccurrences)
     .filter((item) => (
@@ -263,10 +254,16 @@ document.addEventListener('DOMContentLoaded', function() {
     ))
     .sort((a, b) => a.start.getTime() - b.start.getTime())
     .filter((item) => {
-      if (!resolveDisplayDates(item.event, item.start)) return true;
+      if (!resolveDisplayDates(item.event)) return true;
       const key = (item.event.url || item.event.title) + '|' + toMonthKey(item.start);
       if (seenDisplayKeys.has(key)) return false;
       seenDisplayKeys.add(key);
+      return true;
+    })
+    .filter((item) => {
+      const base = buildTransitionBase(item.event, item.start);
+      if (seenTransitionBases.has(base)) return false;
+      seenTransitionBases.add(base);
       return true;
     });
 
