@@ -896,8 +896,10 @@
     };
     const DEFAULT_HIGHLIGHT_COLOR = categoryColors.shop;
     const BUILDING_BASE_COLOR = '#111c4e';  // --navy
+    const WALL_COLOR = '#6b7a9e';  // lighter navy for wall lines
     const AREA_COLOR = '#008066';          // --green
-    const PARKING_COLOR = '#8c8c8c';
+    const PARKING_COLOR = '#5a6aa8';  // lighter navy
+    const WATER_COLOR = '#7ec3e8';    // light blue
 
     // Utility functions
     const featureStateTarget = (id) => ({ source: 'map-data', id });
@@ -1044,8 +1046,39 @@
       const polygonFilter = ['==', ['geometry-type'], 'Polygon'];
       map.addLayer({
         id: 'parking-outline', type: 'line', source: 'map-data',
-        filter: ['all', polygonFilter, parkingFilter],
-        paint: { 'line-color': PARKING_COLOR, 'line-width': 1, 'line-dasharray': [4, 3], 'line-opacity': 0.5 }
+        filter: parkingFilter,
+        paint: { 'line-color': PARKING_COLOR, 'line-width': 1, 'line-opacity': 0.5 }
+      });
+
+      // Wavy light-blue pattern tile for water polygons
+      const makeWavePattern = (color) => {
+        const size = 16, c = document.createElement('canvas');
+        c.width = c.height = size;
+        const ctx = c.getContext('2d');
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.5;
+        ctx.lineCap = 'round';
+        for (let yOff = 4; yOff < size; yOff += 8) {
+          ctx.beginPath();
+          for (let x = 0; x <= size; x++) {
+            const y = yOff + Math.sin((x / size) * Math.PI * 2) * 2;
+            x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+        return ctx.getImageData(0, 0, size, size);
+      };
+      const waterFilter = ['==', ['get', 'type'], 'water'];
+      if (!map.hasImage('water-wave')) map.addImage('water-wave', makeWavePattern(WATER_COLOR));
+      map.addLayer({
+        id: 'water-fill-base', type: 'fill', source: 'map-data',
+        filter: ['all', polygonFilter, waterFilter],
+        paint: { 'fill-color': WATER_COLOR, 'fill-opacity': 0.15 }
+      });
+      map.addLayer({
+        id: 'water-fill', type: 'fill', source: 'map-data',
+        filter: ['all', polygonFilter, waterFilter],
+        paint: { 'fill-pattern': 'water-wave' }
       });
 
       const underpassFilter = ['==', ['get', 'id'], 'underpass'];
@@ -1100,7 +1133,7 @@
         filter: ['all', polygonFilter, ['==', ['get', 'type'], 'wall']],
         paint: {
           'fill-extrusion-color': BUILDING_BASE_COLOR,
-          'fill-extrusion-height': 2,
+          'fill-extrusion-height': 1,
           'fill-extrusion-base': 0, 'fill-extrusion-opacity': 0.95
         }
       });
@@ -1129,14 +1162,14 @@
         };
         const wallLineFeatures = geojson.features
           .filter(f => f.properties.type === 'wall' && f.geometry.type === 'LineString')
-          .map(f => ({ ...f, geometry: { type: 'Polygon', coordinates: bufferLineString(f.geometry.coordinates, 0.0000007) } }));
+          .map(f => ({ ...f, geometry: { type: 'Polygon', coordinates: bufferLineString(f.geometry.coordinates, 0.00000035) } }));
         if (map.getSource('wall-line-data')) {
           map.getSource('wall-line-data').setData({ type: 'FeatureCollection', features: wallLineFeatures });
         } else {
           map.addSource('wall-line-data', { type: 'geojson', data: { type: 'FeatureCollection', features: wallLineFeatures } });
           map.addLayer({
             id: 'wall-line-extrusions', type: 'fill-extrusion', source: 'wall-line-data',
-            paint: { 'fill-extrusion-color': BUILDING_BASE_COLOR, 'fill-extrusion-height': 1, 'fill-extrusion-base': 0, 'fill-extrusion-opacity': 0.95 }
+            paint: { 'fill-extrusion-color': WALL_COLOR, 'fill-extrusion-height': 0.5, 'fill-extrusion-base': 0, 'fill-extrusion-opacity': 0.95 }
           });
         }
         // Area label source/layer
