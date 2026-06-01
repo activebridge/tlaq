@@ -8,7 +8,7 @@ tags:
   - native american art
   - jewelry
   - shop
-suite: a107
+suite: a106
 phone: (928) 282-4256
 website: https://houseoftheshalako.com
 coordinates: -111.7625608, 34.8621455
