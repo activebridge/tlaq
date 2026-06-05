@@ -11,9 +11,9 @@ purchase_button:
 how_it_works:
   heading: Here's How It Works
   items:
-    - label: Delivery
-      description: Gift Certificate sent via Priority Mail to you or your recipient.
     - label: A Gift of Choice
       description: Redemable at all Tlaquepaque shops, galleries, and restaurants.
     - label: East to Use
       description: Valid for 12 months from date of issue.
+    - label: Delivery
+      description: Physical Gift Certificates can be purchased in-person or sent via Priority Mail to you or your recipient. <br> Or an  eGift Card can be purchased online.
