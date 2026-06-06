@@ -2825,9 +2825,45 @@ main.about {
   object-fit: cover;
 }
 
-.gift-cards .btn {
-  margin-top: 2rem;
-  width: 360px;
+.gift-cards {
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+
+    @media (max-width: 770px) {
+      grid-template-columns: 1fr;
+
+      figure { order: 1; }
+      section { order: 2; }
+    }
+
+    hgroup, p, hr { grid-column: 1 / -1; }
+
+    section {
+      .btn {
+        width: 100%;
+        margin-top: 1rem;
+
+        &:first-of-type { margin-top: 2rem; }
+
+        &[aria-disabled="true"] {
+          opacity: 0.4;
+          cursor: not-allowed;
+          pointer-events: none;
+        }
+      }
+    }
+
+    figure {
+      picture, img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+  }
 }
 
 .magazines .list-container {

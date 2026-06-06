@@ -861,7 +861,7 @@ collections:
         media_folder: "/assets/images"
         public_folder: "/assets/images"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Gift Cards page. Edit the hero banner, page heading, intro paragraph, purchase button label and URL, and the \"How It Works\" section heading and steps." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Gift Cards page. Edit the hero banner, page heading, intro paragraph, purchase buttons (physical and eGift), the gift card image shown on the right, and the \"How It Works\" section heading and steps." }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - { label: "Page Heading", name: "heading", widget: "string" }
           - { label: "Intro Paragraph", name: "intro", widget: "text" }
@@ -871,6 +871,18 @@ collections:
             fields:
               - { label: "Button Label", name: "label", widget: "string" }
               - { label: "Button URL", name: "url", widget: "string", required: false, hint: "Purchase page URL. Leave empty until account is set up." }
+          - label: "eGift Card Button"
+            name: "egift_button"
+            widget: "object"
+            fields:
+              - { label: "Button Label", name: "label", widget: "string" }
+              - { label: "Button URL", name: "url", widget: "string", required: false, hint: "External partner URL for purchasing an eGift card. Leave empty to show the button as disabled until the partner link is ready." }
+          - label: "Gift Card Image"
+            name: "gift_card_image"
+            widget: "object"
+            fields:
+              - { label: "Image", name: "src", widget: "image", hint: "Gift card photo shown on the right side of the How It Works section. Filename must not start with an underscore." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
           - label: "Here's How It Works"
             name: "how_it_works"
             widget: "object"
