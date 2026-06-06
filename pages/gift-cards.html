@@ -19,11 +19,23 @@ popup_key: gift-cards
 
   <hr>
 
-  <h3>{{ site.data.gift_cards.how_it_works.heading }}</h3>
-  <ul>
-    {% for item in site.data.gift_cards.how_it_works.items %}
-    <li><strong>{{ item.label }}</strong> — {{ item.description }}</li>
-    {% endfor %}
-  </ul>
-  <a href="{{ site.data.gift_cards.purchase_button.url }}" class="btn btn-primary">{{ site.data.gift_cards.purchase_button.label }}</a>
+  <section>
+    <h3>{{ site.data.gift_cards.how_it_works.heading }}</h3>
+    <ul>
+      {% for item in site.data.gift_cards.how_it_works.items %}
+      <li><strong>{{ item.label }}</strong> — {{ item.description }}</li>
+      {% endfor %}
+    </ul>
+    <a href="{{ site.data.gift_cards.purchase_button.url }}" class="btn btn-primary">{{ site.data.gift_cards.purchase_button.label }}</a>
+    {% unless site.data.gift_cards.egift_button.url == "" or site.data.gift_cards.egift_button.url == nil %}
+    <a href="{{ site.data.gift_cards.egift_button.url }}" class="btn btn-primary" target="_blank" rel="noopener">{{ site.data.gift_cards.egift_button.label }}</a>
+    {% else %}
+    <span class="btn btn-primary" aria-disabled="true">{{ site.data.gift_cards.egift_button.label }}</span>
+    {% endunless %}
+  </section>
+  <figure>
+    {% assign gc_img = site.data.gift_cards.gift_card_image.src %}
+    {% assign alt = site.data.gift_cards.gift_card_image.alt %}
+    {% include responsive-card-image.html src=gc_img %}
+  </figure>
 </div>

@@ -5,12 +5,18 @@ intro: A Tlaquepaque Arts & Shopping Village gift card is an invitation to wande
 purchase_button:
   label: Purchase a Physical Gift Card
   url: mailto:visitorinfo@tlaq.com
+egift_button:
+  label: Purchase an eGift Card
+  url: ""
+gift_card_image:
+  src: /assets/images/giftcard.png
+  alt: Tlaquepaque Arts & Shopping Village gift card
 how_it_works:
   heading: Here's How It Works
   items:
     - label: A Gift of Choice
       description: Redemable at all Tlaquepaque shops, galleries, and restaurants.
-    - label: East to Use
+    - label: Easy to Use
       description: Valid for 12 months from date of issue.
     - label: Delivery
-      description: <br>Physical Gift Certificates can be purchased in-person or sent via Priority Mail to you or your recipient.<br>An eGift Card can be purchased online.
+      description: Physical Gift Certificates can be purchased in-person or sent via Priority Mail to you or your recipient. An eGift Card can be purchased online.
