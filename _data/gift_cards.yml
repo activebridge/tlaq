@@ -7,9 +7,9 @@ purchase_button:
   url: mailto:visitorinfo@tlaq.com
 egift_button:
   label: Purchase an eGift Card
-  url: ""
+  url: ''
 gift_card_image:
-  src: /assets/images/giftcard.png
+  src: /assets/images/TLAQ_GIFT CARD.png
   alt: Tlaquepaque Arts & Shopping Village gift card
 how_it_works:
   heading: Here's How It Works
