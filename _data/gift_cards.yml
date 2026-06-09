@@ -6,7 +6,7 @@ purchase_button:
   label: Purchase a Physical Gift Card
   url: https://swipeit.com/co-branded/merchant/tlaquepaque-arts-shopping-village-11434
 egift_button:
-  label: Purchase an eGift Card
+  label: Purchase a Gift Card
   url: https://swipeit.com/co-branded/merchant/tlaquepaque-arts-shopping-village-11434
 gift_card_image:
   src: /assets/images/TLAQ_GIFT CARD.png
