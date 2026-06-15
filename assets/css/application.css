@@ -2842,6 +2842,8 @@ main.about {
     hgroup, p, hr { grid-column: 1 / -1; }
 
     section {
+      h3 { margin-bottom: 1.5rem; }
+
       .btn {
         width: 100%;
         margin-top: 1rem;

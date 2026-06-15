@@ -8,6 +8,12 @@ history:
   image: assets/images/about/history.png
   button_text: Learn More
   button_url: /history
+gift_cards:
+  title: Share the Experience
+  description: A Tlaquepaque gift card is an invitation—to wander, discover, and enjoy the village's art, dining, and shops. A thoughtful way to give someone the experience of Tlaquepaque, on their own time.
+  image: assets/images/TLAQ_GIFT CARD.png
+  button_text: Purchase a Gift Card
+  button_url: /gift-cards
 village_map:
   description: Our interactive village map provides easy navigation to all shops, galleries, and restaurants, helping you discover every corner of Tlaquepaque North and South.
 sections:

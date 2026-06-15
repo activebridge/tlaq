@@ -564,7 +564,7 @@ collections:
         media_folder: "/assets/images/about"
         public_folder: "/assets/images/about"
         fields:
-          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the About page content. Edit the hero image, main heading, history section text/image, village map description, and the photo sections (Tlaquepaque North, Outdoor Art, Landscaping, Sycamore, Our People)." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the About page content. Edit the hero image, main heading, history section text/image, the Gift Cards section text/image/button, village map description, and the photo sections (Tlaquepaque North, Outdoor Art, Landscaping, Sycamore, Our People)." }
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the About page. Filename must not start with an underscore" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large h2 heading shown at the top of the page." }
           - { label: "Subheading", name: "subheading", widget: "text", hint: "Smaller h6 text shown below the heading." }
@@ -575,6 +575,14 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text", hint: "Paragraph shown below the history image, above the button." }
               - { label: "Image", name: "image", widget: "image", hint: "Feature image shown beside the history text on the About page. Filename must not start with an underscore" }
+              - { label: "Button Text", name: "button_text", widget: "string" }
+          - label: "Gift Cards"
+            name: "gift_cards"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", hint: "Paragraph shown below the title, above the button." }
+              - { label: "Image", name: "image", widget: "image", hint: "Gift card image shown beside the text on the About page. Filename must not start with an underscore" }
               - { label: "Button Text", name: "button_text", widget: "string" }
           - label: "Village Map"
             name: "village_map"

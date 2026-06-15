@@ -82,6 +82,20 @@ popup_key: about
     </article>
     {% include slideshow.html images=section.images alt=section.heading width=1200 height=675 id=anchor %}
   </section>
+
+  <hr>
+
+  <section class="about-feature">
+    <article>
+      <h3>{{ site.data.about.gift_cards.title }}</h3>
+      <p>{{ site.data.about.gift_cards.description }}</p>
+      <a class="btn btn-primary" href="{{ site.data.about.gift_cards.button_url }}">{{ site.data.about.gift_cards.button_text }}</a>
+    </article>
+    <figure>
+      {% assign img_src = site.data.about.gift_cards.image | prepend: '/cdn-cgi/image/width=1200,height=675,fit=contain,quality=85,format=webp/' | prepend: site.cdn_url %}
+      <img src="{{ img_src }}" alt="{{ site.data.about.gift_cards.title }}" width="1200" height="675" loading="lazy" decoding="async" onerror="imageError(this)">
+    </figure>
+  </section>
 </div>
 
 {% include slideshow-script.html %}
