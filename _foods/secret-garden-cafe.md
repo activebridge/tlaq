@@ -30,4 +30,4 @@ store_hours:
   sunday: 8am - 8pm
 ---
 
-A beloved, tucked-away café offering fresh, thoughtfully prepared breakfast and lunch in a lush garden setting. Known for its relaxed charm and seasonal ingredients, it’s a place to linger, unwind, and savor simple, satisfying meals.
+A beloved, tucked-away café offering fresh, thoughtfully prepared breakfast and lunch in a lush garden setting. Known for its relaxed charm and seasonal ingredients, it’s a place to linger, unwind, and savor simple, satisfying meals. Secret garden is open for dinner and also has a full bar.
