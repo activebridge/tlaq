@@ -7,7 +7,7 @@ ends_at: 2026-06-18T19:00:00
 location: Patio De Las Campañas
 image: /assets/images/events/pasted-image-1780517385649.png
 video_url: ''
-subtitle: Experience Northern Arizona’s literary spirit in Patio De Las Campanas—an evening of poetry, rhythm, and community.
+subtitle: Experience Northern Arizona’s literary spirit in Patio De Las Campanas—an evening of poetry, rhythm, and community. This reading will feature three talented and dynamic young women; Flagslam poet Lydia Gates, poet Tee Pace, and Yavapai nation poet Tianna Hood.
 schedule_type: single
 recurs_until: ''
 phone: ''
