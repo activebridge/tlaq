@@ -5,7 +5,7 @@ published: true
 starts_at: 2026-07-28T19:30:00
 ends_at: 2026-07-28T21:30:00
 location: Calle Independencia
-image: /assets/images/events/pasted-image-1782493695559.png
+image: /assets/images/events/pasted-image-1782856727973.png
 video_url: ''
 subtitle: Movies on the Move Outdoor Film Experience Comes to Tlaquepaque This Summer
 schedule_type: single
