@@ -5,7 +5,7 @@ published: true
 starts_at: 2026-07-28T19:30:00
 ends_at: 2026-07-28T21:30:00
 location: Calle Independencia
-image: /assets/images/events/pasted-image-1782856727973.png
+image: /assets/images/events/pasted-image-1783443336926.png
 video_url: ''
 subtitle: Movies on the Move Outdoor Film Experience Comes to Tlaquepaque This Summer
 schedule_type: single
@@ -37,3 +37,5 @@ Tuesday, July 28
 Tuesday, Aug. 25
 
 Guests are encouraged to bring their friends and family (and lawn chairs or blankets) and experience the magic of cinema beneath Sedona’s summer skies.
+
+July 28th movie will premier "Michael"!
