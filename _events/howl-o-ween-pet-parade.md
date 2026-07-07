@@ -2,10 +2,10 @@
 title: Howl-O-Ween Pet Parade
 slug: howl-o-ween
 published: true
-starts_at: 2026-10-19T10:00:00
-ends_at: 2026-10-19T12:00:00
+starts_at: 2026-10-18T10:00:00
+ends_at: 2026-10-18T12:00:00
 location: Calle Independencia
-image: /assets/images/events/pasted-image-1782856881395.png
+image: /assets/images/events/pasted-image-1783458854170.png
 video_url: ''
 subtitle: Join us to support Tlaquepaque, Bowwow, and the Humane Society of Sedona!
 schedule_type: single
