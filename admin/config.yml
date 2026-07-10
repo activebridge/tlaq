@@ -1374,12 +1374,11 @@ collections:
             name: "jump_to_links"
             widget: "object"
             fields:
-              - label: "Venues"
-                name: "venues"
+              - label: "Brochure"
+                name: "brochure"
                 widget: "object"
                 fields:
                   - { label: "Text", name: "text", widget: "string" }
-                  - { label: "ID", name: "id", widget: "string" }
               - label: "Gallery"
                 name: "gallery"
                 widget: "object"

@@ -3,11 +3,13 @@
   <div>
     <span class="jump-to">Jump to:</span>
     {% for link in include.links %}
-    {% assign jump_target = site.data[include.slugs].jump_to_links[link].id %}
-      {% if include.base_url %}
-        <a href="{{ include.base_url }}{{ jump_target }}">{{ site.data[include.slugs].jump_to_links[link].text }}</a>
+    {% assign jump_link = site.data[include.slugs].jump_to_links[link] %}
+      {% if link == "brochure" and include.slugs == "weddings" %}
+        <a href="{{ site.data.weddings.brochure.brochure_url }}" target="_blank">{{ jump_link.text }}</a>
+      {% elsif include.base_url %}
+        <a href="{{ include.base_url }}{{ jump_link.id }}">{{ jump_link.text }}</a>
       {% else %}
-        <a href="{{ jump_target }}">{{ site.data[include.slugs].jump_to_links[link].text }}</a>
+        <a href="{{ jump_link.id }}">{{ jump_link.text }}</a>
       {% endif %}
     {% endfor %}
   </div>

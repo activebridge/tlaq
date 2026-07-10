@@ -40,9 +40,8 @@ buttons:
   inquiry_submit: SUBMIT AN INQUIRY
   download_site_plan: DOWNLOAD SITE PLAN
 jump_to_links:
-  venues:
+  brochure:
     text: BROCHURE
-    id: '#venues'
   gallery:
     text: INSPIRATION
     id: '#gallery'
