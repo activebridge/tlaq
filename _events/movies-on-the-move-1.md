@@ -22,8 +22,6 @@ facebook: ''
 instagram: ''
 ---
 
-Sedona Film Festival presents ‘Moonstruck’ under the stars June 30.
-
 The Sedona International Film Festival is thrilled to announce that its popular **Movies on the Move Outdoor Film Experience** is coming to the beautiful Tlaquepaque Arts & Shopping Village this summer.
 
 Movie lovers are invited to enjoy award-winning films under the stars in the unique ambience and grandeur of Tlaquepaque’s picturesque courtyards. Screenings will take place at **7:30 p.m. on select Tuesday evenings throughout the summer**, offering a memorable outdoor cinema experience in one of Sedona’s most iconic settings.
