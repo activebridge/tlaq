@@ -16,7 +16,7 @@ date_override: ''
 schedule: []
 map: null
 phone: ''
-website: www.SedonaFilmFestival.com
+website: https://prod5.agileticketing.net/WebSales/pages/info.aspx?evtinfo=638910~e8932fbb-a9ae-4437-a638-ff0cf1793527&epguid=f7b94766-699c-4aa0-9f9b-8245a9cefc05&mdy=7/28/2026&showing=638911&
 email: ''
 facebook: ''
 instagram: ''
@@ -39,3 +39,5 @@ Tuesday, Aug. 25
 Guests are encouraged to bring their friends and family (and lawn chairs or blankets) and experience the magic of cinema beneath Sedona’s summer skies.
 
 July 28th movie will premier "Michael"!
+
+Purchase tickets here: https://prod5.agileticketing.net/WebSales/pages/info.aspx?evtinfo=638910\~e8932fbb-a9ae-4437-a638-ff0cf1793527&epguid=f7b94766-699c-4aa0-9f9b-8245a9cefc05&mdy=7/28/2026&showing=638911&
