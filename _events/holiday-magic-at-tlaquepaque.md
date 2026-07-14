@@ -5,7 +5,7 @@ published: true
 starts_at: 2026-12-19T15:00:00
 ends_at: 2026-12-19T19:00:00
 location: Throughout Tlaquepaque
-image: /assets/images/events/Holiday-magic.png
+image: /assets/images/events/pasted-image-1784064945677.png
 video_url: ''
 subtitle: |-
   Holiday Sweet Stroll
