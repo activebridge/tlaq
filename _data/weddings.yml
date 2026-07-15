@@ -36,7 +36,7 @@ buttons:
   learn_more: LEARN MORE
   explore_more: EXPLORE MORE
   faq: FAQ
-  download_brochure: DOWNLOAD WEDDING BROCHURE
+  download_brochure: DOWNLOAD PRIVATE EVENTS BROCHURE
   inquiry_submit: SUBMIT AN INQUIRY
   download_site_plan: DOWNLOAD SITE PLAN
 jump_to_links:
@@ -48,21 +48,21 @@ jump_to_links:
   private_events:
     text: PRIVATE EVENTS
     id: '#events'
-  chapel-at-tlaquepaque:
-    id: chapel-at-tlaquepaque
-    text: CHAPEL
-  patio-de-las-campanas:
-    id: patio-de-las-campanas
-    text: PATIO DE LAS CAMPAÑAS
-  terrace-at-patio-del-norte:
-    id: terrace-at-patio-del-norte
-    text: TERRACE AT PATIO DEL NORTE
-  calle-independencia:
-    id: calle-independencia
-    text: CALLE INDEPENDENCIA
   connect:
-    id: '#connect'
     text: CONNECT
+    id: '#connect'
+  calle-independencia:
+    text: CALLE INDEPENDENCIA
+    id: calle-independencia
+  terrace-at-patio-del-norte:
+    text: TERRACE AT PATIO DEL NORTE
+    id: terrace-at-patio-del-norte
+  patio-de-las-campanas:
+    text: PATIO DE LAS CAMPAÑAS
+    id: patio-de-las-campanas
+  chapel-at-tlaquepaque:
+    text: CHAPEL
+    id: chapel-at-tlaquepaque
 site_plan:
   title: SITE PLAN
   image: /assets/images/weddings/site-plan.webp
