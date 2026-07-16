@@ -9,7 +9,7 @@ image: /assets/images/events/playing-with-knives.webp
 video_url: ''
 subtitle: First Saturday of every month, knife demo and in-store specials. Compare top brands, learn care tips, and find your perfect blade.
 schedule_type: monthly
-recurs_until: 2027-03-26 23:59:00
+recurs_until: 2027-12-26T23:59:00
 recurrence_weekdays:
   - sat
 date_override: ''
@@ -19,8 +19,8 @@ email: ''
 facebook: https://www.facebook.com/tlaqsedona/
 instagram: https://www.instagram.com/tlaqsedona/
 display_dates:
-  - text: First Saturday of Every Month
-    month: jun
+  - month: jun
+    text: First Saturday of Every Month
 ---
 
 ###### You are invited to “Playing with Knives.” A first Saturday event, Knife Demonstration. PLUS in-store knife specials! Compare brands to see which is the best fit for you and your needs. Learn about each knife, its uses, and proper care. Bring a friend and join the fun!
