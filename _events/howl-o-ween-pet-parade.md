@@ -22,4 +22,4 @@ facebook: ''
 instagram: ''
 ---
 
-Tlaquepaque and BowWow Sedona are teaming up to help save local homeless animals at the Humane Society of Sedona by hosting the fourth annual Howl-o-Ween Costume Parade on Sunday, October 19th, from 10:00 a.m.- 12:00 p.m. starting at Tlaquepaque's Calle Independencia and finishing at Tlaquepaque North. The day will be filled with dogs in costumes, pet themed vendors, and a howling bunch of fun! $20.00 entry fee can be purchased at [https://www.humanesocietyofsedona.org/howloween](https://www.humanesocietyofsedona.org/howloween)
+Tlaquepaque and BowWow Sedona are teaming up to help save local homeless animals at the Humane Society of Sedona by hosting the fourth annual Howl-o-Ween Costume Parade on Sunday, October 19th, from 10:00 a.m.- 12:00 p.m. starting at Tlaquepaque's Calle Independencia and finishing at Tlaquepaque North. The day will be filled with dogs in costumes, pet themed vendors, and a howling bunch of fun! $20.00 entry fee.
