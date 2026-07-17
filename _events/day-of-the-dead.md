@@ -6,11 +6,12 @@ starts_at: 2026-11-01 11:00:00
 ends_at: 2026-11-01 17:00:00
 location: THROUGHOUT TLAQUEPAQUE
 image: assets/images/events/day-of-dead.webp
-video_url:
+video_url: ''
 subtitle: Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
 schedule_type: yearly
 annual: true
 recurs_until: ''
+date_override: ''
 schedule:
   - location: Tlaquepaque North
     performances:
@@ -19,34 +20,36 @@ schedule:
   - location: Chapel
     performances:
       - name: Patrick Ki
-        time: 11:30 A.M. to 2:30 P.M.
+        time: 3:00 P.M. - 5:00 P.M.
       - name: Eric Miller
-        time: 3:00 P.M. to 6:00 P.M.
+        time: 11:00 A.M. - 2:00 P.M.
   - location: Patio del Norte
     performances:
-      - name: Mariachi Rubor
+      - name: Jaleo
         time: 11:00 A.M. to 2:00 P.M.
-      - name: Urban Electra, electric string quartet
+      - name: Urban Electra
         time: 3:00 P.M. to 5:00 P.M.
   - location: Patio de las campanas
     performances:
       - name: Mosaico Flamenco
-        time: 11:30 A.M. to 2:30 P.M.
-      - name: Sugar skull decorating
+        time: 11:00 A.M. to 2:00 P.M.
+      - name: Sugar Skull Decorating
         time: 1:00 P.M. to 5:00 P.M.
       - name: Ritmo Latino Trio
-        time: 3:00 P.M. to 5:00 P.M.
+        time: 2:00 P.M. to 4:00 P.M.
+      - name: Gaetano and Friends
+        time: 5:30 P.M. - 7:30 P.M.
   - location: Patio de las Rosas
     performances:
-      - name: Paloma, flamenco duo
-        time: 11:00 A.M. to 2:00 P.M.
+      - name: Chris Dunnet Flamenco
+        time: 1:00 PM to 3:00 P.M.
   - location: Calle Independencia
     performances:
-      - name: Marigold mural project with artist Lovejoy
+      - name: Marigold Mural Project with Artist Lovejoy
         time: 11:00 A.M. to 5:00 P.M.
-      - name: Face painting by Gabby & Cindi
+      - name: Face painting by Cindi
         time: 11:00 A.M. to 5:00 P.M.
-      - name: Food vendors
+      - name: Food Vendors
         time: 11:00 A.M. to 5:00 P.M.
 map:
   title: Altar Map
