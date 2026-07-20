@@ -2,6 +2,9 @@ intro:
   eyebrow: Visit
   heading: Plan your visit to our vibrant village
   subheading: Home to over 50 world-class shops, galleries, and dining experiences set amid distinctive architecture and beautifully landscaped grounds.
+brochure:
+  text: Download Brochure
+  brochure_url: /assets/files/hours/TLAQBro-JULY2026.pdf
 sections:
   hours:
     heading: Hours
@@ -26,6 +29,8 @@ sections:
     description: Tlaquepaque is a family-friendly destination with shops, dining, and events for visitors of all ages. We welcome leashed pets and offer water sources near the village restrooms.
     warning: Please never under any circumstances leave your pets unattended in your vehicle due to the potential dangers of Arizona's extreme heat.
 jump_to_links:
+  brochure:
+    text: BROCHURE
   locations:
     text: LOCATIONS
     id: '#locations'

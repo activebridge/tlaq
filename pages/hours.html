@@ -20,7 +20,7 @@ popup_key: hours
   </hgroup>
   <p>{{ hours.intro.subheading }}</p>
 
-  {% assign jump_nav_links = "locations,village_map,parking,accessibility,family_friendly" | split: "," %}
+  {% assign jump_nav_links = "brochure,locations,village_map,parking,accessibility,family_friendly" | split: "," %}
   {% assign jump_nav_slugs = "hours" %}
   {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
 
@@ -47,6 +47,7 @@ popup_key: hours
     <div class="hours-notes">
       <p>{{ hours.notes.restaurants }}</p>
       <p>{{ hours.notes.holidays }}</p>
+      <a href="{{ hours.brochure.brochure_url }}" target="_blank" class="btn btn-primary">{{ hours.brochure.text }}</a>
     </div>
   </div>
   <script src="{{ '/assets/js/store/hours.js' | relative_url }}"></script>

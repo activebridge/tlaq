@@ -1556,6 +1556,12 @@ main.news .list-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
+  @media (min-width: 1241px) {
+    height: 100%;
+
+    .btn { margin-top: auto; }
+  }
 }
 
 /* Hours Display Component */

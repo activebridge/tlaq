@@ -4,8 +4,8 @@
     <span class="jump-to">Jump to:</span>
     {% for link in include.links %}
     {% assign jump_link = site.data[include.slugs].jump_to_links[link] %}
-      {% if link == "brochure" and include.slugs == "weddings" %}
-        <a href="{{ site.data.weddings.brochure.brochure_url }}" target="_blank">{{ jump_link.text }}</a>
+      {% if link == "brochure" and site.data[include.slugs].brochure.brochure_url %}
+        <a href="{{ site.data[include.slugs].brochure.brochure_url }}" target="_blank">{{ jump_link.text }}</a>
       {% elsif include.base_url %}
         <a href="{{ include.base_url }}{{ jump_link.id }}">{{ jump_link.text }}</a>
       {% else %}

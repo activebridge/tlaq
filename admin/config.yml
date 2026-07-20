@@ -972,6 +972,13 @@ collections:
               - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small label above the main heading, e.g. Visit." }
               - { label: "Heading", name: "heading", widget: "string", hint: "Main headline for the page hero." }
               - { label: "Subheading", name: "subheading", widget: "text", hint: "Short introductory paragraph beneath the main heading." }
+          - label: "Brochure"
+            name: "brochure"
+            widget: "object"
+            hint: "Village brochure download button shown below the hours notes."
+            fields:
+              - { label: "Button Text", name: "text", widget: "string", hint: "Label shown on the download button, e.g. Download Brochure." }
+              - { label: "Brochure PDF", name: "brochure_url", widget: "file", media_folder: "/assets/files/hours", public_folder: "/assets/files/hours", hint: "Upload the village brochure PDF. Filename must not start with an underscore." }
           - label: "Sections"
             name: "sections"
             widget: "object"
@@ -1028,6 +1035,11 @@ collections:
             widget: "object"
             hint: "Navigation labels and anchor targets for the Hours page jump menu."
             fields:
+              - label: "Brochure"
+                name: "brochure"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string", hint: "Link label shown in the jump menu." }
               - label: "Locations"
                 name: "locations"
                 widget: "object"
