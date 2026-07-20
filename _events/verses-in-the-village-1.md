@@ -18,6 +18,6 @@ facebook: https://www.facebook.com/tlaqsedona/
 instagram: https://www.instagram.com/tlaqsedona/
 ---
 
-On September 23rd from 5pm to 630 pm Verses in the Village will host a poetry reading set in the beautiful Patio Las Campanas amidst the sculptures, arches, fountains and flowers of Tlaquepaque, the Verses in Village has become the place for some of the best wordsmiths in Arizona to strut their stuff. The cool of the evening and onset of twilight seems to lend itself to poignant poetry and three of the strongest and smartest feminine voices around will entertain the audience.
+Join us 5:00 PM to 7:00 PM for Verses in the Village. Verses in the village will host a poetry reading set in the beautiful Patio Las Campanas amidst the sculptures, arches, fountains and flowers of Tlaquepaque, the Verses in Village has become the place for some of the best wordsmiths in Arizona to strut their stuff. The cool of the evening and onset of twilight seems to lend itself to poignant poetry and three of the strongest and smartest feminine voices around will entertain the audience.
 
 The Verses in the Village poetry readings have become wonderful evenings to gather in the cool of the sunset, amidst a beautiful setting, where people gather to greet old friends, make new friends, and listen to the words of some of the best emerging writers the region has to offer.
