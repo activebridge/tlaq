@@ -1,6 +1,6 @@
 ---
 title: Verses In The Village
-slug: verses-in-the-village
+slug: verses-in-the-village-june
 published: true
 starts_at: 2026-06-18T17:00:00
 ends_at: 2026-06-18T19:00:00
