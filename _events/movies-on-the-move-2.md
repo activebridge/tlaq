@@ -2,8 +2,8 @@
 title: Movies On The Move
 slug: siff-august
 published: true
-starts_at: 2026-08-25T19:00:00
-ends_at: 2026-08-25T19:00:00
+starts_at: 2026-08-25T19:30:00
+ends_at: 2026-08-25T19:30:00
 location: Calle Independencia
 image: /assets/images/events/pasted-image-1785526947274.png
 video_url: ''
