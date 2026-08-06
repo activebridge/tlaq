@@ -769,6 +769,12 @@ footer > .wrapper {
 
   .list-container {
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+
+    .card img {
+      transition: none;
+
+      &:hover { transform: none; }
+    }
   }
 
   @media (max-width: 770px) {
