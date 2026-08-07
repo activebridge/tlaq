@@ -68,7 +68,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -576,7 +576,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -693,7 +693,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -750,7 +750,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -818,7 +818,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -861,7 +861,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -896,7 +896,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -920,7 +920,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -944,7 +944,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -992,7 +992,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -1056,7 +1056,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -1219,7 +1219,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -1252,7 +1252,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -1277,7 +1277,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -1315,7 +1315,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -1397,7 +1397,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -1453,7 +1453,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -1473,7 +1473,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -1498,7 +1498,7 @@ collections:
           - label: "SEO"
             name: "seo"
             widget: "object"
-            required: false
+            required: true
             collapsed: true
             hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
             fields:
@@ -1743,7 +1743,7 @@ collections:
       - label: "SEO"
         name: "seo"
         widget: "object"
-        required: false
+        required: true
         collapsed: true
         hint: "Controls how this venue page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
         fields:

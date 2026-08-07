@@ -26,7 +26,7 @@ Content collections:
 | `_shops/` | Retail shop pages (28) |
 | `_galleries/` | Art gallery pages (14) |
 | `_foods/` | Dining & food pages (9) |
-| `_events/` | Event pages (21) — see [Events Management](#events-management) |
+| `_events/` | Event pages (46) — see [Events Management](#events-management) |
 | `_weddings/` | Wedding venue/service pages |
 | `_wedding-articles/` | Wedding-related articles |
 | `_blogs/` | Blog / news posts |
@@ -55,6 +55,46 @@ Infrastructure:
 
 Each vendor is a Markdown file with front matter (`title`, `subtitle`, `date`, `slug`, `hours`, etc.).
 Images live in `assets/images/` as `.webp` at 480/960/1440px sizes.
+
+## SEO Titles & Descriptions
+
+`_includes/seo-tags.html` wraps `jekyll-seo-tag` so individual pages can override the
+browser-tab title and the Google search snippet. Resolution order, most specific first:
+
+1. **The page's own `seo:` front matter** — used by `index.md`, the `shops`/`galleries`/`foods`
+   index pages, and the `_weddings/` venue pages.
+2. **The `seo:` block in the data file named after the page's permalink** — `/hours` reads
+   `_data/hours.yml`, `/gift-cards` reads `_data/gift-cards.yml`. **Data files are deliberately
+   named to match their permalink**, which is why no per-page declaration is needed. Rename one
+   and its page silently loses its override.
+3. **A per-collection formula**, applied automatically with no stored data:
+
+   | Collection | Title formula |
+   |------------|---------------|
+   | `_shops/`, `_galleries/`, `_foods/`, `_events/` | `[Name] in Sedona, AZ \| Tlaquepaque` |
+   | `_blogs/`, `_wedding-articles/`, `_articles/` (declared, not yet used) | `[Name] \| Tlaquepaque Sedona` |
+
+4. **Plain `{% seo %}`** — the plugin's default output.
+
+Both fields are optional at every level. A blank or cleared value falls back to the next
+step, so clearing a field in the CMS restores the automatic title rather than emptying the tag.
+
+Descriptions for collection items come from the page body (via `page.excerpt`), falling back
+to `subtitle` when the body is empty — so an event that is only front matter still gets its
+own description instead of the generic site one.
+
+### Why the plugin output is string-replaced
+
+`jekyll-seo-tag` has no hook for a raw per-page title: `Drop#title` always appends
+`" | site.title"`, `markdownify` strips the `|` out of a front-matter title, and
+`og:title`/`twitter:title` are hardwired to `page_title`. So the tag is rendered into a string
+and the generated values are swapped out, with each search string rebuilt from the same inputs
+the plugin uses.
+
+**This is why `Gemfile` pins `jekyll-seo-tag` to `~> 2.8.0`.** If a future version changes its
+output markup the swaps silently no-op — the `<title>` stays correct while `og:title`,
+`twitter:title` and the JSON-LD revert to plugin defaults, with no build failure. Treat any
+upgrade as deliberate and re-check the tags on a few pages afterwards.
 
 ## Events Management
 
@@ -181,7 +221,7 @@ schedule_type: yearly
 ## Tech
 
 - Jekyll ~4.3 on Ruby 3.3
-- Plugins: `jekyll-seo-tag`, `jekyll-sitemap`, `jekyll-paginate-v2`
+- Plugins: `jekyll-seo-tag` (pinned `~> 2.8.0` — see [SEO Titles & Descriptions](#seo-titles--descriptions)), `jekyll-sitemap`, `jekyll-paginate-v2`
 - Vanilla JS — client-side search (`assets/js/search.js`), calendar, hours, contact form
 - Custom CSS with CSS variables (no framework)
 - PWA: `manifest.json` + Workbox-based service worker (`sw.js`) with offline fallback (`offline.html`)
@@ -207,6 +247,29 @@ Log in with GitHub credentials. Only users with write access to the `activebridg
 | Weddings | `_weddings/` | Wedding venue/service pages |
 | Landing Sections | `_landing/` | Homepage section content (banner, calendar, what's new, etc.) |
 | Pages | `pages/` | Static HTML pages (About, Hours, History, etc.) |
+
+### Editing SEO Titles & Descriptions
+
+Each page's own editing screen has a collapsed **SEO** group at the top with two optional
+fields — **SEO Title** and **Meta Description** — controlling how that page appears in Google
+results and the browser tab. Currently available on 20 screens:
+
+- **Pages** → Hours & Locations, Parking, History, About, Magazines, News Page, Gift Cards,
+  Contacts, Wedding FAQ, Village Map Page, Events Page, Weddings, Leasing,
+  Filming & Photography, Call for Submission, Shops, Galleries, Food
+- **Landing Navigation** (the homepage)
+- **Weddings** → each venue entry
+
+- **Leave both empty** to keep the automatic title and description. Clearing a field restores
+  the automatic value; it does not blank the tag.
+- Aim for **under 60 characters** for the title and **150–160** for the description.
+- Individual shop, gallery, restaurant, event and news pages have **no SEO fields** — their
+  titles follow a fixed formula and their descriptions come from the page's own text. See
+  [SEO Titles & Descriptions](#seo-titles--descriptions).
+- Adding the fields to a page that doesn't have them yet is a developer task.
+
+> **After a deploy, reload `/admin/`.** The CMS reads its configuration from the deployed site,
+> so a tab left open from before the deploy won't show newly added fields.
 
 ### Managing Store Map Pins
 
