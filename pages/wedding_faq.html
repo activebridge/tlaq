@@ -6,17 +6,17 @@ layout_type: wedding
 popup_key: wedding-faq
 ---
 
-{% assign image_path = site.data.wedding-faq.hero_banner %}
+{% assign image_path = site.data.wedding_faq.hero_banner %}
 {% assign transition-name = "wedding-faq" %}
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
   <hgroup>
-    <h5>{{ site.data.wedding-faq.title }}</h5>
+    <h5>{{ site.data.wedding_faq.title }}</h5>
   </hgroup>
 
-  <section class="wedding-faq-grid" aria-label="{{ site.data.wedding-faq.title }}">
-    {% for block in site.data.wedding-faq.blocks %}
+  <section class="wedding-faq-grid" aria-label="{{ site.data.wedding_faq.title }}">
+    {% for block in site.data.wedding_faq.blocks %}
     <article class="wedding-faq-item">
       <h3>{{ block.title }}</h3>
       <h6>{{ block.content }}</h6>

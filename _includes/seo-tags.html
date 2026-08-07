@@ -1,0 +1,123 @@
+{%- comment -%}
+  Renders jekyll-seo-tag, overriding the title and meta description where a page
+  supplies its own. Resolution order, most specific first:
+
+    1. the page's own `seo:` front matter block
+    2. the `seo:` block in the data file named after the page's permalink
+       (/hours -> _data/hours.yml, /gift-cards -> _data/gift-cards.yml). Data files
+       are deliberately named to match, so no per-page declaration is needed.
+    3. a per-collection title formula, and `subtitle` as the description for items
+       whose body is empty
+    4. plain {% seo %} — the plugin's default output
+
+  jekyll-seo-tag offers no hook for a raw per-page title: `Drop#title` always appends
+  `" | " + site.title`, and og:title/twitter:title are hardwired to `page_title`. So the
+  tag is rendered into a string and the generated values are swapped out. Every value
+  swapped here is rebuilt from the same inputs the plugin uses, so the match is exact:
+
+    page_title  = page.title | default: site.title
+    description = page.description || page.excerpt || site.description
+
+  Both are stripped before use: a value that is only whitespace is truthy to Liquid
+  but empty to the plugin, which would make the search string "" and the swap a no-op.
+
+  This is why Gemfile pins jekyll-seo-tag: if a future version changes its output
+  markup, these swaps silently no-op instead of failing the build.
+{%- endcomment -%}
+
+{%- comment -%} 1-2. explicit override: page front matter, else its data file. {%- endcomment -%}
+{%- assign seo_block = page.seo -%}
+{%- if seo_block == nil -%}
+  {%- assign seo_path = page.url | remove: "index.html" | remove_first: "/" -%}
+  {%- comment -%}
+    Top-level pages only: matching the whole path means a nested URL such as
+    /events/cinco-de-mayo/ can never be hijacked by a same-named data file.
+  {%- endcomment -%}
+  {%- assign seo_depth = seo_path | split: "/" | size -%}
+  {%- assign seo_key = seo_path | remove: "/" -%}
+  {%- if seo_key != "" and seo_depth == 1 -%}
+    {%- assign seo_block = site.data[seo_key].seo -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- assign seo_title = seo_block.title | strip -%}
+{%- assign seo_desc = seo_block.description | strip -%}
+
+{%- comment -%} 3. collection fallbacks, only where no explicit value was given. {%- endcomment -%}
+{%- if page.collection -%}
+  {%- if seo_title == "" or seo_title == nil -%}
+    {%- case page.collection -%}
+      {%- when "shops", "galleries", "foods", "events" -%}
+        {%- capture seo_title -%}{{ page.title }} in Sedona, AZ | {{ site.title }}{%- endcapture -%}
+      {%- when "blogs", "articles", "wedding-articles" -%}
+        {%- capture seo_title -%}{{ page.title }} | {{ site.title }} Sedona{%- endcapture -%}
+    {%- endcase -%}
+  {%- endif -%}
+  {%- comment -%}
+    Collection items must describe themselves, not the village. The plugin covers items
+    with body copy via page.excerpt; an item that is only front matter would inherit
+    site.description, so use its subtitle instead.
+  {%- endcomment -%}
+  {%- if seo_desc == "" or seo_desc == nil -%}
+    {%- assign seo_excerpt = page.excerpt | strip_html | normalize_whitespace | strip -%}
+    {%- if seo_excerpt == "" -%}
+      {%- assign seo_desc = page.subtitle | strip_html | normalize_whitespace | strip -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- comment -%} Blank is truthy in Liquid, and the CMS writes "" for a cleared field. {%- endcomment -%}
+{%- if seo_title == "" -%}{%- assign seo_title = nil -%}{%- endif -%}
+{%- if seo_desc == "" -%}{%- assign seo_desc = nil -%}{%- endif -%}
+
+{%- if seo_title or seo_desc -%}
+  {%- if seo_title -%}
+    {%- capture seo_tags -%}{% seo title=false %}{%- endcapture -%}
+  {%- else -%}
+    {%- capture seo_tags -%}{% seo %}{%- endcapture -%}
+  {%- endif -%}
+
+  {%- comment -%}
+    Swap the plugin's generated values. Each pass replaces one family of tags:
+    HTML attributes carry escape_once'd text, the JSON-LD keys carry jsonify'd text.
+  {%- endcomment -%}
+  {%- if seo_title -%}
+    {%- assign seo_old = page.title | default: site.title | escape_once -%}
+    {%- assign seo_new = seo_title | escape_once -%}
+    {%- assign seo_attrs = "og:title,twitter:title" | split: "," -%}
+    {%- for seo_attr in seo_attrs -%}
+      {%- capture seo_find -%}property="{{ seo_attr }}" content="{{ seo_old }}"{%- endcapture -%}
+      {%- capture seo_repl -%}property="{{ seo_attr }}" content="{{ seo_new }}"{%- endcapture -%}
+      {%- assign seo_tags = seo_tags | replace: seo_find, seo_repl -%}
+    {%- endfor -%}
+    {%- capture seo_find -%}"headline":{{ seo_old | jsonify }}{%- endcapture -%}
+    {%- capture seo_repl -%}"headline":{{ seo_new | jsonify }}{%- endcapture -%}
+    {%- assign seo_tags = seo_tags | replace: seo_find, seo_repl -%}
+  {%- endif -%}
+
+  {%- if seo_desc -%}
+    {%- assign seo_old = page.description | strip_html | normalize_whitespace | strip -%}
+    {%- if seo_old == "" or seo_old == nil -%}
+      {%- assign seo_old = page.excerpt | strip_html | normalize_whitespace | strip -%}
+    {%- endif -%}
+    {%- if seo_old == "" or seo_old == nil -%}
+      {%- assign seo_old = site.description | strip_html | normalize_whitespace | strip -%}
+    {%- endif -%}
+    {%- assign seo_old = seo_old | escape_once -%}
+    {%- assign seo_new = seo_desc | escape_once -%}
+    {%- capture seo_find -%}name="description" content="{{ seo_old }}"{%- endcapture -%}
+    {%- capture seo_repl -%}name="description" content="{{ seo_new }}"{%- endcapture -%}
+    {%- assign seo_tags = seo_tags | replace: seo_find, seo_repl -%}
+    {%- capture seo_find -%}property="og:description" content="{{ seo_old }}"{%- endcapture -%}
+    {%- capture seo_repl -%}property="og:description" content="{{ seo_new }}"{%- endcapture -%}
+    {%- assign seo_tags = seo_tags | replace: seo_find, seo_repl -%}
+    {%- capture seo_find -%}"description":{{ seo_old | jsonify }}{%- endcapture -%}
+    {%- capture seo_repl -%}"description":{{ seo_new | jsonify }}{%- endcapture -%}
+    {%- assign seo_tags = seo_tags | replace: seo_find, seo_repl -%}
+  {%- endif -%}
+
+  {%- if seo_title -%}<title>{{ seo_title | escape_once }}</title>{%- endif -%}
+  {{ seo_tags }}
+{%- else -%}
+  {% seo %}
+{%- endif -%}

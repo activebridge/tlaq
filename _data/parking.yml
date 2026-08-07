@@ -21,3 +21,8 @@ lot_rows:
     - name: Oversized Vehicles
       description: The Portal Lane lot, located to the northwest of the main village, is designed to accommodate oversized and large vehicles.
       map_image: /assets/images/parking/Portal-Parking.png
+
+seo:
+  title: Parking & Directions | Tlaquepaque Sedona
+  description: Find parking and arrival information for Tlaquepaque Arts & Shopping
+    Village, located along State Route 179 in Sedona, Arizona.

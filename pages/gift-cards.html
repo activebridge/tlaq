@@ -6,31 +6,31 @@ layout_type: gift-cards
 popup_key: gift-cards
 ---
 
-{% assign image_path = site.data.gift_cards.hero_banner %}
+{% assign image_path = site.data["gift-cards"].hero_banner %}
 {% assign transition-name = page.layout_type %}
 {% include hero-banner.html image_path=image_path transition-name=transition-name %}
 
 <div class="content-wrapper">
   <hgroup>
     <h5 title="visit">Gift Cards</h5>
-    <h2>{{ site.data.gift_cards.heading }}</h2>
+    <h2>{{ site.data["gift-cards"].heading }}</h2>
   </hgroup>
-  <p>{{ site.data.gift_cards.intro }}</p>
+  <p>{{ site.data["gift-cards"].intro }}</p>
 
   <hr>
 
   <section>
-    <h3>{{ site.data.gift_cards.how_it_works.heading }}</h3>
+    <h3>{{ site.data["gift-cards"].how_it_works.heading }}</h3>
     <ul>
-      {% for item in site.data.gift_cards.how_it_works.items %}
+      {% for item in site.data["gift-cards"].how_it_works.items %}
       <li><strong>{{ item.label }}</strong> — {{ item.description }}</li>
       {% endfor %}
     </ul>
-    <a href="{{ site.data.gift_cards.egift_button.url }}" class="btn btn-primary" target="_blank" rel="noopener">{{ site.data.gift_cards.egift_button.label }}</a>
+    <a href="{{ site.data["gift-cards"].egift_button.url }}" class="btn btn-primary" target="_blank" rel="noopener">{{ site.data["gift-cards"].egift_button.label }}</a>
   </section>
   <figure>
-    {% assign gc_img = site.data.gift_cards.gift_card_image.src %}
-    {% assign alt = site.data.gift_cards.gift_card_image.alt %}
+    {% assign gc_img = site.data["gift-cards"].gift_card_image.src %}
+    {% assign alt = site.data["gift-cards"].gift_card_image.alt %}
     {% include responsive-card-image.html src=gc_img %}
   </figure>
 </div>

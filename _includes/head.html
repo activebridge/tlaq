@@ -8,7 +8,7 @@
 
   {% include style.html %}
 
-  {% seo %}
+  {% include seo-tags.html %}
   {% if page.url == "/" %}{% include schema-local-business.html %}{% endif %}
 
   <link rel="icon" href="{{ '/favicon-v2.ico' | relative_url }}" sizes="any">

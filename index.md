@@ -1,4 +1,8 @@
 ---
+seo:
+  title: Tlaquepaque Arts & Shopping Village | Sedona, AZ
+  description: Discover 50+ shops, art galleries, restaurants, and events surrounded
+    by distinctive architecture and sycamore trees in the heart of Sedona.
 layout: home
 title: Tlaquepaque
 image: /assets/images/landing/banner.webp

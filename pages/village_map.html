@@ -5,20 +5,20 @@ permalink: /village_map/
 layout_type: village_map
 popup_key: village-map
 ---
-{% assign image_path = site.data.village_map_page.hero_banner %}
+{% assign image_path = site.data.village_map.hero_banner %}
 {% assign transition-name = "village-map" %}
 {% include hero-banner.html image_path=image_path transition-name="village-map" %}
 
 <div class="content-wrapper">
   <hgroup style="view-transition-name: title-village-map;">
-    <h5 title="visit">{{ site.data.village_map_page.eyebrow }}</h5>
-    <h2>{{ site.data.village_map_page.heading | escape_once }}</h2>
+    <h5 title="visit">{{ site.data.village_map.eyebrow }}</h5>
+    <h2>{{ site.data.village_map.heading | escape_once }}</h2>
   </hgroup>
 
   <iframe id="villageMapFrame" src="{{ '/map_embed' | relative_url }}" loading="lazy" title="Village Map"
     style="width:100%;height:500px;border:none"></iframe>
 
-  <p>{{ site.data.village_map_page.description | escape_once }}</p>
+  <p>{{ site.data.village_map.description | escape_once }}</p>
 </div>
 <script>
   var suite = new URLSearchParams(window.location.search).get('suite');

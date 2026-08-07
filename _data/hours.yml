@@ -71,3 +71,8 @@ accessibility:
   image: assets/images/hours/accessibility.webp
 family_friendly:
   image: assets/images/landing/family-friendly.webp
+
+seo:
+  title: Hours & Visitor Information | Tlaquepaque Sedona
+  description: Find current hours and helpful visitor information for planning your
+    visit to Tlaquepaque Arts & Shopping Village in Sedona.

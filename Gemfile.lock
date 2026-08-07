@@ -165,7 +165,7 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 4.3)
   jekyll-paginate-v2
-  jekyll-seo-tag
+  jekyll-seo-tag (~> 2.8.0)
   jekyll-sitemap
 
 CHECKSUMS

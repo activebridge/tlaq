@@ -65,6 +65,15 @@ collections:
         media_folder: "/assets/images/landing"
         public_folder: "/assets/images/landing"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "Layout", name: "layout", widget: "hidden", default: "home" }
           - { label: "Title", name: "title", widget: "string" }
           - label: "Navigation"
@@ -564,6 +573,15 @@ collections:
         media_folder: "/assets/images/about"
         public_folder: "/assets/images/about"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the About page content. Edit the hero image, main heading, history section text/image, the Gift Cards section text/image/button, village map description, and the photo sections (Tlaquepaque North, Outdoor Art, Landscaping, Sycamore, Our People)." }
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the About page. Filename must not start with an underscore" }
           - { label: "Heading", name: "heading", widget: "string", hint: "Large h2 heading shown at the top of the page." }
@@ -672,6 +690,15 @@ collections:
         media_folder: "/assets/images/call-for-submission"
         public_folder: "/assets/images/call-for-submission"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Call for Submission page. Edit hero image, intro text, upload instructions, consent text, button labels, and error/success messages shown to applicants." }
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Hero image shown at the top of the page. Filename must not start with an underscore" }
           - { label: "Eyebrow", name: "eyebrow", widget: "string" }
@@ -720,6 +747,15 @@ collections:
         media_folder: "/assets/images"
         public_folder: "/assets/images"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Contacts page. Edit the page title, hero banner, contact info rows (address, phone, email etc.), social media URLs, and the leasing/filming/weddings button labels." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
@@ -779,6 +815,15 @@ collections:
         media_folder: "/assets/images/events"
         public_folder: "/assets/images/events"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Events page header and labels. Edit the hero banner, page heading, description, calendar section headings, jump-to navigation links, and the event details button label." }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Also used as the Events tile image in the home page navigation. Filename must not start with an underscore." }
           - { label: "Events Label", name: "events", widget: "string", hint: "Eyebrow label, e.g. EVENTS" }
@@ -813,6 +858,15 @@ collections:
         media_folder: "/assets/images/filming"
         public_folder: "/assets/images/filming"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Filming & Photography page. Edit the title, hero image, description, policy sections, the wedding exemption note, and the permit request button label." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
@@ -839,6 +893,15 @@ collections:
         media_folder: "/assets/images/foods"
         public_folder: "/assets/images/foods"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Food & Dining index page (foods/index.html). Edit the page title (browser tab), hero header image, main heading shown over the header, and the intro description." }
           - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
           - { label: "Permalink", name: "permalink", widget: "hidden", default: "/foods/" }
@@ -854,6 +917,15 @@ collections:
         media_folder: "/assets/images/galleries"
         public_folder: "/assets/images/galleries"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Galleries index page (galleries/index.html). Edit the page title (browser tab), hero header image, main heading, and the intro description." }
           - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
           - { label: "Permalink", name: "permalink", widget: "hidden", default: "/galleries/" }
@@ -865,10 +937,19 @@ collections:
           - { label: "Description", name: "store_description", widget: "text", hint: "Sub-text shown under the heading." }
       - name: "gift_cards"
         label: "Gift Cards"
-        file: "_data/gift_cards.yml"
+        file: "_data/gift-cards.yml"
         media_folder: "/assets/images"
         public_folder: "/assets/images"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Gift Cards page. Edit the hero banner, page heading, intro paragraph, purchase buttons (physical and eGift), the gift card image shown on the right, and the \"How It Works\" section heading and steps." }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - { label: "Page Heading", name: "heading", widget: "string" }
@@ -908,6 +989,15 @@ collections:
         media_folder: "/assets/images/history"
         public_folder: "/assets/images/history"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the History page. Edit the hero banner, cover image, page subtitle, intro text, the Vision section (label, background image, body text, collage images, footnotes), and additional story blocks." }
           - { label: "Title", name: "title", widget: "string", hint: "Small eyebrow text above the page subtitle (e.g. 'History')." }
           - { label: "Subtitle", name: "subtitle", widget: "string", hint: "Main page headline shown below the hero banner." }
@@ -963,6 +1053,15 @@ collections:
         media_folder: "/assets/images/hours"
         public_folder: "/assets/images/hours"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Hours & Locations page. Edit the hero copy, section headings, daily village hours, location cards (name, address, map URL, image), parking copy, accessibility and family-friendly card content, and jump-to navigation links." }
           - label: "Intro"
             name: "intro"
@@ -1117,6 +1216,15 @@ collections:
         media_folder: "/assets/images/leasing"
         public_folder: "/assets/images/leasing"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Leasing page. Edit the title, hero image, description, guidelines intro, policy sections with bullet items, and the inquiry button label." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
@@ -1141,6 +1249,15 @@ collections:
         label: "Magazines"
         file: "_data/magazines.yml"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Magazines archive page. Edit the eyebrow heading and the list of magazine issues (title, cover image URL, and optional link)." }
           - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Heading shown above the issue list, e.g. MAGAZINE ARCHIVE." }
           - label: "Issues"
@@ -1157,6 +1274,15 @@ collections:
         media_folder: "/assets/images/landing"
         public_folder: "/assets/images/landing"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the News page header. Edit the hero banner, eyebrow label, and main heading shown at the top of the news listing page." }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Hero image at top of /news/. Filename must not start with an underscore." }
           - { label: "Eyebrow", name: "eyebrow", widget: "string" }
@@ -1186,6 +1312,15 @@ collections:
         media_folder: "/assets/images/parking"
         public_folder: "/assets/images/parking"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Parking page. Edit the hero image, intro text, general notes, and the parking lot rows (name, description, map image, optional CTA button per lot)." }
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Intro"
@@ -1259,6 +1394,15 @@ collections:
         media_folder: "/assets/images/shops"
         public_folder: "/assets/images/shops"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Shops index page (shops/index.html). Edit the page title (browser tab), hero header image, main heading shown over the header, and the intro description." }
           - { label: "Layout", name: "layout", widget: "hidden", default: "store/index" }
           - { label: "Permalink", name: "permalink", widget: "hidden", default: "/shops/" }
@@ -1302,10 +1446,19 @@ collections:
               - { label: "Content", name: "content", widget: "text" }
       - name: "village_map"
         label: "Village Map Page"
-        file: "_data/village_map_page.yml"
+        file: "_data/village_map.yml"
         media_folder: "/assets/images/landing"
         public_folder: "/assets/images/landing"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Village Map page. Edit the hero banner, the eyebrow label, the heading shown above the map, and the description paragraph shown below the map." }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Hero banner shown at top of the page. Also used as the Village Map tile image in the home page navigation. Filename must not start with an underscore." }
           - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small label shown above the heading." }
@@ -1313,10 +1466,19 @@ collections:
           - { label: "Description", name: "description", widget: "text", hint: "Paragraph shown below the map." }
       - name: "wedding_faq"
         label: "Wedding FAQ"
-        file: "_data/wedding-faq.yml"
+        file: "_data/wedding_faq.yml"
         media_folder: "/assets/images/weddings"
         public_folder: "/assets/images/weddings"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Wedding FAQ page. Edit the page title, hero banner, and the list of FAQ items (question and answer pairs)." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
@@ -1333,6 +1495,15 @@ collections:
         media_folder: "/assets/images/weddings"
         public_folder: "/assets/images/weddings"
         fields:
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Controls how this page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+            fields:
+              - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+              - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Weddings page. Edit the hero image, page title, description, gallery video items, brochure PDF upload, awards images, corporate events section, site plan PDF upload, button labels, and jump-to navigation links." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
@@ -1569,6 +1740,15 @@ collections:
     media_folder: "/assets/images/weddings"
     public_folder: "/assets/images/weddings"
     fields:
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "Controls how this venue page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+        fields:
+          - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+          - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
       - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., creative-gateways). Shorter than the full name is fine. DO NOT change after publishing — breaks the URL and any linked content." }
       - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, hint: "Publish/order date for this venue entry. The venue list is sorted by this value in descending order." }
       - { label: "Title", name: "title", widget: "string", hint: "Venue name shown in cards, page headings, and navigation." }
