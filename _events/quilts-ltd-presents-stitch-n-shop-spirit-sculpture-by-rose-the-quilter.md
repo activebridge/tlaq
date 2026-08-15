@@ -5,7 +5,7 @@ published: true
 starts_at: 2026-06-03T10:00:00
 ends_at: 2026-06-03T17:00:00
 location: Quiltz LTD Suite B105
-image: /assets/images/events/pasted-image-1779990521157.png
+image: /assets/images/events/pasted-image-1786818714880.png
 video_url: ''
 subtitle: Join as at Quilts LTD.
 schedule_type: single
