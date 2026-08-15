@@ -5,7 +5,7 @@ published: true
 starts_at: 2026-10-02T10:00:00
 ends_at: 2026-10-02T17:00:00
 location: Quilts LTD Suite B105
-image: /assets/images/events/pasted-image-1779992005348.png
+image: /assets/images/events/pasted-image-1786818714880.png
 video_url: ''
 subtitle: Join us at Quilts LTD.
 schedule_type: single
