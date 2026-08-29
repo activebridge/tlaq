@@ -9,7 +9,7 @@ tags:
   - shop
 suite: a14
 phone: 928-862-2901
-website: https://www.loc8nearme.com/arizona/sedona/bowwow-sedona/6653749/
+website: www.loc8nearme.com
 coordinates: -111.763149, 34.86308
 image: /assets/images/shops/BowWow_Ext.jpg
 interior_image: /assets/images/shops/BowWow_Int.jpg
