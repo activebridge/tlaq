@@ -3,7 +3,7 @@ title: Movies On The Move
 slug: siff-september-2
 published: true
 starts_at: 2026-09-29T19:00:00
-ends_at: 2026-09-29T19:00:00
+ends_at: 2026-09-29T21:00:00
 location: Calle Independencia
 image: /assets/images/events/pasted-image-1785527060249.png
 video_url: ''
