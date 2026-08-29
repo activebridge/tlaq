@@ -1,3 +1,6 @@
+seo:
+  title: Discover Tlaquepaque Magazine | Sedona Art & Culture
+  description: Read Discover Tlaquepaque magazine for stories about Sedona artists, galleries, shops, restaurants, events, and village life.
 _info: ''
 eyebrow: MAGAZINE ARCHIVE
 issues:
@@ -12,6 +15,7 @@ issues:
     image: https://irp.cdn-website.com/164890e9/dms3rep/multi/Discover_TLAQ_SS25_spreads-1.png
   - title: FALL / WINTER 2024
     link: https://discover.tlaq.com/fall-winter-2024
+    image_upload: /assets/images/magazines/TLAQ_FW2024.png
     image: https://www.dropbox.com/scl/fi/8meg5y50ip220t4et4472/TLAQ_FW2024.png?rlkey=djtppbkrzz9cvjpye8m53k88u&dl=0
   - title: FALL / WINTER 2023
     link: https://irp.cdn-website.com/164890e9/files/uploaded/Discover_TLAQ_FW_23_final.pdf
@@ -46,8 +50,3 @@ issues:
   - title: FALL 2018
     link: https://www.calameo.com/read/0056612311e7d02d74d05
     image: https://irp-cdn.multiscreensite.com/164890e9/dms3rep/multi/Discover+Tlaq+9.1.18+Fall+Thumb.PNG
-
-seo:
-  title: Discover Tlaquepaque Magazine | Sedona Art & Culture
-  description: Read Discover Tlaquepaque magazine for stories about Sedona artists,
-    galleries, shops, restaurants, events, and village life.
