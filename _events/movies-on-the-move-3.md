@@ -24,8 +24,6 @@ instagram: ''
 
 The Sedona International Film Festival is thrilled to announce that its popular **Movies on the Move Outdoor Film Experience** is coming to the beautiful Tlaquepaque Arts & Shopping Village this summer.
 
-Movie lovers are invited to enjoy award-winning films under the stars in the unique ambience and grandeur of Tlaquepaque’s picturesque courtyards. Screenings will take place at **7:30 p.m. on select Tuesday evenings throughout the summer**, offering a memorable outdoor cinema experience in one of Sedona’s most iconic settings.
-
 Guests are encouraged to bring their friends and family (and lawn chairs or blankets) and experience the magic of cinema beneath Sedona’s summer skies.
 
-Films will be announced soon. Visit [www.SedonaFilmFestival.com](http://www.sedonafilmfestival.com/)
+September's movie will be Rocketman!
