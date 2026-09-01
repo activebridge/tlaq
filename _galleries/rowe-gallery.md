@@ -20,7 +20,7 @@ instagram: https://www.instagram.com/rowegallery4027/
 facebook: https://www.facebook.com/rowegallery/
 full_location: 336 AZ-179 Suite A102-3, Sedona, AZ 86336
 store_hours:
-  monday: 10:00 am - 5:00 pm
+  monday: 10:00 am - 6:00 pm
   friday: 10:00 am - 6:00 pm
 ---
 
