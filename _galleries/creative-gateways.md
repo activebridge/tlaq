@@ -20,7 +20,7 @@ instagram: https://www.instagram.com/creativegatewaysgalleries/
 facebook: https://www.facebook.com/creativegatewaysgallery/
 full_location: 336 AZ-179 Suite B125, Sedona, AZ 86336
 store_hours:
-  monday: 10:00 am - 5:00 pm
+  monday: 10:00 am - 6:00 pm
   friday: 10:00 am - 6:00 pm
 ---
 
