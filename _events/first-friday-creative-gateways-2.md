@@ -5,7 +5,7 @@ published: true
 starts_at: 2026-11-06T16:00:00
 ends_at: ''
 location: Creative Gateways
-image: /assets/images/events/pasted-image-1788037336719.png
+image: /assets/images/events/pasted-image-1788564592865.png
 video_url: ''
 subtitle: Join us First Friday.
 schedule_type: single
