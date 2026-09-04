@@ -22,6 +22,6 @@ facebook: ''
 instagram: ''
 ---
 
-Join us First Friday: The Art of Peace 
+Join us First Friday: The Art of Peace
 
 Exploring universal connectivity created through the peaceful language of art.
