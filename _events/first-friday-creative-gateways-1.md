@@ -3,7 +3,7 @@ title: 'First Friday: Creative Gateways'
 slug: creative-gateways-oct
 published: true
 starts_at: 2026-10-02T16:00:00
-ends_at: ''
+ends_at: 2026-10-02T19:00:00
 location: Creative Gateways Suite B125
 image: /assets/images/events/pasted-image-1788037159784.png
 video_url: ''
