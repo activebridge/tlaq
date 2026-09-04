@@ -15,8 +15,8 @@ recurrence_weekdays: []
 date_override: ''
 schedule: []
 map: null
-phone: 928-451-4739
-website: ''
+phone: (928)-451-4739
+website: http://www.honshinfineartgalleries.com/
 email: ''
 facebook: ''
 instagram: ''
