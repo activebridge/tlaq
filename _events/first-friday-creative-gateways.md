@@ -15,11 +15,11 @@ recurrence_weekdays: []
 date_override: ''
 schedule: []
 map: null
-phone: ''
-website: ''
+phone: (928) 282-1212
+website: https://creativegateways.com/
 email: ''
 facebook: ''
 instagram: ''
 ---
 
-First Friday Demo Night, Friday Sept 4, 4–7pm. Live reverse-painting with Ulises Palomino at Creative Gateways Gallery (Ste B125) and a live bronze patina demo with Erik Petersen at Rowe Fine Art Gallery, 5–6pm (Ste A102). Free and open to all.
+First Friday Demo Night, Friday Sept 4, 4–7pm. Live reverse-painting with Ulises Palomino at Creative Gateways Gallery and a live bronze patina demo with Erik Petersen at Rowe Fine Art Gallery, 5–6pm (Ste A102). Free and open to all.
