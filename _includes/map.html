@@ -3009,8 +3009,9 @@
       const resolveHours = (hours) => {
         if (!hours) return '';
         if (hours[todayName]) return hours[todayName];
-        const monThru = ['monday', 'tuesday', 'wednesday', 'thursday'];
-        const friSun = ['friday', 'saturday', 'sunday'];
+        const custom = hours.custom_days || {};
+        const monThru = custom.weekdays_days || ['monday', 'tuesday', 'wednesday', 'thursday'];
+        const friSun = custom.weekend_days || ['friday', 'saturday', 'sunday'];
         if (monThru.includes(todayName) && hours.monday) return hours.monday;
         if (friSun.includes(todayName) && hours.friday) return hours.friday;
         return '';

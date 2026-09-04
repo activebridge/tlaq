@@ -1638,6 +1638,17 @@ collections:
         fields:
           - { label: "Monday - Thursday", name: "monday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
           - { label: "Friday - Sunday", name: "friday", widget: "string", required: false, hint: "e.g. 10:00 am - 6:00 pm" }
+          - label: "Custom Day Grouping (optional)"
+            name: "custom_days"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Leave untouched unless this store groups its days differently from Monday - Thursday / Friday - Sunday."
+            fields:
+              - { label: "Weekdays Label", name: "weekdays_label", widget: "string", required: false, hint: "Label for the weekdays row, e.g. Sunday - Thursday. Blank keeps \"Monday - Thursday\"." }
+              - { label: "Weekdays", name: "weekdays_days", widget: "select", multiple: true, required: false, options: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"], hint: "Days covered by the weekdays row, used to highlight today. Blank keeps Monday-Thursday." }
+              - { label: "Weekend Label", name: "weekend_label", widget: "string", required: false, hint: "Label for the weekend row, e.g. Friday - Saturday. Blank keeps \"Friday - Sunday\"." }
+              - { label: "Weekend", name: "weekend_days", widget: "select", multiple: true, required: false, options: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"], hint: "Days covered by the weekend row, used to highlight today. Blank keeps Friday-Sunday." }
       - { label: "Description", name: "body", widget: "markdown" }
 
   - name: "foods"
@@ -1727,6 +1738,17 @@ collections:
         fields:
           - { label: "Monday - Thursday", name: "monday", widget: "string", required: false, hint: "e.g. 10:00 am - 5:00 pm" }
           - { label: "Friday - Sunday", name: "friday", widget: "string", required: false, hint: "e.g. 10:00 am - 6:00 pm" }
+          - label: "Custom Day Grouping (optional)"
+            name: "custom_days"
+            widget: "object"
+            required: false
+            collapsed: true
+            hint: "Leave untouched unless this store groups its days differently from Monday - Thursday / Friday - Sunday."
+            fields:
+              - { label: "Weekdays Label", name: "weekdays_label", widget: "string", required: false, hint: "Label for the weekdays row, e.g. Sunday - Thursday. Blank keeps \"Monday - Thursday\"." }
+              - { label: "Weekdays", name: "weekdays_days", widget: "select", multiple: true, required: false, options: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"], hint: "Days covered by the weekdays row, used to highlight today. Blank keeps Monday-Thursday." }
+              - { label: "Weekend Label", name: "weekend_label", widget: "string", required: false, hint: "Label for the weekend row, e.g. Friday - Saturday. Blank keeps \"Friday - Sunday\"." }
+              - { label: "Weekend", name: "weekend_days", widget: "select", multiple: true, required: false, options: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"], hint: "Days covered by the weekend row, used to highlight today. Blank keeps Friday-Sunday." }
       - { label: "Description", name: "body", widget: "markdown" }
 
   - name: "weddings"

@@ -25,12 +25,12 @@ layout: default
       <h6>{{ store_page.labels.hours | upcase }}</h6>
       <table id="storeHours">
         {% if page.layout_type == "shop" or page.layout_type == "gallery" %}
-          <tr data-days="monday tuesday wednesday thursday">
-            <td>Monday - Thursday</td>
+          <tr data-days="{{ page.store_hours.custom_days.weekdays_days | join: ' ' | default: 'monday tuesday wednesday thursday' }}">
+            <td>{{ page.store_hours.custom_days.weekdays_label | default: 'Monday - Thursday' }}</td>
             <td>{{ page.store_hours.monday | upcase }}</td>
           </tr>
-          <tr data-days="friday saturday sunday">
-            <td>Friday - Sunday</td>
+          <tr data-days="{{ page.store_hours.custom_days.weekend_days | join: ' ' | default: 'friday saturday sunday' }}">
+            <td>{{ page.store_hours.custom_days.weekend_label | default: 'Friday - Sunday' }}</td>
             <td>{{ page.store_hours.friday | upcase }}</td>
           </tr>
         {% else %}

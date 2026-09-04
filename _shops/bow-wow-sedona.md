@@ -19,6 +19,18 @@ full_location: 336 AZ-179 Suite A14, Sedona, AZ 86336
 store_hours:
   monday: 9:30 am - 6:30 pm
   friday: 9:00 am - 7:00 pm
+  custom_days:
+    weekdays_label: Sunday - Thursday
+    weekdays_days:
+      - sunday
+      - monday
+      - tuesday
+      - wednesday
+      - thursday
+    weekend_label: Friday - Saturday
+    weekend_days:
+      - friday
+      - saturday
 ---
 
 A playful and welcoming shop devoted to dogs and their humans, offering treats, toys, and essentials—thoughtfully chosen to delight your best friend and make every visit feel like a special occasion.
