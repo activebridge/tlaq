@@ -1,28 +1,43 @@
-title: FAQ
-hero_banner: assets/images/weddings/wedding_faq.webp
-blocks:
-  - title: What kind of deposit do I need to secure a date?
-    content: We require payment in full in order to hold and secure your wedding date.
-  - title: Can my pet be a part of the wedding?
-    content: Absolutely.
-  - title: Is a wedding planner required?
-    content: No, but it is highly recommended. If not a full service wedding planner, a "day of the event planner" is also recommended.
-  - title: Are there vendor restrictions?
-    content: Yes, there is a list of required vendors that need to be used - Caterer, Florist and Rental Company.
-  - title: Can we bring in our own alcohol?
-    content: Yes, provided that you have a licensed and insured bartender serving all drinks, you will be charged a $400.00 corkage fee.
-  - title: Are tables and chairs included in the rental fee?
-    content: No, the rental fee includes the space rental, Portofino string lights , ceremony attendant and the wedding peal after the proclamation.
-  - title: What happens in inclement weather?
-    content: The client would need to rent a tent.
-  - title: Do you offer military discounts?
-    content: Yes, with proof we offer a 10% discount.
-  - title: Can we use sparklers at our event?
-    content: Sparklers may be used with prior approval due to local fire restrictions.
-  - title: Are there restrictions on aplified music?
-    content: There is a Sedona ordinance which limits amplified music; it must be turned off at 10:00 p.m.
-
 seo:
   title: Sedona Wedding Planning FAQs | Tlaquepaque
-  description: Find answers about Tlaquepaque wedding venues, reservations, vendors,
-    catering, alcohol, rentals, rehearsals, parking, and planning.
+  description: Find answers about Tlaquepaque wedding venues, reservations, vendors, catering, alcohol, rentals, rehearsals, parking, and planning.
+_info: ''
+title: Tlaquepaque Wedding FAQs
+hero_banner: assets/images/weddings/wedding_faq.webp
+blocks:
+  - title: What is required to reserve a wedding date?
+    content: Full payment of the venue fee and the applicable refundable damage deposit are required to reserve and secure your wedding date.
+  - title: Can my pet be part of the wedding?
+    content: Yes. Pets are welcome at Tlaquepaque wedding events but must remain on a leash and with their handler at all times. Please let our wedding team know in advance that a pet will be participating.
+  - title: Is a wedding planner required?
+    content: A wedding planner is not required, but we strongly recommend hiring at least a day-of coordinator to manage setup, timing, vendors, and guest needs. Tlaquepaque provides an on-site custodian to support privacy and venue operations, but this person does not serve as your wedding coordinator.
+  - title: Are there required vendors?
+    content: Yes. Couples are required to select their caterer, florist, and rental company from Tlaquepaque’s approved vendor list. We also provide recommendations for planners, photographers, musicians, officiants, bartenders, transportation, and other wedding services.
+  - title: Can we bring our own alcohol?
+    content: Yes. Couples may provide alcohol for their reception when it is served by a licensed and insured bartender. A flat $400 corkage fee applies. Shots are not permitted.
+  - title: Are tables and chairs included in the rental fee?
+    content: |-
+      No. Tables, chairs, and other event rentals are not included and must be arranged through one of Tlaquepaque’s approved rental companies.
+
+      Other inclusions vary by venue and event type. These may include venue space, overhead Portofino string lights, an on-site custodian, and the Wedding Peal following a ceremony.
+  - title: What happens in case of inclement weather?
+    content: |-
+      Tlaquepaque’s outdoor venues are not protected from rain, snow, wind, or intense sun. If inclement weather is forecast, the Tlaquepaque wedding team will work with you to evaluate the available options.
+
+      Tenting may be arranged at Calle Independencia and the Terrace at Patio del Norte at the couple’s expense. Outdoor heaters are also available to rent for cooler weather.
+  - title: Do you offer a military discount?
+    content: Tlaquepaque currently offers a 10% military discount with proof of service.
+  - title: Can we use sparklers at our wedding?
+    content: Sparklers may be permitted with advance approval, subject to current local fire restrictions. Fireworks and firepits are not permitted anywhere on the property.
+  - title: Are there restrictions on amplified music?
+    content: Yes. Music plans must be approved by Tlaquepaque management before the event. In accordance with Sedona’s sound requirements, music must be lowered at 10:00 p.m. and amplified speakers must be turned off. Acoustic music may continue until the event concludes at 11:00 p.m.
+  - title: Can we schedule a rehearsal?
+    content: Yes. Rehearsal time must be scheduled with our wedding coordinator at least 30 days in advance. Reservations are available on a first-come, first-served basis and are not guaranteed.
+  - title: Is a Bridal Suite available?
+    content: Yes. Bridal Suite reservations must be arranged with our wedding coordinator at least 30 days in advance and are available on a first-come, first-served basis. Additional use may be reserved in one-hour increments for a supplemental fee.
+  - title: Which venues are accessible?
+    content: The Terrace at Patio del Norte offers stair and elevator access, as well as a private accessible restroom. Please contact our wedding team to discuss accessibility needs for the Chapel, Calle Independencia, and Patio de las Campañas.
+  - title: What is the cancellation policy?
+    content: Cancellations received at least 90 days before the scheduled event are eligible for a refund, less a 50% cancellation fee. No refund is provided for cancellations received within 90 days of the event. The refundable damage deposit will be returned in full. Rehearsal, Bridal Suite, and candelabra rental fees are nonrefundable.
+  - title: How far in advance should we reserve our date?
+    content: We recommend contacting our wedding team as early as possible, particularly if you have a preferred date or venue. Availability varies by season and reservations are confirmed only after full payment and the applicable refundable damage deposit are received.
