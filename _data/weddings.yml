@@ -27,8 +27,8 @@ brochure:
     - image: /assets/images/weddings/badge-weddingawards_en_US.png
       alt: WeddingWire Couples' Choice Awards 2020
 events:
-  title: CORPORATE & PRIVATE EVENTS
-  description: Host memorable gatherings—from awards dinners and executive retreats to milestone birthdays, anniversaries, and private celebrations—set within our iconic courtyards and other venues beneath the sycamore trees.
+  title: PRIVATE & CORPORATE EVENTS IN SEDONA
+  description: Host an unforgettable gathering in one of Tlaquepaque’s courtyards, terraces, and event spaces beneath the sycamore trees. From executive retreats and awards dinners to milestone birthdays, anniversaries, welcome gatherings, and private celebrations, each event is surrounded by the village’s distinctive architecture and old-world atmosphere.
   brochure_url: /assets/files/weddings/Tlaq_Corporate_Events_Brochure_062724.pdf
   images:
     - /assets/images/weddings/event_1.webp
@@ -54,21 +54,21 @@ jump_to_links:
   private_events:
     text: PRIVATE EVENTS
     id: '#events'
-  chapel-at-tlaquepaque:
-    id: chapel-at-tlaquepaque
-    text: CHAPEL
-  patio-de-las-campanas:
-    id: patio-de-las-campanas
-    text: PATIO DE LAS CAMPAÑAS
-  terrace-at-patio-del-norte:
-    id: terrace-at-patio-del-norte
-    text: TERRACE AT PATIO DEL NORTE
-  calle-independencia:
-    id: calle-independencia
-    text: CALLE INDEPENDENCIA
   connect:
-    id: '#connect'
     text: CONNECT
+    id: '#connect'
+  calle-independencia:
+    text: CALLE INDEPENDENCIA
+    id: calle-independencia
+  terrace-at-patio-del-norte:
+    text: TERRACE AT PATIO DEL NORTE
+    id: terrace-at-patio-del-norte
+  patio-de-las-campanas:
+    text: PATIO DE LAS CAMPAÑAS
+    id: patio-de-las-campanas
+  chapel-at-tlaquepaque:
+    text: CHAPEL
+    id: chapel-at-tlaquepaque
 site_plan:
   title: SITE PLAN
   image: /assets/images/weddings/site-plan.webp
