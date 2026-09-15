@@ -51,11 +51,7 @@ schedule:
         time: 11:00 A.M. to 5:00 P.M.
       - name: Food Vendors
         time: 11:00 A.M. to 5:00 P.M.
-map:
-  title: Altar Map
-  description: Use this map to learn about the symbolism and locate the artful Day of the Dead altars and vignettes on display throughout the village during this day long celebration.
-  button_label: DOWNLOAD THE ALTAR MAP
-  url: https://discover.tlaq.com/day-of-the-dead-altar-map/full-view.html
+map: null
 phone: ''
 website: ''
 email: ''
