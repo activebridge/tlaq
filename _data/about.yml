@@ -57,7 +57,7 @@ sections:
     heading: Our People
     description: It takes a village to run a village. Our team of talented individuals comes together to make Tlaquepaque a special, unique destination to visit.
     images:
-      - /assets/images/about/pasted-image-1789496765682.png
+      - /assets/images/about/pasted-image-1789497028974.png
 jump_to_links:
   our_people:
     id: '#our-people'
