@@ -1,3 +1,6 @@
+seo:
+  title: About Tlaquepaque Arts & Shopping Village
+  description: Learn about Tlaquepaque, a landmark Sedona destination for art, shopping, dining, events, and experiences beneath the sycamore trees.
 _info: ''
 hero_banner: /assets/images/about/Patio_azul_about.png
 heading: A celebrated arts and shopping village in the heart of Sedona
@@ -54,31 +57,26 @@ sections:
     heading: Our People
     description: It takes a village to run a village. Our team of talented individuals comes together to make Tlaquepaque a special, unique destination to visit.
     images:
-      - assets/images/about/our-people.png
+      - /assets/images/about/pasted-image-1789496765682.png
 jump_to_links:
-  village_map:
-    text: VILLAGE MAP
-    id: '#village-map'
-  historic_landmark:
-    text: HISTORIC LANDMARK
-    id: '#historic-landmark'
-  tlaquepaque_north:
-    text: TLAQUEPAQUE NORTH
-    id: '#tlaquepaque-north'
-  outdoor_art:
-    text: OUTDOOR ART
-    id: '#outdoor-art'
-  landscaping:
-    text: LANDSCAPING
-    id: '#landscaping'
-  sycamore:
-    text: SYCAMORE
-    id: '#sycamore'
   our_people:
-    text: OUR PEOPLE
     id: '#our-people'
-
-seo:
-  title: About Tlaquepaque Arts & Shopping Village
-  description: Learn about Tlaquepaque, a landmark Sedona destination for art, shopping,
-    dining, events, and experiences beneath the sycamore trees.
+    text: OUR PEOPLE
+  sycamore:
+    id: '#sycamore'
+    text: SYCAMORE
+  landscaping:
+    id: '#landscaping'
+    text: LANDSCAPING
+  outdoor_art:
+    id: '#outdoor-art'
+    text: OUTDOOR ART
+  tlaquepaque_north:
+    id: '#tlaquepaque-north'
+    text: TLAQUEPAQUE NORTH
+  historic_landmark:
+    id: '#historic-landmark'
+    text: HISTORIC LANDMARK
+  village_map:
+    id: '#village-map'
+    text: VILLAGE MAP
