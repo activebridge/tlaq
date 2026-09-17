@@ -15,7 +15,7 @@ Good Juju followed soon after—a place where Julie could continue to express he
 
 From the beginning, Julie envisioned more than a traditional boutique. She wanted a space that felt happy and uplifting, whether that feeling came from the touch of a beautiful fabric, an unexpected design detail, a whimsical work of art, or a meaningful conversation.
 
-The boutique’s collection reflects that intention. Julie looks for distinctive, joyful pieces made with quality fabrics and thoughtful details. She is particularly drawn to elements of surprise—an embroidered pocket, an unexpected burst of color, or an imaginative finishing touch. Nature-inspired motifs, handmade goods, and jewelry that feels organic rather than overly designed are also part of the collection. 
+The boutique’s collection reflects that intention. Julie looks for distinctive, joyful pieces made with quality fabrics and thoughtful details. She is particularly drawn to elements of surprise—an embroidered pocket, an unexpected burst of color, or an imaginative finishing touch. Nature-inspired motifs, handmade goods, and jewelry that feels organic rather than overly designed are also part of the collection.
 
 For Julie, choosing merchandise is as much an intuitive process as it is a visual one. She believes everything carries a frequency and that fashion, at its best, creates a feeling. If a piece makes her smile or carries an uplifting message, there is a good chance it will find a home at Good Juju. That same sensibility connects Julie’s merchandise with Brent’s artwork, creating an experience that feels eclectic yet unified by a spirit of optimism.
 
