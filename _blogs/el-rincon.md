@@ -1,8 +1,8 @@
 ---
 title: El Rincon
 date: 2026-09-17
-description: 50 Years of Food, Family, and Tradition
-image: ''
+description: Fifty Years of Food, Family, and Tradition
+image: /assets/images/blogs/El-Rincon-2025-1.jpg
 ---
 
 For 50 years, El Rincon has been woven into life at Tlaquepaque. Guests come for its distinctive Arizona Mexican cuisine, but many return for something equally memorable: the feeling of coming home.
