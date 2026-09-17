@@ -2,7 +2,7 @@ seo:
   title: Sedona Wedding Venues | Tlaquepaque
   description: Explore romantic Sedona wedding venues for intimate ceremonies, outdoor receptions, welcome gatherings, and private celebrations.
 _info: ''
-title: Distinctive Wedding Venues in Sedona
+title: Distinctive Sedona Weddings
 description: |-
   Located in the heart of Sedona, Tlaquepaque offers an unforgettable setting for intimate weddings, destination weddings, and private celebrations. Exchange vows in our historic wedding Chapel or celebrate beneath the stars in one of our romantic outdoor courtyards and terraces.
 
@@ -54,21 +54,21 @@ jump_to_links:
   private_events:
     text: PRIVATE EVENTS
     id: '#events'
-  connect:
-    text: CONNECT
-    id: '#connect'
-  calle-independencia:
-    text: CALLE INDEPENDENCIA
-    id: calle-independencia
-  terrace-at-patio-del-norte:
-    text: TERRACE AT PATIO DEL NORTE
-    id: terrace-at-patio-del-norte
-  patio-de-las-campanas:
-    text: PATIO DE LAS CAMPAÑAS
-    id: patio-de-las-campanas
   chapel-at-tlaquepaque:
-    text: CHAPEL
     id: chapel-at-tlaquepaque
+    text: CHAPEL
+  patio-de-las-campanas:
+    id: patio-de-las-campanas
+    text: PATIO DE LAS CAMPAÑAS
+  terrace-at-patio-del-norte:
+    id: terrace-at-patio-del-norte
+    text: TERRACE AT PATIO DEL NORTE
+  calle-independencia:
+    id: calle-independencia
+    text: CALLE INDEPENDENCIA
+  connect:
+    id: '#connect'
+    text: CONNECT
 site_plan:
   title: SITE PLAN
   image: /assets/images/weddings/site-plan.webp
