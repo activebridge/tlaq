@@ -15,6 +15,8 @@ From the beginning, Julie envisioned more than a traditional boutique. She wante
 
 The boutique’s collection reflects that intention. Julie looks for distinctive, joyful pieces made with quality fabrics and thoughtful details. She is particularly drawn to elements of surprise—an embroidered pocket, an unexpected burst of color, or an imaginative finishing touch. Nature-inspired motifs, handmade goods, and jewelry that feels organic rather than overly designed are also part of the collection.
 
+![](/assets/images/blogs/goodjujuimages-01.png)
+
 For Julie, choosing merchandise is as much an intuitive process as it is a visual one. She believes everything carries a frequency and that fashion, at its best, creates a feeling. If a piece makes her smile or carries an uplifting message, there is a good chance it will find a home at Good Juju. That same sensibility connects Julie’s merchandise with Brent’s artwork, creating an experience that feels eclectic yet unified by a spirit of optimism.
 
 The name itself carries personal history and purpose. “Good juju” means good energy, but it is also a playful reference to Julie’s name. When her niece Jaime was young, she could not pronounce “Auntie Julie” and called her “Auntie JuJu” instead. The nickname stayed—and eventually became part of the boutique’s story.
