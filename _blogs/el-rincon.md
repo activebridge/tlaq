@@ -2,7 +2,7 @@
 title: El Rincon
 date: 2026-09-17
 description: Fifty Years of Food, Family, and Tradition
-image: /assets/images/blogs/el_rincon_exterior.png
+image: /assets/images/blogs/elrincon.png
 ---
 
 For 50 years, El Rincon has been woven into life at Tlaquepaque. Guests come for its distinctive Arizona Mexican cuisine, but many return for something equally memorable: the feeling of coming home.
@@ -22,8 +22,6 @@ That sense of family extends behind the scenes, too. Current owners Charley and 
 During those years, Dimitri taught Charley and Luis far more than how to operate a restaurant. He showed them the importance of treating every guest with kindness, every employee with respect, and never compromising on quality or hospitality. He also wanted Charley and Luis to carry El Rincon forward when the time came.
 
 When Dimitri passed away, continuing El Rincon felt less like a business decision and more like honoring a promise. The family was committed to preserving what he and the original owners had created, from the recipes and traditions to the warm welcome at the heart of the restaurant.
-
-![](/assets/images/blogs/3449W_DvonBriesen__37A1352-Edit.jpg)
 
 **AN EXTENDED FAMILY**
 
