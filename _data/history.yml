@@ -43,9 +43,9 @@ stories:
       - image: assets/images/history/wooden-door.png
         alt: Carved wooden door with iron knocker and Talavera tiles
     footnotes:
-      - Abe Miller and Bob McIntyre, the Architect, reviewing blueprints.
-      - Patio de las Campañas from a 1970's issue of Arizona Highways.
-      - A view of Plaza de la Fuente from the 1970s.
+      - Patio de la Capilla archway covered in ivy
+      - Tiered stone fountain beside cobalt tilework
+      - Carved wooden door with iron knocker and Talavera tiles
   - id: creation
     label: CREATION
     background: assets/images/history/landscaping.webp
@@ -65,9 +65,9 @@ stories:
       - image: assets/images/history/sycamore-branch.png
         alt: Preserved sycamore branch arching above the village
     footnotes:
-      - Abe Miller and Bob McIntyre, the Architect, reviewing blueprints.
-      - Patio de las Campañas from a 1970's issue of Arizona Highways.
-      - A view of Plaza de la Fuente from the 1970s.
+      - Tlaquepaque North entry arch and courtyard
+      - Construction of Tlaquepaque in the 1970s, workers on scaffolding
+      - Preserved sycamore branch arching above the village
   - id: today
     label: TODAY
     background: assets/images/history/abe-miller-portrait.webp
@@ -83,6 +83,6 @@ stories:
       - image: assets/images/history/folklorico-dancers.png
         alt: Folklorico dancers performing in the courtyard
     footnotes:
-      - Abe Miller and Bob McIntyre, the Architect, reviewing blueprints.
-      - Patio de las Campañas from a 1970's issue of Arizona Highways.
-      - A view of Plaza de la Fuente from the 1970s.
+      - TLAQUEPAQUE tile sign on stucco wall
+      - Bronze frog sculpture at Tlaquepaque
+      - Folklorico dancers performing in the courtyard
