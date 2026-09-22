@@ -65,9 +65,9 @@ stories:
       - image: assets/images/history/sycamore-branch.png
         alt: Preserved sycamore branch arching above the village
     footnotes:
-      - Tlaquepaque North entry arch and courtyard
       - Construction of Tlaquepaque in the 1970s, workers on scaffolding
       - Preserved sycamore branch arching above the village
+      - Tlaquepaque North entry arch and courtyard
   - id: today
     label: TODAY
     background: assets/images/history/abe-miller-portrait.webp
