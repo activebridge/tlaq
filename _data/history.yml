@@ -1,3 +1,6 @@
+seo:
+  title: History of Tlaquepaque Arts & Shopping Village
+  description: Discover the vision, architecture, craftsmanship, and natural setting behind Tlaquepaque Arts & Shopping Village in Sedona.
 _info: ''
 title: History
 subtitle: Discover the story of artistry and dedication that shaped Tlaquepaque's distinctiveness
@@ -5,7 +8,7 @@ description: From its architectural inspiration to artistic tradition, learn abo
 hero_banner: /assets/images/history/History-Hero4.jpg
 cover: /assets/images/history/Tlaq History.png
 cover_alt: Aerial view of Tlaquepaque Arts & Shopping Village
-cover_video_youtube:
+cover_video_youtube: jhoCoslufsg
 vision:
   label: VISION
   background: assets/images/history/arch.webp
@@ -83,8 +86,3 @@ stories:
       - Abe Miller and Bob McIntyre, the Architect, reviewing blueprints.
       - Patio de las Campañas from a 1970's issue of Arizona Highways.
       - A view of Plaza de la Fuente from the 1970s.
-
-seo:
-  title: History of Tlaquepaque Arts & Shopping Village
-  description: Discover the vision, architecture, craftsmanship, and natural setting
-    behind Tlaquepaque Arts & Shopping Village in Sedona.
