@@ -15,8 +15,8 @@ recurrence_weekdays: []
 date_override: ''
 schedule: []
 map: null
-phone: (713) 703-9862
-website: https://www.sedonadanceacademy.org/
+phone: 928-224-9272
+website: https://www.sedonadances.com/
 email: ''
 facebook: ''
 instagram: ''
