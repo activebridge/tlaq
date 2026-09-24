@@ -3,7 +3,7 @@ title: The Marigold Mural Project
 slug: the-marigold-mural-project
 published: true
 starts_at: 2026-10-29 11:00:00
-ends_at: 2026-10-31 17:00:00
+ends_at: 2026-11-01T17:00:00
 location: CALLE INDEPENDENCIA
 image: assets/images/events/marigold-mural-project.webp
 video_url: ''
