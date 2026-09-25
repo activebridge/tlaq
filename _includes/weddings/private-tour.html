@@ -1,0 +1,19 @@
+{% assign private_tour = site.data.weddings.private_tour %}
+{% if private_tour.title %}
+<article id="private-tour">
+  <div class="text-block">
+    <h5>{{ private_tour.eyebrow }}</h5>
+    <h3>{{ private_tour.title }}</h3>
+    <p>{{ private_tour.description }}</p>
+    {% if private_tour.link.url and private_tour.link.url != '' %}
+    <a href="{{ private_tour.link.url }}">{{ private_tour.link.text }}</a>
+    {% endif %}
+  </div>
+  <picture>
+    <source media="(max-width: 480px)" srcset="{{ private_tour.image | prepend: '/cdn-cgi/image/width=700,height=600,fit=contain,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(max-width: 768px)" srcset="{{ private_tour.image | prepend: '/cdn-cgi/image/width=900,height=760,fit=contain,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(min-width: 768px)" srcset="{{ private_tour.image | prepend: '/cdn-cgi/image/width=1530,height=1390,fit=contain,format=webp/' | prepend: site.cdn_url }}">
+    <img src="{{ private_tour.image | prepend: '/cdn-cgi/image/width=1530,height=1390,fit=contain,format=webp/' | prepend: site.cdn_url }}" alt="{{ private_tour.title }}" loading="lazy" decoding="async" onerror="imageError(this)">
+  </picture>
+</article>
+{% endif %}

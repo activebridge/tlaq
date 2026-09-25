@@ -28,6 +28,8 @@
     --navy-60: color-mix(in srgb, var(--navy) 60%, transparent);
     --navy-40: color-mix(in srgb, var(--navy) 40%, transparent);
     --cream: #f7ead7;
+    --wedding-bg: #fcf9f5;
+    --wedding-band-bg: #fff2f7;
     --cream-80: color-mix(in srgb, var(--cream) 80%, transparent);
     --cream-60: color-mix(in srgb, var(--cream) 60%, transparent);
     --cream-40: color-mix(in srgb, var(--cream) 40%, transparent);
@@ -154,7 +156,7 @@ html, body {
 
   main {
     flex-grow: 1;
-    background: var(--cream);
+    background: var(--bg);
   }
 
   svg {
@@ -275,7 +277,7 @@ html, body {
   }
 
   @media (min-width: 771px) {
-    :active-view-transition { body { background: var(--cream); } }
+    :active-view-transition { body { background: var(--bg); } }
   }
 
   @keyframes header-vt-pos-out {
@@ -568,7 +570,7 @@ html, body {
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    background: var(--cream);
+    background: var(--bg);
     color: var(--navy);
     padding: 0.45rem 1rem;
     height: var(--header-status-height);
@@ -595,6 +597,9 @@ html, body {
     container-type: inline-size;
     padding: 0 2rem;
     margin: 0 -2rem;
+    min-width: 0;
+    max-width: calc(100% + 4rem);
+    justify-self: stretch;
 
     div {
       display: flex;
@@ -1174,7 +1179,7 @@ html, body {
       bottom: 0;
       width: 100%;
       height: 0;
-      background: var(--cream);
+      background: var(--bg);
       z-index: 2;
       animation: hero-reveal linear forwards;
       animation-timeline: scroll(root);

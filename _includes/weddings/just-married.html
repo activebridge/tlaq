@@ -1,0 +1,19 @@
+{% assign just_married = site.data.weddings.just_married %}
+{% if just_married.title %}
+<article id="just-married">
+  <picture>
+    <source media="(max-width: 480px)" srcset="{{ just_married.image | prepend: '/cdn-cgi/image/width=800,height=600,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(max-width: 768px)" srcset="{{ just_married.image | prepend: '/cdn-cgi/image/width=1000,height=750,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(min-width: 768px)" srcset="{{ just_married.image | prepend: '/cdn-cgi/image/width=1100,height=689,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <img src="{{ just_married.image | prepend: '/cdn-cgi/image/width=1100,height=689,fit=cover,format=webp/' | prepend: site.cdn_url }}" alt="{{ just_married.title }}" loading="lazy" decoding="async" onerror="imageError(this)">
+  </picture>
+  <div class="text-block">
+    <h5>{{ just_married.eyebrow }}</h5>
+    <h3>{{ just_married.title }}</h3>
+    <p>{{ just_married.description }}</p>
+    {% if just_married.link.url and just_married.link.url != '' %}
+    <a href="{{ just_married.link.url }}">{{ just_married.link.text }}</a>
+    {% endif %}
+  </div>
+</article>
+{% endif %}

@@ -1,0 +1,29 @@
+{% assign stories_collection = site.collections | where: "label", "wedding-stories" | first %}
+{% assign stories = stories_collection.docs | where_exp: "s", "s.tags contains 'published'" | sort: "date" | reverse %}
+{% for story in stories %}
+  {% if story.url == page.url %}
+    {% assign idx = forloop.index0 %}
+    {% assign last = forloop.length | minus: 1 %}
+    {% if idx > 0 %}{% assign newer_idx = idx | minus: 1 %}{% assign newer = stories[newer_idx] %}{% endif %}
+    {% if idx < last %}{% assign older_idx = idx | plus: 1 %}{% assign older = stories[older_idx] %}{% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if newer or older %}
+<nav id="story-nav">
+  <hr>
+  <div>
+    {% if newer %}
+      <a href="{{ newer.url | relative_url }}" rel="prev">&lsaquo; {{ site.data.weddings.stories.previous | default: 'PREVIOUS' }}</a>
+    {% else %}
+      <span></span>
+    {% endif %}
+    {% if older %}
+      <a href="{{ older.url | relative_url }}" rel="next">{{ site.data.weddings.stories.next | default: 'NEXT' }} &rsaquo;</a>
+    {% else %}
+      <span></span>
+    {% endif %}
+  </div>
+  <hr>
+</nav>
+{% endif %}

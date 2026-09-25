@@ -1,0 +1,15 @@
+{% assign story = include.story %}
+<div class="card">
+  <a href="{{ story.url | relative_url }}">
+    {% if story.image %}
+      {% assign card_transition_name = story.image | downcase | replace: '/', '-' | replace: '.', '-' %}
+      {% include responsive-card-image.html src=story.image alt=story.title transition_name=card_transition_name %}
+    {% else %}
+      <img src="{{ '/assets/images/placeholder.webp' | relative_url }}" alt="{{ story.title }}" loading="lazy">
+    {% endif %}
+  </a>
+  <h3 style="view-transition-name: {{ story.title | downcase | replace: ' ', '-' }};">{{ story.title }}</h3>
+  {% if story.date %}<div class="datetime">{{ story.date | date: "%B %-d, %Y" }}</div>{% endif %}
+  {% if story.description %}<p>{{ story.description }}</p>{% endif %}
+  <a class="read-more" href="{{ story.url | relative_url }}">{{ site.data.weddings.stories.read_more | default: 'Read More' }}</a>
+</div>

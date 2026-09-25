@@ -5,8 +5,11 @@ seo:
 slug: calle-independencia
 date: 2026-02-23
 title: Calle Independencia
-subtitle: Celebrate beneath the stars amid cobblestone streets, balcony-lined façades, graceful archways, intricate ironwork, and iconic fountains. This atmospheric outdoor setting is ideal for larger wedding receptions.
-image: /assets/images/weddings/Slideshow 1 Opening Image-1.jpg
+subtitle: The cobblestone streets, elegant archways, ironwork, and iconic fountains take you back to another time.
+capacity: 100
+card_description: Celebrate beneath the stars amid cobblestone streets, balcony-lined façades, graceful archways, intricate ironwork, and iconic fountains. This atmospheric outdoor setting is ideal for larger wedding receptions.
+virtual_tour_url: 'https://my.matterport.com/show/?m=gECSQw9nGpS'
+image: /assets/images/weddings/calle-independencia/card.webp
 suite: ''
 coordinates: ''
 intro:
@@ -17,5 +20,4 @@ intro:
     Overhead Portofino string lights illuminate the space after sunset, creating an elegant setting for dinner, toasts, cake cutting, and dancing.
 site_plan:
   image: assets/images/weddings/calle-independencia/site-plan.webp
-  description: Download the detailed site map to explore the venue’s layout and dimensions. Use it to plan your event with clarity, envisioning flow, spatial relationships, and meaningful details in advance.
 ---

@@ -1,0 +1,16 @@
+{% assign gallery = include.images | default: page.gallery %}
+{% if gallery and gallery.size > 0 %}
+<div id="story-gallery">
+  {% for item in gallery %}
+  {% assign src = item.image | default: item %}
+  <figure>
+    <picture>
+      <source media="(max-width: 480px)" srcset="{{ src | prepend: '/cdn-cgi/image/width=310,height=260,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+      <source media="(min-width: 768px)" srcset="{{ src | prepend: '/cdn-cgi/image/width=620,height=520,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+      <img src="{{ src | prepend: '/cdn-cgi/image/width=620,height=520,fit=cover,format=webp/' | prepend: site.cdn_url }}"
+           alt="{{ item.alt | default: '' }}" loading="lazy" decoding="async" onerror="imageError(this)">
+    </picture>
+  </figure>
+  {% endfor %}
+</div>
+{% endif %}

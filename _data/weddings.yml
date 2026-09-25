@@ -3,10 +3,17 @@ seo:
   description: Explore romantic Sedona wedding venues for intimate ceremonies, outdoor receptions, welcome gatherings, and private celebrations.
 _info: ''
 title: Distinctive Sedona Weddings
-description: |-
-  Located in the heart of Sedona, Tlaquepaque offers an unforgettable setting for intimate weddings, destination weddings, and private celebrations. Exchange vows in our historic wedding Chapel or celebrate beneath the stars in one of our romantic outdoor courtyards and terraces.
-
-  Vine-covered stucco walls, cobblestone walkways, graceful archways, iconic fountains, and towering sycamores create an enchanting backdrop for every part of your wedding day. With four distinctive venues for ceremonies, welcome gatherings, and receptions, couples can shape a celebration that feels intimate, personal, and distinctly Sedona.
+description: >-
+  Located in the heart of Sedona, Tlaquepaque offers an unforgettable setting for
+  intimate weddings, destination weddings, and private celebrations. Exchange vows
+  in our historic wedding Chapel or celebrate beneath the stars in one of our
+  romantic outdoor courtyards and terraces.
+description_secondary: >-
+  Vine-covered stucco walls, cobblestone walkways, graceful archways, iconic
+  fountains, and towering sycamores create an enchanting backdrop for every part of
+  your wedding day. With four distinctive venues for ceremonies, welcome gatherings,
+  and receptions, couples can shape a celebration that feels intimate, personal, and
+  distinctly Sedona.
 weddings: WEDDINGS & PRIVATE EVENTS
 venues: VENUES
 hero_banner: /assets/images/weddings/LAURA_GLENN_WEDDING-700.jpg
@@ -45,31 +52,189 @@ buttons:
   download_brochure: DOWNLOAD BROCHURE
   inquiry_submit: SUBMIT AN INQUIRY
   download_site_plan: DOWNLOAD SITE PLAN
+  virtual_tour: VIRTUAL TOUR
+  guests: GUESTS
 jump_to_links:
   brochure:
     text: BROCHURE
+  wedding_packages:
+    text: WEDDING PACKAGES
+    id: '#packages'
+  venues:
+    text: EXPLORE THE VENUES
+    id: /weddings/#venues
+  schedule_tour:
+    text: SCHEDULE A TOUR
+    id: '#connect'
   gallery:
     text: INSPIRATION
     id: '#gallery'
   private_events:
     text: PRIVATE EVENTS
     id: '#events'
+  connect:
+    text: CONNECT
+    id: '#connect'
+  faq:
+    text: FAQ
+    id: /wedding_faq/
+  inspiration:
+    text: REAL WEDDINGS
+    id: /weddings/stories/
+  calle-independencia:
+    text: CALLE INDEPENDENCIA
+    id: calle-independencia
+  terrace-at-patio-del-norte:
+    text: TERRACE AT PATIO DEL NORTE
+    id: terrace-at-patio-del-norte
+  patio-de-las-campanas:
+    text: PATIO DE LAS CAMPAÑAS
+    id: patio-de-las-campanas
   chapel-at-tlaquepaque:
     id: chapel-at-tlaquepaque
     text: CHAPEL
-  patio-de-las-campanas:
-    id: patio-de-las-campanas
-    text: PATIO DE LAS CAMPAÑAS
-  terrace-at-patio-del-norte:
-    id: terrace-at-patio-del-norte
-    text: TERRACE AT PATIO DEL NORTE
-  calle-independencia:
-    id: calle-independencia
-    text: CALLE INDEPENDENCIA
-  connect:
-    id: '#connect'
-    text: CONNECT
+explore_venue:
+  eyebrow: EXPLORE THE VENUE
+  title: See where your celebration could unfold.
+  description: >-
+    Step inside through our virtual tour, or download the site plan to get a closer
+    look at the spaces, dimensions, and possibilities for your wedding.
+  buttons:
+    schedule_tour: SCHEDULE A TOUR
+    schedule_tour_url: '#connect'
+
 site_plan:
   title: SITE PLAN
   image: /assets/images/weddings/site-plan.webp
   plan_url: https://irp.cdn-website.com/164890e9/files/uploaded/TLAQ%20wedding%20plans%20(2).pdf
+
+just_married:
+  eyebrow: JUST MARRIED
+  title: Beauty & Meaning
+  description: >-
+    A celebration rooted in love, meaning, and the Old World beauty of Tlaquepaque.
+    Discover Courtney and Evan's wedding story.
+  image: /assets/images/weddings/just-married.webp
+  link:
+    text: DISCOVER MORE
+    url: /weddings/stories/courtney-and-evan/
+packages:
+  eyebrow: WEDDING PACKAGES
+  title: Intimate Weddings Curated For You
+  hero_banner: /assets/images/weddings/packages/hero.webp
+  description: >-
+    From a romantic Sedona elopement to an intimate Chapel ceremony or evening
+    celebration beneath the stars, Tlaquepaque offers thoughtfully curated wedding
+    packages designed to simplify planning while preserving the individuality of the
+    occasion.
+  link:
+    text: EXPLORE PACKAGES
+    url: /weddings/packages/
+
+private_tour:
+  eyebrow: PRIVATE TOUR
+  title: Tour the Tlaquepaque Wedding Venues
+  description: >-
+    The best way to understand Tlaquepaque's wedding venues is to experience them in
+    person. Walk through the Chapel, courtyards, and terrace, explore the relationship
+    among the spaces, and envision how your celebration could unfold throughout the
+    village.
+  image: /assets/images/weddings/village-map.webp
+  link:
+    text: SCHEDULE A TOUR
+    url: '#connect'
+
+vendors:
+  eyebrow: VENDORS
+  title: Tlaquepaque Wedding Vendors
+  description: >-
+    To help you plan a beautifully executed Sedona wedding, Tlaquepaque has assembled
+    a curated network of experienced wedding vendors who understand our venues and
+    event requirements. Couples are required to select their caterer, florist, and
+    rental company from Tlaquepaque's approved vendor list.
+  description_secondary: >-
+    We also recommend trusted planners, photographers, bartenders, musicians,
+    officiants, transportation providers, and other professionals who can support
+    every aspect of your celebration and help create a wedding that feels seamless,
+    personal, and distinctly your own.
+  image: /assets/images/weddings/vendors.webp
+  link:
+    text: EXPLORE VENDORS
+    url: /assets/files/weddings/Tlaq_Wedding_Brochure_061226_R.pdf
+
+connect:
+  eyebrow: CONNECT WITH US
+  title: Begin Planning Your Wedding at Tlaquepaque
+  description: >-
+    Tell us about your preferred date, estimated guest count, event plans, and the
+    venues that interest you. Our wedding team will answer your questions and help you
+    explore the possibilities for your celebration.
+  email: LAUREN@TLAQ.COM
+  phone: +1 (928) 274-6762
+  links:
+    - text: DOWNLOAD BROCHURE
+      url: /assets/files/weddings/Tlaq_Wedding_Brochure_061226_R.pdf
+      external: true
+    - text: EXPLORE WEDDING FAQS
+      url: /wedding_faq/
+  wordmark:
+    name: TLAQUEPAQUE
+    sub: WEDDINGS
+    image: /assets/images/weddings/wordmark.webp
+  form:
+    required_note: (* Indicates required field)
+    # this page words a few fields differently from the shared form
+    labels:
+      phone: PHONE
+      guests: NUMBER OF GUESTS
+      budget: BUDGET FOR THE VENUE
+    tour_question: SCHEDULE A TOUR?
+    tour_yes: 'YES'
+    tour_no: 'NO'
+    submit: SUBMIT INQUIRY
+
+# The Instagram section is currently hidden -- its include is commented out in
+# _layouts/weddings/index.html. These tiles previously reused the private-events
+# photos, which made the CMS look like it was driving a live section. Left empty
+# so the data matches what the page shows; fill it (and restore the include) once
+# a real feed is wired up.
+instagram:
+  handle: ''
+  url: ''
+  items: []
+
+testimonial:
+  quote: Tlaquepaque was more than a setting — it was part of what made our wedding day so meaningful.
+  image: /assets/images/weddings/testimonial.webp
+
+# Shown at the bottom of the Wedding Packages page.
+packages_testimonial:
+  quote: Tlaquepaque was more than a setting — it was part of what made our wedding day so meaningful.
+  image: /assets/images/weddings/testimonials/packages-ceremony.webp
+
+# Shown above the enquiry form on the Wedding FAQ page.
+faq_testimonial:
+  quote: Tlaquepaque was more than a setting — it was part of what made our wedding day so meaningful.
+  image: /assets/images/weddings/testimonials/venue-toast.webp
+
+# Shown at the bottom of every venue page. A venue can override it with its own
+# `testimonial:` block in the page front matter.
+venue_testimonial:
+  quote: Tlaquepaque was more than a setting — it was part of what made our wedding day so meaningful.
+  image: /assets/images/weddings/testimonials/venue-toast.webp
+
+# Wedding Stories collection (_wedding-stories) and the /weddings/stories/ index.
+stories:
+  eyebrow: JUST MARRIED
+  title: Real Weddings at Tlaquepaque
+  description: >-
+    Every celebration here takes on the character of the couple at its centre. Explore
+    real weddings at Tlaquepaque, the venues they chose, and the details that made each
+    day their own.
+  hero_banner: /assets/images/weddings/just-married.webp
+  read_more: Read More
+  previous: PREVIOUS
+  next: NEXT
+  empty: More real weddings are on the way.
+  sidebar_title: DISCOVER OTHER WEDDINGS
+  share: SHARE

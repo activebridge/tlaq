@@ -38,4 +38,7 @@
   <button id="resetBtn" class="btn btn-primary" style="display:none" onclick="onReset()">{{ site.data.connect-us.reset }}</button>
 </article>
 
+{% unless connect_form_script_rendered %}
+{% assign connect_form_script_rendered = true %}
 <script src="{{ '/assets/js/connect-us-form.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+{% endunless %}

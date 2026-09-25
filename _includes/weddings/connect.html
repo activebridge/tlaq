@@ -1,0 +1,105 @@
+{% assign connect = site.data.weddings.connect %}
+{% assign cu = site.data['connect-us'] %}
+<article id="connect">
+  <div class="text-block">
+    <h5>{{ connect.eyebrow }}</h5>
+    <h3>{{ connect.title }}</h3>
+    <p>{{ connect.description }}</p>
+
+    <dl>
+      {% if connect.email %}
+      <div>
+        <dt>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="2.5" y="5" width="19" height="14" rx="2"/>
+            <path d="m3 6.5 9 6 9-6"/>
+          </svg>
+        </dt>
+        <dd><a href="mailto:{{ connect.email | downcase }}">{{ connect.email }}</a></dd>
+      </div>
+      {% endif %}
+      {% if connect.phone %}
+      <div>
+        <dt>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"/>
+          </svg>
+        </dt>
+        <dd><a href="tel:{{ connect.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-' }}">{{ connect.phone }}</a></dd>
+      </div>
+      {% endif %}
+    </dl>
+
+    {% if connect.links %}
+    <div>
+      {% for link in connect.links %}
+      {% unless link.url == page.url %}
+      <a href="{{ link.url }}"{% if link.external %} target="_blank" rel="noopener"{% endif %}>{{ link.text }}</a>
+      {% endunless %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if connect.wordmark.image %}
+    <p class="wordmark">
+      <img src="{{ connect.wordmark.image | prepend: '/cdn-cgi/image/width=950,fit=contain,format=webp/' | prepend: site.cdn_url }}"
+           alt="{{ connect.wordmark.name }} {{ connect.wordmark.sub }}"
+           width="475" height="207" loading="lazy" decoding="async" onerror="imageError(this)">
+    </p>
+    {% endif %}
+  </div>
+
+  <form id="connectUsForm" onsubmit="sendEmail(event)">
+    <p>{{ connect.form.required_note }}</p>
+
+    <label for="first-name">
+      {{ cu.form_placeholders.first_name }} *
+      <input type="text" name="first-name" id="first-name" required>
+    </label>
+    <label for="last-name">
+      {{ cu.form_placeholders.last_name }} *
+      <input type="text" name="last-name" id="last-name" required>
+    </label>
+    <label for="email">
+      {{ cu.form_placeholders.email }} *
+      <input type="email" name="email" id="email" required>
+    </label>
+    <label for="phone">
+      {{ connect.form.labels.phone | default: cu.form_placeholders.phone }} *
+      <input type="tel" name="phone" id="phone" pattern="[0-9+\-\s\(\)]{7,}" title="Please enter a valid phone number" inputmode="tel" required>
+    </label>
+    <label for="eventDate">
+      {{ cu.form_placeholders.event_date }} *
+      <input type="date" name="event_date" id="eventDate" required>
+    </label>
+    <label for="guests">
+      {{ connect.form.labels.guests | default: cu.form_placeholders.guests }} *
+      <input type="number" name="guests" id="guests" min="1" title="Please enter a valid number of guests" required>
+    </label>
+    <label for="budget">
+      {{ connect.form.labels.budget | default: cu.form_placeholders.budget }} *
+      <input type="number" name="budget" id="budget" min="0" title="Please enter a valid budget number" required>
+    </label>
+
+    <fieldset>
+      <legend>{{ connect.form.tour_question }} *</legend>
+      <label for="tourYes">
+        <input type="radio" name="schedule_tour" id="tourYes" value="{{ connect.form.tour_yes }}" required>
+        {{ connect.form.tour_yes }}
+      </label>
+      <label for="tourNo">
+        <input type="radio" name="schedule_tour" id="tourNo" value="{{ connect.form.tour_no }}">
+        {{ connect.form.tour_no }}
+      </label>
+    </fieldset>
+
+    <button id="submitBtn" type="submit">{{ connect.form.submit }}</button>
+    <p id="connectMsg" class="form-message" role="status" aria-live="polite" aria-hidden="true"></p>
+  </form>
+  <button id="resetBtn" type="button" class="btn btn-primary" style="display:none" onclick="onReset()">{{ cu.reset }}</button>
+</article>
+
+{% unless connect_form_script_rendered %}
+{% assign connect_form_script_rendered = true %}
+<script src="{{ '/assets/js/connect-us-form.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+{% endunless %}

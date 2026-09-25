@@ -12,8 +12,16 @@ popup_key: wedding-faq
 
 <div class="content-wrapper">
   <hgroup>
-    <h5>{{ site.data.wedding_faq.title }}</h5>
+    <h5>{{ site.data.wedding_faq.eyebrow | default: site.data.wedding_faq.title }}</h5>
+    <h2>{{ site.data.wedding_faq.title }}</h2>
   </hgroup>
+  {% if site.data.wedding_faq.description %}
+  <p>{{ site.data.wedding_faq.description }}</p>
+  {% endif %}
+
+  {% assign jump_nav_links = "venues,brochure,inspiration,schedule_tour" | split: "," %}
+  {% assign jump_nav_slugs = "weddings" %}
+  {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
 
   <section class="wedding-faq-grid" aria-label="{{ site.data.wedding_faq.title }}">
     {% for block in site.data.wedding_faq.blocks %}
@@ -23,8 +31,19 @@ popup_key: wedding-faq
     </article>
     {% endfor %}
   </section>
+  {% include weddings/testimonial.html testimonial=site.data.weddings.faq_testimonial %}
+  {% include weddings/connect.html %}
+  {% comment %}
+    Hidden 2026-09-25: this pairing of the shared connect-us form with the wedding
+    brochure panel is absent from the new weddings design. The page now renders
+    weddings/connect.html instead -- the same enquiry form as the weddings index
+    and the venue pages, which carries id="connect" for the links that jump to it.
+
+    Remove this block once approved.
+
   <div class="weddings-connect-brochure">
     {% include connect-us.html %}
     {% include weddings/brochure.html %}
   </div>
+  {% endcomment %}
 </div>

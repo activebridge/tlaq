@@ -5,8 +5,11 @@ seo:
 slug: patio-de-las-campanas
 date: 2026-02-24
 title: Patio de las Campañas
-subtitle: Anchored by the Tlaquepaque bell tower and surrounded by fountains, artful tilework, sculpture, and ivy-covered architecture, this romantic courtyard accommodates wedding ceremonies, welcome gatherings, and intimate receptions.
-image: /assets/images/weddings/campanas.jpg
+subtitle: This acclaimed courtyard is adorned with Sedona's landmarked Tlaquepaque Bell Tower and other artful details that add to its uniqueness.
+capacity: 100
+card_description: Anchored by the Tlaquepaque bell tower and surrounded by fountains, sculpture, and ivy-covered architecture, this romantic courtyard accommodates ceremonies, welcome gatherings, and receptions.
+virtual_tour_url: 'https://my.matterport.com/show/?m=ZyUJB33XZmk'
+image: /assets/images/weddings/patio-de-las-campanas/card.webp
 suite: ''
 coordinates: ''
 intro:
@@ -17,5 +20,4 @@ intro:
     An ivy-covered arched wall flanked by stone staircases creates a dramatic entrance for the couple or wedding party. The courtyard offers an enchanting setting for ceremonies, welcome gatherings, and intimate receptions.
 site_plan:
   image: assets/images/weddings/patio-de-las-campanas/site-plan.webp
-  description: Download the detailed site map to explore the venue’s layout and dimensions. Use it to plan your event with clarity, envisioning flow, spatial relationships, and meaningful details in advance.
 ---

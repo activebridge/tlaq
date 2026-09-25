@@ -1,0 +1,20 @@
+{% assign vendors = site.data.weddings.vendors %}
+{% if vendors.title %}
+<article id="vendors">
+  <h5>{{ vendors.eyebrow }}</h5>
+  <h2>{{ vendors.title }}</h2>
+  <p>{{ vendors.description }}</p>
+  {% if vendors.description_secondary %}
+  <p>{{ vendors.description_secondary }}</p>
+  {% endif %}
+  <picture>
+    <source media="(max-width: 480px)" srcset="{{ vendors.image | prepend: '/cdn-cgi/image/width=700,height=520,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(max-width: 768px)" srcset="{{ vendors.image | prepend: '/cdn-cgi/image/width=1000,height=740,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(min-width: 768px)" srcset="{{ vendors.image | prepend: '/cdn-cgi/image/width=1400,height=1030,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <img src="{{ vendors.image | prepend: '/cdn-cgi/image/width=1400,height=1030,fit=cover,format=webp/' | prepend: site.cdn_url }}" alt="{{ vendors.title }}" loading="lazy" decoding="async" onerror="imageError(this)">
+  </picture>
+  {% if vendors.link.url %}
+  <a href="{{ vendors.link.url }}" target="_blank" rel="noopener">{{ vendors.link.text }}</a>
+  {% endif %}
+</article>
+{% endif %}

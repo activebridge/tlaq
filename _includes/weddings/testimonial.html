@@ -1,0 +1,18 @@
+{% assign testimonial = include.testimonial | default: site.data.weddings.testimonial %}
+{% if testimonial.quote %}
+<article id="testimonial">
+  <figure>
+    <picture>
+      <source media="(max-width: 480px)" srcset="{{ testimonial.image | prepend: '/cdn-cgi/image/width=800,height=600,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+      <source media="(max-width: 768px)" srcset="{{ testimonial.image | prepend: '/cdn-cgi/image/width=1200,height=600,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+      <source media="(min-width: 768px)" srcset="{{ testimonial.image | prepend: '/cdn-cgi/image/width=1800,height=900,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+      <img src="{{ testimonial.image | prepend: '/cdn-cgi/image/width=1800,height=900,fit=cover,format=webp/' | prepend: site.cdn_url }}" alt="" loading="lazy" decoding="async" fetchpriority="low" onerror="imageError(this)">
+    </picture>
+    <figcaption>
+      <blockquote>{{ testimonial.quote }}</blockquote>
+      {% if testimonial.author %}<cite>{{ testimonial.author }}</cite>{% endif %}
+      <a href="{{ include.inquiry_url | default: '#connect' }}" class="btn btn-primary">{{ site.data.weddings.buttons.inquiry_submit }}</a>
+    </figcaption>
+  </figure>
+</article>
+{% endif %}

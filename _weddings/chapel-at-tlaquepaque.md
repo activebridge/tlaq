@@ -5,8 +5,11 @@ seo:
 slug: chapel-at-tlaquepaque
 date: 2026-02-22
 title: Chapel at Tlaquepaque
-subtitle: Designated a Sedona historic landmark in 2024, our intimate, non-denominational Chapel offers a serene and romantic setting for indoor wedding ceremonies.
-image: /assets/images/weddings/chapel-at-tlaquepaque/ceremony.webp
+subtitle: Designated a Sedona historic landmark in 2024, this non-denominational chapel was built over 50 years ago as an oasis of serenity.
+capacity: 45
+card_description: Designated a Sedona historic landmark in 2024, our intimate, non-denominational Chapel offers a serene and romantic setting for indoor wedding ceremonies.
+virtual_tour_url: 'https://my.matterport.com/show/?m=EP3HwsYmiLA'
+image: /assets/images/weddings/chapel-at-tlaquepaque/card.webp
 suite: chapel
 coordinates: -111.763266, 34.861948
 intro:
@@ -17,5 +20,4 @@ intro:
     Antique doors, whitewashed stucco walls, hand-carved wooden pews with leather, stained-glass windows, and a mural altar create a serene setting for your ceremony. At its conclusion, the Wedding Peal sends the sound of the Chapel bells across the village in celebration.
 site_plan:
   image: assets/images/weddings/chapel-at-tlaquepaque/site-plan.webp
-  description: Download the detailed site map to explore the venue’s layout and dimensions. Use it to plan your event with clarity, envisioning flow, spatial relationships, and meaningful details in advance.
 ---

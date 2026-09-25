@@ -1,0 +1,82 @@
+---
+layout: default
+---
+
+{% assign image_path = page.image %}
+{% assign transition-name = page.image | downcase | replace: '/', '-' | replace: '.', '-' %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+{% include weddings/story-gallery.html %}
+
+<div class="content-wrapper">
+  <hgroup>
+    <h5>{{ page.eyebrow | default: site.data.weddings.just_married.eyebrow }}</h5>
+    <h2 style="view-transition-name: {{ page.title | downcase | replace: ' ', '-' }};">{{ page.title }}</h2>
+  </hgroup>
+  <p>{{ page.description }}</p>
+
+  <nav id="story-meta">
+    <hr>
+    <div>
+      {% if page.date %}<time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%m / %d / %Y" }}</time>{% endif %}
+      <button onclick="navigator.share ? navigator.share({title: document.title, url: location.href}) : navigator.clipboard.writeText(location.href)">
+        <span>{{ site.data.weddings.stories.share | default: 'SHARE' }}</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+      </button>
+    </div>
+    <hr>
+  </nav>
+
+  <article id="story">
+    <div>
+      {{ content }}
+
+      {% if page.vendors.items %}
+      <section>
+        <h5>{{ page.vendors.title | default: 'WEDDING VENDORS' }}</h5>
+        <dl>
+          {% for vendor in page.vendors.items %}
+          <div>
+            <dt>{{ vendor.role }}: <span>{{ vendor.name }}</span></dt>
+            {% assign contact_parts = '' | split: '' %}
+            {% if vendor.website and vendor.website != '' %}
+              {% capture website_link %}<a href="{{ vendor.website | prepend: 'https://' | replace: 'https://http://', 'http://' | replace: 'https://https://', 'https://' }}" target="_blank" rel="noopener">{{ vendor.website | remove: 'https://' | remove: 'http://' }}</a>{% endcapture %}
+              {% assign contact_parts = contact_parts | push: website_link %}
+            {% endif %}
+            {% if vendor.email and vendor.email != '' %}
+              {% capture email_link %}<a href="mailto:{{ vendor.email }}">{{ vendor.email }}</a>{% endcapture %}
+              {% assign contact_parts = contact_parts | push: email_link %}
+            {% endif %}
+            {% if vendor.phone and vendor.phone != '' %}
+              {% capture phone_link %}<a href="tel:{{ vendor.phone | remove: '-' | remove: ' ' | remove: '(' | remove: ')' }}">{{ vendor.phone }}</a>{% endcapture %}
+              {% assign contact_parts = contact_parts | push: phone_link %}
+            {% endif %}
+            <dd>{{ contact_parts | join: ' · ' }}</dd>
+          </div>
+          {% endfor %}
+        </dl>
+      </section>
+      {% endif %}
+
+      {% include weddings/story-nav.html %}
+    </div>
+
+    {% assign stories_collection = site.collections | where: "label", "wedding-stories" | first %}
+    {% assign other_stories = stories_collection.docs | where_exp: "s", "s.url != page.url" | where_exp: "s", "s.tags contains 'published'" | sort: "date" | reverse %}
+    {% if other_stories.size > 0 %}
+    <aside>
+      <h6>{{ site.data.weddings.stories.sidebar_title | default: 'DISCOVER OTHER WEDDINGS' }}</h6>
+      {% for story in other_stories limit: 3 %}
+      <a href="{{ story.url }}">
+        <picture>
+          <source media="(max-width: 480px)" srcset="{{ story.image | prepend: '/cdn-cgi/image/width=359,height=283,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+          <source media="(min-width: 768px)" srcset="{{ story.image | prepend: '/cdn-cgi/image/width=718,height=565,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+          <img src="{{ story.image | prepend: '/cdn-cgi/image/width=718,height=565,fit=cover,format=webp/' | prepend: site.cdn_url }}" alt="{{ story.title }}" loading="lazy" decoding="async" onerror="imageError(this)">
+        </picture>
+      </a>
+      {% endfor %}
+    </aside>
+    {% endif %}
+  </article>
+
+  {% include weddings/connect.html %}
+</div>

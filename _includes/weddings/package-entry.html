@@ -1,0 +1,22 @@
+{% assign package = include.package %}
+{% assign package_image = package.image %}
+{% assign package_intro = package.description | default: package.subtitle %}
+<section id="{{ package.slug }}">
+  <picture>
+    <source media="(max-width: 480px)" srcset="{{ package_image | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(max-width: 768px)" srcset="{{ package_image | prepend: '/cdn-cgi/image/width=600,height=420,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(min-width: 768px)" srcset="{{ package_image | prepend: '/cdn-cgi/image/width=1000,height=700,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+    <img src="{{ package_image | prepend: '/cdn-cgi/image/width=1000,height=700,fit=cover,format=webp/' | prepend: site.cdn_url }}" alt="{{ package.title }}" loading="lazy" decoding="async" onerror="imageError(this)">
+  </picture>
+  <div class="text-block">
+    <h3>{{ package.title }}</h3>
+    {% if package_intro and package_intro != '' %}<h6>{{ package_intro }}</h6>{% endif %}
+    {% if package.details %}
+    <ul>
+      {% for item in package.details %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</section>

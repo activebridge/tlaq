@@ -1,0 +1,29 @@
+{% assign packages = site.data.weddings.packages %}
+{% assign package_collection = site.collections | where: "label", "wedding-packages" | first %}
+{% assign package_items = package_collection.docs | sort: "date" %}
+{% if package_items.size > 0 %}
+<article id="packages">
+  <h5>{{ packages.eyebrow }}</h5>
+  <h2>{{ packages.title }}</h2>
+  <p>{{ packages.description }}</p>
+
+  <div class="list-container">
+    {% for item in package_items %}
+    <div class="card">
+      <a href="{{ packages.link.url }}#{{ item.slug }}">
+      <picture>
+        <source media="(max-width: 480px)" srcset="{{ item.image | prepend: '/cdn-cgi/image/width=400,height=520,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+        <source media="(min-width: 768px)" srcset="{{ item.image | prepend: '/cdn-cgi/image/width=600,height=780,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+        <img src="{{ item.image | prepend: '/cdn-cgi/image/width=600,height=780,fit=cover,format=webp/' | prepend: site.cdn_url }}" alt="{{ item.title }}" loading="lazy" decoding="async" onerror="imageError(this)">
+      </picture>
+      <h3>{{ item.card_title | default: item.title }}</h3>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if packages.link.url %}
+  <a href="{{ packages.link.url }}">{{ packages.link.text }}</a>
+  {% endif %}
+</article>
+{% endif %}

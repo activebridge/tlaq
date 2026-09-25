@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+{% assign image_path = site.data.weddings.packages.hero_banner %}
+{% assign transition-name = "wedding-packages" %}
+{% include hero-banner.html image_path=image_path transition-name=transition-name %}
+
+<div class="content-wrapper">
+  <hgroup>
+    <h5>{{ site.data.weddings.packages.eyebrow }}</h5>
+    <h2>{{ site.data.weddings.packages.title }}</h2>
+  </hgroup>
+  <p>{{ site.data.weddings.packages.description }}</p>
+
+  {% assign jump_nav_links = "venues,brochure,schedule_tour,faq" | split: "," %}
+  {% assign jump_nav_slugs = "weddings" %}
+  {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
+
+  <article>
+    {% assign wedding_packages = site.collections | where: "label", "wedding-packages" | first %}
+    {% assign wedding_packages = wedding_packages.docs | sort: "date" %}
+    {% for package in wedding_packages %}
+      {% include weddings/package-entry.html package=package %}
+    {% endfor %}
+  </article>
+  {% include weddings/testimonial.html testimonial=site.data.weddings.packages_testimonial %}
+  {% include weddings/connect.html %}
+</div>

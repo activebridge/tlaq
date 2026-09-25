@@ -1,18 +1,25 @@
 {% assign image_path = include.page.site_plan.image %}
-{% assign description = include.page.site_plan.description %}
+{% assign description = include.page.site_plan.description | default: site.data.weddings.explore_venue.description %}
+{% assign explore = site.data.weddings.explore_venue %}
 
-<article class="site-plan">
-  <h5>{{ site.data.weddings.site_plan.title }}</h5>
+<article id="explore-venue" class="site-plan">
   <div class="text-block">
-    <h5>{{ site.data.weddings.site_plan.title }}</h5>
-    {% if description %}<p class="description">{{ description }}</p>{% endif %}
-    <a href="{{ site.data.weddings.site_plan.plan_url }}" target="_blank" class="btn btn-primary">{{ site.data.weddings.buttons.download_site_plan }}</a>
+    <h5>{{ explore.eyebrow }}</h5>
+    <h3>{{ explore.title }}</h3>
+    {% if description %}<p>{{ description }}</p>{% endif %}
+    <div>
+      <a href="{{ explore.buttons.schedule_tour_url | default: '#connect' }}">{{ explore.buttons.schedule_tour }}</a>
+      {% if include.page.virtual_tour_url and include.page.virtual_tour_url != '' and include.page.virtual_tour_url != '#' %}
+      <a href="{{ include.page.virtual_tour_url }}" target="_blank" rel="noopener">{{ site.data.weddings.buttons.virtual_tour }}</a>
+      {% endif %}
+      <a href="{{ site.data.weddings.site_plan.plan_url }}" target="_blank" rel="noopener">{{ site.data.weddings.buttons.download_site_plan }}</a>
+    </div>
   </div>
   <picture>
-    <source media="(max-width: 480px)" srcset="{{ image_path | prepend: '/cdn-cgi/image/width=350,height=235,fit=cover,format=webp/' | prepend: site.cdn_url }}">
-    <source media="(max-width: 768px)" srcset="{{ image_path | prepend: '/cdn-cgi/image/width=600,height=500,fit=cover,format=webp/' | prepend: site.cdn_url }}">
-    <source media="(min-width: 768px)" srcset="{{ image_path | prepend: '/cdn-cgi/image/width=1200,height=1000,fit=cover,format=webp/' | prepend: site.cdn_url }}">
-    <img src="{{ image_path | prepend: '/cdn-cgi/image/width=1200,height=1000,fit=cover,format=webp/' | prepend: site.cdn_url }}"
-         alt="{{ site.data.weddings.site_plan.title }}" onerror="imageError(this)">
+    <source media="(max-width: 480px)" srcset="{{ image_path | prepend: '/cdn-cgi/image/width=350,height=235,fit=contain,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(max-width: 768px)" srcset="{{ image_path | prepend: '/cdn-cgi/image/width=600,height=500,fit=contain,format=webp/' | prepend: site.cdn_url }}">
+    <source media="(min-width: 768px)" srcset="{{ image_path | prepend: '/cdn-cgi/image/width=1200,height=1000,fit=contain,format=webp/' | prepend: site.cdn_url }}">
+    <img src="{{ image_path | prepend: '/cdn-cgi/image/width=1200,height=1000,fit=contain,format=webp/' | prepend: site.cdn_url }}"
+         alt="{{ explore.title }}" loading="lazy" decoding="async" onerror="imageError(this)">
   </picture>
 </article>

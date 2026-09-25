@@ -22,9 +22,21 @@ layout: default
     {% include weddings/sections.html %}
   </article>
   {% include weddings/site-plan.html page=page %}
+  {% assign venue_testimonial = page.testimonial | default: site.data.weddings.venue_testimonial %}
+  {% include weddings/testimonial.html testimonial=venue_testimonial %}
+  {% include weddings/connect.html %}
   {% include weddings/article.html %}
+  {% comment %}
+    Hidden 2026-09-24: this pairing of the shared connect-us form with the wedding
+    brochure panel is absent from the new venue page design. The page now renders
+    weddings/connect.html instead -- the same enquiry form as the weddings index,
+    which keeps the id="connect" that SCHEDULE A TOUR and SUBMIT AN INQUIRY jump to.
+
+    Remove this block once approved.
+
   <div class="weddings-connect-brochure">
     {% include connect-us.html %}
     {% include weddings/brochure.html %}
   </div>
+  {% endcomment %}
 </div>

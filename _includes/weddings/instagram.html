@@ -1,0 +1,18 @@
+{% assign instagram = site.data.weddings.instagram %}
+{% if instagram.items %}
+<article id="instagram">
+  <div>
+    {% for item in instagram.items %}
+    <figure>
+      {% if instagram.url and instagram.url != '' %}<a href="{{ instagram.url }}" target="_blank" rel="noopener">{% endif %}
+      <picture>
+        <source media="(max-width: 480px)" srcset="{{ item.image | prepend: '/cdn-cgi/image/width=400,height=500,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+        <source media="(min-width: 768px)" srcset="{{ item.image | prepend: '/cdn-cgi/image/width=600,height=750,fit=cover,format=webp/' | prepend: site.cdn_url }}">
+        <img src="{{ item.image | prepend: '/cdn-cgi/image/width=600,height=750,fit=cover,format=webp/' | prepend: site.cdn_url }}" alt="" loading="lazy" decoding="async" onerror="imageError(this)">
+      </picture>
+      {% if instagram.url and instagram.url != '' %}</a>{% endif %}
+    </figure>
+    {% endfor %}
+  </div>
+</article>
+{% endif %}

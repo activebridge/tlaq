@@ -1479,8 +1479,10 @@ collections:
             fields:
               - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
               - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
-          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Wedding FAQ page. Edit the page title, hero banner, and the list of FAQ items (question and answer pairs)." }
+          - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Wedding FAQ page. Edit the eyebrow, page title, intro paragraph, hero banner, and the list of FAQ items (question and answer pairs). The quote band and enquiry form at the bottom are edited under Weddings." }
+          - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false, hint: "Small pink label above the heading, e.g. WEDDING FAQ." }
           - { label: "Title", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text", required: false, hint: "Optional intro paragraph shown under the heading." }
           - { label: "Hero Banner", name: "hero_banner", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "FAQ Items"
             name: "blocks"
@@ -1507,6 +1509,7 @@ collections:
           - { label: "ℹ️ Page Info", name: "_info", widget: "string", required: false, default: "ℹ️ This is an information section — see the hint below for details about what you can edit on this page.", hint: "Controls the Weddings page. Edit the hero image, page title, description, gallery video items, brochure PDF upload, awards images, corporate events section, site plan PDF upload, button labels, and jump-to navigation links." }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
+          - { label: "Second Description", name: "description_secondary", widget: "text", required: false, hint: "Optional second intro paragraph shown under the description at the top of the page." }
           - { label: "Weddings Label", name: "weddings", widget: "string" }
           - { label: "Venues Label", name: "venues", widget: "string" }
           - { label: "Hero Image", name: "hero_banner", widget: "image", hint: "Also used as the Weddings tile image in the home page navigation. Filename must not start with an underscore." }
@@ -1521,6 +1524,208 @@ collections:
                 fields:
                   - { label: "Title", name: "title", widget: "string" }
                   - { label: "Video URL", name: "video_url", widget: "string" }
+          - label: "Testimonial"
+            name: "testimonial"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Quote band shown under the venue cards, over a full-width photo."
+            fields:
+              - { label: "Quote", name: "quote", widget: "text", hint: "Couple's quote. Quotation marks are added automatically." }
+              - { label: "Author", name: "author", widget: "string", required: false, hint: "Optional credit shown under the quote." }
+              - { label: "Image", name: "image", widget: "image", hint: "Background photo behind the quote. Filename must not start with an underscore." }
+          - label: "Just Married"
+            name: "just_married"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Pink band featuring one real wedding story, with a photo on the left."
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small pink label above the heading, e.g. JUST MARRIED." }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image", hint: "Portrait photo shown on the left of the band. Filename must not start with an underscore." }
+              - label: "Link"
+                name: "link"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string", required: false, hint: "Where DISCOVER MORE goes, normally a Wedding Story page such as /weddings/stories/courtney-and-evan/. Leave blank to hide the link." }
+          - label: "Wedding Packages"
+            name: "packages"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Heading and intro copy for the packages section, reused as the header of the Wedding Packages page. The cards themselves come from the Wedding Packages collection."
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small pink label above the heading, e.g. WEDDING PACKAGES." }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Packages Page Hero Image", name: "hero_banner", widget: "image", hint: "Banner photo at the top of the /weddings/packages/ page. Filename must not start with an underscore." }
+              - label: "Link"
+                name: "link"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string", hint: "Where EXPLORE PACKAGES goes, normally /weddings/packages/." }
+          - label: "Private Tour"
+            name: "private_tour"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Pink band inviting couples to tour the village, with the site map on the right."
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small pink label above the heading, e.g. PRIVATE TOUR." }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image", name: "image", widget: "image", hint: "Village map artwork shown on the right. Filename must not start with an underscore." }
+              - label: "Link"
+                name: "link"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string", hint: "Where SCHEDULE A TOUR goes. Use #connect to jump to the form on this page." }
+          - label: "Packages Page Testimonial"
+            name: "packages_testimonial"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Quote over a full-width photo, shown at the bottom of the Wedding Packages page."
+            fields:
+              - { label: "Quote", name: "quote", widget: "text", hint: "Couple's quote. Quotation marks are added automatically." }
+              - { label: "Author", name: "author", widget: "string", required: false, hint: "Optional credit shown under the quote." }
+              - { label: "Image", name: "image", widget: "image", hint: "Background photo behind the quote. Filename must not start with an underscore." }
+          - label: "Real Weddings Page"
+            name: "stories"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "The /weddings/stories/ index page, plus shared labels used on every Wedding Story page."
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false, hint: "Small pink label above the heading, e.g. JUST MARRIED." }
+              - { label: "Title", name: "title", widget: "string", required: false, hint: "Heading of the Real Weddings index page." }
+              - { label: "Description", name: "description", widget: "text", required: false, hint: "Intro paragraph under the heading." }
+              - { label: "Hero Image", name: "hero_banner", widget: "image", required: false, hint: "Banner photo at the top of the Real Weddings page. Filename must not start with an underscore." }
+              - { label: "Card Link Text", name: "read_more", widget: "string", required: false, hint: "Link under each story tile, e.g. Read More." }
+              - { label: "Previous Link", name: "previous", widget: "string", required: false, hint: "Label of the back link between stories on mobile, e.g. PREVIOUS." }
+              - { label: "Next Link", name: "next", widget: "string", required: false, hint: "Label of the forward link between stories on mobile, e.g. NEXT." }
+              - { label: "Empty Message", name: "empty", widget: "string", required: false, hint: "Shown in place of the grid when no stories are published yet." }
+              - { label: "Sidebar Title", name: "sidebar_title", widget: "string", required: false, hint: "Heading above the thumbnail rail of other weddings, e.g. DISCOVER OTHER WEDDINGS." }
+              - { label: "Share Button", name: "share", widget: "string", required: false, hint: "Label of the share button above the story, e.g. SHARE." }
+          - label: "Wedding FAQ Testimonial"
+            name: "faq_testimonial"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Quote over a full-width photo, shown above the enquiry form on the Wedding FAQ page."
+            fields:
+              - { label: "Quote", name: "quote", widget: "text", hint: "Couple's quote. Quotation marks are added automatically." }
+              - { label: "Author", name: "author", widget: "string", required: false, hint: "Optional credit shown under the quote." }
+              - { label: "Image", name: "image", widget: "image", hint: "Background photo behind the quote. Filename must not start with an underscore." }
+          - label: "Venue Page Testimonial"
+            name: "venue_testimonial"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Quote over a full-width photo, shown at the bottom of every venue page. A venue can override it in its own entry."
+            fields:
+              - { label: "Quote", name: "quote", widget: "text", hint: "Couple's quote. Quotation marks are added automatically." }
+              - { label: "Author", name: "author", widget: "string", required: false, hint: "Optional credit shown under the quote." }
+              - { label: "Image", name: "image", widget: "image", hint: "Background photo behind the quote. Filename must not start with an underscore." }
+          - label: "Explore The Venue"
+            name: "explore_venue"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Pink band at the bottom of each venue page, with the site plan on the right."
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small pink label above the heading, e.g. EXPLORE THE VENUE." }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", hint: "Copy shown on every venue page. A venue can override it in its own Site Plan section." }
+              - label: "Buttons"
+                name: "buttons"
+                widget: "object"
+                fields:
+                  - { label: "Schedule A Tour", name: "schedule_tour", widget: "string", hint: "Label of the link that jumps to the enquiry form on the venue page." }
+          - label: "Vendors"
+            name: "vendors"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Full-width section about the approved vendor network."
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small pink label above the heading, e.g. VENDORS." }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Second Description", name: "description_secondary", widget: "text", required: false, hint: "Optional second paragraph." }
+              - { label: "Image", name: "image", widget: "image", hint: "Wide photo shown under the copy. Filename must not start with an underscore." }
+              - label: "Link"
+                name: "link"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string", hint: "Where EXPLORE VENDORS goes. Vendors are listed in the wedding brochure, so this normally points at the same PDF as the DOWNLOAD BROCHURE button." }
+          - label: "Connect Form"
+            name: "connect"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Pink band with the enquiry form. Field labels come from the shared Connect With Us data; this controls the copy beside it."
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Small pink label above the heading, e.g. CONNECT WITH US." }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Email", name: "email", widget: "string", hint: "Shown beside the envelope icon and used for the mailto link." }
+              - { label: "Phone", name: "phone", widget: "string", hint: "Shown beside the phone icon and used for the tel link." }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                required: false
+                hint: "Underlined text links under the contact details."
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Opens in New Tab", name: "external", widget: "boolean", required: false, default: false }
+              - label: "Wordmark"
+                name: "wordmark"
+                widget: "object"
+                required: false
+                hint: "Typeset logo at the foot of the left column."
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Subtitle", name: "sub", widget: "string" }
+              - label: "Form"
+                name: "form"
+                widget: "object"
+                fields:
+                  - { label: "Required Field Note", name: "required_note", widget: "string" }
+                  - { label: "Tour Question", name: "tour_question", widget: "string" }
+                  - { label: "Yes Label", name: "tour_yes", widget: "string" }
+                  - { label: "No Label", name: "tour_no", widget: "string" }
+                  - { label: "Submit Button", name: "submit", widget: "string" }
+                  - label: "Field Labels"
+                    name: "labels"
+                    widget: "object"
+                    required: false
+                    hint: "Overrides for field labels on this page only. Leave blank to use the shared Connect With Us labels."
+                    fields:
+                      - { label: "Phone", name: "phone", widget: "string", required: false }
+                      - { label: "Number of Guests", name: "guests", widget: "string", required: false }
+                      - { label: "Budget", name: "budget", widget: "string", required: false }
+          - label: "Instagram"
+            name: "instagram"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "⚠️ Currently hidden on the site while the live Instagram feed is being connected. Photos added here will not appear yet."
+            fields:
+              - { label: "Handle", name: "handle", widget: "string", required: false, hint: "Account name, e.g. @tlaquepaque. Not currently shown on the page." }
+              - { label: "URL", name: "url", widget: "string", required: false, hint: "Instagram profile link. When set, each tile links to it. Leave blank for non-clickable tiles." }
+              - label: "Tiles"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
           - label: "Brochure"
             name: "brochure"
             widget: "object"
@@ -1541,8 +1746,15 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
-              - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+              - { label: "Image", name: "image", widget: "image", required: false, hint: "Filename must not start with an underscore" }
               - { label: "Brochure PDF", name: "brochure_url", widget: "file", media_folder: "/assets/files/weddings", public_folder: "/assets/files/weddings", hint: "Upload the events brochure PDF. Filename must not start with an underscore." }
+              - label: "Slideshow Images"
+                name: "images"
+                widget: "list"
+                required: false
+                field: { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore" }
+                hint: "Photos that rotate in the corporate events slideshow."
+
           - label: "Buttons"
             name: "buttons"
             widget: "object"
@@ -1553,6 +1765,8 @@ collections:
               - { label: "Download Brochure", name: "download_brochure", widget: "string" }
               - { label: "Submit Inquiry", name: "inquiry_submit", widget: "string" }
               - { label: "Download Site Plan", name: "download_site_plan", widget: "string" }
+              - { label: "Virtual Tour", name: "virtual_tour", widget: "string", hint: "Link text on venue cards that have a Matterport tour." }
+              - { label: "Guests", name: "guests", widget: "string", hint: "Word after the number on the venue card capacity badge, e.g. GUESTS." }
           - label: "Jump To Links"
             name: "jump_to_links"
             widget: "object"
@@ -1568,9 +1782,77 @@ collections:
                 fields:
                   - { label: "Text", name: "text", widget: "string" }
                   - { label: "ID", name: "id", widget: "string" }
+              - label: "Wedding Packages"
+                name: "wedding_packages"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Explore The Venues"
+                name: "venues"
+                widget: "object"
+                required: false
+                hint: "Shown in the Wedding Packages page jump menu."
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string", hint: "Page path plus anchor, e.g. /weddings/#venues." }
+              - label: "Schedule A Tour"
+                name: "schedule_tour"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
               - label: "Private Events"
                 name: "private_events"
                 widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "FAQ"
+                name: "faq"
+                widget: "object"
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string", hint: "Either an anchor like #events or a page path like /wedding_faq/." }
+              - label: "Real Weddings"
+                name: "inspiration"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string", hint: "Page path, normally /weddings/stories/." }
+              - label: "Connect"
+                name: "connect"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Chapel"
+                name: "chapel-at-tlaquepaque"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Calle Independencia"
+                name: "calle-independencia"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Patio de las Campanas"
+                name: "patio-de-las-campanas"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "Text", name: "text", widget: "string" }
+                  - { label: "ID", name: "id", widget: "string" }
+              - label: "Terrace at Patio del Norte"
+                name: "terrace-at-patio-del-norte"
+                widget: "object"
+                required: false
                 fields:
                   - { label: "Text", name: "text", widget: "string" }
                   - { label: "ID", name: "id", widget: "string" }
@@ -1754,7 +2036,7 @@ collections:
   - name: "weddings"
     label: "Weddings"
     folder: "_weddings"
-    extension: "html"
+    extension: "md"
     create: true
     slug: "{{slug}}"
     sort_by: "date"
@@ -1776,6 +2058,9 @@ collections:
       - { label: "Title", name: "title", widget: "string", hint: "Venue name shown in cards, page headings, and navigation." }
       - { label: "Subtitle", name: "subtitle", widget: "string", required: false, hint: "Legacy summary line in front matter. The page hero currently uses Intro fields below, so keep this aligned or leave blank if unused." }
       - { label: "Image", name: "image", widget: "image", required: false, hint: "Main hero image for the venue page and venue card. Animated GIFs are supported. Filename must not start with an underscore." }
+      - { label: "Capacity", name: "capacity", widget: "number", required: false, value_type: "int", min: 1, hint: "Guest count shown on the badge over the venue card image on the Weddings page. Leave blank to hide the badge." }
+      - { label: "Card Description", name: "card_description", widget: "text", required: false, hint: "Short paragraph shown under the venue name on the Weddings page card. Falls back to Subtitle when blank." }
+      - { label: "Virtual Tour URL", name: "virtual_tour_url", widget: "string", required: false, hint: "Matterport tour link, e.g. https://my.matterport.com/show/?m=XXXX. Adds a VIRTUAL TOUR link to the venue card. Leave blank to hide the link." }
       - { label: "Suite", name: "suite", widget: "string", required: false, hint: "Optional map suite identifier used by the embedded village map on this page." }
       - { label: "Coordinates", name: "coordinates", widget: "string", hint: "Optional map coordinates in `longitude, latitude` format, for example `-111.76260, 34.86350`.", required: false }
       - label: "Intro"
@@ -1787,15 +2072,120 @@ collections:
         fields:
           - { label: "Subtitle", name: "subtitle", widget: "string", required: false, hint: "Main headline shown below the venue title." }
           - { label: "Description", name: "description", widget: "text", required: false, hint: "Supporting paragraph shown below the intro subtitle." }
+      - label: "Testimonial (optional override)"
+        name: "testimonial"
+        widget: "object"
+        collapsed: true
+        required: false
+        hint: "Overrides the shared venue testimonial for this venue only. Leave empty to use the shared one."
+        fields:
+          - { label: "Quote", name: "quote", widget: "text", required: false, hint: "Couple's quote. Quotation marks are added automatically." }
+          - { label: "Author", name: "author", widget: "string", required: false, hint: "Optional credit shown under the quote." }
+          - { label: "Image", name: "image", widget: "image", required: false, hint: "Background photo behind the quote. Filename must not start with an underscore." }
       - label: "Site Plan"
         name: "site_plan"
         widget: "object"
         collapsed: true
         required: false
-        hint: "Venue-specific site plan content shown below the brochure section."
+        hint: "Site plan image for this venue, shown in the Explore The Venue band at the bottom of the page."
         fields:
           - { label: "Image", name: "image", widget: "image", required: false, hint: "Site plan image shown for this venue. Filename must not start with an underscore." }
-          - { label: "Description", name: "description", widget: "text", required: false, hint: "Optional descriptive copy shown alongside the site plan image." }
+          - { label: "Description", name: "description", widget: "text", required: false, hint: "Optional. Overrides the shared Explore The Venue copy for this venue only. Leave blank to use the shared text." }
+
+  - name: "wedding-stories"
+    label: "Wedding Stories"
+    label_singular: "Wedding Story"
+    folder: "_wedding-stories"
+    extension: "md"
+    create: true
+    slug: "{{slug}}"
+    sort_by: "date"
+    sort_direction: Descending
+    media_folder: "/assets/images/weddings/stories"
+    public_folder: "/assets/images/weddings/stories"
+    fields:
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "Controls how this story appears in Google search results and the browser tab."
+        fields:
+          - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+          - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
+      - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., courtney-and-evan). DO NOT change after publishing — breaks the URL." }
+      - label: "Show on the Real Weddings page"
+        name: "tags"
+        widget: "select"
+        multiple: true
+        required: false
+        default: ["published"]
+        options: ["published"]
+        hint: "Keep 'published' ticked to list this story on /weddings/stories/. Untick to keep the page live at its URL but hide it from the index (used for drafts and placeholders)."
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, hint: "Shown above the story and used to order the Discover Other Weddings rail. Newest first." }
+      - { label: "Eyebrow", name: "eyebrow", widget: "string", required: false, default: "JUST MARRIED", hint: "Small pink label above the heading." }
+      - { label: "Title", name: "title", widget: "string", hint: "Story heading, e.g. Beauty & Meaning." }
+      - { label: "Description", name: "description", widget: "text", hint: "Intro line under the heading." }
+      - { label: "Hero Image", name: "image", widget: "image", hint: "Banner photo at the top of the page, and this story's thumbnail in the Discover Other Weddings rail on other story pages. Filename must not start with an underscore." }
+      - { label: "Story", name: "body", widget: "markdown", hint: "The couple's write-up. Use the toolbar to add images and video between paragraphs." }
+      - label: "Gallery"
+        name: "gallery"
+        widget: "list"
+        required: false
+        hint: "Thumbnail strip shown between the banner and the heading. Leave empty to hide the strip."
+        fields:
+          - { label: "Image", name: "image", widget: "image", hint: "Filename must not start with an underscore." }
+          - { label: "Alt Text", name: "alt", widget: "string", required: false, hint: "Optional description for screen readers. Leave blank for decorative photos." }
+      - label: "Wedding Vendors"
+        name: "vendors"
+        widget: "object"
+        collapsed: true
+        required: false
+        hint: "Vendor credits shown on the pink card under the story."
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false, default: "WEDDING VENDORS", hint: "Heading of the vendor card." }
+          - label: "Vendors"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Role", name: "role", widget: "string", hint: "e.g. Planner/Coordinator, Catering, Floral." }
+              - { label: "Name", name: "name", widget: "string", hint: "Business name." }
+              - { label: "Website", name: "website", widget: "string", required: false, hint: "Domain without https://, e.g. specialoccasionsaz.com. Leave blank if the vendor has no website." }
+              - { label: "Email", name: "email", widget: "string", required: false, hint: "Shown in place of, or alongside, the website — useful when a vendor has no website. e.g. name@example.com." }
+              - { label: "Phone", name: "phone", widget: "string", required: false, hint: "e.g. 928-451-6307." }
+
+  - name: "wedding-packages"
+    label: "Wedding Packages"
+    label_singular: "Wedding Package"
+    folder: "_wedding-packages"
+    extension: "md"
+    create: true
+    slug: "{{slug}}"
+    sort_by: "date"
+    sort_direction: Ascending
+    media_folder: "/assets/images/weddings/packages"
+    public_folder: "/assets/images/weddings/packages"
+    fields:
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        required: false
+        collapsed: true
+        hint: "Controls how this package page appears in Google search results and the browser tab. Leave empty to use the automatic title and description."
+        fields:
+          - { label: "SEO Title", name: "title", widget: "string", required: false, hint: "Headline shown in Google results and the browser tab. Aim for under 60 characters." }
+          - { label: "Meta Description", name: "description", widget: "text", required: false, hint: "Grey summary text under the headline in Google results. Aim for 150-160 characters." }
+      - { label: "Slug", name: "slug", widget: "string", hint: "URL identifier. Lowercase, hyphens only (e.g., twilight-wedding). DO NOT change after publishing — breaks the URL and any linked content." }
+      - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, hint: "Controls the order packages appear in. Earliest date shows first, on both the Weddings page and the Wedding Packages page." }
+      - { label: "Title", name: "title", widget: "string", hint: "Full package name, shown as the heading on the Wedding Packages page and on this package's own page, e.g. Simply I Do Elopement Package." }
+      - { label: "Card Title", name: "card_title", widget: "string", required: false, hint: "Shorter name used on the card in the Weddings page carousel, where long names are cut off. Falls back to Title when blank." }
+      - { label: "Description", name: "description", widget: "text", hint: "Short paragraph shown under the package name." }
+      - { label: "Image", name: "image", widget: "image", hint: "Photo shown beside the package details. Filename must not start with an underscore." }
+      - label: "Details"
+        name: "details"
+        widget: "list"
+        hint: "Bullet points listing what the package includes. Put the price last."
+        field: { label: "Item", name: "item", widget: "string", hint: "One detail line, e.g. 90-minute ceremony or $3,800." }
 
   - name: "wedding-pages"
     label: "Wedding Page Data"

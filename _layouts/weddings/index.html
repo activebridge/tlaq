@@ -12,16 +12,45 @@ layout: default
     <h2>{{ site.data.weddings.title }}</h2>
   </hgroup>
   <p>{{ site.data.weddings.description }}</p>
+  {% if site.data.weddings.description_secondary %}
+  <p>{{ site.data.weddings.description_secondary }}</p>
+  {% endif %}
 
-  {% assign jump_nav_links = "brochure,gallery,private_events,connect" | split: "," %}
+  {% assign jump_nav_links = "brochure,wedding_packages,schedule_tour,private_events,faq" | split: "," %}
   {% assign jump_nav_slugs = "weddings" %}
   {% include page-jump-nav.html links=jump_nav_links slugs=jump_nav_slugs %}
 
   {% include weddings/venues.html %}
-  {% include weddings/gallery.html %}
-  <div class="weddings-connect-brochure">
-    {% include connect-us.html %}
+  {% include weddings/testimonial.html %}
+  {% include weddings/just-married.html %}
+  {% include weddings/packages.html %}
+  {% include weddings/private-tour.html %}
+  {% include weddings/vendors.html %}
+  {% include weddings/connect.html %}
+  {% comment %}
+    Hidden 2026-09-24: the Instagram feed is not connected yet. The design is
+    finished -- restore this include once a real feed populates instagram.items
+    in _data/weddings.yml, which is deliberately empty until then.
+
+    Note: #instagram also carries the divider rule above #events (see
+    `article#instagram::after` in application.css). While this is hidden, #events
+    follows #connect with no rule between them, which is why #connect is excluded
+    from the reset that strips the other article dividers.
+
+    Remove this block once approved.
+
+    {% include weddings/instagram.html %}
+  {% endcomment %}
+  {% comment %}
+    Hidden 2026-09-24: the brochure section is absent from the new weddings design.
+    Nothing links to its #brochure anchor -- the jump nav's BROCHURE entry points
+    straight at brochure.brochure_url and FAQ points at /wedding_faq/ -- so this
+    include can be restored on its own. If it is not coming back, delete this block
+    and _includes/weddings/brochure.html.
+
+    Remove this block once approved.
+
     {% include weddings/brochure.html %}
-  </div>
+  {% endcomment %}
   {% include weddings/events.html %}
 </div>

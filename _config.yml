@@ -36,6 +36,11 @@ collections:
     permalink: /weddings/:slug/
   wedding-articles:
     output: true
+  wedding-packages:
+    output: false
+  wedding-stories:
+    output: true
+    permalink: /weddings/stories/:slug/
 
 defaults:
   - scope:
@@ -85,6 +90,12 @@ defaults:
       type: "weddings"
     values:
       layout: "weddings/show"
+      layout_type: "wedding"
+  - scope:
+      path: ""
+      type: "wedding-stories"
+    values:
+      layout: "weddings/story"
       layout_type: "wedding"
   - scope:
       path: "admin"
