@@ -10,29 +10,8 @@ video_url: ''
 subtitle: Celebrate spring at Tlaquepaque with our annual Cinco de Mayo festivities. Admission is free and everyone is invited! Enjoy the pulsating sounds, savory flavors, and colorful dances of Mexico in a fun-filled South of the Border bash.
 schedule_type: yearly
 recurs_until: ''
-schedule:
-  - location: Patio del Norte
-    performances:
-      - name: Flamenco Mosaico featuring Gaetano
-        time: 1:00 P.M. to 4:00 P.M.
-  - location: Patio de las Rosas
-    performances:
-      - name: Paloma
-        time: 1:00 P.M. to 4:00 P.M.
-  - location: Tlaquepaque North
-    performances:
-      - name: Ballet Folklorico De Colores
-        time: 1:00 P.M. and 3:00 P.M.
-  - location: Chapel
-    performances:
-      - name: Patrick Ki
-        time: 1:00 P.M. to 4:00 P.M.
-  - location: Patio de las Campanas
-    performances:
-      - name: Ritmo Latino
-        time: 2:00 P.M. to 4:00 P.M.
-      - name: Kids' face Painting, Crafts, and Pinata
-        time: 1:00 P.M. to 4:00 P.M.
+date_override: ''
+schedule: []
 phone: ''
 website: ''
 email: ''
