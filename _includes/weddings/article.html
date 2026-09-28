@@ -9,7 +9,7 @@
       <p>{{ wedding_article.subtitle }}</p>
     {% endif %}
     {% if wedding_article.link.url %}
-      <a href="{{ wedding_article.link.url }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">{{ wedding_article.link.text | default: "Read the Article" }}</a>
+      <a href="{{ wedding_article.link.url }}" target="_blank" rel="noopener noreferrer">{{ wedding_article.link.text | default: "Read the Article" }}</a>
     {% endif %}
   </div>
 

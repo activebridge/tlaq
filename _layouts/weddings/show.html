@@ -24,8 +24,8 @@ layout: default
   {% include weddings/site-plan.html page=page %}
   {% assign venue_testimonial = page.testimonial | default: site.data.weddings.venue_testimonial %}
   {% include weddings/testimonial.html testimonial=venue_testimonial %}
-  {% include weddings/connect.html %}
   {% include weddings/article.html %}
+  {% include weddings/connect.html %}
   {% comment %}
     Hidden 2026-09-24: this pairing of the shared connect-us form with the wedding
     brochure panel is absent from the new venue page design. The page now renders

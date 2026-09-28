@@ -8,7 +8,7 @@ title: Terrace at Patio del Norte
 subtitle: This elegant, stuccoed terrace offers partial and seasonal views of the Red Rocks.
 capacity: 100
 card_description: Overlooking the village, this private outdoor terrace offers an elegant setting for wedding ceremonies, welcome gatherings, and intimate receptions, with seasonal glimpses of Sedona's Red Rocks.
-virtual_tour_url: ''
+virtual_tour_url: 'https://my.matterport.com/show/?m=zRergKBNc36'
 image: /assets/images/weddings/terrace-at-patio-del-norte/card.webp
 suite: ''
 coordinates: ''

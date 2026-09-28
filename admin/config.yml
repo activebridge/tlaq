@@ -1763,7 +1763,8 @@ collections:
               - { label: "Explore More", name: "explore_more", widget: "string" }
               - { label: "FAQ", name: "faq", widget: "string" }
               - { label: "Download Brochure", name: "download_brochure", widget: "string" }
-              - { label: "Submit Inquiry", name: "inquiry_submit", widget: "string" }
+              - { label: "Submit Inquiry", name: "inquiry_submit", widget: "string", hint: "Button on the Private Events section." }
+              - { label: "Submit Inquiry (short)", name: "inquiry_submit_short", widget: "string", hint: "Button overlaid on the quote image." }
               - { label: "Download Site Plan", name: "download_site_plan", widget: "string" }
               - { label: "Virtual Tour", name: "virtual_tour", widget: "string", hint: "Link text on venue cards that have a Matterport tour." }
               - { label: "Guests", name: "guests", widget: "string", hint: "Word after the number on the venue card capacity badge, e.g. GUESTS." }
