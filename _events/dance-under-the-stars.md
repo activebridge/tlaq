@@ -22,4 +22,4 @@ facebook: ''
 instagram: ''
 ---
 
-Join us at Tlaquepaque on First Friday at 7 PM for Sedona Dance Academy's "Dancing Under the Stars" Series!
+Join us at Tlaquepaque on First Friday at 7 PM for Sedona Dances "Dancing Under the Stars" Series!
