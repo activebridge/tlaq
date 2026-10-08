@@ -65,4 +65,4 @@ instagram: ''
 
 - Stunning altars and large-scale cultural installations throughout the village
 - Traditional offerings (ofrendas), colorful cut-paper banners (papel picado), and handcrafted figurines (la calaca)
-- Live music, traditional dance performances, and roving entertainment.![](/assets/images/events/pasted-image-1791482854743.png)
+- Live music, traditional dance performances, and roving entertainment
