@@ -2290,6 +2290,7 @@ collections:
           - { label: "Title", name: "title", widget: "string", hint: "Heading for the map block, e.g. 'Find Your Way' or 'Parking & Directions'." }
           - { label: "Description", name: "description", widget: "text", hint: "Short paragraph above the button." }
           - { label: "Button Label", name: "button_label", widget: "string", hint: "Call-to-action text on the button, e.g. 'View Map'." }
+          - { label: "URL", name: "url", widget: "string", hint: "Full URL including https:// the button links to." }
       - { label: "Phone", name: "phone", widget: "string", required: false, hint: "Contact phone number for the event organizer or venue. Format freely (e.g. '928-862-4140')." }
       - { label: "Website", name: "website", widget: "string", required: false, hint: "Full URL including https://. Used for the 'Website' link on the event page." }
       - { label: "Email", name: "email", widget: "string", required: false, hint: "Contact email for the event. Rendered as a mailto link." }

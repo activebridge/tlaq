@@ -55,8 +55,9 @@ map:
   title: Altar Map
   description: Follow the map and discover the interactive altars waiting to be found throughout Tlaquepaque Arts & Shopping Village during our Día de los Muertos celebration.
   button_label: View Map
+  url: https://discover.tlaq.com/tlaq-altar-map-2026
 phone: ''
-website: https://discover.tlaq.com/tlaq-altar-map-2026
+website: ''
 email: ''
 facebook: ''
 instagram: ''
