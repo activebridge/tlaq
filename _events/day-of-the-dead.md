@@ -29,6 +29,8 @@ schedule:
         time: 11:00 A.M. to 2:00 P.M.
       - name: Urban Electra
         time: 3:00 P.M. to 5:00 P.M.
+      - name: Sedona Dance Project
+        time: 2:15 P.M. to 2:45 P.M.
   - location: Patio de las campanas
     performances:
       - name: Mosaico Flamenco
