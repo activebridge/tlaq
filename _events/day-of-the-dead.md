@@ -7,11 +7,7 @@ ends_at: 2026-11-01 17:00:00
 location: THROUGHOUT TLAQUEPAQUE
 image: assets/images/events/day-of-dead.webp
 video_url: ''
-subtitle: |-
-  Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
-
-  Tlaquepaque has provided a free shuttle that will run the entire day from Uptown Sedona to Tlaquepaque. Guests can park in the municipal parking lots in Uptown to our bus loading zone on SR 179.
-  Here is information on the parking lots in Uptown Sedona: https://www.sedonaaz.gov/visitors/visit-sedona/parking-in-uptown
+subtitle: Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
 schedule_type: yearly
 annual: true
 recurs_until: ''
@@ -76,3 +72,7 @@ instagram: ''
 - Stunning altars and large-scale cultural installations throughout the village
 - Traditional offerings (ofrendas), colorful cut-paper banners (papel picado), and handcrafted figurines (la calaca)
 - Live music, traditional dance performances, and roving entertainment
+
+Tlaquepaque has provided a free shuttle that will run the entire day from Uptown Sedona to Tlaquepaque. Guests can park in the municipal parking lots in Uptown to our bus loading zone on SR 179.
+
+Here is information on the parking lots in Uptown Sedona: https://www.sedonaaz.gov/visitors/visit-sedona/parking-in-uptown
