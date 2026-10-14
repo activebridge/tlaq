@@ -11,6 +11,7 @@ subtitle: |-
   Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
 
   Tlaquepaque has provided a free shuttle that will run the entire day from Uptown Sedona to Tlaquepaque. Guests can park in the municipal parking lots in Uptown to our bus loading zone on SR 179.
+  Here is information on the parking lots in Uptown Sedona: https://www.sedonaaz.gov/visitors/visit-sedona/parking-in-uptown
 schedule_type: yearly
 annual: true
 recurs_until: ''
