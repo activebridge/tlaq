@@ -22,11 +22,11 @@ facebook: https://www.facebook.com/ElRinconSedona/
 full_location: 336 AZ-179 Suite A112, Sedona, AZ 86336
 store_hours:
   monday: 11am - 8pm
-  tuesday: 11am - 9pm
-  wednesday: 11am - 9pm
-  thursday: 11am - 9pm
-  friday: 11am - 9pm
-  saturday: 11am - 9pm
+  tuesday: 11am - 8pm
+  wednesday: 11am - 8pm
+  thursday: 11am - 8pm
+  friday: 11am - 8pm
+  saturday: 11am - 8pm
   sunday: 11am - 8pm
 ---
 
