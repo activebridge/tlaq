@@ -13,7 +13,7 @@ tags:
   - dinner
 suite: a112
 phone: (928) 282-4648
-website: https://www.elrinconrestaurant.com
+website: https://elrinconsedona.com/
 coordinates: -111.7626513, 34.8617978
 image: /assets/images/foods/El_Rincon_Ext.jpg
 interior_image: /assets/images/foods/El_Rincon_Int.jpg
