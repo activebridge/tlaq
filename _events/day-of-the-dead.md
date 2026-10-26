@@ -1,5 +1,5 @@
 ---
-title: Day of the Dead - CANCELED
+title: Day of the Dead - CANCELED DUE TO WEATHER
 slug: day-of-the-dead
 published: true
 starts_at: 2026-11-01 11:00:00
