@@ -1,11 +1,11 @@
 ---
-title: The Marigold Mural Project
+title: The Marigold Mural Project - CANCELED DUE TO WEATHER
 slug: the-marigold-mural-project
 published: true
 starts_at: 2026-10-29 11:00:00
 ends_at: 2026-11-01T17:00:00
 location: CALLE INDEPENDENCIA
-image: assets/images/events/marigold-mural-project.webp
+image: /assets/images/events/pasted-image-1793205475472.png
 video_url: ''
 subtitle: The Marigold Mural Project will take place on Calle Independencia. Guests may paint tributes on the 26-foot community remembrance wall with artist Lovejoy; supplies provided.
 schedule_type: yearly
