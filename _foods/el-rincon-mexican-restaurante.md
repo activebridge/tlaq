@@ -18,7 +18,7 @@ coordinates: -111.7626513, 34.8617978
 image: /assets/images/foods/El_Rincon_Ext.jpg
 interior_image: /assets/images/foods/El_Rincon_Int.jpg
 instagram: https://www.instagram.com/elrinconrestaurantemexicano/
-facebook: https://www.facebook.com/ElRinconSedona/
+facebook: https://www.facebook.com/share/1cc54fQ5bS/?mibextid=wwXIfr
 full_location: 336 AZ-179 Suite A112, Sedona, AZ 86336
 store_hours:
   monday: 11am - 8pm
