@@ -3,9 +3,9 @@ title: Cultural Gathering Honoring The Red Rocks in Yavapai
 slug: cultural-gathering-yavapi
 published: true
 starts_at: 2026-11-07T11:00:00
-ends_at: 2026-04-01T16:00:00
+ends_at: 2026-11-07T16:00:00
 location: Patio del Norte
-image: /assets/images/events/pasted-image-1793205976129.png
+image: /assets/images/events/pasted-image-1793384325062.png
 video_url: ''
 subtitle: Join us at Tlaquepaque for this cultural celebration.
 schedule_type: single
