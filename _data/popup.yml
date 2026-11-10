@@ -1,5 +1,5 @@
 _info: ''
-enabled: true
+enabled: false
 delay_seconds: 3
 icon: flower
 call_to_action: CANCELED DUE TO WEATHER
