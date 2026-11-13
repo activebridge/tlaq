@@ -1,11 +1,11 @@
 ---
-title: Day of the Dead - CANCELED DUE TO WEATHER
+title: Day of the Dead
 slug: day-of-the-dead
 published: true
 starts_at: 2026-11-01 11:00:00
 ends_at: 2026-11-01 17:00:00
 location: THROUGHOUT TLAQUEPAQUE
-image: /assets/images/events/pasted-image-1793042411328.png
+image: /assets/images/events/pasted-image-1794590242227.png
 video_url: ''
 subtitle: Every fall, Tlaquepaque comes alive with the sights, sounds, and traditions of Día de los Muertos—a joyful Mexican holiday honoring loved ones who have passed.
 schedule_type: yearly
